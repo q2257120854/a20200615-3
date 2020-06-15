@@ -1,0 +1,31 @@
+<view style="background: #A12825;height:100%;overflow:hidden;padding-bottom:250rpx">
+    <graceHeader background="#B32D28">
+        <view class="grace-header-body">
+            <view bindtap="goBack" class="grace-header-icons grace-icons icon-arrow-left grace-white"></view>
+        </view>
+    </graceHeader>
+    <gracePage customHeader="{{false}}">
+        <view slot="gBody">
+            <view class="reward-head">
+                <image src="../../static/images/reward_hd.png"></image>
+            </view>
+            <view class="reward-body">
+                <view class="reward-list">
+                    <view class="item" wx:for="{{list}}" wx:key="index">
+                        <button bindgetuserinfo="doReward" class="item-inner" data-price="{{item.price}}" openType="getUserInfo">
+                            <image class="item-bg" src="../../static/images/reward_item_bg.png"></image>
+                            <view class="item-bd">
+                                <text class="item-price">{{item.price}}</text>
+                                <text class="item-small">元</text>
+                            </view>
+                            <view class="item-ft">
+									{{item.txt}}
+								</view>
+                        </button>
+                    </view>
+                </view>
+            </view>
+            <view class="reward-foot">感谢红包鼓励，我们继续生产好内容！</view>
+        </view>
+    </gracePage>
+</view>

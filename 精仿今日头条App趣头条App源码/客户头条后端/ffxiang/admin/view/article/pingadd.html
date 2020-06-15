@@ -1,0 +1,102 @@
+ {include file="public/header" /}
+ <style>
+.profile-content h5,.profile-content h4{
+    line-height: 22px;
+}
+.tbutton{ display: none; }
+ </style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>评论内容</h5>
+                </div>
+                <div>
+                    <div class="ibox-content profile-content">
+                    <h5>
+                            文章标题： {present name="article"}{$article.title} {/present}</h5>
+                        <h4>用户评论内容：{$name.content}</h4>
+                       
+                         
+                        
+                        <div class="user-button">
+                            <div class="row">
+                                 
+                                <div class="col-sm-12 ">
+                                    <button onclick="del({$name.id})" type="button" class="btn btn-default btn-sm btn-block">
+                                        <i class="fa fa-coffee"></i> 删除
+                                    </button>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>被评论用户</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="profile.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                         
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div>
+                        <div class="feed-activity-list">
+                            {volist name="pingList" id="v"}
+                            <div class="feed-element">
+                                <?php $user=_user($v['uid']);?>
+                                <a  class="pull-left">
+                                    <img alt="image" class="img-circle" src="{$user.img}">
+                                </a>
+                                <div class="media-body ">
+                                    <small class="pull-right">{$v.time|date='Y-m-d H:i:s',###}</small>
+                                    <strong>{$user.username}</strong><br>
+                                    <div class="well">
+                                        {$v.content}
+                                    </div>
+                                    <div class="pull-right">
+                                        <a class="btn btn-xs btn-danger" onclick="pingDel({$v.id})">删除</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {/volist}
+                        </div>
+                        <div class="row row-lg" style="margin-top: 20px;">
+                            <div class="col-sm-12 pages">{$page}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+$(document).ready(function(){
+    
+});
+function pingDel(id){
+    swal_del(id,"{:url('pingXaiDel')}")
+}
+function del(id){
+    swal_del(id,"{:url('pingDel')}")
+}
+</script>
+{include file="public/bottom" /}
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

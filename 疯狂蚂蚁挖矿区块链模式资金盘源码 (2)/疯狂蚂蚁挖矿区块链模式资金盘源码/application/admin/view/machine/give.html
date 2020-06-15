@@ -1,0 +1,38 @@
+{extend name="common/world"} {block name="title"}赠送蚁后{/block} {block name="style"}
+<style type="text/css">
+</style>
+{/block} {block name="container"}
+<div class="page">
+	<div class="page-single">
+		<form class="card" method="post" style="max-width: 50rem;" enctype="multipart/form-data">
+			<div class="card-body">
+				<div class="card-title">一键批量赠送蚁后</div>
+				<div class="card-subtitle">赠送的蚁后不会扣除用的钱，其他和正常购买一样。</div>
+				<div class="card-subtitle">如赠送失败，只需要再次尝试即可。</div>
+				<div class="card-subtitle">已冻结的账号也会进行赠送。</div>
+				<div class="row">
+					<div class="col-sm-12">
+                    	<div class="form-group">
+                            <label class="form-label">蚁后类型</label>
+                            <select class="form-control custom-select" name="pid">
+                            	{volist name="store" id="item"}
+                            		<option value="{$item.id}">{$item.title}</option>
+                                {/volist}
+                            </select>
+                        </div>
+                    </div>
+				    <div class="col-sm-12">
+				        <div class="form-group">
+				            <label class="form-label">用户账号</label>
+				            <textarea class="form-control" name="users" cols="30" rows="10" placeholder="一行一个用户账号，允许有空行，重复账号将会多次赠送，错误的账号将会导致全部失败！"></textarea>
+				        </div>
+				    </div>
+				</div>
+			</div>
+			<div class="card-footer text-right">
+				<button class="btn btn-primary">一键赠送</button>
+			</div>
+		</form>
+	</div>
+</div>
+{/block} {block name="script"} {/block}

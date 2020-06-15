@@ -1,0 +1,88 @@
+{extend name="common/world"}
+{block name="title"}{$Think.config.hello.title}{/block}
+{block name="header"}我的直推{/block}
+{block name="container"}
+<div class="tabs">
+
+    <div class="card">
+        <table class="table-member" width="100%" border="0" cellpadding="0" cellspacing="0" id="table-5">
+            <thead>
+            <tr>
+              	<th align="center"><div align="center">手机号码</div></th>
+                <th align="center"><div align="center">姓名</div></th>
+                <th align="center"><div align="center">等级</div></th>
+                <th align="center"><div align="center">直推人数</div></th>
+                <th align="center"><div align="center">团队人数</div></th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody></table>
+    </div>
+</div>
+    <div align="right" class="pages" style="background-color: #ADADAD">
+        <br/>
+        {if $page>1}
+        <a class="previous" href="team.html?type=1&page=2">上一页</a>
+        {/if}
+        <span class="current">{$page}</span>
+        {if ($page+1)<$index}
+        <a class="next" href="team.html?page={$page+1}">下一页</a>
+        {/if}
+        <span class="rows"> 第<b>{$page}</b>页/共<b>{$index}</b>页</span>
+    </div>
+
+{/block}
+
+{block name="script"}
+<script type="text/javascript">
+    require(['jquery'], function($){
+        var page = {$page}, size = 20, type = '', key = '', loading = false;
+        var member = function(){
+            var param = {
+                page: page,
+                size: size
+            }
+            if (type != '') {
+                param.type = type;
+            }
+            if (key != '') {
+                param.key = key;
+            }
+            loading = true;
+            ajax(api.team.member, param, function(res){
+                loading = false;
+                if (res.code == 200) {
+                    if (res.data && res.data.length) {
+                        var html = '';
+                        for (var i = 0; i < res.data.length; i++) {
+                            var item = res.data[i];
+                            html += '<tr>';
+                          	html += '<td class="text-center">';
+                            html += '<div>' + item.username + '</div>';
+                            html += '</td>';
+                            html += '<td class="text-center">';
+                            html += '<div>' + item.realname + '</div>';
+                            html += '</td>';
+                            html += '<td class="text-center">';
+                            html += '<div>' + item.type + '</div>';
+                            html += '</td>';
+                            html += '<td class="text-center">';
+                            html += '<div>' + item.zt + '</div>';
+                            html += '</td>';
+                            html += '<td class="text-center">';
+                            html += '<div>' + item.team_count + '</div>';
+                            html += '</td>';
+                            html += '</tr>';
+                        }
+                        $('.table-member tbody').append(html);
+                    }
+                }
+            });
+        }
+        $(function(){
+            member();
+        });
+    });
+
+</script>
+{/block}

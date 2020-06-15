@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8" />
+        <title>vaeThink</title>
+        <meta name="renderer" content="webkit" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="__ADMIN__/lib/layui/css/layui.css" media="all" /></head>
+    <body class="vae-body" style="height: 100%">
+        <form class="layui-form vae-content">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">变化</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="changetype" value="0" title="增加" checked>
+                    <input type="radio" name="changetype" value="1" title="减少">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">充值数目</label>
+                <div class="layui-input-block" style="max-width: 500px;">
+                    <input type="text" name="num" lay-verify="required" autocomplete="off" placeholder="请输入充值数目" class="layui-input">
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <input type="hidden" name="mid" value="{$mid}" />
+                    <button class="layui-btn" lay-submit="" lay-filter="vaeform">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+        <script src="__ADMIN__/lib/layui/layui.js" charset="utf-8"></script>
+        <script>layui.config({
+                base: '/themes/admin_themes/module/'
+            }).use(['upload', 'form', 'vaeyo'],
+            function() {
+                var form = layui.form,
+                layer = layui.layer,
+                $ = layui.$,
+                upload = layui.upload,
+                vae = layui.vaeyo;
+
+                //监听提交
+                form.on('submit(vaeform)',
+                function(data) {
+                    $.ajax({
+                        url: "/admin/member/rechargeSubmit",
+                        type: 'post',
+                        data: data.field,
+                        success: function(e) {
+                            if (e.code == 1) {
+                                layer.confirm('会员鱼饵变动成功,关闭窗口吗?', {
+                                    icon: 3,
+                                    title: '提示'
+                                },
+                                function(index) {
+                                    layer.close(2);
+                                    window.parent.location.reload(); 
+                                });
+                            } else {
+                                layer.msg(e.msg);
+                            }
+                        }
+                    }) 
+                    return false;
+                });
+
+            });</script>
+    </body>
+
+</html>

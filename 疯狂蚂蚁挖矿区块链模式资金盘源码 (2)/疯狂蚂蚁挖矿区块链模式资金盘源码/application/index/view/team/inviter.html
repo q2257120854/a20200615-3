@@ -1,0 +1,74 @@
+{extend name="common/world"}
+{block name="title"}{$Think.config.hello.title}{/block}
+{block name="header"}推广二维码{/block}
+{block name="container"}
+ <div style="font-size:15px;padding: 20px 2px">点击复制链接:
+    <span id="btn-copy" data-url="{$Request.domain}/signup.html?i={$Think.config.hello.inviter.anonymous ? $Think.session.user.account.uid : $Think.session.user.account.username}" style="color:#009ad6;">
+        {$Request.domain}/signup.html?i={$Think.config.hello.inviter.anonymous ? $Think.session.user.account.uid : $Think.session.user.account.username}
+    </span>
+</div>
+  <img src='http://qr.topscan.com/api.php?text={$Request.domain}/signup.html?i={$Think.config.hello.inviter.anonymous ? $Think.session.user.account.uid : $Think.session.user.account.username}'style="height: 200px;width: 200px;top: 500px;left: 126px;position: absolute;z-index: 2;">
+
+<img src="/static/image/inviter.jpg" width="100%">
+
+
+
+
+{/block}
+{block name="script"}
+<script>
+var domain = '{$Request.domain}', username = '{$Think.config.hello.inviter.anonymous ? $Think.session.user.account.uid : $Think.session.user.account.username}';
+var input = domain + '/signup.html?i=' + username;
+var copy = function() {
+    var el = document.createElement('textarea');
+    el.value = input;
+    // Prevent keyboard from showing on mobile
+    el.setAttribute('readonly', '');
+
+    el.style.contain = 'strict';
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    el.style.fontSize = '12pt'; // Prevent zooming on iOS
+
+    var selection = window.getSelection();
+    var originalRange = false;
+    if (selection.rangeCount > 0) {
+        originalRange = selection.getRangeAt(0);
+    }
+    document.body.appendChild(el);
+    el.select();
+
+    // Explicit selection workaround for iOS
+    el.selectionStart = 0;
+    el.selectionEnd = input.length;
+
+    var success = false;
+    try {
+        success = document.execCommand('copy');
+    } catch (err) {
+        alert('很抱歉、您的手机不支持复制功能！请手动点击推广链接后全选复制！');
+    }
+
+    document.body.removeChild(el);
+
+    if (originalRange) {
+        selection.removeAllRanges();
+        selection.addRange(originalRange);
+    }
+
+    return success;
+};
+require(['jquery', 'qrcode'], function($, qrcode){
+    // 复制链接
+    $('#btn-copy').on('click', function(){
+        var bool = copy();
+        if (bool) {
+            alert('复制成功！');
+        } else {
+            alert('很抱歉、您的手机不支持复制功能！请手动点击推广链接后全选复制！');
+        }
+    });
+});
+</script>
+
+{/block}

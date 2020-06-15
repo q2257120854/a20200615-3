@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<style type="text/css">
+			body {
+				background-color: rgba(0, 0, 0, 0.4) !important;
+			}
+			.intro {
+				color: #e8e8e8;
+				font-size: 0.7rem;
+			}
+			#index {
+				font-size: 0.9rem;
+			}
+			#total {
+				font-size: 0.6rem;
+				margin-right: 0.1rem;
+			}
+			.aui-bar-tab {
+				position: static;
+				background-color: rgba(0, 0, 0, 0);
+				color: rgba(255, 255, 255, 0.7);
+			}
+			.aui-bar-tab .aui-badge {
+				top: 20%;
+				left: 50%;
+			}
+			.aui-badge {
+				min-width: 0.7rem;
+				height: 0.7rem;
+				line-height: 0.7rem;
+				padding: 0 0.2rem;
+				font-size: 0.5rem;
+				color: #ffffff;
+				background-color: rgba(232, 88, 82, 1);
+				border-radius: 0.4rem;
+			}
+			.search-input {
+				height: 1.6rem;
+				line-height: 1.6rem;
+				background: rgba(255, 255, 255, 0.2);
+				border-radius: 30px;
+				position: relative;
+				font-family: "aui_iconfont" !important;
+				text-align: left;
+				padding-left: 1.5rem;
+				color: rgba(255, 255, 255, 0.7);
+			}
+			.search-input:after {
+				position: absolute;
+				left: 0;
+				padding-left: 0.5rem;
+				content: "\e615";
+			}
+			footer {
+				border: 0px !important;
+			}
+		</style>
+	</head>
+	<body id="body">
+		<section class="intro aui-padded-l-10 aui-padded-r-10">
+			<em id="index">0</em>/<em id="total">0</em><em id="texts"></em>
+		</section>
+		<footer id="footer" class="aui-bar aui-bar-tab">
+			<div class="aui-bar-tab-item aui-padded-l-15 aui-padded-r-15" style="width: auto;" tapmode onclick="pingAdd()">
+				<div class="search-input aui-font-size-14">
+					写评论...
+				</div>
+			</div>
+			<div class="aui-bar-tab-item" style="width: 2.2rem;" tapmode onclick="gundong()">
+				<i class="aui-iconfont aui-icon-comment"></i>
+				<div id="comment_num" style="display: none;" class="aui-badge">
+					0
+				</div>
+			</div>
+			<div class="aui-bar-tab-item" style="width: 2.2rem;" id="shoucang" tapmode onclick="shoucang(this)" data-id='1'>
+				<i class="aui-iconfont aui-icon-star"></i>
+			</div>
+			<div class="aui-bar-tab-item" style="width: 2.2rem;" tapmode onclick="fenxiang()">
+				<i class="aui-iconfont aui-icon-share"></i>
+			</div>
+		</footer>
+	</body>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/api.js" ></script>
+	<script type="text/javascript" src="../script/ffxiang.js" ></script>
+	<script type="text/javascript">
+		var index, total, texts,aid,pingNum;
+		apiready = function() {
+			$api.fixTabBar($api.byId('body'))
+			aid=api.pageParam['view'].id;
+			pingNum=api.pageParam['view'].pingNum;
+			_shoucang(api.pageParam['view'].shoucang)
+			api.parseTapmode();
+			index = api.pageParam.index;
+			texts = api.pageParam.texts;
+			$api.html($api.byId('total'), api.pageParam.total);
+			if (api.pageParam.comment_num > 0) {// 控制评论数角标显示
+				var comment_num_el = $api.byId('comment_num');
+				comment_num_el.style.display = "inline";
+				$api.html(comment_num_el, api.pageParam.comment_num);
+			}
+			set_frame_attr(index, true);
+		}
+		function set_frame_attr(index, tool_show) {
+			$api.html($api.byId('index'), index + 1);
+			$api.html($api.byId('texts'), "undefined" != typeof texts[index] ? texts[index] : '');
+			// 传这个参数过来判断的目的是为了兼容安卓
+			// 因为安卓上面执行 api.setFrameAttr 后会导致原本隐藏的Frame显示出来
+			if (tool_show == false) {
+				return false;
+			}
+			var body = $api.byId('body');
+			var body_offset = $api.offset(body);
+			api.setFrameAttr({
+				name : 'photo_browser_foot',
+				rect : {
+					x : 0, //左上角x坐标
+					y : api.pageParam.winHeight - body_offset.h, //左上角y坐标
+					w : 'auto', //宽度，若传'auto'，页面从x位置开始自动充满父页面宽度
+					h : 'auto' //高度，若传'auto'，页面从y位置开始自动充满父页面高度
+				}
+			});
+		}
+
+		function test(msg) {
+			api.toast({
+				msg : msg,
+				duration : 2000,
+				location : 'middle'
+			});
+		}
+
+		// 收藏
+		function shoucang(ojb) {
+			if (!_user) {
+				_login();
+				return;
+			}
+			_loading()
+			var type = $(ojb).data('id');
+			if (type == 1) {
+				_ajax('api/member/favoriteAdd', function(ret, err) {
+					_loadingCloes()
+					if (ret.ret) {
+						$(ojb).data('id', '2')
+						$(ojb).css("color", "#FCACAC")
+						_msg(ret.ret)
+					} else {
+						_msg(ret.err)
+					}
+				}, {
+					aid : api.pageParam['view'].id
+				})
+			} else {
+				_ajax('api/member/favoriteDel', function(ret, err) {
+					_loadingCloes()
+					if (ret.ret) {
+						$(ojb).data('id', '1')
+						$(ojb).css("color", "")
+						_msg(ret.ret)
+					} else {
+						_msg(ret.err)
+					}
+				}, {
+					aid : api.pageParam['view'].id
+				})
+			}
+		}
+		// 跳转评论
+		function gundong(){
+			api.setFullScreen({
+				fullScreen : false
+			});
+			_url({aid:aid,pingNum:pingNum,qian:1,fan:0},'view_ping_win')
+		}
+		// 输入评论
+		function pingAdd(){
+			api.execScript({
+				script : 'pingAdd();'
+			});
+		}
+		// 分享
+		function fenxiang(){
+			api.execScript({
+				script : 'fenxiang();'
+			});
+		}
+		// 判断是否收藏
+		function _shoucang(shoucang){
+			if(shoucang){
+				$('#shoucang').data('id','2')
+				$('#shoucang').css("color","#FCACAC")
+			}
+		}
+	</script>
+</html>
+

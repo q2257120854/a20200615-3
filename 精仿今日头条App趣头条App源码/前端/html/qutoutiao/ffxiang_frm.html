@@ -1,0 +1,401 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/ffxiang.css" />
+	 	<link rel="stylesheet" type="text/css" href="../css/fx-weitoutiao.css" />
+	</head>
+	<body>
+		<div class="sx-bendichengshi" Tapmode onclick="citywin()"> <i class="aui-iconfont aui-icon-location"></i> 切换城市</div>
+		<div id="sx-shoudongdingwei" Tapmode onclick="citywin()"><div class="aui-btn aui-btn-danger">点击选择城市</div></div>
+		<script id="fx-list" type="text/x-dot-template">
+			{{ for(var i=0,len=it.data.length; i < len; i++) { }}
+			{{? it.data[i].weitoutiao==2 || it.data[i].weitoutiao==1}}
+			<div class="aui-card-list aui-border-b" id="id{{= it.data[i].id }}" data-images="{{= it.data[i].imagesPro }}">
+				<div class="aui-card-list-header aui-card-list-user">
+					<div class="aui-card-list-user-avatar">
+						<img id="ffxiangImgCache" ffxiang-src="{{= it.data[i].user.img }}" src="../image/touxiang.png" tapmode onclick="_url({uid:{{= it.data[i].uid }},qian:0,fan:1},'u_win')">
+					</div>
+					<div class="aui-card-list-user-name">
+						<div tapmode onclick="_url({uid:{{= it.data[i].uid }},qian:0,fan:1},'u_win')">
+							{{= it.data[i].user.username }}
+						</div>
+						{{? typeid != 999999999 }}
+						{{? it.data[i].uid}}
+						{{? it.data[i].guanzhu}}
+						<span class="fx-weitoutiao-guanzhu fx-weitoutiao-guanzhuHivdeo" data-id="2" Tapmode onclick="guanzhu(this,{{= it.data[i].uid}});">已关注</span>
+						{{??}}
+						<span class="fx-weitoutiao-guanzhu" data-id="1" Tapmode onclick="guanzhu(this,{{= it.data[i].uid}});">关注</span>
+						{{?}}
+						{{?}}
+						{{?}}
+					</div>
+					<div class="aui-card-list-user-info">
+						{{= it.data[i].create_time }}
+					</div>
+				</div>
+				<ul class="aui-list aui-media-list fx-weitoutiao-images">
+					<li class="aui-list-item">
+						{{? it.data[i].mychannel == 3}}
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-title fx-weitoutiao-content" tapmode onclick="_url({id:{{= it.data[i].id }},videoUrl:'{{= it.data[i].video }}',title:'{{= it.data[i].title }}'},'videoView_win')">
+								{{= it.data[i].title }}
+							</div>
+							<div class="aui-row aui-row-padded">
+								<div class="aui-col-xs-12" tapmode onclick="_url({id:{{= it.data[i].id }},videoUrl:'{{= it.data[i].video }}',title:'{{= it.data[i].title }}'},'videoView_win')">
+									<img id="ffxiangImgCache" ffxiang-src="{{= it.data[i].image }}" src="../image/loadingImage.png" class="fx-video-img">
+	 								<i class="fx-video-bofang"></i>
+									<!-- <em class="fx-video-em aui-margin-b-5">01:35</em> -->
+								</div>
+							</div>
+						</div>
+						{{??}}
+						<div class="aui-list-item-inners">
+							{{? it.data[i].description }}
+							<div class="aui-list-item-title fx-weitoutiao-content" tapmode onclick="_url({id:{{= it.data[i].id }},qian:1,fan:1},'view_win')">
+								{{= it.data[i].description }}
+							</div>
+							{{?}}
+							{{? it.data[i].images }}
+							<div class="aui-row aui-row-padded">
+								{{= it.data[i].images }}
+							</div>
+							{{?}}
+						</div>
+						{{?}}
+					</li>
+				</ul>
+				<div class="aui-card-list-footer aui-margin-t-10">
+					<div class="{{? it.data[i].zanUser}} pingZanColor{{?}}" {{? it.data[i].zanUser}} data-id='1'{{?}} Tapmode onclick="pingZan_xia(this,{{= it.data[i].id}} ,{{= it.data[i].zan}})">
+						<i class="aui-iconfont aui-icon-laud aui-margin-r-5"></i> {{= it.data[i].zan }}
+					</div>
+					<div tapmode onclick="_url({aid:{{= it.data[i].id }},pingNum:{{= it.data[i].pingNum }}},'view_ping_win')">
+						<i class="aui-iconfont aui-icon-comment aui-margin-r-5"></i> {{= it.data[i].pingNum }}
+					</div>
+					{{? it.data[i].mychannel == 3}}
+					<div tapmode onclick="_url({id:{{= it.data[i].id }},qian:0,fan:1},'videoView_win')">
+						<i class="aui-iconfont aui-icon-display aui-margin-r-5"></i> {{= it.data[i].click }}
+					</div>
+					{{??}}
+					<div tapmode onclick="_url({id:{{= it.data[i].id }},qian:1,fan:1},'view_win')">
+						<i class="aui-iconfont aui-icon-display aui-margin-r-5"></i> {{= it.data[i].click }}
+					</div>
+					{{?}}
+				</div>
+			</div>
+			{{??}}
+				{{? it.data[i].mychannel == 1}}
+				{{? it.data[i].imagesArticleList.length >= 3}}
+				<li class="aui-list-item" tapmode onclick="_url({id:{{= it.data[i].id }},qian:1,fan:0},'view_win')">
+					<div class="aui-list-item-inner fx-item-inner">
+						<div class="aui-list-item-title fx-title aui-ellipsis-2">{{= it.data[i].title }}</div>
+							<div class="aui-row aui-row-padded aui-margin-t-5 fx-article-images">
+								{{ for(var is=0; is < 3; is++) { }}
+								<div class="aui-col-xs-4"><img id="ffxiangImgCache" ffxiang-src="{{= it.data[i].imagesArticleList[is]}}?imageView2/1/w/192/h/124" src="../image/loadingImage.png"></div>
+								{{}}}
+							</div>
+						</div>
+						<div class="aui-info  aui-padded-t-5 aui-padded-r-15  fx-item-inner">
+							<div class="aui-info-item aui-font-size-12">
+							<span class="">{{= it.data[i].source}}</span>
+							<span class="aui-margin-l-10">{{= it.data[i].pingNum}}评价</span>
+							<span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+						</div>
+					</div>
+				</li>
+				{{?? it.data[i].image}}
+				<li class="aui-list-item" tapmode onclick="_url({id:{{= it.data[i].id }},qian:1,fan:0},'view_win')">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title aui-ellipsis-2 fx-title">{{= it.data[i].title }}</div>
+							</div>
+							<div class="aui-info aui-padded-t-5 aui-padded-b-0" style="padding-top: 5px">
+								<div class="aui-info-item aui-font-size-12 fx-index-infp-span">
+									<span class="">{{= it.data[i].source}}</span>
+									<span class="aui-margin-l-10">{{= it.data[i].pingNum}}评价</span>
+									<span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+								</div>
+							</div>
+						</div>
+						<div class="aui-list-item-media">
+							<img id="ffxiangImgCache" ffxiang-src="{{= it.data[i].image }}" src="../image/loadingImage.png">
+						</div>
+					</div>
+				</li>
+				{{??}}
+				<li class="aui-list-item" tapmode onclick="_url({id:{{= it.data[i].id }},qian:1,fan:0},'view_win')">
+	                <div class="aui-media-list-item-inner">
+	                    <div class="aui-list-item-inner">
+	                        <div class="aui-list-item-title aui-ellipsis-2 fx-title">{{= it.data[i].title }}</div>
+	                        <div class="aui-list-item-text">
+	                            <p class="aui-ellipsis-2 aui-font-size-14">{{= it.data[i].description }}</p>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="aui-info  fx-item-inner">
+	                    <div class="aui-info-item aui-font-size-12">
+	                        <span class="">{{= it.data[i].source}}</span>
+							<span class="aui-margin-l-10">{{= it.data[i].pingNum}}评价</span>
+							<span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+	                    </div>
+	                </div>
+	            </li>
+				{{?}}
+				{{?? it.data[i].mychannel == 2}}
+				<!--  图片集-->
+				<li class="aui-list-item" tapmode onclick="_url({id:{{= it.data[i].id }},qian:1,fan:0},'photo_browser')">
+					<div class="aui-list-item-inner fx-item-inner">
+						<div class="aui-list-item-title fx-title aui-ellipsis-2">{{= it.data[i].title }}</div>
+							<div class="aui-row aui-row-padded aui-margin-t-5 fx-article-images">
+								{{= it.data[i].images }}
+							</div>
+						</div>
+						<div class="aui-info  aui-padded-t-5 aui-padded-r-15  fx-item-inner">
+							<div class="aui-info-item aui-font-size-12">
+							<span class="">{{= it.data[i].source}}</span>
+							<span class="aui-margin-l-10">{{= it.data[i].pingNum}}评价</span>
+							<span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+						</div>
+					</div>
+				</li>
+				{{?? it.data[i].mychannel == 3}}
+				<!--视频-->
+				<li class="aui-list-item" tapmode onclick="_url({id:{{= it.data[i].id }},videoUrl:'{{= it.data[i].video }}',title:'{{= it.data[i].title }}',qian:0,fan:0},'videoView_win')">
+					<div class="aui-list-item-inner fx-item-inner">
+						<div class="aui-list-item-title fx-title aui-ellipsis-2">{{= it.data[i].title }}</div>
+					</div>
+					<div class="aui-card-list-content fx-video-content aui-padded-b-10 aui-margin-t-10">
+						<img id="ffxiangImgCache" ffxiang-src="{{= it.data[i].image }}" src="../image/load-video.png" class="fx-video-img">
+						<i class="fx-video-bofang"></i>
+						<em class="fx-video-em aui-margin-b-5">{{? it.data[i].videodate}}{{= it.data[i].videodate }}{{?}}</em>
+					</div>
+					<div class="aui-info  aui-padded-t-0 aui-padded-r-15  fx-item-inner">
+						<div class="aui-info-item aui-font-size-12">
+							{{? it.data[i].source}}<span class="">{{= it.data[i].source}}</span>{{?}}
+							<span {{? it.data[i].source}}class="aui-margin-l-10"{{?}}>{{= it.data[i].pingNum}}评价</span>
+							<span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+						</div>
+					</div>
+				</li>
+				{{?? it.data[i].mychannel == 99}}
+				<!--广告-->
+				{{? it.data[i].url}}
+				<li class="aui-list-item" tapmode onclick="_url({url:'{{= it.data[i].url}}',title:'{{= it.data[i].source}}'},'curl')">
+				{{??}}
+				<li class="aui-list-item">
+				{{?}}
+					<div class="aui-list-item-inner fx-item-inner">
+						<div class="aui-list-item-title fx-title aui-ellipsis-2">{{= it.data[i].title }}</div>
+					</div>
+					{{? it.data[i].image }}
+					<div class="aui-card-list-content fx-video-content aui-padded-b-10">
+						<img id="ffxiangImgCache" ffxiang-src="{{= it.data[i].image }}" src="../image/loadingImage.png">
+					</div>
+					{{?}}
+					<div class="aui-info  aui-padded-t-0 aui-padded-r-15  fx-item-inner">
+						<div class="aui-info-item aui-font-size-12">
+							<span class="fx-ad">{{= it.data[i].ad}}</span>
+							<span class="aui-margin-l-10">{{= it.data[i].source}}</span>
+						</div>
+					</div>
+				</li>
+				{{?}}
+			{{?}}
+			{{ } }}
+		</script>
+
+		<div class="aui-content" style="margin-bottom: 45px; background: #fff;">
+			<ul class="aui-list aui-media-list fx-article-list fx-weitoutiao-list" id="fx-view" style="border-top: 0px">
+				<div id="jiazai"><img src="../image/loading_more.gif" /></div>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/doT.js"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var typeid,timestamp,city='';
+		apiready = function() {
+			timestamp = Date.parse(new Date());
+			timestamp=timestamp/1000
+			// 分类ID
+			typeid = api.pageParam['id'];
+			if(typeid==888888888){
+				city=$api.getStorage('city');
+				if(city){
+					citybtn()
+				}else{
+					citybtn(1)
+				}
+			}
+			// 下拉刷新
+			_shangla(function(ret, err) {
+              if($api.getStorage('token') || typeid != 999999999){
+					if(typeid==888888888){
+						if(!city){
+							citybtn(1)
+							return;
+						}
+						citybtn()
+					}
+
+					_lists('api/article/lists/typeid/' + typeid+'/date/'+timestamp+'/city/'+city, 1, 1);
+				}else{
+					$('#fx-view').html('');
+					api.refreshHeaderLoadDone();
+
+					var h=api.winHeight/2-100;
+					$('body').append('<a tapmode onclick="_url({url:\'login\',title:\'登录\',qian:1,fan:0,exe:\'1\'})" class="aui-btn aui-btn-danger qingdengli" style="position: fixed;margin:auto;left:0; right:0; top:0; bottom:0;width: 120px; height:38px; line-height:38px;text-align: center;margin-top:'+h+'px">请先登录</a>');
+					api.parseTapmode();
+				}
+			})
+
+
+			// 监听滚动
+			api.addEventListener({
+				name : 'scrolltobottom',
+				extra : {
+					threshold : threshold //设置距离底部多少距离时触发，默认值为0，数字类型
+				}
+			}, function(ret, err) {
+				if (heigutgao == 1) {// heigutgao=1开启执行 0停止执行   防止连续滚动，等加载数据之后在进行滚动。
+					pagenum += 1
+					_lists('api/article/lists/typeid/' + typeid+'/date/'+timestamp+'/city/'+city, pagenum);
+					// 当数据写入成功  把 heigutgao 设置1
+				}
+			});
+			// 监听夜间
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+			api.parseTapmode();
+			api.addEventListener({
+			    name: 'ext'
+			}, function(ret, err) {
+			    if(ret){
+			    	if($api.getStorage('token')){
+						$('.qingdengli').remove();
+					}
+					api.refreshHeaderLoading();
+			    }
+			});
+
+		};
+		// 关注
+		function guanzhu(jgo, uid) {
+			if(!_user){
+				_login();
+				return;
+			}
+			_loading()
+			var text=$(jgo).text();
+			// 1关注 2取消关注
+			var type = $(jgo).data('id')
+			if (type == 1) {
+				$(jgo).text('关注中');
+				_ajax('api/member/guanzhu/',function(ret,err){
+					_loadingCloes()
+					if(ret.ret){
+						$(jgo).text('已关注')
+						$(jgo).data('id', 2)
+						$(jgo).addClass('fx-weitoutiao-guanzhuHivdeo')
+					}else{
+						$(jgo).text(text);
+						_msg(ret.err)
+					}
+				},{gz_uid:uid})
+			} else if (type == 2) {
+				$(jgo).text('取消中');
+				_ajax('api/member/guanzhuDel/',function(ret,err){
+					_loadingCloes()
+					if(ret.ret){
+						$(jgo).text('关注')
+						$(jgo).data('id', 1)
+						$(jgo).removeClass('fx-weitoutiao-guanzhuHivdeo');
+					}else{
+						$(jgo).text(text);
+						_msg(ret.err)
+					}
+				},{gz_uid:uid})
+			}
+		}
+		// 赞
+		function pingZan_xia(obj, aid,num) {
+			if(!_user){
+				_login();
+				return;
+			}
+			var type = $(obj).data('id');
+			if (!type) {
+				$(obj).addClass('pingZanColor');
+				$(obj).data('id', '1');
+				$(obj).html('<i class="aui-iconfont aui-icon-laud aui-margin-r-5"></i> ' + (num + 1))
+				_ajax('api/member/zancai/',function(ret,err){
+					if(ret){
+						if(ret.err){
+							_msg(ret.err)
+						}
+					}
+				},{aid:aid,type:1})
+			} else {
+				_msg('您已经赞过')
+			}
+		}
+		// 打开图片
+		function img(id,index){
+			_url({id:id,qian:1,fan:1},'view_win')
+		}
+		// 更新选择城市新闻
+		function cityNews(){
+			city=$api.getStorage('city');
+			api.refreshHeaderLoading();
+
+		//	_msg(city)
+		}
+		//　显示城市按钮选择	type 1显示选择城市按钮  0正常显示
+		function citybtn(type){
+			if(type==1){
+				$('#sx-shoudongdingwei').show();
+				$('.sx-bendichengshi').hide();
+				_loadingCloes()
+			}else{
+				$('#sx-shoudongdingwei').hide();
+				$('.sx-bendichengshi').show();
+			}
+		}
+		// 打开城市列表
+		function citywin(){
+			api.openWin({
+			    name: 'citywin',
+			    url: html_win+'city.html',
+			    animation:{
+				   	type:"fade",                //动画类型（详见动画类型常量）
+					subType:"from_right",       //动画子类型（详见动画子类型常量）
+					duration:300
+				},
+				bounces:false
+			});
+		}
+		function fenxiang_text(text){
+			$('.fenxiang .jinbi').text(text);
+			$('.fenxiang').show();
+		}
+		function fenxiang_close(){
+			$('.fenxiang').hide();
+		}
+
+
+	</script>
+</html>
+
+

@@ -1,0 +1,217 @@
+ {include file="public/header" /}
+ {load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"} 
+<style>
+.asljasd .col-sm-9,.asljasd .col-sm-3{
+    font-size: 14px;
+    padding:5px 15px;
+}
+.form-group{
+    overflow: hidden;
+}
+.col-sm-6{
+    margin-bottom: 30px;
+}
+.ibox-content{
+    height: 500px;
+}
+</style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="col-sm-6">
+        <div class="ibox-title">
+            <h5>付款信息</h5>
+        </div>
+        <div class="ibox-content">
+            <div class="row asljasd">
+                <div class="col-sm-12">
+                    <div class="col-sm-3">订单号：</div> 
+                    <div class="col-sm-9">{$name.code}</div>  
+                </div>
+                <div class="col-sm-12">
+                    <div class="col-sm-3">商品ID：</div> 
+                    <div class="col-sm-9">{$name.shopid}</div>  
+                </div>
+                <div class="col-sm-12">
+                    <div class="col-sm-3">数量：</div> 
+                    <div class="col-sm-9">{$name.num}件</div>  
+                </div>
+                <div class="col-sm-12">
+                    <div class="col-sm-3">兑换金额：</div> 
+                    <div class="col-sm-9">{$name.money}{$name.type==0 ? '金币' : '元'}</div>  
+                </div>
+                <div class="col-sm-12">
+                    <div class="col-sm-3">用户ID：</div> 
+                    <div class="col-sm-9">{$name.uid}</div>  
+                </div>
+                <div class="col-sm-12">
+                    <div class="col-sm-3">兑换类似：</div> 
+                    <div class="col-sm-9">{$name['money']}</div>  
+                </div>
+                <div class="col-sm-12">
+                    <div class="col-sm-3">兑换时间：</div> 
+                    <div class="col-sm-9">{$name.time|date='Y-m-d H:i:s',###}</div>  
+                </div>
+                <div class="col-sm-12">
+                    <div class="col-sm-3">状态：</div> 
+                    <div class="col-sm-9">{switch name="name.data" }{case value="1"}已发货{/case}{case value="1"}已完成{/case}{default /}已付款{/switch}</div>  
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="ibox-title">
+            <h5>商品信息</h5>
+        </div>
+        <div class="ibox-content">
+            <div class="row asljasd">
+                <div class="col-sm-12">
+                    <div class="col-sm-3">标题：</div> 
+                    <div class="col-sm-9">{$shop.title}</div>  
+                </div>
+                <div class="col-sm-12">
+                    <div class="col-sm-3">兑换金币：</div> 
+                    <div class="col-sm-9">{$shop.jinbi}</div>  
+                </div>
+                <div class="col-sm-12">
+                    <div class="col-sm-3">兑换价格：</div> 
+                    <div class="col-sm-9">{:_money($shop['money'])}</div>  
+                </div>
+                <div class="col-sm-12">
+                    <div class="col-sm-3">剩余数量：</div> 
+                    <div class="col-sm-9">{$shop['num']}</div>  
+                </div>
+                <div class="col-sm-12">
+                    <div class="col-sm-3">浏览次数：</div> 
+                    <div class="col-sm-9">{$shop['click']}</div>  
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="ibox-title">
+            <h5>用户资料</h5>
+        </div>
+        <div class="ibox-content">
+            <div class="row m-b-lg">
+                <div class="col-lg-8">
+                    <ul class="list-group clear-list">
+                        <li class="list-group-item fist-item">
+                            <span class="pull-right"> {$member.id}</span> uid:
+                        </li>
+                        <li class="list-group-item fist-item">
+                            <span class="pull-right"> {$member.username}</span> 昵称
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-right"> {$member.mobile} </span> 手机：
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-right"> {:_money($member['yaoqing']['money'])} </span> 零钱：
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-right"> {:_money($member['yaoqing']['money_num'])} </span> 累计零钱：
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-right"> {$member['yaoqing']['jinbi']} </span> 金币：
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-right"> {$member['yaoqing']['jinbi_num']} </span> 累计金币：
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-right">{$member['yaoqing']['tudi_num']}</span> 收徒数量：
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <h3>id:{$member.id}</h3>
+                    <div class="m-b-sm">
+                        <img alt="image" class="img-circle" src="{:_imgUrl()}{$member.img}" style="width: 62px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="ibox-title">
+            <h5>发货</h5>
+        </div>
+        <div class="ibox-content">
+            <div class="row asljasd">
+                <div class="col-sm-12">
+                    <div class="col-sm-3">姓名：</div> 
+                    <div class="col-sm-9">{$name.xingming}</div>  
+                </div>
+            </div>
+            <div class="row asljasd">
+                <div class="col-sm-12">
+                    <div class="col-sm-3">手机：</div> 
+                    <div class="col-sm-9">{$name.mobile}</div>  
+                </div>
+            </div>
+            <div class="row asljasd">
+                <div class="col-sm-12">
+                    <div class="col-sm-3">地址：</div> 
+                    <div class="col-sm-9">{$name.dizhi}</div>  
+                </div>
+            </div>
+            <div class="row asljasd">
+                <div class="col-sm-12">
+                    <div class="col-sm-3">支付宝：</div> 
+                    <div class="col-sm-9">{$name.alipay}</div>  
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">快递公司：</label>
+                <div class="col-sm-9">
+                    <input name="kuaidi" type="text" class="form-control" value="{$name.kuaidi}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">快递单号</label>
+                <div class="col-sm-9">
+                    <input name="danhao" type="text" class="form-control" value="{$name.danhao}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">状态设置</label>
+                <div class="col-sm-4">
+                    <select class="form-control" name="data">
+                        <option value="0" {eq name='name.data' value="0" }selected{/eq}>待发货</option>
+                        <option value="1" {eq name='name.data' value="1" }selected{/eq}>已发货</option>
+                        <option value="2" {eq name='name.data' value="2" }selected{/eq}>已完成</option>
+                    </select>
+                </div>
+            </div>
+            <div style="clear: both; margin: 20px auto; width: 180px;"><div style="width: 100%" class="btn btn-primary" id="data">提交</div></div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+$(document).ready(function(){
+   $('#data').click(function(){
+        var kuaidi=$("[name='kuaidi']").val();
+        var danhao=$("[name='danhao']").val();
+        var data=$("[name='data']").val(); 
+         $.ajax({
+            type: 'post',
+            url: '{:url('dingdanAdd')}',
+            data: {
+                kuaidi:kuaidi,
+                danhao:danhao,
+                data:data,
+                id:{$name.id}
+            },
+            dataType: 'json',
+            success:function(ret){
+                swal_msg(ret,'',"success",0)
+            },
+        });
+   })
+    
+});
+</script>
+ <SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

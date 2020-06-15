@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><widget id="A6025460123456" security="false" version="0.0.1">
+  <name>新闻资讯</name>
+  <description/>
+  <author email="123456789@qq.com" href="http://test.52jscn.com">趣赚</author>
+  <content src="index.html"/>
+  <preference name="appCertificateVerify" value="false"/>
+  <preference name="pageBounce" value="false"/>
+  <preference name="appBackground" value="rgba(0,0,0,0.0)"/>
+  <preference name="windowBackground" value="rgba(0,0,0,0.0)"/>
+  <preference name="frameBackgroundColor" value="rgba(0,0,0,0.0)"/>
+  <preference name="hScrollBarEnabled" value="false"/>
+  <preference name="vScrollBarEnabled" value="false"/>
+  <preference name="autoLaunch" value="true"/>
+  <preference name="fullScreen" value="false"/>
+  <preference name="autoUpdate" value="true"/>
+  <preference name="smartUpdate" value="true"/>
+  <preference name="debug" value="true"/>
+  <preference name="statusBarAppearance" value="true"/>
+  <preference name="softInputMode" value="resize"/>
+  <preference name="allowKeyboardExtension" value="true"/>
+  <permission name="readPhoneState"/>
+  <permission name="camera"/>
+  <permission name="record"/>
+  <permission name="location"/>
+  <permission name="fileSystem"/>
+  <permission name="internet"/>
+  <permission name="bootCompleted"/>
+  <permission name="hardware"/>
+  <preference name="customRefreshHeader" value="UIPullRefreshFlash"/>
+  <feature name="rongCloud2"><param name="appKey" value="pkfcgjstp25e8" />
+    </feature>
+  <feature name="wx">
+    <param name="urlScheme" value="wx1ed9c620af9a2a34"/>
+    <param name="apiKey" value="wx1ed9c620af9a2a34"/>
+    <param name="apiSecret" value="237745c21221c3c3565e1708c0c50ddf"/>
+  </feature>
+  <feature name="qq">
+    <param name="urlScheme" value="tencent101497156"/>
+    <param name="apiKey" value="101497156"/>
+  </feature>
+  <feature name="weibo">
+    <param name="urlScheme" value="wb2378207244"/>
+    <param name="apiKey" value="2378207244"/>
+    <param name="registUrl" value="http://news.ffxiang.cn"/>
+  </feature>
+  <feature name="baiduLocation">
+    <param name="apiKey" value="OhK2w6K552m4ZFNLUGl4B0cM5a4i4BpI"/>
+	
+  </feature>
+</widget>

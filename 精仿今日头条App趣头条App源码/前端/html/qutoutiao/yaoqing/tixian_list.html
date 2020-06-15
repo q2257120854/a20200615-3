@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<style>
+			body{
+				background:  #FAFAFA !important;
+			}
+			.aui-list .aui-card-list-footer{
+				font-size: 0.65rem;
+				padding-right: 0.75rem;
+			}
+			.aui-list .aui-card-list-footer span.b{
+				color: #f00
+			}
+			.aui-list .aui-media-list-item-inner .aui-list-item-media img{
+				height: 4rem;
+				width: 4rem;
+			}
+			.aui-list .aui-list-item-media{
+				width: 4.5rem;
+				padding-right: 0;
+			}
+			.aui-list .aui-list-item-text{
+				font-size: 0.75rem;
+				
+			}
+			.aui-list .aui-media-list-item-inner{
+				background: #fff;
+				margin-left: -0.75rem;
+				padding-left: 0.75rem;
+			}
+			.aui-list{
+	 			border: 0 !important;
+	 			background: none !important
+	 		}
+	 		.aui-list li.aui-list-item{
+	 			overflow: hidden;
+	 			padding-bottom: 0.3rem;
+	 			clear: both;
+	 		}
+	 		.aui-list li .aui-pull-right{
+	 			padding-top: 0.3rem;
+	 			font-size: 0.6rem;
+	 			margin-right: 0.75rem;
+	 		}
+	 		.aui-list li .aui-pull-right span{
+	 			font-weight: bold;
+	 			font-size: 0.75rem;
+	 			color: #333
+	 		}
+	 		.btn{
+	 			border:1px solid #34B05C;
+	 			text-align: center;
+	 			border-radius: 0.2rem;
+	 			height: 1.5rem;
+	 			line-height: 1.5rem;
+	 			margin-top: 0.5rem;
+	 			margin-bottom: 0.5rem;
+	 			display:inline-block;
+	 			font-size: 0.75rem;
+	 			padding:0 0.75rem;
+	 			float: right;
+	 			margin-right: 0.75rem;
+	 			color: #34B05C;
+	 			clear: both;
+	 		}
+	 		.div{
+	 			 background: #fff;
+	 			overflow: hidden;
+	 			clear: both;
+	 			margin-bottom: 0.5rem;
+	 		}
+		</style>
+	</head>
+	<body>
+		<div class="aui-content">
+			<script id="fx-list" type="text/x-dot-template">
+				{{ for(var i=0,len=it.data.length; i < len; i++) { }}
+				<div class="div" Tapmode onclick="_url({url:'yaoqing/tixian_list_view',title:'提现详细',id:{{= it.data[i].id}}},'',true)">
+					<li class="aui-list-item aui-list-item-middle">
+						<div class="aui-card-list-footer">
+							<span>{{= it.data[i].time}}</span>
+							{{? it.data[i].data==2 }}
+							<span>预计<span class="b">{{= it.data[i].times}}</span>到账</span>
+							{{?}}
+						</div>
+						<div class="aui-media-list-item-inner">
+							<div class="aui-list-item-media">
+								<img src="../../image/ad/6.jpg" class="">
+							</div>
+							<div class="aui-list-item-inner aui-list-item-arrow">
+								<div class="aui-list-item-text">
+									{{? it.data[i].type==1 }}微信{{??}}支付宝{{?}}红包{{= it.data[i].money}}元
+								</div>
+							</div>
+						</div>
+						<div class="aui-pull-right">
+							数量：1，总计：<span>￥{{= it.data[i].money}}</span>
+						</div>
+					</li>
+				 	<div class="btn">{{= it.data[i].datas}}</div>
+			 	</div>
+			 	{{ } }}
+			</script> 
+			<ul class="aui-list aui-media-list" id="fx-view"><div id="jiazai"><img src="../../image/loading_more.gif" /></div></ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../../script/doT.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var data = 0;
+		apiready = function() {
+			 
+			data = api.pageParam['id']
+			console.log(data)
+			_lists('api/yaoqing/tixian_list/data/' + data,1, 1);
+			_shangla(function(){
+				_lists('api/yaoqing/tixian_list/data/' + data,1, 1);
+			},1)
+			// 监听滚动
+			api.addEventListener({
+				name : 'scrolltobottom',
+				extra : {
+					threshold : threshold //设置距离底部多少距离时触发，默认值为0，数字类型
+				}
+			}, function(ret, err) {
+				if (heigutgao == 1) {// heigutgao=1开启执行 0停止执行   防止连续滚动，等加载数据之后在进行滚动。
+					pagenum += 1
+					_lists('api/yaoqing/tixian_list/data/'+data,pagenum);
+				}
+			});
+		}
+	</script>
+</html>

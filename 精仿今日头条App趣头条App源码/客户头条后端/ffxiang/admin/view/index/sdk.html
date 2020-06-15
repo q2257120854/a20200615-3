@@ -1,0 +1,78 @@
+{include file="public/header" /}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<style type="text/css">
+.gfjfgjfs{ margin-right: 20px; }
+</style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        {include file="public/top" /}
+        <div class="ibox-content">
+        {include file="public/topsection"}
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <div class="example">
+{php}
+$controller=strtolower(request()->controller());
+$action=strtolower(request()->action());
+$adminCtegory=db('category')->where(['controller'=>$controller,'function'=>$action])->cache(_cache('db'))->find();
+if($adminCtegory){
+    $adminCtegoryTid=db('category')->where(['tid'=>$adminCtegory['id'],'hideright'=>1])->order('des asc,id asc')->cache(_cache('db'))->select();
+}else{
+  $adminCtegoryTid=[];
+}
+{/php}
+{volist name='adminCtegoryTid' id='v'}
+  {php}
+  $get=$v['get'];
+  $geturl=[]; 
+  if($get){
+    if(strstr($get,"|")){
+      $tidexplode=explode("|",$get);
+      foreach($tidexplode as $va){
+        $geturl[$va]=input($va);
+      }
+    }else{
+        $geturl[$get]=input($get);
+    }
+  }
+  $geturl['url']='-1';
+  $url=url($v['controller'].'/'.$v['function'],$geturl);
+  {/php}
+  <a onclick="add('{$url}')" href="javascript:void(0);" class="btn btn-success btn-outline gfjfgjfs">{$v.title}</a>
+  {/volist}
+                         
+   <script type="text/javascript">
+function add(url){
+        layer.open({
+          type: 2,
+          title: '提示',
+          shadeClose: false,
+          shade: 0.2,
+          area: ['90%', '90%'],
+          skin:'shangchuantup',
+          shift:-1,
+          content: url,
+          scrollbar: false,
+          moveType: 1,
+          moveOut: true
+        }); 
+}
+</script>                 </div>
+                </div>  
+            </div>
+             
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+function del(id){
+    swal_del(id,"{:url('del')}")
+}
+ 
+</script>
+ <SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

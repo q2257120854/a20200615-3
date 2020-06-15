@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        li {
+            height: 300px;
+            margin-top: 300px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+<script src="script/jquery-3.2.1.min.js"></script>
+<script>
+    var t, liH, liWinT, sBeginTop;
+    $('li').on('click', function () {
+        var i = $(this).index();
+        t = $('li').eq(i).offset().top;
+        console.log('li距离顶部的距离：'+t);
+        
+        liH = $('li').eq(i).height();
+        console.log('li自身的高度：'+liH)
+        sBeginTop = document.documentElement.scrollTop;
+        console.log('滚动条在被点击时的高度：'+sBeginTop)
+        liWinT = t - sBeginTop;
+        console.log('li距离窗口的距离：'+liWinT);
+        
+    })
+
+    window.onscroll = function(){
+        var sEndTop = document.documentElement.scrollTop;
+        console.log('sEndTop: '+sEndTop);
+        if( (sEndTop) > (t+liH) ){
+            console.log('li上去了');
+        }
+    }
+</script>
+
+</html>

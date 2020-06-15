@@ -1,0 +1,139 @@
+<div class="box">
+    
+  <div class="box-header">
+
+    <div class="row">
+        <div class="col-sm-5">
+
+        </div>
+        
+        <div class="col-sm-7">
+            <div class="box-tools search-form pull-right">
+                <div class="input-group input-group-sm">
+
+                    <select name="search_engine" class="form-control pull-right" style="width: 200px;" >
+                        <option value="">请选择搜索引擎</option>
+                        <option value="baidupc" {eq name=":input('search_engine')" value="baidupc" } selected = "selected" {/eq} >百度</option>
+                        <option value="baidumobile" {eq name=":input('search_engine')" value="baidumobile" } selected = "selected" {/eq} >百度移动端</option>
+                        <option value="360pc" {eq name=":input('search_engine')" value="360pc" } selected = "selected" {/eq} >360</option>
+                        <option value="360mobile" {eq name=":input('search_engine')" value="360mobile" } selected = "selected" {/eq} >360移动端</option>
+                        <option value="sougoupc" {eq name=":input('search_engine')" value="sogoupc" } selected = "selected" {/eq} >搜狗</option>
+                        <option value="sougoumobile" {eq name=":input('search_engine')" value="sogoumobile" } selected = "selected" {/eq} >搜狗移动端</option>
+                        <option value="smmobile" {eq name=":input('search_engine')" value="smmobile" } selected = "selected" {/eq} >神马搜索</option>
+
+                    </select>
+
+                    <input type="text" name="search_username" style="width: 200px;" class="form-control pull-right" value="{:input('search_username')}" placeholder="输入用户名">
+
+                    <input type="text" name="search_keyword" style="width: 200px;" class="form-control pull-right" value="{:urldecode(input('search_keyword'))}" placeholder="输入网站关键词搜索">
+
+                    <input type="text" name="search_data" style="width: 200px;" class="form-control pull-right" value="{:input('search_data')}" placeholder="输入网站域名搜索">
+
+                    <div class="input-group-btn">
+                      <button type="button" id="search"  url="{:url('keywordlistlog')}" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
+                    </div>
+
+                </div>
+           </div>
+        </div>
+    </div>
+    
+  </div>
+    
+    
+  <div class="box-body table-responsive">
+    <table  class="table table-bordered table-hover">
+      <thead>
+      <tr>
+          <th>关键词</th>
+          <th>所属域名</th>
+          <th>搜索引擎</th>
+          <th>所属用户</th>
+          <th>查询时间</th>
+          <th>排名</th>
+          <th>节点名称</th>
+
+          <th>排名截图</th>
+      </tr>
+      </thead>
+      
+      {notempty name='list["0"]["id"]'}
+        <tbody>
+            {volist name='list' id='vo'}
+                <tr>
+                  <td>
+
+                     {switch name="$vo.search_engine"}
+                         {case value="baidupc"}
+                      <a class="" href="https://www.baidu.com/s?ie=UTF-8&amp;wd={$vo.keywords}" target="_blank">{$vo.keywords}</a>
+                      {/case}
+                         {case value="360pc"}
+                      <a class="" href="http://www.sogou.com/web?query={$vo.keywords}" target="_blank">{$vo.keywords}</a>
+                      {/case}
+                      {case value="sougoupc"}
+                      <a class="" href="https://www.so.com/s?ie=utf-8&amp;fr=none&amp;src=360sou_newhome&amp;q={$vo.keywords}" target="_blank">{$vo.keywords}</a>
+                      {/case}
+                         {default /}
+                      {$vo.keywords}
+                      {/switch}
+
+                  </td>
+                  <td>{$vo.url}</td>
+
+
+                    <td>
+                        {eq name="$vo.search_engine" value="baidumobile" } <span class="label" style="background-color: #ef5350"> 百度移动端</span>  {/eq}
+                        {eq name="$vo.search_engine" value="baidupc" } <span class="label" style="background-color: #33ca35"> 百度</span> {/eq}
+                        {eq name="$vo.search_engine" value="360pc" }<span class="label" style="background-color: #4484ca"> 360</span> {/eq}
+                        {eq name="$vo.search_engine" value="360mobile" } <span class="label" style="background-color: #f72f8e"> 360手机端</span>{/eq}
+                        {eq name="$vo.search_engine" value="sogoupc" } <span class="label" style="background-color: #bf8fca"> 搜狗</span>{/eq}
+                        {eq name="$vo.search_engine" value="sogoumobile" } <span class="label" style="background-color: #66b5ca"> 搜狗移动端</span>{/eq}
+                        {eq name="$vo.search_engine" value="smmobile" } <span class="label" style="background-color: #f732bc"> 神马搜索</span>{/eq}
+
+                    </td>
+
+                    <td>{$vo.username}</td>
+
+                    <td>{$vo.time|format_time}</td>
+
+                    <td>
+                        {eq name="$vo.time" value="" }
+                         查询中....
+                        {else/}
+                        {eq name="$vo.Rank" value="0" }更新时间<span style="color: #4c3fff;font-size: 18px;">【{$vo.time|format_time}】</span>,排名: <span style="color: #4c3fff;font-size: 18px;">20+</span> {else/}更新时间<span style="color: #4c3fff;font-size: 18px;">【{$vo.time|format_time}】</span>,排名: <span style="color: red;font-size: 18px;">{$vo.Rank}</span> {/eq}
+                        {/eq}
+                    </td>
+                  <td>
+                      <span class="label label-success">{$vo.area}</span>
+                  </td>
+
+                    <td>
+                        {eq name="$vo.img_url" value="" }
+                        暂时没有截图
+                        {else/}
+                        <span class="label"><a href="{$vo.img_url}" target="_blank">查看截图</a></span>
+                        {/eq}
+                    </td>
+
+                </tr>
+            {/volist}
+        </tbody>
+        {else/}
+        <tbody><tr class="odd"><td colspan="8" class="text-center" valign="top">{:config('empty_list_describe')}</td></tr></tbody>
+      {/notempty}
+    </table>
+  </div>
+
+  <div class="box-footer clearfix text-center">
+      {$list->render()}
+  </div>
+
+</div>
+
+<script>
+    //导出功能
+    $(".export").click(function(){
+        
+        window.location.href = searchFormUrl($(".export"));
+    });
+</script>

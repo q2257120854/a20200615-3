@@ -1,0 +1,90 @@
+#sx-header{
+	background: #fff;
+	 
+}
+.fx-right-jias {
+	background: #fff;
+	height: 2rem;
+}
+.fx-right-jias span {
+	 
+	color: #000 !important;
+}
+ 
+ 
+ 
+.fx-info{
+	padding: 0.5rem 0;
+}
+.fx-info img.aui-img-round{
+	width: 1.5rem;
+	height: 1.5rem;
+}
+.fx-info .aui-info-item span{
+	color: #383838;
+	font-size: 0.7rem;
+}
+.fx-info .fx-info-pingZan{
+
+}
+.fx-info .fx-info-pingZan span{
+	padding-left: 0.5rem;
+}
+.fx-info .fx-info-pingZan span i{
+	font-size: 0.7rem;
+}
+.fx-info .fx-info-pingZan span.fx-info-ping{
+	padding-right: 0.5rem;
+	font-size: 0.6rem;
+	line-height: 1rem;
+	color: #222222
+}
+.fx-info .fx-info-pingZan span.fx-info-ping i{
+	padding-right: 0.3rem;
+}
+.fx-video-list-li{
+	margin-bottom: 0rem;
+}
+.fx-video-list-li .fx-video-img{
+	width: 100%;
+	height: 11.5rem;
+}
+.fx-video-list-li .fx-video-title{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	color: #fff;
+	padding: 0.3rem 0.7rem;
+	background:linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.2) 100%, #fff 100%); 
+	width: 100%;
+	border-bottom: 5px slide #f00;
+}
+.fx-video-list-li .fx-video-title h2{
+	font-weight: bold;
+	font-size: 0.75rem;
+	line-height: 1rem;
+}
+.fx-video-list-li .fx-video-title span{
+	color: #CACACA;
+	font-size: 0.6rem;
+}
+/* 视频加载提示*/
+.fx-video-loading{
+	position: absolute;
+	top: 100px;
+	left: 0px;
+	border: 0px;
+	color: #fff;
+	background: rgba(0,0,0,0) !important;
+}
+.dasd{
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	background: #f00;
+	top: 0px;
+	left: 0px;
+	z-index: 999999
+}
+ 
+ 

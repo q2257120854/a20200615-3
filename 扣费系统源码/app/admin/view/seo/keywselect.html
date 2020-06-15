@@ -1,0 +1,378 @@
+ <form action="{:url('')}" method="post" class="form_single">
+<div class="box">
+    
+  <div class="box-header">
+
+    <div class="row">
+       
+        
+        <div class="col-sm-2">
+            <div class="box-tools search-form pull-left">
+                <div class="input-group input-group-sm">
+
+                    
+
+                    <input type="text" name="search_keywords" id="search_keywords" style="width: 200px;" class="form-control pull-left" value="{:input('search_keywords')}" placeholder="输入关键词">
+
+                   
+<div class="input-group-btn">
+	<div class="input-group-btn">
+		
+	</div>
+                      <button type="button" id="search"  url="{:url('keywselect')}" class="btn btn-info btn-flat"><i class="fa fa-search"></i> 搜索</button>
+                  
+                    
+
+
+                </div>
+           </div>
+        </div>
+    </div>
+   
+  </div>
+<div class="box-body table-responsive">
+    <table  class="table table-bordered table-hover">
+      <thead>
+      <tr class="suibian">
+          
+          <th colspan="2"><img src="__STATIC__/images/bd.png" alt="百度" width="88"></th>
+      	  <th colspan="2"><img src="__STATIC__/images/phonebd.png" alt="百度手机" width="88"></th>
+     	  <th colspan="2"><img src="__STATIC__/images/haosou.png" alt="360搜索" width="88"></th>
+     	  <th colspan="2"><img src="__STATIC__/images/haosousj.png" alt="360手机搜索" width="88"></th>
+          <th colspan="2">  <img src="__STATIC__/images/sougou.png" alt="搜狗" width="88"></th>
+          <th colspan="2"><img src="__STATIC__/images/sougousj.png" alt="搜狗手机搜索" width="88"></th>
+    	  <th colspan="2"><img src="__STATIC__/images/shenma.png" alt="神马" width="88"></th>
+      </tr>
+    
+      </thead>
+      
+      
+        <tbody>
+           
+                <tr style="text-align: center;">
+                  <td>
+                  	第一页价格
+                  </td>
+              	  <td>
+                  	第二页价格
+                  </td>
+                   <td>
+                  	第一页价格
+                  </td>
+              	  <td>
+                  	第二页价格
+                  </td>
+                   <td>
+                  	第一页价格
+                  </td>
+              	  <td>
+                  	第二页价格
+                  </td>
+                  
+                   <td>
+                  	第一页价格
+                  </td>
+              	  <td>
+                  	第二页价格
+                  </td>
+                  
+                   <td>
+                  	第一页价格
+                  </td>
+              	  <td>
+                  	第二页价格
+                  </td>
+                   <td>
+                  	第一页价格
+                  </td>
+              	  <td>
+                  	第二页价格
+                  </td>
+                   <td>
+                  	第一页价格
+                  </td>
+              	  <td>
+                  	第二页价格
+                  </td>
+                </tr>
+      
+        </tbody>
+         <tbody class="tb">
+           
+                <tr style="text-align: center;">
+                  <td>
+                  	{if condition="$list.baidu eq ''"}
+		             	<span>0</span>元/一天
+		            {else/}
+		             	{if condition="$list.baidu['page_one'] eq '赠送'"}
+		             		<span color="red">赠送</span>
+	                {else/}
+		                	<span>{$list.baidu['page_one']}</span>元/一天
+		                {/if}
+		            {/if}
+                  </td>
+              	  <td>
+                  	{if condition="$list.baidu eq ''"}
+	             		<span>0</span>元/一天
+	             	{else/}
+		             	{if condition="$list.baidu['page_two'] eq '赠送'"}
+		             		<span color="red">赠送</span>
+		                {else/}
+		                	<span>{$list.baidu['page_two']}</span>元/一天
+		                {/if}
+	             	{/if}
+                  </td>
+                   <td>
+                  	{if condition="$list.baidu_mobile eq ''"}
+		             	<span>0</span>元/一天
+		             {else/}
+		             	{if condition="$list.baidu_mobile['page_one'] eq '赠送'"}
+		             		<span color="red">赠送</span>
+		                {else/}
+		                	<span>{$list.baidu_mobile['page_one']}</span>元/一天
+		                {/if}
+		             {/if}
+                  </td>
+              	  <td>
+                  	{if condition="$list.baidu_mobile eq ''"}
+             	<span>0</span>元/一天
+             {else/}
+             	{if condition="$list.baidu_mobile['page_two'] eq '赠送'"}
+             		<span color="red">赠送</span>
+                {else/}
+                	<span>{$list.baidu_mobile['page_two']}</span>元/一天
+                {/if}
+             {/if}
+                  </td>
+                   <td>
+                  	{if condition="$list.360 eq ''"}
+             	<span>0</span>元/一天
+             {else/}
+             	{if condition="$list.360['page_one'] eq '赠送'"}
+             		<span color="red">赠送</span>
+                {else/}
+                	<span>{$list.360['page_one']}</span>元/一天
+                {/if}
+             {/if}
+                  </td>
+              	  <td>
+                  	{if condition="$list.360 eq ''"}
+             	<span>0</span>元/一天
+             {else/}
+             	{if condition="$list.360['page_two'] eq '赠送'"}
+             		<span color="red">赠送</span>
+                {else/}
+                	<span>{$list.360['page_two']}</span>元/一天
+                {/if}
+             {/if}
+                  </td>
+                  
+                  
+                   <td>
+                  	{if condition="$list.360_mobile eq ''"}
+             	<span>0</span>元/一天
+             {else/}
+             	{if condition="$list.360_mobile['page_one'] eq '赠送'"}
+             		<span color="red">赠送</span>
+                {else/}
+                	<span>{$list.360_mobile['page_one']}</span>元/一天
+                {/if}
+             {/if}
+                  </td>
+              	  <td>
+                  	{if condition="$list.360_mobile eq ''"}
+             	<span>0</span>元/一天
+             {else/}
+             	{if condition="$list.360_mobile['page_two'] eq '赠送'"}
+             		<span color="red">赠送</span>
+                {else/}
+                	<span>{$list.360_mobile['page_two']}</span>元/一天
+                {/if}
+             {/if}
+                  </td>
+                  
+                  
+                  
+                  
+                  
+                  
+                   <td>
+                  	{if condition="$list.sougou_pc eq ''"}
+             	<span>0</span>元/一天
+             {else/}
+             	{if condition="$list.sougou_pc['page_one'] eq '赠送'"}
+             		<span color="red">赠送</span>
+                {else/}
+                	<span>{$list.sougou_pc['page_one']}</span>元/一天
+                {/if}
+             {/if}
+                  </td>
+              	  <td>
+                  	{if condition="$list.sougou_pc eq ''"}
+             	<span>0</span>元/一天
+             {else/}
+             	{if condition="$list.sougou_pc['page_two'] eq '赠送'"}
+             		<span color="red">赠送</span>
+                {else/}
+                	<span>{$list.sougou_pc['page_two']}</span>元/一天
+                {/if}
+             {/if}
+                  </td>
+                   <td>
+                  	{if condition="$list.sougou_mobile eq ''"}
+             	<span>0</span>元/一天
+             {else/}
+             	{if condition="$list.sougou_mobile['page_one'] eq '赠送'"}
+             		<span color="red">赠送</span>
+                {else/}
+                	<span>{$list.sougou_mobile['page_one']}</span>元/一天
+                {/if}
+             {/if}
+                  </td>
+              	  <td>
+                  	 {if condition="$list.sougou_mobile eq ''"}
+             	<span>0</span>元/一天
+             {else/}
+             	{if condition="$list.sougou_mobile['page_two'] eq '赠送'"}
+             		<span color="red">赠送</span>
+                {else/}
+                	<span>{$list.sougou_mobile['page_two']}</span>元/一天
+                {/if}
+             {/if}
+                  </td>
+                   <td>
+                  	{if condition="$list.shenma eq ''"}
+             	<span>0</span>元/一天
+             {else/}
+             	{if condition="$list.shenma['page_one'] eq '赠送'"}
+             		<span color="red">赠送</span>
+                {else/}
+                	<span>{$list.shenma['page_one']}</span>元/一天
+                {/if}
+             {/if}
+                  </td>
+              	  <td>
+                  	{if condition="$list.shenma eq ''"}
+             	<span>0</span>元/一天
+             {else/}
+             	{if condition="$list.shenma['page_two'] eq '赠送'"}
+             		<span color="red">赠送</span>
+                {else/}
+                	<span>{$list.shenma['page_two']}</span>元/一天
+                {/if}
+             {/if}
+                  </td>
+                </tr>
+      
+        </tbody>
+        <tbody><tr class="odd"><td colspan="8" class="text-center" valign="top"></td></tr></tbody>
+
+    </table>
+ </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>选择搜索引擎</label>
+              <div>
+              <select name="search_engine"  class="form-control">
+              	<option value="baidupc">百度PC</option>
+              	<option value="baidumobile">百度移动端</option>
+              	<option value="360pc">360PC</option>
+              	<option value="360mobile">360移动端</option>
+              	<option value="sogoupc">搜狗PC</option>
+              	<option value="sogoumobile">搜狗移动端</option>
+              	<option value="smmobile">神马搜索</option>
+              </select>
+              </div>
+             
+
+            </div>
+          </div>
+          <div class="col-md-6">
+          	  <div class="form-group">
+          	  	<label>输入你要添加的网站</label>
+          	  	<div>
+          	  		
+          	        <select name="web_name" class="form-control">
+          	        	{notempty name='info'}
+          	        	{volist name='info' id="vo"}
+          	        	<option value="{$vo.id}">{$vo.url}</option>
+          	        	{/volist}
+          	        	{else/}
+          	        	<option value="">你还有没有网站哦,请到网站管理里添加</option>
+          	        	{/notempty}
+          	        </select>
+          	  		<!-- 百度pc  -->
+          	  		<input type="hidden" value="{$list.baidu['page_one']|default='1'}" name="price[baidupc][page_one]"/>
+          	  		<input type="hidden" value="{$list.baidu['page_two']|default='0'}" name="price[baidupc][page_two]"/>
+          	  		<!-- 百度移动  -->
+          	  		<input type="hidden" value="{$list.baidu_mobile['page_one']|default='1'}" name="price[baidumobile][page_one]"/>
+          	  		<input type="hidden" value="{$list.baidu_mobile['page_two']|default='0'}" name="price[baidumobile][page_two]"/>
+          	  		<!-- 360  -->
+          	  		<input type="hidden" value="{$list.360['page_one']|default='1'}" name="price[360pc][page_one]"/>
+          	  		<input type="hidden" value="{$list.360['page_two']|default='0'}" name="price[360pc][page_two]"/>
+          	  		<!-- 360手机  -->
+          	  		<input type="hidden" value="{$list.360_mobile['page_one']|default='1'}" name="price[360mobile][page_one]"/>
+          	  		<input type="hidden" value="{$list.360_mobile['page_two']|default='0'}" name="price[360mobile][page_two]"/>
+          	  		<!-- 搜狗PC  -->
+          	  		<input type="hidden" value="{$list.sougou_pc['page_one']|default='1'}" name="price[sogoupc][page_one]"/>
+          	  		<input type="hidden" value="{$list.sougou_pc['page_two']|default='0'}" name="price[sogoupc][page_two]"/>
+          	  		<!-- 搜狗手机  -->
+          	  		<input type="hidden" value="{$list.sougou_mobile['page_one']|default='1'}" name="price[sogoumobile][page_one]"/>
+          	  		<input type="hidden" value="{$list.sougou_mobile['page_two']|default='0'}" name="price[sogoumobile][page_two]"/>
+          	  		<!-- 神马  -->
+          	  		<input type="hidden" value="{$list.shenma['page_one']|default='1'}" name="price[smmobile][page_one]"/>
+          	  		<input type="hidden" value="{$list.shenma['page_two']|default='0'}" name="price[smmobile][page_two]"/>
+          	  		<input type="hidden" name="searchkey" id="keywords" value="" />
+          	  	</div>
+          	  	  
+          	  </div>
+          </div>
+</form>                
+
+        <div class="box-footer">
+        
+        {include file="layout/edit_btn_group"/}
+      </div>
+
+
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var urll = window.location.search;
+		if(urll == ''){
+	    	$("#keywords").attr('value','');
+	    }else{
+	    	var keyw = urll.split('=')[1];
+	    	$("#keywords").attr('value',keyw);
+	    	$("#search_keywords").attr('readonly','readonly');
+	    }
+	});
+	
+	$(".ladda-button").click(function(){
+		if(confirm('确定添加此关键词?'))
+		{
+			$(".ladda-button").attr('type','submit');
+			var urll = window.location.search;
+
+		    if(urll == ''){
+		    	$("#keywords").attr('value','');
+		    }else{
+		    	var keyw = urll.split('=')[1];
+	            
+		    	$("#keywords").attr('value',keyw);
+		    	
+		    }
+		}else{
+		
+			$(".ladda-button").attr('type','button');
+		}
+		
+	});
+	
+	
+</script>
+<style type="text/css">
+  	.suibian>th{text-align: center;}
+  	.tb>tr>td{font-size: 16px;font-weight: 700;color: red;}
+</style>

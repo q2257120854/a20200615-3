@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/member.css" />
+	</head>
+	<body>
+		<header class="aui-bar aui-bar-nav fx-view-header" id="fx-header">
+			<div class="asdlkhjasd">
+				<a class="aui-pull-left aui-btn" tapmode onclick="_close()"> <span class="aui-iconfont aui-icon-left"></span> </a>
+				<div class="aui-title">
+					关注/粉丝/访客
+				</div>
+				<a class="aui-pull-right aui-btn" tapmode onclick="_url({url:'member/py',qian:1,fan:1,title:'添加好友'})"> <span class="aui-iconfont aui-icon-my"></span> </a>
+			</div>
+			<div style="clear: both;border-bottom: 1px solid #e8e8e8;">
+				<div class="aui-tab fx-tab">
+					<div class="aui-tab-item aui-active" id="tab0" tapmode onclick="randomSwitchBtn(0)">
+						关注
+					</div>
+					<div class="aui-tab-item" id="tab1" tapmode  onclick="randomSwitchBtn(1)">
+						粉丝
+					</div>
+					<div class="aui-tab-item" id="tab2" tapmode  onclick="randomSwitchBtn(2)">
+						访客
+					</div>
+				</div>
+			</div>
+		</header>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			api.addEventListener({
+			    name:'viewappear'
+			}, function(ret, err){      
+				_heibai(1)  
+			});
+			_heibai(1) 
+			var len=$api.domAll($api.dom('.fx-tab'), 'div.aui-tab-item');
+			var frames = [];
+			var framesUrl={0:'gz',1:'fs',2:'fk'}
+			for (var i = 0; i < len.length; i++) {
+				var frame = {};
+				frame.name = 'GzFsFk_' + i;
+				frame.url = html_win + 'member/'+framesUrl[i]+'.html';
+				frame.pageParam = {
+					id : 0,
+				};
+				frames.push(frame);
+			}
+			openFrameGroup(frames)
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+		}
+		function openFrameGroup(frames) {
+			var header = $api.byId('fx-header');
+			$api.fixStatusBar(header);
+			var headerPos = $api.offset(header);
+			api.openFrameGroup({
+				name : 'GzFsFk',
+				scrollEnabled : true,
+				bounces : true,
+				rect : {
+					x : 0,
+					y : headerPos.h,
+					w : 'auto',
+					h : api.winHeight - headerPos.h,
+				},
+				index : api.pageParam['index'],
+				frames : frames,
+				preload : 0,	// 预加载的 frame 个数，默认加载当前页后面一个
+			}, function(ret, err) {
+				var index = ret.index;
+				active(index)
+			});
+		}
+
+		// 点击分类栏目时，设置 frame 组当前可见 frame
+		function randomSwitchBtn(index) {
+			active(index)
+			api.setFrameGroupIndex({
+				name : 'GzFsFk',
+				index : index,
+				scroll : true, //是否平滑滚动至目标窗口，即是否带有动画
+			});
+		}
+
+		// 点击样式
+		function active(index) {
+			$api.removeCls($api.dom(".fx-tab .aui-active"), 'aui-active');
+			$api.addCls($api.byId('tab' + index), 'aui-active');
+		}
+	</script>
+</html>
+

@@ -1,0 +1,62 @@
+/* 飞翔网络 http://www.ffxiang.cn/ */ 
+@charset "utf-8";
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img{ margin:0; padding:0; font-family:微软雅黑;}
+fieldset, img { border:none;}
+div{margin:0 auto}
+address, caption, cite, code, dfn, th, var{ font-style:normal; font-weight:normal; }
+ul, ol { list-style:none; }
+.l,#l{float:left}.r,#r{float:right}
+input { padding-top:0; padding-bottom:0;}
+input::-moz-focus-inner { border:none; padding:0; }
+select, input { vertical-align:middle; }
+select, input, textarea,h1,h2,h3,h4 { font-size:12px; margin:0;font-weight: normal;}
+table { border-collapse:collapse; }
+.clearfix:after { content:"."; display:block; height:0; visibility:hidden; clear:both;}
+.none{display:none}
+.MT10{margin-top:10px}.MB10{margin-bottom:10px}.PT10{padding-top:10px}.PB10{padding-bottom:10px}
+ 
+
+
+.h10{height: 10px;}
+.fl{ float:left;}
+.fontNone{ display: none;}
+.MT10{margin-top:10px}
+.MT5{margin-top:5px}
+.MB10{margin-bottom:10px}
+.PT10{padding-top:10px}.PB10{padding-bottom:10px}
+.PT20{padding-top:20px}.PB20{padding-bottom:20px}
+.w980{width:980px}
+
+/*分页*/
+/*分页*/
+.pagination{ margin: 3px; text-align:left}
+.pagination{float: right;}
+.pagination .firstPage{width: 30px;}
+.pagination li{float: left;line-height: 25px;height: 25px;margin-left: 5px;font-size: 12px;border: 1px solid #E9E9E9;padding: 0px 10px;width: auto;}
+.pagination li a:hover{color: #ff0000;text-decoration: none;}
+.pagination li.thisclass, .pagination li.thisclass a, .pagination li.thisclass a:hover{background-color: #333333;color: #FFF}
+.pagination .pageinfo{line-height: 25px;padding: 12px 5px 10px 5px;color: #999;}
+.pagination select{line-height: 25px;margin-top: 4px}
+.pagination .pageinfo strong{color: #555;font-weight: normal;margin: 0px 2px;}
+
+/*分页*/
+ 
+.pagebreak  {FONT-SIZE: 12px;COLOR: #dddddd;margin-top: 10px; margin-bottom: 20px; float: left; line-height:22px;width: 603px; text-align: center;}
+.pagebreak ul {list-style-type: none;margin: 0px; padding: 0px;}
+.pagebreak .current {padding:3px 5px; border: 1px solid #CCC;color: #036;background-color: #CCC;}
+.pagebreak li   {BORDER-RIGHT: #dddddd 1px solid;  padding:3px 5px; BORDER-TOP: #dddddd 1px solid;   BACKGROUND: #fff; FLOAT: left;  MARGIN: 3px; BORDER-LEFT: #dddddd 1px solid; COLOR: #aaaaaa;   BORDER-BOTTOM: #dddddd 1px solid; LIST-STYLE-TYPE: none}
+.pagebreak a {COLOR: #aaaaaa; margin-top: 0px; margin-right: 2px;margin-bottom: 0px;margin-left: 2px;}
+.pagebreak .thisclass{BORDER-RIGHT: #e0e0e0 1px solid; BORDER-TOP: #e0e0e0 1px solid; FONT-WEIGHT: bold; BACKGROUND: #f0f0f0; BORDER-LEFT: #e0e0e0 1px solid; COLOR: #333333; BORDER-BOTTOM: #e0e0e0 1px solid}
+.pagebreak .thisclass a   { COLOR: #333333;}
+
+
+/*gotop*/
+.cbbfixed {position: fixed;right: 20px;transition: bottom ease .3s;bottom: -85px;z-index: 3;cursor:pointer;}
+.cbbfixed .cbbtn {width: 40px;height: 40px;display: block;background-color:#2e84c7;}
+.cbbfixed .gotop {transition: background-color ease .3s;margin-top: 1px;}
+.cbbfixed .gotop .up-icon{float:left;margin:14px 0 0 9px;width:23px;height:12px;background: url(../img/side-icon02.png);}
+.cbbfixed .gotop:hover {background-color:#2c2d2e;}
+.cbbfixed .weixin {background: #8A8A8A;}
+.cbbfixed .weixin div {background: url(../img/weixin.png);width: 210px;height: 210px;position: absolute;left: -212px;top: -130px;opacity: 0;transform: scale(0);    -webkit-transform: scale(0);transform-origin: 100% 70%;-webkit-transform-origin: 100% 70%;transition: transform ease .3s,opacity ease .3s;-webkit-transition: all ease .3s;display:none\0;*display:none;}
+.cbbfixed .weixin:hover div {display: block;transform: scale(1);-webkit-transform: scale(1);opacity: 1;*display:block;}
+.cbbfixed .weixin .weixin-icon{float: left;margin:12px 0 0 11px;width:18px;height: 18px; background: url(../img/side-icon01.png);}

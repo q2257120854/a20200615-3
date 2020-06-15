@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>内排中心</title>
+    <link rel="stylesheet" href="/static/jycss/bootstrap.min.css">
+    <script src="/static/jyjs/jquery-2.1.1.js"></script>
+    <script src="/static/jyjs/flexible.js"></script>
+    <script src="/static/jyjs/flexible_css.js"></script>
+    <script src="/static/jyjs/layer.js"></script>
+    <style>
+        html, body {background: #F5F5F5;}
+        blockquote, span, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, hr, input, legend, li, ol, p, pre, td, textarea, label, th, ul, ol, i {padding: 0px;margin: 0px;font-family: MicrosoftYaHei;}
+        li {list-style: none;}
+        label, i {margin: 0;font-style: normal;font-weight: normal;}
+        input::-webkit-input-placeholder {color: #999;}
+        textarea::-webkit-input-placeholder {color: #999;}
+        .header {position: fixed;top: 0px;left: 0px;display: flex;align-items: center;justify-content: center;width: 100%;height: 1.28rem;text-align: center;color: #333;background: #fff;z-index: 99999;}
+        .header span {font-size: .48rem;color: #333;font-weight: bold;}
+        .go-back {position: absolute;left: .266667rem;height: 1.28rem;display: flex;align-items: center;}
+        .go-back img {height: .586667rem;vertical-align: bottom;}
+        .main {padding-top: 1.28rem;}
+        .speed-of-progress-box {position: relative;width: 100%;}
+        .speed-of-progress-box img {width: 100%;vertical-align: bottom;}
+        .speed-of-progress {position: absolute;left: 50%;top: 14.2%;width: 2.666667rem;height: 2.666667rem;margin-left: -1.333333rem;background: url(static/images/jingdu@2x.png) no-repeat 0 0 / 100% 100%;display: flex;justify-content: center;align-items: center;text-align: center;}
+        .tip {font-size: .32rem;color: #fff;}
+        .speed-of-progress-num {font-size: .693333rem;color: #fff;}
+        .content {padding: .373333rem;}
+        .data {padding: 0rem .533333rem;border-radius: .266667rem .266667rem 0rem 0rem;background: #fff;}
+        .data-item {display: flex;align-items: center;height: 1.173333rem;border-bottom: 1px solid #F5F5F5;}
+        .data-name {width: 40.4%;font-size: .373333rem;color: #333;}
+        .data-value {font-size: .373333rem;color: #424242;}
+        .data-item:last-child {border: none;font-weight: bold;}
+        .list {width: 100%;height: 2.186667rem;display: flex;align-items: center;background: url(static/images/card_img@2x.png) no-repeat 0 0 / 100% 100%;box-shadow: 0rem 0rem .666667rem 0rem rgba(46, 128, 197, 0.35);padding-left: .533333rem;}
+        .list > div {width: 100%;}
+        .list-item {margin: .16rem 0rem;width: 35.5%;float: left;}
+        .list-item:nth-child(3n) {width: 29%;}
+        .list-item > div {display: flex;align-items: center;}
+        .list-item label {position: relative;width: .346667rem;height: .346667rem;border-radius: 50%;background: #CEE9FF;}
+        .list-item .static {position: absolute;top: .08rem;left: .08rem;width: .186667rem;height: .186667rem;border-radius: 50%;background: #CEE9FF;}
+        .list-item .active {background: #2E80C5;}
+        .list-item .price {margin-left: .133333rem;font-size: .426667rem;color: #fff;}
+        .list-item input {margin: 0;padding: 0;opacity: 0;}
+        .confirm {display: block;margin-top: 1.6rem;width: 100%;height: 1.173333rem;line-height: 1.173333rem;font-size: .48rem;color: #fff;text-align: center;border-radius: .266667rem;background: #2E80C5;box-shadow: 0rem 0rem .666667rem 0rem rgba(46, 128, 197, 0.35);}
+    </style>
+<body>
+    <header class="header">
+        <a href="javascript:history.back(-1)" class="go-back">
+            <img src="/static/images/nav_arrow_icon@2x.png" alt="">
+        </a>
+        <span>内排中心</span>
+    </header>
+    <main class="main">
+        <div class="speed-of-progress-box">
+            <img src="/static/images/background_img@2x.png" alt="">
+            <div class="speed-of-progress">
+                <div>
+                    <div class="tip">内排进度</div>
+                    <div class="speed-of-progress-num"></div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="data">
+                <div class="data-item">
+                    <div class="data-name">内排总数</div>
+                    <div class="data-value" id="total">{$info['target']|money}</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-name">内排数量</div>
+                    <div class="data-value" id="already-raised">{$info['current']|money}</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-name">当前币价</div>
+                    <div class="data-value" id="currency-price">{$market['price']|money}</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-name">发布时间</div>
+                    <div class="data-value" id="release-time">{$info['create_at']}</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-name">我要支持：</div>
+                </div>
+            </div>
+            <div class="list">
+                <div>
+                    <div class="list-item">
+                        <div class="item">
+                            <label for="price-one"><span class="static active" data="120"></span></label>
+                            <span class="price">120元</span>
+                            <input type="radio" class="input-item" id="price-one" name="price" value="120" checked>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item">
+                            <label for="price-two"><span class="static" data="400"></span></label>
+                            <span class="price">400元</span>
+                            <input type="radio" class="input-item" id="price-two" name="price" value="400">
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item">
+                            <label for="price-three"><span class="static" data="800"></span></label>
+                            <span class="price">800元</span>
+                            <input type="radio" class="input-item" id="price-three" name="price" value="800">
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item">
+                            <label for="price-four"><span class="static" data="1200"></span></label>
+                            <span class="price">1200元</span>
+                            <input type="radio" class="input-item" id="price-four" name="price" value="1200">
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item">
+                            <label for="price-five"><span class="static" data="1600"></span></label>
+                            <span class="price">1600元</span>
+                            <input type="radio" class="input-item" id="price-five" name="price" value="1600">
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item">
+                            <label for="price-six"><span class="static" data="2000"></span></label>
+                            <span class="price">2000元</span>
+                            <input type="radio" class="input-item" id="price-six" name="price" value="2000">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="javascript:;" class="confirm">支付宝支付</a>
+        </div>
+    </main>
+</body>
+<script>
+    var item = document.querySelectorAll('.item');
+    var itemLen = item.length;
+    var static = document.querySelectorAll('.static');
+    var staticLen = static.length;
+    var inputItem = document.querySelectorAll('.input-item');
+    var confirm = document.querySelector('.confirm');
+    var active = document.querySelector('.active');
+    var total = document.querySelector('#total');
+    var speedOfProgressNum = document.querySelector('.speed-of-progress-num');
+    var alreadyRaised = document.querySelector('#already-raised');
+    var currencyPrice = document.querySelector('#currency-price');
+    var releaseTime = document.querySelector('#release-time');
+    for (var i = 0; i < itemLen; i++) {
+        (function (i) {
+            item[i].addEventListener('click', function (){
+                for (var j = 0; j < staticLen; j++) {
+                    static[j].classList.remove('active');
+                    inputItem[j].removeAttribute('checked');
+                }
+                static[i].classList.add('active');
+                inputItem[i].setAttribute('checked', 'checked');
+                active = document.querySelector('.active');
+                confirm.setAttribute('href', 'alipay_pay.html?num=' + active.getAttribute('data'));
+            });
+        })(i);
+    }
+    confirm.setAttribute('href', 'alipay_pay.html?num=' + active.getAttribute('data'));
+</script>
+</html>

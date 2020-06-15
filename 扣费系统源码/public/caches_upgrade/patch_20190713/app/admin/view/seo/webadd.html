@@ -1,0 +1,104 @@
+
+<link rel="stylesheet" href="__STATIC__/module/admin/ext/autocomplete/jquery-ui.css">
+<form action="{:url()}" method="post" class="form_single">
+    <div class="box">
+      <div class="box-body">
+        <div class="row">
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>请输入用户</label>
+              <span>（域名所属用户）</span>
+              <input class="form-control" id="user" name="username" {gt name="$info.leader_id" value="1" }disabled   value="{$info.username|default=''}" {/gt} placeholder="直接敲空格加载下拉选择或输入客户名称搜索" type="text">
+            </div>
+          </div>
+ 
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>网站名称</label>
+              <input class="form-control"  name="web_name" placeholder="请输入网站名称" type="text">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>网站URL域名</label>
+              <input class="form-control" name="url" placeholder="请输入网站域名【域名不能加http或https】或熊掌号全称" type="text">
+            </div>
+          </div>
+
+ 
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>网站后台地址</label>
+              <span>（网站后台地址，用seo优化）</span>
+              <input class="form-control" name="bake_name" placeholder="请输入网站后台地址" type="text">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>网站后台账号</label>
+              <span>（网站后台账号）</span>
+              <input class="form-control" name="bake_username" placeholder="请输入网站后台账号" type="text">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>网站后台密码</label>
+              <span>（网站后台密码）</span>
+              <input class="form-control" name="base_pass" placeholder="请输入网站后台密码" type="text">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Ftp地址</label>
+              <span>（Ftp地址，用seo优化）</span>
+              <input class="form-control" name="ftp_addr" placeholder="请输入FTP地址" type="text">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>FTP账号</label>
+              <input class="form-control" name="ftp_username" placeholder="请输入FTP账号" type="text">
+            </div>
+          </div>
+
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>FTP密码</label>
+              <input class="form-control" name="ftp_pass" placeholder="请输入FTP账号" type="text">
+            </div>
+          </div>
+
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>备注信息</label>
+              <input class="form-control" name="beizhu" placeholder="请输入备注信息" type="text">
+            </div>
+          </div>
+
+            
+        </div>
+      </div>
+      <div class="box-footer">
+        
+        {include file="layout/edit_btn_group"/}
+      </div>
+    </div>
+</form>
+
+<script src="__STATIC__/module/admin/ext/autocomplete/jquery-ui.min.js"></script>
+<script>
+  $(function(){
+    $( "#user" ).autocomplete({
+      source: "{:url('getuser')}"
+    });
+  });
+
+</script>

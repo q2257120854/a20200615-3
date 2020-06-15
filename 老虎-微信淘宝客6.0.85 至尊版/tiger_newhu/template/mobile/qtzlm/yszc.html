@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>首页隐藏政策</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <style>
+    body{background:#fff}
+    header{width:100%;height:74px;position: fixed;left: 0; top: 0;background: linear-gradient(-90deg,rgba(254,51,192,1),rgba(255,168,89,1));z-index: 1000000;color: #ffffff}
+    #close{width:20px;height:20px;background: url(../images/back_white.png) no-repeat; background-size:20px;position: absolute;left:10px;bottom:11px;}
+    .headerTitle{width:140px;margin: 0 auto;height: 44px; line-height:44px;text-align: center;font-size: 16px;color:#ffffff;  margin-left: -75px;position: absolute;bottom: 0;left: 50%;}
+    #set{width:20px;height:20px;background: url(../images/h-set.png) no-repeat; background-size:20px;position: absolute;right:20px;bottom:11px;}
+    </style>
+</head>
+
+<body >
+  <div style="padding-left:22px;padding-right:22px;line-height:25px;font-size:12px;">
+    感谢您对本APP一直以来的信任！<br> 
+    我们依照新的监管要求条例更新了<span style="color:#ff0000">《隐私政策》</span>,为采取相应安全保护措施，尽力保护您的个人信息安全可控，特向你说明如下：
+    <br>1、 您在使用本APP各项产品或是服务时，将会提供与具体功能相关的个人信息（可能涉及帐号、位置、交易等信息）。
+    <br>2、您可以随时查询、更正、删除您的个人信息，我们也提供帐号注销渠道服务。
+    <br>3、未经您的再次同意，我们不会将上述信息用于您未授权的其他用途或目的。
+    <br>4、未经监护人同意，我们不会收集使用14周岁以下（含14周岁）未成年人个人信息，且不会利用其信息推送新闻、时政信息、广告等定向推送活动。
+  </div>
+
+</body>
+
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+      var pageParam = api.pageParam;
+      dibu = pageParam.dibu;
+      $api.fixStatusBar($api.dom('header'));
+      var headerHeight = ($api.dom('header')==null)? 0 : $api.offset($api.dom('header')).h;
+      //以上为统一头部
+      // api.parseTapmode();//延时点击
+      var $close = $api.byId("close");
+      $api.addEvt($close, 'click', function() {
+          api.closeWin();
+      });
+
+
+
+    };
+
+
+</script>
+
+</html>

@@ -1,0 +1,13 @@
+{
+    "usingComponents": {
+        "gracePage": "../../graceUI/components/gracePage",
+        "graceHeader": "../../graceUI/components/graceHeader",
+        "graceNavBar": "../../graceUI/components/graceNavBar",
+        "graceLoading": "../../graceUI/components/graceLoading",
+        "graceEmpty": "../../graceUI/components/graceEmptyNew",
+        "graceReload": "../../graceUI/components/graceReload",
+        "txv-video": "plugin://wxa75efa648b60994b/video"
+    },
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "white"
+}

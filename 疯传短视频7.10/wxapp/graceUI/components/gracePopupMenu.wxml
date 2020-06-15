@@ -1,0 +1,4 @@
+<view catchtap="hideMenu" catchtouchmove="" class="grace-popup-mask" style="background:{{background}};" wx:if="{{show}}"></view>
+<view class="grace-popup-menu" style="top:{{top}}px; background:{{bgColor}}; width:{{menuWidth}}; borderRadius:{{borderRadius}};" wx:if="{{show}}">
+    <slot></slot>
+</view>

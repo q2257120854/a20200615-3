@@ -1,0 +1,78 @@
+{include file="layout/top"/}
+<body class="hold-transition login-page admin-login-body-background">
+    
+<!--<script src="__STATIC__/module/admin/ext/background/login_background.js"></script>-->
+
+<!--<canvas></canvas>-->
+
+<div id="ajax-hook"></div>
+<div class="wrap">
+    <div class="wpn">
+        <div class="form-data pos">
+            <a href=""><img src="__STATIC__/module/admin/img/logo.png" class="head-logo"></a>
+            <div class="change-login">
+                <p class="account_number on">账号登录</p>
+                <p class="message"><a href="regmember.html">账号注册</a></p>
+            </div>
+            <form action="{:url('loginHandle')}" method="post" class="admin-login-form">
+            <div class="form1">
+                <p class="p-input pos">
+                    <!--<label for="num">请输入您的用户名</label>-->
+                    <input type="text" name="username" class="form-control" placeholder="请输入您的用户名">
+                    <span class="tel-warn num-err hide"><em>账号或密码错误，请重新输入</em><i class="icon-warn"></i></span>
+                </p>
+                <p class="p-input pos">
+                    <!--<label for="pass">请输入密码</label>-->
+                    <input type="password" style="display:none"/>
+                   <input type="password" name="password" class="form-control" placeholder="请输入您的密码">
+                    <span class="tel-warn pass-err hide"><em>账号或密码错误，请重新输入</em><i class="icon-warn"></i></span>
+                </p>
+                <div>
+                	<center>
+		            <img src="{:captcha_src()}" alt="captcha" class="admin-login-captcha-img captcha_change" id="captcha_img"/>
+		            </center>
+		        </div>
+		        <br/>
+                 <div class="row">
+			        <div class="col-xs-8" id="yzm">
+			          <input type="text" name="verify" class="form-control verify" placeholder="请输入您的验证码">
+			          <span class="glyphicon glyphicon-open form-control-feedback admin-login-captcha-input-icon" style="padding-top: 11px;"></span>
+			        </div>
+			        <!-- /.col -->
+			        <div class="col-xs-4" style="width: 26%;padding-top: 11px;">
+			          <button type="button" class="btn btn-primary btn-block btn-flat captcha_change">换一张</button>
+			        </div>
+			        <!-- /.col -->
+			      </div>
+            </div>
+            <!--<div class="form2 hide">
+                <p class="p-input pos">
+                    <label for="num2">手机号</label>
+                    <input type="number" id="num2">
+                    <span class="tel-warn num2-err hide"><em>账号或密码错误</em><i class="icon-warn"></i></span>
+                </p>
+                <p class="p-input pos">
+                    <label for="veri-code">输入验证码</label>
+                    <input type="number" id="veri-code">
+                    <a href="javascript:;" class="send">发送验证码</a>
+                    <span class="time hide"><em>120</em>s</span>
+                    <span class="tel-warn error hide">验证码错误</span>
+                </p>
+            </div>-->
+            <!--<div class="r-forget cl">
+                <a href="./reg.html" class="z">账号注册</a>
+                <a href="./getpass.html" class="y">忘记密码</a>
+            </div>-->
+            <button  type="submit" class="lang-btn off log-btn login-submit-button" data-style="slide-up">登录</button>
+            </form>
+            <!--<div class="third-party">
+                <a href="#" class="log-qq icon-qq-round"></a>
+                <a href="#" class="log-qq icon-weixin"></a>
+                <a href="#" class="log-qq icon-sina1"></a>
+            </div>-->
+            <!--<p class="right">Powered by © 2018</p>-->
+        </div>
+    </div>
+</div>
+<!-- /.login-box -->
+{include file="layout/bottom"/}

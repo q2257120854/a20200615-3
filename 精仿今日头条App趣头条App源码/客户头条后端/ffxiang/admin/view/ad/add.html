@@ -1,0 +1,133 @@
+ {include file="public/header" /}
+ {load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".i-checks").iCheck({
+        checkboxClass: "icheckbox_square-green",
+        radioClass: "iradio_square-green",
+    })
+});
+</script>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content">
+    <div class="row">
+        <form class="form-horizontal" method="post">
+            <div class="col-md-12">
+                {include file="public/tophead"}
+                {include file="public/top" /}
+                <div class="ibox-content">
+                {include file="public/topsection"}
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">标题：</label>
+                        <div class="col-sm-9">
+                            <input name="title" type="text" class="form-control" value="{present name="name"}{$name.title}{/present}">
+                            <span class="help-block m-b-none">下载任务 请在标题处填写app名称,图片处上传app logo,标识填写app包名,来源填写app描述, 链接填写下载地址</span>
+						</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">图片：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input name="image" type="text"  id="image" class="form-control" value="{present name="name"}{$name.image}{/present}">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary" id="tubiao">上传图片</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+					
+					
+					
+					 <div class="form-group" id="videoasd">
+                                    <label class="col-sm-2 control-label">视频地址：</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input name="video" type="text"  id="videoval" class="form-control" value="{present name="name"}{$name.video}{/present}">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-primary" id="video">上传视频</button>
+                                            </span>
+                                        </div>
+										<span class="help-block m-b-none">小视频广告有效</span>
+                                    </div>
+                                </div>
+					
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">标识：</label>
+                        <div class="col-sm-9">
+                            <input name="ad" type="text" class="form-control" value="{present name="name"}{$name.ad}{/present}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">来源：</label>
+                        <div class="col-sm-9">
+                            <input name="source" type="text" class="form-control" value="{present name="name"}{$name.source}{/present}">
+                        </div>
+                    </div>
+					 <div class="form-group">
+                        <label class="col-sm-2 control-label">位置：</label>
+                        <div class="col-sm-9">
+                            <input name="position" type="text" class="form-control" value="{present name="name"}{$name.position}{/present}">
+                            <span class="help-block m-b-none">同时出现多个位置请用 英文 "," 逗号隔开，如news,n_detial</span>
+							<span class="help-block m-b-none">新闻列表 news ,新闻详情 n_detial ,新闻详情推荐位 n_tuijian ,视频列表 video ,视频详情 v_detial,视频详情推荐位 v_tuijian ,微头条 weitoutiao ,新微头条详情 w_detial ,贴吧 tieba ,贴吧详情 t_detial ,下载任务 download ,点击任务 clickad ,小视频广告 xiaoshipin</span>
+						</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">链接：</label>
+                        <div class="col-sm-9">
+                            <input name="url" type="text" class="form-control" value="{present name="name"}{$name.url}{/present}">
+                        </div>
+                    </div>
+					 <div class="form-group">
+                        <label class="col-sm-2 control-label">奖励金币：</label>
+                        <div class="col-sm-9">
+                            <input name="jingbi" type="text" class="form-control" value="{present name="name"}{$name.jingbi}{/present}">
+							<span class="help-block m-b-none">填写范围1-100</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">是否显示：</label>
+                        <div class="col-sm-9">
+                            <div class="radio i-checks">
+                                <label>
+                                    <input type="radio" value="1" name="hide" {present name="name"}{eq name="name.hide" value="1"}checked{/eq}{else /}checked{/present}>显示
+                                </label>
+                                <label>
+                                    <input type="radio" value="0" name="hide" {present name="name"}{eq name="name.hide" value="0"}checked{/eq}{/present}>隐藏
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </form>
+    </div>
+</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+function msg(){
+    layer.msg("上传成功")
+}
+$("#video").click(function(){
+    //  layer.msg('演示站无权操作！')
+    // return;
+    layer.open({
+      type: 2,
+      title: '上传视频',
+      shadeClose: true,
+      shade: 0.2,
+      area: ['70%', '60%'],
+      skin:'shangchuantup',
+      content: '{:url("index/videoUploads")}',
+      shift:-1,
+      scrollbar: false,
+      moveType: 1,
+      moveOut: true
+    }); 
+})
+</script>
+{include file="public/bottom" /}
+{:ueditor()}
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

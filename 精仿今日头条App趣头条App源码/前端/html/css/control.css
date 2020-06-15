@@ -1,0 +1,131 @@
+/*
+// +----------------------------------------------------------------------
+// | 源码来自锦尚中国源码论坛，仅供学习研究
+// +----------------------------------------------------------------------
+// | 新闻资讯APP系统 V1.0版
+// +----------------------------------------------------------------------
+// | 锦尚中国
+// +----------------------------------------------------------------------
+// | 请务必尊重知识产权 严格保证不恶意传播产品源码、不得直接对产品本身
+// | 进行二次转售或倒卖、不得对产品进行简单包装后声称为自己的产品等。
+// | 否则我们有权利收回产品，并根据事态轻重追究相应法律责任。
+// +----------------------------------------------------------------------
+// | Copyright (c) 2018-2019 http://www.baidu.com/ All rights reserved.
+// +----------------------------------------------------------------------
+*/body{
+	background-color:rgba(0,0,0,0.5) !important;
+	color:#fff; 
+}
+.click{
+	background-color:rgba(0,0,0,0) !important;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: 99;
+}
+.fx-shu .fx-left img{
+	width: 2.5rem;
+	position: fixed;
+	z-index: 100;
+	top: 0rem;
+	left: 0rem;
+}
+.fx-shu .fx-botton{
+	position: fixed;
+	z-index: 100;
+	bottom: 0.5rem;
+	width: 100%;
+	font-size: 0.6rem;
+}
+.fx-shu .fx-botton div.aui-pull-left{
+	padding-left: 0.75rem;
+}
+.fx-shu .fx-botton div.aui-pull-right{
+	padding-right: 2.2rem
+}
+.fx-shu .fx-botton span{
+	padding-right: 0.75rem
+}
+.fx-shu .fx-botton img{
+	width:2.5rem;
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+}
+.fx-shu i.fx-video-bofang{
+	position: absolute;
+	background:url("../image/video-zanting.png");
+	background-size:100%;
+	height: 40px;
+	width: 40px;
+	top:50%;          
+    left:50%;
+    margin-left: -20px;
+    margin-top: -20px;
+    z-index: 100;
+}
+.fx-shu i.fx-video-zanting{
+	background:url("../image/video-bofang.png");
+	background-size:100%;
+}
+
+/*横*/
+
+.fx-heng .fx-left img{
+	width: 2.5rem;
+	position: fixed;
+	z-index: 100;
+	top: 0rem;
+	right:0rem;
+}
+.fx-heng #current{
+	position: fixed;
+	z-index: 100;
+	top: 0.75rem;
+	left: 0.5rem;
+	font-size: 0.6rem;
+}
+.fx-heng #qq {
+	position: fixed;
+	z-index: 100;
+	bottom: 2.2rem;
+	left: 0.5rem;
+	font-size: 0.6rem
+}
+.fx-heng #current,.fx-heng #qq span{
+	writing-mode: tb-rl;
+}
+.fx-heng #qq img{
+	width:2.5rem;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	padding-bottom: 0.6rem
+}
+.fx-heng i.fx-video-bofang{
+	position: absolute;
+	background:url("../image/video-zanting-heng.png");
+	background-size:100%;
+	height: 40px;
+	width: 40px;
+	top:50%;          
+    left:50%;
+    margin-left: -20px;
+    margin-top: -20px;
+    z-index: 100;
+}
+.fx-heng i.fx-video-zanting{
+	background:url("../image/video-bofang-heng.png");
+	background-size:100%;
+}
+.fx-jindu{
+	background: #D43D3D;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	height: 0.15rem;
+	transition: width 0.5s;
+	-moz-transition: width 0.5s; /* Firefox 4 */
+	-webkit-transition: width 0.5s; /* Safari 和 Chrome */
+	-o-transition: width 0.5s; /* Opera */
+}

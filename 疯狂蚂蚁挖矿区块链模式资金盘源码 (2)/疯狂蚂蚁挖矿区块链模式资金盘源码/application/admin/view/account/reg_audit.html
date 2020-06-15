@@ -1,0 +1,40 @@
+{extend name="common/world"}
+{block name="title"}审核列表{/block}
+{block name="style"}{/block}
+{block name="container"}
+<div class="card">
+	<div class="table-responsive">
+	    <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+	        <thead>
+	            <tr>
+	                <th>账号</th>
+	                <th>状态</th>
+	                <th>时间</th>
+	                <th class="text-center">操作</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	        	{volist name="users" id="user"}
+	            <tr>
+	                <td>{$user.username}</td>
+	                <td>
+	                	{switch $user.status}
+	                		{case 1}<span class="status-icon bg-success"></span>已通过{/case}
+	                		{default /}
+	                                <span class="status-icon bg-warning"></span>待审核
+	                    {/switch}
+	                </td>
+	                <td>{$user.create_at}</td>
+	                <td class="text-center">
+	                	<a href="?action=ok&username={$user.username}" class="btn btn-primary btn-sm">通过</a>
+	                	<a href="?action=no&username={$user.username}" class="btn btn-danger btn-sm">拒绝</a>
+	                </td>
+	            </tr>
+	            {/volist}
+	        </tbody>
+	    </table>
+	</div>
+	<div class="card-footer">{$users|raw}</div>
+</div>
+{/block}
+{block name="script"}{/block}

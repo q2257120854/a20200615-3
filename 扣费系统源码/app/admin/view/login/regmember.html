@@ -1,0 +1,65 @@
+{include file="layout/top"/}
+<body class="hold-transition login-page admin-login-body-background">
+    
+<!--<script src="__STATIC__/module/admin/ext/background/login_background.js"></script>-->
+
+<!--<canvas></canvas>-->
+
+<div id="ajax-hook"></div>
+    <div class="wrap">
+        <div class="wpn">
+            <div class="form-data pos">
+                <a href=""><img src="__STATIC__/module/admin/img/logo.png" class="head-logo"></a>
+                <!--<p class="tel-warn hide"><i class="icon-warn"></i></p>-->
+                
+              <form action="{:url('regHandle')}" method="post" class="admin-login-form">
+                    <p class="p-input pos">
+                        <input type="text" name="username" class="form-control" placeholder="请输入注册用户名">
+                        <span class="tel-warn tel-err hide"><em></em><i class="icon-warn"></i></span>
+                    </p>
+                    
+                    <p class="p-input pos" id="pwd">
+                        <input type="password" name="password" class="form-control" placeholder="请输入注册密码">
+                        <span class="tel-warn pwd-err hide"><em></em><i class="icon-warn" style="margin-left: 5px"></i></span>
+                    </p>
+                    <p class="p-input pos" id="confirmpwd">
+                        <input type="password" name="repassword" class="form-control" placeholder="请再次输入密码">
+                        <span class="tel-warn confirmpwd-err hide"><em></em><i class="icon-warn" style="margin-left: 5px"></i></span>
+                    </p>
+               			<div>
+               				<center>
+						            <img src="{:captcha_src()}" alt="captcha" class="admin-login-captcha-img captcha_change" id="captcha_img"/>
+						            </center>
+						        </div>
+						        <br/>
+						      <div class="row">
+						        <div class="col-xs-8" id="yzm">
+						          <input type="text" name="verify" class="form-control verify" placeholder="请输入您的验证码">
+						          <span class="glyphicon glyphicon-open form-control-feedback admin-login-captcha-input-icon" style="padding-top: 11px;"></span>
+						        </div>
+						        <!-- /.col -->
+						        <div class="col-xs-4" style="width: 26%;padding-top: 11px;">
+						          <button type="button" class="btn btn-primary btn-block btn-flat captcha_change">换一张</button>
+						        </div>
+						        <!-- /.col -->
+						      </div>
+                <!--<div class="reg_checkboxline pos">
+                    <span class="z"><i class="icon-ok-sign boxcol" nullmsg="请同意!"></i></span>
+                    <input type="hidden" name="agree" value="1">
+                    <div class="Validform_checktip"></div>
+                    <p>我已阅读并接受 <a href="#" target="_brack">《XXXX协议说明》</a></p>
+                </div>-->
+                <button class="lang-btn login-submit-button" data-style="slide-up">注册</button>
+                </form>
+                <div class="bottom-info">已有账号，<a href="./login.html">马上登录</a></div>
+                <!--<div class="third-party">
+                    <a href="#" class="log-qq icon-qq-round"></a>
+                    <a href="#" class="log-qq icon-weixin"></a>
+                    <a href="#" class="log-qq icon-sina1"></a>
+                </div>
+                <p class="right">Powered by © 2018</p>-->
+            </div>
+        </div>
+    </div>
+<!-- /.login-box -->
+{include file="layout/bottom"/}

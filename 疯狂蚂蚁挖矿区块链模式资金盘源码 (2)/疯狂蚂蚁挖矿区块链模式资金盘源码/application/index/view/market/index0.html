@@ -1,0 +1,122 @@
+{extend name="common/world0"}
+{block name="title"}交易市场{/block}
+{block name="style"}
+<style>
+.btn-toggle-form {
+     position: absolute;
+    right: .3rem;
+    top: 0rem;
+    z-index: 1;
+}
+</style>
+{/block}
+{block name="container"}
+<!-- <div class="position-relative">
+    <a class="btn btn-secondary btn-toggle-form btn-sm" data-toggle="card-collapse" data-target="card-form">一键挂单</a>
+</div> -->
+<div id="market" class="mb-3" style="height: 10rem;"></div>
+<div class="card card-form">
+    <div class="card-body p-3">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6">
+                <div class="form-group">
+                    <label class="form-label">数量</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="{$config.buy.number.min} - {$config.buy.number.max}" name="number" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <div class="form-group">
+                    <label class="form-label">单价</label>
+                    <div class="input-group">
+                        <span class="input-group-prepend">
+                            <span class="input-group-text">$</span>
+                        </span>
+                        <input type="text" class="form-control" placeholder="0" name="price" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex">
+            <label hidden class="custom-switch m-0 mr-2">
+                <input type="checkbox" value="1" class="custom-switch-input trade-switch" checked />
+                <span class="custom-switch-indicator"></span>
+                <span class="ml-2 trade-switch-label">我要买入</span>
+            </label>
+            <div>
+                <button type="button" class="btn btn-secondary btn-submit mr-2" data-option="sell">我要卖出</button>
+            </div>
+            <div class="ml-auto text-right">
+                <button type="button" class="btn btn-primary btn-submit" data-option="buy">我要买入</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        <div class="card-title f1">订单列表</div>
+        <div class="card-options">
+            <div class="selectgroup selectgroup-pills list-switch">
+                <label class="selectgroup-item mb-0">
+                    <input type="radio" name="option" value="1" class="selectgroup-input" checked="true" />
+                    <span class="selectgroup-button selectgroup-button-sm">买入</span>
+                </label>
+                <label class="selectgroup-item mb-0">
+                    <input type="radio" name="option" value="2" class="selectgroup-input" />
+                    <span class="selectgroup-button selectgroup-button-sm">卖出</span>
+                </label>
+                <label class="selectgroup-item mb-0">
+                    <input type="radio" name="option" value="3" class="selectgroup-input" />
+                    <span class="selectgroup-button selectgroup-button-sm">我的</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table card-table table-striped table-vcenter">
+            <thead>
+                <tr>
+                    <th width="20%">用户</th>
+                    <th width="20%" class="text-right">数量</th>
+                    <th width="20%" class="text-right">单价</th>
+                  	<th width="20%" class="text-right">总($)</th>
+                  	<th width="20%" class="text-right">总(￥)</th>                  	
+                    <th width="20%" class="text-right pr-4">操作</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div hidden class="card-footer card-more">
+        <div class="text-muted text-center">点击加载更多</div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document" style="margin-top: -10%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">安全验证</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-danger text-center mb-2">手续费 <span class="charge">0</span>{$Think.config.hello.unit}</div>
+                <div class="input-group">
+                    <input type="password" name="safeword" class="form-control" placeholder="请输入安全密码" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary btn-confirm">确认提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script>
+var charge = parseFloat('{$config.charge}', 10);
+</script>
+<script type="text/javascript" src="/static/js/market.js?2"></script>
+{/block}

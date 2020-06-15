@@ -1,0 +1,25 @@
+<graceHeader background="{{mainColor}}" height="50" zIndex="9999999">
+    <view class="grace-header-body">生活</view>
+</graceHeader>
+<gracePage customHeader="{{false}}">
+    <view class="grace-body" id="gBody" slot="gBody">
+        <view bindtap="openWeather" class="grace-news-list">
+            <view class="big-img">
+                <image class="big-image" src="../../static/images/tool_1.jpg"></image>
+            </view>
+            <text class="grace-news-title">语音天气预报，天气早知道</text>
+        </view>
+        <view bindtap="openCalander" class="grace-news-list">
+            <view class="big-img">
+                <image class="big-image" src="../../static/images/tool_2.jpg"></image>
+            </view>
+            <text class="grace-news-title">超级万年历，今天适合做什么</text>
+        </view>
+        <view bindtap="openEight" class="grace-news-list">
+            <view class="big-img">
+                <image class="big-image" src="../../static/images/tool_3.jpg"></image>
+            </view>
+            <text class="grace-news-title">免费精批八字，解读命理人生</text>
+        </view>
+    </view>
+</gracePage>

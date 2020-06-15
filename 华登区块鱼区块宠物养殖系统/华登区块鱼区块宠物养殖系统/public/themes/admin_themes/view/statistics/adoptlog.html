@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>vaeThink</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="__ADMIN__/lib/layui/css/layui.css"  media="all">
+</head>
+<body class="vae-body">
+
+<div class="vae-content">
+    <form class="layui-form" style="display: inline;">
+        <input type="text" name="keywords" required  lay-verify="required" placeholder="ID/会员" class="layui-input" autocomplete="off" style="max-width: 400px;display: inline;margin: -10px 10px 0 0;height: 30px;" />
+        <button class="layui-btn layui-btn-sm layui-btn-danger" lay-submit="" lay-filter="vaeform">提交搜索</button>
+    </form>
+
+{if $product_cateid}
+  <div class="layui-table-tool" style="margin: 10px 0;padding: 10px 0px 10px 0px;min-height:30px">
+   <div class="layui-table-tool-temp" style="margin-left: 15px"> 
+    <div class="layui-btn-container"> 
+     <a class="layui-btn layui-btn-primary layui-btn-sm" href="javascript:history.back(-1)">&lt; 返回区块鱼品种</a> 
+     <a class="timetitle" style="font-size: 12px;margin-right: 5px">
+      {if $type}
+      捕捞开始倒计时
+      {else}
+      分配捕捞倒计时
+      {/if}
+     </a>
+     <a class="downtime" style="font-size: 12px;color: #ef0909"></a> 
+    </div> 
+   </div>
+
+  </div>
+{/if}
+    <table class="layui-hide" id="test" lay-filter="test"></table>
+
+    <!-- <table class="layui-table" lay-data="{height:667, url:'/admin/statistics/getAdoptlogList', page:true, id:'test'}" lay-filter="test">
+  <thead>
+    <tr>
+      <th lay-data="{field: 'id', sort: true, fixed: 'left', align:'center', width:80}">ID</th>
+      <th lay-data="{field: 'account', align:'center'}">会员</th>
+      <th lay-data="{field: 'catename', align:'center'}">品种</th>
+      <th lay-data="{field: 'integral', align:'center'}">捕捞鱼饵</th>
+      <th lay-data="{field: 'createtime', sort: true, align:'center'}">提交时间</th>
+      <th lay-data="{field: 'isappo', toolbar: '#isappo', align:'center', width:100}">是否预约</th>
+      <th lay-data="{field: 'status', toolbar: '#status', align:'center', width:100}">捕捞状态</th>
+      <th lay-data="{field: 'right', toolbar: '#barDemo', width:150, align:'center'}">操作</th>
+    </tr>
+  </thead>
+</table> -->
+    
+</div>
+<script type="text/html" id="isappo">
+    <input type="checkbox" name="isappo" value="{{d.id}}" disabled="" lay-skin="switch" lay-text="是|否"  {{ d.isappo == 1 ? 'checked' : '' }} >
+</script>
+
+<script type="text/html" id="status">
+    {{#  if(d.status == 1){ }}
+    捕捞中
+    {{#  } else if(d.status == 2){ }}
+    <span style="color: #009688">捕捞成功</span>
+    {{#  } else { }}
+    <span style="color: #FF5722">捕捞失败</span>
+    {{#  } }}
+</script>
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+    </div>
+
+</script> 
+<script type="text/html" id="barDemo">
+    {{#  if(d.status == 1){ }}
+    <a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="adopt">捕捞</a>
+    {{#  } }}
+</script>
+              
+<script src="__ADMIN__/lib/layui/layui.js" charset="utf-8"></script>
+ 
+<script>
+layui.config({
+    base: '/themes/admin_themes/module/'
+}).use(['table','vaeyo','form'], function(){
+    var table = layui.table
+    ,vae = layui.vaeyo
+    ,$ = layui.$
+    ,vae = layui.vaeyo
+    ,util = layui.util
+    ,form = layui.form;
+var limitrow = 15;
+var toolbar = '#toolbarDemo';
+{if $product_cateid}
+var limitrow = 200;
+var toolbar = false;
+{/if}
+
+function ajaxAdoptlogList() {
+  {if $product_cateid}
+     var tableData=new Array(); // 用于存放表格数据
+     $.ajax({
+          url: '/admin/statistics/getAdoptlogList?product_cateid={$product_cateid}&limit='+limitrow
+          ,type:"get"
+          ,async:false
+          ,dataType:"json"
+          , success: function(result){
+              tableData=result.data;
+          }
+     });
+
+          var tableIns = table.render({
+          elem: '#test'
+          ,toolbar: toolbar
+          ,data: tableData
+          //,url: '/admin/statistics/getAdoptlogList?product_cateid={$product_cateid}' //数据接口
+          ,page: true //开启分页
+          ,limit: limitrow
+          ,cols: [[ //表头
+            {field: 'id', title: 'ID', sort: true, fixed: 'left', align:'center', width:80}
+            ,{field: 'account', title:'会员', align:'center'}
+            ,{field: 'realname', title:'真实姓名', align:'center'}
+            ,{field: 'catename', title:'品种', align:'center'}
+            ,{field: 'integral', title:'捕捞鱼饵', align:'center'}
+            ,{field: 'createtime', title: '提交时间', sort: true, align:'center'}
+            ,{field: 'isappo', title:'是否预约', toolbar: '#isappo', align:'center', width:100}
+            ,{field: 'status', title:'捕捞状态', toolbar: '#status', align:'center', width:100}
+            ,{field: 'right', title:'操作', toolbar: '#barDemo', width:150, align:'center'}
+          ]]
+        });
+        {else}
+      var tableIns = table.render({
+          elem: '#test'
+          ,toolbar: toolbar
+          ,url: '/admin/statistics/getAdoptlogList' //数据接口
+          ,page: true //开启分页
+          ,limit: limitrow
+          ,cols: [[ //表头
+            {field: 'id', title: 'ID', sort: true, fixed: 'left', align:'center', width:80}
+            ,{field: 'account', title:'会员', align:'center'}
+            ,{field: 'realname', title:'真实姓名', align:'center'}
+            ,{field: 'catename', title:'品种', align:'center'}
+            ,{field: 'integral', title:'捕捞鱼饵', align:'center'}
+            ,{field: 'createtime', title: '提交时间', sort: true, align:'center'}
+            ,{field: 'isappo', title:'是否预约', toolbar: '#isappo', align:'center', width:100}
+            ,{field: 'status', title:'捕捞状态', toolbar: '#status', align:'center', width:100}
+            ,{field: 'right', title:'操作', toolbar: '#barDemo', width:150, align:'center'}
+          ]]
+        });
+
+        {/if}
+}
+ajaxAdoptlogList();
+
+{if $product_cateid}
+setInterval(function(){
+    ajaxAdoptlogList();
+},3000);
+
+{/if}
+  
+  //监听行工具事件
+  table.on('tool(test)', function(obj){
+    var data = obj.data;
+    
+    //捕捞
+    if(obj.event === 'adopt'){
+        $.ajax({
+          url:"/admin/statistics/adopt",
+          data:{id:data.id},
+          success:function(res){
+            layer.msg(res.msg);
+            if(res.code==1){
+              setInterval(function(){
+                  window.location.reload(); 
+              }, 2000)
+                
+            }
+          }
+        })
+
+
+    }
+
+  });
+
+    //倒计时
+  var thisTimer, setCountdown = function(endTime, type){
+    //var endTime = new Date(y, M||0, d||1, H||0, m||0, s||0); //结束日期
+    var serverTime = new Date(); //假设为当前服务器时间，这里采用的是本地时间，实际使用一般是取服务端的
+    clearTimeout(thisTimer);
+    util.countdown(parseInt(endTime), serverTime, function(date, serverTime, timer){
+      var str = date[1] + '小时' +  date[2] + '分钟' + date[3] + '秒';
+      $('.downtime').html(str);
+      thisTimer = timer;
+       if(date[0]==0 && date[1]==0 && date[2]==0 && date[3]==0 && type == 1){
+          //clearTimeout(thisTimer)
+          $.ajax({
+              url: '/admin/statistics/ajaxAdoptTime?product_cateid={$product_cateid}'
+              ,type:"get"
+              ,async:false
+              ,dataType:"json"
+              , success: function(result){
+                  resData=result.data;
+                  
+                  setCountdown(resData.endTime, resData.type)
+                  
+              }
+         });
+
+       }
+
+    });
+  };
+  setCountdown('{$endTime}', '{$type}');
+
+  //监听搜索提交
+  form.on('submit(vaeform)', function(data){
+    console.log(data.field.keywords)
+    if(data.field.keywords) {
+      tableIns.reload({where:{keywords:data.field.keywords}});
+      vae.bundledTab();
+    }
+    return false;
+  });
+});
+</script>
+
+</body>
+</html>

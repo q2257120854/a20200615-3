@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<style>
+			body{
+				background:  #EEEEEE !important;
+			}
+			.aui-content{
+				background: #fff;
+			}
+			.t_0{
+				font-size: 0.75rem;
+				background: #F6603F;
+				text-align: center;
+				padding: 0.3rem 0;
+				width: 100%;
+				color: #fff;
+				 
+			}
+			.t_1{
+				border-bottom: 1px solid #e8e8e8;
+				padding-bottom: 0.75rem;
+				margin-bottom: 0.75rem;
+				overflow: hidden;
+				margin-top: 0.5rem;
+				background: url('../../image/tixian/view_1.png') no-repeat 2.4rem 0.35rem;
+				background-size: 75% 0.05rem;
+				margin-top: 1rem;
+			}
+			.t_1 div{
+				width: 25%;
+				float: left;
+				text-align: center;
+				color: #3E3E3E;
+				font-size: 0.75rem;
+				padding-top:1.5rem;
+				position: relative;
+				 
+			}
+			.t_1 div em{
+				background: #6CD58E;
+				width: 0.65rem;
+				height: 0.65rem;
+				border-radius: 50%;
+				display: block;
+				margin: 0 auto;
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+			}
+			.t_1 div.b{
+				font-weight: bold;
+				color: #333
+			}
+			.t_1 div.b em{
+				background: #278746
+			}
+			.t_1 div.c{
+				background: url('../../image/tixian/view_2.png') no-repeat 0rem 0.35rem;	
+			}
+			.t_1 div.c:last-child{
+				background: url('../../image/tixian/view_2.png') no-repeat 0rem 0.35rem;
+				background-size: 50%  0.05rem;
+			}
+			.t_1 div.c em{
+				background: #DDDDDD
+			}
+			.t_2 {
+				font-size: 0.75rem;
+				margin: 0 0.75rem;
+				padding-bottom: 1rem;
+				padding-top: 0.3rem;
+				color: #696969
+			}
+			.aui-list .aui-media-list-item-inner .aui-list-item-media img{
+				height: 4rem;
+				width: 4rem;
+			}
+			.aui-list .aui-list-item-media{
+				width: 4.5rem;
+				padding-right: 0;
+			}
+			.aui-list,.aui-list li{
+	 			border: 0 !important;
+	 			background: none !important
+	 		}
+	 		.aui-list{
+	 			background: #FAFAFA !important
+	 		}
+	 		.t_3{
+	 			margin: 0 0.75rem;
+	 			border-bottom: 1px solid #e8e8e8;
+	 			margin-bottom: 0.5rem;
+	 		}
+	 		.t_3 span{
+	 			font-size: 0.75rem;
+	 			color: #555;
+	 		}
+	 		.t_3 span:last-child{
+	 			color: #f00;
+	 		}
+	 		.t_4 p{
+	 			font-size: 0.65rem;
+	 			color: #9F9F9F;
+	 			padding: 0.15rem 0;
+	 		}
+	 		.t_4{
+	 			border-bottom: 1px solid #e8e8e8;
+	 			padding: 0 0.75rem;
+	 			padding-bottom: 0.5rem;
+	 			margin-bottom: 0.5rem;
+	 		}
+	 		.t_5{
+	 			padding: 0 0.75rem;
+	 			padding-bottom: 1rem;
+	 		}
+	 		.t_5 h5{
+				font-size: 0.85rem;
+				padding-bottom: 0.2rem;
+			}
+			.t_5 ul{
+				margin-left: 0.75rem;
+			}
+			.t_5 li{
+				font-size: 0.75rem;
+				padding-top: 0.2rem;
+				list-style-type:circle;
+				color: #9B9B9B
+			}
+		</style>
+	</head>
+	<body>
+		<script id="sx-list" type="text/x-dot-template">
+			{{? it.data==2}}
+			<div class="t_0">
+				预计{{= it.times}}到账
+				 
+			</div>
+			{{?}}
+			{{? it.data==4 || !it.data}}
+			<h5 style="color: #f00;font-size: 1rem; padding: 0.75rem;font-weight: bold;">申请失败</h5>
+			{{??}}
+			<div class="t_1">
+				<div class=""><em></em>已提交</div>
+				{{? it.data==1 }}
+				<div class=""><em></em>待审核</div>
+				<div class=""><em></em>待发货</div>
+				<div class="b"><em></em>提现成功</div>
+				{{?}}
+				{{? it.data==2 }}
+				<div class="b"><em></em>待审核</div>
+				<div class="c"><em></em>待发货</div>
+				<div class="c"><em></em>提现成功</div>
+				{{?}}
+				{{? it.data==3}}
+				<div class=""><em></em>待审核</div>
+				<div class="b"><em></em>待发货</div>
+				<div class="c"><em></em>提现成功</div>
+				{{?}}
+
+				 
+			</div>
+			{{?}}
+			<div class="t_2">
+				<i class="aui-iconfont aui-icon-my"></i> 提现账户：{{= it.user}}
+			</div>
+			<ul class="aui-list aui-media-list">
+				<li class="aui-list-item aui-list-item-middle">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media">
+							<img src="../../image/ad/6.jpg" class="">
+						</div>
+						<div class="aui-list-item-inner aui-list-item-arrow">
+							<div class="aui-list-item-text">
+								{{? it.type==1}}微信{{??}}支付宝{{?}}{{= it.money}}元
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class="t_3 aui-card-list-footer">
+				<span>零钱付款</span>
+				<span>￥{{= it.money}}</span>
+			</div>
+			<div class="t_4">
+				<p>申请时间： {{= it.time}}</p>
+				<p>付款时间： {{= it.time}}</p>
+				{{? it.data==1}}
+				<p>审核时间： {{= it.times}}</p>
+				<p>发货时间： {{= it.times}}</p>
+				{{?}}
+	 
+			</div>
+			<div class="t_5">
+				<h5>到账查询</h5>
+				<ul>
+					<li>支付宝:我的-账单</li>
+					<li>微信：我-钱包-零钱-零钱明细</li>
+				</ul>
+			</div>
+		</script>
+		<div class="aui-content" id="sx-view"><div id="jiazai"><img src="../../image/loading_more.gif" /></div></div>
+	</body>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../../script/doT.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			data();
+		}
+		function data(){
+			_ajax('api/yaoqing/tixian_view/id/'+api.pageParam['id'],function(ret,err){
+				if(ret){
+				//	console.log(JSON.stringify(ret))
+					var evalData = doT.template($api.html($api.byId('sx-list')));
+					$api.html($api.byId('sx-view'), evalData(ret));
+				}else{
+					alert(JSON.stringify(err))
+				}
+			})
+		}
+	</script>
+</html>

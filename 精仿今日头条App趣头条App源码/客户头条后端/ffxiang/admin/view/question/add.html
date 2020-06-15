@@ -1,0 +1,119 @@
+{include file="public/header" /}
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+{load href="__PLUGINS__laydate/laydate.js"}
+<!-- 加载编辑器的容器 -->
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content">
+    <div class="row">
+        <form class="form-horizontal" method="post">
+            <div class="col-sm-12">
+                <div class="tabs-container">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true">文章内容</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane active">
+                        <!-- <form class="layui-form" action=""> -->
+                            <div class="ibox-content">
+                                
+                                
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">标题：</label>
+                            <div class="col-sm-9">
+                                <input name="title" type="text" class="form-control" id='title'>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">详细内容：</label>
+                            <div class="col-sm-9">
+                             <textarea name="content" placeholder="请输入内容" class="form-control" style="height: 200px" id='content'></textarea>
+                            </div>
+                        </div>
+                                
+                               
+                               
+                                <style type="text/css">
+.meiyouuimmag{
+    margin-bottom: 20px;
+    height:284px;
+    overflow: hidden;
+}
+.meiyouuimmag div{
+    width: 100%;
+    margin-bottom: 10px;
+    overflow:hidden;
+    height: 200px
+}
+.meiyouuimmag div img{
+    width: 100%
+}
+.meiyouuimmag button{
+    position: absolute;
+    right: 15px;
+    display: block; 
+}
+#imagasdasd{
+    margin-left: 100px;
+    margin-right: 100px;
+}
+</style>
+<!-- </form>                                -->
+
+                                 
+                             
+                               
+                                
+                            </div>
+                        </div>
+                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{include file="public/footer" /}
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+    $("#button").click(function(){
+          title=$('#title').val();
+          content=$('#content').val()
+        $.post('{:url('question/add')}', {title:title,content:content }, function(res) {
+           if(res.code==1){
+                layer.msg(res.msg,function(){
+
+                });
+            }else{
+                layer.msg(res.msg, function(){});
+            }
+       }); 
+    })
+})
+</script>
+<style type="text/css">
+.tbutton{ 
+  position: fixed;
+  bottom:0px;
+  width: 100%;
+  background: #fff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid #F5EFEF;
+  z-index: 99999999999
+}
+#button{ width:120px; margin: 0 auto;}
+.wrapper-content{ margin-bottom:75px;}
+</style>
+
+<div class="tbutton">
+  <div id="button"><button class="btn btn-w-m btn-primary" type="button"><i class="fa fa-check"></i> &nbsp;提交</button></div>
+</div>
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

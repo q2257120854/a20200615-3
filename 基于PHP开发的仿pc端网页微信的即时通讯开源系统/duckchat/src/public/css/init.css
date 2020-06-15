@@ -1,0 +1,297 @@
+body,html {
+    background-color: #f4f4f4;
+    height: 100%;
+    font-size: 10.66px;
+    padding:0;
+    margin:0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.zaly_container {
+    padding:0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../img/login_bg.png");
+}
+.zaly_login{
+    width:75.05rem;
+    background:rgba(255,255,255,1);
+    /*box-shadow:0rem 0.83rem 1.25rem 0.42rem rgba(74,56,180,1);*/
+    border-radius:0.83rem;
+    position:relative;
+    overflow: hidden;
+    font-size: 1.3rem;
+    text-align: left;
+}
+.initHeader{
+    text-align: center;
+    margin-top: 5rem;
+    font-size:2.25rem;
+    height: 2.25rem;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:rgba(76,59,177,1);
+}
+
+.initHeader-title {
+    font-size:1.5rem;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:rgba(20,16,48,1);
+    margin-left:23rem;
+    margin-top: 2rem;
+    height:1.5rem;
+}
+.initHeader-setting {
+    font-size:1.5rem;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:rgba(20,16,48,1);
+    margin-left: 23rem;
+    margin-top: 3rem;
+    height:1.5rem;
+}
+
+.initHeader-sql {
+    margin-left: 23rem;
+    margin-top: 2rem;
+    height:1.31rem;
+    display: flex;
+    width: 28.14rem;
+}
+
+.initHeader-uic {
+    margin-left: 23rem;
+    margin-top: 2rem;
+    height:1.31rem;
+    display: flex;
+    width: 28.14rem;
+    display: flex;
+    outline: none;
+}
+
+.initHeader-uic span{
+    width: 6rem;
+    font-size:1.31rem;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(102,102,102,1);
+    line-height:1.31rem;
+}
+
+.initHeader-sql .radioDiv {
+    margin-right:4rem;
+    cursor: pointer;
+}
+
+.mysql-div{
+    display: none;
+}
+
+.sqlite-div {
+    margin-left: 23rem;
+    margin-top: 1rem;
+}
+#sqlite-file {
+    width:21.95rem;
+    height:2.25rem;
+    border-radius:0.38rem;
+    border:0.09rem solid rgba(229,229,229,1);
+    cursor: pointer;
+}
+
+.radio {
+    cursor: pointer;
+}
+
+.radioImg {
+    width:1rem;
+    height:1rem;
+}
+
+.sql-input {
+    width:28.14rem;
+    height:2.25rem;
+    border-radius:0.38rem;
+    border:0.09rem solid rgba(229,229,229,1);
+    outline: none;
+    margin-left: 23rem;
+    margin-top: 1rem;
+    color:rgba(20,16,48,1);
+}
+
+.uic-input {
+    width:28.14rem;
+    height:2.25rem;
+    border-radius:0.38rem;
+    border:0.09rem solid rgba(229,229,229,1);
+    outline: none;
+}
+
+.uic-input::-webkit-input-placeholder,
+.sql-input::-webkit-input-placeholder {
+    color:rgba(201,201,201,1);
+}
+.uic-input:focus,
+.sql-input:focus {
+    border:0.09rem solid rgba(76,59,177,1);
+}
+
+#verifyPluginId {
+    width:12.2rem;
+    height:2.25rem;
+    color:rgba(51,51,51,1);
+    border-radius:0.28rem;
+    outline: none;
+    cursor: pointer;
+}
+#verifyPluginId option {
+    cursor: pointer;
+}
+
+.init_check{
+    margin-left: 23rem;
+    font-size:1.31rem;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(102,102,102,1);
+}
+
+.init_check_info {
+    display: flex;
+    justify-content: space-between;
+    margin-top:1rem;
+    height:1.5rem;
+}
+
+.init_check_result {
+    width:1.3rem;
+    height:1.3rem;
+    display: flex;
+    margin-right: 23rem;
+}
+.init_check_result img {
+    width: 1.3rem;
+    height: 1.3rem;
+}
+.errorInfo {
+    width:28.14rem;
+    margin-left: 23rem;
+    font-size:1.13rem;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(244,67,54,1);
+}
+
+.login_button {
+    width:28.14rem;
+    height:4.69rem;
+    background:rgba(76,59,177,1);
+    border:0.09rem solid rgba(229,229,229,1);
+    border-radius:0.66rem;
+    color: white;
+    font-size:1.88rem;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    cursor: pointer;
+    outline: none;
+    margin-top: 2rem;
+}
+.margin-top3 {
+    margin-top: 3rem;
+}
+.login_button:focus,
+.login_button:active {
+    outline: none;
+}
+.choose_login_type {
+    margin-right: 32rem;
+}
+
+.mysql-setting {
+    display: flex;
+    position:relative;
+}
+
+.failed_img {
+    position: absolute;
+    left:49rem;
+    top:1.5rem;
+    display: none;
+}
+@media (max-width: 500px) {
+    body,html {
+        background-color: #f4f4f4;
+        height: 100%;
+        font-size: 10.66px;
+        padding:0;
+        margin:0;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .zaly_container {
+        padding:0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .zaly_login{
+        width:100%;
+        height: 100%;
+        background:rgba(255,255,255,1);
+        border-radius:0rem;
+        position:relative;
+        overflow: hidden;
+        font-size: 1.3rem;
+        text-align: left;
+    }
+
+    .initHeader{
+        text-align: center;
+        margin-top: 5rem;
+        font-size:2.25rem;
+        font-family:PingFangSC-Medium;
+        font-weight:500;
+        color:rgba(76,59,177,1);
+    }
+
+
+    .initHeader-title,
+    .initHeader-setting,
+    .initHeader-sql,
+    .initHeader-uic,
+    initHeader-uic span,
+    .sql-input,
+    .sqlite-div {
+        margin-left: 3rem;
+    }
+    .initHeader-title {
+        margin-top: 4rem;
+    }
+
+    .init_check {
+        margin-left: 3rem;
+        font-size: 1.31rem;
+        font-family: PingFangSC-Regular;
+        font-weight: 400;
+    }
+
+    .init_check_result {
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        margin-right: 3rem;
+    }
+    .initHeader-setting {
+        margin-top: 2rem;
+    }
+    .choose_login_type {
+        margin-right: 12rem;
+    }
+    .initHeader {
+        display: none;
+    }
+}

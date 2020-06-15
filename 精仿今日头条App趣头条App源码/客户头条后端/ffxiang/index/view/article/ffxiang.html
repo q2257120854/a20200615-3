@@ -1,0 +1,263 @@
+{include file="article/top" /}
+<link href="__CSS__index.css" rel="stylesheet" type="text/css">
+</head>
+<body class="page-index">
+{include file="article/header" /}
+<div class="main index-main">
+  <div class="aside">
+    <div class="widget-box widget-imedia-article-box">
+      <div class="widget widget-imedia-article">
+        <script id="fx-list-imedia" type="text/x-dot-template">
+          {{ for(var i=0,len=it.length; i < len; i++) { }}
+          <a class="doc style-small-image style-content-middle item-{{= i }} " href="{{= it[i].url }}" target="_blank">
+            <div class="doc-image-small-wrapper">
+              <img class="doc-image-small" src="{:_imgUrl()}{{= it[i].user.img }}">
+            </div>
+            <div class="doc-content">
+              <div class="doc-content-inline">
+                <div class="doc-title">{{= it[i].title }}</div>
+                <div class="doc-info">
+                  <div class="source">{{= it[i].user.username }}</div>
+                  <div class="date">{{= it[i].create_time }}</div>
+                </div>
+              </div>
+            </div>
+          </a> 
+          {{ } }}
+        </script>
+        <div class="content news-list" id="fx-view-imedia">加载中...</div>
+      </div>
+    </div>
+    <div class="widget-box widget-hot-article-box">
+      <div class="widget widget-hot-article"> 
+        <h4>热文排行</h4>
+          <div class="content news-list" id="fx-view-hot">
+          <?php $where['hide']=1;
+        $where['uid']=['<>',0];
+        $where['pingNum']=['<>',0];
+        $where['click']=['<>',0];
+        $time=date('Y-m-d' , strtotime("-2 day"));
+        $where['weitoutiao']=0;
+        $where['update_time']=['>= time',$time]; $data=db('article')->field('id,title')->where($where)->limit(8)->order('rand()')->select();$k=1;?>
+            {volist name="data" id="v"}
+            <a class="doc item-{$k} " href="{:url('article/view',['id'=>$v['id']])}" target="_blank">
+              <div class="index iconfont icon-{$k}"></div>
+              <div class="doc-title">{$v.title}</div>
+            </a>
+            <?php $k++; ?>
+            {/volist}
+        </div>
+      </div>
+    </div>
+    <div class="widget-box widget-hot-video-box"></div>
+    <div class="widget-box widget-about-yidian-box">
+      <div class="widget widget-about-yidian">
+        <h4>关于头条</h4>
+        <div class="content">
+          <div class="links">
+            <a class="item about-us" href="{:url('article/page',['id'=>1])}">
+              <div class="iconfont icon-yidian"></div>
+              <p>关于我们</p>
+            </a>
+            <a class="item yd-hao" href="#">
+              <div class="iconfont icon-ydhao"></div>
+              <p>头条号</p>
+            </a>
+            <a class="item join-yd" href="#">
+              <div class="iconfont icon-jiaruwomen"></div>  
+              <p>加入头条</p>
+            </a>
+          </div>
+          <div class="official-info">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style type="text/css">
+  .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #000;
+        
+    }
+    .swiper-slide img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      -ms-transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+    }
+    .fx-search{
+      color: #f00;
+    }
+  </style>
+  <div class="slide">
+  <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            {volist name="slide" id="v"}
+            <div class="swiper-slide">
+                <a  href="{$v.url}" target="_blank">
+                <img data-src="{$imgUrl}{$v.img}" class="swiper-lazy">
+                <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                </a>
+            </div>
+            {/volist}
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination swiper-pagination-white"></div>
+        <!-- Navigation -->
+        <div class="swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+    </div>
+  </div>
+  <div class="channel-news" id="fx-view"></div>
+  <script id="fx-list" type="text/x-dot-template">
+    {{ for(var i=0,len=it.data.length; i < len; i++) { }}
+    {{? it.data[i].mychannel == 1}}
+    {{? it.data[i].image}}
+    <a class="item doc style-small-image style-content-middle" href="{{= it.data[i].url }}" target="_blank">
+      <div class="doc-image-small-wrapper">
+        <div class="doc-image-box">
+          <img class="doc-image doc-image-small" src="{{= it.data[i].image }}">
+        </div>
+      </div>
+      <div class="doc-content">
+        <div class="doc-content-inline">
+          <div class="doc-title">{{= it.data[i].title }}</div>
+          <div class="doc-info">
+            {{? it.data[i].uid }}
+            <img class="source-profile" src="{{= it.data[i].user.img }}">
+            {{?}}
+            {{? it.data[i].source }}
+            <span class="source">{{= it.data[i].source}}</span>
+            {{?? it.data[i].uid}}
+            <span class="source">{{= it.data[i].user.username}}</span>
+            {{?}}
+            <span class="comment-count">{{= it.data[i].pingNum}}评</span>
+            <span class="date">{{= it.data[i].create_time}}</span>
+          </div>
+        </div>
+      </div> 
+    </a>
+    {{??}}
+    <a class="item doc style-small-image style-content-middle" href="{{= it.data[i].url }}" target="_blank">
+      <div class="doc-content">
+        <div class="doc-content-inline">
+          <div class="doc-title">{{= it.data[i].title }}</div>
+          <div class="doc-info">
+            {{? it.data[i].uid }}
+            <img class="source-profile" src="{{= it.data[i].user.img }}">
+            {{?}}
+            {{? it.data[i].source }}
+            <span class="source">{{= it.data[i].source}}</span>
+            {{?? it.data[i].uid}}
+            <span class="source">{{= it.data[i].user.username}}</span>
+            {{?}}
+            <span class="comment-count">{{= it.data[i].pingNum}}评</span>
+            <span class="date">{{= it.data[i].create_time}}</span>
+          </div>
+        </div>
+      </div> 
+    </a>
+    {{?}}
+    {{?? it.data[i].mychannel == 2}}
+    <a class="item doc style-multi-image" href="{{= it.data[i].url }}" target="_blank">
+      <div class="doc-title">{{= it.data[i].title }}</div>
+      <div class="doc-image-multi-wrapper">
+        {{ for(var is=0,lens=4; is < lens; is++) { }}
+        <div class="doc-image-box box-{{= is}}"><img class="doc-image image-{{= is}}" src="{:_imgUrl()}{{= it.data[i].pcList[is].img}}?imageView2/1/w/161/h/108"></div>
+        {{ } }}
+      </div>
+      <div class="doc-info">
+          {{? it.data[i].uid }}
+          <img class="source-profile" src="{{= it.data[i].user.img }}">
+          {{?}}
+          {{? it.data[i].source }}
+          <span class="source">{{= it.data[i].source}}</span>
+          {{?? it.data[i].uid}}
+          <span class="source">{{= it.data[i].user.username}}</span>
+          {{?}}
+          <span class="comment-count">{{= it.data[i].pingNum}}评</span>
+          <span class="date">{{= it.data[i].create_time}}</span>
+      </div>
+    </a>
+    {{?? it.data[i].mychannel == 3}}
+    <a class="item doc style-small-image style-content-middle" href="{{= it.data[i].url }}" target="_blank">
+      <div class="doc-image-small-wrapper">
+        <div class="doc-image-box">
+          <img class="doc-image doc-image-small" src="{{= it.data[i].image }}">
+            <div class="video-time">{{? it.data[i].videodate}}{{=it.data[i].videodate}}{{??}}视频{{?}}</div>
+        </div>
+      </div>
+      <div class="doc-content">
+        <div class="doc-content-inline">
+          <div class="doc-title">{{= it.data[i].title }}</div>
+          <div class="doc-info">
+            {{? it.data[i].uid }}
+            <img class="source-profile" src="{{= it.data[i].user.img }}">
+            {{?}}
+            {{? it.data[i].source }}
+            <span class="source">{{= it.data[i].source}}</span>
+            {{?? it.data[i].uid}}
+            <span class="source">{{= it.data[i].user.username}}</span>
+            {{?}}
+            <span class="comment-count">{{= it.data[i].pingNum}}评</span>
+            <span class="date">{{= it.data[i].create_time}}</span>
+          </div>
+        </div>
+      </div>
+    </a>
+    {{?}}
+    {{ } }}
+  </script>
+</div>
+<div class="mask"></div>
+{include file="article/footer" /}
+{load href="__P__/swiper/swiper-3.4.2.min.css" /}
+{load href="__P__/swiper/swiper-3.4.2.jquery.min.js" /}
+<script type="text/javascript">
+var swiper = new Swiper('.swiper-container', {
+    autoplay: true,
+    nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev',
+    pagination: '.swiper-pagination',
+    paginationClickable: true,
+    // Disable preloading of all images
+    preloadImages: false,
+    // Enable lazy loading
+    lazyLoading: true,
+     speed:3000,
+    // delay:3000, //自动播放
+    "loop":true,
+});
+_list('{:url('api/article/pcLists',['page'=>1,'weitoutiao'=>0])}')
+_ajax('{:url('api/article/imedia',['limit'=>4])}',function(ret){
+  if(ret){
+    var evalData = doT.template($('#fx-list-imedia').html());
+    $('#fx-view-imedia').html(evalData(ret));
+  }
+})
+_ajax('{:url('api/article/hot_words')}',function(ret){
+  if(ret){
+    var evalData = doT.template($('#fx-list-suggestion').html());
+    $('#fx-view-suggestion').html(evalData(ret));
+  }
+})
+</script>
+</body>
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

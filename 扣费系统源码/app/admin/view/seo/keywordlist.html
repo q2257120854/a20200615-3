@@ -1,0 +1,659 @@
+    <div class="box">
+
+      <div class="box-header">
+
+        <div class="row">
+
+
+
+            <div class="col-sm-12">
+                <div class="box-tools search-form pull-right">
+                    <div class="input-group input-group-sm">
+
+                        <select name="search_engine" class="form-control pull-right" style="width: 150px;" >
+                            <option value="">请选择搜索引擎</option>
+                            <option value="baidupc" {eq name=":input('search_engine')" value="baidupc" } selected = "selected" {/eq} >百度</option>
+                            <option value="baidumobile" {eq name=":input('search_engine')" value="baidumobile" } selected = "selected" {/eq} >百度移动端</option>
+                            <option value="360pc" {eq name=":input('search_engine')" value="360pc" } selected = "selected" {/eq} >360</option>
+                            <option value="360mobile" {eq name=":input('search_engine')" value="360mobile" } selected = "selected" {/eq} >360移动端</option>
+                            <option value="sogoupc" {eq name=":input('search_engine')" value="sogoupc" } selected = "selected" {/eq} >搜狗</option>
+                            <option value="sogoumobile" {eq name=":input('search_engine')" value="sogoumobile" } selected = "selected" {/eq} >搜狗移动端</option>
+                            <option value="smmobile" {eq name=":input('search_engine')" value="smmobile" } selected = "selected" {/eq} >神马搜索</option>
+
+                        </select>
+
+                        <input type="text" name="search_username" style="width: 200px;" class="form-control pull-right" value="{:input('search_username')}" placeholder="输入用户名">
+
+                        <input type="text" name="search_keyword" style="width: 200px;" class="form-control pull-right" value="{:input('search_keyword')}" placeholder="输入网站关键词搜索">
+
+                        <input type="text" name="search_data" style="width: 200px;" class="form-control pull-right" value="{:input('search_data')}" placeholder="输入网站域名搜索">
+
+                        <div class="input-group-btn">
+                          <button type="button" id="search"  url="{:url('keywordlist')}" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
+                        </div>
+
+                    </div>
+               </div>
+            </div>
+            <div class="col-sm-12">
+
+                {assign name="file_id" value="$info.file_id|default='0'" /}
+                {:widget('file/index', ['name' => 'file_id', 'value' => $file_id, 'type' => 'file'])}
+                <ob_link> <button href="{:url('seo/deletekeywords')}" class="btn  btn-xs  label-danger batch_btn_update1"><i class="fa fa fa-trash"></i> 删 除</button>&nbsp;&nbsp;</ob_link>
+                <ob_link> <button href="{:url('seo/kewords_update_all')}" class="btn btn-xs batch_btn_update label-primary"><i class="fa fa-edit"></i> 批量编辑</button>&nbsp;&nbsp;</ob_link>
+                <ob_link><a class="btn btn-xs export label-inverse" url="{:url('excel')}"><i class="fa fa-download"></i> 导 出</a>&nbsp;&nbsp;</ob_link>
+                <button href="#" onclick="imports();" class="btn btn-xs label-success"><i class="fa fa-edit"></i> 批量导入</button>&nbsp;&nbsp;
+                <a href="http://seo.7mb.net/koufeimuban/关键词excel.xlsx" target="_blank" class="btn btn-xs label-info"><i class="fa fa-download"></i> 下载模板</a>&nbsp;&nbsp;
+                <a class="btn btn-xs label-warning" href="{:url('')}?shenhe=1"><i class="fa fa-font-awesome"></i> 待审核任务</a>&nbsp;&nbsp;
+                <a href="{:url('')}?shenhebtg=1" class="btn btn-xs label-danger"><i class="fa fa-font-awesome"></i> 审核不通过任务</a>&nbsp;&nbsp;
+                <a href="{:url('')}?tzshyouhua=1" class="btn btn-xs label-warning"><i class="fa fa-pause-circle"></i> 申请停止优化的任务</a>&nbsp;&nbsp;
+                <a href="{:url('')}?tzyouhua=1" class="btn btn-xs label-danger"><i class="fa fa-pause-circle"></i> 已停止优化的任务</a>&nbsp;&nbsp;
+                <a href="{:url('')}?jjshyouhua=1" class="btn btn-xs label-danger"><i class="fa fa-pause-circle"></i> 拒绝停止优化的任务</a>&nbsp;&nbsp;
+                <a href="{:url('')}?applyerror=1" class="btn btn-xs label-warning"><i class="fa fa-edit"></i> 申请报错的任务</a>&nbsp;&nbsp;
+                <a href="{:url('')}?applysuccess=1" class="btn btn-xs label-success"><i class="fa fa-check"></i> 已处理报错任务</a>
+                <script>
+                    function imports(){
+                        if ($(".upload-pre-file").children("a:first").text()){
+                            var path=$(".upload-pre-file").children("a:first").text();
+                            $.ajax({
+                                async : false,    //表示请求是否异步处理
+                                type : "post",    //请求类型
+                                url : "{:url('Seo/keyworddaoru')}",//请求的 URL地址
+                                data:{'path':path},
+                                dataType : "json",//返回的数据类型
+                                success: function (data) {
+                                    obalert(data);
+                                },
+                                error:function (data) {
+                                    alert(data.result);
+                                }
+                            });
+                        }else {
+                            alert("请选择上传的EXCEL表");
+                        }
+
+
+                    };
+             
+
+                </script>
+            </div>
+        </div>
+
+      </div>
+            <div class="row" id="up" style="display: none;">
+                <div class="col-sm-12">
+                    <div class="box-tools pull-left">
+                        <div class="input-group input-group-sm" style="margin-left: 10px;">
+                            {if condition="$member['id'] eq 1"}
+                                <input type="number" name="page_one" style="width: 150px;" class="form-control pull-left" value="" placeholder="输入第一页价格">
+
+                                <input type="number" name="page_tow" style="width: 150px;" class="form-control pull-left" value="" placeholder="输入第二页价格">
+
+                                <input type="number" name="page_one_cb" style="width: 150px;" class="form-control pull-left" value="" placeholder="输入第一页成本价格">
+
+                                <input type="number" name="page_tow_cb" style="width: 150px;" class="form-control pull-left" value="" placeholder="输入第二页成本价格">
+
+                                <select name="jk_status" id="jk_status" class="form-control pull-left" style="width: 120px;" >
+                                    <option value="">不操作</option>
+                                    <option value="1">审核通过</option>
+                                    <option value="-2">审核不通过</option>
+                                </select>
+                                <input type="text" name='beizhu' id="beizhu" value='' class="form-control pull-left" placeholder="如果审核不通过,请填写不通过原因" style="width:210px">
+                                <select name="youhua" id="youhua" class="form-control pull-left" style="width: 120px;" >
+                                    <option value="">不操作</option>
+                                    <option value="1">继续优化</option>
+                                    <option value="-2">停止优化</option>
+                                    <option value="-3">拒绝停止优化</option>
+                                </select>
+                                <input type="text" name='jujue' id="jujue" value='' class="form-control pull-left" placeholder="如果拒绝停止优化,请填写拒绝原因" style="width:210px">
+                            {else/}
+                                <select name="jk_status" id="jk_status" class="form-control pull-left" style="width: 120px;" >
+                                    <option value="">不操作</option>
+                                    <option value="0">审核通过</option>
+                                    <option value="-2">审核不通过</option>
+                                </select>
+                            <input type="text" name='beizhu' id="beizhu" value='' class="form-control pull-left" placeholder="如果审核不通过,请填写不通过原因" style="width:210px">
+                                <select name="youhua" id="youhua" class="form-control pull-left" style="width: 120px;" >
+                                    <option value="">不操作</option>
+                                    <option value="1">继续优化</option>
+                                    <option value="-1">停止优化</option>
+                                    <option value="-3">拒绝停止优化</option>
+                                </select>
+                                <input type="text" name='jujue' id="jujue" value='' class="form-control pull-left" placeholder="如果拒绝停止优化,请填写拒绝原因" style="width:210px">
+                            {/if}
+                            <div class="input-group-btn pull-left">
+                                <button type="button" id="update_all"  url="{:url('seo/kewords_update_all')}" class="btn btn-flat" style=""><i class="fa fa-edit"></i>确定修改</button>
+                            </div>
+
+                            <script>
+                                //批量编辑
+                                $('.batch_btn_update').click(function(){
+
+                                    var $checked = $('.table input[type="checkbox"]:checked');
+
+                                    if($checked.length != 0){
+                                        if($("#up").css('display')=='none'){
+                                            $("#up").show();
+                                        }else {
+                                            $("#up").hide();
+                                        }
+
+                                    } else {
+
+                                        toast.warning('请选择批量操作数据');
+                                    }
+                                    return false;
+                                });
+                                //-----------------------------开始批量编辑
+                                $("#update_all").click(function(){
+                                    var test = window.location.pathname+window.location.search;
+                                  //  alert(test);return false;
+                                    var $checked = $('.table input[type="checkbox"]:checked');
+                                    if($checked.length != 0){
+                                        if(confirm('您确认批量修改吗？')){
+                                            if($.trim($("input[name='page_one']").val())=='' && $.trim($("input[name='page_tow']").val())=='' && $.trim($("input[name='page_one_cb']").val())=='' && $.trim($("input[name='page_tow_cb']").val())=='' && $.trim($("#jk_status").val())=='' && $.trim($("#youhua").val()) == '' && $.trim($("#beizhu")) == '' && $.trim($("#jujue")) == ''){toast.error('请输入需要修改的数据');return false;}
+                                            $.post($(this).attr("url"),
+                      {ids:$checked.serializeArray(),url:test, page_one:$("input[name='page_one']").val(),page_tow:$("input[name='page_tow']").val(),page_one_cb:$("input[name='page_one_cb']").val(),page_tow_cb:$("input[name='page_tow_cb']").val(),jk_status:$("#jk_status").val(),youhua:$("#youhua").val(),beizhu:$("#beizhu").val(),jujue:$("#jujue").val(),}
+                                                    , function(data){
+
+                                                obalert(data);
+
+                                            },"json");
+                                        }
+                                    }else {
+                                        toast.warning('请选择批量操作数据');
+                                    }
+                                });
+                            </script>
+
+                        </div>
+                        </div>
+                    </div>
+
+
+            </div>
+
+      <div class="box-body table-responsive">
+        <table  class="table table-bordered table-hover">
+          <thead>
+          <tr>
+              <th class="checkbox-select-all">
+                  <label>
+                      <input class="flat-grey js-checkbox-all" type="checkbox">
+                  </label>
+              </th>
+              <th>关键词</th>
+              <th>所属域名</th>
+              <th>搜索引擎</th>
+              <th>所属用户</th>
+              <th>客户价格</th>
+              {if condition="$member.leader_id elt 1"}
+              <th>代理利润</th>
+              {/if}
+              {if condition="$member.leader_id eq 0"}
+              <th>平台利润</th>
+              {/if}
+              <th>排名更新时间</th>
+              <th class="sortable" onclick="sortTable();">排名&nbsp;&nbsp;<i class="fa fa-long-arrow-down"></i><i class="fa fa-long-arrow-up"></i></th>
+              <th class="sortable" onclick="sortTable();">达标天数&nbsp;&nbsp;<i class="fa fa-long-arrow-down"></i><i class="fa fa-long-arrow-up"></i></th>
+              <th>排名截图</th>
+              <th>审核状态</th>
+              <th {if condition="!isset($btg)"}style="display: none;" {/if}>审核不通过原因</th>
+              <th {if condition="!isset($apply)"} style="display:none" {/if}>申请报错原因</th>
+              <th {if condition="!isset($apply)"} style="display:none" {/if}>报错处理结果</th>
+              <th>优化状态</th>
+              <th {if condition="!isset($youhua)"} style="display: none;"{/if}>拒绝停止优化原因</th>
+              <th>操作</th>
+          </tr>
+          </thead>
+
+          {notempty name='list'}
+            <tbody>
+                {volist name='list' id='vo'}
+                    <tr>
+                        <td>
+                            <label>
+                                <input class="flat-grey" type="checkbox" name="ids" value="{$vo.id}">
+                            </label>
+                        </td>
+                      <td>
+
+                         {switch name="$vo.search_engine"}
+                             {case value="baidupc"}
+                          <a class="" href="https://www.baidu.com/s?ie=UTF-8&amp;wd={$vo.keywords}" target="_blank">{$vo.keywords}</a>
+                          {/case}
+                             {case value="sougoupc"}
+                          <a class="" href="http://www.sogou.com/web?query={$vo.keywords}" target="_blank">{$vo.keywords}</a>
+                          {/case}
+                          {case value="360pc"}
+                          <a class="" href="https://www.so.com/s?ie=utf-8&amp;fr=none&amp;src=360sou_newhome&amp;q={$vo.keywords}" target="_blank">{$vo.keywords}</a>
+                          {/case}
+                             {default /}
+                          {$vo.keywords}
+                          {/switch}
+
+                      </td>
+                      <td>{$vo.url}</td>
+
+
+                        <td>
+                            {eq name="$vo.search_engine" value="baidumobile" } <span class="label" style="background-color: #ef5350"> 百度移动端</span>  {/eq}
+                            {eq name="$vo.search_engine" value="baidupc" } <span class="label" style="background-color: #33ca35"> 百度</span> {/eq}
+                            {eq name="$vo.search_engine" value="360pc" }<span class="label" style="background-color: #4484ca"> 360</span> {/eq}
+                            {eq name="$vo.search_engine" value="360mobile" } <span class="label" style="background-color: #f72f8e"> 360手机端</span>{/eq}
+                            {eq name="$vo.search_engine" value="sogoupc" } <span class="label" style="background-color: #bf8fca"> 搜狗</span>{/eq}
+                            {eq name="$vo.search_engine" value="sogoumobile" } <span class="label" style="background-color: #66b5ca"> 搜狗移动端</span>{/eq}
+                            {eq name="$vo.search_engine" value="smmobile" } <span class="label" style="background-color: #f732bc"> 神马搜索</span>{/eq}
+
+                      </td>
+
+                        <td>{$vo.username}</td>
+                        <td>
+                            <div>
+                                <div class="je-red" style="color: red;">第1页：{$vo.page_one}</div>
+                                <div class="je-blue" style="color: #0074d9;;">第2页：{$vo.page_tow}</div>
+                            </div>
+                        </td>
+                        {if condition="$member.leader_id elt 1"}
+                        	<td>
+                                <span style="color:red">第1页: {$vo.dllirun_one|default='0'}</span>
+                                <br>
+                                <span style="color:#0074d9;">第2页: {$vo.dllirun_two|default='0'}</span>
+                            </td>
+                        {/if}
+                        {if condition="$member.leader_id eq 0"}
+                        	<td><span style="color:red">第1页: {$vo.ptlirun_one|default='0'}</span>
+                                <br>
+                                <span style="color:#0074d9">第2页: {$vo.ptlirun_two|default='0'}</span></td>
+                        {/if}
+                        <td>
+                            {eq name="$vo.updatetime" value="" }
+                            查询中....
+                            {else/}
+                            {$vo.updatetime|date="Y-m-d",###}
+                            <br />
+                            {$vo.updatetime|date="H:i:s",###}
+                            {/eq}
+                        </td>
+
+                        <td>
+                            {eq name="$vo.updatetime" value="" }
+                             查询中....
+                            {else/}
+                            {eq name="$vo.rank" value="0" } <span style="color: darkred;font-size: 18px;">20+</span>
+                            {else/}
+                            <a href="javascript:;" onclick="window.open('{$vo.img_url}','','height=600,width=700,top=250,left=700')">
+                            <span style="color: red;font-size: 18px;">{$vo.rank}</span></a> {/eq}
+                            {/eq}
+                        </td>
+                        <td style="font-size: 16px;color:red">{$vo.dabiaoday|default='0'}</td>
+                        <td>
+                            {eq name="$vo.img_url" value="" }
+                           <span class="label" style="color:#000000;font-weight: 400;">暂无截图</span>
+                            {else/}
+                            <span class="label"><a href="javascript:;" onclick="window.open('{$vo.img_url}','','height=600,width=700,top=250,left=700')">查看截图</a></span>
+                            {/eq}
+                        </td>
+
+                      <td>
+                      
+                          {eq name="$vo.jk_status" value="1" }
+                          <button class="btn btn-xs label-success" onclick="jkstatus({$vo.id})" id="jkstatus{$vo.id}" data-jkstatus="{$vo.jk_status}">审核成功</button>
+                          {/eq}
+                          {eq name="$vo.jk_status" value="0" }
+                          <button class="btn btn-xs label-warning" onclick="jkstatus({$vo.id})" id="jkstatus{$vo.id}" data-jkstatus="{$vo.jk_status}">待管理员审核</button>
+                          {/eq}
+                          {eq name="$vo.jk_status" value="-1" }
+                          <button class="btn btn-xs label-warning" onclick="jkstatus({$vo.id})" id="jkstatus{$vo.id}" data-jkstatus="{$vo.jk_status}">待上级审核</button>
+                          {/eq}
+                          {eq name="$vo.jk_status" value="-2" }
+                          <button class="btn btn-xs label-danger" onclick="jkstatus({$vo.id})" id="jkstatus{$vo.id}" data-jkstatus="{$vo.jk_status}">审核不通过</button>
+                          {/eq}
+                      </td>
+                      <td {if condition="!isset($btg)"}style="display: none;" {/if}>{$vo.beizhu}</td>
+                      <td {if condition="!isset($apply)"}style="display: none;" {/if}>{$vo.applyerrbeizhu}</td>
+                      <td {if condition="!isset($apply)"} style="display:none" {/if}>
+                      	 {eq name="$vo.applyerror" value="0"}
+                      	   <span class="label label-danger">未处理</span>
+                      	 {/eq}
+                      	 {eq name="$vo.applyerror" value="2"}
+                      	   <span class="label label-success">处理成功</span>
+                      	 {/eq}
+                      </td>
+                        <td>
+                        	{eq name="$vo.youhua" value="2" }
+                          		<button type="button" class="btn btn-xs label-default">未优化</button>
+                            {/eq}
+                            {eq name="$vo.youhua" value="1"}
+                            	<button type="button" class="btn btn-xs label-success" onclick="youhua({$vo.id})" id="youhua{$vo.id}" data-youhua='{$vo.youhua}'>优化中</button>
+                            {/eq}
+                            {eq name="$vo.youhua" value="0"}
+                            	<button type='button' class="btn btn-xs label-warning" onclick="youhua({$vo.id})" id="youhua{$vo.id}" data-youhua='{$vo.youhua}'>申请停止优化待上级审核</button>
+                            {/eq}
+                            {eq name="$vo.youhua" value="-1"}
+                           		<button type='button' class="btn btn-xs label-warning" onclick="youhua({$vo.id})" id="youhua{$vo.id}" data-youhua='{$vo.youhua}'>申请停止优化待管理员审核</button>
+                            {/eq}
+                            {eq name="$vo.youhua" value="-2"}
+                            	<button type="button" class="btn btn-xs label-danger" onclick="youhua({$vo.id})" id="youhua{$vo.id}" data-youhua='{$vo.youhua}'>停止优化中</button>
+                            {/eq}
+                            {eq name="$vo.youhua" value="-3"}
+                            	<button type="button" class="btn btn-xs label-danger" onclick="youhua({$vo.id})" id="youhua{$vo.id}" data-youhua='{$vo.youhua}'>拒绝停止优化</button>
+                            {/eq}
+                        </td>
+                        <td {if condition="!isset($youhua)"} style="display: none;"{/if}>{$vo.jujue}</td>
+                      <td class="clown">
+                      	  <a href="{:url('applyerror', array('id' => tp_encrypt($vo['id'])))}">
+                              {eq name="$vo.applyerror" value='0'}
+                      	  	  
+                      	  	  	<span class="label label-danger">关键词报错</span>
+                              {else}
+                          
+                                <span class="label label-default">申请报错</span>
+                              {/eq}
+                      	  </a>
+                          <a target="_blank" href="{:url('seo/xiaofeilist')}?search_engine={$vo.search_engine}&search_keyword={$vo.keywords}&search_data={$vo.url}" >
+                          	<span class="label label-info">消费记录</span>
+                          </a>
+                          <ob_link><a target="_blank" href="{:url('seo/keywordlistlog')}?search_engine={$vo.search_engine}&search_keyword={$vo.keywords}&search_data={$vo.url}">
+                          	<span class="label label-primary">历史排名</span>
+                          </a>
+                          </ob_link>
+                          <ob_link><a href="{:url('seo/bulu', array('id' => tp_encrypt($vo['id'])))}" class="bulu">
+                          <span class="label label-default" style="background-color: #000000;color:#ffffff">补录排名</span></a></ob_link>
+
+                          <ob_link><a href="{:url('keywordEdit', array('id' => tp_encrypt($vo['id'])))}">
+                          	<span class="label label-warning">修改关键词</span></ob_link>
+                            <ob_link><a class="confirm ajax-get"  href="{:url('keywordDel', array('id' => tp_encrypt($vo['id'])))}">
+                           <span class="label label-danger">删除</span></ob_link>
+                      </td>
+                    </tr>
+                {/volist}
+            </tbody>
+            {else/}
+            <tbody><tr class="odd"><td colspan="13" class="text-center" valign="top">{:config('empty_list_describe')}</td></tr></tbody>
+          {/notempty}
+        </table>
+      </div>
+	 	<div class="row">
+	 		<div class="col-sm-12">
+	 			<div class="box-tools search-form pull-right fenye">
+	 				<a href="{:url('')}?fenye=10" class="btn btn-xs">10</a>
+	 				<a href="{:url('')}?fenye=15" class="btn btn-xs">15</a>
+	 				<a href="{:url('')}?fenye=20" class="btn btn-xs">20</a>
+	 				<a href="{:url('')}?fenye=50" class="btn btn-xs">50</a>
+	 				<a href="{:url('')}?fenye=100" class="btn btn-xs">100</a>
+	 			</div>
+	 		</div>
+	 	</div>
+	  
+      <div class="box-footer clearfix text-center">
+          {$list->render()}
+      </div>
+
+    </div>
+
+    <script>
+        //导出功能
+        $(".export").click(function(){
+
+            window.location.href = searchFormUrl($(".export"));
+        });
+        $(function(){
+            $(".bulu").each(function(){
+                $(this).attr("href", $(this).attr("href")+'?url='+window.location.pathname+window.location.search)
+            });
+        });
+
+        //弹出图片功能
+        function ejectimg(num){
+            img = $("#img" + num).attr('data-img');
+            if(img != ''){
+                $("#tanchuimage1").css('display','block');
+                $("#tanchuimage").css('display','block');
+                $("#tanchuimage").html("<img src='" + img + "'>");
+            }else{
+                toast.warning('当前关键词没有截图!');
+            }
+
+
+            $("#tanchuimage1").click(function(){
+
+
+                    $("#tanchuimage").css('display','none');
+                    $("#tanchuimage1").css('display','none');
+
+
+            });
+
+
+        };
+        //js排序
+        function sortTable(selector, compFunc) {
+      var mySelector = '.sortable';
+      var myCompFunc = function($td1, $td2, isAsc) {
+        var v1 = $.trim($td1.text()).replace(/,|\s+|%/g, '');
+        var v2 = $.trim($td2.text()).replace(/,|\s+|%/g, '');
+        var pattern = /^\d+(\.\d*)?$/;
+        if (pattern.test(v1) && pattern.test(v2)) {
+          v1 = parseFloat(v1);
+          v2 = parseFloat(v2);
+        }
+
+        return isAsc ? v1 > v2 : v1 < v2;
+      };
+
+      var doSort = function($tbody, index, compFunc, isAsc)
+      {
+        var $trList = $tbody.find("tr");
+        var len = $trList.length;
+        for(var i=0; i<len-1; i++) {
+          for(var j=0; j<len-i-1; j++) {
+            var $td1 = $trList.eq(j).find("td").eq(index);
+            var $td2 = $trList.eq(j+1).find("td").eq(index);
+
+            if (compFunc($td1, $td2, isAsc)) {
+              var t = $trList.eq(j+1);
+              $trList.eq(j).insertAfter(t);
+              $trList = $tbody.find("tr");
+            }
+          }
+        }
+      }
+
+      var init = function() {
+        var $th = $("th" + selector);
+        this.$table = $th.closest("table");
+        var that = this;
+        $th.click(function(){
+          var index = $(this).index();
+          var asc = $(this).attr('data-asc');
+          isAsc = asc === undefined ? true : (asc > 0 ? true : false);
+
+          doSort(that.$table.find("tbody"), index, compFunc, isAsc);
+
+          $(this).attr('data-asc', 1 - (isAsc ? 1 : 0));
+        });
+
+        $th.css({'cursor': 'pointer'})
+           .attr('title', '点击排序')
+           //.append('&nbsp;<i class="fa fa-long-arrow-down" style="color:#2196F3" aria-hidden="true"></i><i class="fa fa-long-arrow-up" style="color:#2196F3" aria-hidden="true"></i>');
+      };
+
+
+      selector = selector || mySelector;
+      compFunc = compFunc || myCompFunc;
+
+      init();
+    };
+    
+    </script>
+    <div id="tanchuimage1">
+        <div id="tanchuimage">
+
+        </div>
+    </div>
+
+    <style type="text/css">
+        #upload_file_file_id{margin-left:15%;}
+        #tanchuimage1{display: none;position: absolute;width: 100%;height: 93%;background-color: rgb(33,33,33,0.7);top:6%;z-index: 9}
+        #tanchuimage{max-width:100%;z-index: 9;max-height: 100%;position: absolute;display: none;top:12%;background-color: rgb(33,33,33,0.7);height: 700px;overflow-y: scroll;left: 16%;}
+
+        #tanchuimage img{ left: 34%;   width: 100%;}
+        .hh{width:50%; height: auto;}
+        .clown a img{width:29px;}
+        .clown ob_link a img{width:29px;}
+
+       
+    </style>
+    <script type="text/javascript">
+
+		function youhua(num){
+			var yhid = $("#youhua" + num).attr('data-youhua');
+			
+			if(yhid == '-3'){
+				toast.error('该关键词拒绝停止优化!');
+				return false;
+			}else if(yhid == '-2'){
+				toast.warning('该关键词已经停止优化了哦!');
+				return false;
+			}else if(yhid == '-1'){	
+				if({$member.leader_id} > 0){
+					toast.warning('请耐心等待管理员审核哦!');
+					return false;
+				}
+			}else if(yhid == '0'){
+				if({$member.leader_id} > 1){
+					toast.warning('请耐心等待上级审核');
+					return false;
+				}
+			}else if(yhid == '1'){
+				if(confirm("你确定停用该关键词吗?")){
+					$.ajax({
+						type:"post",
+						url:"{:url('stopkeyword')}",
+						{if condition="$member.leader_id eq 0"}
+							data:{id: num,youhua:'-2'},
+						{elseif condition="$member.leader_id eq 1"}
+							data:{id: num,youhua:'-1'},
+						{else}
+							data:{id: num,youhua:'0'},
+						{/if}
+						dataType:'json',
+						success:function(data){
+							if(data == 2){
+								toast.success('停用关键词成功!');
+							}else if(data == '-2'){
+								toast.error('停用关键词失败,请刷新页面重试!');
+							}else if(data == '1'){
+								toast.success('该关键词已经提交给管理员审核,请耐心等待审核结果!');
+							}else if(data == '0'){
+								toast.success('该关键词已经提交给上级审核,请耐心等待审核结果!');
+							}else if(data == '-1'){
+								toast.error("提交该关键词停用失败,请刷新页面重试");
+							}
+				
+						}
+					});
+		
+					return true;
+				}else{
+					return false;
+				}
+			}
+			if(confirm("你确定停用该关键词吗?")){
+				$.ajax({
+					type:"post",
+					url:"{:url('stopkeyword')}",
+					{if condition="$member.leader_id eq 0"}
+						data:{id: num,youhua:'-2'},
+					{elseif condition="$member.leader_id eq 1"}
+						data:{id: num,youhua:'-1'},
+					{else}
+						data:{id: num,youhua:'0'},
+					{/if}
+					dataType:'json',
+					success:function(data){
+						if(data == 2){
+							toast.success('停用关键词成功!');
+						}else if(data == '-2'){
+							toast.error('停用关键词失败,请刷新页面重试!');
+						}else if(data == '1'){
+							toast.success('该关键词已经提交给管理员审核,请耐心等待审核结果!');
+						}else if(data == '0'){
+							toast.success('该关键词已经提交给上级审核,请耐心等待审核结果!');
+						}else{
+							toast.error("提交该关键词停用失败,请刷新页面重试");
+						}
+			
+					}
+				});
+			}
+		
+		};
+		
+		//审核关键词
+		function jkstatus(num){
+			var jkid = $("#jkstatus" + num).attr('data-jkstatus');
+			var member = {$member.leader_id};
+			console.log(jkid);
+			if(jkid == '-2'){
+				toast.error('该关键词审核不通过!');
+				return false;
+			}else if(jkid == 1){
+				toast.success('该关键词已经审核通过!');
+				return false;
+			}else if(jkid == '-1'){
+				if(member > 1){
+					toast.warning('请耐心等待上级审核!');
+					return false;
+				}
+			
+			}else if(jkid == '0'){
+				if(member >= 1){
+					toast.warning('请耐心登录管理员审核!');
+					return false;
+				}
+			}
+			if(confirm('你确认审核该关键词吗?')){
+				$.ajax({
+					type:"post",
+					url:"{:url('statuskeyword')}",
+					{if condition="$member.leader_id eq 0"}
+						data:{id: num,jkstatus:'1'},
+					{elseif condition="$member.leader_id eq 1"}
+						data:{id: num,jkstatus:'0'},
+					{else}
+						data:{id: num,jkstatus:'-1'},
+					{/if}
+					dataType:'json',
+					success:function(data){
+						if(data == 'error'){
+							toast.error('关键词审核失败,请重试!');
+							return false;
+						}
+						toast.success('审核成功!');
+					}
+				});
+			}
+			
+		};
+		
+		//批量删除关键词
+		       $(".batch_btn_update1").click(function(){
+			    	var $checked = $('.table input[type="checkbox"]:checked');
+					if($checked.length == 0){toast.warning('请选择批量操作数据!');return false;}
+					if(confirm('您确认删除这些关键词吗?')){
+						var chk_value =[];
+			
+						$('input[name="ids"]:checked').each(function(){
+							chk_value.push($(this).val());
+						});
+						$.post("{:url('deletekeywords')}",{id:chk_value},function(data){
+							if(data == 1){toast.success('关键词删除成功，关键词查询日志也被删除!');history.go(0);}
+			            },"json");
+					}
+				});
+		
+		
+    </script>

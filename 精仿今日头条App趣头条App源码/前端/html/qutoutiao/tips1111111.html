@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>飞翔网络</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<style>
+		html{background-color:transparent !important;  height: 100%;}
+			body{
+	 		 background-color:transparent !important;
+			 display: table;
+    height: 100%;
+	 	}
+    .tips{
+			display: table-cell;
+vertical-align: middle;
+    }
+		.tipsinner{width:160px;background: rgba(0,0,0,0.6);border-radius: 12px;    margin: 0 auto;      padding: 10px;  text-align: center;color:#fff;}
+		.tipsinner img{width:80px; margin: 0 auto;}
+		.tipsinner h3{    font-size: 0.9rem;
+    margin-bottom: 5px;}
+			.tipsinner h1{    font-size: 1.3rem;
+    margin-top: 5px;}
+		</style>
+	</head>
+	<body  tapmode onclick="g()">
+     <div class="tips">
+			 <div class="tipsinner">
+				 <h3 id="title">每日阅读</h3>
+			  <p id="ptpimg"><img id="tpimg" src="../image/jinbi.png" /></p>
+				  <h1 id="jinbi">+50</h1>
+				<div>
+		 </div>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			api.parseTapmode();
+      $("#title").html(api.pageParam.title);
+			$("#jinbi").html('+'+api.pageParam.jinbi);
+			if(api.pageParam.extend){
+				 	$("#ptpimg").html('<img id="tpimg" src="../image/ejingbi.png" />');
+			}else{
+				  $("#ptpimg").html('<img id="tpimg" src="../image/jinbi.png" />');
+			}
+
+		}
+		function g() {
+			api.closeFrame();
+		}
+	</script>
+</html>
+
+

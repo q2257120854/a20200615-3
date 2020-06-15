@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/yaoqing.css" />
+		<style>
+			body {
+				background: #f2f2f2 !important;
+			}
+			label{
+				display: block;
+				width: 100%;
+				border-radius: 0.35rem;
+				background: #fff;
+				margin-top: 0.75rem;
+				height: 2rem;
+				line-height: 2rem;
+				padding: 0 0.75rem;
+			}
+			label input.aui-radio{
+				margin-top: 0.55rem;
+				width: 0.9rem;
+				height: 0.9rem;
+				margin-right:0.5rem;
+			}
+			ul li{
+				padding: 0.75rem;
+			}
+			li div{
+				font-size: 0.75rem;
+				color: #000;
+			}
+			.active{
+				background: #3f8bde;
+				color: #fff;
+			}
+			.active .aui-radio:checked{
+			 
+			 
+			}
+		/*	.duoxuan label{
+				width: 45%;
+				float: left;
+				margin-right:0.3rem;
+				margin-left: 0.3rem;
+				overflow: hidden;
+			}*/
+			.btn{
+				width: 100%;
+				margin: 0 auto;
+				background: #3f8bde;
+				color: #fff;
+				text-align: center;
+				padding: 1rem;
+			}
+		</style>
+	</head>
+	<body>
+		<script id="fx-list" type="text/x-dot-template">
+			{{ for(var i=0,len=it.length; i < len; i++) { }}
+				<li id="h{{= i}}">
+					<div>{{= it[i].title}}</div>
+					{{ for(var prop in it[i].data) { }}
+					<label class="a{{= i}}" data-id="{{= i}}"><input class="aui-radio" type="radio" value="{{= it[i].data[prop] }}" name="{{= it[i].id}}">{{= it[i].data[prop] }}</label>
+					{{ } }}
+				</li>
+			{{ } }}
+		</script>
+		<div class="aui-content">
+			<ul id="fx-view"></ul>
+			<div style="padding: 0.75rem;font-size: 0.7rem;">本次问卷中奖用户我们会通过消息中心通知，中奖金币自动到账，请留意查看。</div>
+			<div class="btn">
+				完成并提交
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/fastclick.js"></script>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../../script/doT.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			$api.fixTabBar($api.dom('.btn'))
+			data()
+		}
+		function data(){
+			_ajax('api/yaoqing/diaochaInfo',function(ret,err){
+				if(ret){
+					var evalData = doT.template($api.html($api.byId('fx-list')));
+					$api.append($api.byId('fx-view'), evalData(ret));
+				//	console.log(evalData(ret))
+					FastClick.attach(document.body);
+					$(function(){
+						$('label').click(function(){
+							var id=$(this).data('id');
+							$('label.a'+id).removeClass('active');
+							$(this).addClass('active');
+						})
+						var mycars=new Array()
+						$('.btn').click(function(){
+//								var checkbox=$(".a0 input:checked").val()
+//								console.log(checkbox)
+								for(var i=0;i < ret.length;i++){
+									var text=$(".a"+i+" input:checked").val()
+									if(!text || text=='undefined'){
+										var h=$('#h'+i).offset().top;
+										console.log(h)
+										$("body").scrollTo({
+							                toT: h
+							            });
+							            _msg('请选'+ret[i].title)
+										return;
+									}
+									mycars[i]=text;
+								}
+								_ajax('api/yaoqing/diaochaAdd',function(ret,err){
+									if(ret){
+										if(ret.ret){
+											_alert(ret.ret,function(ret,err){
+												_index_win('user_win');
+											});
+										}else{
+											_msg(ret.err)
+										}
+									}
+								},{data:mycars})
+							 
+						})
+					})
+				}
+			})
+		}
+		$.fn.scrollTo =function(options){
+        var defaults = {
+            toT : 0,    //滚动目标位置
+            durTime : 500,  //过渡动画时间
+            delay : 30,     //定时器时间
+            callback:null   //回调函数
+        };
+        var opts = $.extend(defaults,options),
+            timer = null,
+            _this = this,
+            curTop = _this.scrollTop(),//滚动条当前的位置
+            subTop = opts.toT - curTop,    //滚动条目标位置和当前位置的差值
+            index = 0,
+            dur = Math.round(opts.durTime / opts.delay),
+            smoothScroll = function(t){
+                index++;
+                var per = Math.round(subTop/dur);
+                if(index >= dur){
+                    _this.scrollTop(t);
+                    window.clearInterval(timer);
+                    if(opts.callback && typeof opts.callback == 'function'){
+                        opts.callback();
+                    }
+                    return;
+                }else{
+                    _this.scrollTop(curTop + index*per);
+                }
+            };
+        timer = window.setInterval(function(){
+            smoothScroll(opts.toT);
+        }, opts.delay);
+        return _this;
+    };
+	</script>
+</html>

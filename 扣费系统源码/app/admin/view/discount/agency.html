@@ -1,0 +1,35 @@
+<form action="{:url()}" method="post" class="form_single">
+    <div class="box">
+      <div class="box-body">
+        <div class="row">
+    		<div class="col-md-6">
+            <div class="form-group">
+              <label>选择级别</label>
+              <span>（请选择代理级别）</span>
+              <select name="rank_id" class="form-control">
+              	<option value="4">黄金代理</option>
+              	<option value="5">铂金代理</option>
+              	<option value="6">钻石代理</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>折扣</label>
+              <span>（折扣,类似0.98, 1以下的保留两位小数,不打折就填1）</span>
+              <input class="form-control" name="discount" placeholder="0.90" type="text">
+            </div>
+          </div>
+ 
+          
+ 
+         
+            
+        </div>
+      </div>
+      <div class="box-footer">
+        
+        {include file="layout/edit_btn_group"/}
+      </div>
+    </div>
+</form>

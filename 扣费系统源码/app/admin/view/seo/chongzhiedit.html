@@ -1,0 +1,32 @@
+
+<form action="{:url()}" method="post" class="form_single">
+    <div class="box">
+      <div class="box-body">
+        <div class="row">
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>备注</label>
+              <span></span>
+              <input class="form-control" name="beizhu"  value="{$info[0]['beizhu']}"  type="text">
+            </div>
+          </div>
+     
+
+ 
+
+       
+          </div>
+
+          <input type="hidden" name="id" value="{$info[0]['id']}">
+            
+        </div>
+      </div>
+      <div class="box-footer">
+        
+        {include file="layout/edit_btn_group"/}
+      </div>
+    </div>
+</form>
+
+

@@ -1,0 +1,98 @@
+
+<form action="{:url()}" method="post" class="form_single">
+    <div class="box">
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>请输入用户</label>
+              <span>（域名所属用户）</span>
+              <input class="form-control" disabled value="{$info['username']|default=''}" placeholder="直接敲空格加载下拉选择或输入客户名称搜索" type="text">
+            </div>
+          </div>
+ 
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>网站名称</label>
+              <input class="form-control" name="web_name" value="{$info['web_name']|default=''}" placeholder="请输入网站名称" type="text">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>网站URL域名</label>
+              <span style="color:red;font-weight: 700;">(是熊掌号就填写熊掌号名称,是域名就填写域名,不加http,或直接使用顶级域名!)</span>
+              {if condition="$member.leader_id eq 0"}
+              <input class="form-control" name="url" value="{$info['url']|default=''}" placeholder="请输入网站域名或熊掌号全称" type="text">
+              {else/}
+              <input class="form-control" name="url" value="{$info['url']|default=''}" readonly="readonly" placeholder="请输入网站域名或熊掌号全称" type="text">
+              {/if}
+            </div>
+          </div>
+
+ 
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>网站后台地址</label>
+              <span>（网站后台地址，用seo优化）</span>
+              <input class="form-control" name="bake_name" value="{$info['bake_name']|default=''}" placeholder="请输入网站后台地址" type="text">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>网站后台账号</label>
+              <span>（网站后台账号）</span>
+              <input class="form-control" name="bake_username"  value="{$info['bake_username']|default=''}" placeholder="请输入网站后台账号" type="text">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>网站后台密码</label>
+              <span>（网站后台密码）</span>
+              <input class="form-control" name="base_pass" value="{$info['base_pass']|default=''}"  placeholder="请输入网站后台密码" type="text">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Ftp地址</label>
+              <span>（Ftp地址，用seo优化）</span>
+              <input class="form-control" name="ftp_addr" value="{$info['ftp_addr']|default=''}" placeholder="请输入FTP地址" type="text">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>FTP账号</label>
+              <input class="form-control" name="ftp_username"  value="{$info['ftp_username']|default=''}" placeholder="请输入FTP账号" type="text">
+            </div>
+          </div>
+
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>FTP密码</label>
+              <input class="form-control" name="ftp_pass" value="{$info['ftp_pass']|default=''}"  placeholder="请输入FTP账号" type="text">
+            </div>
+          </div>
+
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>备注信息</label>
+              <input class="form-control" name="beizhu" value="{$info['beizhu']|default=''}" placeholder="请输入备注信息" type="text">
+            </div>
+          </div>
+        <input type="hidden" name="id" value="{$info['id']|tp_encrypt}">
+            
+        </div>
+      </div>
+      <div class="box-footer">
+        
+        {include file="layout/edit_btn_group"/}
+      </div>
+    </div>
+</form>
+

@@ -1,0 +1,1569 @@
+---------------------------------------------------------------
+[ 2019-04-18T23:58:02+08:00 ] 111.41.183.39 POST /market/list
+[ info ] prvd.cn/market/list [运行时间：0.062400s][吞吐率：16.03req/s] [内存消耗：1,899.03kb] [文件加载：71]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market/list',
+  'route' => 'market/search',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '13',
+  'x-rewrite-url' => '/market/list',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://prvd.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'referer' => 'http://prvd.cn/market/buy.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=17hi23hphr4ipv4d1ahl0krpeo; Hm_lvt_bfc6c23974fbad0bbfed25f88a973fb0=1555599516; Hm_lpvt_bfc6c23974fbad0bbfed25f88a973fb0=1555603098',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept' => '*/*',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+  'page' => '0',
+  'type' => '5',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `t`.`id`,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,`t`.`create_at`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `owner` = '15555555555'  AND `t`.`status` = '8' ORDER BY `t`.`status` DESC,`t`.`update_at` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:02+08:00 ] 111.41.183.39 POST /market/list
+[ info ] prvd.cn/market/list [运行时间：0.078000s][吞吐率：12.82req/s] [内存消耗：1,901.48kb] [文件加载：71]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market/list',
+  'route' => 'market/search',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '13',
+  'x-rewrite-url' => '/market/list',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://prvd.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'referer' => 'http://prvd.cn/market/buy.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=17hi23hphr4ipv4d1ahl0krpeo; Hm_lvt_bfc6c23974fbad0bbfed25f88a973fb0=1555599516; Hm_lpvt_bfc6c23974fbad0bbfed25f88a973fb0=1555603098',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept' => '*/*',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+  'page' => '0',
+  'type' => '3',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `t`.`id`,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,`t`.`create_at`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `owner` = '15555555555'  AND `t`.`status` <> '8'  AND `t`.`status` <> '0'  AND `t`.`create_at` > '2019-04-18' ORDER BY `t`.`status` DESC,`t`.`update_at` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:03+08:00 ] 111.41.183.39 GET /market/buy.html
+[ info ] prvd.cn/market/buy.html [运行时间：0.078000s][吞吐率：12.82req/s] [内存消耗：2,165.62kb] [文件加载：73]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market/buy',
+  'route' => 'market/buying',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market/buy.html',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'referer' => 'http://prvd.cn/market/selling.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=17hi23hphr4ipv4d1ahl0krpeo; Hm_lvt_bfc6c23974fbad0bbfed25f88a973fb0=1555599516; Hm_lpvt_bfc6c23974fbad0bbfed25f88a973fb0=1555603088',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wwwroot\prvd.cn\application\index\view\market\buying.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'count',
+  4 => 'page',
+  5 => 'market',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '15555555555' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '15555555555' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '15555555555' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.015600s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '15555555555' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `market` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `market` WHERE  `date` = '2019-04-18' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `owner` = '15555555555'  AND `t`.`status` <> '8'  AND `t`.`create_at` > '2019-04-18' ORDER BY `t`.`status` DESC,`t`.`update_at` DESC LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:06+08:00 ] 111.41.183.39 POST /market/list
+[ info ] prvd.cn/market/list [运行时间：0.046800s][吞吐率：21.37req/s] [内存消耗：1,901.48kb] [文件加载：71]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market/list',
+  'route' => 'market/search',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '13',
+  'x-rewrite-url' => '/market/list',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://prvd.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'referer' => 'http://prvd.cn/market/buy.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=17hi23hphr4ipv4d1ahl0krpeo; Hm_lvt_bfc6c23974fbad0bbfed25f88a973fb0=1555599516; Hm_lpvt_bfc6c23974fbad0bbfed25f88a973fb0=1555603088',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept' => '*/*',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+  'page' => '0',
+  'type' => '3',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `t`.`id`,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,`t`.`create_at`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `owner` = '15555555555'  AND `t`.`status` <> '8'  AND `t`.`status` <> '0'  AND `t`.`create_at` > '2019-04-18' ORDER BY `t`.`status` DESC,`t`.`update_at` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:06+08:00 ] 111.41.183.39 GET /market/selling.html
+[ info ] prvd.cn/market/selling.html [运行时间：0.078000s][吞吐率：12.82req/s] [内存消耗：2,159.06kb] [文件加载：73]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market/sell',
+  'route' => 'market/selling',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market/selling.html',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'referer' => 'http://prvd.cn/market/buy.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=17hi23hphr4ipv4d1ahl0krpeo; Hm_lvt_bfc6c23974fbad0bbfed25f88a973fb0=1555599516; Hm_lpvt_bfc6c23974fbad0bbfed25f88a973fb0=1555603093',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wwwroot\prvd.cn\application\index\view\market\selling.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'count',
+  4 => 'page',
+  5 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '15555555555' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '15555555555' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '15555555555' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.015600s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '15555555555' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `market` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `market` WHERE  `date` = '2019-04-18' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT tid AS id,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `target` = '15555555555'  AND `t`.`status` <> '8' ORDER BY `t`.`status` DESC,`t`.`update_at` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `target` = '15555555555'  AND `t`.`status` <> '8'  AND `t`.`status` <> '0' ORDER BY `t`.`status` DESC,`t`.`update_at` DESC LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:08+08:00 ] 111.41.183.39 GET /market/selling.html
+[ info ] prvd.cn/market/selling.html [运行时间：0.078000s][吞吐率：12.82req/s] [内存消耗：2,159.06kb] [文件加载：73]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market/sell',
+  'route' => 'market/selling',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market/selling.html',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'referer' => 'http://prvd.cn/market/buy.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=17hi23hphr4ipv4d1ahl0krpeo; Hm_lvt_bfc6c23974fbad0bbfed25f88a973fb0=1555599516; Hm_lpvt_bfc6c23974fbad0bbfed25f88a973fb0=1555603093',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wwwroot\prvd.cn\application\index\view\market\selling.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'count',
+  4 => 'page',
+  5 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '15555555555' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '15555555555' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '15555555555' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '15555555555' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `market` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `market` WHERE  `date` = '2019-04-18' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT tid AS id,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `target` = '15555555555'  AND `t`.`status` <> '8' ORDER BY `t`.`status` DESC,`t`.`update_at` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `target` = '15555555555'  AND `t`.`status` <> '8'  AND `t`.`status` <> '0' ORDER BY `t`.`status` DESC,`t`.`update_at` DESC LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:49+08:00 ] 221.225.202.28 GET /market.html
+[ info ] prvd.cn/market.html [运行时间：0.093600s][吞吐率：10.68req/s] [内存消耗：2,164.94kb] [文件加载：73]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market',
+  'route' => 'market/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market.html',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/market.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wwwroot\prvd.cn\application\index\view\market\index.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'page',
+  4 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.015600s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:49' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:49' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:49+08:00 ] 221.225.202.28 GET /market.html
+[ info ] prvd.cn/market.html [运行时间：0.078000s][吞吐率：12.82req/s] [内存消耗：2,164.94kb] [文件加载：73]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market',
+  'route' => 'market/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market.html',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/market.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wwwroot\prvd.cn\application\index\view\market\index.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'page',
+  4 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.015600s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:49' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:49' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:50+08:00 ] 221.225.202.28 GET /market.html
+[ info ] prvd.cn/market.html [运行时间：0.062400s][吞吐率：16.03req/s] [内存消耗：2,164.94kb] [文件加载：73]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market',
+  'route' => 'market/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market.html',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/market.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wwwroot\prvd.cn\application\index\view\market\index.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'page',
+  4 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.015600s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:50' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:50' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:50+08:00 ] 221.225.202.28 GET /market.html
+[ info ] prvd.cn/market.html [运行时间：0.062400s][吞吐率：16.03req/s] [内存消耗：2,164.94kb] [文件加载：73]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market',
+  'route' => 'market/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market.html',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/market.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wwwroot\prvd.cn\application\index\view\market\index.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'page',
+  4 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.015600s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:50' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:50' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:50+08:00 ] 221.225.202.28 GET /market.html
+[ info ] prvd.cn/market.html [运行时间：0.078000s][吞吐率：12.82req/s] [内存消耗：2,164.94kb] [文件加载：73]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market',
+  'route' => 'market/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market.html',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/market.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wwwroot\prvd.cn\application\index\view\market\index.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'page',
+  4 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.015600s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:50' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:50' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:50+08:00 ] 221.225.202.28 GET /market.html
+[ info ] prvd.cn/market.html [运行时间：0.062400s][吞吐率：16.03req/s] [内存消耗：2,164.94kb] [文件加载：73]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market',
+  'route' => 'market/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market.html',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/market.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wwwroot\prvd.cn\application\index\view\market\index.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'page',
+  4 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.015600s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:50' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:50' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:50+08:00 ] 221.225.202.28 GET /market.html
+[ info ] prvd.cn/market.html [运行时间：0.078000s][吞吐率：12.82req/s] [内存消耗：2,164.94kb] [文件加载：73]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market',
+  'route' => 'market/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market.html',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/market.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wwwroot\prvd.cn\application\index\view\market\index.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'page',
+  4 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.015600s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:50' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:50' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:50+08:00 ] 221.225.202.28 GET /market.html
+[ info ] prvd.cn/market.html [运行时间：0.062400s][吞吐率：16.03req/s] [内存消耗：2,164.94kb] [文件加载：73]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market',
+  'route' => 'market/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market.html',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/market.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wwwroot\prvd.cn\application\index\view\market\index.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'page',
+  4 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.015600s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:50' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:50' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:51+08:00 ] 221.225.202.28 GET /market.html
+[ info ] prvd.cn/market.html [运行时间：0.078000s][吞吐率：12.82req/s] [内存消耗：2,164.94kb] [文件加载：73]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market',
+  'route' => 'market/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market.html',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/market.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wwwroot\prvd.cn\application\index\view\market\index.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'page',
+  4 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.015600s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:51' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:51' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:51+08:00 ] 221.225.202.28 GET /market.html
+[ info ] prvd.cn/market.html [运行时间：0.078001s][吞吐率：12.82req/s] [内存消耗：2,164.94kb] [文件加载：73]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market',
+  'route' => 'market/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market.html',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/market.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wwwroot\prvd.cn\application\index\view\market\index.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'page',
+  4 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.015600s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:51' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:51' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:51+08:00 ] 221.225.202.28 GET /market.html
+[ info ] prvd.cn/market.html [运行时间：0.062400s][吞吐率：16.03req/s] [内存消耗：2,164.94kb] [文件加载：73]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market',
+  'route' => 'market/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market.html',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/market.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wwwroot\prvd.cn\application\index\view\market\index.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'page',
+  4 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.015600s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:51' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:51' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:51+08:00 ] 221.225.202.28 GET /market.html
+[ info ] prvd.cn/market.html [运行时间：0.062400s][吞吐率：16.03req/s] [内存消耗：2,164.94kb] [文件加载：73]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market',
+  'route' => 'market/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market.html',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/market.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wwwroot\prvd.cn\application\index\view\market\index.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'page',
+  4 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.015600s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:51' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:51' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:51+08:00 ] 221.225.202.28 GET /market.html
+[ info ] prvd.cn/market.html [运行时间：0.078000s][吞吐率：12.82req/s] [内存消耗：2,164.94kb] [文件加载：73]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market',
+  'route' => 'market/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market.html',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/market.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wwwroot\prvd.cn\application\index\view\market\index.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'page',
+  4 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.015600s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:51' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:51' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:52+08:00 ] 221.225.202.28 POST /market/overview
+[ info ] prvd.cn/market/overview [运行时间：0.062400s][吞吐率：16.03req/s] [内存消耗：1,898.63kb] [文件加载：71]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market/overview',
+  'route' => 'market/overview',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market/overview',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://prvd.cn',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/market.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `market` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `date`,`price`,`high`,`low` FROM `market` WHERE  `date` <= '2019-04-18' ORDER BY `date` DESC LIMIT 7 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` <> 0  AND `status` <> 8  AND `create_at` > '2019-04-18' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` = 8  AND `create_at` > '2019-04-18' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:52+08:00 ] 221.225.202.28 GET /team.html
+[ info ] prvd.cn/team.html [运行时间：0.062400s][吞吐率：16.03req/s] [内存消耗：1,941.83kb] [文件加载：73]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'team',
+  'route' => 'team/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/team.html',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/market.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wwwroot\prvd.cn\application\index\view\team\index.html [ array (
+  0 => 'platform',
+  1 => 'index',
+  2 => 'page',
+  3 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.015600s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` WHERE  `inviter` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:52+08:00 ] 221.225.202.28 POST /team/member
+[ info ] prvd.cn/team/member [运行时间：0.046800s][吞吐率：21.37req/s] [内存消耗：1,689.20kb] [文件加载：71]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'team/member',
+  'route' => 'team/member',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '14',
+  'x-rewrite-url' => '/team/member',
+  'origin' => 'http://prvd.cn',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/team.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'size' => '20',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `a`.`uid`,`p`.`realname`,`p`.`avatar`,`a`.`type`,`a`.`username`,`p`.`nickname`,`p`.`idcard` FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` WHERE  `inviter` = '15821899104' LIMIT 0,20 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:52+08:00 ] 221.225.202.28 GET /market.html
+[ info ] prvd.cn/market.html [运行时间：0.062400s][吞吐率：16.03req/s] [内存消耗：2,164.94kb] [文件加载：73]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market',
+  'route' => 'market/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market.html',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/team.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wwwroot\prvd.cn\application\index\view\market\index.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'page',
+  4 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.015600s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:52' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:52' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:53+08:00 ] 221.225.202.28 POST /market/overview
+[ info ] prvd.cn/market/overview [运行时间：0.046800s][吞吐率：21.37req/s] [内存消耗：1,898.63kb] [文件加载：71]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market/overview',
+  'route' => 'market/overview',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market/overview',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://prvd.cn',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/market.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `market` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `date`,`price`,`high`,`low` FROM `market` WHERE  `date` <= '2019-04-18' ORDER BY `date` DESC LIMIT 7 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` <> 0  AND `status` <> 8  AND `create_at` > '2019-04-18' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` = 8  AND `create_at` > '2019-04-18' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:53+08:00 ] 221.225.202.28 GET /market.html
+[ info ] prvd.cn/market.html [运行时间：0.062400s][吞吐率：16.03req/s] [内存消耗：2,164.94kb] [文件加载：73]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market',
+  'route' => 'market/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market.html',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/market.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wwwroot\prvd.cn\application\index\view\market\index.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'page',
+  4 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.015600s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '15821899104' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-04-18' [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:53' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-04-18'  AND `t`.`create_at` < '2019-04-18 23:53:53' LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-04-18T23:58:54+08:00 ] 221.225.202.28 POST /market/overview
+[ info ] prvd.cn/market/overview [运行时间：0.046800s][吞吐率：21.37req/s] [内存消耗：1,898.63kb] [文件加载：71]
+[ info ] [ LANG ] D:\wwwroot\prvd.cn\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market/overview',
+  'route' => 'market/overview',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => '',
+  'content-length' => '0',
+  'x-rewrite-url' => '/market/overview',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://prvd.cn',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN',
+  'referer' => 'http://prvd.cn/market.html',
+  'host' => 'prvd.cn',
+  'cookie' => 'PHPSESSID=d7q31853nh5gicfda0cft1m82t',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015600s ] mysql:host=127.0.0.1;dbname=sql337145;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `market` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `date`,`price`,`high`,`low` FROM `market` WHERE  `date` <= '2019-04-18' ORDER BY `date` DESC LIMIT 7 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` <> 0  AND `status` <> 8  AND `create_at` > '2019-04-18' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` = 8  AND `create_at` > '2019-04-18' LIMIT 1 [ RunTime:0.000000s ]

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8" />
+        <title>vaeThink</title>
+        <meta name="renderer" content="webkit" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="__ADMIN__/lib/layui/css/layui.css" media="all" /></head>
+    <body class="vae-body">
+        <form class="layui-form vae-content">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">品种</label>
+                <div class="layui-input-block" style="max-width: 500px;">
+                    <input type="text" name="catename" lay-verify="required" autocomplete="off" placeholder="请输入品种" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">等级</label>
+                <div class="layui-input-inline">
+                    <select name="level_id">
+                        {volist name='levellist' id='vo'}
+                        <option value="{$vo.id}">{$vo.level}：{$vo.levelname}</option>
+                        {/volist}
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">排序</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="sort" lay-verify="required" autocomplete="off" placeholder="请输入排序" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">捕捞时间</label>
+                <div class="layui-input-block" style="max-width: 500px;">
+                    <input type="text" name="adopt_time" id="adopt_time" lay-verify="required" autocomplete="off" placeholder="请选择捕捞时间" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">预约鱼饵</label>
+                <div class="layui-input-block" style="max-width: 500px;">
+                    <input type="text" name="appointment_integral" lay-verify="required" autocomplete="off" placeholder="请输入预约鱼饵" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">捕捞鱼饵</label>
+                <div class="layui-input-block" style="max-width: 500px;">
+                    <input type="text" name="adopt_integral" lay-verify="required" autocomplete="off" placeholder="请输入捕捞鱼饵" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">合约收益</label>
+                <div class="layui-input-inline" style="width: 100px;">
+                <input type="text" name="cycle" lay-verify="required" placeholder="天" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid">/</div>
+                <div class="layui-input-inline" style="width: 100px;">
+                <input type="text" name="figure" lay-verify="required" placeholder="￥" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid">%</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">BST虚拟币</label>
+                <div class="layui-input-inline" style="width: 200px;">
+                    <input type="text" name="bst_currency" lay-verify="required" autocomplete="off" placeholder="请输入BST虚拟币" class="layui-input">
+                </div>
+                <div class="layui-form-mid">个</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">OCN幣收益比例</label>
+                <div class="layui-input-inline" style="width: 200px;">
+                <input type="text" name="ocn_figure" lay-verify="required" placeholder="请输入OCN幣收益比例" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid">%</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">照片</label>
+                <div class="layui-input-inline">
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn" id="test1">上传照片</button>
+                        <div class="layui-upload-list" id="thumbDiv">
+                            <img src="" width="250" />
+                            <input type="hidden" name="thumb" value="">
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">价值</label>
+                <div class="layui-input-inline" style="width: 100px;">
+                <input type="text" name="minprice" lay-verify="required" placeholder="￥" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid">~</div>
+                <div class="layui-input-inline" style="width: 100px;">
+                <input type="text" name="maxprice" lay-verify="required" placeholder="￥" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">收益转存</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="isincome_transferred" value="0" title="关闭" checked>
+                    <input type="radio" name="isincome_transferred" value="1" title="开启">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">分配领取</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="isauto" value="1" title="自动分配" checked>
+                    <input type="radio" name="isauto" value="0" title="人工分配">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">状态</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="status" value="1" title="正常" checked>
+                    <input type="radio" name="status" value="0" title="禁用">
+                    <input type="radio" name="status" value="2" title="冻结">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" lay-filter="vaeform">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    <a href="javascript:history.back(-1)" class="layui-btn layui-btn-primary">返回</a>
+                </div>
+            </div>
+        </form>
+        <script src="__ADMIN__/lib/layui/layui.js" charset="utf-8"></script>
+        <script>layui.config({
+                base: '/themes/admin_themes/module/'
+            }).use(['upload', 'form', 'vaeyo', 'laydate'],
+            function() {
+                var form = layui.form,
+                layer = layui.layer,
+                $ = layui.$,
+                upload = layui.upload,
+                vae = layui.vaeyo,
+                laydate = layui.laydate;
+               
+                laydate.render({
+                    elem: '#adopt_time'
+                    ,type: 'time'
+                    ,range: '-'
+                    ,format: 'HH:mm'
+                  });
+
+                //图片上传
+                var uploadInst = upload.render({
+                    elem: '#test1'
+                    ,url: '/admin/api/upload'
+                    ,done: function(res){
+                    //如果上传失败
+                    if(res.code == 0){
+                    return layer.msg('上传失败');
+                    }
+                    //上传成功
+                    $('#thumbDiv img').attr('src',res.data);
+                    $('#thumbDiv input').attr('value',res.data);
+                    }
+                });
+
+                //监听提交
+                form.on('submit(vaeform)',
+                function(data) {
+                    $.ajax({
+                        url: "/admin/product/addcateSubmit",
+                        type: 'post',
+                        data: data.field,
+                        success: function(e) {
+                            if (e.code == 1) {
+                                layer.confirm('保存成功,返回列表吗?', {
+                                    icon: 3,
+                                    title: '提示'
+                                },
+                                function(index) {
+                                    vae.backThisTab();
+                                    layer.close(index);
+                                });
+                            } else {
+                                layer.msg(e.msg);
+                            }
+                        }
+                    }) 
+                    return false;
+                });
+
+            });</script>
+    </body>
+
+</html>

@@ -1,0 +1,81 @@
+.grace-pop-menu {
+    width: 100%;
+    font-size: 0;
+}
+
+.grace-pop-item {
+    width: 88rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    text-align: center;
+    font-size: 40rpx;
+    color: #FFFFFF;
+    border-radius: 50%;
+    margin: 20rpx 0;
+    overflow: hidden;
+    display: block;
+    padding: 0;
+}
+
+.grace-scroll-x {
+    border-bottom: 1px solid #F1F1F1;
+    background-color: #F5F6F8;
+}
+
+.grace-scroll-items {
+    width: 150rpx;
+    margin: 0;
+    padding: 12rpx 0;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.grace-scroll-items-date {
+    font-size: 28rpx;
+    width: 100%;
+    line-height: 50rpx;
+    text-align: center;
+}
+
+.grace-scroll-items-week {
+    font-size: 22rpx;
+    width: 100%;
+    line-height: 36rpx;
+    margin-bottom: 10rpx;
+    text-align: center;
+}
+
+.grace-scroll-day-active {
+    background: #3688FF;
+    color: #FFFFFF;
+}
+
+.grace-list-items {
+    position: relative;
+}
+
+.grace-list-title-text {
+    font-size: 36rpx!important;
+    font-weight: bold;
+}
+
+.grace-list-title-text .grace-text-small {
+    font-size: 30rpx;
+}
+
+.grace-list-body-desc {
+    font-size: 32rpx!important;
+    margin-top: 20rpx;
+    color: #666;
+    letter-spacing: 2rpx;
+}
+
+.grace-big-title {
+    margin-top: 80rpx;
+}
+
+.fixed-tool {
+    position: fixed;
+    right: 25rpx;
+    bottom: 100rpx;
+}

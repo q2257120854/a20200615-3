@@ -1,0 +1,252 @@
+
+<link rel="stylesheet" href="__STATIC__/module/admin/ext/autocomplete/jquery-ui.css">
+<link rel="stylesheet" href="__STATIC__/module/admin/ext/edittable/jquery.edittable.min.css">
+<form action="{:url()}" method="post" class="form_single">
+    <div class="box">
+      <div class="box-body">
+        <div class="row">
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>所属用户</label>
+              <span>（关键词所属用户）</span>
+              <input class="form-control" {gt name="$info.id" value="0"} disabled {/gt} value="{$info.username}"  placeholder="直接敲空格加载下拉选择或输入客户名称搜索" type="text">
+              <input type="hidden" name="userid"  value="{$info['userid']}" >
+            </div>
+          </div>
+ 
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>网站URL域名或熊掌号全称</label>
+              <input class="form-control"  value="{$info.url}" {gt name="$info.id" value="0"} disabled {/gt} placeholder="请输入网站名称" type="text">
+              <input type="hidden" name="urlid"  value="{$info['urlid']}" >
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>关键词添加</label>
+              <table id="request_data_table" style="">
+                <table class="inputtable custom">
+                  <thead>
+                  <tr>
+                    <th>关键词名称</th>
+                    <th>第一页价格</th>
+                    <th>第二页价格</th>
+                    <th>第一页成本价</th>
+                    <th>第二页成本价</th>
+                    <th>
+
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody id="list">
+
+                  <tr class="add">
+                    <td>
+                      <input class="form-control" type="text"  value="" name="keyword_data[keyword][]" placeholder="请输入关键词名称" >
+                    </td>
+                    <td>
+                        <input class="form-control" type="number"  value="" name="keyword_data[price_one][]" placeholder="请输入第一页价格" >
+                    </td>
+                    <td>
+                      <input class="form-control" type="number"  value="" name="keyword_data[price_tow][]" placeholder="请输入第二页价格" >
+                    </td>
+                    <td>
+                      <input class="form-control" type="number"  value="" name="keyword_data[cb_one][]" placeholder="请输入第一页成本价格" >
+                    </td>
+                    <td>
+                      <input class="form-control" type="number"  value=""  name="keyword_data[cb_tow][]" placeholder="请输入第二页成本价格">
+                    </td>
+                    <td>
+                      <a class="addrow icon-button" href="javascript:void(0);" onclick="add(this);">+</a>
+                      <a class="delrow icon-button disabled" href="javascript:void(0);" onclick="delLis(this);">-</a>
+                    </td>
+                  </tr>
+
+                  </tbody>
+                </table>
+              </table>
+
+            </div>
+          </div>
+
+ 
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>选择搜索引擎</label>
+              <div>
+              <label class="radio-inline">
+                <input type="checkbox" name="search_engine[]" checked="checked" id="inlineRadio1" value="baidupc"> 百度PC
+              </label>
+              <label class="radio-inline">
+                <input type="checkbox" name="search_engine[]" id="inlineRadio2" value="baidumobile"> 百度移动端
+              </label>
+              <label class="radio-inline">
+                <input type="checkbox" name="search_engine[]" id="inlineRadio3" value="360pc"> 360PC
+              </label>
+
+                <label class="radio-inline">
+                  <input type="checkbox" name="search_engine[]" id="inlineRadio4" value="360mobile"> 360移动端
+                </label>
+
+                <label class="radio-inline">
+                  <input type="checkbox" name="search_engine[]" id="inlineRadio5" value="sogoupc"> 搜狗PC
+                </label>
+
+                <label class="radio-inline">
+                  <input type="checkbox" name="search_engine[]" id="inlineRadio6" value="sogoumobile"> 搜狗移动端
+                </label>
+
+                <label class="radio-inline">
+                  <input type="checkbox" name="search_engine[]" id="inlineRadio7" value="smmobile"> 神马搜索
+                </label>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>审核状态</label>
+              <div>
+                {if condition="$myinfo.leader_id eq 0"}
+                  <label class="radio-inline">
+                    <input type="radio" name="jk_status"  value="1" checked> 审核通过
+                  </label>
+
+                  <label class="radio-inline">
+                    <input type="radio" name="jk_status"  value="0"> 待管理员审核
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="jk_status"  value="-1"> 待代理审核
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="jk_status"  value="-2"> 审核不通过
+                  </label>
+                {elseif condition="$myinfo.leader_id eq 1"}
+                  <label class="radio-inline">
+                    <input type="radio" name="jk_status"  value="0" checked> 待管理员审核
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="jk_status"  value="-1"> 待代理审核
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="jk_status"  value="-2"> 审核不通过
+                  </label>
+                {else}
+                  <label class="radio-inline">
+                    <input type="radio" name="jk_status"  value="-1" checked> 待代理审核
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="jk_status"  value="-2"> 审核不通过
+                  </label>
+                {/if}
+
+
+             <span style="color: red;">注意:只有审核通过才会监控关键词</span>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>优化状态</label>
+              <div>
+                {if condition="$myinfo.leader_id eq 0"}
+                <label class="radio-inline">
+                  <input type="radio" name="youhua" value="2"> 未优化
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="youhua"  value="1" checked> 优化中
+                </label>
+
+                <label class="radio-inline">
+                  <input type="radio" name="youhua"  value="0"> 待代理审核停止优化
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="youhua"  value="-1"> 待管理员审核停止优化
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="youhua"  value="-2"> 停止优化
+                </label>
+                {else/}
+
+
+
+                <label class="radio-inline">
+                  <input type="radio" name="youhua" value="2" checked> 未优化
+                </label>
+                {/if}
+
+
+
+
+                <span style="color: red;">注意:只有优化中才会监控关键词</span>
+              </div>
+            </div>
+
+          </div>
+
+            
+        </div>
+      </div>
+      <div class="box-footer">
+        
+        {include file="layout/edit_btn_group"/}
+      </div>
+    </div>
+</form>
+
+
+<script>
+	
+  $(function(){
+    $( "#user" ).autocomplete({
+      source: "{:url('getuser')}"
+    });
+  });
+
+  function add(th){
+
+    if($("tbody tr").length>=40){
+      alert("一次最多添加40个关键词");return false;
+    }
+
+          $(".delrow").removeClass("disabled");
+
+    var html='<tr class="add">'+
+    ' <td>'+
+    '<input class="form-control" type="text" name="keyword_data[keyword][]" value="" placeholder="请输入关键词名称" >'+
+    '  </td>'+
+    ' <td>'+
+    ' <input class="form-control" type="number" name="keyword_data[price_one][]" value="" placeholder="请输入第一页价格" >'+
+    '  </td>'+
+    '  <td>'+
+    ' <input class="form-control" type="number" name="keyword_data[price_tow][]" value="" placeholder="请输入第二页价格" >'+
+    '  </td>'+
+    ' <td>'+
+    '  <input class="form-control" type="number" name="keyword_data[cb_one][]" value="" placeholder="请输入第一页成本价格" >'+
+    ' </td>'+
+    '  <td>'+
+    '  <input class="form-control" type="number" name="keyword_data[cb_tow][]" value="" placeholder="请输入第二页成本价格" ">'+
+    '  </td>'+
+    '  <td>'+
+    '   <a class="addrow icon-button" href="javascript:void(0);" onclick="add(this);">+</a>'+
+    ' <a class="delrow icon-button" href="#" onclick="delLis(this);">-</a>'+
+    ' </td>'+
+    '</tr>';
+    $("#list").append(html);
+
+  }
+
+  function delLis(th){
+    if($(th).hasClass("disabled")){
+    }else {
+      $(th).parent().parent().remove();
+    }
+    if($(".delrow").length==1){
+      $(".delrow:eq(0)").addClass("disabled");
+    }
+  }
+</script>

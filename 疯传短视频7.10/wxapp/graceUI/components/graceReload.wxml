@@ -1,0 +1,6 @@
+<view class="grace-reload {{reloadStatus==0?'gload-show':''}} {{reloadStatus==2?'gload-hide':''}}" style="background:{{reloadBgColor[reloadStatus]}}; height:{{height+'rpx'}}; width:{{width}}; margin-left:{{marginLeft}};">
+    <text class="grace-reload-icon icon-pulldown" style="color:{{reloadColor[reloadStatus]}};" wx:if="{{reloadStatus==0}}"></text>
+    <text class="grace-reload-icon icon-loading grace-rotate360" style="color:{{reloadColor[reloadStatus]}};" wx:if="{{reloadStatus==1}}"></text>
+    <text class="grace-reload-icon icon-ok" style="color:{{reloadColor[reloadStatus]}};" wx:if="{{reloadStatus==2}}"></text>
+    <text class="grace-reload-text" style="color:{{reloadColor[reloadStatus]}};">{{reloadTxt[reloadStatus]}}</text>
+</view>

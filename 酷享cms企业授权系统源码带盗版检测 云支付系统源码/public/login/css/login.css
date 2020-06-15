@@ -1,0 +1,334 @@
+﻿@charset "utf-8";
+/*-----------------------公共样式------------------------*/
+/*!
+ * @功能：1、重设浏览器默认样式
+ *       2、设置通用原子类
+ */
+/* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
+html {
+    background-color:#f4f4f4;
+	-webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    color:#555;
+    background-image: url(../images/login-bg.svg);
+    background-repeat: no-repeat;
+    background-position: center 0;
+    background-size: 100%;
+
+}
+#root, body, html {
+    height: 100%;
+    overflow-x: hidden;
+}
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+    margin:0;
+    padding:0;
+}
+/* 要注意表单元素并不继承父级 font 的问题 */
+body,button,input,select,textarea {
+     font:14px "microsoft yahei", arial, sans-serif;color:#555;
+}
+/* 重设 HTML5 标签, IE 需要在 js 中 createElement(TAG) */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+
+/* HTML5 媒体文件跟 img 保持一致 */
+audio,canvas,video {
+    display: inline-block;*display: inline;*zoom: 1;
+}
+input,select,textarea {
+    font-size:100%;
+}
+/* 去掉 table cell 的边距并让其边重合 */
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+/* ie bug：th 不继承 text-align */
+th {
+    text-align:inherit;
+}
+/* 去除默认边框 */
+fieldset,img {
+    border:none;
+}
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe {
+    display:block;
+}
+/* 去掉 firefox 下此元素的边框 */
+abbr,acronym {
+    border:none;
+    font-variant:normal;
+}
+/* 一致的 del 样式 */
+del {
+    text-decoration:line-through;
+}
+address,caption,cite,code,dfn,em,th,var {
+    font-style:normal;
+    font-weight:500;
+}
+/* 去掉列表前的标识，li 会继承 */
+ol,ul ,li{
+    list-style:none;
+}
+
+/* 对齐是排版最重要的因素，别让什么都居中 */
+caption,th {
+    text-align:left;
+}
+/* 来自yahoo，让标题都自定义，适应多个系统应用 */
+h1,h2,h3,h4,h5,h6 {
+    font-size:100%;
+    font-weight:500;
+}
+h2{ 
+	font-size:18px; 
+	color:#555;
+}
+q:before,q:after {
+    content:'';
+}
+/* 统一上标和下标 */
+sub,sup {
+    font-size:75%;
+    line-height:0;
+    position:relative;
+    vertical-align:baseline;
+}
+sup {
+    top:-0.5em;
+}
+sub {
+    bottom:-0.25em;
+}
+/* 让链接在 hover 状态下显示下划线 */
+a:hover {
+	color:#f97720;
+    text-decoration:none;
+}
+/* 默认不显示下划线，保持页面简洁 */
+ins,a {
+	color:#666;
+    text-decoration:none;
+}
+/* 去除 ie6 & ie7 焦点点状线 */
+a:focus,*:focus {
+    outline:none;
+}
+/* 清除浮动 */
+.clearfix:before,.clearfix:after {
+    content:"";
+    display:table;
+}
+.clearfix:after {
+    clear:both;
+    overflow:hidden;
+}
+.clearfix {
+    zoom:1; /* for ie6 & ie7 */
+}
+.clear {
+    clear:both;
+    display:block;
+    font-size:0;
+    height:0;
+    line-height:0;
+    overflow:hidden;
+}
+/* 设置显示和隐藏，通常用来与 js 配合 */
+.hide {
+    display:none;
+}
+.block {
+    display:block;
+}
+/* 设置浮动，减少浮动带来的 bug */
+.fl,.fr {
+    display:inline;
+}
+.fl {
+    float:left;
+}
+.fr {
+    float:right;
+}
+
+
+@font-face {
+  font-family: 'iconfont';
+  src: url('../fonts/iconfont.eot');
+  src: url('../fonts/iconfont.eot') format('embedded-opentype'),
+      url('../fonts/iconfont.woff2') format('woff2'),
+      url('../fonts/iconfont.woff') format('woff'),
+      url('../fonts/iconfont.ttf') format('truetype'),
+      url('../fonts/iconfont.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 14px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+#root .content {
+    padding: 72px 0 24px;
+	height: auto;
+	overflow: hidden;
+}
+.login-logo,.login-desc{
+	margin: 0 auto;
+	text-align: center;
+}
+.login-logo img{
+	height: 20px;
+}
+.login-desc {
+    font-size: 14px;
+	color: #999;
+    margin-top: 12px;
+    margin-bottom: 40px;
+}
+.login-box {
+    width: 368px;
+    margin: 0 auto;
+}
+.login-box .Tagss{
+	width: 100%;
+	padding-left: 60px;
+	margin-bottom: 30px;
+}
+.login-box .Tagss li{
+	float: left;
+	margin-right:20px;
+	
+}
+.login-box .Tagss li a{
+	display: block;
+	padding: 10px;
+	border-bottom: 2px solid #f4f4f4;
+}
+
+.login-box .Tagss .Tag a{
+	color: #f97720;
+	border-bottom: 2px solid #f97720;
+}
+.input-box{
+	margin-bottom: 24px;
+	position: relative;
+
+}
+.input-box .ant-input {
+    box-sizing: border-box;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    padding: 4px 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    background-image: none;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+.input-box .ant-pd{
+	 padding-left:30px;
+}
+.input-box .ant-input:focus {
+    border:1px solid #d9d9d9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(191, 189, 189, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(191, 189, 189, 0.6);
+}
+::-webkit-input-placeholder { 
+	color:  #bbb; 
+}
+.input-box .login-bt{
+	width: 100%;
+	border: 0;
+	padding: 10px 20px;
+	background-color: #f97720;
+	border-radius: 4px;
+	color: #fff;
+	font-size: 16px;
+
+}
+.input-box .login-bt:hover{
+	background-color: #f38439;
+	 -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(191, 189, 189, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(191, 189, 189, 0.6);
+}
+.input-box .reg-bt{
+	color: #f97720;
+	line-height: 30px;
+}
+
+.ico-blue{
+	color: #61bce9;
+	font-size: 26px;
+	margin: 0 0 0 6px;
+}
+.ico-green{
+	color: #00bc0d;
+	font-size: 26px;
+	margin: 0 0 0 6px;
+}
+.input-box .login-other{
+	line-height: 26px;
+	display: inline;
+	overflow: hidden;
+}
+.input-box .pad{
+	color: #999;
+}
+.input-box .xy{
+	color: #f97720;
+}
+.input-box .ico-m{
+	position: absolute;
+	color: #999;
+	top: 14px;
+	z-index: 10;
+	left: 10px;
+}
+.input-box .yzm-input{
+	padding: 0;
+	background-color: #fff;
+	cursor:pointer
+}
+.login-box .tit{
+	margin-bottom: 20px;
+	text-align: center;
+	font-size: 18px;
+	line-height: 40px;
+}
+.login-box .login-info{
+	color: #999;
+	text-align: center;
+	line-height: 30px;
+	margin: 10px 0;
+}
+.login-box .login-info a{
+	color: #f97720;
+	margin:0 6px ;
+}
+.footer{
+	position: fixed;
+	font-size: 12px;
+	width: 100%;
+	color: #999;
+	bottom: 10px;
+    padding: 0 16px;
+    margin: 15px 0;
+    text-align: center;
+	overflow: hidden;
+}
+

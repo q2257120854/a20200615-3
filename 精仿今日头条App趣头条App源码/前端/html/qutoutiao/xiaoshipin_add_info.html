@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>小视频</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+	</head>
+	<style>
+		html,body {
+			background-color: transparent !important;
+			 
+			width: 100%;
+			height: 100%;
+		}
+		
+		#sx1{
+			position: fixed;
+			 width: 100%;
+			left: 0px;
+			z-index: 1;
+			top:0;
+		}
+		.aui-pull-left{
+			background: none;
+			padding:0.75rem;
+			line-height: normal;
+			height: auto;
+		}
+		.aui-pull-left span{
+			color: #fff;
+			font-weight: bold;
+			font-size: 1rem;
+			background: none;
+		}
+		.f{
+			position: fixed;
+			z-index: 3;
+			bottom: 0.75rem;
+			left: 0;
+			width: 100%;
+		}
+		.f .textarea{
+			width: 100%;
+			width: 88%;
+			background: #3D3D3D;
+			padding: 0.75rem;
+			margin: 0 auto;
+		}
+		/*.asdasdas{
+			margin-right: 1.5rem;
+			background: #000000;
+			padding: 0.75rem;
+		}*/
+		.f .textarea textarea{
+			color: #fff;
+			font-size: 0.75rem;
+			height: 2rem;
+		}
+		.border{
+			border-bottom: 1px solid #585858;
+			padding: 0.3rem 0;
+		}
+		.fabu{
+			width: 88%;
+			height: 48px;
+			margin:0.75rem auto;
+			line-height: 48px;
+			border-radius: 0.2rem;
+			background: #D43D3D;
+			color: #fff;
+			text-align: center;
+			font-size: 0.7rem;
+		}
+		.em{
+			width: 88%;
+			margin: 0 auto;
+			padding-bottom: 0.2rem;
+		}
+	</style>
+	<body >
+		 <div id="sx1">
+		 	<a class="aui-pull-left aui-btn" tapmode onclick="_close()"> <span class="aui-iconfont aui-icon-left"></span> </a>
+		 	<div class="f">
+		 		<div class="textarea">
+		 			<textarea placeholder="分享你此刻的心情~" maxlength="30"></textarea>
+		 			<div class="border"></div>
+		 		</div>
+		 		<div class="fabu" tapmode onclick="fabu()">发布</div>
+		 	</div>
+		 </div>
+	</body>
+	<script type="text/javascript" src="../script/fastclick.js"></script>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var videoUrl
+		apiready = function() {
+			$api.fixStatusBar($api.dom('.aui-pull-left'));
+			videoUrl=api.pageParam['videoUrl'] ? api.pageParam['videoUrl'] : '';
+			if(!videoUrl){
+			 	_close();
+			 	return;
+			}
+			FastClick.attach(document.body);
+		}
+		function em(){
+			var len=$('textarea').val().length;
+			$('em').text(len);
+		}
+		function fabu(){
+			$("textarea").blur();
+			_loading('视频上传中...')
+			api.ajax({
+			    url: fx_url+'api/member/videoUpload',
+			    method: 'post',
+			    timeout:6000000000,
+			    data: {
+			    	values:{
+			    		token:_token,
+			    	},
+			        files: {
+			            video: videoUrl
+			        }
+			    },
+			}, function(ret, err) {
+				console.log('视频：'+JSON.stringify(ret)+JSON.stringify(err))
+			    if (ret) {
+ 					if(ret.err){
+ 						_loadingCloes();
+ 						_msg(ret.err)
+ 					}else{
+ 						var videojson=ret.ret.persistentId;
+ 						var videourl=ret.ret.key;
+ 						var title=$('textarea').val();
+						_ajax('api/member/articleAdd',function(ret,err){
+							_loadingCloes();
+							if(ret){
+								if(ret.ret){
+									_alert(ret.ret,function(ret){
+										_close()
+									})
+								}else{
+									_alert(ret.err)
+								}
+							}else{
+								alert(JSON.stringify(err));
+							}
+						},{title:title,mychannel:4,video:videojson,videourl:videourl})
+ 					}
+			    } else {
+			    	_loadingCloes();
+			        api.alert({ msg: JSON.stringify(err) });
+			    }
+			});
+ 
+		}
+	</script>
+</html>

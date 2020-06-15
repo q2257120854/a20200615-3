@@ -1,0 +1,98 @@
+{extend name="common/world"}
+{block name="title"}共享蚁巢{/block}
+{block name="style"}
+<style>
+body {
+	background-image: url('{$config.background}');
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}
+@media (min-width: 768px) {
+	body {
+		background-size: contain;
+	}
+}
+</style>
+{/block}
+{block name="container"}
+<div class="pool">
+	<div>
+        <div class="clearfix">
+            <div class="float-left">
+            	<div class="small text-muted">我的算力</div>
+                <div><strong>{$Think.session.user.dashboard.power} <sup>Ghs</sup></strong></div>
+            </div>
+            <div class="float-right">
+            	<div class="second">
+	            	<div class="small text-muted">倒计时</div>
+	            	<div class="expire">s</div>
+            	</div>
+                <div hidden class="profit"><button class="btn btn-secondary btn-profit">领取收益</button></div>
+            </div>
+        </div>
+        <div class="progress progress-xs mt-1">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+	</div>
+	<div class="mt-1">
+		<div class="clearfix">
+            <div class="float-left">
+            	<div class="small text-muted">蚁巢余量</div>
+                <div><strong>{:money($config.volume - $collect)}</strong></div>
+            	<div class="small text-muted">当前难度</div>
+                <div><strong>{$config.complexity + $collect}</strong></div>
+            </div>
+            <div class="float-right">
+				<div><button class="btn btn-secondary" data-toggle="modal" data-target="#exampleModalCenter">算力道具</button></div>
+            </div>
+        </div>
+	</div>
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header py-2">
+				<h5 class="modal-title" id="exampleModalLongTitle">算力道具</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body p-0 px-1">
+				<div class="table-responsive">
+					<table class="table table-hover table-outline table-vcenter text-nowrap card-table table-prop small">
+						<thead>
+							<tr>
+								<th width="10%"></th>
+								<th>名称</th>
+								<th>算力</th>
+								<th class="text-right">价格</th>
+							</tr>
+						</thead>
+						<tbody>
+							{volist name="props" id="prop"}
+							<tr>
+								<td>
+									<label class="custom-control custom-radio mb-0">
+			                            <input type="radio" class="custom-control-input" name="prop" value="{$prop.id}" />
+			                            <div class="custom-control-label"></div>
+		                        	</label>
+								</td>
+								<td>{$prop.title}</td>
+								<td>+{$prop.power|money}Ghs</td>
+								<td class="text-right">{$prop.price|money}{$Think.config.hello.unit}</td>
+							</tr>
+							{/volist}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="modal-footer py-2">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary btn-prop">立即兑换</button>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript" src="/static/js/pool.js"></script>
+{/block}

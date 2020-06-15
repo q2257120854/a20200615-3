@@ -1,0 +1,119 @@
+{extend name="common/world"}
+{block name="title"}首页轮播图{/block}
+{block name="style"}
+<style type="text/css">
+.image {
+	width: 100%;
+	height: 8rem;
+	line-height: 8rem;
+	font-size: 3rem;
+	background-color: #e0e0e0;
+	background-size: 100% 100%;
+	position: relative;
+	color: #9E9E9E;
+	border-radius: 10px;
+	text-align: center;
+}
+.image input {
+	position: absolute;
+	left: 0;top: 0;width: 100%;height: 100%;
+	opacity: 0;
+}
+.image input[type=hidden] {
+	z-index: 0;
+}
+.image input[type=file] {
+	z-index: 1;
+}
+</style>
+{/block}
+{block name="container"}
+<form class="card" method="post">
+	<div class="card-header">
+		<div class="card-title">轮播图列表</div>
+	</div>
+	<div class="table-responsive">
+		<table class="table card-table table-vcenter text-nowrap">
+			<thead>
+			<tr>
+				<th width="20%">顺序</th>
+				<th width="35%">图片</th>
+				<th width="35%">链接</th>
+				<th width="10%">操作</th>
+			</tr>
+			</thead>
+			<tbody>
+			{empty name="carousel"}
+				<tr>
+					<td><input type="number" class="form-control" name="index[]" placeholder="数字越大越靠前" /></td>
+					<td>
+						<div class="image"><i class="fa fa-camera"></i><input type="hidden" name="image[]" /><input type="file" accept="image/*" /></div>
+					</td>
+					<td><input type="text" class="form-control" name="link[]" placeholder="http://" /></td>
+					<td><a class="btn btn-danger btn-sm text-white btn-remrow">删除</a></td>
+				</tr>
+			{else /}
+				{volist name="carousel" id="item"}
+				<tr>
+					<td><input class="form-control" type="number" name="index[]" value="{$item.index}" /></td>
+					<td>
+						<div class="image" style="background-image: url(/upload/{$item.image});"><i class="fa fa-camera"></i><input type="hidden" name="image[]" value="{$item.image}" /><input type="file" accept="image/*" /></div>
+					</td>
+					<td><input type="text" class="form-control" name="link[]" placeholder="http://" value="{$item.link}" /></td>
+					<td><a class="btn btn-danger btn-sm text-white btn-remrow">删除</a></td>
+				</tr>
+				{/volist}
+			{/empty}
+			</tbody>
+		</table>
+	</div>
+	<div class="card-footer text-right">
+		<button class="btn btn-secondary btn-addrow mr-2" type="button">再添加一行</button>
+		<button class="btn btn-primary">保存数据</button>
+	</div>
+</form>
+{/block}
+{block name="script"}
+<script>
+require(['jquery'], function($){
+	$(function(){
+		// 删除一行
+		$('.card').on('click', '.btn-remrow', function(){
+			// 只剩一行
+			if ($('table tbody tr').length <= 1) {
+				return false;
+			}
+			// 删除本行
+			$(this).parents('tr').remove();
+		});
+		// 再加一行
+		$('.btn-addrow').on('click', function(){
+			var html = '';
+			html += '<tr>';
+				html += '<td><input type="number" class="form-control" name="index[]" placeholder="数字越大越靠前" /></td>';
+				html += '<td>';
+					html += '<div class="image"><i class="fa fa-camera"></i><input type="hidden" name="image[]" /><input type="file" accept="image/*" /></div>';
+				html += '</td>';
+				html += '<td><input type="text" class="form-control" name="link[]" placeholder="http://" /></td>';
+				html += '<td><a class="btn btn-danger btn-sm text-white btn-remrow">删除</a></td>';
+			html += '</tr>';
+			$('.card .table tbody').append(html);
+		});
+		// 图片预览
+		$('.card').on('change', 'input[type=file]', function(){
+			var files = $(this)[0].files;
+			if (files.length) {
+				var file = files[0];
+				var reader = new FileReader();
+                reader.readAsDataURL(file);
+                var image = $(this).parents('.image');
+                reader.onload = function(){
+                	image.css('background-image', 'url(' + this.result + ')');
+                	image.find('input[type=hidden]').val(this.result);
+                }
+			}
+		});
+	});
+});
+</script>
+{/block}

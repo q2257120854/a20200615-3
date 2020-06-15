@@ -1,0 +1,96 @@
+<div class="box">
+    
+  <div class="box-header">
+
+    <div class="row">
+        <div class="col-sm-5">
+            <!--
+            <ob_link><a class="btn" href="{:url('webAdd')}"><i class="fa fa-plus"></i> 新增网站</a></ob_link>
+            -->
+        </div>
+        
+        <div class="col-sm-7">
+            <div class="box-tools search-form pull-right">
+
+                <!--
+                <div class="input-group input-group-sm">
+                    
+                    <input type="text" name="search_data" style="width: 200px;" class="form-control pull-right" value="{:input('search_data')}" placeholder="支持网站名称|用户名|域名">
+
+                    <div class="input-group-btn">
+                      <button type="button" id="search"  url="{:url('chongzhilist')}" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
+                    </div>
+
+                </div>
+
+                -->
+           </div>
+        </div>
+    </div>
+    
+  </div>
+    
+
+  <div class="box-body table-responsive">
+    <table  class="table table-bordered table-hover">
+      <thead>
+      <tr>
+          <th>用户名</th>
+          <th>金额</th>
+          <th>备注</th>
+          <th>充值时间</th>
+          <th>充值公司</th>
+          <th>订单号</th>
+          <th>是否支付</th>
+          <th {if condition="$member.id eq 1"} style="display: block;" {else/} style="display: none;" {/if}>操作</th>
+
+      </tr>
+      </thead>
+      
+      {notempty name='list["0"]["id"]'}
+        <tbody>
+            {volist name='list' id='vo'}
+                <tr>
+                  <td>{$vo.username}</td>
+                  <td align="center" style="color: #ef5350;">+{$vo.price}</td>
+                  <td>{$vo.beizhu|default='没有备注'}</td>
+                  <td>{$vo.create_time}</td>
+                  <td>
+                      {if condition="$vo.gs eq ''"}
+                        {$vo.beizhu}
+                      {else/}
+                        {$vo.gs}
+                      {/if}
+                  </td>
+                    <td>{$vo.pay_order}</td>
+                    <td>{if condition="$vo.pay_status eq 0"}
+                            <span style="background-color: red;color:#ffffff;padding: 6px;">未支付</span>
+                        {else/}
+                            <span style="background-color: #00A65A;color:#ffffff;padding: 6px;">已支付</span>
+                        {/if}
+                    </td>
+                   <td {if condition="$member.id eq 1"} style="display: block;" {else/} style="display: none;" {/if}>
+                     <ob_link><a href="{:url('chongzhiedit', array('id' => tp_encrypt($vo['id'])))}" class="btn"><i class="fa fa-edit"></i> 编 辑</a></ob_link>
+                   </td>
+                </tr>
+            {/volist}
+        </tbody>
+        {else/}
+        <tbody><tr class="odd"><td colspan="8" class="text-center" valign="top">{:config('empty_list_describe')}</td></tr></tbody>
+      {/notempty}
+    </table>
+  </div>
+
+  <div class="box-footer clearfix text-center">
+      {$list->render()}
+  </div>
+
+</div>
+
+<script>
+    //导出功能
+    $(".export").click(function(){
+        
+        window.location.href = searchFormUrl($(".export"));
+    });
+</script>

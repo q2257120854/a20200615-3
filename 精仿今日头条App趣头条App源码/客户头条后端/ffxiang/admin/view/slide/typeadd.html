@@ -1,0 +1,31 @@
+ {include file="public/header" /}
+ <style type="text/css">.gray-bg{ background: #fff; }.wrapper{ padding:0px;}.asdh5 h5{border-top: 1px dotted #ccc; padding-top: 20px;margin-top: 20px;}</style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content">
+    <div class="row">
+        <form class="form-horizontal" method="post">
+            <div class="col-sm-12">
+                <div class="ibox-content">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">分组标题：</label>
+                        <div class="col-sm-10">
+                            <input name="title" type="text"  class="form-control" value="{present name="name"}{$name.title}{/present}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">排序：</label>
+                        <div class="col-sm-10">
+                            <input name="des" type="text"  class="form-control" value="{present name="name"}{$name.des}{else /}50{/present}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{include file="public/footer" /}
+{include file="public/bottom" /}
+ 
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

@@ -1,0 +1,251 @@
+<div class="box">
+    
+  <div class="box-header">
+
+    <div class="row">
+    	<div class="col-sm-7">
+    		
+    		{assign name="file_id" value="$info.file_id|default='0'" /}
+            {:widget('file/index', ['name' => 'file_id', 'value' => $file_id, 'type' => 'file'])}
+        <ob_link> <button href="{:url('seo/delweb')}" class="btn  btn-xs  label-danger batch_btn_update"><i class="fa fa fa-trash"></i> 删 除</button></ob_link>
+        <button href="#" onclick="imports();" class="btn btn-xs"><i class="fa fa-edit"></i> 导入网站</button>
+        <a href="http://seo.7mb.net/koufeimuban/网站excel.xlsx" target="_blank" class="btn btn-xs label-info"><i class="fa fa-download"></i> 下载模板</a>
+        <ob_link><a class="btn  btn-xs" href="{:url('webAdd')}"><i class="fa fa-plus"></i> 新增网站</a></ob_link>
+        <ob_link><a class="btn btn-xs export" url="{:url('webexcel')}"><i class="fa fa-download"></i> 导 出</a></ob_link>
+
+        <script>
+            function imports(){
+                if ($(".upload-pre-file").children("a:first").text()){
+                    var path=$(".upload-pre-file").children("a:first").text();
+                    $.ajax({
+                        async : false,    //表示请求是否异步处理
+                        type : "post",    //请求类型
+                        url : "{:url('Seo/webdaoru')}",//请求的 URL地址
+                        data:{'path':path},
+                        dataType : "json",//返回的数据类型
+                        success: function (data) {
+                            obalert(data);
+                        },
+                        error:function (data) {
+                            alert(data.result);
+                        }
+                    });
+                }else {
+                    alert("请选择上传的EXCEL表");
+                }
+
+
+            }
+
+        </script>
+    	</div>
+        
+        
+        <div class="col-sm-5">
+            <div class="box-tools search-form pull-right">
+                <div class="input-group input-group-sm">
+                    
+                    <input type="text" name="search_data" style="width: 200px;" class="form-control pull-right" value="{:input('search_data')}" placeholder="支持网站名称|用户名|域名">
+
+                    <div class="input-group-btn">
+                      <button type="button" id="search"  url="{:url('weblist')}" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
+                    </div>
+
+                </div>
+           </div>
+        </div>
+    </div>
+    
+  </div>
+    
+    
+  <div class="box-body table-responsive">
+    <table  class="table table-bordered table-hover">
+      <thead>
+      <tr>
+      	  <th class="checkbox-select-all">
+              <label>
+                  <input class="flat-grey js-checkbox-all" type="checkbox">
+              </label>
+          </th>
+          <th>域名</th>
+          <th>网站名称</th>
+          <th>客户名</th>
+          <th>添加时间&nbsp;&nbsp;&nbsp;<a href="javascript:;" data-create='{$crate_timesort}' id="createtime"><i class="fa fa-long-arrow-down"></i><i class="fa fa-long-arrow-up"></i></a></th>
+          <th class="sortable1" onclick="sortTable1();">关键词数量&nbsp;&nbsp;<i class="fa fa-long-arrow-down"></i><i class="fa fa-long-arrow-up"></i></th>
+          <th class="sortable1" onclick="sortTable1();">今日达标&nbsp;&nbsp;<i class="fa fa-long-arrow-down"></i><i class="fa fa-long-arrow-up"></i></th>
+          <th class="sortable1" onclick="sortTable1();">今日消费&nbsp;&nbsp;<i class="fa fa-long-arrow-down"></i><i class="fa fa-long-arrow-up"></i></th>
+          <th class="sortable1" onclick="sortTable1();">累计消费&nbsp;&nbsp;<i class="fa fa-long-arrow-down"></i><i class="fa fa-long-arrow-up"></i></th>
+          <th>状态</th>
+          <th>操作</th>
+      </tr>
+      </thead>
+      
+      {notempty name='list["0"]["id"]'}
+        <tbody>
+            {volist name='list' id='vo' key="k"}
+                <tr>
+                	<td>
+                        <label>
+                            <input class="flat-grey" type="checkbox" name="id" value="{$vo.id}">
+                        </label>
+                    </td>
+                  <td><a href="{:url('webtuxing',array('id' => tp_encrypt($vo['id'])))}">{$vo.url}</a></td>
+                  <td>{$vo.web_name}</td>
+                  <td><a href="{:url('weblist',['userid' => tp_encrypt($vo['userid'])])}">{$vo.username|default='未绑定'}</a></td>
+                  <td>{$vo.create_time}</td>
+
+                    <td align="center"><a href="{:url('keywordlist',['search_data'=>$vo.url])}" target="_blank" style="font-size: 18px;">{$vo.knum}</a></td>
+
+                    <td align="center" style="color: #ff5d8e;font-size: 18px;">{$vo.dbnum}</td>
+                    <td align="center" style="color: red;font-size: 18px;">{$vo.pricenum|default='0'}元</td>
+                    <td align="center" style="color: #837ba6;font-size: 18px;">{$vo.countnum|default='0'}元</td>
+
+                    <td><a class="confirm ajax-get"  href="{:url('webStatus', array('id' => tp_encrypt($vo['id']),'status' =>$vo.status ))}">{$vo.status_text}</a></td>
+                  <td class="col-md-3 text-center">
+                      <ob_link><a href="{:url('webEdit', array('id' => tp_encrypt($vo['id'])))}" class="btn"><i class="fa fa-edit"></i> 编 辑</a></ob_link>
+                      &nbsp;
+                      <ob_link><a class="btn"  href="{:url('keywordadd', array('id' => tp_encrypt($vo['id'])))}"><i class="fa fa-plus"></i> 添加关键词</a></ob_link>
+                      &nbsp;
+                      <ob_link>
+                      	<a class="btn confirm ajax-get"  href="{:url('delweb', array('id' => tp_encrypt($vo['id'])))}"><i class="fa fa-trash-o"></i> 
+                      		{if condition="$vo.delweb eq 1"}
+                      			删 除
+                      		{elseif condition="$vo.delweb eq 0"}
+                      			删除网站待代理审核
+                      		{else}
+                      			待管理员删除网站
+                      		{/if}
+                      	</a>
+                      </ob_link>
+                  </td>
+                </tr>
+            {/volist}
+        </tbody>
+        {else/}
+            <tbody><tr class="odd"><td colspan="8" class="text-center" valign="top">{:config('empty_list_describe')}</td></tr></tbody>
+      {/notempty}
+    </table>
+  </div>
+	<div class="row">
+	 		<div class="col-sm-12">
+	 			<div class="box-tools search-form pull-right fenye">
+	 				<a href="{:url('')}?fenye=10" class="btn btn-xs">10</a>
+	 				<a href="{:url('')}?fenye=15" class="btn btn-xs">15</a>
+	 				<a href="{:url('')}?fenye=20" class="btn btn-xs">30</a>
+	 				<a href="{:url('')}?fenye=50" class="btn btn-xs">50</a>
+	 				<a href="{:url('')}?fenye=100" class="btn btn-xs">100</a>
+	 			</div>
+	 		</div>
+	 	</div>
+  <div class="box-footer clearfix text-center">
+      {$list->render()}
+  </div>
+
+</div>
+
+<script>
+    //导出功能
+    $(".export").click(function(){
+        
+        window.location.href = searchFormUrl($(".export"));
+    });
+    //批量删除功能
+    $(".batch_btn_update").click(function(){
+    	var $checked = $('.table input[type="checkbox"]:checked');
+		if($checked.length == 0){toast.warning('请选择批量操作数据!');return false;}
+		if(confirm('您确认删除这些网站吗?')){
+			var chk_value =[];
+
+			$('input[name="id"]:checked').each(function(){
+				chk_value.push($(this).val());
+			});
+			$.post("{:url('webDel')}",{id:chk_value},function(data){
+				if(data == 1){toast.success('网站删除成功，网站下关键词也被删除!');history.go(0);}
+            },"json");
+		}
+	});
+    //添加时间排序
+ 	var uurl = window.location.href;
+ 	var arr = uurl.split("?");
+    $("#createtime").click(function(){
+    	var sort = $("#createtime").attr('data-create');
+    	
+    	if(sort == 'desc'){
+    		window.location.href = arr[0] + "?crate_timesort=asc";
+    	}else{
+    		window.location.href = arr[0] + "?crate_timesort=desc";
+    	}
+    });
+    //蒋上传文件几个字改为上传网站
+    window.onload = function(){
+    	$("#file_upload_1-button").text('上传网站');
+    };
+    	
+
+            //js排序
+    function sortTable1(selector, compFunc) {
+      var mySelector = '.sortable1';
+      var myCompFunc = function($td1, $td2, isAsc) {
+        var v1 = $.trim($td1.text()).replace(/,|\s+|%/g, '');
+        var v2 = $.trim($td2.text()).replace(/,|\s+|%/g, '');
+        var pattern = /^\d+(\.\d*)?$/;
+        if (pattern.test(v1) && pattern.test(v2)) {
+          v1 = parseFloat(v1);
+          v2 = parseFloat(v2);
+        }
+
+        return isAsc ? v1 > v2 : v1 < v2;
+      };
+
+      var doSort = function($tbody, index, compFunc, isAsc)
+      {
+        var $trList = $tbody.find("tr");
+        var len = $trList.length;
+        for(var i=0; i<len-1; i++) {
+          for(var j=0; j<len-i-1; j++) {
+            var $td1 = $trList.eq(j).find("td").eq(index);
+            var $td2 = $trList.eq(j+1).find("td").eq(index);
+
+            if (compFunc($td1, $td2, isAsc)) {
+              var t = $trList.eq(j+1);
+              $trList.eq(j).insertAfter(t);
+              $trList = $tbody.find("tr");
+            }
+          }
+        }
+      }
+
+      var init = function() {
+        var $th = $("th" + selector);
+        this.$table = $th.closest("table");
+        var that = this;
+        $th.click(function(){
+          var index = $(this).index();
+          var asc = $(this).attr('data-asc');
+          isAsc = asc === undefined ? true : (asc > 0 ? true : false);
+
+          doSort(that.$table.find("tbody"), index, compFunc, isAsc);
+
+          $(this).attr('data-asc', 1 - (isAsc ? 1 : 0));
+        });
+
+        $th.css({'cursor': 'pointer'})
+           //.attr('title', '点击排序')
+           //.append('&nbsp;<i class="fa fa-long-arrow-down" style="color:#2196F3" aria-hidden="true"></i><i class="fa fa-long-arrow-up" style="color:#2196F3" aria-hidden="true"></i>');
+      };
+
+
+      selector = selector || mySelector;
+      compFunc = compFunc || myCompFunc;
+
+      init();
+    }
+    
+</script>
+<style type="text/css">
+	th:last-child{text-align: center;}
+	#upload_file_file_id{margin-left: 9%;}
+
+	
+</style>

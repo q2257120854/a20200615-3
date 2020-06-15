@@ -1,0 +1,191 @@
+{include file="public/header" /}
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+{load href="__PLUGINS__laydate/laydate.js"}
+<!-- 加载编辑器的容器 -->
+{:ueditor()}
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content">
+    <div class="row">
+        <form class="form-horizontal" method="post">
+            <div class="col-sm-12">
+                <div class="ibox-content">
+                  
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">分类位置：</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" name="typeid">
+                                <option value="">选择栏目</option>
+                                {php}
+                                if(isset($name)){
+                                    $typeidname=$name['typeid'];
+                                }else{
+                                    $typeidname='';
+                                }
+                                {/php}
+                                {volist name='typeid' id='v'} 
+                                    <option value="{$v.id}" <?php if($v['id']==$typeidname){echo ' selected="selected"';}?>>{$v.title}</option>
+                                {/volist}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">标题：</label>
+                        <div class="col-sm-6">
+                            <input name="title" type="text" class="form-control" value="{present name="name"}{$name.title}{/present}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">缩略图：</label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <input name="image" type="text"  id="image" class="form-control" value="{present name="name"}{$name.image}{/present}">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary" id="tubiao">上传图片</button>
+                                </span>
+                            </div>
+                            <div class="help-block m-b-none">图片建议统一尺寸</div>
+                        </div>
+                    </div>
+                   <div class="form-group">
+                                    <label class="col-sm-2 control-label">图片集：</label>
+                                    <div class="col-sm-9">
+                                        <div id="demo"></div>
+                                    </div>
+                                </div>
+                                <input name="images" id="images" type="hidden" class="form-control" value="">
+                                <style type="text/css">
+.meiyouuimmag{
+    margin-bottom: 20px;
+    height:284px;
+    overflow: hidden;
+}
+.meiyouuimmag div{
+    width: 100%;
+    margin-bottom: 10px;
+    overflow:hidden;
+    height: 200px
+}
+.meiyouuimmag div img{
+    width: 100%
+}
+.meiyouuimmag button{
+    position: absolute;
+    right: 15px;
+    display: block; 
+
+}
+#imagasdasd{
+    margin-left: 100px;
+    margin-right: 100px;
+}
+</style>
+                                <div class="form-group" id="imagasdasd">
+{present name="name"}
+                                    {php}$imagesdata=json_decode($name['images'],TRUE);$k=0;if($imagesdata){{/php}
+                                    {foreach $imagesdata as $v} 
+                                    <div class="col-md-3 col-sm-4 col-xs-6 meiyouuimmag" id="id{$k}">
+                                        <button type="button" class="btn btn btn-sm btn-danger" onclick="delImg({$k})">删除</button>
+                                        <div><img src="{:_imgUrl()}{$v}" >  </div>
+                                         <textarea data-img="{$v}" style="resize:none" class="form-control" rows="3"></textarea>
+                                    </div>
+                                    <?php $k++;?>
+                                    {/foreach}
+                                    {php}}{/php} 
+                                    {/present}
+
+                                
+                                </div>
+<!-- 引用控制层插件样式 -->
+{load href="__PLUGINS__zyUpload/zyUpload.css"}
+<!-- 引用核心层插件 -->
+{load href="__PLUGINS__zyUpload/zyUpload.js"}
+<!-- 引用初始化JS -->
+<script type="text/javascript">var urlupload='{:url('index/uploads')}';</script>
+{load href="__PLUGINS__zyUpload/script.js"}
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">商品数量：</label>
+                        <div class="col-sm-2"> 
+                            <input name="num" type="text" class="form-control" placeholder="" value="{present name="name"}{$name.num}{else /}{/present}" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')">
+                        </div>
+                        <div class="help-block m-b-none">当用户成功下单付款1件商品，数量自动减少1件。  0表示无货</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">积分兑换比例：</label>
+                        <div class="col-sm-2"> 
+                            <input name="jinbi" type="text" class="form-control" placeholder="" value="{present name="name"}{$name.jinbi}{/present}" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">零钱兑换比例：</label>
+                        <div class="col-sm-2"> 
+                            <input name="money" type="text" class="form-control" placeholder="" value="{present name="name"}{:_money($name['money'])}{/present}" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">状态显示：</label>
+                        <div class="col-sm-4">
+                            <div class="radio i-checks">
+                                <label>
+                                    <input type="radio" value="1" name="hide" {present name="name"}{eq name="name.hide" value="1"}checked{/eq}{else /}checked{/present}>上架
+                                </label>
+                                <label>
+                                    <input type="radio" value="0" name="hide" {present name="name"}{eq name="name.hide" value="0"}checked{/eq}{/present}>下架
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">排序：</label>
+                        <div class="col-sm-2">
+                            <input name="des" type="text" class="form-control" value="{present name="name"}{$name.des}{else }50{/present}">
+                        </div>
+                    </div>
+                    
+                            
+
+                     
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">详细内容：</label>
+                        <div class="col-sm-9">
+                            <script type="text/plain" id="content" name="text" style="width:100%;height:240px;">
+{present name="name"}{$name['text']}{/present}
+
+</script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".i-checks").iCheck({
+        checkboxClass: "icheckbox_square-green",
+        radioClass: "iradio_square-green",
+    })
+});
+function msg(){
+    layer.msg("上传成功")
+}
+function time(){
+    laydate(
+        {
+            fixed: false,
+            istime: true, 
+            format: 'YYYY-MM-DD hh:mm:ss',
+            zIndex: 999999999999,
+            isclear: false,
+        }
+    )
+}
+function delImg(id){
+    $('#id'+id).remove();
+}
+</script>
+{include file="public/bottom" /}<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

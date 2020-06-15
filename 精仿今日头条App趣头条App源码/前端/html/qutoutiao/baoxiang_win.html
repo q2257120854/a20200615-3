@@ -1,0 +1,346 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+ 		<style>
+ 			body{
+ 				background-color: transparent !important; 
+ 			}
+ 			.aslkjdas{
+ 				background-color:rgba(0, 0, 0, .5);
+ 				position: fixed;
+ 				top: 0;
+ 				left: 0;
+ 				right: 0;
+ 				bottom: 0;
+ 				width: 100%;
+ 				height: 100%;
+ 				z-index:9999999;
+ 			}
+ 			.fenxiang,.qiandao_chuang{
+	 			/* z-index:99999998;
+	 			 position:fixed;
+	 			 top:0;
+	 			 left:0;
+	 			 bottom:0;
+	 			 right:0;
+	 			 width: 100%;
+	 			 height: 100%; */
+	 			 
+	 		}
+	 		.fenxiang_2,.qiandao_chuang_1{
+	 			position:fixed;
+	 			left:0;
+	 		 
+	 			 right:0;
+	 		/*	position: relative;*/
+	 			box-sizing:border-box;
+	 			background: #fff;
+	 	 		-webkit-transform:translateY(-50%);
+	 	 		transform:translateY(-50%);
+	 	 		margin:auto;
+	 			height:auto;
+	 			overflow: hidden;
+	 			top: 50%;
+	 	 		width:90%;
+	 			border-radius:12px;
+	 			text-align: center;
+	 			font-size: 0.7rem;
+	 			z-index: 99999999
+	 		}
+	 		.fenxiang_2 img.close{
+	 			position: absolute;
+	 			right: 0.75rem;
+	 			top: 0.75rem;
+	 			width: 1.2rem;
+	 		}
+	 		.fenxiang_2 img.task_hall_18{
+	 			width: 6rem;
+	 			margin: 0 auto;
+	 			padding-top: 1rem;
+	 		}
+	 		.fenxiang_2 .huode{
+	 			padding-top:0.5rem;
+	 			color: #666666;
+	 		}
+	 		.fenxiang_2 .jinbi{
+	 			color: #ffaf2b;
+	 			font-size: 1.3rem;
+	 			padding-top: 0rem;
+	 		}
+	 		.fenxiang_2 .yueduo{
+	 			padding-top:0.25rem;
+	 			color:#FF5645; 
+	 		}
+	 		 
+	 		.fenxiang_2 .fenxiang_text{
+	 			background: #FFF6D0;
+	 			border-radius: 12px;
+	 			box-sizing:border-box;
+	 			width: 90%;
+	 			margin: 0 auto;
+	 			padding: 0.75rem;
+	 			margin-top: 0.5rem;
+	 		}
+	 		.fenxiang_2 h4{
+	 			color: #FF5645;
+	 			padding-bottom: 0.5rem;
+	 			font-family: PingFangSC-Semibold;
+	 			font-size: 0.8rem;
+	 			font-weight: bold;
+	 		}
+	 		.fenxiang_2 .fenxiang_text p{
+	 			text-align: justify;
+	 			color: #333333;
+	 			line-height: 1.2rem;
+	 		}
+	 		.fenxiang_2 .fenxiang_text p span{
+	 			color: #ff5645;
+	 			font-size: 0.65rem;
+	 		}
+	 		.fenxiang_2 .btn{
+	 			width: 90%;
+	 			text-align: center;
+	 			background: #FF5645;
+	 			color: #fff;
+	 			height: 2rem;
+	 			line-height:2rem;
+	 			margin: 1rem auto;
+	 			border-radius: 2rem;
+	 			font-size: 0.75rem;
+	 		}
+ 		</style>
+	</head>
+	<body>
+		<div class="aslkjdas" Tapmode onclick="fenxiang_close()"></div>
+		 <div class="fenxiang" >
+			<div class="fenxiang_2">
+				<img class="close" Tapmode onclick="fenxiang_close()" src="../image/yaoqing/close.png" />
+				<img class="task_hall_18" src="../image/yaoqing/task_hall_18.png" />
+				<div class="huode">恭喜获得</div>
+				<div class="jinbi">+0金币</div>
+				<div class="yueduo">收徒越多，宝箱奖励就越多</div>
+				<div class="fenxiang_text">
+					<h4>额外福利</h4>
+					<p></p>
+				</div>
+				<div class="btn" Tapmode onclick="fenxiang()">分享到朋友圈再赚4元</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var fx_data;
+		apiready = function() {
+			$api.html($api.dom('.jinbi'),api.pageParam['text'])
+			$api.html($api.dom('.fenxiang_text p'),_config.renwu.baoxiang_fenxiang)
+		}
+	 
+		function fenxiang_close(){
+			api.closeFrame();
+		}
+		// 分享
+		function fenxiang() {
+			 
+			if(!$api.getStorage('user')){
+				_login();
+				return;
+			}
+			 
+			fx_data={
+				title:_config.yaoqing.title,
+				description:_config.yaoqing.content,
+				img:_image+'logo.png',
+				url:fx_url+'m/yaoqing/uid/'+$api.getStorage('user').id
+			}
+				
+			if($api.getStorage('app')){
+				// 上架显示
+				var sharedModule = api.require('shareAction');
+				sharedModule.share({
+					text : fx_data.title + fx_data.content,
+					type : 'text'
+				});
+				return;
+			}
+			var row=2;
+			var items=[{icon: _image+'share/1.png',title: '朋友圈'},{icon: _image+'share/2.png',title: '好友'},{icon: _image+'share/3.png',title: 'QQ'},{icon: _image+'share/4.png',title: '空间'},{icon: _image+'share/5.png',title:'微博'},{icon: _image+'share/101.png',title: '系统'},{icon: _image+'share/102.png',title: '短信'},{icon: _image+'share/103.png',title:'邮件'},{icon: _image+'share/104.png',title: '复制链接'}];
+			// alert(1)
+		//	console.log(JSON.stringify(fx_data))
+ 			var MNActionButton = api.require('MNActionButton');
+			MNActionButton.open({
+			    layout: {
+			        row: row,
+			        col: 5,
+			        offset: 0
+			    },
+			    animation: false,
+			    autoHide: true,
+			    styles: {
+			        maskBg: 'rgba(0,0,0,0.3)',
+			        bg: '#F8F8F8',
+			        indicator: {
+			            color: '#c4c4c4',
+			            highlight: '#9e9e9e'
+			        }, 
+			    },
+			    items:  items
+			}, function(ret) {
+				if(ret.eventType=="click"){
+					var index=ret.index;
+					if(index==0){
+						_weixin('timeline',fx_data)
+					}else if(index==1){
+						_weixin('session',fx_data)
+					}else if(index==2){
+						_qq('shareNews',fx_data)
+					}else if(index==3){
+						_qq('QFriend',fx_data)
+					}else if(index==4){
+						_weibo(fx_data)
+					}else if(index==5){	// 系统
+						var sharedModule = api.require('shareAction');
+						sharedModule.share({
+							text : fx_data.title + fx_data.content,
+							type : 'text'
+						});
+					}else if(index==6){	// 短信
+						api.sms({
+							numbers : [],
+							text : fx_data.title+fx_data.url
+						}, function(ret, err) {
+							if (ret && ret.status) {
+								_msg('已发送')
+							} 
+						});
+					}else if(index==7){	// 邮件
+						api.mail({
+							recipients : [],
+							subject : fx_data.title,
+							body : fx_data.content+fx_data.url,
+						}, function(ret, err) {
+							if (ret && ret.status) {
+								_msg('已发送')
+							}
+						});
+					}else if(index==8){	// 复制
+						var clipBoard = api.require('clipBoard');
+						clipBoard.set({
+							value : fx_data.url
+						}, function(ret, err) {
+							if (ret) {
+								_msg('复制成功，把链接分享给朋友吧！')
+							}
+						});
+					}else if(index==9){	//举报
+						if(!_user){
+							_alert('请先登陆',function(ret,err){
+								_login();
+							})
+							return;
+						}
+						buttons = ['广告', '重复、旧闻', '低俗', '标题夸张', '与事实不符', '内容质量差', '疑似抄袭', '其他问题，我要吐槽 > '];
+						api.actionSheet({
+							title : '举报内容问题',
+							cancelTitle : '取消举报',
+							buttons : buttons
+						}, function(ret, err) {
+							var index = ret.buttonIndex;
+							if(index==8){
+								_url({aid:id,url:'member/jubaoAdd',title:'举报内容'})
+								return;
+							}
+							if(index!=9){
+								_ajax('api/member/jubao',function(ret,err){
+									if(ret){
+										if(ret.ret){
+											_msg(ret.ret)
+										}else{
+											_msg(ret.err)
+										}
+									}else{
+										_alert(JSON.stringify(err));
+									}
+								},{content:buttons[index - 1],aid:id})
+							}
+						});
+					}else{
+						_msg(index)
+						return;
+					}
+				}
+			});
+		}
+		// 微信分享
+		// type session（会话） timeline（朋友圈） favorite（收藏）
+		function _weixin(type) {
+			if(!$api.getStorage('user')){
+				_login();
+				return;
+			}
+			data=fx_data;
+			var wx = api.require('wx');
+			wx.shareWebpage({
+				scene : type,
+				title : data.title,
+				description : data.description,
+				thumb : data.img,
+				contentUrl : data.url
+			}, function(ret, err) {
+				if (ret.status) {
+					_msg('分享成功');
+					_daily({name:'money_fenxiang_1'});
+				}
+			});
+		}
+		// QQ分享
+		// type 分享内容到好友或空间，取值范围：QZone、QFriend
+		function _qq(type){
+			if(!$api.getStorage('user')){
+				_login();
+				return;
+			}
+			data=fx_data;
+			var obj = api.require('qq');
+			obj.shareNews({
+				url : data.url,
+				title : data.title,
+				description : data.description,
+				imgUrl : data.img,
+				type : type,
+			}, function(ret, err) {
+				if (ret.status) {
+					_msg('分享成功');
+					_daily({name:'money_fenxiang_1'});
+				} 
+			});
+		}
+		// 微博分享
+		function _weibo() {
+			if(!$api.getStorage('user')){
+				_login();
+				return;
+			}
+			data=fx_data;
+			var weibo = api.require('weibo');
+			weibo.shareWebPage({
+				text : data.title,
+				title : data.title,
+				description : data.description,
+				thumb : data.img,
+				contentUrl : data.url
+			}, function(ret, err) {
+				if (ret.status) {
+					_msg('分享成功');
+					_daily({name:'money_fenxiang_1'});
+				}
+			});
+		}
+	</script>
+</html>
+

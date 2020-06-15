@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8" />
+        <title>vaeThink</title>
+        <meta name="renderer" content="webkit" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="__ADMIN__/lib/layui/css/layui.css" media="all" /></head>
+    <body class="vae-body">
+        <form class="layui-form vae-content">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">二维码</label>
+                <div class="layui-input-inline">
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn" id="test1">上传二维码</button>
+                        <div class="layui-upload-list" id="thumbDiv">
+                            <img src="" width="250" />
+                            <input type="hidden" name="rechargecode" value="">
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" lay-filter="vaeform">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    <a href="javascript:history.back(-1)" class="layui-btn layui-btn-primary">返回</a>
+                </div>
+            </div>
+        </form>
+        <script src="__ADMIN__/lib/layui/layui.js" charset="utf-8"></script>
+        <script>layui.config({
+                base: '/themes/admin_themes/module/'
+            }).use(['upload', 'form', 'vaeyo'],
+            function() {
+                var form = layui.form,
+                layer = layui.layer,
+                $ = layui.$,
+                upload = layui.upload,
+                vae = layui.vaeyo;
+               
+                //图片上传
+                var uploadInst = upload.render({
+                    elem: '#test1'
+                    ,url: '/admin/api/upload'
+                    ,done: function(res){
+                    //如果上传失败
+                    if(res.code == 0){
+                    return layer.msg('上传失败');
+                    }
+                    //上传成功
+                    $('#thumbDiv img').attr('src',res.data);
+                    $('#thumbDiv input').attr('value',res.data);
+                    }
+                });
+
+                //监听提交
+                form.on('submit(vaeform)',
+                function(data) {
+                    $.ajax({
+                        url: "/admin/pay/addCodeSubmit",
+                        type: 'post',
+                        data: data.field,
+                        success: function(e) {
+                            if (e.code == 1) {
+                                layer.confirm('保存成功,返回列表吗?', {
+                                    icon: 3,
+                                    title: '提示'
+                                },
+                                function(index) {
+                                    vae.backThisTab();
+                                    layer.close(index);
+                                });
+                            } else {
+                                layer.msg(e.msg);
+                            }
+                        }
+                    }) 
+                    return false;
+                });
+
+            });</script>
+    </body>
+
+</html>

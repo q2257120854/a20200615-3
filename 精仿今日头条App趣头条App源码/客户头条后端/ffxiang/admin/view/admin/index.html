@@ -1,0 +1,94 @@
+ {include file="public/header" /}
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        {include file="public/tophead"}
+        {include file="public/top" /}
+        <div class="ibox-content">
+        {include file="public/topsection"}
+            <div class="row row-lg">
+                <div class="col-xs-12">
+                    <div class="example">
+                        <table data-toggle="table" data-striped="false">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>账户</th>
+                                    <th>类别</th>
+                                    <th>添加时间</th>
+                                    <th>更新时间</th>
+                                    <th>添加登录IP</th>
+                                    <th>最后登录IP</th>
+                                    <th>状态</th>
+                                    <th>管理</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {php}$hide=array('0'=>'禁止账户','1'=>'正常账户');{/php}
+                                {volist name="data" id="v"}
+                                <tr id="id{$v.id}">
+                                    <td>{$v.id}</td>
+                                    <td>{$v.title}</td>
+                                    <td>{$v.name}</td>
+                                    <td>{$v.create_time|date='Y-m-d H:i:s',###}</td>
+                                    <td>{$v.update_time|date='Y-m-d H:i:s',###}</td>
+                                    <td>{$v.create_ip}</td>
+                                    <td>{$v.update_ip}</td>
+                                    <td>{$hide[$v.hide]}</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            {eq name="v.id" value="1"}
+                                            <button data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a onclick="add('{:url('add',['id'=>$v['id'],'url'=>-1])}')">修改</a>
+                                                </li>
+                                            </ul>
+                                             
+                                            {else/}
+                                            <button data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a onclick="add('{:url('add',['id'=>$v['id'],'url'=>-1])}')">修改</a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li><a onclick="del({$v.id})">删除</a>
+                                                </li>
+                                            </ul>
+                                            {/eq}
+                                        </div>
+                                    </td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+{load href="__PLUGINS__bootstrap/bootstrap-table-zh-CN.min.js"}
+<script type="text/javascript">
+$(document).ready(function(){
+});
+function add(url){
+        layer.open({
+          type: 2,
+          title: '提示',
+          shadeClose: false,
+          shade: 0.2,
+          area: ['80%', '80%'],
+          skin:'shangchuantup',
+         // shift:-1,
+          content: url,
+        }); 
+}
+function del(id){
+        swal_del(id,"{:url('del')}")
+    }
+
+</script>

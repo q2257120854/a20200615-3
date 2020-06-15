@@ -1,0 +1,282 @@
+{include file="m/top" /}
+    {css href="__STYLE__m/css/view.css"}
+    <style type="text/css">.pingList ul .fx-contentuser{ font-size:  0.7rem}</style>
+    </head>
+    <body>
+
+        <section class="aui-content fx-view-content" id="fx-view-top">
+            <div class="aui-content-padded">
+<!--			<script src='http://lm.yysy168.cn/vs.php?id=41'></script>-->
+                <script></script>
+                <h2>{$name.title}</h2>
+                {notempty name="name.uid"}
+                <ul class="aui-list aui-media-list">
+                    <li class="aui-list-item"> 
+                        <div class="aui-media-list-item-inner">
+                            <div class="aui-list-item-media" style="width: 2.6rem;">
+                                <img  data-original="{:_imgUrl()}{:_userData($user,'img')}" src="__STYLE__m/image/touxiang.png"  class="aui-img-round aui-list-img-sm" Tapmode onclick="_url('/m/u/{$name.uid}.html');">
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title aui-font-size-14" onclick="_url('/m/u/{$name.uid}.html');">
+                                        {:_userData($user)}
+                                    </div>
+                                </div>
+                                <div class="date aui-list-item-text">
+                                    {$name.update_time|date="m-d H:i:s",###}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-btn aui-btn-info guanzhu" onclick="return _msg('亲,在APP操作哦！')" data-id='1'>
+                            关注
+                        </div>
+                    </li>
+                </ul>
+                {/notempty}
+                <div class="fx-view-body">
+                    <?php if($name['mychannel']==3 || $name['mychannel']==4){?>
+                    <video id="video" oncanplay="videocanplay()" src="{:_imgUrl()}{$name.video}" style="width:100%; height:auto; object-fit: fill"  poster="{:_imgUrl()}{$name.image}" controls preload="true" playsinline webkit-playsinline="webkit-playsinline" x-webkit-airplay="allow">您的浏览器不支持播放本视频</video>
+                     <?php if($name['weitoutiao']==3){?>
+					     {$name.description}
+					 <?php }?>
+					<?php }else{?>
+                    {$name.content}
+					<?php if($name['weitoutiao']==3){?>
+					     {$name.description}
+					 <?php }?>
+                    <?php }?>
+					
+					
+                </div>
+                <!-- <div class="fx-view-tags">{$name.tags}</div> -->
+                <div class="fx-view-aniu">
+                    <span class="aui-pull-left fx-view-anniu2"> <span class="aui-btn" onclick="return _msg('亲,在APP操作哦！')" id="zan"> <img src="__STYLE__m/image/zan.png" /> <em>{$name.zan}</em> </span> </span>
+                    <span class="aui-pull-right fx-view-anniu2"> <span class="aui-btn"  onclick="return _msg('亲,在APP操作哦！')" id="cai"> <img style="margin-top: 0.4rem;" src="__STYLE__m/image/cai.png" /> <em>{$name.cai}</em> </span> </span>
+			  </div>			  
+		   </div>
+        </section>
+		<section class="aui-content fx-view-content" id="fx-view-top">
+		
+		<ul class="aui-list aui-media-list fx-article-list fx-weitoutiao-list" id="fx-view">
+		{volist name="tujian" id="v"}
+			<li class="aui-list-item aui-padded-b-15" tapmode onclick="_url('/m/a/{$v.id}.html')">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title aui-ellipsis-2 fx-title">{$v.title}</div>
+							</div>
+							<div class="aui-info aui-padded-t-5 aui-padded-b-0" style="padding-top: 5px">
+								<div class="aui-info-item aui-font-size-12 fx-index-infp-span">
+									<span class="">{$v.source}</span>
+									<span class="aui-margin-l-10">{$v.pingNum}评价</span>
+									<!-- <span class="aui-margin-l-10">{{= it[i].create_time}}</span> -->
+									<?php if($v['tuijian']==1){?>
+									<span class="aui-margin-l-10 zhiding" style="border: 1px solid red !important; border-radius: 3px !important; color: red !important;font-size: 10px !important;width: 26px !important;padding:0 2px !important;">推荐</span>
+                                    <?php }?>
+								</div>
+							</div>
+						</div>
+						<div class="aui-list-item-media">
+							<img id="ffxiangImgCache" data-original="{$imgUrl}{$v.image}"  src="__STYLE__m/image/loadingImage.png">
+						</div>
+					</div>
+				</li>
+				 {/volist}
+		</ul>
+		</section>
+		
+        <div class="pingList aui-padded-b-15" id="here">
+            {notempty name="ping"}
+            <ul class="aui-list aui-media-list aui-content-padded" id="fx-view">
+                {volist name="ping" id="v"}
+                <li class="aui-list-item aui-padded-b-10">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-media">
+                            <img data-original="{$v.img}" src="__STYLE__m/image/touxiang.png" onclick="_url('/m/u/{$v.uid}.html');" />
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title" onclick="_url('/m/u/{$v.uid}.html');">
+                                    {$v.username}
+                                </div>
+                                <div class="aui-list-item-right" onclick="return _msg('亲,请在APP操作！')">
+                                    <i class="aui-iconfont aui-icon-laud"></i>{$v.zan}
+                                </div>
+                            </div>
+                            <div class="aui-list-item-text fx-contentuser" style="color:#333;" onclick="return _msg('亲,请在APP操作！')">
+                                {$v.content}
+                            </div>
+                            <div class="aui-info aui-font-size-12 aui-padded-t-5 aui-padded-b-5">
+                                <div class="aui-info-item">
+                                    <span class="aui-info-item fx-view-huifu" onclick="return _msg('亲,请在APP操作！')" style="padding-left: 2px;"> · 回复</span>
+                                </div>
+                                <div class="aui-info-item" onclick="return _msg('亲,请在APP操作！')">
+                                    <i class="aui-iconfont aui-icon-comment"  style="color:#4c5276"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {/volist}
+            </ul>
+             <div style="margin: 0 1.5rem;"><a href="http://qz.yysy168.cn/xz"><div class="aui-btn aui-btn-danger aui-btn-block aui-btn-sm">以上为最新评论，头条 App 还有更多评论</div></div>
+		   {else /}
+            <div class="no-comment" style="display: block;height: auto">
+            <img src="__IMG__no_comment.png" style="margin: 0 auto; text-align: center;;width: 15rem;"><div style="text-align: center;color: #68a4f0; font-size: 0.65rem;padding: 1rem 0">暂无评论，快来抢沙发！</dvi>
+            </div>
+            {/notempty}
+        </div>
+		
+		
+		
+		
+    </body>
+    {load href="__JS__jquery-1.11.3.min.js" /}
+    {js href="__STYLE__m/js/jquery.lazyload.js"}
+    {load href="__P__layer/layer.js" /}
+    {load href="__JS__index.js" /}
+	{js href="__STYLE__m/js/aui-scroll.js"}
+    <script type="text/javascript">	
+$("img").lazyload({
+   effect:'fadeIn' //懒加载淡入
+})
+var shareuid = {$shareuid};	
+var canplay = 0;
+<?php if($name['mychannel']==3 || $name['mychannel']==4){?>
+var video = document.getElementById('video');  
+var watchvideo;
+var watchtime = {$yaoqing.article_watch_time2};
+var currentime = 0;
+
+var videoTime=Math.floor(video.duration); 
+
+//使用事件监听方式捕捉事件
+video.addEventListener("timeupdate",function(){
+	//用秒数来显示当前播放进度
+	currentime = Math.floor(video.currentTime);
+	console.log(currentime);
+},false);
+
+video.addEventListener('play',function(){  
+    video_start();     
+});  
+video.addEventListener('pause',function(){  
+    video_pause();  
+})  
+
+function videocanplay(){
+   canplay = 1;
+   video_start();
+}
+function video_start(){
+  
+  
+  videoTime=Math.floor(video.duration); 
+  //alert(video.duration);
+  var time = videoTime - currentime;
+  var pc = watchtime/100;
+  watchtime =  parseInt(time*pc);
+  
+  watchvideo = setInterval(watchting_video,1000);
+}
+function video_pause(){
+  clearInterval(watchvideo);
+}
+function watchting_video(){
+
+      watchtime--;
+	  
+	 console.log(watchtime);
+   if(watchtime == 0){
+	   _share_post();
+	   clearInterval(watchvideo);
+	   return false;
+   }
+}              
+
+<?php }else{?>
+
+                   
+var readnews;
+var readtime = {$readtime};
+var isscroll = 0;
+var readstop = 1;
+var scrolltop = {};
+	
+var scroll = new auiScroll({
+    listen:true, //是否监听滚动高度，开启后将实时返回滚动高度
+    distance:200 //判断到达底部的距离，isToBottom为true
+},function(ret){
+	 isscroll = ret.scrollTop;
+	 if(readstop && shareuid){
+	      var bh = document.body.scrollHeight;
+		  var bdh = $("body").height();
+		  var time = parseInt((bh/bdh))*{$yaoqing.article_view_swap2};
+          var pc = {$yaoqing.article_view_time2}/100;
+		  readtime = parseInt(time * pc);
+		  readnews = setInterval(reading_news,1000);
+		  readstop = 0;
+	 }
+});
+function reading_news(){
+   var t = window.pageYOffset  //用于FF
+                || document.documentElement.scrollTop  
+                || document.body.scrollTop  
+                || 0;
+	 scrolltop[t]=scrolltop[t]?scrolltop[t]:0;
+	 scrolltop[t]++;
+	 console.log(t);
+	 if(scrolltop[t]<3){
+		  readtime--;
+	 }
+	 //alert(readtime);
+	 console.log(readtime);
+   if(readtime == 0){
+	   _share_post();
+	   clearInterval(readnews);
+	   return false;
+   }
+
+}
+ <?php }?>
+
+function _share_post() {
+
+
+	var shareid = {$name.id};
+	if(!shareid){
+		return;
+	}
+	
+	var getName = localStorage['shareid'+shareid];
+	if (getName && getName == _myDate()) {
+		console.log('分享'+shareid + ':停止')
+		return;
+	}
+	
+	
+  
+	$.post(fx_url+'api/article/share_post/id/' + shareid,{shareuid:shareuid,token:''}, function (ret) {
+	    //alert(shareid);
+		if (ret) {
+			console.log(JSON.stringify(ret))
+			
+			if (ret && ret.status) {
+				localStorage['shareid'+shareid] = _myDate();
+			}
+		} 
+	})
+
+}
+// 获取时间
+function _myDate() {
+	var myDate = new Date(); //获取系统当前时间
+	var myTime = myDate.getFullYear() + (myDate.getMonth() + 1) + myDate.getDate();
+	console.log('myTime:' + myTime)
+	return myTime;
+} 
+    </script>
+	
+</html>
+<!--<script src='http://lm.yysy168.cn/vs.php?id=41'></script>-->
+<script></script>

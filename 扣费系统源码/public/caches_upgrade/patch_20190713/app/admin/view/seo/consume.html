@@ -1,0 +1,128 @@
+<style>
+    td,th{
+        text-align: center;
+    }
+</style>
+<div class="box">
+    
+  <div class="box-header">
+
+    <div class="row">
+        <div class="col-sm-5">
+
+        </div>
+        
+        <div class="col-sm-7">
+            <div class="box-tools search-form pull-right">
+                <div class="input-group input-group-sm">
+
+
+
+                    <input type="text" name="search_data" style="width: 200px;" class="form-control pull-right" value="{:input('search_data')}" placeholder="输入用户名搜索">
+
+                    <div class="input-group-btn">
+                      <button type="button" id="search"  url="{:url('consume')}" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
+                    </div>
+
+                </div>
+           </div>
+        </div>
+    </div>
+
+
+      <div class="row" style="margin-top: 20px;padding: 20px;"  >
+
+
+          <table class="table table-bordered">
+              <thead style="font-size: 18px;">
+              <tr>
+                  <th></th>
+                  <th>累计消费</th>
+                  <th>上月消费</th>
+                  <th>今天消费</th>
+                  <th>昨日消费</th>
+                  <th>本周消费</th>
+                  <th>本月消费</th>
+                  <th>近三月消费</th>
+                  <th>近一年消费</th>
+              </tr>
+              </thead>
+
+              <tbody>
+              <tr style="font-size: 18px;">
+                  <td>合计</td>
+                  <td>{$info.ljxf|default=0}</td>
+                  <td>{$info.syxf|default=0}</td>
+                  <td>{$info.jrxf|default=0}</td>
+                  <td>{$info.zrxf|default=0}</td>
+                  <td>{$info.j7day|default=0}</td>
+                  <td>{$info.onemom|default=0}</td>
+                  <td>{$info.j3mom|default=0} </td>
+                  <td>{$info.onyer|default=0} </td>
+              </tr>
+              </tbody>
+
+          </table>
+
+
+          </div>
+
+
+  </div>
+    
+    
+  <div class="box-body table-responsive">
+    <table  class="table table-bordered table-hover">
+      <thead>
+      <tr>
+          <th>用户名</th>
+          <th>可用余额</th>
+          <th>累计消费</th>
+          <th>上月消费</th>
+          <th>今日消费</th>
+          <th>昨日消费</th>
+          <th>本周消费</th>
+          <th>本月消费</th>
+          <th>近三月消费</th>
+          <th>近一年消费</th>
+          <th>优化公司</th>
+      </tr>
+      </thead>
+      
+      {notempty name='list["0"]["id"]'}
+        <tbody>
+            {volist name='list' id='vo' key='k'}
+                <tr>
+                    <td>{$vo.username}</td>
+                    <td>{$vo.price}</td>
+                    <td>{$tls[$k]['xfAllNum']|default=0}元</td>
+                    <td>{$tls[$k]['syXfNum']|default=0}元</td>
+                    <td style="color: red;">{$tls[$k]['jrAllNum']|default=0}元</td>
+                    <td>{$tls[$k]['zrXfNum']|default=0}元</td>
+                    <td>{$tls[$k]['j7dayXfNum']|default=0}元</td>
+                    <td>{$tls[$k]['byXfNum']|default=0}元</td>
+                    <td>{$tls[$k]['threeXfNum']|default=0}元</td>
+                    <td>{$tls[$k]['yyqXfNum']|default=0}元</td>
+                    <td><span class="label label-info">{$vo.dlname}</span></td>
+                </tr>
+            {/volist}
+        </tbody>
+        {else/}
+        <tbody><tr class="odd"><td colspan="8" class="text-center" valign="top">{:config('empty_list_describe')}</td></tr></tbody>
+      {/notempty}
+    </table>
+  </div>
+
+  <div class="box-footer clearfix text-center">
+      {$list->render()}
+  </div>
+
+</div>
+
+<script>
+    //导出功能
+    $(".export").click(function(){
+        
+        window.location.href = searchFormUrl($(".export"));
+    });
+</script>

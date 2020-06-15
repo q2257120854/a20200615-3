@@ -1,0 +1,108 @@
+{extend name="common/world"}
+{block name="title"}{$Think.config.hello.title}{/block}
+{block name="header"}账户解封{/block}
+{block name="container"}
+<style type="text/css">
+    body {
+        background: #FFF;
+    }
+
+    .li_touxiang img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
+</style>
+<div class="list-block">
+    <form class="cmxform form-horizontal tasi-form" action="" name="xgmm" id="xgmm" method="post">
+        <ul>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">可售YCB</div>
+                        <div class="item-input">
+                            {$user.wallet.money|money}
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">解封账号</div>
+                        <div class="item-input">
+                            <input class="col-20" type="text" placeholder="请输入您需要解封的手机号" name="username" value=""
+                                   id="username"/>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">二级密码</div>
+                        <div class="item-input">
+                            <input class="col-20" type="password" placeholder="请输入您的二级密码" name="secpwd" value=""
+                                   id="secpwd"/>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+
+        </ul>
+    </form>
+</div>
+<div class="content-block">
+    <div class="row">
+        <input id="btnn" type="button" class="button button-big button-fill button-success js-submit"
+               style="width: 100%;" value="提交"/>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnn').click(function () {
+            if (!$("#username").val()) {
+                alert("解封账户不能为空");
+                return false;
+            }
+            if (!$("#secpwd").val()) {
+                alert("二级密码不能为空");
+                return false;
+            }
+            $('#btnn').attr("disabled", "true");
+            $(function () {
+                var params = {
+                    username: $("#username").val(),
+                    safeword: $("#secpwd").val()
+                };
+                $.ajax({
+                    type: 'post',
+                    url: api.account.jiefeng,
+                    cache: false,
+                    data: params,
+                    dataType: 'json',
+                    success: function (data) {
+                        alert(data.message);
+                        if (data.code == 200) {
+                            window.setTimeout("window.location='/home.html'", 1000);
+                            //window.location.href="jiefeng.html";//需要跳转的地址
+                            return true;
+                        } else {
+                            $("#btnn").removeAttr('disabled');
+                        }
+
+                    },
+                });
+            });
+            return false;
+        });
+    });
+</script>
+{/block}

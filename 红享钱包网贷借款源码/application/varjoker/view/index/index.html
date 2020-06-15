@@ -1,0 +1,71 @@
+{include file="public/header" /}
+
+            <div class="outter-wp">
+                <!--custom-widgets-->
+                <div class="custom-widgets">
+                    <div class="row-one">
+                        <div class="col-md-3 widget">
+                            <div class="stats-left ">
+                                <h5>系统</h5>
+                                <h4> 用户量</h4>
+                            </div>
+                            <div class="stats-right">
+                                <label>{$alldata.userall}</label>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="col-md-3 widget states-mdl">
+                            <div class="stats-left">
+                                <h5>系统</h5>
+                                <h4>放款量</h4>
+                            </div>
+                            <div class="stats-right">
+                                <label> {$alldata.loanmoney}</label>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="col-md-3 widget states-thrd">
+                            <div class="stats-left">
+                                <h5>系统</h5>
+                                <h4>实名量</h4>
+                            </div>
+                            <div class="stats-right">
+                                <label>{$alldata.shiming}</label>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="col-md-3 widget states-last">
+                            <div class="stats-left">
+                                <h5>系统</h5>
+                                <h4>访问量</h4>
+                            </div>
+                            <div class="stats-right">
+                                <label>{$alldata.getip}</label>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+
+                        <!--//bottom-grids-->
+                    </div>
+            <div class="graph">
+                <div class="tables">
+
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr><th>省份</th>{volist name="data" id="vo"}<th>{$vo.title}</th>{/volist}<th>总计</th></tr>
+
+                        </thead> <tbody>
+                    <tr> <th scope="row">注册量</th>{volist name="data" id="vo"}<th scope="row">{$vo.zhuce}</th>{/volist}<th scope="row">{$scount.zhuce}</th></tr>
+                    <tr> <th scope="row">支付量</th>{volist name="data" id="vo"}<th scope="row">{$vo.count}</th>{/volist}<th scope="row">{$scount.count}</th></tr>
+                    <tr> <th scope="row">资料量</th>{volist name="data" id="vo"}<th scope="row">{$vo.ziliao}</th>{/volist}<th scope="row">{$scount.ziliao}</th></tr>
+               </tbody> </table>
+                </div>
+                <!--//menu-right-->
+                <div class="clearfix" style="height: 100px;"></div>
+
+
+<div style="color: red !important; text-align: center;"><strong>&#26356;&#22810;&#24314;&#31449;&#36164;&#28304;&#32032;&#26448;&#35831;&#35775;&#38382;&#32;&#38182;&#23578;&#20013;&#22269;&#32;&#98;&#98;&#115;&#46;&#53;&#50;&#106;&#115;&#99;&#110;&#46;&#99;&#111;&#109;</strong></div>
+{include file="public/footer" /}

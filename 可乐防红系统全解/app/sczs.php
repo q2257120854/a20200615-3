@@ -1,0 +1,1 @@
+<?php include '../fhincludes/common.php'; $sczs=$DB->count("SELECT count(*) from quan_report WHERE 1"); echo $sczs?>

@@ -1,0 +1,29 @@
+{extend name="common/world"}
+{block name="title"}{$article.title}{/block}
+{block name="style"}
+<style>
+.table tr td p{
+	margin: 0 !important;
+}
+</style>
+{/block}
+{block name="container"}
+<div class="card news">
+    <div class="card-header">
+        <h3 class="card-title">{$article.title}</h3>
+    </div>
+    <div class="card-body">
+        {$article.content|raw}
+    </div>
+    <div class="card-footer">{$article.date}</div>
+</div>
+{/block}
+{block name="script"}
+<script>
+require(['jquery'], function($){
+	$(function(){
+		$('.card-body table').addClass('table table-bordered');
+	});
+});
+</script>
+{/block}

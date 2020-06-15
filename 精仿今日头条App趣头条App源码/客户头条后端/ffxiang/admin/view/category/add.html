@@ -1,0 +1,136 @@
+ {include file="public/header" /}
+ <body class="gray-bg">
+    <div class="wrapper wrapper-content {:config('adminClass.main')}">
+        <div class="row">
+            <div class="col-sm-12">
+                {include file="public/tophead"}
+                {include file="public/top" /}
+                <div class="ibox-content">
+                {include file="public/topsection"}
+                    <form class="form-horizontal" method="post">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">显示位置：</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" name="tid">
+                                    <option value="0">顶级位置</option>
+                                    {php}
+                                    if(isset($name)){
+                                        $typeidname=$name['tid'];
+                                    }elseif(input('?typeid')){
+                                        $typeidname=input('typeid');
+                                    }else{
+                                        $typeidname='';
+                                    }
+                                    {/php}
+                                    {volist name='category' id='v'} 
+                                        <option value="{$v.id}" {eq name="v.id" value="$typeidname" }selected{/eq}>{:str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $v['depth'])}{gt name="$v['depth']" value="0"}┠&nbsp;&nbsp;{/gt}{$v.title}</option>
+                                    {/volist}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">菜单名称：</label>
+                            <div class="col-sm-8">
+                                <input name="title" type="text" class="form-control" value="{present name="name"}{$name.title}{/present}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">图标icon：</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <input name="icon" type="text" id="fontawesome" class="form-control" value="{present name="name"}{$name.icon}{/present}">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-primary" id="tubiaos">图标</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">菜单排序：</label>
+                            <div class="col-sm-8">
+                                <input name="des" type="text" class="form-control" value="{present name="name"}{$name.des}{else/}50{/present}">
+                                <span class="help-block m-b-none">数字大越靠前</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">左边：</label>
+                            <div class="col-sm-8">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="1" name="hideleft" {present name="name"}{eq name="name.hideleft" value="1"}checked{/eq}{else /}checked{/present}>显示菜单
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="0" name="hideleft" {present name="name"}{eq name="name.hideleft" value="0"}checked{/eq}{/present}>隐藏菜单
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">右边：</label>
+                            <div class="col-sm-8">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="1" name="hideright" {present name="name"}{eq name="name.hideright" value="1"}checked{/eq}{else /}checked{/present}>显示菜单
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="0" name="hideright" {present name="name"}{eq name="name.hideright" value="0"}checked{/eq}{/present}>隐藏菜单
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">控制器：</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="controller" value="{present name="name"}{$name.controller}{/present}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">函数：</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="function" value="{present name="name"}{$name.function}{/present}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">GET变量：</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="get" value="{present name="name"}{$name.get}{/present}">
+                                <span class="help-block m-b-none">例:http://www.ffxiang.cn/控制器/函数/GET变量/.html GET值会自动获取显示,多个变量填写 | </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> 
+    </div>
+{include file="public/footer" /}
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+<script type="text/javascript">
+$(document).ready(function(){
+     $(".i-checks").iCheck({
+        checkboxClass: "icheckbox_square-green",
+        radioClass: "iradio_square-green",
+    })
+    $("#tubiaos").click(function(){
+        layer.open({
+          type: 2,
+          title: 'fontawesome图标',
+          shadeClose: true,
+          shade: 0.2,
+          area: ['95%', '90%'],
+          content: '{:url("index/fontawesome")}',
+
+          shift:-1,
+              scrollbar: false,
+              moveType: 1,
+              moveOut: true,
+
+        }); 
+    })
+})
+</script>
+{include file="public/bottom" /}
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

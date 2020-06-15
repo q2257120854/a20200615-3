@@ -1,0 +1,12 @@
+<view style="margin-top:20px;">
+    <grace-sup isBold="true" sup="2.0" supSize="14px" text="graceui" textColor="#A5A7B2" textSize="24px"></grace-sup>
+    <view class="grace-banner">
+        <view class="logo">
+            <image mode="widthFix" src="https://graceui.oss-cn-beijing.aliyuncs.com/logo.png"></image>
+        </view>
+        <view class="body">
+            <view class="title">{{title}}</view>
+            <view class="desc">{{desc}}</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,3634 @@
+---------------------------------------------------------------
+[ 2019-12-12T21:25:40+08:00 ] 127.0.0.1 GET 127.0.0.4/
+[运行时间：0.072610s] [吞吐率：13.77req/s] [内存消耗：677.05kb] [文件加载：55]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\index\index.html [ array (
+  0 => 'data',
+  1 => 'msg',
+  2 => 'maxm',
+  3 => 'zixun',
+  4 => 'user',
+  5 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.021409s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_broadcast` [ RunTime:0.002103s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_broadcast` [ RunTime:0.000302s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_zixun` [ RunTime:0.002045s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_zixun` [ RunTime:0.000351s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.002067s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` IS NULL ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000322s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002104s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000377s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` IS NULL  AND `status` < '4' LIMIT 1 [ RunTime:0.000321s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:26:04+08:00 ] 127.0.0.1 GET 127.0.0.4/login/index.html
+[运行时间：0.007918s] [吞吐率：126.29req/s] [内存消耗：270.04kb] [文件加载：48]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\Login.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\login\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-12-12T21:26:16+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php
+[运行时间：0.007288s] [吞吐率：137.21req/s] [内存消耗：269.03kb] [文件加载：50]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\tpl\dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-12-12T21:26:19+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/login/index.html
+[运行时间：0.006871s] [吞吐率：145.54req/s] [内存消耗：275.18kb] [文件加载：47]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\varjoker\controller\Login->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Login.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\login\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-12-12T21:26:59+08:00 ] 127.0.0.1 POST 127.0.0.4/admin.php/login/LogChek.html
+[运行时间：0.023278s] [吞吐率：42.96req/s] [内存消耗：507.06kb] [文件加载：55]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'login',
+    2 => 'LogChek',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/login/index.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://127.0.0.4',
+  'accept' => '*/*',
+  'content-length' => '22',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+  'user' => 'admin',
+  'pass' => '123456',
+)
+[ info ] [ RUN ] app\varjoker\controller\Login->LogChek[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011123s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_admin` [ RunTime:0.002093s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_admin` WHERE  `adminuser` = 'admin'  AND `adminpass` = '123456' LIMIT 1 [ RunTime:0.000327s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:27:01+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/login/index.html
+[运行时间：0.005166s] [吞吐率：193.57req/s] [内存消耗：252.98kb] [文件加载：45]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\varjoker\controller\Login->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Login.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\login\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-12-12T21:27:06+08:00 ] 127.0.0.1 POST 127.0.0.4/admin.php/login/LogChek.html
+[运行时间：0.019313s] [吞吐率：51.78req/s] [内存消耗：441.61kb] [文件加载：55]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'login',
+    2 => 'LogChek',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/login/index.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://127.0.0.4',
+  'accept' => '*/*',
+  'content-length' => '21',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+  'user' => 'admin',
+  'pass' => 'admin',
+)
+[ info ] [ RUN ] app\varjoker\controller\Login->LogChek[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010907s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_admin` [ RunTime:0.002232s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_admin` WHERE  `adminuser` = 'admin'  AND `adminpass` = 'admin' LIMIT 1 [ RunTime:0.000385s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:27:12+08:00 ] 127.0.0.1 POST 127.0.0.4/admin.php/login/LogChek.html
+[运行时间：0.018831s] [吞吐率：53.10req/s] [内存消耗：441.64kb] [文件加载：55]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'login',
+    2 => 'LogChek',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/login/index.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://127.0.0.4',
+  'accept' => '*/*',
+  'content-length' => '24',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+  'user' => 'admin',
+  'pass' => 'admin123',
+)
+[ info ] [ RUN ] app\varjoker\controller\Login->LogChek[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012226s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_admin` [ RunTime:0.002053s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_admin` WHERE  `adminuser` = 'admin'  AND `adminpass` = 'admin123' LIMIT 1 [ RunTime:0.000250s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:27:26+08:00 ] 127.0.0.1 POST 127.0.0.4/admin.php/login/LogChek.html
+[运行时间：0.043268s] [吞吐率：23.11req/s] [内存消耗：479.45kb] [文件加载：59]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'login',
+    2 => 'LogChek',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/login/index.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://127.0.0.4',
+  'accept' => '*/*',
+  'content-length' => '26',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+  'user' => 'admin',
+  'pass' => 'www.9nw.cc',
+)
+[ info ] [ RUN ] app\varjoker\controller\Login->LogChek[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002464s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_admin` [ RunTime:0.002490s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_admin` WHERE  `adminuser` = 'admin'  AND `adminpass` = 'www.9nw.cc' LIMIT 1 [ RunTime:0.000339s ]
+[ sql ] [ SQL ] UPDATE `dk_admin`  SET `getip`='127.0.0.1',`arrip`='10.168.1.132'  WHERE  `id` = 1 [ RunTime:0.030042s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:27:26+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/index/index.html
+[运行时间：0.023286s] [吞吐率：42.94req/s] [内存消耗：500.57kb] [文件加载：57]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/login/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\index\index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003602s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.002102s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000330s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001865s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000309s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000270s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000250s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000269s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.002007s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000241s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:27:37+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/user/index.html
+[运行时间：0.028315s] [吞吐率：35.32req/s] [内存消耗：612.98kb] [文件加载：60]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\User->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\user\index.html [ array (
+  0 => 'admin',
+  1 => 'alluser',
+  2 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011225s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.002027s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000289s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.000613s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` LIMIT 1 [ RunTime:0.000279s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000332s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:27:40+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/index/source.html
+[运行时间：0.026018s] [吞吐率：38.44req/s] [内存消耗：520.30kb] [文件加载：60]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'source',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/user/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->source[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\index\source.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002680s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.002098s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000343s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_source` [ RunTime:0.000872s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_source` LIMIT 1 [ RunTime:0.000249s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_source` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000306s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002065s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '48' LIMIT 1 [ RunTime:0.000320s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001893s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 48  AND `status` = '5' LIMIT 1 [ RunTime:0.000290s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '47' LIMIT 1 [ RunTime:0.000271s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 47  AND `status` = '5' LIMIT 1 [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '46' LIMIT 1 [ RunTime:0.000262s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 46  AND `status` = '5' LIMIT 1 [ RunTime:0.000241s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '45' LIMIT 1 [ RunTime:0.000237s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 45  AND `status` = '5' LIMIT 1 [ RunTime:0.000223s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '44' LIMIT 1 [ RunTime:0.000184s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 44  AND `status` = '5' LIMIT 1 [ RunTime:0.000187s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '37' LIMIT 1 [ RunTime:0.000168s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 37  AND `status` = '5' LIMIT 1 [ RunTime:0.000134s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '36' LIMIT 1 [ RunTime:0.000123s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 36  AND `status` = '5' LIMIT 1 [ RunTime:0.000161s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '35' LIMIT 1 [ RunTime:0.000157s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 35  AND `status` = '5' LIMIT 1 [ RunTime:0.000165s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '34' LIMIT 1 [ RunTime:0.000135s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 34  AND `status` = '5' LIMIT 1 [ RunTime:0.000138s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '33' LIMIT 1 [ RunTime:0.000129s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 33  AND `status` = '5' LIMIT 1 [ RunTime:0.000130s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:27:46+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/index/index.html
+[运行时间：0.018989s] [吞吐率：52.66req/s] [内存消耗：469.39kb] [文件加载：55]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/index/source.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\index\index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002542s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.002043s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000305s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.002029s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000243s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000385s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000223s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000185s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001857s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000168s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:27:48+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/index/index.html
+[运行时间：0.016682s] [吞吐率：59.95req/s] [内存消耗：468.28kb] [文件加载：55]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\index\index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003178s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.002312s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000342s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001969s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000348s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000245s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000213s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000257s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.002002s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000233s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:27:50+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/index/index.html
+[运行时间：0.016215s] [吞吐率：61.67req/s] [内存消耗：468.28kb] [文件加载：55]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\index\index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002885s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001978s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000332s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001822s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000297s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000277s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000261s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001843s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000255s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:27:54+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/index/index.html
+[运行时间：0.016742s] [吞吐率：59.73req/s] [内存消耗：468.28kb] [文件加载：55]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\index\index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002714s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.002016s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000348s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001885s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000337s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000254s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000247s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000186s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001982s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000279s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:27:56+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/index/index.html
+[运行时间：0.016335s] [吞吐率：61.22req/s] [内存消耗：468.28kb] [文件加载：55]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\index\index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002581s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.002584s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000326s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001964s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000310s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000276s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000222s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000208s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001818s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000234s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:27:58+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/index/source.html
+[运行时间：0.022628s] [吞吐率：44.19req/s] [内存消耗：491.07kb] [文件加载：58]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'source',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->source[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\index\source.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002602s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.002242s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000335s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_source` [ RunTime:0.000765s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_source` LIMIT 1 [ RunTime:0.000242s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_source` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000245s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001881s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '48' LIMIT 1 [ RunTime:0.000249s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001838s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 48  AND `status` = '5' LIMIT 1 [ RunTime:0.000282s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '47' LIMIT 1 [ RunTime:0.000247s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 47  AND `status` = '5' LIMIT 1 [ RunTime:0.000256s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '46' LIMIT 1 [ RunTime:0.000242s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 46  AND `status` = '5' LIMIT 1 [ RunTime:0.000238s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '45' LIMIT 1 [ RunTime:0.000212s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 45  AND `status` = '5' LIMIT 1 [ RunTime:0.000224s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '44' LIMIT 1 [ RunTime:0.000215s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 44  AND `status` = '5' LIMIT 1 [ RunTime:0.000203s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '37' LIMIT 1 [ RunTime:0.000124s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 37  AND `status` = '5' LIMIT 1 [ RunTime:0.000172s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '36' LIMIT 1 [ RunTime:0.000204s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 36  AND `status` = '5' LIMIT 1 [ RunTime:0.000211s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '35' LIMIT 1 [ RunTime:0.000200s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 35  AND `status` = '5' LIMIT 1 [ RunTime:0.000189s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '34' LIMIT 1 [ RunTime:0.000198s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 34  AND `status` = '5' LIMIT 1 [ RunTime:0.000205s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '33' LIMIT 1 [ RunTime:0.000171s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 33  AND `status` = '5' LIMIT 1 [ RunTime:0.000201s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:28:08+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/index/source.html
+[运行时间：0.025830s] [吞吐率：38.71req/s] [内存消耗：489.96kb] [文件加载：58]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'source',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/index/source.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->source[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\index\source.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002497s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.002021s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000352s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_source` [ RunTime:0.000741s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_source` LIMIT 1 [ RunTime:0.000255s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_source` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000298s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001941s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '48' LIMIT 1 [ RunTime:0.000300s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001974s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 48  AND `status` = '5' LIMIT 1 [ RunTime:0.000337s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '47' LIMIT 1 [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 47  AND `status` = '5' LIMIT 1 [ RunTime:0.000245s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '46' LIMIT 1 [ RunTime:0.000190s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 46  AND `status` = '5' LIMIT 1 [ RunTime:0.000248s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '45' LIMIT 1 [ RunTime:0.000223s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 45  AND `status` = '5' LIMIT 1 [ RunTime:0.000278s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '44' LIMIT 1 [ RunTime:0.000276s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 44  AND `status` = '5' LIMIT 1 [ RunTime:0.000247s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '37' LIMIT 1 [ RunTime:0.000219s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 37  AND `status` = '5' LIMIT 1 [ RunTime:0.000220s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '36' LIMIT 1 [ RunTime:0.000208s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 36  AND `status` = '5' LIMIT 1 [ RunTime:0.000184s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '35' LIMIT 1 [ RunTime:0.000207s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 35  AND `status` = '5' LIMIT 1 [ RunTime:0.000237s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '34' LIMIT 1 [ RunTime:0.000184s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 34  AND `status` = '5' LIMIT 1 [ RunTime:0.000163s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '33' LIMIT 1 [ RunTime:0.000130s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 33  AND `status` = '5' LIMIT 1 [ RunTime:0.000131s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:28:09+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/index/index.html
+[运行时间：0.016375s] [吞吐率：61.07req/s] [内存消耗：468.28kb] [文件加载：55]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/index/source.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\index\index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002694s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.002102s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000337s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001986s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000285s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000253s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000238s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000237s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001806s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000224s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:28:17+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/index/index.html
+[运行时间：0.015689s] [吞吐率：63.74req/s] [内存消耗：468.28kb] [文件加载：55]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\index\index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002765s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001971s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000315s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001942s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000268s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000165s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000122s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000118s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001753s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000152s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:28:18+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/index/index.html
+[运行时间：0.014884s] [吞吐率：67.19req/s] [内存消耗：468.28kb] [文件加载：55]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\index\index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002606s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001847s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000264s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001750s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000272s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000261s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001812s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000234s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:28:34+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/login/logout.html
+[运行时间：0.005615s] [吞吐率：178.09req/s] [内存消耗：259.91kb] [文件加载：47]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'login',
+    2 => 'logout',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\varjoker\controller\Login->logout[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Login.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\tpl\dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-12-12T21:28:35+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/login/index.html
+[运行时间：0.004050s] [吞吐率：246.91req/s] [内存消耗：252.26kb] [文件加载：45]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/login/logout.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\varjoker\controller\Login->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Login.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\login\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-12-12T21:28:41+08:00 ] 127.0.0.1 POST 127.0.0.4/admin.php/login/LogChek.html
+[运行时间：0.049332s] [吞吐率：20.27req/s] [内存消耗：478.63kb] [文件加载：59]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'login',
+    2 => 'LogChek',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/login/index.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://127.0.0.4',
+  'accept' => '*/*',
+  'content-length' => '31',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+  'user' => 'admin',
+  'pass' => 'www.qumuban.com',
+)
+[ info ] [ RUN ] app\varjoker\controller\Login->LogChek[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011508s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_admin` [ RunTime:0.002194s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_admin` WHERE  `adminuser` = 'admin'  AND `adminpass` = 'www.qumuban.com' LIMIT 1 [ RunTime:0.000327s ]
+[ sql ] [ SQL ] UPDATE `dk_admin`  SET `getip`='127.0.0.1',`arrip`='127.0.0.1'  WHERE  `id` = 1 [ RunTime:0.029128s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:28:41+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/index/index.html
+[运行时间：0.023378s] [吞吐率：42.78req/s] [内存消耗：468.28kb] [文件加载：55]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/login/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\index\index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010867s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.000607s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000318s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.002366s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000312s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000272s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000248s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000255s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001942s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000289s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:28:47+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/user/index.html
+[运行时间：0.021083s] [吞吐率：47.43req/s] [内存消耗：500.74kb] [文件加载：58]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\User->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\user\index.html [ array (
+  0 => 'admin',
+  1 => 'alluser',
+  2 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011740s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.000625s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000329s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.000526s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` LIMIT 1 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000330s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:28:49+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/user/editd.html?id=16
+[运行时间：0.009190s] [吞吐率：108.82req/s] [内存消耗：430.97kb] [文件加载：53]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'user',
+    2 => 'editd',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/user/index.html',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => '*/*',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+  'id' => '16',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\User->editd[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\User.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002253s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.000486s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000255s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001788s ]
+[ sql ] [ SQL ] SELECT `mobile`,`password` FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000223s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:29:01+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/user/editd.html?id=16
+[运行时间：0.018765s] [吞吐率：53.29req/s] [内存消耗：430.97kb] [文件加载：53]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'user',
+    2 => 'editd',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/user/index.html',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => '*/*',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+  'id' => '16',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\User->editd[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\User.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011009s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.000619s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000340s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002249s ]
+[ sql ] [ SQL ] SELECT `mobile`,`password` FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000301s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:29:33+08:00 ] 127.0.0.1 POST 127.0.0.4/login/logchek.html
+[运行时间：0.012759s] [吞吐率：78.37req/s] [内存消耗：476.04kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'logchek',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/login/index.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://127.0.0.4',
+  'accept' => '*/*',
+  'content-length' => '34',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17321709220',
+  'password' => '123456',
+)
+[ info ] [ RUN ] app\index\controller\Login->logchek[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003467s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002134s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `mobile` = '17321709220'  AND `password` = '123456' LIMIT 1 [ RunTime:0.000417s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:29:36+08:00 ] 127.0.0.1 GET 127.0.0.4/index/index.html
+[运行时间：0.021704s] [吞吐率：46.07req/s] [内存消耗：466.75kb] [文件加载：53]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/login/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\index\index.html [ array (
+  0 => 'data',
+  1 => 'msg',
+  2 => 'maxm',
+  3 => 'zixun',
+  4 => 'user',
+  5 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003627s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_broadcast` [ RunTime:0.002242s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_broadcast` [ RunTime:0.000270s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_zixun` [ RunTime:0.002825s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_zixun` [ RunTime:0.000441s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.002153s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16' ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000292s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001808s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000357s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `status` < '4' LIMIT 1 [ RunTime:0.000252s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:29:36+08:00 ] 127.0.0.1 GET 127.0.0.4/user/youhui.html
+[运行时间：0.019302s] [吞吐率：51.81req/s] [内存消耗：574.04kb] [文件加载：58]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'youhui',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->youhui[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\user\youhui.html [ array (
+  0 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003457s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.000832s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000328s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000285s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.000538s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `status` = '0' LIMIT 1 [ RunTime:0.000267s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000272s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000211s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000251s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:29:38+08:00 ] 127.0.0.1 GET 127.0.0.4/index/index.html
+[运行时间：0.017744s] [吞吐率：56.36req/s] [内存消耗：465.64kb] [文件加载：53]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/login/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\index\index.html [ array (
+  0 => 'data',
+  1 => 'msg',
+  2 => 'maxm',
+  3 => 'zixun',
+  4 => 'user',
+  5 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002874s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_broadcast` [ RunTime:0.002236s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_broadcast` [ RunTime:0.000446s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_zixun` [ RunTime:0.002424s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_zixun` [ RunTime:0.000454s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.000758s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16' ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000339s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.000593s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000341s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `status` < '4' LIMIT 1 [ RunTime:0.000315s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:29:39+08:00 ] 127.0.0.1 GET 127.0.0.4/user/youhui.html
+[运行时间：0.017103s] [吞吐率：58.47req/s] [内存消耗：488.82kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'youhui',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->youhui[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\user\youhui.html [ array (
+  0 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003013s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002406s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000423s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000384s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.002359s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `status` = '0' LIMIT 1 [ RunTime:0.000415s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000432s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000359s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000370s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:29:56+08:00 ] 127.0.0.1 GET 127.0.0.4/user/province.html
+[运行时间：0.019339s] [吞吐率：51.71req/s] [内存消耗：486.68kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'province',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/youhui.html',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => '*/*',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->province[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\User.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002928s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002511s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000431s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000368s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.002645s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `status` = '0' LIMIT 1 [ RunTime:0.000391s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000389s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000377s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000404s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:29:58+08:00 ] 127.0.0.1 GET 127.0.0.4/user/index.html
+[运行时间：0.020090s] [吞吐率：49.78req/s] [内存消耗：574.56kb] [文件加载：58]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/youhui.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\user\index.html [ array (
+  0 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002965s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002513s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000432s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000377s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.002526s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `status` = '0' LIMIT 1 [ RunTime:0.000400s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000379s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000331s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000368s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:30:13+08:00 ] 127.0.0.1 GET 127.0.0.4/loan/index.html
+[运行时间：0.030396s] [吞吐率：32.90req/s] [内存消耗：575.65kb] [文件加载：59]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'loan',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Loan->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\Loan.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\loan\index.html [ array (
+  0 => 'vuser',
+  1 => 'viptype',
+  2 => 'status',
+  3 => 'exc',
+  4 => 'sucount',
+  5 => 'count',
+  6 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011663s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002661s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000579s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.002403s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `status` = '0' LIMIT 1 [ RunTime:0.000416s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000415s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000347s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `status` < '4' [ RunTime:0.000351s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_loan` WHERE  `uid` = '16' LIMIT 1 [ RunTime:0.000257s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `status` < '4' LIMIT 1 [ RunTime:0.000342s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000367s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:30:16+08:00 ] 127.0.0.1 GET 127.0.0.4/user/index.html
+[运行时间：0.025256s] [吞吐率：39.59req/s] [内存消耗：488.81kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/youhui.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\user\index.html [ array (
+  0 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011550s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002334s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000410s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000364s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.002043s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `status` = '0' LIMIT 1 [ RunTime:0.000463s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000404s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000330s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000341s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:30:18+08:00 ] 127.0.0.1 GET 127.0.0.4/user/vip.html
+[运行时间：0.023367s] [吞吐率：42.80req/s] [内存消耗：575.86kb] [文件加载：58]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'vip',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->vip[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\user\vip.html [ array (
+  0 => 'user',
+  1 => 'vipname',
+  2 => 'vip',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004277s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002930s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000512s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000390s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.002357s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `status` = '0' LIMIT 1 [ RunTime:0.000527s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000414s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000398s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000402s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:30:19+08:00 ] 127.0.0.1 GET 127.0.0.4/user/index.html
+[运行时间：0.019392s] [吞吐率：51.57req/s] [内存消耗：487.89kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/youhui.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\user\index.html [ array (
+  0 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004185s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.003172s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000648s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000433s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.002280s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `status` = '0' LIMIT 1 [ RunTime:0.000358s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000350s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000340s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000371s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:30:20+08:00 ] 127.0.0.1 GET 127.0.0.4/user/renzheng.html
+[运行时间：0.016863s] [吞吐率：59.30req/s] [内存消耗：578.98kb] [文件加载：58]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'renzheng',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->renzheng[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\user\renzheng.html [ array (
+  0 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003329s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.000777s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000477s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000399s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.000674s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `status` = '0' LIMIT 1 [ RunTime:0.000389s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000437s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000383s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000322s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:30:22+08:00 ] 127.0.0.1 GET 127.0.0.4/info/idcard.html?typeid=3
+[运行时间：0.015093s] [吞吐率：66.26req/s] [内存消耗：377.38kb] [文件加载：57]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'info',
+    2 => 'idcard',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/renzheng.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+  'typeid' => '3',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003174s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_reorder` [ RunTime:0.002086s ]
+[ error ] [10501]SQLSTATE[HY000]: General error: 1364 Field 'addtime' doesn't have a default value[D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\library\think\db\Connection.php:453]
+---------------------------------------------------------------
+[ 2019-12-12T21:30:41+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/user/editd.html?id=8
+[运行时间：0.019313s] [吞吐率：51.78req/s] [内存消耗：431.04kb] [文件加载：53]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'user',
+    2 => 'editd',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/user/index.html',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => '*/*',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+  'id' => '8',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\User->editd[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\User.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010400s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.000598s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.000458s ]
+[ sql ] [ SQL ] SELECT `mobile`,`password` FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000252s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:30:47+08:00 ] 127.0.0.1 GET 127.0.0.4/user/renzheng.html
+[运行时间：0.018002s] [吞吐率：55.55req/s] [内存消耗：488.87kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'renzheng',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->renzheng[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\user\renzheng.html [ array (
+  0 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003468s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002565s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000472s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000369s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.002288s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `status` = '0' LIMIT 1 [ RunTime:0.000413s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000390s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000440s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000342s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:30:52+08:00 ] 127.0.0.1 GET 127.0.0.4/user/index.html
+[运行时间：0.015979s] [吞吐率：62.58req/s] [内存消耗：487.89kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/youhui.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\user\index.html [ array (
+  0 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002505s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.000877s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000390s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000401s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.002645s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `status` = '0' LIMIT 1 [ RunTime:0.000699s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000413s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '16'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000399s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 16 LIMIT 1 [ RunTime:0.000326s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:30:53+08:00 ] 127.0.0.1 GET 127.0.0.4/login/lout.html
+[运行时间：0.004863s] [吞吐率：205.63req/s] [内存消耗：262.79kb] [文件加载：47]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'lout',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->lout[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\Login.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\tpl\dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-12-12T21:30:55+08:00 ] 127.0.0.1 GET 127.0.0.4/login/index.html
+[运行时间：0.005111s] [吞吐率：195.66req/s] [内存消耗：256.77kb] [文件加载：46]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/login/lout.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\Login.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\login\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-12-12T21:31:00+08:00 ] 127.0.0.1 POST 127.0.0.4/login/logchek.html
+[运行时间：0.009391s] [吞吐率：106.48req/s] [内存消耗：477.29kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'logchek',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/login/index.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://127.0.0.4',
+  'accept' => '*/*',
+  'content-length' => '34',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '18005151538',
+  'password' => '123456',
+)
+[ info ] [ RUN ] app\index\controller\Login->logchek[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002723s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.000768s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `mobile` = '18005151538'  AND `password` = '123456' LIMIT 1 [ RunTime:0.000423s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:31:03+08:00 ] 127.0.0.1 GET 127.0.0.4/index/index.html
+[运行时间：0.017160s] [吞吐率：58.27req/s] [内存消耗：470.25kb] [文件加载：53]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/login/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\index\index.html [ array (
+  0 => 'data',
+  1 => 'msg',
+  2 => 'maxm',
+  3 => 'zixun',
+  4 => 'user',
+  5 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003065s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_broadcast` [ RunTime:0.002526s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_broadcast` [ RunTime:0.000305s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_zixun` [ RunTime:0.002424s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_zixun` [ RunTime:0.000335s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.000675s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8' ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000337s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.000576s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000315s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` < '4' LIMIT 1 [ RunTime:0.000314s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:31:05+08:00 ] 127.0.0.1 GET 127.0.0.4/user/youhui.html
+[运行时间：0.013963s] [吞吐率：71.62req/s] [内存消耗：490.21kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'youhui',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->youhui[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\user\youhui.html [ array (
+  0 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002779s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.000749s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000442s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000334s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.000911s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` = '0' LIMIT 1 [ RunTime:0.000441s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000374s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000333s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000348s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:31:19+08:00 ] 127.0.0.1 GET 127.0.0.4/user/index.html
+[运行时间：0.013895s] [吞吐率：71.97req/s] [内存消耗：490.20kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/youhui.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\user\index.html [ array (
+  0 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002536s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.000772s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000419s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000306s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.000644s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` = '0' LIMIT 1 [ RunTime:0.000268s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000252s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000226s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000377s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:31:21+08:00 ] 127.0.0.1 GET 127.0.0.4/user/renzheng.html
+[运行时间：0.013480s] [吞吐率：74.18req/s] [内存消耗：490.26kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'renzheng',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->renzheng[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\user\renzheng.html [ array (
+  0 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003410s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.000859s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000415s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000327s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.000587s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` = '0' LIMIT 1 [ RunTime:0.000314s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000254s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000268s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:31:26+08:00 ] 127.0.0.1 GET 127.0.0.4/info/operator.html?typeid=1
+[运行时间：0.012179s] [吞吐率：82.11req/s] [内存消耗：375.81kb] [文件加载：57]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'info',
+    2 => 'operator',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/renzheng.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+  'typeid' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003370s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_reorder` [ RunTime:0.002302s ]
+[ error ] [10501]SQLSTATE[HY000]: General error: 1364 Field 'addtime' doesn't have a default value[D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\library\think\db\Connection.php:453]
+---------------------------------------------------------------
+[ 2019-12-12T21:37:24+08:00 ] 127.0.0.1 GET 127.0.0.4/user/renzheng.html
+[运行时间：0.021158s] [吞吐率：47.26req/s] [内存消耗：490.23kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'renzheng',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->renzheng[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\user\renzheng.html [ array (
+  0 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003149s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.000741s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000405s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000318s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001993s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` = '0' LIMIT 1 [ RunTime:0.000319s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000314s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000276s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000287s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:40:39+08:00 ] 127.0.0.1 GET 127.0.0.4/info/operator.html?typeid=1
+[运行时间：0.035004s] [吞吐率：28.57req/s] [内存消耗：375.78kb] [文件加载：57]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'info',
+    2 => 'operator',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/renzheng.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+  'typeid' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011217s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_reorder` [ RunTime:0.002091s ]
+[ error ] [10501]SQLSTATE[HY000]: General error: 1364 Field 'addtime' doesn't have a default value[D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\library\think\db\Connection.php:453]
+---------------------------------------------------------------
+[ 2019-12-12T21:40:40+08:00 ] 127.0.0.1 GET 127.0.0.4/info/operator.html?typeid=1
+[运行时间：0.020776s] [吞吐率：48.13req/s] [内存消耗：375.86kb] [文件加载：57]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'info',
+    2 => 'operator',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/renzheng.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+  'typeid' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011199s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_reorder` [ RunTime:0.001939s ]
+[ error ] [10501]SQLSTATE[HY000]: General error: 1364 Field 'addtime' doesn't have a default value[D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\library\think\db\Connection.php:453]
+---------------------------------------------------------------
+[ 2019-12-12T21:40:54+08:00 ] 127.0.0.1 GET 127.0.0.4/info/operator.html?typeid=1
+[运行时间：2.540802s] [吞吐率：0.39req/s] [内存消耗：375.86kb] [文件加载：57]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'info',
+    2 => 'operator',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/renzheng.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+  'typeid' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:2.514648s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_reorder` [ RunTime:0.017719s ]
+[ error ] [10501]SQLSTATE[HY000]: General error: 1364 Field 'addtime' doesn't have a default value[D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\library\think\db\Connection.php:453]
+---------------------------------------------------------------
+[ 2019-12-12T21:40:56+08:00 ] 127.0.0.1 GET 127.0.0.4/info/operator.html?typeid=1
+[运行时间：0.012305s] [吞吐率：81.27req/s] [内存消耗：375.86kb] [文件加载：57]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'info',
+    2 => 'operator',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/renzheng.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+  'typeid' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002951s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_reorder` [ RunTime:0.002299s ]
+[ error ] [10501]SQLSTATE[HY000]: General error: 1364 Field 'addtime' doesn't have a default value[D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\library\think\db\Connection.php:453]
+---------------------------------------------------------------
+[ 2019-12-12T21:41:45+08:00 ] 127.0.0.1 GET 127.0.0.4/user/renzheng.html
+[运行时间：0.038285s] [吞吐率：26.12req/s] [内存消耗：490.23kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'renzheng',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->renzheng[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\user\renzheng.html [ array (
+  0 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003056s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.013245s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000511s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000332s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.010694s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` = '0' LIMIT 1 [ RunTime:0.000340s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000328s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000289s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000310s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:42:04+08:00 ] 127.0.0.1 GET 127.0.0.4/user/cion.html
+[运行时间：0.033395s] [吞吐率：29.94req/s] [内存消耗：577.12kb] [文件加载：58]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'cion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/renzheng.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->cion[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\user\cion.html [ array (
+  0 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003750s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002246s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000425s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000323s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.002017s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` = '0' LIMIT 1 [ RunTime:0.000334s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000307s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000282s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000290s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:42:14+08:00 ] 127.0.0.1 GET 127.0.0.4/loan/index.html
+[运行时间：0.025073s] [吞吐率：39.88req/s] [内存消耗：500.34kb] [文件加载：57]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'loan',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/cion.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Loan->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\Loan.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\loan\index.html [ array (
+  0 => 'vuser',
+  1 => 'viptype',
+  2 => 'status',
+  3 => 'exc',
+  4 => 'sucount',
+  5 => 'count',
+  6 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003107s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002532s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000467s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000336s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.002527s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` = '0' LIMIT 1 [ RunTime:0.000519s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000247s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` < '4' [ RunTime:0.000230s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_loan` WHERE  `uid` = '8' LIMIT 1 [ RunTime:0.000394s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` < '4' LIMIT 1 [ RunTime:0.000346s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000285s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:42:31+08:00 ] 127.0.0.1 GET 127.0.0.4/pay/shpay.html
+[运行时间：0.023939s] [吞吐率：41.77req/s] [内存消耗：478.66kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'pay',
+    2 => 'shpay',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/loan/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Pay->shpay[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\Pay.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\tpl\dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005925s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.003231s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000540s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000308s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.002204s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` = '0' LIMIT 1 [ RunTime:0.000396s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000367s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000276s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` = '1' LIMIT 1 [ RunTime:0.000222s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:42:33+08:00 ] 127.0.0.1 GET 127.0.0.4/loan/index.html
+[运行时间：0.018628s] [吞吐率：53.68req/s] [内存消耗：499.23kb] [文件加载：57]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'loan',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/cion.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Loan->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\Loan.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\loan\index.html [ array (
+  0 => 'vuser',
+  1 => 'viptype',
+  2 => 'status',
+  3 => 'exc',
+  4 => 'sucount',
+  5 => 'count',
+  6 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002517s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002370s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000380s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000252s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001932s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` = '0' LIMIT 1 [ RunTime:0.000324s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000323s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000297s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` < '4' [ RunTime:0.000324s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_loan` WHERE  `uid` = '8' LIMIT 1 [ RunTime:0.000258s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` < '4' LIMIT 1 [ RunTime:0.000250s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000307s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:42:40+08:00 ] 127.0.0.1 GET 127.0.0.4/index/index.html
+[运行时间：0.041477s] [吞吐率：24.11req/s] [内存消耗：470.25kb] [文件加载：53]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/loan/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\index\index.html [ array (
+  0 => 'data',
+  1 => 'msg',
+  2 => 'maxm',
+  3 => 'zixun',
+  4 => 'user',
+  5 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011124s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_broadcast` [ RunTime:0.011430s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_broadcast` [ RunTime:0.000276s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_zixun` [ RunTime:0.003726s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_zixun` [ RunTime:0.000276s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001847s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8' ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000320s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001900s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000329s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` < '4' LIMIT 1 [ RunTime:0.000298s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:42:45+08:00 ] 127.0.0.1 GET 127.0.0.4/loan/index.html
+[运行时间：0.019174s] [吞吐率：52.15req/s] [内存消耗：499.24kb] [文件加载：57]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'loan',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Loan->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\Loan.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\loan\index.html [ array (
+  0 => 'vuser',
+  1 => 'viptype',
+  2 => 'status',
+  3 => 'exc',
+  4 => 'sucount',
+  5 => 'count',
+  6 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003567s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002674s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000415s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000358s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.002310s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` = '0' LIMIT 1 [ RunTime:0.000455s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000312s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` < '4' [ RunTime:0.000315s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_loan` WHERE  `uid` = '8' LIMIT 1 [ RunTime:0.000203s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` < '4' LIMIT 1 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000282s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:42:50+08:00 ] 127.0.0.1 GET 127.0.0.4/user/index.html
+[运行时间：0.021207s] [吞吐率：47.15req/s] [内存消耗：490.20kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/loan/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\user\index.html [ array (
+  0 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002837s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002048s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000412s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000315s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001888s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` = '0' LIMIT 1 [ RunTime:0.000307s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000311s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000309s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000299s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:42:56+08:00 ] 127.0.0.1 GET 127.0.0.4/loan/index.html
+[运行时间：0.018266s] [吞吐率：54.75req/s] [内存消耗：499.24kb] [文件加载：57]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'loan',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/user/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Loan->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\Loan.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\loan\index.html [ array (
+  0 => 'vuser',
+  1 => 'viptype',
+  2 => 'status',
+  3 => 'exc',
+  4 => 'sucount',
+  5 => 'count',
+  6 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003141s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002345s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000485s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000322s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.002494s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` = '0' LIMIT 1 [ RunTime:0.000383s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000292s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000321s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` < '4' [ RunTime:0.000249s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_loan` WHERE  `uid` = '8' LIMIT 1 [ RunTime:0.000227s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` < '4' LIMIT 1 [ RunTime:0.000205s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000236s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:43:02+08:00 ] 127.0.0.1 GET 127.0.0.4/user/index.html
+[运行时间：0.016548s] [吞吐率：60.43req/s] [内存消耗：490.20kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/loan/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\index\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/index\view\user\index.html [ array (
+  0 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003149s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002403s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000458s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000335s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.002217s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `status` = '0' LIMIT 1 [ RunTime:0.000361s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000335s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '8'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000297s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000257s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:45:36+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/user/index.html
+[运行时间：0.030346s] [吞吐率：32.95req/s] [内存消耗：499.73kb] [文件加载：58]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\User->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\user\index.html [ array (
+  0 => 'admin',
+  1 => 'alluser',
+  2 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011340s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.003714s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000365s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001988s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` LIMIT 1 [ RunTime:0.000278s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000340s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:45:38+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/index/source.html
+[运行时间：0.033531s] [吞吐率：29.82req/s] [内存消耗：490.06kb] [文件加载：58]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'source',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/user/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->source[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\index\source.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011850s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001995s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000328s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_source` [ RunTime:0.000953s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_source` LIMIT 1 [ RunTime:0.000245s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_source` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000317s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002111s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '48' LIMIT 1 [ RunTime:0.000282s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001954s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 48  AND `status` = '5' LIMIT 1 [ RunTime:0.000315s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '47' LIMIT 1 [ RunTime:0.000242s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 47  AND `status` = '5' LIMIT 1 [ RunTime:0.000246s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '46' LIMIT 1 [ RunTime:0.000277s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 46  AND `status` = '5' LIMIT 1 [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '45' LIMIT 1 [ RunTime:0.000275s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 45  AND `status` = '5' LIMIT 1 [ RunTime:0.000261s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '44' LIMIT 1 [ RunTime:0.000225s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 44  AND `status` = '5' LIMIT 1 [ RunTime:0.000252s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '37' LIMIT 1 [ RunTime:0.000246s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 37  AND `status` = '5' LIMIT 1 [ RunTime:0.000265s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '36' LIMIT 1 [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 36  AND `status` = '5' LIMIT 1 [ RunTime:0.000275s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '35' LIMIT 1 [ RunTime:0.000266s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 35  AND `status` = '5' LIMIT 1 [ RunTime:0.000272s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '34' LIMIT 1 [ RunTime:0.000237s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 34  AND `status` = '5' LIMIT 1 [ RunTime:0.000235s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '33' LIMIT 1 [ RunTime:0.000225s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 33  AND `status` = '5' LIMIT 1 [ RunTime:0.000187s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:45:40+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/broadcast/index.html
+[运行时间：0.029557s] [吞吐率：33.83req/s] [内存消耗：489.65kb] [文件加载：60]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'broadcast',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/index/source.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Broadcast->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Broadcast.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\broadcast\index.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010966s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001929s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000367s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_broadcast` [ RunTime:0.001833s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_broadcast` LIMIT 1 [ RunTime:0.000206s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_broadcast` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000175s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:45:41+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/index/source.html
+[运行时间：0.024244s] [吞吐率：41.25req/s] [内存消耗：490.06kb] [文件加载：58]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'source',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/broadcast/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->source[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\index\source.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010743s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001889s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000204s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_source` [ RunTime:0.000594s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_source` LIMIT 1 [ RunTime:0.000114s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_source` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000163s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.000398s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '48' LIMIT 1 [ RunTime:0.000158s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.000368s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 48  AND `status` = '5' LIMIT 1 [ RunTime:0.000149s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '47' LIMIT 1 [ RunTime:0.000129s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 47  AND `status` = '5' LIMIT 1 [ RunTime:0.000133s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '46' LIMIT 1 [ RunTime:0.000125s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 46  AND `status` = '5' LIMIT 1 [ RunTime:0.000130s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '45' LIMIT 1 [ RunTime:0.000123s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 45  AND `status` = '5' LIMIT 1 [ RunTime:0.000129s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '44' LIMIT 1 [ RunTime:0.000140s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 44  AND `status` = '5' LIMIT 1 [ RunTime:0.000131s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '37' LIMIT 1 [ RunTime:0.000124s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 37  AND `status` = '5' LIMIT 1 [ RunTime:0.000128s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '36' LIMIT 1 [ RunTime:0.000122s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 36  AND `status` = '5' LIMIT 1 [ RunTime:0.000142s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '35' LIMIT 1 [ RunTime:0.000129s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 35  AND `status` = '5' LIMIT 1 [ RunTime:0.000128s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '34' LIMIT 1 [ RunTime:0.000122s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 34  AND `status` = '5' LIMIT 1 [ RunTime:0.000128s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '33' LIMIT 1 [ RunTime:0.000121s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 33  AND `status` = '5' LIMIT 1 [ RunTime:0.000130s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:45:45+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/user/index.html
+[运行时间：0.015088s] [吞吐率：66.28req/s] [内存消耗：499.73kb] [文件加载：58]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/index/source.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\User->index[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\User.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\user\index.html [ array (
+  0 => 'admin',
+  1 => 'alluser',
+  2 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004691s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001898s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000265s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.000482s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` LIMIT 1 [ RunTime:0.000185s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000260s ]
+---------------------------------------------------------------
+[ 2019-12-12T21:45:47+08:00 ] 127.0.0.1 GET 127.0.0.4/admin.php/index/source.html
+[运行时间：0.021299s] [吞吐率：46.95req/s] [内存消耗：490.06kb] [文件加载：58]
+[ info ] [ LANG ] D:\phpstudy_pro\WWW\127.0.0.4\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'source',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'x_a_no=1993; PHPSESSID=9j8n20p1j5s3j3gsb9vv4h1gd5; __51cke__=; __tins__19447899=%7B%22sid%22%3A%201576154217115%2C%20%22vd%22%3A%202%2C%20%22expires%22%3A%201576156025829%7D; __51laig__=2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://127.0.0.4/admin.php/user/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '127.0.0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->source[ D:\phpstudy_pro\WWW\127.0.0.4\application\varjoker\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpstudy_pro\WWW\127.0.0.4\public/../application/varjoker\view\index\source.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002480s ] mysql:host=localhost;port=3306;dbname=127003;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001907s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000279s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_source` [ RunTime:0.000702s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_source` LIMIT 1 [ RunTime:0.000208s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_source` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000234s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.002079s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '48' LIMIT 1 [ RunTime:0.000267s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001782s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 48  AND `status` = '5' LIMIT 1 [ RunTime:0.000251s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '47' LIMIT 1 [ RunTime:0.000183s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 47  AND `status` = '5' LIMIT 1 [ RunTime:0.000186s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '46' LIMIT 1 [ RunTime:0.000175s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 46  AND `status` = '5' LIMIT 1 [ RunTime:0.000226s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '45' LIMIT 1 [ RunTime:0.000175s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 45  AND `status` = '5' LIMIT 1 [ RunTime:0.000182s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '44' LIMIT 1 [ RunTime:0.000175s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 44  AND `status` = '5' LIMIT 1 [ RunTime:0.000188s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '37' LIMIT 1 [ RunTime:0.000177s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 37  AND `status` = '5' LIMIT 1 [ RunTime:0.000180s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '36' LIMIT 1 [ RunTime:0.000177s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 36  AND `status` = '5' LIMIT 1 [ RunTime:0.000215s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '35' LIMIT 1 [ RunTime:0.000203s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 35  AND `status` = '5' LIMIT 1 [ RunTime:0.000179s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '34' LIMIT 1 [ RunTime:0.000165s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 34  AND `status` = '5' LIMIT 1 [ RunTime:0.000175s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '33' LIMIT 1 [ RunTime:0.000167s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 33  AND `status` = '5' LIMIT 1 [ RunTime:0.000127s ]

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title><?php echo $app->trans('wizard.2.title') ?></title>
+
+        <!-- Fonts -->
+
+        <?php echo $app->renderView('blocks/fonts.html'); ?>
+
+        <!-- Styles -->
+
+        <link rel="icon" type="image/icon" href="<?php echo $app->asset('img/fav.ico') ?>">
+
+        <link rel="stylesheet" href="<?php echo $app->asset('css/jquery.mCustomScrollbar.css') ?>" />
+        <link rel="stylesheet" href="<?php echo $app->asset('css/framework.css') ?>" />
+        <link rel="stylesheet" href="<?php echo $app->asset('css/main.css') ?>" />
+        <link rel="stylesheet" href="<?php echo $app->asset('css/admin.css') ?>" />
+        <link rel="stylesheet" href="<?php echo $app->asset('css/bootstrap.css') ?>" />
+    </head>
+    <body class="install-wizard">
+
+        <img class="logo" src="<?php echo $app->asset('img/logo.png') ?>">
+
+        <div class="panel">
+
+            <div class="header"><?php echo $app->trans('wizard.2.title') ?></div>
+
+            <div class="content">
+
+                <!-- Introduction -->
+
+                <p class="intro">
+                    <?php echo $app->trans('wizard.2.intro') ?>
+                </p>
+
+                <?php if(isset($vars['errors'])) { ?>
+                <p class="error">
+                    <?php echo $vars['errors'] ?>
+                </p>
+                <?php } ?>
+
+                <!-- Database settings -->
+
+                <h2><?php echo $app->trans('db.settings') ?></h2>
+
+                <div class="section">
+
+                    <div class="row">
+                        <div class="col3"><?php echo $app->trans('host') ?></div>
+                        <div class="col9"><?php echo $vars['config']['dbHost'] ?></div>
+                    </div>
+                    <div class="row">
+                        <div class="col3"><?php echo $app->trans('port') ?></div>
+                        <div class="col9"><?php echo $vars['config']['dbPort'] ?></div>
+                    </div>
+                    <div class="row">
+                        <div class="col3"><?php echo $app->trans('db.name') ?></div>
+                        <div class="col9"><?php echo $vars['config']['dbName'] ?></div>
+                    </div>
+                    <div class="row">
+                        <div class="col3"><?php echo $app->trans('user.name') ?></div>
+                        <div class="col9"><?php echo $vars['config']['dbUser'] ?></div>
+                    </div>
+                    <div class="row">
+                        <div class="col3"><?php echo $app->trans('pass') ?></div>
+                        <div class="col9"><i><?php echo $vars['config']['dbPassword'] ?></i></div>
+                    </div>
+
+                </div>
+
+                <!-- SMTP settings -->
+
+                <h2><?php echo $app->trans('smtp') ?></h2>
+
+                <div class="section">
+
+                    <div class="row">
+                        <div class="col3"><?php echo $app->trans('use.smtp') ?></div>
+                        <div class="col9"><i class="icon-<?php echo isset($vars['config']['services']['mailer']['smtp']) && $vars['config']['services']['mailer']['smtp'] == true ? 'ok' : 'remove' ?>"></i></div>
+                    </div>
+                    <div class="row">
+                        <div class="col3"><?php echo $app->trans('encryption') ?></div>
+                        <div class="col9"><?php echo $vars['config']['services']['mailer']['smtpSecure'] ?></div>
+                    </div>
+                    <div class="row">
+                        <div class="col3"><?php echo $app->trans('hosts') ?></div>
+                        <div class="col9"><?php echo $vars['config']['services']['mailer']['smtpHost'] ?></div>
+                    </div>
+                    <div class="row">
+                        <div class="col3"><?php echo $app->trans('port') ?></div>
+                        <div class="col9"><?php echo $vars['config']['services']['mailer']['smtpPort'] ?></div>
+                    </div>
+                    <div class="row">
+                        <div class="col3"><?php echo $app->trans('user') ?></div>
+                        <div class="col9"><i><?php echo $vars['config']['services']['mailer']['smtpUser'] ?></i></div>
+                    </div>
+                    <div class="row">
+                        <div class="col3"><?php echo $app->trans('pass') ?></div>
+                        <div class="col9"><i><?php echo $vars['config']['services']['mailer']['smtpPass'] ?></i></div>
+                    </div>
+
+                </div>
+
+                <!-- Admin user settings -->
+
+                <h2><?php echo $app->trans('admin.acc.settings') ?></h2>
+
+                <div class="section">
+
+                    <div class="row">
+                        <div class="col3"><?php echo $app->trans('user.name') ?></div>
+                        <div class="col9"><?php echo $vars['config']['superUser'] ?></div>
+                    </div>
+                    <div class="row">
+                        <div class="col3"><?php echo $app->trans('pass') ?></div>
+                        <div class="col9"><i><?php echo $vars['config']['superPass'] ?></i></div>
+                    </div>
+
+                </div>
+
+                <!-- Other settings -->
+
+                <h2><?php echo $app->trans('other.settings') ?></h2>
+
+                <div class="section">
+
+                    <div class="row">
+                        <div class="col3"><?php echo $app->trans('contact.mail') ?></div>
+                        <div class="col9"><?php echo $vars['config']['appSettings']['contactMail'] ?></div>
+                    </div>
+
+                </div>
+
+                <!-- Actions -->
+
+                <div class="row buttons">
+                    <div class="col6">
+                        <a class="btn secondary" href="<?php echo $app->path('Install:wizard') ?>">
+                            <i class="icon-circle-arrow-left icon-white"></i>
+                            <?php echo $app->trans('back') ?>
+                        </a>
+                    </div>
+
+                    <div class="col6">
+
+                        <form action="<?php echo $app->path('Install:wizard3') ?>" method="post">
+                            <input type="hidden" name="config[dbHost]"                       value="<?php echo $vars['config']['dbHost'] ?>">
+                            <input type="hidden" name="config[dbPort]"                       value="<?php echo $vars['config']['dbPort'] ?>">
+                            <input type="hidden" name="config[dbName]"                       value="<?php echo $vars['config']['dbName'] ?>">
+                            <input type="hidden" name="config[dbUser]"                       value="<?php echo $vars['config']['dbUser'] ?>">
+                            <input type="hidden" name="config[dbPassword]"                   value="<?php echo $vars['config']['dbPassword'] ?>">
+                            <input type="hidden" name="config[services][mailer][smtp]"       value="<?php echo isset($vars['config']['services']['mailer']['smtp']) && $vars['config']['services']['mailer']['smtp'] == true ? 'true' : '' ?>">
+                            <input type="hidden" name="config[services][mailer][smtpSecure]" value="<?php echo $vars['config']['services']['mailer']['smtpSecure'] ?>">
+                            <input type="hidden" name="config[services][mailer][smtpHost]"   value="<?php echo $vars['config']['services']['mailer']['smtpHost'] ?>">
+                            <input type="hidden" name="config[services][mailer][smtpPort]"   value="<?php echo $vars['config']['services']['mailer']['smtpPort'] ?>">
+                            <input type="hidden" name="config[services][mailer][smtpUser]"   value="<?php echo $vars['config']['services']['mailer']['smtpUser'] ?>">
+                            <input type="hidden" name="config[services][mailer][smtpPass]"   value="<?php echo $vars['config']['services']['mailer']['smtpPass'] ?>">
+                            <input type="hidden" name="config[superUser]"                    value="<?php echo $vars['config']['superUser'] ?>">
+                            <input type="hidden" name="config[superPass]"                    value="<?php echo $vars['config']['superPass'] ?>">
+                            <input type="hidden" name="config[superPassRepeat]"              value="<?php echo $vars['config']['superPassRepeat'] ?>">
+                            <input type="hidden" name="config[appSettings][contactMail]"     value="<?php echo $vars['config']['appSettings']['contactMail'] ?>">
+
+                            <button class="btn" type="submit">
+                                <?php echo $app->trans('install') ?>
+                                <i class="icon-ok-sign icon-white"></i>
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </body>
+</html>

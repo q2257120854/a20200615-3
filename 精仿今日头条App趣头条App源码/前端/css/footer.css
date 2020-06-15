@@ -1,0 +1,31 @@
+#fx-footer{
+	background: #F5F5F5;
+	border-top:1px solid #E2E2E2;
+	height: 44.555px;
+	min-height:44.555px;
+}
+#fx-footer .aui-img-object {
+	width: 1rem;
+	margin: 0 auto;
+	margin-top: 0.2rem;
+	margin-bottom: 0.1rem;
+}
+.aui-bar-tab .aui-active{
+	color: #D43D3D;
+}
+.aui-bar-tab .aui-bar-tab-item{
+	height: 44.555px;
+}
+.aui-bar-tab .aui-bar-tab-label{
+	font-size: 0.5rem;
+}
+
+
+@keyframes revolve{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}
+@keyframes revolveLr{50%{transform:rotateY(0deg)}75%{transform:rotateY(180deg)}100%{transform:rotateY(0deg)}}
+@-webkit-keyframes revolve{0%{-webkit-transform:rotateZ(0deg)}100%{-webkit-transform:rotateZ(360deg)}}
+@-webkit-keyframes revolveLr{50%{-webkit-transform:rotateY(0deg)}75%{-webkit-transform:rotateY(180deg)}100%{-webkit-transform:rotateY(0deg)}}
+.aui-active img.run{
+animation: revolve 3s linear infinite both;
+-webkit-animation: revolve 3s linear infinite both;
+}

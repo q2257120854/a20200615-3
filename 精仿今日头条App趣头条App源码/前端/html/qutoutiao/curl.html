@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>外部链接</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/ffxiang.css" />
+		<style>
+		 
+.fx-view-header{
+	background-color: #fff !important;
+	color: #000;
+	margin-bottom: 0px !important;
+	border-bottom: 1px solid #E8E8E8;
+}
+.fx-view-header  span{
+	color: #000 !important;
+}
+		</style>
+	</head>
+	<body>
+		<header class="aui-bar aui-bar-nav fx-view-header " id="fx-header">
+			<a class="aui-btn aui-btn-danger aui-pull-left" onclick="historyBack()" tapmode> <span class="aui-iconfont aui-icon-left"></span> </a>
+			<div class="aui-title" id="header-title">
+				锦尚中国
+			</div>
+			<a class="aui-btn aui-btn-danger aui-pull-right" onclick="asdas()" tapmode> <span class="aui-iconfont aui-icon-close"></span></a>
+		</header>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var browser;
+		var url='';
+		apiready = function() {
+			url=api.pageParam['url'];
+			$api.text($api.dom('.aui-title'),api.pageParam['title']);
+			if(!CheckUrl){
+				alert({msg:'这网址不是以http://和https://开头，或者不是网址！'});
+				_close()
+				return
+			}
+			_heibai(1)
+			var header = $api.byId('fx-header');
+			$api.fixStatusBar(header);
+			var headerPos = $api.offset(header);
+			headerh = headerPos.h
+			browser = api.require('webBrowser');
+			urlW();
+			// 监听夜间
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+		}
+		function urlW() {
+			browser.openView({
+				url : url,
+				rect : {
+					x : 0,
+					y : headerh,
+					w : 'auto',
+					h : 'auto'
+				}
+			}, function(ret, err) {
+				 
+			});
+		}
+
+		function historyBack() {
+			browser.historyBack(function(ret, err) {
+				if (!ret.status) {
+					_close(3);
+				}
+			});
+		}
+		function asdas(){
+			_close(3);
+		}
+		function CheckUrl(url){
+		 var reg=/^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
+		 if(!reg.test(url)){
+		 	return false;
+		 	 
+		 }
+		 else{
+		 	return true;
+		 }
+		}
+	</script>
+</html>
+

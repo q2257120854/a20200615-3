@@ -1,0 +1,92 @@
+{extend name="common/world"} {block name="title"}批量调整价格{/block} {block name="style"}
+<style type="text/css">
+</style>
+{/block} {block name="container"}
+<form method="post">
+    <div class="row">
+        <div class="col-lg-3 mb-3">
+            <select name="catalog" class="form-control custom-select">
+                <option value="">针对全部类目</option>
+                {volist name="Think.config.hello.store.catalog" id="catalogName" key="catalogId"}
+                    <option value="{$catalogId}">针对{$catalogName}</option>
+                {/volist}
+            </select>
+        </div>
+        <div class="col-lg-3 mb-3">
+            <select name="type" class="form-control custom-select">
+                <option value="1">按比例调整</option>
+                <option value="2">按固定值调整</option>
+            </select>
+        </div>
+        <div class="col-lg-3 mb-3">
+            <input type="text" class="form-control" placeholder="比如0.1或-0.1，默认1" name="value" />
+        </div>
+        <div class="col-lg-3 mb-3">
+            <div class="d-flex">
+                <button class="btn btn-secondary btn-compute" type="button">计算预览</button>
+                <button class="btn btn-primary ml-auto" type="submit">保存设置</button>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        {volist name="Think.config.hello.store.catalog" id="catalogName" key="catalogId"}
+            <div class="col-lg-4 catalog-{$catalogId}">
+                <div class="card">
+                    <div class="card-header p-3">
+                        <div class="font-weight-light text-danger">{$catalogName}</div>
+                    </div>
+                    <div class="list p-3">
+                        {volist name="store" id="item"}
+                            {eq name="item.catalog" value="$catalogId"}
+                                <div class="form-group">
+                                    <input type="hidden" name="id[]" value="{$item.id}" />
+                                    <label class="from-label">{$item.title}</label>
+                                    <input type="text" name="price[]" class="form-control price" value="{$item.price|money}" />
+                                </div>
+                            {/eq}
+                        {/volist}
+                    </div>
+                </div>
+            </div>
+        {/volist}
+    </div>
+</form>
+{/block} {block name="script"}
+<script>
+require(['jquery'], function($){
+    $(function(){
+        $('.btn-compute').on('click', function(){
+            // 获取类目
+            var cid = $('select[name=catalog]').val();
+            // 获取类型
+            var type = $('select[name=type]').val();
+            // 获取数值
+            var value = $('input[name=value]').val();
+            if (value == '') {
+                value = 1;
+            }
+            value = parseFloat(value, 10);
+            // 选择器
+            var selector = 'input.price';
+            if (cid != '') {
+                selector = '.catalog-' + cid + ' ' + selector;
+            }
+            // 计算价格
+            $(selector).each(function(key, item){
+                // 当前价格
+                var price = $(item).val();
+                price = parseFloat(price, 10);
+                // 计算价格
+                if (type == 1) {
+                    price += price * value;
+                } else {
+                    price += value;
+                }
+                // 保存价格
+                $(item).val(price);
+            });
+        });
+    });
+});
+</script>
+{/block}

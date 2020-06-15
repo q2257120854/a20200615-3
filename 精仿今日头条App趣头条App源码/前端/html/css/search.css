@@ -1,0 +1,109 @@
+/*
+// +----------------------------------------------------------------------
+// | 源码来自锦尚中国源码论坛，仅供学习研究
+// +----------------------------------------------------------------------
+// | 新闻资讯APP系统 V1.0版
+// +----------------------------------------------------------------------
+// | 锦尚中国
+// +----------------------------------------------------------------------
+// | 请务必尊重知识产权 严格保证不恶意传播产品源码、不得直接对产品本身
+// | 进行二次转售或倒卖、不得对产品进行简单包装后声称为自己的产品等。
+// | 否则我们有权利收回产品，并根据事态轻重追究相应法律责任。
+// +----------------------------------------------------------------------
+// | Copyright (c) 2018-2019 http://www.baidu.com/ All rights reserved.
+// +----------------------------------------------------------------------
+*/
+.fx-view-header{
+	background-color: #fff !important;
+	color: #000;
+	margin-bottom: 0px !important;
+	border-bottom: 1px solid #E8E8E8;
+}
+.fx-view-header .aui-pull-right{
+	color: #2A90D7 !important;
+}
+.aui-grid [class*=aui-col-]{
+	padding: 0rem 0.75rem;
+	border-bottom: 1px solid #e8e8e8;
+}
+.aui-grid .aui-row div{
+	text-align: left;
+	 
+}
+.aui-searchbar-input{
+	margin-left: 5.5rem;
+}
+.fx-h5{
+	position: relative;
+	padding: 0.5rem 0.75rem;
+	border-bottom: 1px solid #e8e8e8;
+	font-size: 0.65rem;
+}
+.fx-h5 .aui-iconfont{
+	position: absolute;
+	right: 0.75rem;
+	width: 1rem;
+	height: 1rem;
+	color:#999999;
+	display: block;
+	top: 0.35rem;
+	font-size: 0.8rem;
+}
+.fx-chakan{
+	text-align: center;
+	font-size: 0.6rem;
+	color: #757575;
+	font-weight:normal;
+}
+.fx-chakan i.aui-iconfont{
+	font-size: 0.7rem;
+	padding-right: 0.2rem;
+}
+#searchList ul li{
+	padding: 0 0.75rem;
+}
+.aui-ellipsis-1{
+	line-height: 2.2rem;
+	font-size: 0.7rem;
+	display:block !important;
+}
+.asdasd123{
+	line-height: 1rem;
+}
+#searchList .aui-iconfont{
+	color: #e8e8e8;
+	font-weight: bold
+}
+#searchList b{
+	color: #FF2600;
+	font-weight: 400
+}
+.aui-searchbar {
+	background: #fff;
+	height: 45px;
+}
+.aui-searchbar-input{
+	background: #F4F5F6;
+	font-size: 0.7rem;
+}
+.aui-bar-nav .aui-title{
+	 
+}
+#textHtml .aui-col-xs-6{
+	padding: 0.4rem 0.75rem
+}
+.fx-list .aui-grid [class*=aui-col-]{
+	padding: 0.3rem 0;
+	text-align: center;
+	border-bottom: 0px;
+}
+.fx-list .aui-grid .aui-row div{
+	text-align: center
+}
+.hover{
+	color: #D43D3D;
+	border-bottom: 1px solid #D43D3D !important;
+}
+#asdasd{
+	overflow: hidden
+}

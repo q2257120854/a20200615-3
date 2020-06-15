@@ -1,0 +1,108 @@
+﻿{extend name="common/world"}
+{block name="title"}{$Think.config.hello.title}{/block}
+{block name="header"}兑换中心{/block}
+{block name="container"}
+<br/>
+<table width="100%">
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;转入蚁巢</td>
+    </tr>
+
+</table>
+<hr color="#333333" size="1"/>
+<form class="cmxform form-horizontal tasi-form" method="post" onsubmit="return sub()">
+    <div class="list-block">
+
+        <ul>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">账户</div>
+                        <div class="item-input">
+                            蚁巢钱包 {$user['wallet']['mpocket']|money}
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">兑换数量</div>
+                        <div class="item-input">
+                            <input id="num" name="num" type="text" value="" placeholder="10起10的倍数"
+                                   style="font-size:16px;"/>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">交易密码</div>
+                        <div class="item-input">
+                            <input class="col-20" type="password" placeholder="请输入二级密码" name="secpwd" value=""
+                                   id="secpwd"/>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="content-block">
+        <div class="row">
+            <div class="col-100">
+                <input id="sub01" type="submit" class="button button-big button-fill button-success js-submit"
+                       style="width: 100%;" value="确认转入"/>
+            </div>
+        </div>
+    </div>
+</form>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+    function sub() {
+        $(function () {
+            if($("#num").val() == ''){
+                alert('转入数量不能为空');return;
+            }
+            if($("#num").val() % 10 !=0){
+                alert('输入10的倍数');return;
+            }
+            if($("#secpwd").val() == ''){
+                alert('二级密码不能为空');return;
+            }
+            var params = {
+                num: $("#num").val(),
+                safeword: $("#secpwd").val()
+            };
+            $.ajax({
+                type: 'post',
+                url: api.wallet.zhuanru,
+                cache: false,
+                data: params,
+                dataType: 'json',
+                success: function (data) {
+                    alert(data.message);
+                    if (data.code == 200) {
+                        window.setTimeout("window.location='/zhuanchu.html'", 1000);
+                        //window.location.href="/zhuanchu.html";//需要跳转的地址
+                        return true;
+                    } else {
+                        $("#sub01").removeAttr('disabled');
+                    }
+                },
+            });
+        });
+
+        return false;
+    }
+</script>
+{/block}

@@ -1,0 +1,57 @@
+{extend name="common/world"}
+{block name="title"}创业众筹{/block}
+{block name="style"}
+<style>
+.projects-image {
+	width: 118px;height: 90px;
+}
+.projects-title {
+	font-size: 0.95rem;
+	font-weight: bold;
+}
+.media-body {
+	position: relative;
+}
+/* .projects-info {
+	position: absolute;left: 0;bottom: 0;right: 0;
+}
+.progress {
+	position: absolute;left: 0;bottom:2rem;right: 2.8rem;
+} */
+.progress-label {
+    position: absolute;right: 0;top: -.6rem;
+}
+.w-86 {
+    width: 86% !important;
+}
+a.media {
+	height: 90px;
+	text-decoration: none;
+}
+</style>
+{/block}
+{block name="container"}
+<div class="d-flex mb-3">
+    <select class="form-control custom-select w-auto" name="filter">
+        <option value="all">全部</option>
+        <option value="invest">我参与的</option>
+        <option value="my">我发布的</option>
+    </select>
+    <select class="form-control custom-select w-auto ml-2" name="catalog">
+        <option value="all">类型</option>
+		{volist name="Think.config.hello.funding.catalog" id="item"}
+        	<option value="{$key}">{$item}</option>
+		{/volist}
+    </select>
+	<a class="btn px-5 btn-success ml-auto" href="/funding/welcome.html">发起众筹</a>
+</div>
+<div class="card p-3">
+	<div class="row projects"></div>
+</div>
+{/block}
+{block name="script"}
+<script>
+var frame = 'index';
+</script>
+<script src="/static/js/funding.js?2"></script>
+{/block}

@@ -1,0 +1,285 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<style>
+		 
+			.aui-grid h3{
+				background: #e8e8e8;
+				padding: 0.45rem 0.75rem;
+				font-size: 0.65rem;
+			}
+			 
+			.aui-list-item-label-icon img{
+				width:1.3rem;
+			}
+			.aui-list-item-inner{
+				font-size: 0.7rem;
+			}
+			.aui-list .aui-list-item-text{
+				color: #333;
+			}
+			.asdasd{
+				border: 1px solid #FF2D4B !important
+			}
+			.aui-grid em.aui-iconfont{
+				color: #FF2D4B;
+				position: absolute;
+				top: 0.5rem;
+				right:0.75rem;
+				font-size: 0.55rem;
+				font-weight: bold;
+				border: 1px solid #FF2D4B;
+				border-radius: 50%;
+				width: 1.1rem !important;
+				height: 1.1rem !important;
+				line-height: 1.1rem !important;
+				padding-left: 0.2rem;
+			}
+			.sx-shouhuo .aui-list-item-text{
+				font-size: 0.6rem;
+			}
+			.sx-shouhuo .aui-ellipsis-1{
+				font-size: 0.7rem;
+				color: #000;
+			}
+			.aui-grid .aui-iconfont{
+				font-size: 1rem;
+				font-weight: bold;
+			}
+			.assssdasd{
+				width: 3rem !important;
+				height: 3rem !important;
+				padding: 0px !important;
+				margin-right: 0.75rem !important;
+			}
+			.assssdasd img{
+				width: 100%;
+				height: 100%;
+			}
+			.sx-tab-2-1 .aui-list-item-text{
+				font-size: 0.7rem;
+			}
+			.aui-text-right {
+				font-size: 1rem;
+				padding-right: 0.7rem
+			}
+			.aui-text-right b{
+				color: #FF2D4B !important;
+				font-size: 1rem;
+			}
+			.aui-ellipsis-2{
+				-webkit-line-clamp:1 !important;
+			}
+			input{
+				font-size: 0.7rem !important;
+			}
+			.aui-form-list .aui-list-item-label{
+				text-align: right
+			}
+		</style>
+	</head>
+	<body>
+		<script id="sx-list" type="text/x-dot-template">
+		<section class="aui-grid" >
+	        <h3>商品信息</h3>
+	        <ul class="aui-list aui-media-list">
+	        	<li class="aui-list-item aui-list-item-middle">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media assssdasd">
+							<img  id="ffxiangImgCache" ffxiang-src="{{= sx.image }}" src="../../image/loadingImage.png">
+						</div>
+						<div class="sx-tab-2-1 aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-ellipsis-2">
+									{{= sx.title}}
+								</div>
+							</div>
+							<div class="aui-list-item-text  ">
+								<div class="aui-ellipsis-2">
+									{{? api.pageParam['type']==1 }}
+									{{= sx.jinbi}}金币
+									{{??}}
+									{{= sx.money}}元
+									{{?}}
+								</div>
+							</div>
+							<div class="aui-list-item-text">
+								<div class="aui-ellipsis-2">
+									数量：1 件
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<h3>填写信息</h3>
+			<div class="aui-content">
+				<ul class="aui-list aui-form-list">
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-label">
+								姓名
+							</div>
+							<div class="aui-list-item-input">
+								<input type="text" id="xingming" placeholder="请输入姓名" value="">
+							</div>
+						</div>
+					</li>
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-label">
+								手机号码
+							</div>
+							<div class="aui-list-item-input">
+								<input type="tel" value="" id="mobile" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" placeholder="请输入手机号码">
+							</div>
+						</div>
+					</li>
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-label">
+								地址
+							</div>
+							<div class="aui-list-item-input" >
+								<input type="text" id="dizhi" placeholder="请输入省/市/详细地址" value="">
+							</div>
+						</div>
+					</li>
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-label">
+								支付宝号码
+							</div>
+							<div class="aui-list-item-input">
+								<input type="text" id="alipay" placeholder="请输入支付宝号码" value="">
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<h3>实际结算</h3>
+			<div class="aui-content">
+		        <div class="aui-text-right aui-padded-10 aui-padded-r-15 aui-border-b">
+		        	{{? api.pageParam['type']==1 }}
+					<b>{{= sx.jinbi}}金币</b>
+					{{??}}
+					<b>{{= sx.money}}元</b>
+					{{?}}
+				</div>
+		    </div>
+		</section>
+		<div style="width: 90%;margin: 0 auto;margin-top: 1.2rem;"><div class="aui-btn-block aui-btn {{? api.pageParam['type']==1 }}aui-bg-warning{{??}}aui-bg-danger{{?}}" style="color: #fff;" tapmode onclick="pay()">立即兑换</div></div>
+		</script>
+		<div id="sx-view"><div id="jiazai"><img src="../../image/loading_more.gif" /></div></div>
+	</body>
+	<script type="text/javascript" src="../../script/doT.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var sx
+		apiready = function() {
+		//	_msg(api.pageParam['type'])
+			ajax()
+		}
+		function ajax(){
+			_ajax('api/yaoqing/mallView',function(ret,err){
+				if(ret){
+					sx=ret
+					var evalData = doT.template($api.html($api.byId('sx-list')));
+					$api.html($api.byId('sx-view'),evalData());
+					_imageCache()
+					api.parseTapmode();
+				}else{
+					alert(JSON.stringify(err))
+				}
+			},{id:api.pageParam['id']})
+		}
+		function pay(){
+			var xingming=$('#xingming').val();
+			var mobile=$('#mobile').val();
+			var dizhi=$('#dizhi').val();
+			var alipay=$('#alipay').val();
+			if(!xingming){
+				_msg('请输入姓名')
+				return;
+			}
+			if(!mobile){
+				_msg('请输入手机号码')
+				return;
+			}
+			if(!_isMobile(mobile)){
+				_msg('手机号码不正确');
+				return;
+			}
+			if(!dizhi){
+				_msg('请输入详细地址')
+				return;
+			}
+			if(!alipay){
+				_msg('请输入支付宝号码')
+				return;
+			}
+			if(!_isEmail(alipay)){
+				_msg('支付宝号码错误')
+				return;
+			}
+			var money=api.pageParam['type']==1 ? sx.jinbi+'金币' : sx.money+'元'
+		 	api.confirm({
+			    title: '您确认要花'+money+'兑换商品吗？',
+			    buttons: ['确定', '取消']
+			}, function(ret, err) {
+			    var index = ret.buttonIndex;
+			    if(index==1){
+			    	 _loading();
+					_ajax('api/yaoqing/mallPay',function(ret,err){
+						_loadingCloes()
+						//console.log(ret.ret)
+						if(ret){
+							if(ret.ret){
+								// 返回更新商品
+								api.execScript({
+									name: 'yaoqing/mallView',
+									frameName:'yaoqing/mallView',
+								    script: 'view()'
+								});
+								// 更新用户
+								api.execScript({
+									name: 'root',
+								    script: '_userInfo()'
+								});
+								_alert(ret.ret,function(ret,err){
+									_close();
+								})
+							}else{
+								_msg(ret.err)
+							}
+						}else{
+							alert('err：'+JSON.stringify(err))
+						}
+					},{shopid:sx.id,xingming:xingming,mobile:mobile,dizhi:dizhi,alipay:alipay,type:api.pageParam['type']})
+			    }
+			});
+		 	 
+		}
+		function _isEmail(obj){
+             //对电子邮件的验证
+             var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
+			　　if(!reg.test(obj)){ //正则验证不通过，格式不对
+					if(_isMobile(obj)){
+						return true;
+					}
+			　　　　 return false;
+			　　}else{
+			　　　　return true;
+			　　}
+             return true;
+        }
+         
+	</script>
+</html>

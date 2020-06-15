@@ -1,0 +1,121 @@
+<!--footer section start-->
+
+<footer>
+
+    <p>{$Think.config.config.copyright}</p>
+</footer>
+<!--footer section end-->
+</div>
+</div>
+<!--//content-inner-->
+<!--/sidebar-menu-->
+<div class="sidebar-menu">
+    <header class="logo">
+        <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="index.html"> <span id="logo"> <h1>系统管理</h1></span>
+        <!--<img id="logo" src="" alt="Logo"/>-->
+    </a>
+    </header>
+    <div style="border-top:1px solid rgba(69, 74, 84, 0.7)"></div>
+    <!--/down-->
+    <div class="down">
+
+        <a href="index.html"><span class=" name-caret">{$admin.adminuser}</span></a>
+
+        <ul>
+            <li><a class="tooltips" href="index.html"><span>管理添加</span><i class="lnr lnr-user"></i></a></li>
+            <li><a class="tooltips" href="index.html"><span>个人设置</span><i class="lnr lnr-cog"></i></a></li>
+            <li><a class="tooltips" href="{:url('login/logout')}"><span>退出登录</span><i class="lnr lnr-power-switch"></i></a></li>
+        </ul>
+    </div>
+    <!--//down-->
+    <div class="menu">
+        <ul id="menu" >
+            <li><a href="{:url('index/index')}"><i class="fa fa-tachometer"></i> <span>控制台</span></a></li>
+          <li><a href="{:url('index/source')}"><i class="lnr lnr-code"></i> <span>推广设置</span><span class="fa fa-angle-right" style="float: right"></span></a></li>
+            <li><a href="#"><i class="lnr lnr-apartment"></i> <span>首页设置</span><span class="fa fa-angle-right" style="float: right"></span></a>
+                <ul>
+                    <li><a href="{:url('broadcast/index')}"><i class="fa fa-inbox"></i> 首页轮播</a></li>
+                    <li><a href="{:url('notice/index')}"><i class="fa fa-pencil-square-o"></i> 首页公告</a></li>
+                    <li><a href="{:url('consultation/index')}"><span class="lnr lnr-highlight"></span> 首页咨询</a></li>
+                    <li><a href="{:url('consultation/loanlist')}"><span class="lnr lnr-highlight"></span> 借款轮播</a></li>
+                </ul>
+            </li>
+            <li id="menu-academico" ><a href="#"><i class="fa fa-table"></i> <span> 系统设置</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                <ul id="menu-academico-sub" >
+                    <li id="menu-academico-avaliacoes" ><a href="{:url('setting/index')}">站点设置</a></li>
+                    <li id="menu-academico-boletim" ><a href="{:url('setting/apiindex')}">接口设置</a></li>
+                    <li id="menu-academico-boletim" ><a href="{:url('setting/auto')}">关于我们</a></li>
+                    <li id="menu-academico-boletim" ><a href="{:url('setting/xieyi')}">借款协议</a></li>
+                    <li id="menu-academico-boletim" ><a href="{:url('setting/regtext')}">注册协议</a></li>
+                    <li id="menu-academico-avaliacoes" ><a href="{:url('setting/loanindex')}">借款设置</a></li>
+                    <li id="menu-academico-avaliacoes" ><a href="{:url('setting/smsindex')}">短信模板设置</a></li>
+                    <li id="menu-academico-avaliacoes" ><a href="{:url('setting/tuiguang')}">推广页设置</a></li>
+                </ul>
+            </li>
+            <li id="menu-academico" ><a href="#"><i class="fa fa-file-text-o"></i> <span>用户列表</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                <ul id="menu-academico-sub" >
+                    <li id="menu-academico-avaliacoes" ><a href="{:url('user/index')}">所有用户</a></li>
+                    <li id="menu-academico-boletim" ><a href="{:url('user/index','perfect=2')}">已实名用户</a></li>
+                    <li id="menu-academico-boletim" ><a href="{:url('user/index','perfect=1')}">未实名用户</a></li>
+                </ul>
+            </li>
+            <!--<li><a href="typography.html"><i class="lnr lnr-pencil"></i> <span>Typography</span></a></li>-->
+            <li id="menu-academico" ><a href="#"><i class="lnr lnr-book"></i> <span>借款列表</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                <ul id="menu-academico-sub" >
+                  <li id="menu-academico-avaliacoes" ><a href="{:url('loan/index')}">所有订单</a></li>
+                    <li id="menu-academico-avaliacoes" ><a href="{:url('loan/index','status=9')}">未审核</a></li>
+                    <li id="menu-academico-boletim" ><a href="{:url('loan/index','status=1&viptype=1')}">未支付</a></li>
+                    <li id="menu-academico-boletim" ><a href="{:url('loan/index','status=1&viptype=2')}">已支付</a></li>
+                    <li id="menu-academico-boletim" ><a href="{:url('loan/index','status=2&viptype=2')}">已放款</a></li>
+                    <li id="menu-academico-boletim" ><a href="{:url('loan/index','status=3&viptype=2')}">已提款</a></li>
+                    <li id="menu-academico-boletim" ><a href="{:url('loan/index','status=5&viptype=2')}">已还款</a></li>
+                    <li id="menu-academico-boletim" ><a href="{:url('loan/index','status=6&viptype=2')}">已拒绝</a></li>
+                </ul>
+            </li>
+
+            <li id="menu-academico" ><a href="#"><i class="lnr lnr-layers"></i> <span>订单列表</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                <ul id="menu-academico-sub" >
+                  <li id="menu-academico-avaliacoes" ><a href="{:url('pay/vip')}">VIP订单</a></li>
+                    <li id="menu-academico-avaliacoes" ><a href="{:url('pay/index')}">充值订单</a></li>
+                    <li id="menu-academico-boletim" ><a href="{:url('pay/putforward')}">提现订单</a></li>
+
+                </ul>
+            </li>
+            <!--li><a href="{:url('syslog/index')}"><i class="lnr lnr-pencil"></i> <span>系统日志</span><span class="fa fa-angle-right" style="float: right"></span></a></li-->
+        </ul>
+    </div>
+</div>
+<div class="clearfix"></div>
+</div>
+<script>
+    var toggle = true;
+
+    $(".sidebar-icon").click(function() {
+        if (toggle)
+        {
+            $(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
+            $("#menu span").css({"position":"absolute"});
+        }
+        else
+        {
+            $(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
+            setTimeout(function() {
+                $("#menu span").css({"position":"relative"});
+            }, 400);
+        }
+
+        toggle = !toggle;
+    });
+    function delbase() {
+
+        if(confirm("确认清空数据库？该操作不可逆，请确认后操作")){
+            //点击确定后操作
+            window.location.href='{:url('index/cleardatabase')}';
+        }
+    }
+</script>
+<!--js -->
+<!-- Bootstrap Core JavaScript -->
+<script src="/static/skin/js/bootstrap.min.js"></script>
+</body>
+</html>

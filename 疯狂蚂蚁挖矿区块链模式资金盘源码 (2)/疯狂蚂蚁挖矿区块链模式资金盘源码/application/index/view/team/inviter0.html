@@ -1,0 +1,106 @@
+{extend name="common/world"}
+{block name="title"}团队招募{/block}
+{block name="style"}{/block}
+{block name="container"}
+{empty name="image"}
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">分享二维码</div>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label class="form-label">邀请码</label>
+            <input type="text" class="form-control" value="{$Think.config.hello.inviter.anonymous ? $Think.session.user.account.uid : $Think.session.user.account.username}" />
+        </div>
+        <div class="form-group">
+            <label class="form-label">推广链接</label>
+            <div class="input-group">
+                <input type="text" class="form-control" value="{$Request.domain}/signup.html?i={$Think.config.hello.inviter.anonymous ? $Think.session.user.account.uid : $Think.session.user.account.username}" />
+                <div class="input-group-append">
+                    <button type="button" id="btn-copy" class="btn btn-secondary btn-sm"><i class="fe fe-copy"></i></button>
+                </div>
+            </div>
+        </div>
+        <div id="qrcode"></div>
+    </div>
+    <div class="card-footer">
+        <div class="text-muted">长按二维码数秒，选择保存到手机或相册</div>
+        <div class="text-muted">也可以直接手机截屏</div>
+    </div>
+</div>
+{else /}
+<div class="form-group">
+    <label class="form-label">邀请码</label>
+    <input type="text" class="form-control" value="{$Think.config.hello.inviter.anonymous ? $Think.session.user.account.uid : $Think.session.user.account.username}" />
+</div>
+<div class="form-group">
+    <label class="form-label">推广链接</label>
+    <div class="input-group">
+        <input type="text" class="form-control" value="{$Request.domain}/signup.html?i={$Think.config.hello.inviter.anonymous ? $Think.session.user.account.uid : $Think.session.user.account.username}" />
+        <div class="input-group-append">
+            <button type="button" id="btn-copy" class="btn btn-secondary btn-sm"><i class="fe fe-copy"></i></button>
+        </div>
+    </div>
+</div>
+<img src="{$image}" />
+{/empty}
+{/block}
+{block name="script"}
+<script>
+var domain = '{$Request.domain}', username = '{$Think.config.hello.inviter.anonymous ? $Think.session.user.account.uid : $Think.session.user.account.username}';
+var input = domain + '/signup.html?i=' + username;
+var copy = function() {
+    var el = document.createElement('textarea');
+    el.value = input;
+    // Prevent keyboard from showing on mobile
+    el.setAttribute('readonly', '');
+
+    el.style.contain = 'strict';
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    el.style.fontSize = '12pt'; // Prevent zooming on iOS
+
+    var selection = window.getSelection();
+    var originalRange = false;
+    if (selection.rangeCount > 0) {
+        originalRange = selection.getRangeAt(0);
+    }
+    document.body.appendChild(el);
+    el.select();
+
+    // Explicit selection workaround for iOS
+    el.selectionStart = 0;
+    el.selectionEnd = input.length;
+
+    var success = false;
+    try {
+        success = document.execCommand('copy');
+    } catch (err) {
+        toast('很抱歉、您的手机不支持复制功能！请手动点击推广链接后全选复制！');
+    }
+
+    document.body.removeChild(el);
+
+    if (originalRange) {
+        selection.removeAllRanges();
+        selection.addRange(originalRange);
+    }
+
+    return success;
+};
+require(['jquery', 'qrcode'], function($, qrcode){
+    {empty name="image"}
+    new QRCode(document.getElementById("qrcode"), domain + '/signup.html?i=' + username);
+    {/empty}
+    // 复制链接
+    $('#btn-copy').on('click', function(){
+        var bool = copy();
+        if (bool) {
+            toast('复制成功！');
+        } else {
+            toast('很抱歉、您的手机不支持复制功能！请手动点击推广链接后全选复制！');
+        }
+    });
+});
+</script>
+{/block}

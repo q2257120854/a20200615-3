@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/ffxiang.css" />
+		<link rel="stylesheet" type="text/css" href="../css/view.css" />
+	</head>
+	<body>
+		<header class="aui-bar aui-bar-nav fx-view-header " id="fx-header">
+			<a class="aui-pull-left aui-btn" tapmode onclick="_close()"> <span class="aui-iconfont aui-icon-close"></span> </a>
+			<div class="aui-title">城市</div>
+		</header>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var UICityList, currentCity
+		apiready = function() {
+			_heibai(1)
+			var header = $api.byId('fx-header');
+			$api.fixStatusBar(header);
+			UICityList = api.require('UICityList');
+			view()
+		}
+		function view() {
+			var h = $api.offset($api.dom('#fx-header')).h;
+			UICityList.open({
+				rect : {
+					x : 0,
+					y : h,
+					w : api.frameWidth,
+					h : api.frameHeight
+				},
+				resource : _html+'res/UICityList.json',
+				styles : {
+					searchBar : {
+						bgColor : '#e8e8e8',
+						cancelColor : '#333'
+					},
+					location : {
+						color : '#696969',
+						size : 12
+					},
+					sectionTitle : {
+						bgColor : '#e8e8e8',
+						color : '#000',
+						size : 12
+					},
+					item : {
+						bgColor : '#fff',
+						activeBgColor : '#e8e8e8',
+						color : '#000',
+						size : 14,
+						height : 40
+					},
+					indicator : {
+						bgColor : '#fff',
+						color : '#e8e8e8'
+					}
+				},
+				hotTitle : '热门城市',
+				fixedOn : api.frameName,
+				placeholder : '输入城市名或首字母查询'
+			}, function(ret, err) {
+				if (ret) {
+					if (ret.eventType == "selected") {
+						$api.setStorage('city', encodeURIComponent(encodeURIComponent(ret.cityInfo.city)));
+						api.execScript({
+							name:'root',
+							frameName : 'ffxiang_win',
+							script : 'cityNews()'
+						});
+						api.closeWin();
+					}
+				} else {
+					alert(JSON.stringify(err));
+				}
+			});
+		}
+	</script>
+</html>
+

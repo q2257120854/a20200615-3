@@ -1,0 +1,86 @@
+{extend name="common/world"}
+{block name="title"}联系我们{/block}
+{block name="style"}{/block}
+{block name="container"}
+<form method="get" class="">
+	<div class="row">
+		<div class="col-md-6 col-lg-3 mb-3">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">用户账号</span>
+				</div>
+				<input type="text" class="form-control" name="username" value="{$Think.get.username}" />
+			</div>
+		</div>
+		<div class="col-lg-2 mb-3">
+			<button class="btn btn-primary w-100" type="submit">立即查询</button>
+		</div>
+	</div>
+</form>
+<div class="card">
+	<div class="table-responsive">
+	    <table class="table table-hover table-outline table-vcenter card-table">
+	        <thead>
+	            <tr>
+	                <th>用户</th>
+	                <th>内容</th>
+	                <th>回复</th>
+	                <th>时间</th>
+	                <th>操作</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+				{volist name="messages" id="msg"}
+					<tr>
+						<td>{$msg.username}</td>
+						<td>{$msg.content}</td>
+						<td>{$msg.reply}</td>
+						<td>{$msg.update_at}</td>
+						<td>
+							<a class="btn btn-secondary btn-sm btn-reply" data-id="{$msg.id}">回复</a>
+							<a href="/admin/index/removeContact?id={$msg.id}" class="btn btn-secondary btn-sm">删除</a>
+						</td>
+					</tr>
+				{/volist}
+	        </tbody>
+	    </table>
+	</div>
+	<div class="card-footer">{$messages|raw}</div>
+</div>
+<div class="modal modal-reply" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content" style="margin-top: -100px;">
+			<form method="post" action="/admin/index/replyContact">
+				<input type="hidden" name="id" />
+				<div class="modal-header">
+					<h5 class="modal-title">回复留言</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<textarea name="reply" class="form-control" cols="30" rows="5" placeholder="在这里输入回复"></textarea>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+					<button type="submit" class="btn btn-primary btn-reply-post">提交回复</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+require(['jquery'], function($){
+	$(function(){
+		$('.btn-reply').on('click', function(){
+			window.id = $(this).data('id');
+			$('.modal-reply input[name=id]').val(id);
+			$('.modal-reply').modal();
+		});
+	});
+});
+</script>
+{/block}

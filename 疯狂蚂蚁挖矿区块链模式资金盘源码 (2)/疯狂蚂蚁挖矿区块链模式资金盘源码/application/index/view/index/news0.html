@@ -1,0 +1,38 @@
+{extend name="common/world"}
+{block name="title"}新闻公告{/block}
+{block name="style"}
+<style>
+* {
+    text-decoration: none;
+}
+.card-title {
+    font-size: 1rem;
+    color: #202020;
+}
+a:hover {
+    text-decoration: none;
+}
+</style>
+{/block}
+{block name="container"}
+<div class="row">
+    {volist name="articles" id="article"}
+    <div class="col-md-6 col-xl-4">
+        <div class="card news">
+            <a class="d-flex p-3" href="/article/{$article.id}.html">
+                <div class="w-25"><img src="/upload/{$article.image}" /></div>
+                <div class="w-75 pl-3">
+                    <div class="d-flex">
+                        <h3 class="card-title">
+                            {$article.title}
+                        </h3>
+                    </div>
+                    <div class="date mt-3 text-muted">{$article.date}</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    {/volist}
+</div>
+{/block}
+{block name="script"} {/block}

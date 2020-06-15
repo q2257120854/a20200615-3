@@ -1,0 +1,11 @@
+.fixed-table-body{
+	overflow-x:visible !important;
+	overflow-y:visible !important;
+} 
+.dropdown-menu{
+	left: auto !important;
+	right: 0px !important;
+}
+/*.edui-container{ width: 100% !important; }*/
+/* 分页*/
+.pages .pagination{ float: right; margin:0px;}

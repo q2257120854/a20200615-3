@@ -1,0 +1,33 @@
+{extend name="common/world"}
+{block name="title"}{$Think.config.hello.title}{/block}
+{block name="header"}系统公告{/block}
+{block name="container"}
+<div class="list-block" style="margin:0px;">
+    <ul class="list-container" id="list_content">
+        {volist name="articles" id="article"}
+        <li>
+            <a href="/article/{$article.id}.html" class="item-link item-content">
+                <div class="item-inner">
+                    <div class="item-title" style="padding-left:10px; font-size:16px;"> {$article.title}-{$article.date}</div>
+                </div>
+            </a>
+        </li>
+        {/volist}
+    </ul>
+
+    <div align="right" class="pages" style="background-color: #fff">
+        <br/>
+        {if $page>1}
+        <a class="previous" href="buying.html?page={$page-1}">上一页</a>
+        {/if}
+        <span class="current">{$page}</span>
+        {if ($page+1)<$index}
+        <a class="next" href="buying.html?page={$page+1}">下一页</a>
+        {/if}
+        <span class="rows"> 第<b>{$page}</b>页/共<b>{$index}</b>页</span>
+    </div>
+    <br>
+
+
+</div>
+{/block}

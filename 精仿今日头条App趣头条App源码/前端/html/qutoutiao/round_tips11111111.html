@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/animate.min.css" />
+    <style type="text/css">
+       html,body{margin: 0;background: transparent !important;}
+        .titlebar { background-color: #C23335;padding-top:25px;}
+        .aui-title{color:#fff;}
+        .aui-bar-nav{background: transparent;}
+        #topbar{  position: fixed;
+          z-index: 9999999;
+            background-color: rgba(123, 120, 120, 0.41);
+          width: 100%;
+          color: #fff;
+          height: 44px;}
+          .aui-bar-nav.aui-bar-light .aui-iconfont {
+    color: #fff;
+    margin-top: 10px;
+}
+.menu{width: 1.4rem;}
+.aui-bar-nav .aui-btn.search{    background-color: rgba(123, 120, 120, 0.41) !important;
+    border-radius: 50%;
+    padding: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    margin-right: 5px;
+    margin-top: 5px;}
+    .aui-bar.aui-bar-light{background: transparent;}
+.aui-bar-nav .aui-btn.search img{    width: 17px;margin: 0 auto;}
+.round{
+width: 55px;
+height: 55px;
+border: 2px solid transparent;
+border-radius: 50%;
+background: #fdc223;
+color: #fff;
+
+}
+.round.on{
+        border: 2px solid #ffcb3e;
+        background: rgba(241,231,103,1);
+  background: -moz-radial-gradient(center, ellipse cover, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(241,231,103,1)), color-stop(100%, rgba(254,182,69,1)));
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
+  background: -o-radial-gradient(center, ellipse cover, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
+  background: -ms-radial-gradient(center, ellipse cover, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
+  background: radial-gradient(ellipse at center, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', endColorstr='#feb645', GradientType=1 );
+}
+.valign-wrapper{
+	display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    height: 55px;
+}
+.round .t_c{    width: 100%;
+    text-align: center;
+    font-size: 21px;
+    color: #bf790a;
+font-weight: 400;}
+    </style>
+</head>
+<body>
+  <div class="round valign-wrapper">
+  <!--  <div id="yuqi" class="t_c">
+      +30
+  </div>-->
+  <img id="tpimg" src="../image/jinbi.png" />
+</div>
+  <!--
+<div class="round on valign-wrapper">
+ <div id="yuqi" class="t_c zoomIn animated">
+    +30
+</div>
+</div>-->
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/zepto.min.js"></script>
+<script type="text/javascript">
+
+    apiready = function(){
+//alert(1);
+
+    };
+    function altips(num){
+      var title = '<div id="yuqi" class="t_c zoomIn animated">+'+num+'</div>';
+      $(".round").addClass("on");
+      $(".round").html(title);
+    }
+    function closeWin(){
+        api.closeWin({
+        });
+    }
+</script>
+</html>
+
+

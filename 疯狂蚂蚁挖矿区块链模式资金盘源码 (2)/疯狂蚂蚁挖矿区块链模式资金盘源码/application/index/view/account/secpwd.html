@@ -1,0 +1,128 @@
+﻿{extend name="common/world"}
+{block name="title"}{$Think.config.hello.title}{/block}
+{block name="header"}修改密码{/block}
+{block name="container"}
+<div class="buttons-tab">
+    <a href="/account/profile.html" class=" button">个人资料</a>
+    <a href="/account/password.html" class=" button">修改登录密码</a>
+    <a href="/account/secpwd.html" class="active button">修改交易密码</a>
+</div>
+<style type="text/css">
+    body {
+        background: #FFF;
+    }
+
+    .li_touxiang img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
+</style>
+<form class="cmxform form-horizontal tasi-form" name="xgmm" id="xgmm" method="post" onsubmit="return sub()">
+    <div class="list-block">
+
+        <ul>
+
+
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">原交易密码</div>
+                        <div class="item-input">
+                            <input class="col-20" type="password" placeholder="请输入原交易密码" name="ymm" value=""
+                                   id="oldpass"/>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">新交易密码</div>
+                        <div class="item-input">
+                            <input class="col-20" type="password" placeholder="请输入新交易密码" name="xmm2" value=""
+                                   id="newpass"/>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">新交易密码确认</div>
+                        <div class="item-input">
+                            <input class="col-20" type="password" placeholder="请输入新交易密码" name="newpass2" value=""
+                                   id="newpass2"/>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="content-block">
+                    <div class="row">
+                        <div class="col-100">
+                            <input id="btnn" type="button"
+                                   class="button button-big button-fill button-success js-submit" style="width: 100%;"
+                                   value="提交"/>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</form>
+{/block}
+{block name="script"}
+<script language="javascript">
+
+    $(document).ready(function () {
+        $('#btnn').click(function () {
+            if (!$("#oldpass").val()) {
+                alert("请输入原交易密码");
+                return false;
+            }
+            if ($("#newpass").val().length < 6 || $("#newpass").val().length > 16) {
+                alert('交易密码长度必须在6到16之间!');
+                return false;
+            }
+            if ($("#newpass2").val().length > 16 || $("#newpass2").val().length < 6) {
+                alert('确认交易密码长度必须在6到16之间!');
+                return false;
+            }
+            if ($("#newpass").val() != $("#newpass2").val()) {
+                alert("两次交易密码不一致");
+                return false;
+            }
+            $('#btnn').attr("disabled", "true");
+            $(function () {
+                var params = {
+                    oldpass: $("#oldpass").val(),
+                    newpass: $("#newpass").val(),
+                    state: 2
+                };
+                $.ajax({
+                    type: 'post',
+                    url: api.account.secpwd,
+                    cache: false,
+                    data: params,
+                    dataType: 'json',
+                    success: function (data) {
+                        alert(data.message);
+                        if (data.code == 200) {
+                            window.setTimeout("window.location='/account/secpwd.html'", 1000);
+                            return true;
+                        } else {
+                            $("#btnn").removeAttr('disabled');
+                        }
+
+                    },
+                });
+            });
+            return false;
+        });
+    });
+</script>
+{/block}

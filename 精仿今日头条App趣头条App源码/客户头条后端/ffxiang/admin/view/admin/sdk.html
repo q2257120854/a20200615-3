@@ -1,0 +1,110 @@
+ {include file="public/header" /}
+ {load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<style type="text/css">
+#des,#des input{ width: 40px;text-align:center;}
+#id{ width: 78px; }
+.bs-checkbox{ width: 36px; height: 40px }
+.fixed-table-toolbar .columns,.fixed-table-toolbar .search{margin-left:0px; margin-top: 0px }
+#title span{ float: right; margin-left: 3.333px;}
+</style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        {include file="public/tophead"}
+        {include file="public/top" /}
+        <div class="ibox-content">
+        {include file="public/topsection"}
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <div class="example">
+                        <form class="form-horizontal" method="post">
+                        <table data-toggle="table">
+                              
+                            <tbody id="form">
+                                
+                                <tr  class="class">
+                                    
+                                    <td>123123</td>
+                                    <td> 
+                                        123123
+                                    </td>
+                           
+                                    <td>
+                                        <button type="button" class="btn btn-w-m btn-primary">btn-primary</button>
+                                    </td>
+                                </tr>
+                            
+                            </tbody>
+                        </table>
+                        </form>
+                    </div>
+                </div>  
+            </div>
+            <hr>
+            <div class="row row-lg">
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-outline btn-default" id="desAll">
+                        更新排序
+                    </button>
+                    <button type="button" class="btn btn-outline btn-default" id="delAll">
+                        批量删除
+                    </button>
+                </div>
+                <div class="col-sm-6 pages">{$page}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#desAll').click(function(){
+        var des=$(".form-horizontal").serialize();
+        ajaxFun("post",'{:url('article/desAll')}',des,'json',function(ret){
+            if(ret){
+                if(ret.ret){
+                    self.location.reload();
+                }else{
+                    layer.msg(ret.err)
+                }
+            }else{
+                swal_msg("错误",ret,"error");
+            }
+        })
+    })
+    $('#delAll').click(function(){
+        var delAll=$(".form-horizontal").serialize();
+        swal_delAll(delAll,"{:url('article/delAll')}","1")
+        // ajaxFun("post",'{:url('article/delAll')}',delAll,'json',function(ret){
+        //     if(ret){
+        //         if(ret.ret){
+        //             layer.msg(ret.ret)
+        //         }else{
+        //             layer.msg(ret.err)
+        //         }
+        //     }else{
+        //         swal_msg("错误",ret,"error");
+        //     }
+        // })
+    })
+    $('#delidAll').click(function(){
+        $('input[type=checkbox]').each(function(){
+            var self=$(this);
+            if(!self.prop('checked')){
+                self.prop('checked',true);
+            }else{
+                self.prop('checked',false);
+            }
+        });
+    })
+    
+});
+function del(id){
+    swal_del(id,"{:url('del')}")
+}
+ 
+</script>
+ <SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

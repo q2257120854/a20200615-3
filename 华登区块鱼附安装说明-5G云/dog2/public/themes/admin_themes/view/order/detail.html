@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8" />
+        <title>vaeThink</title>
+        <meta name="renderer" content="webkit" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="__ADMIN__/lib/layui/css/layui.css" media="all" /></head>
+    <body class="vae-body">
+        <form class="layui-form vae-content">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label jiaxing">订单编号</label>
+                <div class="layui-form-mid">{$detail.ordersn}</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">区块鱼</label>
+                <div class="layui-form-mid">{$detail.levelname}</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">订单金额</label>
+                <div class="layui-form-mid">{$detail.product_price}</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">买家</label>
+                <div class="layui-form-mid">{$detail.nickname}</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">卖家</label>
+                <div class="layui-form-mid">{$detail.seller_nickname}</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">付款凭证</label>
+                <div class="layui-input-inline">
+                    <div class="layui-upload">
+                        <div class="layui-upload-list">
+                            <img src="{$detail.payment_voucher}" width="250" />
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">下单时间</label>
+                <div class="layui-form-mid">{$detail.createtime}</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">付款时间</label>
+                <div class="layui-form-mid">{$detail.paytime}</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">审核时间</label>
+                <div class="layui-form-mid">{$detail.audittime}</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">收益时间</label>
+                <div class="layui-form-mid">{$detail.incometime}</div>
+            </div>
+
+            <!-- <div class="layui-form-item">
+                <label class="layui-form-label">订单状态</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="status" value="-2" title="已申诉" {eq name="$detail.status" value="2"}checked{/eq}>
+                    <input type="radio" name="status" value="-1" title="已取消" {eq name="$detail.status" value="-1"}checked{/eq}>
+                    <input type="radio" name="status" value="0" title="待付款" {eq name="$detail.status" value="0"}checked{/eq}>
+                    <input type="radio" name="status" value="1" title="待审核" {eq name="$detail.status" value="1"}checked{/eq}>
+                    <input type="radio" name="status" value="2" title="已付款" {eq name="$detail.status" value="2"}checked{/eq}>
+                </div>
+            </div> -->
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <input type="hidden" name="id" value="{$detail.id}" />
+                    <button class="layui-btn" lay-submit="" lay-filter="vaeform">立即提交</button>
+                    <a href="javascript:history.back(-1)" class="layui-btn layui-btn-primary">返回</a>
+                </div>
+            </div>
+        </form>
+        <script src="__ADMIN__/lib/layui/layui.js" charset="utf-8"></script>
+        <script>layui.config({
+                base: '/themes/admin_themes/module/'
+            }).use(['upload', 'form', 'vaeyo'],
+            function() {
+                var form = layui.form,
+                layer = layui.layer,
+                $ = layui.$,
+                upload = layui.upload,
+                vae = layui.vaeyo;
+
+                //监听提交
+                form.on('submit(vaeform)',
+                function(data) {
+                    $.ajax({
+                        url: "/admin/order/ajaxStatus",
+                        type: 'post',
+                        data: data.field,
+                        success: function(e) {
+                            if (e.code == 1) {
+                                layer.confirm('修改状态成功,返回列表吗?', {
+                                    icon: 3,
+                                    title: '提示'
+                                },
+                                function(index) {
+                                    vae.backThisTab();
+                                    layer.close(index);
+                                });
+                            } else {
+                                layer.msg(e.msg);
+                            }
+                        }
+                    }) 
+                    return false;
+                });
+
+            });</script>
+    </body>
+
+</html>

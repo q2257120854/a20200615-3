@@ -1,0 +1,277 @@
+{include file="m/top" /}
+    {css href="__STYLE__m/css/fx-weitoutiao.css"}
+        <style>
+            #fx-header {
+                margin-bottom: 0px;
+                border-bottom: 0;
+                position: fixed;
+                z-index: 9999998
+            }
+            #topNav {
+                position: fixed;
+                width: 100%;
+                overflow: hidden;
+                padding:0.2rem 0.2rem;
+                background: #f4f5f6;
+                z-index: 9999999;
+                top: 47px;
+                border-bottom: 1px solid #e8e8e8;
+            }
+            #topNav .swiper-slide {
+                padding: 0 0.45rem;
+                letter-spacing:2px;
+                width:auto;
+                text-align:center;
+                font-size: 0.75rem;
+            }
+            #topNav .swiper-slide span{
+                color: #505050;
+                transition:all .3s ease;
+                display:block;
+            }
+            #topNav .active span{
+                transform:scale(1.1);
+                color:#FF2D2D;
+            }
+
+        </style> 
+    </head>
+    <body>
+        <header class="aui-bar aui-bar-nav" id="fx-header">
+            <div class="fx-header-logo">
+                <a class="aui-pull-left"> <span class="aui-iconfont aui-icon-left"></span> </a>
+                <div class="aui-title" style="left:5rem; right: 0.2rem;" tapmode >
+                    <div class="aui-searchbar" id="search">
+                        <div class="aui-searchbar-input aui-border-radius">
+                            <i class="aui-iconfont aui-icon-search"></i>
+                            <form action="m/index">
+                            <input type="text" placeholder="搜索关键词" id="search-input" name='title'>
+                            <input type="submit" hidden="">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="topNav" class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide active" data-id="0"><span>推荐</span></div>
+            <?php
+                $typeid=db('typeid')->where(['hide'=>1,'tid'=>0])->order('hide desc,des desc')->limit(100)->cache(_cache('db'))->field('id,title')->select();
+                $k=1;
+            ?>
+            {volist name="typeid" id="v"}
+            <div class="swiper-slide" data-id="{$v.id}"><span>{$v.title}</span></div>
+            <?php $k++;?>
+            {/volist}
+          </div>
+        </div>
+
+        <script id="fx-list" type="text/x-dot-template">
+            {{ for(var i=0,len=it.data.length; i < len; i++) { }}
+            {{? it.data[i].weitoutiao==2 || it.data[i].weitoutiao==1}}
+            {{??}}
+                {{? it.data[i].mychannel == 1}}
+                {{? it.data[i].imagesArticleList.length >= 3}}
+                <li class="aui-list-item" onclick="_url('/m/a/{{= it.data[i].id }}.html')">
+                    <div class="aui-list-item-inner fx-item-inner">
+                        <div class="aui-list-item-title fx-title aui-ellipsis-2">{{= it.data[i].title }}</div>
+                            <div class="aui-row aui-row-padded aui-margin-t-5 fx-article-images">
+                                {{ for(var is=0; is < 3; is++) { }}
+                                <div class="aui-col-xs-4"><img id="ffxiangImgCache" data-original="{{= it.data[i].imagesArticleList[is]}}?imageView2/1/w/192/h/124" src="__STYLE__m/image/loadingImage.png"></div>
+                                {{}}}
+                            </div>
+                        </div>
+                        <div class="aui-info  aui-padded-t-5 aui-padded-r-15  fx-item-inner">
+                            <div class="aui-info-item aui-font-size-12">
+                            <span class="">{{= it.data[i].source}}</span>
+                            <span class="aui-margin-l-10">{{= it.data[i].pingNum}}评价</span>
+                            <span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+                        </div>
+                    </div>
+                </li>
+                {{?? it.data[i].image}}
+                <li class="aui-list-item" onclick="_url('/m/a/{{= it.data[i].id }}.html')">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title aui-ellipsis-2 fx-title">{{= it.data[i].title }}</div>
+                            </div>
+                            <div class="aui-info aui-padded-t-5 aui-padded-b-0" style="padding-top: 5px">
+                                <div class="aui-info-item aui-font-size-12 fx-index-infp-span">
+                                    <span class="">{{= it.data[i].source}}</span>
+                                    <span class="aui-margin-l-10">{{= it.data[i].pingNum}}评价</span>
+                                    <span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-list-item-media">
+                            <img id="ffxiangImgCache" data-original="{{= it.data[i].image}}"  src="__STYLE__m/image/loadingImage.png">
+                        </div>
+                    </div>
+                </li>
+                {{??}}
+                <li class="aui-list-item" onclick="_url('/m/a/{{= it.data[i].id }}.html')">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-title aui-ellipsis-2 fx-title">{{= it.data[i].title }}</div>
+                            <div class="aui-list-item-text">
+                                <p class="aui-ellipsis-2 aui-font-size-14">{{= it.data[i].description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-info  fx-item-inner">
+                        <div class="aui-info-item aui-font-size-12">
+                            <span class="">{{= it.data[i].source}}</span>
+                            <span class="aui-margin-l-10">{{= it.data[i].pingNum}}评价</span>
+                            <span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+                        </div>
+                       <!--  <div class="aui-info-item fx-icon-plus aui-iconfont aui-icon-close">     
+                        </div> -->
+                    </div>
+                </li>
+                {{?}}
+                {{?? it.data[i].mychannel == 2}}
+                <!--  图片集-->
+                <li class="aui-list-item"  onclick="_url('/m/a/{{= it.data[i].id }}.html')">
+                    <div class="aui-list-item-inner fx-item-inner">
+                        <div class="aui-list-item-title fx-title aui-ellipsis-2">{{= it.data[i].title }}</div>
+                            <div class="aui-row aui-row-padded aui-margin-t-5 fx-article-images">
+                                {{= it.data[i].images.replace('ffxiang-src', 'data-original') }}
+                            </div>
+                        </div>
+                        <div class="aui-info  aui-padded-t-5 aui-padded-r-15  fx-item-inner">
+                            <div class="aui-info-item aui-font-size-12">
+                            <span class="">{{= it.data[i].source}}</span>
+                            <span class="aui-margin-l-10">{{= it.data[i].pingNum}}评价</span>
+                            <span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+                        </div>
+                    </div>
+                </li>
+                {{?? it.data[i].mychannel == 3}}
+                <!--视频-->
+                <li class="aui-list-item"  onclick="_url('/m/a/{{= it.data[i].id }}.html')">
+                    <div class="aui-list-item-inner fx-item-inner">
+                        <div class="aui-list-item-title fx-title aui-ellipsis-2">{{= it.data[i].title }}</div>
+                    </div>
+                    <div class="aui-card-list-content fx-video-content aui-padded-b-10">
+                        <img id="ffxiangImgCache" data-original="{{= it.data[i].image }}" src="__STYLE__m/image/load-video.png" class="fx-video-img">
+                        <i class="fx-video-bofang"></i>
+                        <em class="fx-video-em aui-margin-b-5">{{? it.data[i].videodate}}{{= it.data[i].videodate }}{{?}}</em>
+                    </div>
+                    <div class="aui-info  aui-padded-t-0 aui-padded-r-15  fx-item-inner">
+                        <div class="aui-info-item aui-font-size-12">
+                            {{? it.data[i].source}}<span class="">{{= it.data[i].source}}</span>{{?}}
+                            <span {{? it.data[i].source}}class="aui-margin-l-10"{{?}}>{{= it.data[i].pingNum}}评价</span>
+                            <span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+                        </div>
+                    </div>
+                </li>
+                {{?}}
+            {{?}}
+            {{ } }}
+        </script>
+        <div class="aui-content mescroll" id="mescroll" style="margin-top: 78px; background: #fff;position: fixed;padding-bottom: 85px;">
+            <ul class="aui-list aui-media-list fx-article-list fx-weitoutiao-list" id="fx-view" style="border-top: 0px">
+            </ul>
+        </div>
+        <div id="ad-dibu"></div>
+    {js href="__STYLE__m/js/mescroll.min.js"}
+    {js href="__STYLE__m/js/jquery-3.2.1.min.js"}
+    {load href="__P__swiper/swiper-3.4.2.jquery.min.js" /}
+    {js href="__STYLE__m/js/doT.js"}
+    {js href="__JS__index.js"}
+    {js href="__STYLE__m/js/jquery.lazyload.js"}
+    <script type="text/javascript">
+        var typeid=0;
+        $(function(){
+            var mySwiper = new Swiper('#topNav', {
+                freeMode: true,
+                freeModeMomentumRatio: 0.5,
+                slidesPerView: 'auto',
+
+            });
+            swiperWidth = mySwiper.container[0].clientWidth
+            maxTranslate = mySwiper.maxTranslate();
+            maxWidth = -maxTranslate + swiperWidth / 2
+            $(".swiper-container").on('touchstart', function(e) {
+                e.preventDefault()
+            })
+            mySwiper.on('tap', function(swiper, e) {
+                slide = swiper.slides[swiper.clickedIndex]
+                slideLeft = slide.offsetLeft
+                slideWidth = slide.clientWidth
+                slideCenter = slideLeft + slideWidth / 2
+                mySwiper.setWrapperTransition(300)
+                if (slideCenter < swiperWidth / 2) { 
+                    mySwiper.setWrapperTranslate(0)
+                } else if (slideCenter > maxWidth) {
+                    mySwiper.setWrapperTranslate(maxTranslate)
+                } else {
+                    nowTlanslate = slideCenter - swiperWidth / 2
+                    mySwiper.setWrapperTranslate(-nowTlanslate)
+                }
+                $("#topNav  .active").removeClass('active')
+                $("#topNav .swiper-slide").eq(swiper.clickedIndex).addClass('active')
+                typeid=$("#topNav .swiper-slide").eq(swiper.clickedIndex).data('id')
+                mescroll.scrollTo(0);
+                mescroll.triggerDownScroll();
+            })
+            //构建路径
+            var sea="{:input('title')?input('title'):''}"
+            
+
+            var mescroll = new MeScroll("mescroll", {
+                up: {
+                    callback: getListData, 
+                    toTop:{
+                        src : "__STYLE__m/image/mescroll-totop.png", 
+                    },
+                    offset:500
+                }
+            });
+            function getListData(page){
+                $('img#ffxiangImgCache').removeAttr('id')
+                if (sea) {
+                var had='/api/article/pclists/weitoutiao/0/typeid/'+typeid+'/?search='+sea+'&page=';
+            }else{
+                var non='/api/article/pclists/weitoutiao/0/typeid/'+typeid+'/?page=';
+            }
+                if(had){
+                    url=had
+                }else{
+                    url=non
+                }
+                _ajax(url+page.num,function(ret){
+                    if(ret){
+                        var evalData = doT.template($('#fx-list').html());
+                        if(page.num==1){
+                            if(ret.total){
+                                $('#fx-view').html(evalData(ret))
+                            }else{
+                                 $('#fx-view').html('');
+                            }
+                        }else{
+                            $('#fx-view').append(evalData(ret))
+                        }
+                        $("img#ffxiangImgCache").lazyload({
+                            effect:'fadeIn' //懒加载淡入
+                            ,container: $("#mescroll"),
+                        })
+                        mescroll.endBySize(ret.data.length,ret.total);
+                    }
+                })
+            }
+            // 替换
+            function imgtihuan(strss){
+                var aaaa=strss;
+                 
+            //    aaaa=aaaa.replace('src="../image/loadingImage.png"', 'src="__STYLE__m/image/loadingImage.png"');
+                return aaaa.replace('ffxiang-src', 'data-original');
+            }
+        });
+    </script>
+    <body>
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

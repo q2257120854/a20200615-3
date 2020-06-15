@@ -1,0 +1,145 @@
+{include file="member/left" /}
+                <div class="right-container col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                	<div class="account-wrapper">
+					     {include file="member/nav"}
+					    <div class="panel panel-default">	
+					    	<div class="account-form-modal" style="padding-top: 40px">
+								<div class="form pop-form">
+									<div class="form-group">
+							            <label class="col-sm-2 control-label">分类栏目：</label>
+							            <div class="col-sm-4">
+							                <select class="form-control" name="typeid" id="typeid">
+							                	<option value="0">选择栏目</option>
+							                	{fx:typeid mychannel="1"}
+                                				<option value="{$fx.id}">{$fx.title}</option>
+                                				{/fx:typeid}
+                                            </select>
+							            </div>
+							        </div>
+							        <div class="form-group">
+							            <label class="col-sm-2 control-label">标题：</label>
+							            <div class="col-sm-8">
+							                <input type="text" class="form-control" name="title" maxlength="200" id="title" />
+							            </div>
+							        </div>
+							        <div class="form-group">
+							            <label class="col-sm-2 control-label">作者：</label>
+							            <div class="col-sm-3">
+							                <input type="text" value="{:_member('username')}" class="form-control" name="writer" maxlength="100" id="writer" />
+							            </div>
+							        </div>
+							        <div class="form-group">
+							            <label class="col-sm-2 control-label">来源：</label>
+							            <div class="col-sm-3">
+							                <input type="text" class="form-control" name="source" maxlength="100" id="source" />
+							            </div>
+							        </div>
+							        <div class="form-group">
+							            <label class="col-sm-2 control-label">关键词：</label>
+							            <div class="col-sm-8">
+							                <input type="text" class="form-control" name="keywords" id="keywords" maxlength="100"  id="keywords" />
+							            </div>
+							        </div>
+							        <div class="form-group">
+							            <label class="col-sm-2 control-label">简介描述：</label>
+							            <div class="col-sm-8">
+							                <textarea name="description" maxlength="255" rows="5" id="description" class="form-control"></textarea>
+							            </div>
+							        </div>
+							        <div class="form-group">
+							            <label class="col-sm-2 control-label">文章内容：</label>
+							            <div class="col-sm-8">
+							                 <script type="text/plain" id="content" name="content" style="width:100%;height:240px;">
+{present name="name"}
+<?php
+$contet=$name['content'];
+preg_match_all("/src=\"(.*?)\"/", $contet,$img);
+foreach($img[1] as $k=>$v){
+    if(strpos($v,'http') !== false || strpos($v,'/public/uploads/us/') !== false){
+    }else{
+        $contet=str_replace($v,_imgUrl().$v,$contet);
+    }
+}
+echo $contet;
+?>
+{/present}
+</script>
+							            </div>
+							        </div>
+							        {eq name='articleCode' value='1'}
+							        <div class="form-group">
+							            <label class="col-sm-2 control-label">验证码：</label>
+							            <div class="col-sm-8">
+							               <div class="col-sm-3" style="padding-left: 0px;margin-left: 0px"><input type="text" class="form-control" name="yzm"  maxlength="100"  id="yzm" />
+							               </div><div style="padding-left: 0px;margin-left: 0px" class="col-sm-4">  
+											<img id="Img" onclick="reImg()" src="{:captcha_src()}" /></div>
+											<script type="text/javascript">function reImg(){  
+												var img = document.getElementById("Img"); 
+											    img.src = "{:captcha_src()}";  
+											 }</script>
+							            </div>
+							        </div>
+							         {/eq}
+							        <div class="form-group">
+							            <div class="col-sm-2 col-sm-offset-2">
+							                <button type="botton" class="btn btn-primary btn-lg ladda-button" onclick="data()">提交投稿</button>
+							            </div>
+							        </div>
+							    </div>
+							</div>
+							<script type="text/javascript">
+							// 绑定
+							function data(){
+								var title=$('#title').val();
+								if(!title) return layer.msg('文章标题必须填写');
+								var typeid=$('#typeid').val();
+								if(!typeid) return layer.msg('请选择分类栏目');
+								var content=ue.getContent();
+								if(!content) return layer.msg('请填写文章内容');
+								var writer=$('#writer').val();
+								if(!writer) return layer.msg('作者必须填写');
+								var source=$('#source').val();
+								var keywords=$('#keywords').val();
+								var description=$('#description').val();
+								var index = layer.load(1, {shade: [0.5,'#000']});
+_ajax('{:url('api/member/articleAdds')}','post',{{php}$id=input('id/d');if($id){echo "id:'".$id."',";}{/php}title:title,typeid:typeid,content:content,writer:writer,source:source,keywords:keywords,description:description{eq name='articleCode' value='1'},yzm:$('#yzm').val(){/eq}},function(ret){
+									  if(ret.ret){
+										layer.confirm(ret.ret, {btn: ['确认']}, function(){window.location.href='{:url('article')}'});
+							          }else{
+							          	{eq name='articleCode' value='1'}reImg();{/eq}
+
+							            layer.alert(ret.err)
+							          }
+							          layer.close(index);
+								})
+							}
+							</script>
+						</div>
+					</div>
+				</div>
+{include file="member/footer" /}
+<!-- 加载编辑器的容器 -->
+{:ueditor()}
+<script type="text/javascript">
+$(function(){
+	{php}$id=input('id/d');if($id){{/php}
+	_ajax('{:url('api/member/articleView')}','post',{id:'{$id}'},function(ret){
+		if(ret.ret){
+			//$("#typeid").find("option[text='pxx']").attr("selected",true);
+			$("#typeid ").val(ret.ret.typeid);
+			$('#title').val(ret.ret.title)
+			$('#writer').val(ret.ret.writer)
+			$('#source').val(ret.ret.source)
+			$('#keywords').val(ret.ret.keywords)
+			$('#description').val(ret.ret.description)
+			ue.execCommand('inserthtml', ret.ret.content)
+		}else{
+			alert(ret.err)
+		}
+	})
+	{php}}{/php}
+})
+</script>
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

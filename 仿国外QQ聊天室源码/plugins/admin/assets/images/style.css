@@ -1,0 +1,42 @@
+.ajaxBox{
+  position: relative;
+}
+.ajaxBox .mybox{
+  position: absolute;
+  left: 0;
+  top: 35px;
+  width:100%;
+  border: 1px solid #ccc;
+  background:#FFFFEA;
+  padding: 0;
+  margin: 0;
+  z-index: 999;
+}
+.ajaxBox .mybox a{
+  display: block;
+  color: #333;
+  line-height: 30px;
+  height: 30px;
+  overflow: hidden;
+  list-style: none;
+  padding: 0 5px;
+  margin: 0;
+  cursor: pointer;
+  white-space:nowrap;
+}
+.ajaxBox .mybox a:hover{
+  background: #3c8dbc;
+  color: #fff;
+}
+.ajaxBox .mybox a.tip{
+  text-align: center;
+  color: #333!important;
+  background:#FFFFEA!important;
+  cursor: default;
+}
+.pagination>li>a.current,.pagination>li>span{
+  z-index: 2;
+  color: #23527c;
+  background-color: #eee;
+  border-color: #ddd;
+}

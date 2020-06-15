@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<style>
+			.aui-content-padded {
+				margin: 0px;
+				padding: 0.75 rem;
+			}
+			.aui-list, .aui-list-item, .aui-list .aui-list-item {
+				background: none;
+				border: 0px;
+			}
+			.aui-content-padded textarea{
+				height:8rem;
+				line-height: 1rem;
+				font-size: 0.75rem;
+				padding: 0.75rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="aui-content-padded">
+			<textarea placeholder=""></textarea>
+		</div>
+		<div class="aui-content-padded">
+			<div class="aui-btn-blocks aui-margin-15">
+				<div class="aui-btn aui-btn-block aui-btn-danger"  tapmode onclick="fabu()">
+					提交举报
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var aid=0;
+		apiready = function() {
+			aid=api.pageParam['aid'];
+			if(aid){
+				$('textarea').attr('placeholder','请输入举报内容（250字以内）')
+			}else{
+				$('textarea').attr('placeholder','请描述意见反馈内容（250字以内）')
+			}
+			setTimeout(function(){
+				$('textarea').focus()
+			},500)
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+		}
+		function fabu() {
+			var content = $('textarea').val();
+			if (!content) {
+				_msg('请输入举报内容（250字以内）');
+				return;
+			}
+			if (content.length >= 250) {
+				_msg('举报内容不超过250字以内');
+				return;
+			}
+			if (!_user) {
+				_alert('请先登录', function(ret, err) {
+					_login();
+				})
+				return;
+			}
+			$("textarea").blur();
+			_ajax('api/member/jubao', function(ret, err) {
+				if (ret) {
+					if (ret.ret) {
+						_alert(ret.ret,function(ret,err){
+							_close()
+						})
+					} else {
+						_alert(ret.err,function(ret,err){
+							_close()
+						})
+					}
+				} else {
+					_alert(JSON.stringify(err));
+				}
+			}, {
+				content : content,
+				aid : aid
+			})
+		}
+	</script>
+</html>
+

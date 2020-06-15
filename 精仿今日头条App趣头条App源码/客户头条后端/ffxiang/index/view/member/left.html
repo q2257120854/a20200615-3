@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>用户中心 - {:_webfig('title')}</title>
+    {load href="__STYLE__member/css/member.css"}
+    {load href="__JS__jquery.min.js"}
+</head>
+<body>
+<div class="content main-content-wrap">
+    <div class="user-center-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="left-container col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <div class="menu-layer">
+                        <a class="user-logo" style="background-image:url('{:_userimg($member['img'])}')"  href="{:url('user/index',['id'=>$member['id']])}">
+                        </a>
+                        <div class="user-name">{$member['username']}</div>
+                        <div class="user-position"></div>
+                        <div class="menu-group">
+                            {php}$categorytidactives=$categorytid['controller'].$categorytid['function'];{/php}
+                        	{volist name='category' id='v'}
+                        	{php}$actives=$v['controller'].$v['function']{/php}
+                            <a href="{:url($v['controller'].'/'.$v['function'])}"{eq name='actives' value='$categorytidactives'} class="active"{/eq}>
+                                {$v.title}
+                            </a>
+                            {/volist}
+                        </div>
+                        
+                    </div>
+                    <a class="bottom-layer" href="{:config('')['appConfig']['url']}">
+                        主页
+                    </a>
+                    <a class="bottom-layer" href="{:url('out')}">
+                        退出登录
+                    </a>
+                </div><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

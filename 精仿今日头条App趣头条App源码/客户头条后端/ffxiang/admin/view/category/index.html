@@ -1,0 +1,64 @@
+ {include file="public/header" /}
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        {include file="public/tophead"}
+        {include file="public/top" /}
+        <div class="ibox-content">
+        {include file="public/topsection"}
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <div class="example">
+                        <table data-toggle="table" data-striped="false">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>名称</th>
+                                    <th>控制器</th>
+                                    <th>函数</th>
+                                    <th>左边</th>
+                                    <th>右边</th>
+                                    <th>管理</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {php}$hide=array('0'=>'隐藏','1'=>'显示');$hides=array('1'=>'隐藏','0'=>'显示');{/php}
+                                {volist name="data" id="v"}
+                                <tr id="id{$v.id}" class="gradeA footable-even category1">
+                                    <td class="categoryTitle">{$v.id}</td>
+                                    <td class="categoryTitle">{:str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $v['depth'])}{gt name="$v['depth']" value="0"}┠&nbsp;&nbsp;{/gt}{$v.title}</td>
+                                    <td>{$v.controller}</td>
+                                    <td>{$v.function}</td>
+                                    <td>{$hide[$v.hideleft]}</td>
+                                    <td>{$hide[$v.hideright]}</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span></button>
+                                            <ul class="dropdown-menu">
+                                                <li><a onclick="add('{:url('category/add',['typeid'=>$v['id'],'url'=>-1])}')" href="javascript:void(0);">添加</a></li>
+                                                <li><a onclick="add('{:url('category/add',['id'=>$v['id'],'url'=>-1])}')" href="javascript:void(0);">修改</a></li>
+                                                <li><a href="{:url('category/hide',['id'=>$v['id'],'hide'=>'1'])}">左边{$hides[$v.hideleft]}</a></li>
+                                                <li><a href="{:url('category/hide',['id'=>$v['id'],'hide'=>'2'])}">右边{$hides[$v.hideright]}</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="javascript:;" onclick="del({$v.id})">删除</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<script type="text/javascript">
+function del(id){
+    swal_del(id,"{:url('del')}")
+}
+</script>

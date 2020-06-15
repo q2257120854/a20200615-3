@@ -1,0 +1,197 @@
+ {include file="public/header" /}
+ {load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<style type="text/css">
+#des,#des input{ width: 40px;text-align:center;}
+#id{ width: 78px; }
+.bs-checkbox{ width: 36px; height: 40px }
+.fixed-table-toolbar .columns,.fixed-table-toolbar .search{margin-left:0px; margin-top: 0px }
+#title span{ float: right; margin-left: 3.333px;}
+.search{ margin-bottom: 0px !important; }
+.asdlkjasd{ background: #1ab394; color: #fff}
+#title{ position: relative;padding-right: 50px;}
+#title span{position: absolute;top: 12px;right: 10px;}
+</style> 
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        {include file="public/tophead"}
+        {include file="public/top" /}
+        <div class="ibox-content">
+        {include file="public/topsection"}
+            <div class="row row-lg">
+                <div class="col-sm-12">
+            
+                    <div class="fixed-table-toolbar">
+                        <form  method="get" action="">
+                            <div class="pull-left search">
+                                <div class="columns columns-right btn-group pull-left" >
+                                    <select class="form-control" name="type">
+                                        <option value="name">账号名</option>
+                                        <option value="nickname">用户名</option>
+                                    </select>
+                                </div>
+                                <div class="pull-right search">
+                                    <button style="border-radius:0px; border:1px solid #e5e6e7; border-left:0px" class="btn btn-default btn-outline" type="submit">搜索</button>
+                                </div>
+                                <div class="pull-right search">
+                                    <input class="form-control input-outline" id="filter" type="text"
+{php}
+if(input('?param.name')){
+            if(input('param.name')){
+               echo "value='".input('name')."'";
+            } 
+
+        }
+{/php}
+                                     name="name" placeholder="搜索商品">
+                                </div>
+                                
+
+                            </div>
+                        </form>
+                    </div>
+                   
+
+                    <div style="display:block;clear: both;"></div>
+                 
+
+
+
+                    <div class="example">
+                        <form class="form-horizontal" method="post">
+                        <table data-toggle="table">
+                            <thead>
+                                <tr>
+                                    <th data-align="center" data-width="2%">id</th>
+                                 
+                                    <th data-width="2%">提现金额</th>
+                                    <th data-align="center" data-width="2%">提现方式</th>
+                                    <th data-align="center" data-width="2%">帐户名称</th>
+                                    <th data-align="center" data-width="20%">帐户</th>
+                                    <th data-align="center" data-width="25%">用户名和手机号</th>
+                                    <th data-align="center" data-width="10%">时间</th>
+                                    <th data-align="center" data-width="2%">状态</th>
+                                    <th data-align="center" data-width="2%">管理</th>
+                                </tr>
+                            </thead> 
+                            <tbody id="form">
+                                {volist name="data" id="v"}
+                                <tr id="id{$v.id}"
+
+                                 class="class">
+                                    <td>{$v.id}</td>
+                                  
+                                    <td id="title">{$v.price}</td>
+                                    <td><?php 
+                                        if($v['paths']==1){
+                                            echo "<span class='btn btn-primary btn-xs'>支付宝</span>"; 
+                                        }else{
+                                            echo "<span class='btn btn-default btn-xs'>微信</span>";
+                                        }
+                                    ?></td>
+                                    <td>{$v.name}</td>
+
+                                    <td> <span class='btn btn-default btn-xs'><?php  if($v['paths']==1){echo $v['zhanghao']; } ?></span> 
+                                    <?php  if($v['paths']==2){ ?>
+                                       <span class='btn btn-default btn-xs'><a href="http://122.114.169.181/Public/{$v.zhanghao}" target="_blank"><img src="http://122.114.169.181/Public/{$v.zhanghao}" style="width: 100px; height: 100px;"></a></span>;
+                                       <?php }?>
+                                     </td>
+
+
+                                    <td>{$v.mobile}<br>{$v.nickname}</td>
+                                    <td>{$v.addtime}</td>
+                                     <td><?php 
+                                        if($v['state']==1){
+                                            echo "<span class='btn btn-primary btn-xs'>提现成功</span>"; 
+                                        } elseif($v['state']==2){ ?>
+                                            <span class='btn btn-primary btn-xs'>提现失败<br/>{$v.yuanyin}</span>
+                                       
+                                       <?php } else{
+                                            echo "<span class='btn btn-default btn-xs'>提现中</span>";
+                                        }
+                                    ?></td>
+                                    <td>
+
+                                        <div class="btn-group">
+                                            <div data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span>
+                                            </div>
+                                            <ul class="dropdown-menu">
+                                               <?php 
+                                        if($v['state']==0){ ?> <li><a onclick="x_admin_show('到账操作','{:url('tixianadd',['id'=>$v['id'],'url'=>-1])}')">到账操作</a>
+                                                </li>
+                                                 <li><a onclick="x_admin_show('拒绝操作','{:url('tixianadd',['id'=>$v['id'],'url'=>-1])}')">拒绝操作</a>
+                                                </li>
+                                             <?php }?>
+                                             <!--    <li class="divider"></li>
+                                                <li><a onclick="del({$v.id})">删除</a>
+                                                </li> -->
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                        </form>
+                    </div>
+                </div>  
+            </div>
+            <hr>
+            <div class="row row-lg">
+                <div class="col-sm-12 pages">{$page}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+$(document).ready(function(){
+    
+});
+function del(id){
+    swal_del(id,"{:url('txcao')}")
+}
+/*弹出层*/
+/*
+    参数解释：
+    title   标题
+    url     请求的url
+    id      需要操作的数据id
+    w       弹出层宽度（缺省调默认值）
+    h       弹出层高度（缺省调默认值）
+*/
+function x_admin_show(title,url,w,h)
+{
+    if (title == null || title == '') {
+        title=false;
+    };
+    if (url == null || url == '') {
+        url="404.html";
+    };
+    if (w == null || w == '') {
+        w=($(window).width()*0.9);
+    };
+    if (h == null || h == '') {
+        h=($(window).height() - 50);
+    };
+    layer.open({
+        type: 2,
+        area: [w+'px', h +'px'],
+        fix: false, //不固定
+        maxmin: true,
+        shadeClose: true,
+        shade:0.4,
+        title: title,
+        content: url,
+        end: function (){
+            window.location.reload();
+        }
+        
+    });
+} 
+  
+</script>
+ <SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

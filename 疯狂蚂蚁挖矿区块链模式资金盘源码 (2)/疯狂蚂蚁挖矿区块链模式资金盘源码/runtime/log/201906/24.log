@@ -1,0 +1,1698 @@
+---------------------------------------------------------------
+[ 2019-06-24T15:10:24+08:00 ] 127.0.0.1 POST /signin
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002955s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.014183s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = ''  WHERE  `loginip` = '127.0.0.1' [ RunTime:0.001063s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = '127.0.0.1'  WHERE  `username` = '18005151538' [ RunTime:0.001948s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538'  AND `password` = 'e67b36ddd09a671967939cfe2b0255cf' LIMIT 1 [ RunTime:0.000530s ]
+[ error ] [0]很抱歉、账户或密码不正确！
+---------------------------------------------------------------
+[ 2019-06-24T15:10:37+08:00 ] 127.0.0.1 POST /signin
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011428s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011322s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = ''  WHERE  `loginip` = '127.0.0.1' [ RunTime:0.002414s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = '127.0.0.1'  WHERE  `username` = '18005151538' [ RunTime:0.002233s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538'  AND `password` = 'e67b36ddd09a671967939cfe2b0255cf' LIMIT 1 [ RunTime:0.005814s ]
+[ error ] [0]很抱歉、账户或密码不正确！
+---------------------------------------------------------------
+[ 2019-06-24T15:12:26+08:00 ] 127.0.0.1 POST /signin
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001605s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.013314s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = ''  WHERE  `loginip` = '127.0.0.1' [ RunTime:0.002682s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = '127.0.0.1'  WHERE  `username` = '18005151538' [ RunTime:0.002032s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538'  AND `password` = 'e67b36ddd09a671967939cfe2b0255cf' LIMIT 1 [ RunTime:0.000588s ]
+[ error ] [0]很抱歉、账户或密码不正确！
+---------------------------------------------------------------
+[ 2019-06-24T15:14:07+08:00 ] 127.0.0.1 POST /signin
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003518s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011777s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = ''  WHERE  `loginip` = '127.0.0.1' [ RunTime:0.004450s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = '127.0.0.1'  WHERE  `username` = '18005151538' [ RunTime:0.002188s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538'  AND `password` = 'e67b36ddd09a671967939cfe2b0255cf' LIMIT 1 [ RunTime:0.000464s ]
+[ error ] [0]很抱歉、账户或密码不正确！
+---------------------------------------------------------------
+[ 2019-06-24T15:15:18+08:00 ] 127.0.0.1 POST /signin
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000929s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010354s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = ''  WHERE  `loginip` = '127.0.0.1' [ RunTime:0.002599s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = '127.0.0.1'  WHERE  `username` = '18005151538' [ RunTime:0.001862s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538'  AND `password` = 'e67b36ddd09a671967939cfe2b0255cf' LIMIT 1 [ RunTime:0.000528s ]
+[ error ] [0]很抱歉、账户或密码不正确！
+---------------------------------------------------------------
+[ 2019-06-24T15:16:01+08:00 ] 127.0.0.1 POST /signin
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010036s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010400s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = ''  WHERE  `loginip` = '127.0.0.1' [ RunTime:0.002391s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = '127.0.0.1'  WHERE  `username` = '18005151538' [ RunTime:0.002636s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538'  AND `password` = 'cd7f7cacd4fc2f9074a68380bb7107b8' LIMIT 1 [ RunTime:0.000473s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.010791s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000519s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.009871s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000523s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.010042s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000433s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `log` [ RunTime:0.011503s ]
+[ sql ] [ SQL ] INSERT INTO `log` (`username` , `type` , `text` , `ip` , `ua` , `create_at`) VALUES ('18005151538' , 3 , NULL , '127.0.0.1' , 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0' , '2019-06-24 15:16:01') [ RunTime:0.000739s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:16:02+08:00 ] 127.0.0.1 GET /account.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001096s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.010802s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000382s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010141s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000461s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.009098s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000636s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.009439s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000583s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.010581s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000493s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.011127s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`image`,`cycle`,`income`,`price` FROM `store` WHERE  `catalog` = 1  AND `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000703s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:16:03+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001202s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.008871s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000412s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.009805s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000428s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.008643s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000781s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.010555s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000382s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.011029s ]
+[ sql ] [ SQL ] SELECT * FROM `machine` WHERE  `username` = '18005151538'  AND `status` = 1 ORDER BY `create_at` DESC [ RunTime:0.000443s ]
+[ sql ] [ SQL ] UPDATE `machine`  SET `profit` = profit+0.26041675 , `count` = count+1 , `profit_at` = '2019-06-24 15:16:03' , `update_at` = '2019-06-24 15:16:03'  WHERE  `mid` = 'Z2524197' [ RunTime:0.000413s ]
+[ sql ] [ SQL ] UPDATE `machine`  SET `profit` = profit+0.26041675 , `count` = count+1 , `profit_at` = '2019-06-24 15:16:03' , `update_at` = '2019-06-24 15:16:03'  WHERE  `mid` = 'B8477778' [ RunTime:0.000143s ]
+[ sql ] [ SQL ] UPDATE `machine`  SET `profit` = profit+0.26041675 , `count` = count+1 , `profit_at` = '2019-06-24 15:16:03' , `update_at` = '2019-06-24 15:16:03'  WHERE  `mid` = 'S3695540' [ RunTime:0.000145s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `clock` [ RunTime:0.009722s ]
+[ sql ] [ SQL ] INSERT INTO `clock` (`username` , `mid` , `money` , `create_at`) VALUES ( '18005151538','Z2524197',0.26041675,'2019-06-24 15:16:03' ) , ( '18005151538','B8477778',0.26041675,'2019-06-24 15:16:03' ) , ( '18005151538','S3695540',0.26041675,'2019-06-24 15:16:03' ) [ RunTime:0.000435s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `uuid` [ RunTime:0.009213s ]
+[ sql ] [ SQL ] SELECT * FROM `uuid` WHERE  `id` = 'W19062416547714' LIMIT 1 [ RunTime:0.000558s ]
+[ sql ] [ SQL ] INSERT INTO `uuid` (`id` , `type`) VALUES ('W19062416547714' , 8) [ RunTime:0.001123s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `record` [ RunTime:0.009573s ]
+[ sql ] [ SQL ] INSERT INTO `record` (`rid` , `username` , `currency` , `business` , `before` , `now` , `after` , `create_at`) VALUES ( 'W19062416547714','18005151538',7,21,0,0.78125025,0.78125025,'2019-06-24 15:16:03' ) [ RunTime:0.000329s ]
+[ sql ] [ SQL ] UPDATE `wallet`  SET `mpocket` = `mpocket` + 0.78125025 , `update_at` = '2019-06-24 15:16:03'  WHERE  `username` = '18005151538' [ RunTime:0.000243s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `log` [ RunTime:0.008846s ]
+[ sql ] [ SQL ] INSERT INTO `log` (`username` , `type` , `text` , `ip` , `ua` , `create_at`) VALUES ('18005151538' , 31 , '0.78125025' , '127.0.0.1' , 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0' , '2019-06-24 15:16:03') [ RunTime:0.000321s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:16:03+08:00 ] 127.0.0.1 GET /account.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000710s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.010553s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000429s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010427s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000443s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.009601s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000385s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.009914s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000430s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.008628s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000354s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.009516s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`image`,`cycle`,`income`,`price` FROM `store` WHERE  `catalog` = 1  AND `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000495s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:16:04+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000740s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.009517s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000740s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.009021s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000440s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.012116s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000414s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.014079s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000462s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.008558s ]
+[ sql ] [ SQL ] SELECT * FROM `machine` WHERE  `username` = '18005151538'  AND `status` = 1 ORDER BY `create_at` DESC [ RunTime:0.000693s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:16:06+08:00 ] 127.0.0.1 GET /home.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000842s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.010415s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000384s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.009523s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000702s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.009309s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000384s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.010110s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000396s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.008606s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000430s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.009066s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `machine` WHERE  `username` = '18005151538'  AND `status` = 1 LIMIT 1 [ RunTime:0.000405s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:16:17+08:00 ] 127.0.0.1 GET /market.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010181s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.009422s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000550s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.010487s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000435s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.008373s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000518s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.010506s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000572s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.012088s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-06-24' [ RunTime:0.000564s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-06-24' [ RunTime:0.000513s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-06-24'  AND `t`.`create_at` < '2019-06-24 15:11:17' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000534s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-06-24'  AND `t`.`create_at` < '2019-06-24 15:11:17' LIMIT 1 [ RunTime:0.000419s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:16:18+08:00 ] 127.0.0.1 POST /market/overview
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001420s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `market` [ RunTime:0.013461s ]
+[ sql ] [ SQL ] SELECT `date`,`price`,`high`,`low` FROM `market` WHERE  `date` <= '2019-06-24' ORDER BY `date` DESC LIMIT 7 [ RunTime:0.000405s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.010843s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` <> 0  AND `status` <> 8  AND `create_at` > '2019-06-24' LIMIT 1 [ RunTime:0.000513s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` = 8  AND `create_at` > '2019-06-24' LIMIT 1 [ RunTime:0.000721s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:16:19+08:00 ] 127.0.0.1 GET /machine.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000738s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.009602s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000935s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.011511s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000669s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.009683s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000519s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.008275s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000559s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.009492s ]
+[ sql ] [ SQL ] SELECT * FROM `machine` WHERE  `username` = '18005151538'  AND `status` = 1 ORDER BY `create_at` DESC [ RunTime:0.000573s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.009267s ]
+[ sql ] [ SQL ] SELECT `image` FROM `store` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000311s ]
+[ sql ] [ SQL ] SELECT `image` FROM `store` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SELECT `image` FROM `store` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000208s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `clock` [ RunTime:0.008582s ]
+[ sql ] [ SQL ] SELECT `m`.`name`,`c`.* FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` WHERE  `c`.`username` = '18005151538' ORDER BY `c`.`create_at` DESC LIMIT 20 [ RunTime:0.000429s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000323s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:16:20+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000686s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.013039s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000459s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.008638s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000382s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.009635s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000426s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.009778s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000521s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.008497s ]
+[ sql ] [ SQL ] SELECT * FROM `machine` WHERE  `username` = '18005151538'  AND `status` = 1 ORDER BY `create_at` DESC [ RunTime:0.000427s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:16:36+08:00 ] 127.0.0.1 GET /team/inviter.html
+[ error ] [0]语法解析错误: syntax error, unexpected '?'
+---------------------------------------------------------------
+[ 2019-06-24T15:16:54+08:00 ] 127.0.0.1 GET /team/inviter.html
+[ error ] [0]语法解析错误: syntax error, unexpected '?'
+---------------------------------------------------------------
+[ 2019-06-24T15:17:25+08:00 ] 127.0.0.1 GET /team/inviter.html
+[ error ] [0]语法解析错误: syntax error, unexpected '?'
+---------------------------------------------------------------
+[ 2019-06-24T15:17:31+08:00 ] 127.0.0.1 GET /team/inviter.html
+[ error ] [0]语法解析错误: syntax error, unexpected '?'
+---------------------------------------------------------------
+[ 2019-06-24T15:17:32+08:00 ] 127.0.0.1 GET /team/inviter.html
+[ error ] [0]语法解析错误: syntax error, unexpected '?'
+---------------------------------------------------------------
+[ 2019-06-24T15:17:51+08:00 ] 127.0.0.1 GET /team/inviter.html
+[ error ] [0]语法解析错误: syntax error, unexpected '?'
+---------------------------------------------------------------
+[ 2019-06-24T15:17:57+08:00 ] 127.0.0.1 GET /team/inviter.html
+[ error ] [0]语法解析错误: syntax error, unexpected '?'
+---------------------------------------------------------------
+[ 2019-06-24T15:18:50+08:00 ] 127.0.0.1 POST /signin
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011397s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.012133s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = ''  WHERE  `loginip` = '127.0.0.1' [ RunTime:0.002695s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = '127.0.0.1'  WHERE  `username` = '18005151538' [ RunTime:0.001529s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538'  AND `password` = 'e67b36ddd09a671967939cfe2b0255cf' LIMIT 1 [ RunTime:0.000442s ]
+[ error ] [0]很抱歉、账户或密码不正确！
+---------------------------------------------------------------
+[ 2019-06-24T15:18:54+08:00 ] 127.0.0.1 POST /signin
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001065s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011845s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = ''  WHERE  `loginip` = '127.0.0.1' [ RunTime:0.002376s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = '127.0.0.1'  WHERE  `username` = '18005151538' [ RunTime:0.002113s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538'  AND `password` = 'e67b36ddd09a671967939cfe2b0255cf' LIMIT 1 [ RunTime:0.000570s ]
+[ error ] [0]很抱歉、账户或密码不正确！
+---------------------------------------------------------------
+[ 2019-06-24T15:19:23+08:00 ] 127.0.0.1 GET /signin.html?from=http%3A%2F%2Fwww.demo_public.com%2Faccount.html
+[ info ] www.demo_public.com/signin.html?from=http%3A%2F%2Fwww.demo_public.com%2Faccount.html [运行时间：0.031424s][吞吐率：31.82req/s] [内存消耗：1,197.35kb] [文件加载：63]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'signin',
+  'route' => 'account/signin',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'method' => 'get|post',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+  'from' => 'http://www.demo_public.com/account.html',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\demo\application\index\view\account\signin.html [ array (
+  0 => 'platform',
+  1 => 'appurl',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-06-24T15:19:24+08:00 ] 127.0.0.1 POST /signin
+[ info ] www.demo_public.com/signin [运行时间：0.074393s][吞吐率：13.44req/s] [内存消耗：1,940.45kb] [文件加载：73]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'signin',
+  'route' => 'account/signin',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'method' => 'get|post',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/signin.html?from=http%3A%2F%2Fwww.demo_public.com%2Faccount.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://www.demo_public.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '36',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+  'username' => '18005151538',
+  'password' => '123456',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011417s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.016722s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = ''  WHERE  `loginip` = '127.0.0.1' [ RunTime:0.002538s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = '127.0.0.1'  WHERE  `username` = '18005151538' [ RunTime:0.001667s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538'  AND `password` = 'e67b36ddd09a671967939cfe2b0255cf' LIMIT 1 [ RunTime:0.000497s ]
+[ error ] [0]很抱歉、账户或密码不正确！[D:\phpstudy\PHPTutorial\WWW\demo\application\index\controller\Account.php:608]
+---------------------------------------------------------------
+[ 2019-06-24T15:19:44+08:00 ] 127.0.0.1 GET /signin.html?from=http%3A%2F%2Fwww.demo_public.com%2Faccount.html
+[ info ] www.demo_public.com/signin.html?from=http%3A%2F%2Fwww.demo_public.com%2Faccount.html [运行时间：0.031466s][吞吐率：31.78req/s] [内存消耗：1,197.35kb] [文件加载：63]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'signin',
+  'route' => 'account/signin',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'method' => 'get|post',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+  'from' => 'http://www.demo_public.com/account.html',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\demo\application\index\view\account\signin.html [ array (
+  0 => 'platform',
+  1 => 'appurl',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-06-24T15:19:50+08:00 ] 127.0.0.1 POST /signin
+[ info ] www.demo_public.com/signin [运行时间：0.093279s][吞吐率：10.72req/s] [内存消耗：1,893.70kb] [文件加载：70]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'signin',
+  'route' => 'account/signin',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'method' => 'get|post',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/signin.html?from=http%3A%2F%2Fwww.demo_public.com%2Faccount.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://www.demo_public.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '41',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+  'username' => '18005151538',
+  'password' => 'sucaihuo520',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000773s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.008635s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = ''  WHERE  `loginip` = '127.0.0.1' [ RunTime:0.004792s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = '127.0.0.1'  WHERE  `username` = '18005151538' [ RunTime:0.001618s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538'  AND `password` = 'cd7f7cacd4fc2f9074a68380bb7107b8' LIMIT 1 [ RunTime:0.000363s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.008248s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000651s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.008179s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000535s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.008852s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000465s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `log` [ RunTime:0.008447s ]
+[ sql ] [ SQL ] INSERT INTO `log` (`username` , `type` , `text` , `ip` , `ua` , `create_at`) VALUES ('18005151538' , 3 , NULL , '127.0.0.1' , 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1' , '2019-06-24 15:19:50') [ RunTime:0.000411s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:19:51+08:00 ] 127.0.0.1 GET /account.html
+[ info ] www.demo_public.com/account.html [运行时间：0.099340s][吞吐率：10.07req/s] [内存消耗：1,970.03kb] [文件加载：70]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'account',
+  'route' => 'account/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/signin.html?from=http%3A%2F%2Fwww.demo_public.com%2Faccount.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\demo\application\index\view\account\index.html [ array (
+  0 => 'platform',
+  1 => 'shop',
+  2 => 'gonggao',
+  3 => 'open',
+  4 => 'user',
+  5 => 'config',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001440s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.007906s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000479s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.009227s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000492s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.008795s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000411s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.009931s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000448s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.009397s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000691s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.009703s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`image`,`cycle`,`income`,`price` FROM `store` WHERE  `catalog` = 1  AND `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000517s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:19:52+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ info ] www.demo_public.com/machine/allprofit [运行时间：0.116523s][吞吐率：8.58req/s] [内存消耗：2,019.35kb] [文件加载：70]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'machine/allprofit',
+  'route' => 'machine/allprofit',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/account.html',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://www.demo_public.com',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000751s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010648s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.001265s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.009837s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000418s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.026306s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000517s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.011040s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000441s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.012854s ]
+[ sql ] [ SQL ] SELECT * FROM `machine` WHERE  `username` = '18005151538'  AND `status` = 1 ORDER BY `create_at` DESC [ RunTime:0.000489s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:19:54+08:00 ] 127.0.0.1 GET /home.html
+[ info ] www.demo_public.com/home.html [运行时间：0.113825s][吞吐率：8.79req/s] [内存消耗：1,942.32kb] [文件加载：70]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'home',
+  'route' => 'account/home',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'method' => 'get|post',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/account.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\demo\application\index\view\account\home.html [ array (
+  0 => 'platform',
+  1 => 'team_count',
+  2 => 'mnums',
+  3 => 'user',
+  4 => 'config',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010791s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.010028s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000573s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.008590s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000546s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.009245s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000547s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.008069s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000522s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.009196s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.001105s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.009777s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `machine` WHERE  `username` = '18005151538'  AND `status` = 1 LIMIT 1 [ RunTime:0.000489s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:20:02+08:00 ] 127.0.0.1 GET /account/authen.html
+[ info ] www.demo_public.com/account/authen.html [运行时间：0.091004s][吞吐率：10.99req/s] [内存消耗：2,088.94kb] [文件加载：72]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'account/authen',
+  'route' => 'account/authen',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'method' => 'get|post',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/home.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\demo\application\index\view\account\authen.html [ array (
+  0 => 'platform',
+  1 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000764s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010454s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000434s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.011411s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000351s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.009062s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000360s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.010420s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000435s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:20:04+08:00 ] 127.0.0.1 GET /home.html
+[ info ] www.demo_public.com/home.html [运行时间：0.107975s][吞吐率：9.26req/s] [内存消耗：1,942.32kb] [文件加载：70]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'home',
+  'route' => 'account/home',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'method' => 'get|post',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/account.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\demo\application\index\view\account\home.html [ array (
+  0 => 'platform',
+  1 => 'team_count',
+  2 => 'mnums',
+  3 => 'user',
+  4 => 'config',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000895s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.010439s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000516s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.009563s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000750s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.011171s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000414s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.010496s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000391s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.009722s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000439s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.009254s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `machine` WHERE  `username` = '18005151538'  AND `status` = 1 LIMIT 1 [ RunTime:0.000363s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:20:06+08:00 ] 127.0.0.1 GET /account/profile.html
+[ info ] www.demo_public.com/account/profile.html [运行时间：0.091063s][吞吐率：10.98req/s] [内存消耗：2,126.62kb] [文件加载：73]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'account/profile',
+  'route' => 'account/profile',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'method' => 'get|post',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/home.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\demo\application\index\view\account\profile.html [ array (
+  0 => 'platform',
+  1 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000746s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.009588s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000535s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.010575s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000577s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.009829s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000617s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.010601s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000458s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:20:06+08:00 ] 127.0.0.1 GET /account/static/picture/loader.gif
+[ info ] www.demo_public.com/account/static/picture/loader.gif [运行时间：0.024969s][吞吐率：40.05req/s] [内存消耗：726.82kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-06-24T15:20:08+08:00 ] 127.0.0.1 GET /home.html
+[ info ] www.demo_public.com/home.html [运行时间：0.111452s][吞吐率：8.97req/s] [内存消耗：1,942.32kb] [文件加载：70]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'home',
+  'route' => 'account/home',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'method' => 'get|post',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/account.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\demo\application\index\view\account\home.html [ array (
+  0 => 'platform',
+  1 => 'team_count',
+  2 => 'mnums',
+  3 => 'user',
+  4 => 'config',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011232s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.009914s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000463s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.009786s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000354s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.008876s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000421s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.010247s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000394s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.009593s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000512s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.008596s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `machine` WHERE  `username` = '18005151538'  AND `status` = 1 LIMIT 1 [ RunTime:0.000334s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:20:09+08:00 ] 127.0.0.1 GET /market.html
+[ info ] www.demo_public.com/market.html [运行时间：0.095196s][吞吐率：10.50req/s] [内存消耗：2,186.00kb] [文件加载：71]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market',
+  'route' => 'market/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/home.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\demo\application\index\view\market\index.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'page',
+  4 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000994s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.009545s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000635s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.010094s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000604s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.009473s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000499s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.008994s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000576s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.008311s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-06-24' [ RunTime:0.000462s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-06-24' [ RunTime:0.000437s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-06-24'  AND `t`.`create_at` < '2019-06-24 15:15:09' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000555s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-06-24'  AND `t`.`create_at` < '2019-06-24 15:15:09' LIMIT 1 [ RunTime:0.000457s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:20:10+08:00 ] 127.0.0.1 POST /market/overview
+[ info ] www.demo_public.com/market/overview [运行时间：0.065126s][吞吐率：15.35req/s] [内存消耗：1,922.77kb] [文件加载：69]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market/overview',
+  'route' => 'market/overview',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/market.html',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://www.demo_public.com',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000859s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `market` [ RunTime:0.008350s ]
+[ sql ] [ SQL ] SELECT `date`,`price`,`high`,`low` FROM `market` WHERE  `date` <= '2019-06-24' ORDER BY `date` DESC LIMIT 7 [ RunTime:0.000911s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.008880s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` <> 0  AND `status` <> 8  AND `create_at` > '2019-06-24' LIMIT 1 [ RunTime:0.006776s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` = 8  AND `create_at` > '2019-06-24' LIMIT 1 [ RunTime:0.001384s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:20:10+08:00 ] 127.0.0.1 GET /team.html
+[ info ] www.demo_public.com/team.html [运行时间：0.096148s][吞吐率：10.40req/s] [内存消耗：2,093.69kb] [文件加载：73]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'team',
+  'route' => 'team/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/market.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\demo\application\index\view\team\index.html [ array (
+  0 => 'platform',
+  1 => 'index',
+  2 => 'page',
+  3 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000918s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.009764s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000641s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.014837s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000538s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.009153s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000342s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.008891s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000502s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` WHERE  `inviter` = '18005151538' LIMIT 1 [ RunTime:0.000291s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:20:11+08:00 ] 127.0.0.1 POST /team/member
+[ info ] www.demo_public.com/team/member [运行时间：0.042539s][吞吐率：23.51req/s] [内存消耗：1,706.63kb] [文件加载：69]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'team/member',
+  'route' => 'team/member',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/team.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://www.demo_public.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '14',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'size' => '20',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000687s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.008537s ]
+[ sql ] [ SQL ] SELECT `a`.`uid`,`p`.`realname`,`p`.`avatar`,`a`.`type`,`a`.`username`,`p`.`nickname`,`p`.`idcard` FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` WHERE  `inviter` = '18005151538' LIMIT 0,20 [ RunTime:0.000376s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:20:12+08:00 ] 127.0.0.1 GET /machine.html
+[ info ] www.demo_public.com/machine.html [运行时间：0.126491s][吞吐率：7.91req/s] [内存消耗：2,057.94kb] [文件加载：71]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'machine',
+  'route' => 'machine/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/team.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\demo\application\index\view\machine\index.html [ array (
+  0 => 'platform',
+  1 => 'store',
+  2 => 'power',
+  3 => 'profit',
+  4 => 'expire',
+  5 => 'running',
+  6 => 'machines',
+  7 => 'clocks',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003324s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.009524s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.004106s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.009703s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000411s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.009052s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000520s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.009266s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000455s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.009188s ]
+[ sql ] [ SQL ] SELECT * FROM `machine` WHERE  `username` = '18005151538'  AND `status` = 1 ORDER BY `create_at` DESC [ RunTime:0.000687s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.008788s ]
+[ sql ] [ SQL ] SELECT `image` FROM `store` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000307s ]
+[ sql ] [ SQL ] SELECT `image` FROM `store` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000245s ]
+[ sql ] [ SQL ] SELECT `image` FROM `store` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000229s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `clock` [ RunTime:0.008440s ]
+[ sql ] [ SQL ] SELECT `m`.`name`,`c`.* FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` WHERE  `c`.`username` = '18005151538' ORDER BY `c`.`create_at` DESC LIMIT 20 [ RunTime:0.000492s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000434s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:20:12+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ info ] www.demo_public.com/machine/allprofit [运行时间：0.088368s][吞吐率：11.32req/s] [内存消耗：2,019.38kb] [文件加载：70]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'machine/allprofit',
+  'route' => 'machine/allprofit',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/machine.html',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://www.demo_public.com',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001073s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.008724s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000532s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.009148s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000431s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.008504s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000371s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.008267s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000326s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.008521s ]
+[ sql ] [ SQL ] SELECT * FROM `machine` WHERE  `username` = '18005151538'  AND `status` = 1 ORDER BY `create_at` DESC [ RunTime:0.000444s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:20:15+08:00 ] 127.0.0.1 GET /account.html
+[ info ] www.demo_public.com/account.html [运行时间：0.111716s][吞吐率：8.95req/s] [内存消耗：1,969.88kb] [文件加载：70]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'account',
+  'route' => 'account/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/machine.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\demo\application\index\view\account\index.html [ array (
+  0 => 'platform',
+  1 => 'shop',
+  2 => 'gonggao',
+  3 => 'open',
+  4 => 'user',
+  5 => 'config',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010787s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.008845s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000356s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.009584s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000370s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.007956s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000666s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.009035s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000402s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.008952s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000451s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.010937s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`image`,`cycle`,`income`,`price` FROM `store` WHERE  `catalog` = 1  AND `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000507s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:20:15+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ info ] www.demo_public.com/machine/allprofit [运行时间：0.093491s][吞吐率：10.70req/s] [内存消耗：2,019.38kb] [文件加载：70]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'machine/allprofit',
+  'route' => 'machine/allprofit',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/account.html',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://www.demo_public.com',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000676s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.013673s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000516s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.008723s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000426s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.009603s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000399s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.008510s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000360s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.008024s ]
+[ sql ] [ SQL ] SELECT * FROM `machine` WHERE  `username` = '18005151538'  AND `status` = 1 ORDER BY `create_at` DESC [ RunTime:0.000466s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:20:17+08:00 ] 127.0.0.1 GET /team/inviter.html
+[ info ] www.demo_public.com/team/inviter.html [运行时间：0.034792s][吞吐率：28.74req/s] [内存消耗：1,036.55kb] [文件加载：65]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'team/inviter',
+  'route' => 'team/inviter',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/account.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ LOG ] INIT File
+[ error ] [0]语法解析错误: syntax error, unexpected '?'[D:\phpstudy\PHPTutorial\WWW\demo\vendor\endroid\qr-code\src\QrCode.php:168]
+---------------------------------------------------------------
+[ 2019-06-24T15:21:35+08:00 ] 127.0.0.1 GET /account.html
+[ info ] www.demo_public.com/account.html [运行时间：0.116507s][吞吐率：8.58req/s] [内存消耗：1,969.88kb] [文件加载：70]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'account',
+  'route' => 'account/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/machine.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\demo\application\index\view\account\index.html [ array (
+  0 => 'platform',
+  1 => 'shop',
+  2 => 'gonggao',
+  3 => 'open',
+  4 => 'user',
+  5 => 'config',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010854s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.008879s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000505s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.009124s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000484s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.009600s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000457s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.011664s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000450s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.009567s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.003413s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.010351s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`image`,`cycle`,`income`,`price` FROM `store` WHERE  `catalog` = 1  AND `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000394s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:21:35+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ info ] www.demo_public.com/machine/allprofit [运行时间：0.113989s][吞吐率：8.77req/s] [内存消耗：2,019.38kb] [文件加载：70]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'machine/allprofit',
+  'route' => 'machine/allprofit',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/account.html',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://www.demo_public.com',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000830s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.021534s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000550s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.009131s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000560s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.010657s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000469s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.010462s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000433s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.009019s ]
+[ sql ] [ SQL ] SELECT * FROM `machine` WHERE  `username` = '18005151538'  AND `status` = 1 ORDER BY `create_at` DESC [ RunTime:0.000520s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:21:49+08:00 ] 127.0.0.1 POST /account/qiandao1?_=1561360909760
+[ info ] www.demo_public.com/account/qiandao1?_=1561360909760 [运行时间：0.123186s][吞吐率：8.12req/s] [内存消耗：1,953.78kb] [文件加载：71]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'account/qiandao',
+  'route' => 'account/qiandao',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/account.html',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://www.demo_public.com',
+  'accept' => 'application/json',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+  '_' => '1561360909760',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011087s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010029s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000777s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.008989s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000461s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.008831s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000491s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.010655s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000401s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `qiandao1` = 1561360909 , `qnum1` = 1 , `update_at` = '2019-06-24 15:21:49'  WHERE  `username` = '18005151538' [ RunTime:0.002478s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `uuid` [ RunTime:0.009037s ]
+[ sql ] [ SQL ] SELECT * FROM `uuid` WHERE  `id` = 'O19062432948253' LIMIT 1 [ RunTime:0.000556s ]
+[ sql ] [ SQL ] INSERT INTO `uuid` (`id` , `type`) VALUES ('O19062432948253' , 8) [ RunTime:0.000489s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `record` [ RunTime:0.008862s ]
+[ sql ] [ SQL ] INSERT INTO `record` (`rid` , `username` , `currency` , `business` , `before` , `now` , `after` , `create_at`) VALUES ( 'O19062432948253','18005151538',9,103,0,0.5,0.5,'2019-06-24 15:21:49' ) [ RunTime:0.001996s ]
+[ sql ] [ SQL ] UPDATE `wallet`  SET `cansell` = `cansell` + 0.5 , `update_at` = '2019-06-24 15:21:49'  WHERE  `username` = '18005151538' [ RunTime:0.001524s ]
+---------------------------------------------------------------
+[ 2019-06-24T15:21:51+08:00 ] 127.0.0.1 GET /team/inviter.html
+[ info ] www.demo_public.com/team/inviter.html [运行时间：0.035433s][吞吐率：28.22req/s] [内存消耗：1,036.97kb] [文件加载：65]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'team/inviter',
+  'route' => 'team/inviter',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/account.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ LOG ] INIT File
+[ error ] [0]语法解析错误: syntax error, unexpected '?'[D:\phpstudy\PHPTutorial\WWW\demo\vendor\endroid\qr-code\src\QrCode.php:168]
+---------------------------------------------------------------
+[ 2019-06-24T15:22:44+08:00 ] 127.0.0.1 GET /team/inviter.html
+[ info ] www.demo_public.com/team/inviter.html [运行时间：0.433465s][吞吐率：2.31req/s] [内存消耗：1,148.53kb] [文件加载：65]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'team/inviter',
+  'route' => 'team/inviter',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/account.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\demo\application\index\view\team\inviter.html [ array (
+  0 => 'platform',
+  1 => 'image',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-06-24T15:22:44+08:00 ] 127.0.0.1 GET /public/static/image/inviter.jpg
+[ info ] www.demo_public.com/public/static/image/inviter.jpg [运行时间：0.049764s][吞吐率：20.09req/s] [内存消耗：726.38kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-06-24T15:24:08+08:00 ] 127.0.0.1 GET /public/static/image/inviter.jpg
+[ info ] www.demo_public.com/public/static/image/inviter.jpg [运行时间：0.036390s][吞吐率：27.48req/s] [内存消耗：726.38kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-06-24T15:24:49+08:00 ] 127.0.0.1 GET /team/inviter.html
+[ info ] www.demo_public.com/team/inviter.html [运行时间：0.037355s][吞吐率：26.77req/s] [内存消耗：1,148.34kb] [文件加载：65]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'team/inviter',
+  'route' => 'team/inviter',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/account.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\demo\application\index\view\team\inviter.html [ array (
+  0 => 'platform',
+  1 => 'image',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-06-24T15:24:49+08:00 ] 127.0.0.1 GET /public/static/image/inviter.jpg
+[ info ] www.demo_public.com/public/static/image/inviter.jpg [运行时间：0.024739s][吞吐率：40.42req/s] [内存消耗：726.38kb] [文件加载：56]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-06-24T15:25:12+08:00 ] 127.0.0.1 GET /team/inviter.html
+[ info ] www.demo_public.com/team/inviter.html [运行时间：0.032913s][吞吐率：30.38req/s] [内存消耗：1,148.34kb] [文件加载：65]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'team/inviter',
+  'route' => 'team/inviter',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jahjcpsp99ij943q00psj90g40; gonggao=open',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.demo_public.com/account.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'www.demo_public.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\demo\application\index\view\team\inviter.html [ array (
+  0 => 'platform',
+  1 => 'image',
+) ]
+[ info ] [ LOG ] INIT File

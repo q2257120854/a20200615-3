@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8" />
+        <title>vaeThink</title>
+        <meta name="renderer" content="webkit" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="__ADMIN__/lib/layui/css/layui.css" media="all" /></head>
+    
+    <body class="vae-body">
+        <form class="layui-form vae-content">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">昵称</label>
+                <div class="layui-input-block" style="max-width: 500px;">
+                    <input type="text" name="nickname" lay-verify="" autocomplete="off" placeholder="请输入会员昵称" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">会员账号</label>
+                <div class="layui-input-block" style="max-width: 500px;">
+                    <input type="text" name="account" lay-verify="required" autocomplete="off" placeholder="请输入会员账号" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">会员密码</label>
+                <div class="layui-input-block" style="max-width: 500px;">
+                    <input type="password" name="pwd" lay-verify="required" autocomplete="off" placeholder="请输入会员密码" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">二级密码</label>
+                <div class="layui-input-block" style="max-width: 500px;">
+                    <input type="password" name="pwd2" lay-verify="required" autocomplete="off" placeholder="请输入二级密码" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">真实姓名</label>
+                <div class="layui-input-block" style="max-width: 500px;">
+                    <input type="text" name="realname" lay-verify="" autocomplete="off" placeholder="请输入真实姓名" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">身份证号码</label>
+                <div class="layui-input-block" style="max-width: 500px;">
+                    <input type="text" name="idnum" lay-verify="" autocomplete="off" placeholder="请输入身份证号码" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">是否实名</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="is_idverifly" value="1" title="已实名" >
+                    <input type="radio" name="is_idverifly" value="0" title="未实名" checked>
+                    <input type="radio" name="is_idverifly" value="2" title="审核中" >
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">鱼饵</label>
+                <div class="layui-input-block" style="max-width: 500px;">
+                    <input type="text" name="integral" lay-verify="" autocomplete="off" placeholder="请输入鱼饵" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">BST虚拟币</label>
+                <div class="layui-input-block" style="max-width: 500px;">
+                    <input type="text" name="bst_currency" lay-verify="" autocomplete="off" placeholder="请输入BST虚拟币" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">OCN幣</label>
+                <div class="layui-input-block" style="max-width: 500px;">
+                    <input type="text" name="ocn_currency" lay-verify="" autocomplete="off" placeholder="请输入OCN幣" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">推荐收益</label>
+                <div class="layui-input-block" style="max-width: 500px;">
+                    <input type="text" name="recommend_income" lay-verify="" autocomplete="off" placeholder="请输入推荐收益" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">团队收益</label>
+                <div class="layui-input-block" style="max-width: 500px;">
+                    <input type="text" name="team_income" lay-verify="" autocomplete="off" placeholder="请输入团队收益" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">收益转存</label>
+                <div class="layui-input-block" style="max-width: 500px;">
+                    <input type="text" name="income_transferred" lay-verify="" autocomplete="off" placeholder="请输入收益转存" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">推荐人ID</label>
+                <div class="layui-input-block" style="max-width: 500px;">
+                    <input type="text" name="parent_mid" lay-verify="required" autocomplete="off" placeholder="请输入推荐人ID" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">等级</label>
+                <div class="layui-input-inline">
+                    <select name="level">
+                        <option value="0">默认等级</option>
+                        {volist name='levellist' id='vo'}
+                        <option value="{$vo.level}">{$vo.levelname}</option>
+                        {/volist}
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">推广员</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="is_promoter" value="1" title="是">
+                    <input type="radio" name="is_promoter" value="0" title="不是" checked>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">是否激活</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="is_activation" value="1" title="是">
+                    <input type="radio" name="is_activation" value="0" title="否" checked>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">状态</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="status" value="1" title="正常" checked>
+                    <input type="radio" name="status" value="0" title="禁用">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" lay-filter="vaeform">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    <a href="javascript:history.back(-1)" class="layui-btn layui-btn-primary">返回</a>
+                </div>
+            </div>
+        </form>
+        <script src="__ADMIN__/lib/layui/layui.js" charset="utf-8"></script>
+        <script>layui.config({
+                base: '/themes/admin_themes/module/'
+            }).use(['upload', 'form', 'vaeyo'],
+            function() {
+                var form = layui.form,
+                layer = layui.layer,
+                $ = layui.$,
+                upload = layui.upload,
+                vae = layui.vaeyo;
+
+                //监听提交
+                form.on('submit(vaeform)',
+                function(data) {
+                    $.ajax({
+                        url: "/admin/member/addSubmit",
+                        type: 'post',
+                        data: data.field,
+                        success: function(e) {
+                            if (e.code == 1) {
+                                layer.confirm('保存成功,返回列表吗?', {
+                                    icon: 3,
+                                    title: '提示'
+                                },
+                                function(index) {
+                                    vae.backThisTab();
+                                    layer.close(index);
+                                });
+                            } else {
+                                layer.msg(e.msg);
+                            }
+                        }
+                    }) 
+                    return false;
+                });
+
+            });</script>
+    </body>
+
+</html>

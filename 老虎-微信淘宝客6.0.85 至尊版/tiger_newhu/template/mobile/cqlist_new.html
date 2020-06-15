@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>搜索</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/css/slick.min.css" />
+    <link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/css/style.css" />
+    <link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/css/hsy.css" />
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/jquery.min.js"></script>
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/slick.min.js"></script>
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/clipboard.min.js"></script>
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/lib.js"></script>
+		<script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/vue.min.js"></script>
+	<style>
+		.listPage {
+		    padding-top: 3.5rem;
+		}
+		.list1 {
+		    padding: .0rem .3rem;
+		}
+		.van-cell{
+			    line-height: inherit;
+				    padding: 0;
+					background-color:transparent
+		}
+		.mallList li .txt .btn-buy{
+			    background: #ff7800 url({$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/r-b.png) no-repeat right .15rem center/.2rem auto;
+		}
+		.xiaoliang{
+			position: absolute;
+			    bottom: 0;
+			    text-align: center;
+			    width: 100%;
+			    /* background: #000; */
+			    line-height: 0.4rem;
+			    color: #fff;
+			    background-color: rgba(0,0,0,0.3);
+		}
+	</style>
+</head>
+
+<body>
+    <div class="bodyW">
+        <div class="listTop">
+            <form action="{php echo $this->createMobileUrl('cqlist')}" class="soMod">
+            	<input type="hidden" name="i" value="{$_W['uniacid']}">
+            	<input type="hidden" name="c" value="entry">
+            	<input type="hidden" name="do" value="cqlist">
+            	<input type="hidden" name="m" value="tiger_newhu">								
+                <div class="back"  onclick="history.go(-1);"></div>
+                <input type="submit" class="so" value="搜索">
+                <div class="inp">
+                    <div class="icon"></div>
+                    <input type="text" id="key" value="{$key}" name="key" placeholder="请输入搜索内容" class="inpCon">
+                    <input type="reset" class="reset">
+                </div>
+            </form>
+           <div class="tabMod">
+                <div class="titleList">
+                    <div class="item on" id="tb"><a href="javascript:;">淘宝</a></div>
+                    <div class="item" id="pdd"><a href="javascript:;">拼多多</a></div>
+                    <div class="item" id="jd"><a href="javascript:;">京东</a></div>
+                    <div class="item" id="wph"><a href="javascript:;">唯品会</a></div>
+                    <div class="item" id="sn"><a href="javascript:;">苏宁易购</a></div>
+                </div>
+            </div>
+            <div class="sortMod">
+                <div class="item item0 on">
+                    <span>综合</span>
+                </div>
+				<div class="item item1">
+				    <span>价格</span>
+				    <!-- <img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/icon_sc_on_default.png" alt="" class="def">
+				    <img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/icon_sc_on_selected.png" alt="" class="up">
+				    <img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/icon_sc_off_selected.png" alt="" class="down"> -->
+				</div>
+                <div class="item item2">
+                    <span>销量</span>
+<!--                    <img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/icon_sc_on_default.png" alt="" class="def">
+                    <img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/icon_sc_on_selected.png" alt="" class="up">
+                    <img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/icon_sc_off_selected.png" alt="" class="down"> -->
+                </div>
+                <div class="item item3">
+                    <span id="itemzn3">站内</span>
+                    <!-- <img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/icon_sc_on_default.png" alt="" class="def">
+                    <img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/icon_sc_on_selected.png" alt="" class="up">
+                    <img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/icon_sc_off_selected.png" alt="" class="down"> -->
+                </div>
+                
+            </div>
+			<div class="filterMod" id="filterMod">
+			    <img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/search_ticket.png" alt="" class="ticket">
+			    <span>仅显示优惠券商品</span>
+			    <div class="radio"><em></em></div>
+			</div>
+          
+        </div>
+        <div class="listPage singer" id="table">
+      
+            <ul class="mallList" id="goods_box">
+				
+            </ul>
+        </div>
+		<!-- 加载数据、 -->
+		<link href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/js/layui/css/layui.css" rel="stylesheet">
+		<script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/js/layui/layui.js" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript">
+			var vm=new Vue({
+				el: '#app',
+				data:{
+					'pxname':'',//1-价格   2-销量
+					'pxid':0,//0-正序，1-逆序
+					'zn':0,////1 站内
+					'page':0,
+					'yhj':0,//优惠券
+					'uid':'0',
+					'url':"",
+					'pt':'tb',
+					'sort_type':0,//pdd 0-综合排序3-按价格升序 6-按销量降序 2-按佣金比率升序
+					'with_coupon':'false',//pdd//false返回所有商品，true只返回有优惠券的商品  
+					'px':0,
+				}
+			});
+			
+			vm.uid="{$zxshare['id']}";
+		    // var  limit=1;
+		   $(document).delegate("a", "click", function (e) {
+		
+		        var url = $(this).attr("href");
+		        if($("#goods_box li").length == 0) return;
+		
+		        window.localStorage.setItem("top", document.body.scrollTop);
+		        window.localStorage.setItem("html", $("#goods_box").html());
+		        window.localStorage.setItem("url", window.location.href);
+					 
+				
+		    });
+			if(window.localStorage.getItem("url") == window.location.href && window.localStorage.getItem("top") != "null") {
+				
+		      $("#goods_box").html(window.localStorage.getItem("html"));
+		        document.body.scrollTop = window.localStorage.getItem("top");
+		        window.localStorage.setItem("top", "null");
+		        window.localStorage.setItem("html", "null");
+		        window.localStorage.setItem("url", "null");		
+				 	//alert(limit);
+				var le=$("#goods_box li").length;
+				vm.page=1+Math.ceil(le/20);
+				
+				 window.localStorage.setItem("limit", vm.page);
+				 
+				  window.localStorage.getItem("limit")
+					//alert(limit);
+				//alert( $("#list_box li").length);
+		    }	
+			
+			getlist();
+			function getlist(){
+				;!function(){
+						layui.use('flow', function(){
+							var $ = layui.jquery;
+							var flow = layui.flow;
+								            
+				            flow.load({
+				                elem: '#table'
+				                ,end: '本场次商品已经加载完毕啦 ￣O￣)ノ！'
+				                ,done: function(page, next){
+				                    var lis =[];
+				                    // vm.page=limit;
+									vm.page++;
+				                    var content='';
+									// console.log(vm.pxname,vm.pxid,vm.page);
+									 
+									 if(vm.pt=='tb'){
+										 vm.url="{php echo $this->createMobileUrl('cqlistajax',array('key'=>$key,'tm'=>$tm,'pid'=>$pid))}&uid="+vm.uid+"&page="+vm.page+"&pxname="+vm.pxname+"&zn="+vm.zn+"&yhj="+vm.yhj;
+									 }else if(vm.pt=='pdd'){										 
+										 vm.url="{php echo $_W['siteroot']}app/index.php?i={$_W['uniacid']}&c=entry&do=pddgoodslist&m=tuike_pdd&op=1&page="+vm.page+"&key={$key}&sort_type="+vm.sort_type+"&with_coupon="+vm.with_coupon;
+									 }else if(vm.pt=='jd'){
+										 vm.url="{php echo $_W['siteroot']}app/index.php?i={$_W['uniacid']}&c=entry&do=jdcjgoodslist&m=tuike_jd&&op=1&key={$key}&page="+vm.page+"&quan="+vm.yhj+"&px="+vm.px;
+									 }else if(vm.pt=='wph'){
+										 if(vm.pxname==1){
+											 vm.pxname="PRICE";
+										 }else if(vm.pxname==2){
+											 vm.pxname="SALES";
+										 }else if(vm.pxname==3){
+											 vm.pxname="DISCOUNT";
+										 }
+										 vm.url="{php echo $this->createMobileUrl('Wphsearchpost',array('gettype'=>0,'pdtype'=>1))}&uid="+vm.uid+"&page="+vm.page+"&pxname="+vm.pxname+"&pxid="+vm.pxid+"&key={$key}";
+									 }else if(vm.pt=='sn'){
+										 vm.url="{php echo $this->createMobileUrl('snlistpost')}&uid="+vm.uid+"&sn="+vm.zn+"&page="+vm.page+"&pxname="+vm.pxname+"&key={$key}&yhj="+vm.yhj;
+									 }else{
+										 vm.url="{php echo $this->createMobileUrl('cqlistajax',array('key'=>$key,'tm'=>$tm,'pid'=>$pid))}&uid="+vm.uid+"&page="+vm.page+"&pxname="+vm.pxname+"&zn="+vm.zn+"&yhj="+vm.yhj;
+									 }
+									 console.log(vm.pt+"链接"+vm.url);
+				                    $.get(vm.url, function(res){
+				                    	res=JSON.parse(res);
+				                    	//alert(res);
+				                    	console.log(res);
+				                        layui.each(res.data, function(index, item){
+											
+											content +='<li >';
+											content +='<div class="listPic">';
+
+											if(vm.pt=='tb'){
+												content +='<a href="{php echo $this->createMobileUrl("view")}'+'&id='+item.id+'&dluid={$dluid}&lm='+item.lm+'&itemid='+item.itemid+'&org_price='+item.itemprice+'&price='+item.itemendprice+'&coupons_price='+item.couponmoney+'&goods_sale='+item.itemsale+'&title='+item.itemtitle+'&pic_url='+encodeURIComponent(item.itempic)+'&pid='+item.pid+'">';							  if(item.itemsale){
+													content +='<div class="xiaoliang">'+item.itemsale+'人已购</div>';
+												}												
+												content +='<img src="'+item.itempic+'_200x200.jpg" alt="">';
+											}else if(vm.pt=='pdd'){
+												content +='<a href="{php echo $_W["siteroot"]}app/index.php?i={$_W["uniacid"]}&c=entry&do=pddview&m=tuike_pdd&itemid='+item.itemid+'">';
+												if(item.itemsale){
+													content +='<div class="xiaoliang">'+item.itemsale+'人已购</div>';
+												}
+												content +='<img src="'+item.itempic+'" alt="">';
+											}else if(vm.pt=='jd'){
+												content +='<a href="{php echo $_W["siteroot"]}app/index.php?i={$_W["uniacid"]}&c=entry&do=jdview&m=tuike_jd&jdlm=1&itemid='+item.itemid+'">';
+												if(item.itemsale){
+													content +='<div class="xiaoliang">'+item.itemsale+'人已购</div>';
+												}
+												content +='<img src="'+item.itempic+'" alt="">';
+											}else if(vm.pt=='wph'){
+												content +='<a href="{php echo $this->createMobileUrl("wphview")}&itemid='+item.itemid+'">';							  
+												if(item.itemsale){
+													content +='<div class="xiaoliang">'+item.itemsale+'人已购</div>';
+												}												
+												content +='<img src="'+item.itempic+'" alt="">';
+											}else if(vm.pt=='sn'){
+												content +='<a href="{php echo $this->createMobileUrl("snview")}&itemid='+item.itemid+'&supplierCode='+item.supplierCode+'">';							  
+												if(item.itemsale){
+													content +='<div class="xiaoliang">'+item.itemsale+'人已购</div>';
+												}												
+												content +='<img src="'+item.itempic+'" alt="">';
+											}
+											
+											
+											content +='</a>';
+											content +='</div>';
+											content +='<div class="txt">';
+											content +='<div class="listTit">';
+
+											if(vm.pt=='tb'){
+												content +='<a href="{php echo $this->createMobileUrl("view")}'+'&id='+item.id+'&dluid={$dluid}&lm='+item.lm+'&itemid='+item.itemid+'&org_price='+item.itemprice+'&price='+item.itemendprice+'&coupons_price='+item.couponmoney+'&goods_sale='+item.itemsale+'&title='+item.itemtitle+'&pic_url='+encodeURIComponent(item.itempic)+'&pid='+item.pid+'">';
+												if(item.shoptype==1){
+													content +='<i class="mallIcon tm"></i>';
+												}else{
+													content +='<i class="mallIcon tb"></i>';
+												}
+											}else if(vm.pt=='pdd'){
+												content +='<a href="{php echo $_W["siteroot"]}app/index.php?i={$_W["uniacid"]}&c=entry&do=pddview&m=tuike_pdd&itemid='+item.itemid+'">';
+												content +='<i class="mallIcon pdd"></i>';
+											}else if(vm.pt=='jd'){
+												content +='<a href="{php echo $_W["siteroot"]}app/index.php?i={$_W["uniacid"]}&c=entry&do=jdview&m=tuike_jd&jdlm=1&itemid='+item.itemid+'">';
+												content +='<i class="mallIcon jd"></i>';
+											}else if(vm.pt=='wph'){
+												content +='<a href="{php echo $this->createMobileUrl("wphview")}&itemid='+item.itemid+'">';
+												content +='<i class="mallIcon wph"></i>';
+											}else if(vm.pt=='sn'){
+												content +='<a href="{php echo $this->createMobileUrl("snview")}&itemid='+item.itemid+'&supplierCode='+item.supplierCode+'">';
+												content +='<i class="mallIcon sn"></i>';
+											}
+
+
+
+
+											content +='<span>'+item.itemtitle+'</span>';
+											content +='</a>';
+											content +='</div>';
+
+											if(item.sellernick){
+												content +='<div class="listDesc"><i class="shopIcon" style="background-image: url({$_W["siteroot"]}addons/tiger_newhu/template/mobile/public/images/shopicon.png);"></i>'+item.sellernick+'</div>';
+											}														
+
+											content +='<div class="listInfo">';
+											if(item.couponmoney){
+											content +='<div class="quan">券'+item.couponmoney+'元</div>';
+											}
+											content +='<div class="fuli">奖￥'+item.rate+'</div>';
+											content +='</div>';
+											content +='<div class="listPrice">';
+											content +='<div class="price">';
+											content +='<div class="old">￥'+item.itemprice+'</div>';
+											content +='<div class="new"><em>￥</em>'+item.itemendprice+'</div>';
+											content +='</div>';
+											if(vm.pt=='tb'){
+												content +='<a href="{php echo $this->createMobileUrl("view")}'+'&id='+item.id+'&dluid={$dluid}&lm='+item.lm+'&itemid='+item.itemid+'&org_price='+item.itemprice+'&price='+item.itemendprice+'&coupons_price='+item.couponmoney+'&goods_sale='+item.itemsale+'&title='+item.itemtitle+'&pic_url='+encodeURIComponent(item.itempic)+'&pid='+item.pid+'" class="btn-buy">马上抢</a>';
+											}else if(vm.pt=='pdd'){
+												content +='<a href="{php echo $_W["siteroot"]}app/index.php?i={$_W["uniacid"]}&c=entry&do=pddview&m=tuike_pdd&itemid='+item.itemid+'" class="btn-buy">马上抢</a>';
+											}else if(vm.pt=='jd'){
+												content +='<a href="{php echo $_W["siteroot"]}app/index.php?i={$_W["uniacid"]}&c=entry&do=jdview&m=tuike_jd&jdlm=1&itemid='+item.itemid+'" class="btn-buy">马上抢</a>';
+											}else if(vm.pt=='wph'){
+												content +='<a href="{php echo $this->createMobileUrl("wphview")}&itemid='+item.itemid+'" class="btn-buy">马上抢</a>';
+											}else if(vm.pt=='sn'){
+												content +='<a href="{php echo $this->createMobileUrl("snview")}&itemid='+item.itemid+'&supplierCode='+item.supplierCode+'" class="btn-buy">马上抢</a>';
+											}
+											
+											
+											content +='</div>';
+											content +='</div>';											
+											content +='</li>';
+				                        	
+				                        });
+				                         $("#goods_box").append(content);
+						
+				                        //console.log(content);
+				                        next(lis.join(''), vm.page < res.pages);
+				                    });
+				                }
+				            });
+				        });
+				    }();
+			}
+			    
+			    
+				</script>
+		<!-- 结束 -->
+        <script>
+	
+            $(function() {
+                hr.regPage('listPage', {
+                    init: function() {
+                        this.sort();
+                        this.radio();
+                        this.reset();
+                        this.tab()
+                    },
+                    sort: function() {
+                        $('body').on('click', '.sortMod .item', function() {							
+                            $(this).addClass('on').siblings().removeClass('on down');
+                            $(this).toggleClass('down')
+							$("#goods_box").html("");
+
+							vm.page=0;			
+							if($(this).attr('class')=='item item1 on down'){
+								vm.pxname=1;
+								vm.sort_type=3;
+								vm.zn='';
+								vm.px=4;
+							}
+							if($(this).attr('class')=='item item1 on'){
+								vm.pxname=2;
+								vm.sort_type=3;
+								vm.zn='';
+								vm.px=4;
+							}
+							if($(this).attr('class')=='item item2 on down'){
+								vm.pxname=3;
+								vm.sort_type=6;
+								vm.zn='';
+								vm.px=2;
+							}
+							if($(this).attr('class')=='item item2 on'){
+								vm.pxname=3;
+								vm.sort_type=6;
+								vm.pxid='1';
+								vm.zn=0;
+								vm.px=2;
+							}
+							if($(this).attr('class')=='item item3 on down'){
+								vm.zn=1;
+								vm.sort_type=2;
+								vm.pxname=0;
+								vm.px=3;
+							}
+							if($(this).attr('class')=='item item3 on'){
+								vm.pxname=0;
+								vm.zn=1;
+								vm.sort_type=2;
+								vm.px=3;
+							}
+							
+							if($(this).attr('class')=='item item3'){
+								vm.zn=1;
+								vm.sort_type=2;
+								vm.pxname=0;
+								vm.px=3;
+							}
+							
+							
+							
+							
+							if($(this).attr('class')=='item item0 on'){
+								vm.pxname='';
+								vm.zn='';
+							}
+							getlist();	
+							
+							console.log($(this).attr('class'));
+                        });
+                        $('body').on('click', '.sortMod .type', function() {
+                            $(this).toggleClass('v');
+                            $('.listPage').toggleClass('singer')
+                        })
+                    },
+                    radio: function() {
+						
+						
+                        $('body').on('click', '.radio', function() {
+							// console.log($(this).attr('class'));
+							vm.page=0;		
+							$("#goods_box").html("");
+							if($(this).attr('class')=='radio'){
+								vm.yhj=1;
+							}
+							if($(this).attr('class')=='radio on'){
+								vm.yhj=0;
+							}
+							getlist();
+                            $(this).toggleClass('on')
+							
+                        })
+                    },
+                    reset: function() {
+                        var $reset = $('.listTop .soMod .inp .reset')
+                        $('body').on('input', '.listTop .soMod .inp .inpCon', function() {
+                            if ($(this).val().length > 0) {
+                                $reset.show()
+                            } else {
+                                $reset.hide()
+                            }
+                        }).on('blur', '.listTop .soMod .inp .inpCon', function() {
+                            if ($(this).val().length > 0) {
+                                $reset.show()
+                            } else {
+                                $reset.hide()
+                            }
+                        }).on('click', '.listTop .soMod .inp .reset', function() {
+                            $(this).hide()
+                        })
+
+                    },
+                    tab: function() {
+                        $('body').on('click', '.titleList .item', function() {
+							var pt=$(this).attr('id');
+							vm.page=0;
+							$("#goods_box").html("");
+							if(pt=='tb'){
+								$("#itemzn3").html("站内");
+								vm.pt='tb';								
+							}else if(pt=='pdd'){								
+								$("#itemzn3").html("奖励");
+								vm.pt='pdd';								
+							}else if(pt=='jd'){
+								$("#itemzn3").html("奖励");
+								vm.pt='jd';
+							}else if(pt=='wph'){
+								$("#itemzn3").html("折扣");
+								$("#filterMod").css("display","none");
+								$("#table").css("padding-top","3rem");
+								vm.pt='wph';
+							}else if(pt=='sn'){
+								$("#itemzn3").html("苏宁自营");
+								vm.pt='sn';
+							}else{
+								vm.tb='tb';								
+							}
+							getlist();
+                            $(this).addClass('on').siblings().removeClass('on')
+                        })
+                    }
+                });
+            });
+        </script>
+</body>
+
+</html>

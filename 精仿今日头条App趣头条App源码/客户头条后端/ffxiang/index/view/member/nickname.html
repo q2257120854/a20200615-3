@@ -1,0 +1,135 @@
+{include file="member/left" /}
+                <div class="right-container col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                	<div class="account-wrapper">
+					     {include file="member/nav"}
+					    <div class="panel panel-default">		  
+							<div class="account-form-modal">
+								<form action="" method="post" class="form pop-form">
+							        <div class="form-group">
+							            <label class="col-sm-2 control-label">用户昵称</label>
+							            <div class="col-sm-4">
+							                <input type="text" value="{$member['nickname']}" class="form-control" name="nickname" maxlength="16" id="nickname" />
+							            </div>
+							        </div>
+							       <!--  <div class="form-group">
+							            <label class="col-sm-2 control-label" data-toggle="modal" data-target="#avatar-modal">我的头像</label>
+							            <div class="col-sm-4"> -->
+							                <!-- 图片开始 -->
+							              <!--   <img  id="imagestuimas" src="{:_userimg($member['img'])}" width="100" height="100" />
+							                <div class="new-contentarea tc"> <a href="javascript:void(0)" class="upload-img"> -->
+      <!-- <label for="upload-file">选择图片...</label>
+      </a>
+      <input type="file" class="" name="upload-file" id="upload-file" />
+    </div> -->
+							                <!--  <button style="margin-left: 30px" type="button" class="btn btn-primary" id="img">点我上传图片</button> -->
+							                <!-- 图片结束 -->
+							            <!-- </div> -->
+							        <!-- </div> -->
+							        <div class="form-group">
+							            <div class="col-sm-3 col-sm-offset-3">
+							                <button type="botton" class="btn btn-primary btn-lg ladda-button">修改</button>
+							            </div>
+							        </div>
+							    </form>
+							</div> 
+						</div>
+					</div>
+				</div>
+{load href="__P__img/style.css"}
+{load href="__P__img/cropbox.js"}
+<div class="containerffxiang" style="display: none;">
+  <div class="imageBox">
+    <div class="thumbBox"></div>
+    <div class="spinner" style="display: none"></div>
+  </div>
+  <div class="action"> 
+    <!-- <input type="file" id="file" style=" width: 200px">-->
+     
+    <input type="button" id="imgok"  class="Btnsty_peyton" value="OK">
+    <input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+"  >
+    <input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-" >
+  </div>
+  <div class="cropped"></div>
+</div>
+<script type="text/javascript">
+// function asdasdas(){
+// 	layer.open({
+// 	  type: 1,
+// 	  area:'650px',
+// 	  shade: [0.5, '#000'], 
+// 	  title: false, //不显示标题
+// 	  content: $('.containerffxiang'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+// 	  // cancel: function(){
+// 	  //   layer.msg('捕获就是从页面已经存在的元素上，包裹layer的结构', {time: 5000, icon:6});
+// 	  // }
+// 	});
+// }
+$(window).load(function() {
+	$('#imgok').on('click',function(){
+		 $('#imagestuimas').attr("src",$('#imagestou').attr('src'));
+		//$('#imagestuimas').attr("src",imasgasdasd);
+		layer.closeAll();
+	})
+	var imasgasdasd='';
+	var options =
+	{
+		thumbBox: '.thumbBox',
+		spinner: '.spinner',
+		imgSrc: ''
+	}
+	var cropper = $('.imageBox').cropbox(options);
+	var img="";
+	$('#upload-file').on('change', function(){
+		//$('.containerffxiang').css('display','block')
+		asdasdas();
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			options.imgSrc = e.target.result;
+			imasgasdasd=options.imgSrc;
+			cropper = $('.imageBox').cropbox(options);
+			getImg();
+		}
+		reader.readAsDataURL(this.files[0]);
+		this.files = [];
+	})
+	// function getImg(){
+	// 	img = cropper.getDataURL();
+	// 	$('.cropped').html('');
+	// 	$('.cropped').append('<img src="'+img+'" align="absmiddle" id="imagestou" style="width:180px;margin-top:4px;border-radius:180px;box-shadow:0px 0px 12px #7E7E7E;"><p>180px*180px</p>');
+	// 	$('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:128px;margin-top:4px;border-radius:128px;box-shadow:0px 0px 12px #7E7E7E;"><p>128px*128px</p>');
+	// 	$('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:64px;margin-top:4px;border-radius:64px;box-shadow:0px 0px 12px #7E7E7E;" ><p>64px*64px</p>');
+	// 	}
+	// $(".imageBox").on("mouseup",function(){
+ // 		getImg();
+ //  		});
+	// $('#btnZoomIn').on('click', function(){
+	// 	cropper.zoomIn();
+	// 	getImg();
+	// })
+	// $('#btnZoomOut').on('click', function(){
+	// 	cropper.zoomOut();
+	// 	getImg();
+	// })
+	$('.ladda-button').on('click',function(){
+		var nickname=$('#nickname').val();
+		// var img=$('#imagestuimas').attr('src');
+		// if(!nickname && img=='{:_userimg($member['img'])}'){
+		// 	layer.msg('您没有修改')
+		// 	return false;
+		// }
+		_ajax('{:url('api/member/nickname')}','post',{nickname:nickname},function(ret){
+			if(ret.ret){
+				layer.msg(ret.ret)
+			}else{
+				layer.msg(ret.err)
+			}
+		})
+		return false;
+	})
+});
+ 
+
+</script>
+{include file="member/footer" /}<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

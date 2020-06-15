@@ -1,0 +1,174 @@
+{extend name="common/world0"}
+{block name="title"}数字蚁后{/block}
+{block name="style"}
+<style>
+#speed {
+    position: absolute;right: 0rem;top: .45rem;
+}
+@media (max-width: 640px) {
+    .o-auto {
+        max-height: 20rem;
+    }
+}
+</style>
+{/block}
+{block name="container"}
+<div class="row">
+    <div class="col-lg-6">
+        {empty name="machines"}
+            <div class="alert alert-primary alert-dismissible">
+                <button data-dismiss="alert" class="close"></button>
+                <h4>很抱歉</h4>
+                <p>您现在还没有任何在运行中的蚁后，这意味着您与数字货币的世界正在并步前行。</p>
+                <p>是否前往商城购买？</p>
+                <div class="btn-list">
+                    <a href="/store.html" class="btn btn-success">好的</a>
+                    <button class="btn btn-secondary" data-dismiss="alert" type="button">不，我再想想</button>
+                </div>
+            </div>
+        {else /}
+            <div class="card p-3">
+                <div class="d-flex">
+                    <div class="text-dark"><i class="fe fe-activity"></i> <b>{$profit}</b> {$Think.config.hello.unit}</div>
+                    <button class="btn btn-secondary btn-sm ml-auto btn-profit">一键收矿</button>
+                </div>
+                <div class="card-body p-0 position-relative">
+                    <div class="small mt-2">随机区块：</div>
+                    <div id="hash" class="text-muted small mt-2" style="word-break: break-word;">-</div>
+                    <div id="speed" class="text-green">{$power}Ghs</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body p-3 o-auto">
+                    <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+                        <thead>
+                            <tr>
+                                <th>蚁后</th>
+                                <th hidden class="d-sm-table-cell d-md-table-cell d-lg-table-cell">收益</th>
+                                <th class="text-right pr-4">状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {volist name="running" id="machine"}
+                            <tr>
+                                <td>
+                                    <div class="text-dark mb-1 small"><span class="tag">#{$machine.mid}</span> {$machine.name}</div>
+                                    <div class="progress progress-xs">
+                                        <div class="progress-bar bg-{$machine.color}" role="progressbar" style="width: {$machine.rate}%" aria-valuenow="{$machine.rate}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="small"><strong>{$Think.config.hello.unit}</strong>: <span class="text-{$machine.color}">{$machine.profit|money}</span>/{$machine.income|money}</div>
+                                </td>
+                                <td hidden class="d-sm-table-cell d-md-table-cell d-lg-table-cell">
+                                    <div>{$machine.profit|money}{$Think.config.hello.unit}</div>
+                                    <div class="small text-muted">{$machine.profit_at}</div>
+                                </td>
+                                <td align="right">
+                                    <span class="stamp stamp-sm bg-info px-3">
+                                        <i class="fa fa-spinner"></i>
+                                        <!-- <small>运行中</small> -->
+                                    </span>
+                                </td>
+                            </tr>
+                            {/volist}
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            {notempty name="expire"}
+            <div class="card">
+                <div class="card-body p-3 o-auto">
+                    <!-- <div class="text-center small mb-0" data-toggle="collapse" data-target="#expireTable">查看已过期的蚁后</div> -->
+                    <div class="text-center small mb-2">已过期的蚁后</div>
+                    <table id="expireTable" class="table table-hover table-outline table-vcenter text-nowrap card-table">
+                        {volist name="expire" id="machine"}
+                        <tr>
+                            <td>
+                                <div class="text-dark mb-1 small"><span class="tag">#{$machine.mid}</span> {$machine.name}</div>
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar bg-{$machine.color}" role="progressbar" style="width: {$machine.rate}%" aria-valuenow="{$machine.rate}" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td hidden class="d-sm-table-cell d-md-table-cell d-lg-table-cell">
+                                <div>{$machine.profit|money}{$Think.config.hello.unit}</div>
+                                <div class="small text-muted">{$machine.profit_at}</div>
+                            </td>
+                            <td align="right">
+                                <span class="stamp stamp-sm bg-yellow px-3">
+                                    <i class="fa fa-minus-circle"></i>
+                                    <!-- <small>已过期</small> -->
+                                </span>
+                            </td>
+                        </tr>
+                        {/volist}
+                    </table>
+                </div>
+            </div>
+            {/notempty}
+        {/empty}
+    </div>
+    {notempty name="clocks"}
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body p-3">
+                <ul class="timeline">
+                    {volist name="clocks" id="clock"}
+                    <li class="timeline-item pl-5">
+                        <div class="timeline-badge bg-info"></div>
+                        <div>
+                            <div class="small"><span class="tag">#{$clock.mid}</span> {$clock.name}</div>
+                            <small class="d-block text-muted">{$clock.create_at}</small>
+                        </div>
+                        <div class="timeline-time text-green mt-3">+{$clock.money|money}</div>
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {/notempty}
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+require(['jquery'], function($){
+    var randomStr = function(){
+        var array = [];
+        for (var i = 97; i <= 122; i++) {
+            array.push(String.fromCharCode(i));
+        }
+        for (var i = 0; i < 10; i++) {
+            array.push(i);
+        }
+        var string = '';
+        for (var i = 0; i < 32; i++) {
+            string += array[Math.floor(Math.random()*array.length)];
+        }
+        return string;
+    }
+    $(function(){
+        $('#hash').text(randomStr());
+        setInterval(function(){
+            $('#hash').text(randomStr());
+        }, 100);
+        $('.btn-profit').on('click', function(){
+            if ($(this).hasClass('btn-loading')) {
+                return false;
+            }
+            $(this).addClass('btn-loading');
+            ajax(api.machine.profit, {}, function(res){
+                $('.btn-profit').removeClass('btn-loading');
+                if (res.code == 200) {
+                    toast(res.message, function(){
+                        window.location.reload();
+                    });
+                } else {
+                    toast(res.message);
+                }
+            });
+        });
+    });
+});
+</script>
+{/block}

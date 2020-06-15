@@ -1,0 +1,74 @@
+{extend name="common/world"}
+{block name="title"}发布商品{/block}
+{block name="style"}
+<style>
+</style>
+{/block}
+{block name="container"}
+<div class="card publish">
+    <div class="card-header">
+        <div class="card-title f1">发布宝贝</div>
+    </div>
+    <div class="card-body p-3">
+        <div class="form-group">
+            <label class="form-label">宝贝名称</label>
+            <input type="text" class="form-control" name="title" maxlength="30" placeholder="名称：简单明了" />
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label class="form-label">所属类目</label>
+                    <select name="catalog" class="form-control custom-select">
+                    {volist name="Think.config.hello.store.catalog" id="name"}
+                        {in name="key" value="$Think.config.hello.store.seller.catalog"}
+                        <option value="{$key}">{$name}</option>
+                        {/in}
+                    {/volist}
+                    </select>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label class="form-label">库存数量</label>
+                    <input type="number" class="form-control" name="stock" maxlength="5" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">销售价格</label>
+            <div class="input-group">
+                <input type="text" name="price" class="form-control" placeholder="0.00" />
+                <span class="input-group-append">
+                    <span class="input-group-text">{$Think.config.hello.unit}</span>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-label">宝贝主图</div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" name="image" />
+                <label class="custom-file-label">选择一张图片</label>
+            </div>
+            <div hidden class="preview dimmer mt-3">
+                <div class="loader"></div>
+                <div class="dimmer-content">
+                    <img src="" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">宝贝详情</label>
+            <script id="editor" name="content" type="text/plain" style="height: 20rem;"></script>
+        </div>
+    </div>
+    <div class="card-footer text-right">
+        <button type="button" class="btn btn-primary btn-publish">提交发布</button>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" src="/static/js/store.js"></script>
+{/block}

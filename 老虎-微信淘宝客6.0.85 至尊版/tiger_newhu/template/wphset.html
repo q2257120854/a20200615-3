@@ -1,0 +1,126 @@
+
+		{template 'public_head'}
+		<!--中间内容开始-->
+		<section>
+		    <section class="hbox stretch">
+		    {template 'public_left'}
+		    <!--右边框架-->
+			  <section id="content">
+			    <section class="vbox">
+			       <section class="scrollable padder">
+                        <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                          <li><a href="{php echo $this->createWebUrl('index')}"><i class="fa fa-home"></i> 首页  </a></li>
+                          <li class="active">基本设置</li>
+                        </ul>
+			            <!--编辑内容-->
+                        <div class="main">
+                            <form action="" method="post" class="form-horizontal form" id="setting-form">
+                            <input type="hidden" name="id" value="{$set['id']}">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">参数设置</div>
+                                    <div class="panel-body">
+                                        <ul class="nav nav-tabs" id="myTab">
+                                            <li class="active" ><a href="#tab_basic">授权设置</a></li>
+                                            <!--<li><a href="#tab_share">其它设置</a></li>-->
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane  active" id="tab_basic">
+                                              
+                                                
+                                                <div style="clear: both;"></div>
+                                                <div style="margin:0 auto;width:90%;box-shadow:  0 2px 5px #999;padding:60px;margin-bottom: 30px;">
+	                                                   <div class="form-group">
+	                                                          <div class="col-xs-12 col-sm-12">
+	                                                            {if $wphsign['access_token']<>''}
+	                                                            <a href="https://auth.vip.com/oauth2/authorize?client_id=2bc54d13&response_type=code&redirect_uri=http://ku.tigertaoke.com/addons/tiger_zhaoshang/wphsign.php&state={php echo urlencode($_W['siteroot'].'|'.$_W['uniacid'])}&display=mobile" class="btn btn-success" style="width:100%">登录成功，点击重新登录</a>
+	                                                            {else}
+	                                                            <a href="https://auth.vip.com/oauth2/authorize?client_id=2bc54d13&response_type=code&redirect_uri=http://ku.tigertaoke.com/addons/tiger_zhaoshang/wphsign.php&state={php echo urlencode($_W['siteroot'].'|'.$_W['uniacid'])}&display=mobile" class="btn btn-danger" style="width:100%">登录授权</a>
+	                                                            {/if}  
+	                                                            <span class="help-block">新注册帐号，下载唯享客APP  注册一个帐号，在这里授权成功就可以了</span> 
+																<span class="help-block" style="font-size: 16px;">老的唯品会帐号，一定要登录唯享客APP绑定一次，不然没有这个分佣的权限的</span> 
+	                                                            <!--<span class="help-block" style="color:#ff0000">{if $pddsign['access_token']}授权到期时间：{php echo date('Y-m-d H:i:s',$pddsign['createtime']+60*60*23)}{/if}</span>-->
+	                                                           </div>
+	                                                           
+	                                                  </div>
+													  <table class="table">
+													  							<th style="width: 350px;">opid</th>
+													  	<th style="width: 450px;">access_token</th>
+													  	
+													  	<th>到期时间</th>
+													  	<th  style="text-align:right;">操作</th>
+													                         							
+													  	{loop $wphsignlist $item}
+													  		<tr>
+													  			<td>{$item['open_id']}</td>
+													  									<td>{$item['access_token']}</td>
+													  			<td>{php echo date('Y-m-d H:i:s',$item['endtime'])}</td>
+													  			<td style="text-align:right;">
+													  									
+													  				<a href="{php echo $this->createWebUrl('wphset', array('id' => $item['id'], 'op' => 'delete'))}" onclick="return confirm('此操作不可恢复，只能重新授权，确认删除？');return false;" title="删除" class="btn btn-sm btn-default"><i class="fa fa-remove"></i>删除</a>
+													  			</td>
+													  		</tr>
+													  	
+													  		<tr>
+													  			<td colspan="4" style="height: 5px;border: 0;"></td>
+													  		</tr>
+													  		{/loop}
+													  </table> 
+                                                </div>
+                                                <div style="clear: both;"></div>
+												
+												
+                                            </div>   
+                                                  
+                                                <!---->
+                                            </div>
+              
+
+                                            <div class="tab-pane" id="tab_share">
+                                                <!--积分商城设置-->
+                                                <!---->
+                                                <!--<div class="form-group col-sm-12">
+				                                    <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" />
+				                                    <input type="hidden" name="token" value="{$_W['token']}" />
+				                                </div>-->
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </form>
+                        </div>
+                        <script>
+                        require(['jquery', 'util'], function($, u){
+                            $(function(){
+                                u.editor($('.richtext')[0]);
+                            });
+                        });
+                        $(function () {
+                                window.optionchanged = false;
+                                $('#myTab a').click(function (e) {
+                                    e.preventDefault();//阻止a链接的跳转行为
+                                    $(this).tab('show');//显示当前选中的链接及关联的content
+                                })
+                            });
+                        </script>
+                        
+                        <!--编辑内容结束-->
+			        </section>
+			        {template 'public_bottom'}
+			    </section>
+			    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+			  </section>
+			  <aside class="bg-light lter b-l aside-md hide" id="notes">
+			       <div class="wrapper"></div>
+			  </aside>
+			<!--右边框架结束-->
+			</section>
+		  </section>
+		<!--中间内容结束-->
+	</section>
+
+
+</body>
+</html>

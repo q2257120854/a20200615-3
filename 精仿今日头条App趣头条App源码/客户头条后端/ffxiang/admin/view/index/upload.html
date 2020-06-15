@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台系统</title>
+    {load href="__CSS__bootstrap.min.css"}
+    {load href="__PLUGINS__bootstrap/default.css"}
+    {load href="__PLUGINS__bootstrap/fileinput.css"}
+    <!--[if IE]>
+        <script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+   <style type="text/css">
+   html{margin:0px;padding:0px;}
+    .btn-primary{background-color:#fff; color: #333;border-color:#ccc;}
+    .btn-primary:hover{color:#333;background-color:#e6e6e6;border-color:#adadad}
+    .btn-primary:active{color:#333 !important;background-color:#e6e6e6 !important;border-color:#adadad !important}
+    .baocun{background-color:#337ab7;border-color:#2e6da4; color: #fff; float: right;}
+   /* .file-preview{ position: fixed; width:500px; margin-top: 50px; margin-bottom: 20px;}*/
+   .body{margin: 20px;  overflow: hidden; height: auto;}
+ 
+   .file-preview-frame img{ width: 100px !important;  height: 100px !important; }
+   .file-drop-zone-title{padding:38px 10px;}
+   .file-drop-zone{margin:18px 15px 12px 12px;}
+   </style>
+</head>
+<body >
+ 
+ 
+     <div class="body">
+  <input id="uploadfile" name="image" type="file">
+   <!--  <div class="btn btn-primary btn-file baocun" onclick="baocun()">
+        <i class="glyphicon glyphicon-folder-open"></i> &nbsp;&nbsp;  保存 … 
+    </div> -->
+     </div>
+{load href="__JS__jquery.min.js"}
+{load href="__JS__content.min.js"}
+{load href="__PLUGINS__bootstrap/fileinput.js" }
+{load href="__PLUGINS__bootstrap/fileinput_locale_zh.js" }
+{load href="__JS__bootstrap.min.js"}
+{load href="__PLUGINS__layer/layer.js"}
+<script type="text/javascript">
+var image;
+$("#uploadfile").fileinput({
+  language: 'zh', //设置语言
+  uploadUrl: "{:url('upload')}", //上传的地址
+  allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+  //uploadExtraData:{"id": 1, "fileName":'123.mp3'},
+  uploadAsync: true, //默认异步上传
+  showUpload: true, //是否显示上传按钮
+  showRemove : true, //显示移除按钮
+  showPreview : true, //是否显示预览
+  showCaption: false,//是否显示标题
+  browseClass: "btn btn-primary", //按钮样式     
+  dropZoneEnabled: true,//是否显示拖拽区域
+  minImageWidth: 50, //图片的最小宽度
+  minImageHeight: 50,//图片的最小高度
+  maxImageWidth: 1000,//图片的最大宽度
+  maxImageHeight: 1000,//图片的最大高度
+  maxFileSize: 10000,//单位为kb，如果为0表示不限制文件大小
+  //minFileCount: 1000,
+  maxFileCount: 3, //表示允许同时上传的最大文件个数
+  enctype: 'multipart/form-data',
+  validateInitialCount:true,
+  previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+  msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+});
+$('#uploadfile').on('fileerror', function(event, data, msg) {
+  alert('1'+JSON.stringify(data));
+});
+//异步上传返回结果处理
+$("#uploadfile").on("fileuploaded", function (event, data, previewId, index) {
+  //alert(data.response);
+    image=data.response;
+    if(image){
+     // alert(image)
+        baocun()
+    }else{
+        layer.alert("图片获取出错");
+    }
+});
+//同步上传错误处理
+$('#uploadfile').on('filebatchuploaderror', function(event, data, msg) {
+  alert('3'+JSON.stringify(data));
+});
+//同步上传返回结果处理
+$("#uploadfile").on("filebatchuploadsuccess", function (event, data, previewId, index) {
+  alert('4'+JSON.stringify(data));
+});
+function baocun(){
+    if(image){
+        parent.document.getElementById('image').value=image;
+        parent.msg();
+        var index = parent.layer.getFrameIndex(window.name); 
+        parent.layer.close(index); 
+    }else{
+       layer.msg("请先上传图片");
+    }
+}
+</script>
+</body>
+</html>
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

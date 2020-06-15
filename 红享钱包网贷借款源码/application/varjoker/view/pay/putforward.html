@@ -1,0 +1,62 @@
+{include file="public/header" /}
+
+<div class="outter-wp">
+    <!--sub-heard-part-->
+    <div class="sub-heard-part">
+        <ol class="breadcrumb m-b-0">
+            <li><a>系统</a></li>
+            <li class="active">提现列表</li>
+        </ol>
+    </div>
+    <!--//sub-heard-part-->
+    <div class="graph-visual tables-main">
+
+
+        <div class="graph">
+            <form class="form-inline" method="post">
+                <div class="form-group">
+                    订单查找: <input type="text" class="form-control" name="number" placeholder="订单号"></div>
+                <button type="submit" class="btn btn-default">查询</button> </form>提现成功笔数:{$count}笔，金额{$money}元
+            <div class="tables">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>用户id</th>
+                        <th>提现用户</th>
+                        <th>订单号</th>
+                        <th>银行卡号</th>
+                        <th>提现金额</th>
+                        <th>状态</th>
+                      <th>时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="list" id="vo"}
+                    <tr>
+                        <th scope="row">{$vo.id}</th>
+                        <td>{$vo.name}</td>
+                        <td>{$vo.number}</td>
+                        <td>{$vo.bank}</td>
+                        <td>{$vo.money}</td>
+                         <td>{$vo.addtime}</td>
+                        <td>{eq name="$vo.status" value="1"}审核中{else/}{eq name="$vo.status" value="2"}已驳回{else/}已支付{/eq}{/eq}</td>
+                        <td>{eq name="$vo.status" value="1"}<a href="{:url('pay/successd')}?id={$vo.id}"><span class="label label-primary" >通过</span></a> | <a href="{:url('pay/faild')}?id={$vo.id}"><span class="label label-danger">驳回</span></a>{else/}已提现{/eq}</td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+
+
+
+            </div>
+
+        </div>
+
+        <!--分页位置-->
+        {$list->render()}
+        <!--//graph-visual-->
+    </div>
+
+
+    {include file="public/footer" /}

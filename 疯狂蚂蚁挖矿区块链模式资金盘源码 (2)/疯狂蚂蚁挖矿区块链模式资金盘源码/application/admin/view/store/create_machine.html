@@ -1,0 +1,102 @@
+{extend name="common/world"} {block name="title"}添加数字蚁后{/block} {block name="style"}
+<style type="text/css">
+</style>
+{/block} {block name="container"}
+<div class="page">
+	<div class="page-single">
+		<form class="card" method="post" style="max-width: 50rem;" enctype="multipart/form-data">
+			<input type="hidden" name="catalog" value="1" />
+			<div class="card-body">
+				<div class="card-title">添加数字蚁后</div>
+				<div class="card-subtitle mb-5">不论蚁后的状态是哪一种，都可以通过系统进行赠送。</div>
+				<div class="card-subtitle mb-5"><b>每小时的产量</b> 等于 <b>预计收入</b> 除以 <b>运行周期</b>。</div>
+				<div class="card-subtitle mb-5">如果有小数，则保留<b>8</b>位小数，假如第<b>9</b>位小数大于等于<b>5</b>，那么则四舍五入到第<b>8</b>位。</div>
+				<div class="card-subtitle">举例：A蚁后，周期7小时，产量10货币，前6个小时的产量为1.42857143，最后一个小时的产量为1.42857142。</div>
+				<div class="row">
+				    <div class="col-sm-6">
+				        <div class="form-group">
+				            <label class="form-label">蚁后名称</label>
+				            <input type="text" class="form-control" name="title" placeholder="蚁后名称" maxlength="30" />
+				        </div>
+				    </div>
+				    <div class="col-sm-6">
+				        <div class="form-group">
+                            <div class="form-label">蚁后图片</div>
+                            <div class="custom-file">
+                                <input type="file" accept="image/*" class="custom-file-input" name="image" />
+                                <label class="custom-file-label">选择图片</label>
+                            </div>
+                        </div>
+				    </div>
+				    <div class="col-sm-6">
+				        <div class="form-group">
+				            <label class="form-label">排列顺序</label>
+				            <input type="text" class="form-control" name="sort" placeholder="数字越大越靠前" />
+				        </div>
+				    </div>
+				    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">蚁后状态</label>
+                            <select class="form-control custom-select" name="status">
+                                <option value="1">在售（用户可见可购买）</option>
+                                <option value="0">停售（用户不可见不可购买）</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                    	<div class="form-group">
+                            <label class="form-label">蚁后等级</label>
+                            <select class="form-control custom-select" name="divide">
+                            	{for start="0" end="9"}
+                                	<option value="{$i}">{$i}级</option>
+                                {/for}
+                            </select>
+                            <small id="emailHelp" class="form-text text-muted">例如推广关系链为A->B->C->D，假如D购买了等级为2的蚁后，那么D每次收矿的时候，C和B都能获取到部分利润，但A获取不到，因为蚁后等级为2级，代表着关系链最多为2级</small>
+                            <small id="emailHelp" class="form-text text-muted">0级的蚁后通常用于实名认证后自动赠送的新手蚁后</small>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+				        <div class="form-group">
+				            <label class="form-label">运行周期</label>
+				            <input type="text" class="form-control" name="cycle" placeholder="单位为小时" />
+				        </div>
+				    </div>
+				    <div class="col-sm-6">
+				        <div class="form-group">
+				            <label class="form-label">预计收入</label>
+				            <input type="text" class="form-control" name="income" placeholder="周期结束后总计收入" />
+				        </div>
+				    </div>
+				    <div class="col-sm-6">
+				        <div class="form-group">
+				            <label class="form-label">算力hash/h</label>
+				            <input type="text" class="form-control" name="power" placeholder="每小时可计算次数" />
+				        </div>
+				    </div>
+				    <div class="col-sm-6">
+				        <div class="form-group">
+				            <label class="form-label">蚁后价格</label>
+				            <input type="text" class="form-control" name="price" placeholder="蚁后价格" />
+				        </div>
+				    </div>
+				    <div class="col-sm-6">
+				        <div class="form-group mb-0">
+				            <label class="form-label">蚁后库存</label>
+				            <input type="text" class="form-control" name="stock" placeholder="剩余库存" maxlength="7" />
+				        </div>
+				    </div>
+				    <div class="col-sm-6">
+				        <div class="form-group mb-0">
+				            <label class="form-label">每人限购</label>
+				            <input type="text" class="form-control" name="limit" placeholder="不填或填0代表不限量" maxlength="7" />
+				        </div>
+				    </div>
+				</div>
+			</div>
+			<div class="card-footer text-right">
+				<button class="btn btn-primary">立即发布</button>
+			</div>
+		</form>
+	</div>
+</div>
+{/block} {block name="script"} {/block}

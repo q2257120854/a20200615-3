@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "graceDialog": "../../graceUI/components/graceDialog",
+        "txv-video": "plugin://wxa75efa648b60994b/video"
+    },
+    "navigationBarTitleText": "超级日历"
+}

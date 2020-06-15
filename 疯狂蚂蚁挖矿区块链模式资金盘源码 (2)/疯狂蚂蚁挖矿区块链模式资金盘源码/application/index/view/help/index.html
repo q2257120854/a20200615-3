@@ -1,0 +1,13 @@
+{extend name="common/world"}
+{block name="title"}帮助文档{/block}
+{block name="style"}{/block}
+{block name="container"}
+<div class="card">
+	<div class="card-body">
+		<div class="text-wrap">
+			{$article.content|raw}
+		</div>
+	</div>
+</div>
+{/block}
+{block name="script"} {/block}

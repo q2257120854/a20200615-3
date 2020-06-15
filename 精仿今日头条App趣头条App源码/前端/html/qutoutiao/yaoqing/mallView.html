@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<style>
+		.pm{
+	padding: 0 0.55rem;
+	background: #fff;
+}
+.sx-title{
+	font-size: 0.8rem;
+	color: #333;
+	line-height: 1.4rem;
+	padding: 0.75rem 0;
+}
+.sx-money{
+	font-size: 1rem;
+	color: #FF2600;
+	padding-top: 0.4rem;
+}
+.aui-card-list-footer{
+	padding: 0 0.4rem;
+	min-height: 1.5rem;
+	font-size: 0.8rem;
+}
+.sx-text{
+	background: #fff;
+	padding: 0.75rem	
+}
+.sx-text p{
+	line-height: 22px;
+	 
+}
+.sx-text img{
+	width: 100% !important;
+	height: auto !important;
+}
+.sx-h3{
+	padding: 0.5rem 0.75rem;
+	text-align: center;
+}
+#top{
+	padding-bottom: 80px;
+}
+.aui-bar-tab .aui-bar-tab-item{
+width: auto;
+}
+			#jiazai{
+				margin-top: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<script id="sx-list" type="text/x-dot-template">
+			<div class="pm">
+				<div class="sx-title">
+					{{= sx.title}}
+				</div>
+				<div class="sx-money">
+					￥<b>{{= sx.money }}</b>
+				</div>
+				<div class="aui-card-list-footer" >
+					<div>
+						剩余{{= sx.num}}件
+					</div>
+					<div>
+						浏览：{{= sx.click}}
+					</div>
+				</div>
+			</div>
+			<div class="sx-h3">
+				-   商品详细                -
+			</div>
+			<div class="sx-text">
+				{{= sx.text }}
+			</div>
+			 
+		</script>
+		<div id="top">
+			<div class="aui-content" id="sx-view"><div id="jiazai"><img src="../../image/loading_more.gif" /></div></div>
+		</div>
+		<footer class="aui-bar aui-bar-tab"  id="sx-footer">
+			<div class="aui-bar-tab-item aui-bg-warning aui-text-white"  tapmode onclick="pay(1)">0金币</div>
+			<div class="aui-bar-tab-item aui-bg-danger aui-text-white"  tapmode onclick="pay(2)">0元</div>
+		</footer>
+	</body>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../../script/doT.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var UIScrollPicture,viewO=0;
+		apiready = function() {
+			$api.fixTabBar($api.byId('sx-footer'))
+			UIScrollPicture = api.require('UIScrollPicture');
+			view();
+		}
+		function view(){
+			_ajax('api/yaoqing/mallView',function(ret,err){
+				$('#top').css('padding-top',(api.winWidth)+'px')
+				var evalData = doT.template($api.html($api.byId('sx-list')));
+				sx=ret
+				$api.html($api.byId('sx-view'), evalData());
+		 
+				if(sx.jinbi > $api.getStorage('user').yaoqing.jinbi){
+					$('.aui-bg-warning').attr('style','background-color:#ccc !important');
+				}
+		 
+				if((sx.money*100) > $api.getStorage('user').yaoqing.money){
+					$('.aui-bg-danger').attr('style','background-color:#ccc !important'); 
+				}
+		 
+				$('.aui-bg-warning').text(ret.jinbi+'金币兑换');
+				$('.aui-bg-danger').text(ret.money+'元兑换');
+				slide();
+			},{id:api.pageParam['id']})
+		}
+		function slide() {
+			UIScrollPicture.open({
+				rect : {
+					x : 0,
+					y : 0,
+					w : api.winWidth,
+					h : api.winWidth
+				},
+				data : {
+					paths : sx.images
+				},
+				styles : {
+					indicator : {
+						align : 'center',
+						color : '#ddd',
+						activeColor : '#FF2D4B'
+					}
+				},
+				placeholderImg : _image+'load-img.png',
+				contentMode : 'scaleToFill',
+				interval : 5,
+				loop : true,
+				fixedOn : api.frameName,
+				fixed : false
+			});
+		}
+		function pay(type){
+			if(type==1){
+				if(sx.jinbi > $api.getStorage('user').yaoqing.jinbi){
+					_msg('金币不足，无法兑换');
+					return;
+				}
+			}else{
+				if((sx.money*100) > $api.getStorage('user').yaoqing.money){
+					_msg('零钱不足，无法兑换');
+					return;
+				}
+			}
+			_url({url:'yaoqing/mallPay',id:sx.id,type:type,title:'兑换商品'},'',true);
+		}
+	</script>
+</html>

@@ -1,0 +1,94 @@
+ {include file="public/header" /}
+ <style type="text/css">
+     .fixed-table-body{
+        overflow-x:auto !important;
+        overflow-y:auto !important;
+    } 
+#delid{ width: 30px; }
+#typeid,.bs-th1{ width: 45px; text-align: center;}
+#title,.bs-th2{ width: 50%; }
+#img,.bs-th3{ width: 45px; }
+#img img{ height: 20px; }
+#laiyuan,.bs-th4{ width: 150px; }
+#date{ }
+.btn-outline{
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+ </style>
+
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox-title">
+                <h5>点击你要采集的目标</h5>
+            </div>
+            <div class="ibox-content">
+                <button type="button" class="btn btn-w-m btn-outline btn-primary" onclick="caiji('__all__')">头条推荐</button>
+                <button type="button" class="btn btn-w-m btn-outline btn-primary" onclick="caiji('news_hot')">头条热点</button>
+                <?php
+ $array1 = array('__all__','news_hot');      
+$data=db('typeid')->where(['hide'=>1,'toutiao_name'=>['like','%news%']])->field('toutiao_name,title')->order('des desc,hide desc,id desc')->select();
+                foreach ($data as $k => $v) { $array1[] = $v['toutiao_name'];?>
+                <button type="button" class="btn btn-w-m btn-outline btn-primary" onclick="caiji('<?php echo $v['toutiao_name'];?>')"><?php echo $v['title'];?></button>
+                <?php }?>
+            </div>
+
+             <div class="ibox-content">
+                <button type="button" class="btn btn-w-m btn-outline btn-primary" >视频采集</button>
+                <?php
+       
+$data=db('typeid')->where(['hide'=>1,'toutiao_name'=>['like','%video%']])->field('toutiao_name,title')->order('des desc,hide desc,id desc')->select();
+                foreach ($data as $k => $v) { $array1[] = $v['toutiao_name'];?>
+                <button type="button" class="btn btn-w-m btn-outline btn-primary" onclick="caiji('<?php echo $v['toutiao_name'];?>')"><?php echo $v['title'];?></button>
+                <?php }?>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="margin-top:20px">
+            <div class="ibox-title caijijieguo">
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php  
+//print_r(json_encode($array1));
+?>
+{include file="public/footer" /}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<script type="text/javascript">
+function caiji(type){
+        
+    if(!type){
+        alert('请先点击采集目标')
+        return;
+    }
+    var index = layer.load(0,{shade: [0.3, '#000']});
+    $.ajax({
+        type: 'get',
+        url: '/index.php/api/index/toutiao/type/'+type,
+        dataType: 'text',
+        success:function(ret){
+            layer.close(index);
+            $('.caijijieguo').html(ret);
+            swal_msg("采集成功",'','success');
+        },
+        error:function(err){
+           layer.close(index);
+            $('.caijijieguo').html(ret);
+            swal_msg("采集成功",'','success');
+          
+        }
+    });
+
+}
+</script>
+ 
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

@@ -1,0 +1,105 @@
+.grace-skeletons {
+    background-color: #F8F8F8!important;
+    border-radius: 8rpx;
+    height: 60rpx;
+}
+
+.grace-skeletons.grace-skeletons-title {
+    display: block;
+    width: 100%;
+    font-size: 38rpx;
+    font-weight: bold;
+    line-height: 56rpx;
+}
+
+.grace-skeletons.grace-skeletons-text-line {
+    height: 50rpx;
+    display: inline-block;
+}
+
+.grace-skeletons.grace-goods-desc {
+    height: 300rpx;
+}
+
+.grace-common-line {
+    height: 16rpx;
+}
+
+.grace-product-padding {
+    padding: 20rpx 25rpx;
+}
+
+.grace-product-title {
+    font-size: 36rpx;
+    line-height: 50rpx;
+    letter-spacing: 2rpx;
+}
+
+.grace-product-info {
+    width: 100%;
+    overflow: hidden;
+}
+
+.grace-product-price {
+    color: #FF7900;
+    line-height: 60rpx;
+    width: 260rpx;
+    line-height: 40rpx;
+}
+
+.grace-product-price .em {
+    font-weight: bold;
+    font-family: font-price;
+    font-size: 40rpx;
+    font-style: normal;
+    margin: 0 10rpx;
+}
+
+.grace-product-price .small {
+    font-size: 24rpx;
+}
+
+.grace-product-oprice {
+    font-family: font-price;
+    float: left;
+    width: 200rpx;
+    font-size: 24rpx;
+    line-height: 40rpx;
+}
+
+.grace-product-oprice .small {
+    font-size: 24rpx;
+}
+
+.grace-product-info-img {
+    width: 100%;
+}
+
+.grace-goods-desc {
+    background: #f5f5f5;
+    padding: 20rpx;
+    font-size: 26rpx;
+    line-height: 40rpx;
+    letter-spacing: 1rpx;
+    word-break: break-all;
+    margin: 30rpx 0;
+    color: #666;
+}
+
+.grace-goods-coupon {
+    margin-bottom: 20rpx;
+}
+
+.grace-footer-button {
+    background: -webkit-linear-gradient(left,#F000EE,#6E00FF);
+    width: 100%;
+    font-size: 32rpx;
+    letter-spacing: 2rpx;
+    font-weight: bold;
+}
+
+.grace-product-sales {
+    float: right;
+    line-height: 40rpx;
+    display: block;
+}

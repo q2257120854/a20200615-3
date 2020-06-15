@@ -1,0 +1,156 @@
+{extend name="common/world"}
+{block name="title"}交易平台{/block}
+{block name="header"}交易大厅{/block}
+{block name="style"}
+<style>
+.btn-toggle-form {
+     position: absolute;
+    right: .3rem;
+    top: 0rem;
+    z-index: 1;
+}
+</style>
+{/block}
+{block name="container"}
+<div class="buttons-tab">
+    <a href="market.html" class="active button">交易大厅</a>
+    <a href="market/buying.html" class="button">买鱼</a>
+    <a href="market/selling.html" class="button">卖鱼</a>
+</div>
+<!--表格开始-->
+<div class="tabs"><br>
+    <table width="100%" >
+        <tr>
+            <td style="padding-left: 10px;"><a href="trade.html@type=1"><font color="red">求购列表</font></a></td>
+        </tr>
+    </table>
+    <hr color="#333333" size="1">
+    <div class="card">
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" id="table-5">
+            <thead>
+            <tr>
+                <th align="center"><div align="center">数量</div></th>
+                <th align="center"><div align="center">单价/元</div></th>
+                <th align="center"><div align="center">合计金额/元</div></th>
+                <th align="center"><div align="center">操作</div></th>
+            </tr>
+            </thead>
+            <tbody>
+            {volist name="list" id="li"}
+                <tr>
+                    <td align="center">{$li.number|money}</td>
+                    <td align="center">{$li.price|money}¥</td>
+                    <td align="center">{$li.total|money}¥</td>
+                    <td align="center">
+                        <input type="button" id="btn{$li.id}" class="button button-fill button-warning"
+                               style="width:80px;font-size:16px;" name="Submit" onclick="location.href='/transaction.html?id={$li.tid}'" value="卖给他"/>
+                    </td>
+                </tr>
+                <tr style="height: 50px;display: none" id="show{$li.id}">
+                    <td colspan="4" align="center">
+                        <span style="float: left;padding-left: 10px;">交易密码:
+                            <input type="password" id="pass{$li.id}" style="margin-top: 0px;margin-bottom: 0px;"/>
+                        </span>
+                        <span style="float: right;padding-right: 10px">
+                            <input type="button" id="btn{$li.id}" class="button button-fill button-warning"
+                                   style="width:80px;font-size:16px;" name="Submit" onclick="sell({$li.id},'{$li.tid}')" value="确定"/>
+                        </span>
+                    </td>
+                </tr>
+            {/volist}
+            </tbody></table>
+        <div align="right" class="pages" style="background-color: #fff">
+            <br/>
+            {if $page>1}
+            <a class="previous" href="trade.html?page={$page-1}">上一页</a>
+            {/if}
+            <span class="current">{$page}</span>
+            {if ($page+1)<$index}
+            <a class="next" href="trade.html?page={$page+1}">下一页</a>
+            {/if}
+            <span class="rows"> 第<b>{$page}</b>页/共<b>{$index}</b>页</span>
+        </div>
+        <br/>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script>
+    function buy(id){
+
+        $("#btn"+id).attr('disabled',true);
+        $(function() {
+            var params = {
+                id : id,
+                type:2
+            };
+            $.ajax({
+                type: 'post',
+                url: api.trade.sell,
+                cache: false,
+                data: params,
+                dataType: 'json',
+                success: function(data){
+                    alert(data.message);
+                    if (data.code == 200) {
+                        window.location.href="trade.html";//需要跳转的地址
+                        return true;
+                    }else{
+                        $("#btn"+id).removeAttr('disabled');
+                    }
+
+                },
+            });
+        });
+        return false;
+    }
+    function bshow(id,num,money){
+        alert("买入"+num+"个成品鱼,总价格"+money+"元");
+        $('#show'+id).show();
+
+    }
+    function show(id,num,money){
+        alert("本次出售"+num+"个成品鱼,可售"+money+"元,需要20%手续费");
+        $('#show'+id).show();
+
+    }
+
+    function sell(id,tid){
+
+        $("#sub01").attr("disabled","disabled");
+        if (!$("#pass"+id).val()) {
+            alert("请输入交易密码");
+            return false;
+        }
+        $(function() {
+            var params = {
+                id : tid,
+                safeword:$("#pass"+id).val(),
+            };
+            $.ajax({
+                type: 'post',
+                url: api.transaction,
+                cache: false,
+                data: params,
+                dataType: 'json',
+                success: function(data){
+                    alert(data.message);
+                    if (data.code == 200) {
+                        window.setInterval(function(){
+                            window.location.href='/market.html';
+                        }, 1000)
+                        return true;
+                    }else{
+                        $("#sub01").removeAttr('disabled');
+                    }
+
+                },
+            });
+        });
+        return false;
+    }
+
+
+</script>
+{/block}

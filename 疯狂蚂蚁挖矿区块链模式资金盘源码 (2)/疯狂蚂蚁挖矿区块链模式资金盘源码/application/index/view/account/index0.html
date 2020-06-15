@@ -1,0 +1,319 @@
+{extend name="common/world"}
+{block name="title"}{$Think.config.hello.title}{/block}
+{block name="style"}
+<style>
+@media (max-width: 768px) {
+    .col-xs-left {
+        padding-left: 0.75rem !important;
+        padding-right: 0.375rem !important;
+    }
+    .col-xs-right {
+        padding-left: 0.375rem !important;
+        padding-right: 0.75rem !important;
+    }
+}
+.card-news .list-unstyled li:last-child {
+    margin-bottom: 0 !important;
+}
+</style>
+{/block}
+{block name="container"}
+<div class="row row-cards mt-3">
+    <div class="col-sm-12 col-md-12 col-lg-4">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12">
+                <div class="card p-3">
+                    <div class="d-flex align-items-center">
+                        <span class="stamp stamp-md bg-blue mr-3">
+                            <i class="fa fa-bitcoin"></i>
+                        </span>
+                        <div>
+                            <h4 class="m-0"><a href="/wallet/record.html">{$user.wallet.money|money_show}</a></h4>
+                            <small class="text-muted">可用{$Think.config.hello.unit}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12">
+                <div class="card p-3">
+                    <div class="d-flex align-items-center">
+                        <span class="stamp stamp-md bg-gray mr-3">
+                            <i class="fa fa-bitcoin"></i>
+                        </span>
+                        <div>
+                            <h4 class="m-0"><a href="/wallet/record.html?c=2">{$user.wallet.deposit|money_show}</a></h4>
+                            <small class="text-muted">冻结{$Think.config.hello.unit}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-12">
+                <div class="card p-3">
+                    <div class="d-flex align-items-center">
+                        <span class="stamp stamp-md bg-azure mr-3">
+                            <i class="fa fa-diamond"></i>
+                        </span>
+                        <div>
+                            <h4 class="m-0"><a href="/wallet/record.html?c=6">{$user.wallet.macmoney|money_show}</a></h4>
+                            <small class="text-muted">明细</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {notempty name="Think.config.hello.score.enable"}
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12">
+                <div class="card p-3">
+                    <div class="d-flex align-items-center">
+                        <span class="stamp stamp-md bg-azure mr-3">
+                            <i class="fa fa-diamond"></i>
+                        </span>
+                        <div>
+                            <h4 class="m-0"><a href="/wallet/record.html?c=2">{$user.wallet.score|money_show}</a></h4>
+                            <small class="text-muted">可用{$Think.config.hello.score.unit}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12">
+                <div class="card p-3">
+                    <div class="d-flex align-items-center">
+                        <span class="stamp stamp-md bg-gray mr-3">
+                            <i class="fa fa-diamond"></i>
+                        </span>
+                        <div>
+                            <h4 class="m-0"><a href="/wallet/record.html?c=2">{$user.wallet.score_deposit|money_show}</a></h4>
+                            <small class="text-muted">冻结{$Think.config.hello.score.unit}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/notempty}
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-12">
+                <div class="card p-3">
+                    <div class="d-flex align-items-center">
+                        <span class="stamp stamp-md bg-green mr-3">
+                            <i class="fa fa-battery"></i>
+                        </span>
+                        <div>
+                            <h4 class="m-0"><a href="/machine.html">{$user.dashboard.machine_count - $user.dashboard.machine_expire} <small>台</small></a></h4>
+                            <small class="text-muted">运行中</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-12">
+                <div class="card p-3">
+                    <div class="d-flex align-items-center">
+                        <span class="stamp stamp-md bg-yellow mr-3">
+                            <i class="fa fa-battery-empty"></i>
+                        </span>
+                        <div>
+                            <h4 class="m-0"><a href="/machine.html">{$user.dashboard.machine_expire} <small>台</small></a></h4>
+                            <small class="text-muted">已过期</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-12">
+                <div class="card p-3">
+                    <div class="d-flex align-items-center">
+                        <span class="stamp stamp-md bg-green mr-3">
+                            <i class="fa fa-users"></i>
+                        </span>
+                        <div>
+                            <h4 class="m-0"><a href="/team.html">{$user.dashboard.team_count}</a></h4>
+                            <small class="text-muted">总人数</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-12">
+                <div class="card p-3">
+                    <div class="d-flex align-items-center">
+                        <span class="stamp stamp-md bg-yellow mr-3">
+                            <i class="fa fa-desktop"></i>
+                        </span>
+                        <div>
+                            <h4 class="m-0"><a href="/machine.html">{$user.dashboard.power|money}</a></h4>
+                            <small class="text-muted">总算力</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6 col-xs-left col-md-6 col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title f1">常用操作</h4>
+            </div>
+            <div class="list-group quick-operation">
+                <a class="list-group-item d-flex justify-content-between align-items-center" href="/wallet/record.html">
+                    <i class="fe fe-slack text-muted"></i>
+                    <span class="ml-3">资金明细</span>
+                    <span class="text-muted ml-auto"><i class="fe fe-chevron-right"></i></span>
+                </a>  
+ <a class="list-group-item d-flex justify-content-between align-items-center" href="/transfer.html">
+                    <i class="fe fe-anchor text-muted"></i>
+                    <span class="ml-3">点对点转账</span>
+                    <span class="text-muted ml-auto"><i class="fe fe-chevron-right"></i></span>
+                </a>				
+                {notempty name="config.imtoken.enable"}
+                <a class="list-group-item d-flex justify-content-between align-items-center" href="/imtoken.html">
+                    <i class="fe fe-aperture text-muted"></i>
+                    <span class="ml-3">imtoken</span>
+                    <span class="text-muted ml-auto"><i class="fe fe-chevron-right"></i></span>
+                </a>
+                {/notempty}
+                <a class="list-group-item d-flex justify-content-between align-items-center" href="/team/inviter.html">
+                    <i class="fe fe-flag text-muted"></i>
+                    <span class="ml-3">团队招募</span>
+                    <span class="text-muted ml-auto"><i class="fe fe-chevron-right"></i></span>
+                </a>
+                {notempty name="Think.config.hello.event.scratch.enable"}
+                <a class="list-group-item d-flex justify-content-between align-items-center" href="/scratch.html">
+                    <i class="fe fe-heart text-muted"></i>
+                    <span class="ml-3">幸运刮刮卡</span>
+                    <span class="text-muted ml-auto"><i class="fe fe-chevron-right"></i></span>
+                </a>
+                {/notempty}
+                {notempty name="config['hello.event.pool']['enable']"}
+                <a class="list-group-item d-flex justify-content-between align-items-center" href="/pool.html">
+                    <i class="fe fe-cloud text-muted"></i>
+                    <span class="ml-3">共享蚁巢</span>
+                    <span class="text-muted ml-auto"><i class="fe fe-chevron-right"></i></span>
+                </a>
+                {/notempty}
+               <!-- {notempty name="Think.config.hello.contract.enable"}
+                    <a class="list-group-item d-flex justify-content-between align-items-center" href="/contract.html">
+                        <i class="fe fe-star text-muted"></i>
+                        <span class="ml-3">链上合约</span>
+                        <span class="text-muted ml-auto"><i class="fe fe-chevron-right"></i></span>
+                    </a>
+                {/notempty}
+                {notempty name="Think.config.hello.funding.enable"}
+                    <a class="list-group-item d-flex justify-content-between align-items-center" href="/funding.html">
+                        <i class="fe fe-star text-muted"></i>
+                        <span class="ml-3">创业众筹</span>
+                        <span class="text-muted ml-auto"><i class="fe fe-chevron-right"></i></span>
+                    </a>
+                {/notempty}-->                <a class="list-group-item d-flex justify-content-between align-items-center" href="/help.html">                    <i class="fe fe-help-circle text-muted"></i>                    <span class="ml-3">帮助中心</span>                    <span class="text-muted ml-auto"><i class="fe fe-chevron-right"></i></span>                </a>
+				                <a class="list-group-item d-flex justify-content-between align-items-center" href="/news.html">
+                    <i class="fe fe-list text-muted"></i>
+                    <span class="ml-3">新闻公告</span>
+                    <span class="text-muted ml-auto"><i class="fe fe-chevron-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6 col-xs-right col-md-6 col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title f1">账户操作</h4>
+            </div>
+            <div class="list-group quick-operation">
+                <a class="list-group-item d-flex justify-content-between align-items-center" href="/account/profile.html">
+                    <i class="fe fe-user text-muted"></i>
+                    <span class="ml-3">个人资料</span>
+                    <span class="text-muted ml-auto"><i class="fe fe-chevron-right"></i></span>
+                </a>
+                <a class="list-group-item d-flex justify-content-between align-items-center" href="/account/reset.html">
+                    <i class="fe fe-lock text-muted"></i>
+                    <span class="ml-3">修改密码</span>
+                    <span class="text-muted ml-auto"><i class="fe fe-chevron-right"></i></span>
+                </a>
+                <a class="list-group-item d-flex justify-content-between align-items-center" href="/account/authen.html">
+                    <i class="fe fe-shield text-muted"></i>
+                    <span class="ml-3">实名认证</span>
+                    <span class="text-muted ml-auto">
+                    {switch user.account.authen}
+                        {case 1}<i class="fe fe-check text-green"></i>{/case}
+                        {case 2}<i class="status-icon bg-warning"></i>{/case}
+                        {case 3}<i class="status-icon bg-red"></i>{/case}
+                        {default /}
+                            <i class="fe fe-chevron-right"></i>
+                    {/switch}
+                    </span>
+                </a>
+
+                <a class="list-group-item d-flex justify-content-between align-items-center" href="/contact.html">
+                    <i class="fe fe-headphones text-muted"></i>
+                    <span class="ml-3">联系我们</span>
+                    <span class="text-muted ml-auto"><i class="fe fe-chevron-right"></i></span>
+                </a>
+
+                <a class="list-group-item d-flex justify-content-between align-items-center" href="/signout.html">
+                    <i class="fe fe-log-out text-muted"></i>
+                    <span class="ml-3">退出登录</span>
+                    <span class="text-muted ml-auto"><i class="fe fe-chevron-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-4">
+        <div class="card card-news">
+            <div class="card-header">
+                <div class="card-title f1"><a href="/news.html">新闻头条</a></div>
+                <div class="card-options">
+                    <div class="text-muted mr-2">权威的数字货币快讯</div>
+                </div>
+            </div>
+            <div class="card-body p-3">
+                <ul class="list-unstyled">
+                    {volist name="news" id="new"}
+                    <li class="media mb-3">
+                        <img src="/upload/{$new.image}" class="w-7 h-7 mr-3" />
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1 text-truncate" style="max-width: 13rem;"><a href="/article/{$new.id}.html" class="font-weight-light">{$new.title}</a></h5>
+                            <small class="text-muted">{$new.date}</small>
+                        </div>
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{notempty name="config['hello.popup']['switch']"}
+<div class="modal fade modal-popup" id="modal-popup" tabindex="-1" role="dialog" data-version="{$config['hello.popup']['content']|sha1}" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">公告通知</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {$config['hello.popup']['content']|raw}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">我知道了</button>
+            </div>
+        </div>
+    </div>
+</div>
+{/notempty}
+{/block}
+{block name="script"}
+<script>
+require(['core', 'jquery'], function(core, $){
+    $(function(){
+        // 账号同步
+        setTimeout(function(){
+            ajax(api.account.sync, {}, function(){});
+        }, 500);
+        // 公告通知
+        if ($('.modal-popup').length) {
+            var version = $('.modal-popup').data('version');
+            if (localStorage) {
+                if (localStorage.popup != version) {
+                    $('.modal-popup').modal();
+                    localStorage.popup = version;
+                }
+            } else {
+                $('.modal-popup').modal();
+            }
+        }
+    });
+});
+</script>
+{/block}

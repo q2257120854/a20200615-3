@@ -1,0 +1,67 @@
+{extend name="common/world"}
+{block name="title"}公会团队{/block}
+{block name="style"}{/block}
+{block name="container"}
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body p-3 text-center">
+                <div class="text-right text-green">位</div>
+                <div class="h2 m-0">{$user.dashboard.team_count}</div>
+                <div class="small text-muted">团队人数</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body p-3 text-center">
+                <div class="text-right text-red">Gh/s</div>
+                <div class="h2 m-0">{$user.dashboard.team_power|money}</div>
+                <div class="small text-muted">团队算力</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="form-group mb-3">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <select class="form-control custom-select w-auto" name="type">
+                        <option value="">全部成员</option>
+                        {volist name="Think.config.hello.level" id="item"}
+                            <option value="{$key}">{$item.name}</option>
+                        {/volist}
+                    </select>
+                </div>
+                <input type="text" class="form-control" placeholder="搜索成员..." name="key" />
+                <span class="input-group-append">
+                    <button class="btn btn-secondary btn-search" type="button"><i class="fe fe-search"></i></button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-hover table-outline table-vcenter text-nowrap card-table table-member">
+            <thead>
+                <tr>
+                    <th class="text-center w-1"></th>
+                    <th>用户</th>
+                    <!-- <th hidden class="d-md-table-cell">Usage</th>
+                    <th hidden class="d-lg-table-cell">Activity</th>
+                    <th hidden class="text-center d-lg-table-cell">Satisfaction</th> -->
+                    <th class="text-center">电话</th>
+                  	<th class="text-center">算力</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div hidden class="card-footer text-center card-more"><div class="text-muted">点击加载更多</div></div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript" src="/static/js/team.js"></script>
+{/block}

@@ -1,0 +1,128 @@
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#button").click(function(){
+ 
+      {php}
+      if((request()->controller()=='Article' && request()->action()=='add') || (request()->controller()=='Shop' && request()->action()=='add')){
+      {/php}
+   
+      {eq name='mychannel["id"]' value='2'}
+      var images='';
+      <?php if(!empty($name) && $name['weitoutiao']==0){ ?>
+      $(".meiyouuimmag textarea").each(function(ret){
+        var img=$(this).data('img');
+        if(img){
+          img_text=$(this).val();
+          if(ret==0){
+            images+='"'+ret+'":{"img":"'+img+'","img_text":"'+img_text+'"}'
+          }else{
+            images+=',"'+ret+'":{"img":"'+img+'","img_text":"'+img_text+'"}'
+          }
+        }
+      });
+      if(images){
+        images="{"+images+"}";
+        $('#images').val(images);
+      }else{
+        layer.alert('最少要上传图片集');
+        return false;
+      }
+    
+      <?php }else{?>
+       $(".meiyouuimmag textarea").each(function(ret){
+        var img=$(this).data('img');
+        if(img){
+          img_text=$(this).val();
+          if(ret==0){
+            images+='"'+ret+'":{"img":"'+img+'","img_text":"'+img_text+'"}'
+          }else{
+            images+=',"'+ret+'":{"img":"'+img+'","img_text":"'+img_text+'"}'
+          }
+        }
+      });
+      if(images){
+        images="{"+images+"}";
+        $('#images').val(images);
+      }else{
+        layer.alert('最少要上传图片集');
+        return false;
+      }
+        <?php }?>
+      {/eq}
+      {php}}{/php}
+ // alert(images)
+ //      return;
+{php}
+if(input('?url')){
+  echo 'loading("#button button")'."\r\n";
+}
+{/php}
+ 
+        ajaxFun("POST","",$(".form-horizontal").serialize(),"json",function(ret){
+            if(ret){
+                if(ret.ret){
+                    swal_msg(ret.ret,'',"success",{php}if(input('?url')){echo input('url');}else{echo 0;}{/php})
+                    {php}
+if(input('?url')){
+  echo 'loading("#button button",\'<i class="fa fa-check"></i> &nbsp;\'+ret.ret)';
+}
+{/php}
+               
+                    return false;
+                }else{
+                    layer.msg(ret.err)
+                }
+            }else{
+                swal_msg("错误",ret,"error");
+            }
+            {php}
+if(input('?url')){
+{/php}
+loadingClose("#button button",'<i class="fa fa-check"></i> &nbsp;{present name="name"}修改{else /}提交{/present}')
+{php}
+}
+{/php}
+             
+        });
+    });
+});
+$("#tubiao").click(function(){
+ 
+    layer.open({
+      type: 2,
+      title: '上传图片',
+      shadeClose: true,
+      shade: 0.2,
+      area: ['70%', '60%'],
+      skin:'shangchuantup',
+      content: '{:url("index/upload")}',
+      shift:-1,
+      scrollbar: false,
+      moveType: 1,
+      moveOut: true
+    }); 
+})
+function html2Escape(sHtml) {
+ return sHtml.replace(/[<>&"]/g,function(c){return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];});
+}
+</script>
+<style type="text/css">
+.tbutton{ 
+  position: fixed;
+  bottom:0px;
+  width: 100%;
+  background: #fff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid #F5EFEF;
+  z-index: 99999999999
+}
+#button{ width:120px; margin: 0 auto;}
+.wrapper-content{ margin-bottom:75px;}
+</style>
+
+<div class="tbutton">
+  <div id="button"><button class="btn btn-w-m btn-primary" type="button"><i class="fa fa-check"></i> &nbsp;{present name="name"}修改{else /}提交{/present}</button></div>
+</div><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

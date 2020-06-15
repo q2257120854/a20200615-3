@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/ffxiang.css" />
+		<link rel="stylesheet" type="text/css" href="../css/view.css" />
+	</head>
+	<body>
+		<header class="aui-bar aui-bar-nav fx-view-header " id="fx-header">
+			<a class="aui-pull-left aui-btn" tapmode onclick="c()"> <span class="aui-iconfont aui-icon-left"></span> </a>
+			<div class="aui-title" tapmode onclick="userUrl()">
+				加载中
+			</div>
+			<a class="aui-pull-right aui-btn" tapmode onclick="fenxiang()"> <img src="../image/view_1.png" /> </a>
+		</header>
+		<footer class="aui-bar aui-bar-tab fx-view-footer" id="fx-footer">
+			<div class="aui-bar-tab-item aui-padded-l-15 aui-padded-r-15" tapmode style="width: auto;">
+				<div class="search-input aui-font-size-14" tapmode onclick="pingAdd()">
+					请输入评论内容
+				</div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode style="width: 2.2rem;" tapmode  onclick="gundong()">
+				<div class="aui-badge" id="pingNum" data-num="0">
+					0
+				</div>
+				<i class="aui-iconfont aui-icon-comment"></i>
+			</div>
+			<div class="aui-bar-tab-item" id="shoucang" tapmode onclick="shoucang(this)" data-id='1' style="width: 2.2rem;">
+				<i class="aui-iconfont aui-icon-star"></i>
+			</div>
+			<div class="aui-bar-tab-item" tapmode onclick="fenxiang()" style="width: 2.2rem;margin-right: 0.5rem;">
+				<i class="aui-iconfont aui-icon-share"></i>
+			</div>
+		</footer>
+	</body>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var id, inputField,uid=0,fan;
+		apiready = function() {
+	 
+			// 回到屏幕
+			api.addEventListener({
+			    name:'viewappear'
+			}, function(ret, err){      
+				_heibai(1);
+				// 每天阅读次数奖励
+				setTimeout(function(){
+					_daily({name:'money_news'})
+				},_config.yaoqing.money_news_time)
+			});
+			fan=api.pageParam['fan'];
+			_heibai(api.pageParam['qian']);
+			id = api.pageParam['id'];
+			if(!id){
+				_alert("文章不存在或已被删除！",function(ret){
+					_hone();
+				})
+				return;
+			}
+			_openFrame('view', '', '', api.pageParam, 1)
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+		}
+		// 滚动
+		function gundong() {
+			var gundong = 'gundong();';
+			api.execScript({
+				frameName : 'view',
+				script : gundong
+			});
+		}
+		// 分享
+		function fenxiang(){
+			var fenxiang = 'fenxiang();';
+			api.execScript({
+				frameName : 'view',
+				script : fenxiang
+			});
+		}
+		// 收藏
+		function shoucang(ojb){
+			if(!_user){
+				_login();
+				return;
+			}
+			_loading()
+			var type=$(ojb).data('id');
+			if(type==1){
+				_ajax('api/member/favoriteAdd',function(ret,err){
+					_loadingCloes()
+					if(ret.ret){
+						$(ojb).data('id','2')
+						$(ojb).css("color","#FCACAC")
+						_msg(ret.ret)
+					}else{
+						_msg(ret.err)
+					}
+				},{aid:id})
+			}else{
+				_ajax('api/member/favoriteDel',function(ret,err){
+					_loadingCloes()
+					if(ret.ret){
+						$(ojb).data('id','1')
+						$(ojb).css("color","")
+						_msg(ret.ret)
+					}else{
+						_msg(ret.err)
+					}
+				},{aid:id})
+			}
+		}
+		// 判断是否收藏
+		function _views(shoucang,pingNum){
+			if(shoucang){
+				$('#shoucang').data('id','2')
+				$('#shoucang').css("color","#FCACAC")
+			}
+			if(pingNum){
+				$('#pingNum').data('num',pingNum)
+				$('#pingNum').text(pingNum)
+			}else{
+				$('#pingNum').hide();
+			}
+		}
+		// 更新评论数量
+		function pingNum(){
+			var num=$('#pingNum').data('num')
+			$('#pingNum').show();
+			$('#pingNum').text(num+1)
+			$('#pingNum').data('num',num+1)
+		}
+		// 评论 
+		function pingAdd(){
+			var pingAdd='pingAdd();';
+			api.execScript({
+				frameName : 'view',
+				script : pingAdd
+			});
+		}
+		// 标题
+		function title(text,uids){
+			uid=uids;
+			if(uid && text){
+				$('.aui-title').text(text)
+			}else{
+				$('.aui-title').text('内容详细')
+			}
+		}
+		function userUrl(){
+			if(uid){
+				_url({id:uid},'u_win')
+			}
+		}
+		function c(){
+			_close(fan)
+		}
+	</script>
+</html>

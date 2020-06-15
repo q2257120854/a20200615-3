@@ -1,0 +1,142 @@
+{include file="article/top" /}
+{css href="__CSS__channel.css"}
+<style type="text/css">
+.media-channel-info .subscribe{padding:0 20px;}
+</style>
+</head>
+<body class="page-channel">
+{include file="article/header" /}
+<div id="js-main" class="main channel-main" style="min-height: 554px;"><div class="aside"><div class="widget-box widget-media-channel-info-box">
+<div class="widget widget-media-channel-info">
+  <div class="media-channel-info js-channel-subscribe-item">
+    <div class="channel-image-box">
+      <img class="channel-image" src="{:_imgurl()}{$user.img}">
+    </div>
+    <p class="channel-name">{$user.username}</p>
+    <p class="channel-summary">{$user.qianming}</p>
+    <div class="subscribe js-subscribe-btn" data-uid="{$user.id}" data-type="{$user.guanzhu ? 1 : 0}" onclick="_guanzhu(this)">{$user.guanzhu ? '已关注' : '关注'}</div>
+  </div>
+</div>
+</div>
+<div class="widget-box widget-hot-media-channel-box">
+<div class="widget widget-hot-media-channel">
+{include file="article/typeRight"}
+</div>
+</div></div>
+
+<div class="channel-top" style="display: block;">
+  <div class="float-left channel-news-nav rendered">
+    <div class="tab tab-0" data-index="0">主页</div>
+  </div>
+
+</div>
+<div class="channel-news channel-news-0" id="fx-view"></div>
+<script id="fx-list" type="text/x-dot-template">
+    {{ for(var i=0,len=it.data.length; i < len; i++) { }}
+    {{? it.data[i].mychannel == 1}}
+    {{? it.data[i].image}}
+    <a class="item doc style-small-image style-content-middle" href="{{= it.data[i].url }}" target="_blank">
+      <div class="doc-image-small-wrapper">
+        <div class="doc-image-box">
+          <img class="doc-image doc-image-small" src="{{= it.data[i].image }}">
+        </div>
+      </div>
+      <div class="doc-content">
+        <div class="doc-content-inline">
+          <div class="doc-title">{{= it.data[i].title }}</div>
+          <div class="doc-info">
+            {{? it.data[i].uid }}
+            <img class="source-profile" src="{{= it.data[i].user.img }}">
+            {{?}}
+            {{? it.data[i].source }}
+            <span class="source">{{= it.data[i].source}}</span>
+            {{?? it.data[i].uid}}
+            <span class="source">{{= it.data[i].user.username}}</span>
+            {{?}}
+            <span class="comment-count">{{= it.data[i].pingNum}}评</span>
+            <span class="date">{{= it.data[i].create_time}}</span>
+          </div>
+        </div>
+      </div> 
+    </a>
+    {{??}}
+    <a class="item doc style-small-image style-content-middle" href="{{= it.data[i].url }}" target="_blank">
+      <div class="doc-content">
+        <div class="doc-content-inline">
+          <div class="doc-title">{{= it.data[i].title }}</div>
+          <div class="doc-info">
+            {{? it.data[i].uid }}
+            <img class="source-profile" src="{{= it.data[i].user.img }}">
+            {{?}}
+            {{? it.data[i].source }}
+            <span class="source">{{= it.data[i].source}}</span>
+            {{?? it.data[i].uid}}
+            <span class="source">{{= it.data[i].user.username}}</span>
+            {{?}}
+            <span class="comment-count">{{= it.data[i].pingNum}}评</span>
+            <span class="date">{{= it.data[i].create_time}}</span>
+          </div>
+        </div>
+      </div> 
+    </a>
+    {{?}}
+    {{?? it.data[i].mychannel == 2}}
+    <a class="item doc style-multi-image" href="{{= it.data[i].url }}" target="_blank">
+      <div class="doc-title">{{= it.data[i].title }}</div>
+      <div class="doc-image-multi-wrapper">
+        {{ for(var is=0,lens=4; is < lens; is++) { }}
+        <div class="doc-image-box box-{{= is}}"><img class="doc-image image-{{= is}}" src="{:_imgUrl()}{{= it.data[i].pcList[is].img}}"></div>
+        {{ } }}
+      </div>
+      <div class="doc-info">
+          {{? it.data[i].uid }}
+          <img class="source-profile" src="{{= it.data[i].user.img }}">
+          {{?}}
+          {{? it.data[i].source }}
+          <span class="source">{{= it.data[i].source}}</span>
+          {{?? it.data[i].uid}}
+          <span class="source">{{= it.data[i].user.username}}</span>
+          {{?}}
+          <span class="comment-count">{{= it.data[i].pingNum}}评</span>
+          <span class="date">{{= it.data[i].create_time}}</span>
+      </div>
+    </a>
+    {{?? it.data[i].mychannel == 3}}
+    <a class="item doc style-small-image style-content-middle" href="{{= it.data[i].url }}" target="_blank">
+      <div class="doc-image-small-wrapper">
+        <div class="doc-image-box">
+          <img class="doc-image doc-image-small" src="{{= it.data[i].image }}">
+            <div class="video-time">{{? it.data[i].videodate}}{{=it.data[i].videodate}}{{??}}视频{{?}}</div>
+        </div>
+      </div>
+      <div class="doc-content">
+        <div class="doc-content-inline">
+          <div class="doc-title">{{= it.data[i].title }}</div>
+          <div class="doc-info">
+            {{? it.data[i].uid }}
+            <img class="source-profile" src="{{= it.data[i].user.img }}">
+            {{?}}
+            {{? it.data[i].source }}
+            <span class="source">{{= it.data[i].source}}</span>
+            {{?? it.data[i].uid}}
+            <span class="source">{{= it.data[i].user.username}}</span>
+            {{?}}
+            <span class="comment-count">{{= it.data[i].pingNum}}评</span>
+            <span class="date">{{= it.data[i].create_time}}</span>
+          </div>
+        </div>
+      </div>
+    </a>
+    {{?}}
+    {{ } }}
+  </script>
+ </div>
+<div class="mask"></div>
+{include file="article/footer" /}
+<script type="text/javascript">
+_list('{:url('api/article/lists',['pages'=>15,'uid'=>$user['id'],'weitoutiao'=>0])}')
+</script>
+</body>
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

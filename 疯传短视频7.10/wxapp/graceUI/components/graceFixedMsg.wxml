@@ -1,0 +1,5 @@
+<view catchtap="tapme" class="grace-fixed-msg" style="width:{{width+'rpx'}}; bottom:{{bottom+'rpx'}}" wx:if="{{show}}">
+    <text class="grace-fixed-msg-icon msg-icon" style="color:{{color}};"></text>
+    <text class="grace-fixed-msg-text" style="color:{{color}}">{{msg}}</text>
+    <text class="grace-fixed-msg-icon msg-right" style="color:{{color}}"></text>
+</view>

@@ -1,0 +1,103 @@
+/*
+// +----------------------------------------------------------------------
+// | 源码来自锦尚中国源码论坛，仅供学习研究
+// +----------------------------------------------------------------------
+// | 新闻资讯APP系统 V1.0版
+// +----------------------------------------------------------------------
+// | 锦尚中国
+// +----------------------------------------------------------------------
+// | 请务必尊重知识产权 严格保证不恶意传播产品源码、不得直接对产品本身
+// | 进行二次转售或倒卖、不得对产品进行简单包装后声称为自己的产品等。
+// | 否则我们有权利收回产品，并根据事态轻重追究相应法律责任。
+// +----------------------------------------------------------------------
+// | Copyright (c) 2018-2019 http://www.baidu.com/ All rights reserved.
+// +----------------------------------------------------------------------
+*/body{
+	background: #F4F5F6 !important;
+}
+.fx-weitoutiao-top .aui-col-xs-4 i.aui-icon-pencil{
+	color: #0080FF
+}
+.fx-weitoutiao-top .aui-col-xs-4 i.aui-icon-image{
+	color: #63CC42
+}
+.fx-weitoutiao-top .aui-col-xs-4 i.aui-icon-video{
+	color: #FF004F
+}
+.fx-weitoutiao-top {
+ 
+}
+.fx-weitoutiao-top .aui-col-xs-4 span{
+}
+.fx-weitoutiao-top .aui-col-xs-4 i{
+	font-size: 0.8rem;
+	padding-right: 0.3rem;
+}
+.aui-grid [class*=aui-col-]{
+	padding: 0rem 0px;
+}
+.fx-weitoutiao-top .aui-col-xs-4{
+	font-size: 0.75rem;
+	font-weight: 500;
+	color: #5B5B5B
+}
+/*列表*/
+.fx-weitoutiao-list .aui-card-list{
+	margin-top: 0rem;
+	margin-bottom: 0.35rem;
+}
+.fx-weitoutiao-list .aui-card-list-user-avatar img{
+	border-radius: 50%;
+}
+.fx-weitoutiao-list .aui-card-list-footer{
+	font-size: 0.6rem;
+	padding: 0.35rem 0.5rem;
+	min-height:1.8rem;
+	font-weight: 400;
+	color: #5B5B5B;
+}
+.fx-weitoutiao-list .aui-card-list-footer .aui-iconfont{
+	font-size: 0.7rem;
+}
+.fx-weitoutiao-guanzhu{
+	font-size: 0.6rem;
+	background: #2A90D7;
+	color: #fff;
+	width:50px;
+	height:28px;
+	text-align:center;
+	line-height:26.5px;
+	border-radius: 0.15rem;
+}
+.fx-weitoutiao-guanzhuHivdeo{
+	background: #fff;
+	color: #999;
+	border: 1px solid #e8e8e8;
+}
+.fx-weitoutiao-images,.fx-weitoutiao-images .aui-list-item{
+	background: none;
+	border: 0px;
+}
+.fx-weitoutiao-images .aui-list-item-inner{
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.fx-weitoutiao-content{
+	padding: 0.2rem 0px;
+	font-size: 0.8rem !important;
+}
+.fx-weitoutiao-span{
+	padding-left: 0.75rem;
+	padding-top: 0.2rem;
+}
+.fx-weitoutiao-span span,.fx-weitoutiao-span span i{
+	font-size: 0.55rem;
+	color: #999999;
+	padding-right: 0.2rem;
+}
+.aui-card-list-user-name div{
+	font-weight: 500
+}
+.pingZanColor{
+	color: #FCACAC !important
+}

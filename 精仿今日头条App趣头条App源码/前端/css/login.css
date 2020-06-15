@@ -1,0 +1,105 @@
+.aui-list .aui-list-item{
+	border-bottom: 0px;
+	background: none;
+}
+.aui-list{
+	border-top: 0px;
+	background: none;
+}
+.aui-form-list{
+	margin: 0 1.8rem;
+	border: 1px solid #e8e8e8;
+	border-radius: 0.25rem;
+}
+#mobile{
+	 border-bottom: 1px solid #e8e8e8;
+}
+.chait div{
+	color: #D43D3D;
+}
+.aui-grid{
+	border-bottom: 1px solid #e8e8e8;
+	margin-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+.aui-grid [class*=aui-col-]{
+	padding: 0.1rem 0;
+}
+.aui-grid [class*=aui-col-]:active{
+	background: none;
+}
+.aui-grid .aui-grid-label{
+	margin-top: 0px;
+}
+.aui-list-item-input input{
+	font-size: 0.65rem;
+}
+.fx-login{
+	margin: 0 1.8rem;
+	margin-top: 1rem;
+	height: 6rem;
+}
+.fx-login p{
+	padding-top:0.5rem;
+	text-align: center;
+	font-size: 0.55rem;
+	color: #ccc;
+}
+.fx-loginnNull{
+	background: #FAA9A8 !important;
+}
+.fx-yzm{
+	font-size: 0.55rem;
+	width:100px !important;
+	color: #D43D3D !important;
+	padding: 0px !important;
+	margin: 0px !important;
+	text-align: right !important;
+}
+.fx-b{
+	overflow: hidden;
+	margin: 0 1.8rem;
+	padding: 1rem 0;
+}
+.fx-b-title{
+	background: #fff;
+	text-align: center;
+	width: 5rem;
+	margin: 0 auto;
+	margin-top: -10px;
+	font-size: 0.6rem
+}
+.fx-shanghuaxian{
+	background: #e8e8e8;
+	height: 0.05rem;
+	width: 100%;
+	overflow: hidden
+}
+.fx-b .aui-grid {
+	border: 0px;
+	padding-top: 0.5rem;
+}
+.fx-b .aui-grid .aui-row img{
+	width: 2.5rem;
+	height: 2.5rem;
+	margin: 0 auto;
+}
+.fx-top{
+	border-bottom: 1px solid #e8e8e8;
+	margin-bottom: 1.5rem;
+}
+.fx-b .aui-grid-label{
+	font-size: 0.65rem;
+	color: #999;
+	padding-top: 0.2rem;
+}
+.aui-btn-block.aui-btn-sm{
+	height: 2rem;
+}
+.fx-login-b{
+	display: block;
+	margin:0 1rem;
+	margin-top: 25px;
+	font-size: 0.6rem;
+	
+}

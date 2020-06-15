@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title><?php echo $app->trans('install.title') ?></title>
+
+        <!-- Fonts -->
+
+        <?php echo $app->renderView('blocks/fonts.html'); ?>
+
+        <!-- Styles -->
+
+        <link rel="icon" type="image/icon" href="<?php echo $app->asset('img/fav.ico') ?>">
+
+        <link rel="stylesheet" href="<?php echo $app->asset('css/jquery.mCustomScrollbar.css') ?>" />
+        <link rel="stylesheet" href="<?php echo $app->asset('css/framework.css') ?>" />
+        <link rel="stylesheet" href="<?php echo $app->asset('css/main.css') ?>" />
+        <link rel="stylesheet" href="<?php echo $app->asset('css/admin.css') ?>" />
+        <link rel="stylesheet" href="<?php echo $app->asset('css/bootstrap.css') ?>" />
+    </head>
+    <body class="install-wizard">
+
+        <img class="logo" src="<?php echo $app->asset('img/logo.png') ?>">
+
+        <div class="panel">
+
+            <div class="header"><?php echo $app->trans('install.title') ?></div>
+
+            <div class="content">
+
+                <!-- Introduction -->
+
+                <p class="intro">
+                    <?php echo $app->trans('wizard.intro') ?>
+                </p>
+
+                <?php if(isset($vars['errors'])) { ?>
+                <p class="error">
+                    <?php echo $app->trans('wizard.input.err') ?>
+                </p>
+                <?php } ?>
+
+                <?php if(isset($vars['notWritable'])) { ?>
+                <p class="error">
+                    <?php echo $app->trans('wizard.files.err') ?>
+                    <br><br>
+                    <?php foreach($vars['notWritable'] as $path => $type) { ?>
+                        - <b><?php echo $path ?></b> <?php echo ($type == 'dir' ? 'directory' : 'file') ?><br>
+                    <?php } ?>
+                    <br>
+                    <?php echo $app->trans('wizard.files.err.2') ?>
+                </p>
+                <?php } ?>
+
+                <?php if(isset($vars['missingExtensions'])) { ?>
+                <p class="error">
+                    <?php echo $app->trans('wizard.ext.err') ?>
+                    <br><br>
+                    <?php foreach($vars['missingExtensions'] as $extension) { ?>
+                        - <b><?php echo $extension ?></b><br>
+                    <?php } ?>
+                    <br>
+                    <?php echo $app->trans('wizard.ext.err.2') ?>
+                </p>
+                <?php } ?>
+
+                <?php if(isset($vars['dbError'])) { ?>
+                <p class="error">
+                    <?php echo $app->trans('wizard.err.db') ?>
+                </p>
+                <?php } ?>
+
+                <?php if(isset($vars['dbCreateError'])) { ?>
+                <p class="error">
+                    <?php echo $app->trans('wizard.err.db.2', array('%dbName%' => $vars['config']['dbName'], '%message%' => $vars['message'])) ?>
+                </p>
+                <?php } ?>
+
+                <form action="<?php echo $app->path('Install:wizard2') ?>" method="post">
+
+                    <!-- Database settings -->
+
+                    <h2><?php echo $app->trans('db.settings') ?></h2>
+
+                    <div class="section">
+
+                        <div class="row">
+                            <div class="col3"><label><?php echo $app->trans('host') ?></label></div>
+                            <div class="col9">
+                                <input type="text" name="config[dbHost]" value="<?php echo $vars['config']['dbHost'] ?>">
+                                <?php if(isset($vars['errors']['dbHost'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['dbHost'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col3"><label><?php echo $app->trans('port') ?></label></div>
+                            <div class="col9">
+                                <input type="text" name="config[dbPort]" value="<?php echo $vars['config']['dbPort'] ?>">
+                                <?php if(isset($vars['errors']['dbPort'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['dbPort'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col3"><label><?php echo $app->trans('db.name') ?></label></div>
+                            <div class="col9">
+                                <input type="text" name="config[dbName]" value="<?php echo $vars['config']['dbName'] ?>">
+                                <?php if(isset($vars['errors']['dbName'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['dbName'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col3"><label><?php echo $app->trans('user.name') ?></label></div>
+                            <div class="col9">
+                                <input type="text" name="config[dbUser]" value="<?php echo $vars['config']['dbUser'] ?>">
+                                <?php if(isset($vars['errors']['dbUser'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['dbUser'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col3"><label><?php echo $app->trans('pass') ?></label></div>
+                            <div class="col9">
+                                <input type="password" name="config[dbPassword]" value="<?php echo $vars['config']['dbPassword'] ?>">
+                                <?php if(isset($vars['errors']['dbPassword'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['dbPassword'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- SMTP settings -->
+
+                    <h2><?php echo $app->trans('smtp') ?></h2>
+
+                    <div class="section">
+
+                        <p class="intro">
+                            <?php echo $app->trans('smtp.intro') ?>
+                        </p>
+
+                        <div class="row">
+                            <div class="col3"><label><?php echo $app->trans('use.smtp') ?></label></div>
+                            <div class="col9">
+                                <input type="checkbox" name="config[services][mailer][smtp]" <?php echo isset($vars['config']['services']['mailer']['smtp']) && $vars['config']['services']['mailer']['smtp'] == true ? 'checked="checked"' : '' ?> />
+                                <?php if(isset($vars['errors']['services']['mailer']['smtp'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['services']['mailer']['smtp'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col3"><label><?php echo $app->trans('encryption') ?></label></div>
+                            <div class="col9">
+                                <input type="text" name="config[services][mailer][smtpSecure]" value="<?php echo $vars['config']['services']['mailer']['smtpSecure'] ?>">
+                                <?php if(isset($vars['errors']['services']['mailer']['smtpSecure'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['services']['mailer']['smtpSecure'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col3"><label><?php echo $app->trans('hosts.i') ?></b></label></div>
+                            <div class="col9">
+                                <input type="text" name="config[services][mailer][smtpHost]" value="<?php echo $vars['config']['services']['mailer']['smtpHost'] ?>">
+                                <?php if(isset($vars['errors']['services']['mailer']['smtpHost'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['services']['mailer']['smtpHost'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col3"><label><?php echo $app->trans('port') ?></label></div>
+                            <div class="col9">
+                                <input type="text" name="config[services][mailer][smtpPort]" value="<?php echo $vars['config']['services']['mailer']['smtpPort'] ?>">
+                                <?php if(isset($vars['errors']['services']['mailer']['smtpPort'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['services']['mailer']['smtpPort'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col3"><label><?php echo $app->trans('user') ?></label></div>
+                            <div class="col9">
+                                <input type="text" name="config[services][mailer][smtpUser]" value="<?php echo $vars['config']['services']['mailer']['smtpUser'] ?>">
+                                <?php if(isset($vars['errors']['services']['mailer']['smtpUser'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['services']['mailer']['smtpUser'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col3"><label><?php echo $app->trans('pass') ?></label></div>
+                            <div class="col9">
+                                <input type="password" name="config[services][mailer][smtpPass]" value="<?php echo $vars['config']['services']['mailer']['smtpPass'] ?>">
+                                <?php if(isset($vars['errors']['services']['mailer']['smtpPass'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['services']['mailer']['smtpPass'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Admin user settings -->
+
+                    <h2><?php echo $app->trans('admin.acc.settings') ?></h2>
+
+                    <div class="section">
+
+                        <div class="row">
+                            <div class="col3"><label><?php echo $app->trans('user.name') ?></label></div>
+                            <div class="col9">
+                                <input type="text" name="config[superUser]" value="<?php echo $vars['config']['superUser'] ?>">
+                                <?php if(isset($vars['errors']['superUser'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['superUser'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col3"><label><?php echo $app->trans('pass') ?></label></div>
+                            <div class="col9">
+                                <input type="password" name="config[superPass]">
+                                <?php if(isset($vars['errors']['superPass'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['superPass'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col3"><label><?php echo $app->trans('pass.repeat') ?></label></div>
+                            <div class="col9">
+                                <input type="password" name="config[superPassRepeat]">
+                                <?php if(isset($vars['errors']['superPassRepeat'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['superPassRepeat'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Other settings -->
+
+                    <h2><?php echo $app->trans('other.settings') ?></h2>
+
+                    <div class="section">
+
+                        <div class="row">
+                            <div class="col3"><label><?php echo $app->trans('contact.mail') ?></label></div>
+                            <div class="col9">
+                                <input type="text" name="config[appSettings][contactMail]" value="<?php echo $vars['config']['appSettings']['contactMail'] ?>">
+                                <?php if(isset($vars['errors']['appSettings']['contactMail'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['appSettings']['contactMail'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Actions -->
+
+                    <div class="row buttons">
+                        <div class="col6">
+                            <a class="btn secondary" href="<?php echo $app->path('Admin:index') ?>">
+                                <i class="icon-remove-sign icon-white"></i>
+                                <?php echo $app->trans('cancel') ?>
+                            </a>
+                        </div>
+
+                        <div class="col6">
+                            <button class="btn" type="submit">
+                                <?php echo $app->trans('save') ?>
+                                <i class="icon-circle-arrow-right icon-white"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </body>
+</html>

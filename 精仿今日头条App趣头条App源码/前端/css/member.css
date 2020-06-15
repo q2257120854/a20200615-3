@@ -1,0 +1,123 @@
+body{
+	background: #F4F5F6 !important;
+}
+.fx-member-list{
+	border:0px;
+}
+.fx-member-list ul li .aui-list-item-inner{
+	font-size: 0.75rem;
+}
+.aui-grid .aui-col-xs-4 img{
+	width: 1.2rem;
+	height: 1.2rem;
+	text-align: center;
+	margin: 0 auto
+}
+.fx-member-top{
+	background: #3E3E3E url('../image/usertou.jpg') no-repeat center top;
+	background-size:100% 100%;
+	width: 100%;
+}
+.fx-member-top ul{
+	background:none;
+	padding-top: 2rem;
+}
+.fx-member-top .aui-list .aui-list-item-media{
+	width: 3.5rem;
+}
+.fx-member-top .aui-list,.fx-member-top .aui-list li{
+	border: 0px;
+	background-image: none;
+}
+.fx-member-top .aui-list .aui-list-item-media img{
+	padding: 1px;
+	background: #fff;
+}
+.fx-member-top .aui-media-list .aui-list-item-inner{
+	color: #fff;
+}
+.aui-grid [class*=aui-col-]{
+	padding: 0.7rem 0px;
+}
+.fx-member-top .aui-grid{
+	background: none;
+	color: #fff;
+}
+.fx-member-top .aui-grid b{
+	font-size: 0.7rem;
+	font-weight:bold;
+	color: #EBEBEB;
+}
+.fx-member-top .aui-grid .aui-grid-label{
+	font-size: 0.6rem;
+	color: #696969;
+	margin-top: 0px;
+}
+.fx-member-list .aui-list .aui-list-item{
+	padding-top: 0.2rem;
+	padding-bottom: 0.2rem;
+}
+ 
+.fx-tab {
+	width: 80%;
+	margin: 0 auto;
+}
+.fx-view-header {
+	background-color: #fff !important;
+	color: #000;
+	margin-bottom: 0px !important;
+}
+.asdlkhjasd {
+	overflow: hidden;
+	border-bottom: 1px solid #E8E8E8;
+}
+.fx-view-header .aui-pull-left span,.fx-view-header .aui-pull-right span {
+	color: #000 !important;
+}
+.fx-view-header .aui-pull-right img {
+	width: 1.2rem;
+}
+.fx-login-disf{
+	padding: 2rem 0;
+}
+.fx-login-disf .aui-row{
+	margin: 0 1.5rem;
+}
+.fx-login-disf img{
+	width: 2.5rem;
+	margin: 0 auto;
+	background: #fff;
+	border-radius: 50%;
+}
+.fx-login-gengd{
+	text-align: center;
+	background: #2E2E2E;
+	color: #FFFFFF;
+	font-size: 0.6rem;
+	border-radius: 10px;
+	width: 10rem;
+	padding: 0.25rem 0.5rem;
+	margin: 0 auto;
+	margin-top: 0.5rem;
+}
+.fx-guanzhuLists{
+	display: block;
+	clear: both;
+	width: 100%;
+}
+.guanzhuLasdasd{
+	display: block !important;
+}
+.fx-guanzhuLists img{
+	border-radius: 50%;
+	width: 2.4rem !important;
+	height: 2.4rem !important;
+	margin: 0 auto
+}
+.fx-guanzhuLists .aui-grid-label{
+	font-size: 0.55rem;
+}
+.fx-guanzhuLists img{
+	padding: 1px;
+	background: #e8e8e8;
+}

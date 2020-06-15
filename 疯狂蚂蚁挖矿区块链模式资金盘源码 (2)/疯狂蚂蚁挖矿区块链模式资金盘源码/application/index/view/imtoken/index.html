@@ -1,0 +1,158 @@
+{extend name="common/world"}
+{block name="title"}imToken{/block}
+{block name="style"}
+<style>
+.btn-toggle-form {
+     position: absolute;
+    right: .3rem;
+    top: 0rem;
+    z-index: 1;
+}
+</style>
+{/block}
+{block name="container"}
+<div class="card card-form">
+    <div class="card-header">
+        <div class="card-title f1"><span class="form-title">在线充值</span></div>
+        <div class="card-options">
+            <button class="btn btn-primary btn-sm mr-2" type="button" data-type="recharge">充值</button>
+            <button class="btn btn-secondary btn-sm mr-2" type="button" data-type="withdraw">提现</button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="dimmer">
+            <div class="dimmer-content recharge">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <label class="form-label">公司imToken钱包地址</label>
+                            <div class="row gutters-xs">
+                                <div class="col">
+                                    <input type="text" class="form-control" name="imtoken_code" readonly="true" value="{$config.code}" />
+                                </div>
+                                <div class="col-auto">
+                                    <button class="btn btn-secondary" data-toggle="collapse" data-target="#qrcode">
+                                        <i class="fa fa-qrcode"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4 collapse" id="qrcode">
+                        <div class="form-group">
+                            <label class="form-label">公司imToken钱包二维码</label>
+                            <div class="input-group">
+                                <img src="/upload/{$config.qrcode}" style="max-height: 10rem;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <label class="form-label">货币数量</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="0" name="number" />
+                                <span class="input-group-append" id="basic-addon2">
+                                    <span class="input-group-text">{$Think.config.hello.unit}</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <div class="form-label">支付凭证</div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="certificate" accept="image/*">
+                                <label class="custom-file-label">请选择截图</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <label class="form-label">安全密码</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" placeholder="******" name="safeword" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="ml-auto text-right">
+                        <button type="submit" class="btn btn-primary btn-submit btn-post">提交申请</button>
+                    </div>
+                </div>
+            </div>
+            <div hidden class="dimmer-content withdraw">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <label class="form-label">您的imToken钱包地址</label>
+                            <input type="text" class="form-control" name="imtoken_code" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <div class="form-label">您的imToken钱包二维码，可选</div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="imtoken_qrcode" accept="image/*">
+                                <label class="custom-file-label">二维码图片，选填</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <label class="form-label">货币数量</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="0" name="number" />
+                                <span class="input-group-append" id="basic-addon2">
+                                    <span class="input-group-text">{$Think.config.hello.unit}</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <label class="form-label">安全密码</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" placeholder="******" name="safeword" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="small text-muted mt-2">
+                        手续费：<span class="charge">0{$Think.config.hello.unit}</span>
+                    </div>
+                    <div class="ml-auto text-right">
+                        <button type="submit" class="btn btn-primary btn-submit btn-post">提交申请</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        <div class="card-title f1"><span class="table-title">充值记录</span></div>
+    </div>
+    <div class="table-responsive">
+        <table class="table card-table table-striped table-vcenter">
+            <thead>
+                <tr>
+                    <th>信息</th>
+                    <th width="30%" class="text-right pr-4">状态</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div hidden class="card-footer card-more">
+        <div class="text-muted text-center">点击加载更多</div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+var charge = parseFloat('{$config.charge|default=0}');
+</script>
+<script type="text/javascript" src="/static/js/imtoken.js"></script>
+{/block}

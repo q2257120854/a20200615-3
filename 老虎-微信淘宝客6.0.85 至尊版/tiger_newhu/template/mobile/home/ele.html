@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>饿了么</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/css/slick.min.css" />
+    <link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/css/style.css" />
+    <link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/css/hsy.css" />
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/jquery.min.js"></script>
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/slick.min.js"></script>
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/clipboard.min.js"></script>
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/lib.js"></script>
+	<link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style88/css/layer.css" />
+	<script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/js/layer_mobile/layer.js"></script>
+	
+</head>
+
+<body>
+    <div class="bodyW">
+        <div class="elm">
+            <div class="header2">
+                <div class="back" onclick="history.go(-1);"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/back3.png" alt=""></div>
+                <div class="name">
+                    <span>饿了么</span>
+                </div>
+                <div class="ref"><!-- <img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/ref2.png" alt=""> --></div>
+            </div>
+            <div class="top" style="height: 3.85rem;background-image: url({$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/elm01.jpg);">
+                <div class="btn"><a href="">领券下单拿收益</a></div>
+            </div>
+            <div class="prog">
+                <img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/elm2.png" alt="">
+            </div>
+            <div class="copy">
+                <div class="con">
+                    <div class="txt">
+                        註意：餓了麽瘋狂撒紅包，復制
+                        {$tkl}，打開【手機Tao寶】立享餓了麽隱藏福利
+                    </div>
+                    <div class="btn js-copy" data-clipboard-text="註意：餓了麽瘋狂撒紅包，復制{$tkl}，打開【手機Tao寶】立享餓了麽隱藏福利">复制饿了么口令</div>
+					<div class="xmbox">
+						<div class="fxhaiboan" id="fxhaiboan">分享推广海报</div>
+						<div class="xcxhaobao" id="xcxhaobao">分享小程序领券</div>
+					</div>
+					<div style="clear: both;"></div>
+                </div>
+            </div>
+			
+			<canvas class="free-canvas" id="freeCanvas" width="750" height="1000" style="display: none;"></canvas>
+			
+			<div class="cover flex col fl-align" id="haibaobox" style="display: none;">
+			    <div class="flex col fl-align" style="margin: auto;">
+			        <div class="haibao" id="haibao" >
+			            <img src="http://img.haodanku.com/FndEFfH5XJd_ibr3Z3jUAA6N36fo">
+			        </div>
+			        <!-- <div class="share-btn fz-20 c-ff" @click="toshare">立即分享</div> -->
+			        <i class="close-icon" id="close"></i>
+			        
+			    </div>
+			</div>
+			
+			
+			
+            <div class="text">
+                <p>返佣金说明：</p>
+                <p>1、用户在饿了么品质联盟商户下单均有返佣，以实际金额支付为准，最高4.8%。</p>
+                <p>2、下单后最晚半小时内同步订单，确认收货，次月25日可提现上月结算的佣金。</p>
+                <p>3、若不喜欢活动页面的推荐店铺，领券后7天内在任意品质联盟商户店铺用券下单，仍然可以收取返佣。</p>
+            </div>
+        </div>
+        <script>
+            $(function() {
+                hr.regPage('ele', {
+                    init: function() {
+                        this.copy();
+						this.haibao();
+                    },
+                    copy: function() {
+                        var clipboard = new ClipboardJS('.js-copy');
+                        clipboard.on('success', function(e) {
+                             layer.open({
+                                content: '复制成功'
+                                ,skin: 'msg'
+                                ,time: 3 //2秒后自动关闭
+                              });
+                        });
+                    },
+					haibao:function(){
+						$("#close").click(function(){
+							$("#haibaobox").css("display","none");
+						});
+						
+						$("#xcxhaobao").click(function(){
+								code="{$xcxewm}";
+								var zdyurl="{$cfg['tknewurl']}";
+								var canvas = document.getElementById('freeCanvas');
+								var ctx = canvas.getContext('2d');
+								var free_img = new Image();
+								free_img.setAttribute('crossOrigin', 'anonymous');
+								free_img.src =  zdyurl+'addons/tiger_newhu/template/mobile/home/elmbj.jpg';
+								free_img.onload = function () {
+								    ctx.drawImage(free_img, 0, 0, 750, 1000);
+								    // 二维码
+								    var code_img = new Image();
+								    code_img.setAttribute('crossOrigin', 'anonymous');
+								    code_img.src = code;
+								    code_img.onload = function () {
+								        ctx.drawImage(code_img, 276, 725, 196, 196);
+								        var code_image = new Image();
+								        code_image.setAttribute('crossOrigin', 'anonymous');
+								        code_image.src = canvas.toDataURL('img/png');
+								        free_poster = code_image.src;
+										//alert(code_image.src);
+										$(".haibao").html("<img src='"+free_poster+"'>");
+										// $(".ayui-m-layer").css("display","none");
+										layer.closeAll();
+										$("#haibaobox").css("display","-webkit-flex");
+										
+								        // functionclick('B13002', 'image_base64', JSON.stringify({
+								        //     keyword: free_poster
+								        // }));
+								    }
+								}
+						});
+						
+						
+						$("#fxhaiboan").click(function(){
+							var url="{$rhyurl}";
+							var zdyurl="{$cfg['tknewurl']}";
+							layer.open({
+							    type: 2
+							    ,content: '正在为您生成图片,请稍后！'
+							    ,time: 1000
+							 });
+							//alert(url);
+							    $.ajax({
+							        url:"{php echo $this->createMobileUrl('getewm')}",
+							          type:'post',
+							          data:{
+							          	url:encodeURIComponent(url),
+							          },
+							        dataType:"json", 
+							        success: function (data) {
+										$("#layui-m-layer0").css("display","none");
+										 console.log(data);
+							            code=zdyurl+data;
+										
+										var canvas = document.getElementById('freeCanvas');
+										var ctx = canvas.getContext('2d');
+										var free_img = new Image();
+										free_img.setAttribute('crossOrigin', 'anonymous');
+										free_img.src = zdyurl+'addons/tiger_newhu/template/mobile/home/elmbj.jpg';
+										free_img.onload = function () {
+										    ctx.drawImage(free_img, 0, 0, 750, 1000);
+										    // 二维码
+										    var code_img = new Image();
+										    code_img.setAttribute('crossOrigin', 'anonymous');
+										    code_img.src = code;
+										    code_img.onload = function () {
+										        ctx.drawImage(code_img, 276, 725, 196, 196);
+										        var code_image = new Image();
+										        code_image.setAttribute('crossOrigin', 'anonymous');
+										        code_image.src = canvas.toDataURL('img/png');
+										        free_poster = code_image.src;
+												//alert(code_image.src);
+												$(".haibao").html("<img src='"+free_poster+"'>");
+												// $(".ayui-m-layer").css("display","none");
+												layer.closeAll();
+												$("#haibaobox").css("display","-webkit-flex");
+												
+										        // functionclick('B13002', 'image_base64', JSON.stringify({
+										        //     keyword: free_poster
+										        // }));
+										    }
+										}
+							        }
+							    });
+						});
+					},
+					
+                });
+            });
+        </script>
+		<style>
+			.xmbox{margin-top: 0.3rem;}
+			.fxhaiboan{
+				height: .89rem;
+				    line-height: .89rem;
+				    border: 1px #2b93fd solid;
+				    border-radius: 0.5rem;
+				    width: 45%;
+				    float: left;
+					color: #2b93fd;
+					text-align: center;
+					    font-size: .3rem;
+			}
+			.xcxhaobao{
+				height: .89rem;
+				    line-height: .89rem;
+				    border: 1px #2b93fd solid;
+				    border-radius: 0.5rem;
+				    width: 45%;
+				    float: right;
+					color: #2b93fd;
+					text-align: center;
+					    font-size: .3rem;
+				}
+			}
+			    html {
+			        margin: auto;
+			        background: #F5F5F5;
+			        color: #999999;
+			        -webkit-overflow-scrolling: touch;
+			        -webkit-tap-highlight-color: none;
+			    }
+			
+			    body,
+			    html,
+			    div,
+			    img,
+			    p {
+			        padding: 0;
+			        margin: 0;
+			    }
+			
+			    a {
+			        text-decoration: none;
+			    }
+			
+			    img {
+			        -webkit-user-select: none;
+			        -moz-user-select: none;
+			        -ms-user-select: none;
+			        user-select: none;
+			    }
+			
+			    ul {
+			        padding: 0px;
+			    }
+			
+			    input {
+			        border: 0;
+			        outline: 0;
+			        box-shadow: 0;
+			    }
+			
+			
+			    /* 弹性 */
+			    .flex {
+			        display: flex;
+			        display: -webkit-flex;
+			    }
+			
+			    .col {
+			        flex-direction: column;
+			        -webkit-flex-direction: column;
+			    }
+			
+			    .fl-w {
+			        flex-wrap: wrap;
+			        -webkit-flex-wrap: wrap;
+			    }
+			
+			    .fl-align {
+			        align-items: center;
+			        -webkit-align-items: center;
+			    }
+			
+			    .fl-jc {
+			        justify-content: center;
+			        -webkit-justify-content: center;
+			    }
+			
+			    .fl-jsb {
+			        justify-content: space-between;
+			        -webkit-justify-content: space-between;
+			    }
+			
+			    .fl-jsa {
+			        justify-content: space-around;
+			        -webkit-justify-content: space-around;
+			    }
+			
+			    .fl-jse {
+			        justify-content: space-evenly;
+			        -webkit-justify-content: space-evenly;
+			    }
+			
+			
+			    /* 文字大小 */
+			    .fz-10 {
+			        font-size: 0.1rem;
+			    }
+			
+			    .fz-11 {
+			        font-size: 0.11rem;
+			    }
+			
+			    .fz-12 {
+			        font-size: 0.12rem;
+			    }
+			
+			    .fz-14 {
+			        font-size: 0.14rem;
+			    }
+			
+			    .fz-15 {
+			        font-size: 0.15rem;
+			    }
+			
+			    .fz-17 {
+			        font-size: 0.17rem;
+			    }
+			
+			    .fz-20 {
+			        font-size: 0.2rem;
+			    }
+			
+			    /* 文字颜色 */
+			    .c-33 {
+			        color: #333;
+			    }
+			
+			    .c-ff {
+			        color: #fff;
+			    }
+			
+			    .c-02 {
+			        color: #FF0F02;
+			    }
+			
+			    .c-9D {
+			        color: #FF029D;
+			    }
+			
+			
+			    /* 文字粗细 */
+			
+			    /* 背景颜色 */
+			    .b-ff {
+			        background: #fff;
+			    }
+			
+			
+			    /* 俩行 */
+			    .clamp2 {
+			        overflow: hidden;
+			        text-overflow: ellipsis;
+			        -webkit-box-orient: vertical;
+			        -webkit-line-clamp: 2;
+			        display: -webkit-box;
+			    }
+			
+			    /* 公共 */
+			    #app {
+			        width: 100%;
+			        min-height: 100vh;
+			        background: #FF0265;
+			        display: flex;
+			        flex-direction: column;
+			        align-items: center;
+			    }
+			
+			
+			    /*底部线条*/
+			    .nav-active {
+			        position: relative;
+			        color: #FF0F02;
+			        font-weight: bold;
+			    }
+			
+			    .nav-active::after {
+			        content: "";
+			        position: absolute;
+			        left: calc((100% - 25px) / 2);
+			        bottom: 0.04rem;
+			        width: 0.25rem;
+			        height: 0.02rem;
+			        border-radius: 1000px;
+			        background: #FF0F02;
+			    }
+			
+			    [v-cloak] {
+			        display: none;
+			    }
+			
+			    /* alerts */
+			    .alerts {
+			        width: 100%;
+			        height: 100%;
+			        position: fixed;
+			        top: 0rem;
+			        z-index: 200;
+			    }
+			
+			    .alert-box {
+			        margin: auto
+			    }
+			
+			    .alert-info {
+			        font-size: 0.14rem;
+			        font-weight: bold;
+			        background: rgba(0, 0, 0, 0.5);
+			        color: #fff;
+			        padding: 8px 18px;
+			        border-radius: 4px;
+			    }
+			    .top-img,
+			    .list-content {
+			        width: 100%;
+			    }
+			
+			    .list-content {
+			        margin-bottom: 0.5rem;
+			    }
+			
+			    .list-content>div:last-child {
+			        margin-bottom: 0.7rem;
+			    }
+			
+			    .nav-line {
+			        position: relative;
+			        width: 3.51rem;
+			        height: 0.38rem;
+			        border-radius: 0.05rem;
+			        margin-bottom: 0.09rem;
+			        z-index: 99;
+			        display: -moz-box;
+			        display: -webkit-box;
+			        display: box;
+			    }
+			
+			    .nav-list {
+			        width: 3.06rem;
+			        height: 100%;
+			        position: relative;
+			        overflow-x: scroll;
+			    }
+			
+			    .class-nav-list {
+			        position: absolute;
+			        left: 0;
+			        height: 100%;
+			        word-break: keep-all;
+			        touch-action: none;
+			    }
+			
+			    .class-nav-list>span {
+			        padding: 0.07rem 0.16rem;
+			    }
+			
+			    .line {
+			        width: 0.07rem;
+			        height: 100%;
+			        background: url(http://img.fqapps.com/a10e3ab7ebfbf84fdc9db07114fec6e5) no-repeat center;
+			        background-size: 100%;
+			    }
+			
+			    .icon-btn {
+			        width: 0.39rem;
+			        height: 100%;
+			    }
+			
+			    .down {
+			        display: block;
+			        width: 0.14rem;
+			        height: 0.08rem;
+			        background: url(http://img.fqapps.com/8ccf30bb28ef06400d7a82fa3ce9a107) no-repeat center;
+			        background-size: 100%;
+			        margin: auto;
+			    }
+			
+			    .down-list {
+			        position: absolute;
+			        left: 0;
+			        padding-top: 0.14rem;
+			        width: 3.51rem;
+			        top: 0.35rem;
+			    }
+			
+			    .down-list>span {
+			        border-radius: 0.05rem;
+			        padding: 0.07rem 0.1rem;
+			        margin-left: 0.05rem;
+			        margin-bottom: 0.07rem;
+			    }
+			
+			    .nav-choice {
+			        color: #fff;
+			        background: #FF0F02;
+			    }
+			
+			    .list-item {
+			        width: 3.51rem;
+			        height: 1.24rem;
+			        border-radius: 0.05rem;
+			        margin-bottom: 0.08rem;
+			        position: relative;
+			    }
+			
+			    .list-item .left {
+			        width: 1.1rem;
+			        height: 1.1rem;
+			        border-radius: 0.05rem;
+			        margin: 0.07rem;
+			    }
+			
+			    .list-item .left>img {
+			        width: 100%;
+			        height: 100%;
+			        border-radius: 0.05rem;
+			    }
+			
+			    .list-item .right {
+			        width: 2.2rem;
+			        height: 1.1rem;
+			    }
+			
+			    .title-line {
+			        position: relative;
+			        margin-bottom: 0.1rem;
+			    }
+			
+			    .d_icon {
+			        display: block;
+			        width: 0.28rem;
+			        height: 0.13rem;
+			        background: url(http://img.fqapps.com/33b4274d708f0669420430f78edfec76) no-repeat center;
+			        background-size: 100%;
+			        position: absolute;
+			        top: 0.02rem;
+			    }
+			
+			    .title-line>span {
+			        text-indent: 0.3rem;
+			    }
+			
+			    .lable-line {
+			        width: 100%;
+			        margin-bottom: 0.2rem;
+			    }
+			
+			
+			    .quan {
+			        border: 0.01rem solid #FF0F02;
+			        border-radius: 0.02rem;
+			        margin-right: 0.04rem;
+			    }
+			
+			    .quan>span:first-child {
+			        padding: 0.04rem 0.04rem 0.04rem 0.05rem;
+			        border-right: 0.01rem dashed #FF0F02;
+			    }
+			
+			    .quan>span:last-child {
+			        padding: 0.04rem 0.05rem 0.04rem 0.04rem;
+			    }
+			
+			    .hint {
+			        padding: 0.06rem 0.06rem 0.06rem 0.05rem;
+			        border: 0.01rem solid #FF029D;
+			        border-radius: 0.02rem;
+			        max-width: 1.5rem;
+			        word-wrap: normal;
+			        text-overflow: ellipsis;
+			        white-space: nowrap;
+			        overflow: hidden;
+			        line-height: 1;
+			    }
+			
+			    .buy-btn {
+			        width: 0.95rem;
+			        height: 0.27rem;
+			        line-height: 0.27rem;
+			        text-align: center;
+			        background: linear-gradient(90deg, #FF0202, #FF5502);
+			        border-radius: 0.13rem 0rem 0rem 0.13rem;
+			        position: absolute;
+			        right: 0;
+			        bottom: 0.07rem;
+			    }
+			
+			    .share-Btn {
+			        width: 2.31rem;
+			        height: 0.53rem;
+			        background: url(http://img.fqapps.com/321c8eb22929547d08cb735e5ece47df) no-repeat center;
+			        background-size: 100%;
+			        position: fixed;
+			        bottom: 0.1rem;
+			    }
+			
+			    .cover {
+			        width: 100%;
+			        height: 100%;
+			        background: rgba(0, 0, 0, 0.5);
+			        position: fixed;
+			        top: 0rem;
+			        z-index: 2000;
+			    }
+			
+			    .haibao {
+			        width: 4.72rem;
+			        height: 6.65rem;
+			        border-radius: 0.1rem;
+			        margin-bottom: 0.23rem;
+			    }
+			
+			    .haibao>img {
+			        width: 100%;
+			        height: 100%;
+			    }
+			
+			    .share-btn {
+			        width: 2.31rem;
+			        height: 0.42rem;
+			        line-height: 0.42rem;
+			        text-align: center;
+			        background: linear-gradient(0deg, #FF7500, #FF9943);
+			        border-radius: 0.21rem;
+			        margin-bottom: 0.2rem;
+			    }
+			
+			    .close-icon {
+			        width: 0.36rem;
+			        height: 0.36rem;
+			        background: url(http://img.fqapps.com/60b5d0116e55fca1701ddd69d050be97) no-repeat;
+			        background-size: cover;
+			    }
+			
+			    .activityClass-fixed {
+			        position: fixed;
+			        top: 0;
+			        left: 0;
+			        width: 100%;
+			        background: #fff;
+			        border-radius: 0;
+			        z-index: 199;
+			    }
+			
+			    .activityClass-fixed .nav-list {
+			        width: 100%;
+			    }
+			
+			    .activityClass-fixed .nav-list .class-nav-list>span {
+			        padding: 0.07rem 0.08rem;
+			    }
+			
+			    .activityClass-fixed .line,
+			    .activityClass-fixed .icon-btn {
+			        display: none !important;
+			    }
+			
+			    .activitys {
+			        margin-top: 0.55rem;
+			    }
+		</style>
+</body>
+
+</html>

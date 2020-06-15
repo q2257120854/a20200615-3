@@ -1,0 +1,393 @@
+{extend name="common/world"} {block name="title"}用户修改{/block} {block name="style"}{/block} {block name="container"}
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header" data-toggle="card-collapse">
+                <h3 class="card-title">资料编辑</h3>
+                <div class="card-options mr-0">
+                    <a href="#" class="card-options-collapse"><i class="fe fe-chevron-up"></i></a>
+                </div>
+            </div>
+            <div class="card-body">
+                <form class="d-block w-100" method="post" action="/admin/account/edit" enctype="multipart/form-data">
+                    <input type="hidden" name="username" value="{$user.account.username}" />
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">用户编号</label>
+                                <input type="text" class="form-control" disabled="true" name="uid" placeholder="用户编号" value="{$user.account.uid}" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">用户账号</label>
+                                <input type="text" class="form-control" readonly="true" name="username" placeholder="用户账号" value="{$user.account.username}" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">个性昵称</label>
+                                <input type="text" class="form-control" name="nickname" placeholder="个性昵称" value="{$user.profile.nickname}" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <div class="form-label">用户头像</div>
+                                <div class="custom-file">
+                                    <input type="file" accept="image/*" class="custom-file-input" name="avatar" />
+                                    <label class="custom-file-label">不选表示不更换</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">微信账号</label>
+                                <input type="text" class="form-control" name="wechat" placeholder="微信账号" value="{$user.profile.wechat}" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">QQ号码</label>
+                                <input type="tel" class="form-control" name="qq" placeholder="QQ号码" value="{$user.profile.qq}" />
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label class="form-label">支付宝账号</label>
+                                <input type="tel" class="form-control" name="alipay" placeholder="支付宝账号" value="{$user.profile.alipay}" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">银行名称</label>
+                                <input type="text" class="form-control" name="bankname" placeholder="银行名称" value="{$user.profile.bankname}" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">银行卡号</label>
+                                <input type="text" class="form-control" name="bankcard" placeholder="银行卡号" value="{$user.profile.bankcard}" />
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label class="form-label">分行地址</label>
+                                <input type="text" class="form-control" name="bankaddress" placeholder="分行地址" value="{$user.profile.bankaddress}" />
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="text-right">
+                                <button class="btn btn-primary">更新档案</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card card-collapsed">
+            <div class="card-header" data-toggle="card-collapse">
+                <h3 class="card-title">资金调整</h3>
+                <div class="card-options mr-0">
+                    <a href="#" class="card-options-collapse"><i class="fe fe-chevron-up"></i></a>
+                </div>
+            </div>
+            <div class="card-body">
+                <form class="d-block w-100" method="post" action="/admin/account/capital">
+                    <input type="hidden" name="username" value="{$user.account.username}" />
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">可用{$Think.config.hello.unit}</label>
+                                <input type="text" class="form-control" name="money" placeholder="可用{$Think.config.hello.unit}" value="{$user.wallet.money}" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">冻结{$Think.config.hello.unit}</label>
+                                <input type="text" class="form-control" name="deposit" placeholder="冻结{$Think.config.hello.unit}" value="{$user.wallet.deposit}" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">可用{$Think.config.hello.score.unit}</label>
+                                <input type="text" class="form-control" name="score" placeholder="可用{$Think.config.hello.score.unit}" value="{$user.wallet.score}" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">冻结{$Think.config.hello.score.unit}</label>
+                                <input type="text" class="form-control" name="score_deposit" placeholder="冻结{$Think.config.hello.score.unit}" value="{$user.wallet.score_deposit}" />
+                            </div>
+                        </div>
+						<div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">蚁巢</label>
+                                <input type="text" class="form-control" name="poll" placeholder="蚁巢" value="{$user.wallet.poll}" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">蚁巢钱包</label>
+                                <input type="text" class="form-control" name="mpocket" placeholder="蚁巢钱包" value="{$user.wallet.mpocket}" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">可售额度</label>
+                                <input type="text" class="form-control" name="cansell" placeholder="可售额度" value="{$user.wallet.cansell}" />
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="text-right">
+               <div class="text-right">
+                                <button class="btn btn-primary">资金调整</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card card-collapsed">
+            <div class="card-header" data-toggle="card-collapse">
+                <h3 class="card-title">状态更改</h3>
+                <div class="card-options mr-0">
+                    <a href="#" class="card-options-collapse"><i class="fe fe-chevron-up"></i></a>
+                </div>
+            </div>
+            <div class="card-body">
+                <form class="d-block w-100" method="post" action="/admin/account/status">
+                    <input type="hidden" name="username" value="{$user.account.username}" />
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label class="form-label">用户状态</label>
+                                <select class="form-control custom-select" name="status">
+                                    {eq name="user.account.status" value="1"}
+                                    <option value="1" selected="true">正常</option>
+                                    <option value="0">冻结</option>
+                                    {else /}
+                                    <option value="1">正常</option>
+                                    <option value="0" selected="true">冻结</option>
+                                    {/eq}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="form-label">&nbsp;</label>
+                                <div class="text-right">
+                                    <button class="btn btn-primary">立刻调整</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="text-muted">冻结状态下，用户无法登录，无法操作资金。</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card card-collapsed">
+            <div class="card-header" data-toggle="card-collapse">
+                <h3 class="card-title">密码管理</h3>
+                <div class="card-options mr-0">
+                    <a href="#" class="card-options-collapse"><i class="fe fe-chevron-up"></i></a>
+                </div>
+            </div>
+            <div class="card-body">
+                <form class="d-block w-100" method="post" action="/admin/account/password">
+                    <input type="hidden" name="username" value="{$user.account.username}" />
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">登录密码</label>
+                                <input type="text" class="form-control" name="password" placeholder="为空表示不修改" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">安全密码</label>
+                                <input type="text" class="form-control" name="safeword" placeholder="为空表示不修改" />
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="text-right">
+                                <button class="btn btn-primary">修改密码</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card card-collapsed">
+            <div class="card-header" data-toggle="card-collapse">
+                <h3 class="card-title">实名认证</h3>
+                <div class="card-options mr-0">
+                    <a href="#" class="card-options-collapse"><i class="fe fe-chevron-up"></i></a>
+                </div>
+            </div>
+            <div class="card-body">
+                <form class="d-block w-100" method="post" action="/admin/account/authen">
+                    <input type="hidden" name="username" value="{$user.account.username}" />
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">真实姓名</label>
+                                <input type="text" class="form-control" name="realname" placeholder="与身份证及支付宝上一致" value="{$user.profile.realname}" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">身份证号码</label>
+                                <input type="text" class="form-control" name="idcard" placeholder="18位身份证号码" value="{$user.profile.idcard}" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">实名认证</label>
+                                <select class="form-control custom-select" name="authen">
+                                    {switch $user.account.authen} {case 1}
+                                    <option value="0">未申请</option>
+                                    <option value="1" selected="true">通过</option>
+                                    <option value="2">待审核</option>
+                                    <option value="3">拒绝</option>
+                                    {/case} {case 2}
+                                    <option value="0">未申请</option>
+                                    <option value="1">通过</option>
+                                    <option value="2" selected="true">待审核</option>
+                                    <option value="3">拒绝</option>
+                                    {/case} {case 3}
+                                    <option value="0">未申请</option>
+                                    <option value="1">通过</option>
+                                    <option value="2">待审核</option>
+                                    <option value="3" selected="true">拒绝</option>
+                                    {/case} {default /}
+                                    <option value="0">未申请</option>
+                                    <option value="1">通过</option>
+                                    <option value="2">待审核</option>
+                                    <option value="3">拒绝</option>
+                                    {/switch}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label class="form-label">实名认证拒绝理由</label>
+                                <textarea rows="3" class="form-control" placeholder="只有用户的实名认证状态为拒绝时才会显示" name="authen_reason">{$user.profile.authen_reason}</textarea>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="text-right">
+                                <button class="btn btn-primary">调整认证</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card card-collapsed">
+            <div class="card-header" data-toggle="card-collapse">
+                <h3 class="card-title">会长级别</h3>
+                <div class="card-options mr-0">
+                    <a href="#" class="card-options-collapse"><i class="fe fe-chevron-up"></i></a>
+                </div>
+            </div>
+            <div class="card-body">
+                <form class="d-block w-100" method="post" action="/admin/account/level">
+                    <input type="hidden" name="username" value="{$user.account.username}" />
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label class="form-label">用户类型</label>
+                                <select class="form-control custom-select" name="type">
+                                    {volist name="Think.config.hello.level" id="item"}
+                                        {eq name="user.account.type" value="$key"}
+                                            <option value="{$key}" selected="true">{$item.name}</option>
+                                        {else /}
+                                            <option value="{$key}">{$item.name}</option>
+                                        {/eq}
+                                    {/volist}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="form-label">&nbsp;</label>
+                                <div class="text-right">
+                                    <button class="btn btn-primary">立刻调整</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="text-muted">跨级调整会依次升级并发放奖励，某级别已发放过的奖励不会再次发放</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card card-collapsed">
+            <div class="card-header" data-toggle="card-collapse">
+                <h3 class="card-title">推荐人修改</h3>
+                <div class="card-options mr-0">
+                    <a href="#" class="card-options-collapse"><i class="fe fe-chevron-up"></i></a>
+                </div>
+            </div>
+            <div class="card-body">
+                <form class="d-block w-100" method="post" action="/admin/account/inviter">
+                    <input type="hidden" name="username" value="{$user.account.username}" />
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group mb-0">
+                                <label class="form-label">推荐人</label>
+                                <input type="text" class="form-control" name="inviter" placeholder="推荐人" value="{$user.account.inviter}" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="form-label">&nbsp;</label>
+                                <div class="text-right">
+                                    <button class="btn btn-primary">立刻调整</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="text-muted">修改用户的推荐人，会导致原有关系链上的用户数据核算不清，比如该用户为原上级带去了100的利润，突然这个用户不见了，原上级会不明白这100的利润是如何来的。</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6" hidden>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">操作日志</div>
+            </div>
+            <div class="card-body">
+                <ul class="timeline">
+                	{volist name="logs" id="log"}
+                    <li class="timeline-item">
+                        <div class="timeline-badge"></div>
+                        {empty name="log.text"}
+                        	{$Think.config.hello.log[$log.type]}
+                        {else /}
+                        	<div class="w-50">
+	                            <strong>{$Think.config.hello.log[$log.type]}</strong>
+	                            <small class="d-block text-muted">{$log.text}</small>
+	                        </div>
+                        {/empty}
+                        <div class="timeline-time">
+                        	<div>{$log.create_at}</div>
+                        </div>
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+            <div class="card-footer">{$logs|raw}</div>
+        </div>
+    </div>
+</div>
+{/block} {block name="script"} {/block}

@@ -1,0 +1,77 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/media/detail",
+    "pages/mall/index",
+    "pages/mall/detail",
+    "pages/tools/weather",
+    "pages/tools/calander",
+    "pages/media/reward",
+    "pages/tools/view",
+    "pages/tools/index",
+    "pages/media/recom",
+    "pages/tools/eight"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F7F8",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#6B7374",
+    "selectedColor": "#FF6253",
+    "borderStyle": "white",
+    "backgroundColor": "#F6F7F8",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/images/menu_1.png",
+        "selectedIconPath": "static/images/menu_1a.png"
+      },
+      {
+        "pagePath": "pages/media/recom",
+        "text": "推荐",
+        "iconPath": "static/images/menu_4.png",
+        "selectedIconPath": "static/images/menu_4a.png"
+      },
+      {
+        "pagePath": "pages/mall/index",
+        "text": "优惠券",
+        "iconPath": "static/images/menu_2.png",
+        "selectedIconPath": "static/images/menu_2a.png"
+      },
+      {
+        "pagePath": "pages/tools/index",
+        "text": "生活",
+        "iconPath": "static/images/menu_3.png",
+        "selectedIconPath": "static/images/menu_3a.png"
+      }
+    ]
+  },
+  "plugins": {
+    "tencentvideo": {
+      "version": "1.3.8",
+      "provider": "wxa75efa648b60994b",
+      "subpackage": "__APP__"
+    },
+    "WechatSI": {
+      "version": "0.3.3",
+      "provider": "wx069ba97219f66d99",
+      "subpackage": "__APP__"
+    }
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "为您提供当地天气展示服务"
+    }
+  },
+  "usingComponents": {
+    "txv-video": "plugin://tencentvideo/video"
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx32540bd863b27570"
+  ],
+  "sitemapLocation": "sitemap93.json"
+}

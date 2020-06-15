@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<style>
+			html{
+				font-family: "Helvetica Neue", Helvetica, sans-serif;
+				font-size: 20px;
+			}
+			html,body {
+			    display:none;
+				-webkit-touch-callout:none;
+				-webkit-text-size-adjust:none;
+				-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+				-webkit-user-select:none;
+				width: 100%;
+				margin:0;
+				border:0;
+				padding:0;
+				font-style:normal;
+			}
+			body {
+				line-height: 1.5;
+				font-size: 0.8rem;
+				color: #212121;
+				background: #fff !important;
+				outline: 0;
+			}
+			.a{
+				padding-top: 50%;
+				margin: 0 auto;
+				text-align: center;
+			}
+			.a img{
+				margin: 0 auto;
+				text-align: center;
+				width: 3rem;
+			}
+			.a p{
+				text-align: center;
+				font-size: 0.85rem;
+				padding-top: 0.55rem;
+			 
+			}
+			#mb{
+				margin: 0 auto;
+				width: 85%;
+			}
+			#mb h2{
+				font-size: 1.2rem;
+				color: #FF8000;
+				text-align: center;
+				 padding-bottom: 0rem;
+			}
+			#mb div{
+				display: block;
+				width: 100%;
+				padding: 0.6rem 0;
+				margin-bottom: 1rem;
+				font-size: 0.9rem;
+				color: #fff
+			}
+			
+			.aui-btn {
+	position: relative;
+	display: inline-block;
+	font-size: 0.7rem;
+	font-weight: 400;
+	font-family: inherit;
+	text-decoration: none;
+	text-align: center;
+	margin: 0;
+	background: #FF8000;
+	padding: 0.25rem 0.6rem;
+	border-radius: 0.2rem;
+	-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	touch-action: manipulation;
+	-webkit-user-select: none;
+	      	user-select: none;
+}	
+			#mb p{
+				font-size: 1.2rem;
+				color: #FF8000;
+			}
+			.f{
+				position: fixed;
+				bottom:0.5rem;
+				color: #FF8000;
+				font-size: 0.85rem;
+				line-height: 0;
+				width:100%;
+			  	padding:0 2rem;
+		 
+			    -webkit-box-sizing: border-box;
+			    		box-sizing: border-box;
+			    display: -webkit-box;
+			    display: -webkit-flex;
+			    display: flex;
+			    -webkit-box-pack: justify;
+			    -webkit-justify-content: space-between;
+			    		justify-content: space-between;
+			    -webkit-box-align: center;
+			    -webkit-align-items: center;
+			    		align-items: center;
+    		
+			}
+			.f a{
+				text-decoration:blink;
+				color: #FF8000;
+			}
+			.f img{
+				width: 1.5rem;
+				vertical-align:middle;
+				padding-right: 0.5rem;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="mb">
+			 
+			<h1 style="text-align: center;color: #f00; "><b style="font-weight: bold;color: #f00;">￥4000元</b><br>(谢绝还价)</h1>
+			<h2>请选择APP模板</h2>
+			<div class="aui-btn m1" type='toutiao' tapmode onClick="mb(this);">今日头条</div>
+			<div class="aui-btn m1" type='qutoutiao' tapmode onClick="mb(this);">趣头条</div>
+<!--			<p style="font-size: 0.85rem;color: #f00;text-align: center;padding-top: 1rem;">若需选择新模板，关掉APP重新打开</p>-->
+			<p style="font-size: 0.75rem;color: #999;text-align: center;">产品非运营，用途演示，第三方支付没有开通</p>
+			<p style="font-size: 0.75rem;color:">系统带有采集文章、图片、视频、评论、用户、小视频、微头条等等，全天24小时自动采集</p>
+		</div>
+		<div class="f aui-card-list-footer">
+			<a href="mqqwpa://im/chat?chat_type=wpa&uin=1013175107&version=1&src_type=web"><img src="html/image/suxiang/1.png" />1013175107</a>
+			<p tapmode onClick="dianhua()"><img src="html/image/suxiang/2.png" />123</p>
+		</div>
+		 
+		<!--<div class="a">
+			<img src="html/image/loading_more.gif" />
+			<p>正在加载...</p>
+		</div>-->
+	</body>
+	<script type="text/javascript" src="html/script/api.js"></script>
+	<script type="text/javascript" src="html/script/ffxiang.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			api.parseTapmode();
+			var _this = $api.byId('mb');
+			var h = api.winHeight;
+			h = h - $api.offset(_this).h;
+			h = h / 2 - 100;
+			$api.css(_this,'padding-top:'+h+'px')
+		//	config()
+			// 判断返回键
+			api.addEventListener({
+				name : 'keyback'
+			}, function(ret, err) {
+				api.execScript({
+					frameName : 'ffxiang_win',
+					script : 'keyback()'
+				});
+			});
+			//自动进入趣头条
+			var mb = 'qutoutiao';
+			muban = mb+'/';
+			html_win = 'widget://html/'+muban;
+			$api.setStorage('muban', mb);
+			config();
+		}
+		// 设置模板
+		function mb(_this){
+			_alert('若需选择新模板，关掉APP重新打开')
+			var mb = $api.attr(_this,'type');
+			muban = mb+'/';
+			html_win = 'widget://html/'+muban;
+			$api.setStorage('muban', mb);
+			config();
+		}
+		function dianhua(){
+			api.call({
+			    type: 'tel_prompt',
+			    number: '123'
+			});
+		}
+		// 获取配置分类
+		function config(){
+			_ajax('api/article/typeid/field/id,title',function(ret,err){
+//				console.log()
+				if(ret){
+					$api.setStorage('typeid', ret);
+					viewtypeid();
+					openFrame('ffxiang_win');
+					// api.closeFrame();
+				}else{
+					setTimeout(function(){
+						config()
+					},1000)
+				}
+			})
+			
+//			_ajax('index/config',function(ret,err){
+//				if(ret){
+//					openFrame('index','index');
+//					api.closeFrame();
+//				}else{
+//					setTimeout(function(){
+//						config()
+//					},1500)
+//				}
+//			})
+		} 
+		 
+		function openFrame(url) {
+			// 解析属性	消除点击300S 延时问题 tapmode
+			api.openFrame({
+				name : 'ffxiang_win',
+				url : html_win+url+'.html',
+				bounces : false,
+				reload : true,
+				rect : {
+					x : 0,
+					y : 0,
+					w : 'auto',
+					h : 'auto'
+				},
+			})
+			
+		}
+		// 读取视频分类存储本都
+		function viewtypeid(){
+			_ajax('api/article/videoTypeid', function(ret, err) {
+				//console.log(JSON.stringify(ret))
+				if (ret) {
+					$api.setStorage('videoTypeid', ret);
+				}
+			})
+		}
+</script>
+</html>

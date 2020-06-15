@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>消息中心</title>
+    <link href="/static/new/css/mui.min.css" rel="stylesheet" />
+    <link href="/static/new/css/style.css" rel="stylesheet" />
+    <style type="text/css">
+        body{
+            /*background: #fff;*/
+        }
+      .xiaoxi_list .xx_li .xx_tit {
+    font-size:  16px;
+    line-height: 2rem;
+        width: 20em;/*不允许出现半汉字截断*/
+overflow: hidden; /*自动隐藏文字*/
+text-overflow: ellipsis;/*文字隐藏后添加省略号*/
+white-space: nowrap;/*强制不换行*/
+}
+    </style>
+</head>
+<body>
+<header>
+    <a class="mui-icon" onclick="javaScript:history.go(-1)">
+        <img src="/static/new/images/head_back.png">
+    </a>
+    <p class="mui-text-center">消息中心-列表</p>
+   
+</header>
+<div class="wrap xiaoxi_list">
+    <ul>
+        {volist name="$data" id="vo"}
+        <li class="xx_li">
+            <a href="{:url('news/datalist')}?id={$vo.id}" class="block_a">
+                <p class="xx_tit">{$vo.title}</p>
+                <p class="xx_date color_hui02">{$vo.addtime}</p>
+            </a>
+        </li>
+        {/volist}
+
+    </ul>
+</div>
+<footer>
+    <nav class="mui-bar mui-bar-tab">
+        <a class="mui-tab-item" href="{:url('index/index')}">
+            <span class="mui-icon b-menu-icon"><img src="/static/new/images/foot_ioc01_b.png"></span>
+            <span class="mui-tab-label">首页</span>
+        </a>
+        <a class="mui-tab-item" href="{:url('loan/index')}">
+            <span class="mui-icon b-menu-icon"><img src="/static/new/images/foot_ioc02_b.png"></span>
+            <span class="mui-tab-label">借款</span>
+        </a>
+        <a class="mui-tab-item" href="{:url('user/cion')}">
+            <span class="mui-icon b-menu-icon"><img src="/static/new/images/foot_ioc03_b.png"></span>
+            <span class="mui-tab-label">钱包</span>
+        </a>
+        <a class="mui-tab-item" href="{:url('user/index')}">
+            <span class="mui-icon b-menu-icon"><img src="/static/new/images/foot_ioc04_b.png"></span>
+            <span class="mui-tab-label">我的</span>
+        </a>
+    </nav>
+</footer>
+</body>
+<script src="/static/new/js/mui.min.js"></script>
+<script src="/static/new/js/jquery.min.js"></script>
+<script>
+    mui('footer').on('tap','a',function(){document.location.href=this.href;});
+</script>
+</html>

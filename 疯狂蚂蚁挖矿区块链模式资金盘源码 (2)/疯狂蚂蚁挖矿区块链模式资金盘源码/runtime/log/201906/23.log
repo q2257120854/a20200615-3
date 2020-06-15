@@ -1,0 +1,1035 @@
+---------------------------------------------------------------
+[ 2019-06-23T11:07:28+08:00 ] 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013804s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.015035s ]
+[ sql ] [ SQL ] SELECT authen, count(id) AS number FROM `account` GROUP BY `authen` [ RunTime:0.000772s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.015464s ]
+[ sql ] [ SQL ] SELECT type, count(id) AS number FROM `trade` GROUP BY `type` [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SELECT DATE_FORMAT(`create_at`, "%Y-%m-%d") AS date, COUNT(id) AS number FROM `trade` WHERE  `create_at` >= '2019-05-23' GROUP BY `date` [ RunTime:0.000674s ]
+[ sql ] [ SQL ] SELECT `p`.`avatar`,`p`.`idcard`,`p`.`username`,`p`.`nickname`,`t`.`tid`,`t`.`status`,`t`.`number`,`t`.`price` FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` ORDER BY `t`.`create_at` DESC LIMIT 5 [ RunTime:0.002603s ]
+[ sql ] [ SQL ] SELECT type, status, COUNT(id) AS count, SUM(number) number, SUM(price * number) price FROM `trade` GROUP BY `type`,`status` [ RunTime:0.000659s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.015888s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `catalog` = 1 ORDER BY `income` DESC [ RunTime:0.000658s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.016042s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` < `income` GROUP BY `product` [ RunTime:0.000424s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` >= `income` GROUP BY `product` [ RunTime:0.000370s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `clock` [ RunTime:0.014230s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` WHERE  `c`.`create_at` > '2019-06-23' GROUP BY `m`.`product` [ RunTime:0.000644s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` GROUP BY `m`.`product` [ RunTime:0.001417s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:07:31+08:00 ] 127.0.0.1 GET /admin/news/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001332s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `article` [ RunTime:0.012656s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `article` WHERE  `type` <> 8 LIMIT 1 [ RunTime:0.000415s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `type` <> 8 ORDER BY `top` DESC,`sort` DESC,`date` DESC LIMIT 0,20 [ RunTime:0.000392s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:07:33+08:00 ] 127.0.0.1 GET /admin/account.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011365s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010771s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` INNER JOIN `wallet` `w` ON `w`.`username`=`a`.`username` LIMIT 1 [ RunTime:0.004257s ]
+[ sql ] [ SQL ] SELECT `p`.`avatar`,`p`.`idcard`,`p`.`nickname`,`a`.`create_at`,`a`.`username`,`a`.`type`,`a`.`status`,`a`.`authen`,`a`.`nolimit`,`a`.`inviter`,`w`.`money`,`w`.`deposit`,`w`.`score`,`w`.`score_deposit` FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` INNER JOIN `wallet` `w` ON `w`.`username`=`a`.`username` ORDER BY `w`.`money` DESC LIMIT 0,20 [ RunTime:0.001302s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:07:35+08:00 ] 127.0.0.1 GET /admin/market/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000831s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `market` [ RunTime:0.019888s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `market` `m` LIMIT 1 [ RunTime:0.000615s ]
+[ sql ] [ SQL ] SELECT * FROM `market` `m` ORDER BY `m`.`date` DESC LIMIT 0,20 [ RunTime:0.000819s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:07:36+08:00 ] 127.0.0.1 GET /admin/store/machine.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.011206s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `store` WHERE  `catalog` = 1  AND `audit` = 1 LIMIT 1 [ RunTime:0.000414s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `catalog` = 1  AND `audit` = 1 ORDER BY `sort` DESC LIMIT 0,10 [ RunTime:0.000464s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:10:31+08:00 ] 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000911s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011898s ]
+[ sql ] [ SQL ] SELECT authen, count(id) AS number FROM `account` GROUP BY `authen` [ RunTime:0.000759s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.019568s ]
+[ sql ] [ SQL ] SELECT type, count(id) AS number FROM `trade` GROUP BY `type` [ RunTime:0.000445s ]
+[ sql ] [ SQL ] SELECT DATE_FORMAT(`create_at`, "%Y-%m-%d") AS date, COUNT(id) AS number FROM `trade` WHERE  `create_at` >= '2019-05-23' GROUP BY `date` [ RunTime:0.000670s ]
+[ sql ] [ SQL ] SELECT `p`.`avatar`,`p`.`idcard`,`p`.`username`,`p`.`nickname`,`t`.`tid`,`t`.`status`,`t`.`number`,`t`.`price` FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` ORDER BY `t`.`create_at` DESC LIMIT 5 [ RunTime:0.000896s ]
+[ sql ] [ SQL ] SELECT type, status, COUNT(id) AS count, SUM(number) number, SUM(price * number) price FROM `trade` GROUP BY `type`,`status` [ RunTime:0.000684s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.014097s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `catalog` = 1 ORDER BY `income` DESC [ RunTime:0.000589s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.012395s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` < `income` GROUP BY `product` [ RunTime:0.000434s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` >= `income` GROUP BY `product` [ RunTime:0.000362s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `clock` [ RunTime:0.012861s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` WHERE  `c`.`create_at` > '2019-06-23' GROUP BY `m`.`product` [ RunTime:0.000666s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` GROUP BY `m`.`product` [ RunTime:0.000899s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:10:37+08:00 ] 127.0.0.1 GET /admin/account.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001013s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.020879s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` INNER JOIN `wallet` `w` ON `w`.`username`=`a`.`username` LIMIT 1 [ RunTime:0.000480s ]
+[ sql ] [ SQL ] SELECT `p`.`avatar`,`p`.`idcard`,`p`.`nickname`,`a`.`create_at`,`a`.`username`,`a`.`type`,`a`.`status`,`a`.`authen`,`a`.`nolimit`,`a`.`inviter`,`w`.`money`,`w`.`deposit`,`w`.`score`,`w`.`score_deposit` FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` INNER JOIN `wallet` `w` ON `w`.`username`=`a`.`username` ORDER BY `w`.`money` DESC LIMIT 0,20 [ RunTime:0.002174s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:10:37+08:00 ] 127.0.0.1 GET /admin/index/setting.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011270s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.012847s ]
+[ sql ] [ SQL ] SELECT * FROM `config` WHERE  `token` = 'hello.setting' LIMIT 1 [ RunTime:0.000433s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:10:43+08:00 ] 127.0.0.1 GET /admin/index/help.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000744s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `article` [ RunTime:0.017675s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `type` = 8 LIMIT 1 [ RunTime:0.001699s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:10:46+08:00 ] 127.0.0.1 GET /admin/index/contact.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011205s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `message` [ RunTime:0.013104s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `message` LIMIT 1 [ RunTime:0.000527s ]
+[ sql ] [ SQL ] SELECT * FROM `message` ORDER BY `create_at` DESC LIMIT 0,20 [ RunTime:0.000475s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:17:28+08:00 ] 127.0.0.1 GET /account.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001739s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.017913s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000546s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011049s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000378s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.012091s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`image`,`cycle`,`income`,`price` FROM `store` WHERE  `catalog` = 1  AND `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000406s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:17:29+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012414s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.012965s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000350s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:17:34+08:00 ] 127.0.0.1 GET /machine.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000870s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.014739s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000540s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.012459s ]
+[ sql ] [ SQL ] SELECT * FROM `machine` WHERE  `username` IS NULL  AND `status` = 1 ORDER BY `create_at` DESC [ RunTime:0.000497s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `clock` [ RunTime:0.013109s ]
+[ sql ] [ SQL ] SELECT `m`.`name`,`c`.* FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` WHERE  `c`.`username` IS NULL ORDER BY `c`.`create_at` DESC LIMIT 20 [ RunTime:0.000453s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.011359s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000654s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:17:34+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000657s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.012988s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000394s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:17:36+08:00 ] 127.0.0.1 GET /team.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000627s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011428s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000439s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` WHERE  `inviter` IS NULL LIMIT 1 [ RunTime:0.000421s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:17:36+08:00 ] 127.0.0.1 POST /team/member
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000669s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.012183s ]
+[ sql ] [ SQL ] SELECT `a`.`uid`,`p`.`realname`,`p`.`avatar`,`a`.`type`,`a`.`username`,`p`.`nickname`,`p`.`idcard` FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` WHERE  `inviter` IS NULL LIMIT 0,20 [ RunTime:0.000463s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.015808s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18888888888' LIMIT 1 [ RunTime:0.000474s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:17:37+08:00 ] 127.0.0.1 GET /market.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000724s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.012337s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000395s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.012226s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-06-23' [ RunTime:0.000432s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-06-23' [ RunTime:0.000297s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-06-23'  AND `t`.`create_at` < '2019-06-23 11:12:37' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000657s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-06-23'  AND `t`.`create_at` < '2019-06-23 11:12:37' LIMIT 1 [ RunTime:0.000300s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:17:38+08:00 ] 127.0.0.1 POST /market/overview
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000687s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `market` [ RunTime:0.013530s ]
+[ sql ] [ SQL ] SELECT `date`,`price`,`high`,`low` FROM `market` WHERE  `date` <= '2019-06-23' ORDER BY `date` DESC LIMIT 7 [ RunTime:0.000437s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.012686s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` <> 0  AND `status` <> 8  AND `create_at` > '2019-06-23' LIMIT 1 [ RunTime:0.000424s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` = 8  AND `create_at` > '2019-06-23' LIMIT 1 [ RunTime:0.000371s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:17:39+08:00 ] 127.0.0.1 GET /home.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000759s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.016427s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000432s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.012361s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000415s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.012575s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `machine` WHERE  `username` IS NULL  AND `status` = 1 LIMIT 1 [ RunTime:0.000451s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:20:59+08:00 ] 127.0.0.1 GET /account.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010959s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.012529s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000454s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.013323s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000369s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.012631s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`image`,`cycle`,`income`,`price` FROM `store` WHERE  `catalog` = 1  AND `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000480s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:21:01+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000882s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.012200s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000494s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:21:06+08:00 ] 127.0.0.1 GET /admin/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010911s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011951s ]
+[ sql ] [ SQL ] SELECT authen, count(id) AS number FROM `account` GROUP BY `authen` [ RunTime:0.000662s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.012179s ]
+[ sql ] [ SQL ] SELECT type, count(id) AS number FROM `trade` GROUP BY `type` [ RunTime:0.000294s ]
+[ sql ] [ SQL ] SELECT DATE_FORMAT(`create_at`, "%Y-%m-%d") AS date, COUNT(id) AS number FROM `trade` WHERE  `create_at` >= '2019-05-23' GROUP BY `date` [ RunTime:0.000644s ]
+[ sql ] [ SQL ] SELECT `p`.`avatar`,`p`.`idcard`,`p`.`username`,`p`.`nickname`,`t`.`tid`,`t`.`status`,`t`.`number`,`t`.`price` FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` ORDER BY `t`.`create_at` DESC LIMIT 5 [ RunTime:0.000742s ]
+[ sql ] [ SQL ] SELECT type, status, COUNT(id) AS count, SUM(number) number, SUM(price * number) price FROM `trade` GROUP BY `type`,`status` [ RunTime:0.000739s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.012615s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `catalog` = 1 ORDER BY `income` DESC [ RunTime:0.000455s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.012000s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` < `income` GROUP BY `product` [ RunTime:0.000429s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` >= `income` GROUP BY `product` [ RunTime:0.000315s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `clock` [ RunTime:0.012488s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` WHERE  `c`.`create_at` > '2019-06-23' GROUP BY `m`.`product` [ RunTime:0.000641s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` GROUP BY `m`.`product` [ RunTime:0.000905s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:22:02+08:00 ] 127.0.0.1 GET /admin/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010925s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.017104s ]
+[ sql ] [ SQL ] SELECT authen, count(id) AS number FROM `account` GROUP BY `authen` [ RunTime:0.000656s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.013421s ]
+[ sql ] [ SQL ] SELECT type, count(id) AS number FROM `trade` GROUP BY `type` [ RunTime:0.000636s ]
+[ sql ] [ SQL ] SELECT DATE_FORMAT(`create_at`, "%Y-%m-%d") AS date, COUNT(id) AS number FROM `trade` WHERE  `create_at` >= '2019-05-23' GROUP BY `date` [ RunTime:0.000710s ]
+[ sql ] [ SQL ] SELECT `p`.`avatar`,`p`.`idcard`,`p`.`username`,`p`.`nickname`,`t`.`tid`,`t`.`status`,`t`.`number`,`t`.`price` FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` ORDER BY `t`.`create_at` DESC LIMIT 5 [ RunTime:0.000566s ]
+[ sql ] [ SQL ] SELECT type, status, COUNT(id) AS count, SUM(number) number, SUM(price * number) price FROM `trade` GROUP BY `type`,`status` [ RunTime:0.000447s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.011689s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `catalog` = 1 ORDER BY `income` DESC [ RunTime:0.001063s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.011840s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` < `income` GROUP BY `product` [ RunTime:0.000358s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` >= `income` GROUP BY `product` [ RunTime:0.000256s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `clock` [ RunTime:0.011885s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` WHERE  `c`.`create_at` > '2019-06-23' GROUP BY `m`.`product` [ RunTime:0.000893s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` GROUP BY `m`.`product` [ RunTime:0.000902s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:22:05+08:00 ] 127.0.0.1 GET /admin/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000707s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.012532s ]
+[ sql ] [ SQL ] SELECT authen, count(id) AS number FROM `account` GROUP BY `authen` [ RunTime:0.000746s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.016786s ]
+[ sql ] [ SQL ] SELECT type, count(id) AS number FROM `trade` GROUP BY `type` [ RunTime:0.000343s ]
+[ sql ] [ SQL ] SELECT DATE_FORMAT(`create_at`, "%Y-%m-%d") AS date, COUNT(id) AS number FROM `trade` WHERE  `create_at` >= '2019-05-23' GROUP BY `date` [ RunTime:0.000621s ]
+[ sql ] [ SQL ] SELECT `p`.`avatar`,`p`.`idcard`,`p`.`username`,`p`.`nickname`,`t`.`tid`,`t`.`status`,`t`.`number`,`t`.`price` FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` ORDER BY `t`.`create_at` DESC LIMIT 5 [ RunTime:0.000673s ]
+[ sql ] [ SQL ] SELECT type, status, COUNT(id) AS count, SUM(number) number, SUM(price * number) price FROM `trade` GROUP BY `type`,`status` [ RunTime:0.000505s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.013070s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `catalog` = 1 ORDER BY `income` DESC [ RunTime:0.000560s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.012167s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` < `income` GROUP BY `product` [ RunTime:0.000342s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` >= `income` GROUP BY `product` [ RunTime:0.000242s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `clock` [ RunTime:0.012272s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` WHERE  `c`.`create_at` > '2019-06-23' GROUP BY `m`.`product` [ RunTime:0.000723s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` GROUP BY `m`.`product` [ RunTime:0.001032s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:22:43+08:00 ] 127.0.0.1 GET /admin/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000972s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.012070s ]
+[ sql ] [ SQL ] SELECT authen, count(id) AS number FROM `account` GROUP BY `authen` [ RunTime:0.000724s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.012118s ]
+[ sql ] [ SQL ] SELECT type, count(id) AS number FROM `trade` GROUP BY `type` [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SELECT DATE_FORMAT(`create_at`, "%Y-%m-%d") AS date, COUNT(id) AS number FROM `trade` WHERE  `create_at` >= '2019-05-23' GROUP BY `date` [ RunTime:0.000535s ]
+[ sql ] [ SQL ] SELECT `p`.`avatar`,`p`.`idcard`,`p`.`username`,`p`.`nickname`,`t`.`tid`,`t`.`status`,`t`.`number`,`t`.`price` FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` ORDER BY `t`.`create_at` DESC LIMIT 5 [ RunTime:0.000541s ]
+[ sql ] [ SQL ] SELECT type, status, COUNT(id) AS count, SUM(number) number, SUM(price * number) price FROM `trade` GROUP BY `type`,`status` [ RunTime:0.000446s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.012708s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `catalog` = 1 ORDER BY `income` DESC [ RunTime:0.000490s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.012135s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` < `income` GROUP BY `product` [ RunTime:0.000428s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` >= `income` GROUP BY `product` [ RunTime:0.000359s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `clock` [ RunTime:0.011330s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` WHERE  `c`.`create_at` > '2019-06-23' GROUP BY `m`.`product` [ RunTime:0.000638s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` GROUP BY `m`.`product` [ RunTime:0.000672s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:22:44+08:00 ] 127.0.0.1 GET /admin/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000682s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.012560s ]
+[ sql ] [ SQL ] SELECT authen, count(id) AS number FROM `account` GROUP BY `authen` [ RunTime:0.000694s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.011746s ]
+[ sql ] [ SQL ] SELECT type, count(id) AS number FROM `trade` GROUP BY `type` [ RunTime:0.000379s ]
+[ sql ] [ SQL ] SELECT DATE_FORMAT(`create_at`, "%Y-%m-%d") AS date, COUNT(id) AS number FROM `trade` WHERE  `create_at` >= '2019-05-23' GROUP BY `date` [ RunTime:0.000599s ]
+[ sql ] [ SQL ] SELECT `p`.`avatar`,`p`.`idcard`,`p`.`username`,`p`.`nickname`,`t`.`tid`,`t`.`status`,`t`.`number`,`t`.`price` FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` ORDER BY `t`.`create_at` DESC LIMIT 5 [ RunTime:0.000649s ]
+[ sql ] [ SQL ] SELECT type, status, COUNT(id) AS count, SUM(number) number, SUM(price * number) price FROM `trade` GROUP BY `type`,`status` [ RunTime:0.000563s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.013283s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `catalog` = 1 ORDER BY `income` DESC [ RunTime:0.000465s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.012221s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` < `income` GROUP BY `product` [ RunTime:0.000382s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` >= `income` GROUP BY `product` [ RunTime:0.000264s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `clock` [ RunTime:0.011554s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` WHERE  `c`.`create_at` > '2019-06-23' GROUP BY `m`.`product` [ RunTime:0.000758s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` GROUP BY `m`.`product` [ RunTime:0.000693s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:22:46+08:00 ] 127.0.0.1 GET /admin/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000660s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.017423s ]
+[ sql ] [ SQL ] SELECT authen, count(id) AS number FROM `account` GROUP BY `authen` [ RunTime:0.000904s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.012785s ]
+[ sql ] [ SQL ] SELECT type, count(id) AS number FROM `trade` GROUP BY `type` [ RunTime:0.000400s ]
+[ sql ] [ SQL ] SELECT DATE_FORMAT(`create_at`, "%Y-%m-%d") AS date, COUNT(id) AS number FROM `trade` WHERE  `create_at` >= '2019-05-23' GROUP BY `date` [ RunTime:0.000673s ]
+[ sql ] [ SQL ] SELECT `p`.`avatar`,`p`.`idcard`,`p`.`username`,`p`.`nickname`,`t`.`tid`,`t`.`status`,`t`.`number`,`t`.`price` FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` ORDER BY `t`.`create_at` DESC LIMIT 5 [ RunTime:0.000835s ]
+[ sql ] [ SQL ] SELECT type, status, COUNT(id) AS count, SUM(number) number, SUM(price * number) price FROM `trade` GROUP BY `type`,`status` [ RunTime:0.002223s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.011673s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `catalog` = 1 ORDER BY `income` DESC [ RunTime:0.000517s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.012974s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` < `income` GROUP BY `product` [ RunTime:0.000359s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` >= `income` GROUP BY `product` [ RunTime:0.000231s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `clock` [ RunTime:0.012172s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` WHERE  `c`.`create_at` > '2019-06-23' GROUP BY `m`.`product` [ RunTime:0.000752s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` GROUP BY `m`.`product` [ RunTime:0.000859s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:22:47+08:00 ] 127.0.0.1 GET /admin/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000654s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.014332s ]
+[ sql ] [ SQL ] SELECT authen, count(id) AS number FROM `account` GROUP BY `authen` [ RunTime:0.000625s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.015178s ]
+[ sql ] [ SQL ] SELECT type, count(id) AS number FROM `trade` GROUP BY `type` [ RunTime:0.000366s ]
+[ sql ] [ SQL ] SELECT DATE_FORMAT(`create_at`, "%Y-%m-%d") AS date, COUNT(id) AS number FROM `trade` WHERE  `create_at` >= '2019-05-23' GROUP BY `date` [ RunTime:0.000578s ]
+[ sql ] [ SQL ] SELECT `p`.`avatar`,`p`.`idcard`,`p`.`username`,`p`.`nickname`,`t`.`tid`,`t`.`status`,`t`.`number`,`t`.`price` FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` ORDER BY `t`.`create_at` DESC LIMIT 5 [ RunTime:0.000749s ]
+[ sql ] [ SQL ] SELECT type, status, COUNT(id) AS count, SUM(number) number, SUM(price * number) price FROM `trade` GROUP BY `type`,`status` [ RunTime:0.000527s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.013950s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `catalog` = 1 ORDER BY `income` DESC [ RunTime:0.000455s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.011358s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` < `income` GROUP BY `product` [ RunTime:0.000323s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` >= `income` GROUP BY `product` [ RunTime:0.000285s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `clock` [ RunTime:0.013391s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` WHERE  `c`.`create_at` > '2019-06-23' GROUP BY `m`.`product` [ RunTime:0.000615s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` GROUP BY `m`.`product` [ RunTime:0.000750s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:22:57+08:00 ] 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000722s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011025s ]
+[ sql ] [ SQL ] SELECT authen, count(id) AS number FROM `account` GROUP BY `authen` [ RunTime:0.000756s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.021669s ]
+[ sql ] [ SQL ] SELECT type, count(id) AS number FROM `trade` GROUP BY `type` [ RunTime:0.000468s ]
+[ sql ] [ SQL ] SELECT DATE_FORMAT(`create_at`, "%Y-%m-%d") AS date, COUNT(id) AS number FROM `trade` WHERE  `create_at` >= '2019-05-23' GROUP BY `date` [ RunTime:0.000707s ]
+[ sql ] [ SQL ] SELECT `p`.`avatar`,`p`.`idcard`,`p`.`username`,`p`.`nickname`,`t`.`tid`,`t`.`status`,`t`.`number`,`t`.`price` FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` ORDER BY `t`.`create_at` DESC LIMIT 5 [ RunTime:0.000626s ]
+[ sql ] [ SQL ] SELECT type, status, COUNT(id) AS count, SUM(number) number, SUM(price * number) price FROM `trade` GROUP BY `type`,`status` [ RunTime:0.000531s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.011514s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `catalog` = 1 ORDER BY `income` DESC [ RunTime:0.000528s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.011429s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` < `income` GROUP BY `product` [ RunTime:0.000354s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` >= `income` GROUP BY `product` [ RunTime:0.000233s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `clock` [ RunTime:0.011388s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` WHERE  `c`.`create_at` > '2019-06-23' GROUP BY `m`.`product` [ RunTime:0.000644s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` GROUP BY `m`.`product` [ RunTime:0.000702s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:23:07+08:00 ] 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001086s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.019817s ]
+[ sql ] [ SQL ] SELECT authen, count(id) AS number FROM `account` GROUP BY `authen` [ RunTime:0.000709s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.013122s ]
+[ sql ] [ SQL ] SELECT type, count(id) AS number FROM `trade` GROUP BY `type` [ RunTime:0.000295s ]
+[ sql ] [ SQL ] SELECT DATE_FORMAT(`create_at`, "%Y-%m-%d") AS date, COUNT(id) AS number FROM `trade` WHERE  `create_at` >= '2019-05-23' GROUP BY `date` [ RunTime:0.000672s ]
+[ sql ] [ SQL ] SELECT `p`.`avatar`,`p`.`idcard`,`p`.`username`,`p`.`nickname`,`t`.`tid`,`t`.`status`,`t`.`number`,`t`.`price` FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` ORDER BY `t`.`create_at` DESC LIMIT 5 [ RunTime:0.000804s ]
+[ sql ] [ SQL ] SELECT type, status, COUNT(id) AS count, SUM(number) number, SUM(price * number) price FROM `trade` GROUP BY `type`,`status` [ RunTime:0.000676s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.011306s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `catalog` = 1 ORDER BY `income` DESC [ RunTime:0.000434s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.015886s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` < `income` GROUP BY `product` [ RunTime:0.000374s ]
+[ sql ] [ SQL ] SELECT product, COUNT(id) AS count FROM `machine` WHERE  `profit` >= `income` GROUP BY `product` [ RunTime:0.000286s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `clock` [ RunTime:0.011310s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` WHERE  `c`.`create_at` > '2019-06-23' GROUP BY `m`.`product` [ RunTime:0.000604s ]
+[ sql ] [ SQL ] SELECT m.product, SUM(c.money) profit FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` INNER JOIN `store` `s` ON `s`.`id`=`m`.`product` GROUP BY `m`.`product` [ RunTime:0.000643s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:23:12+08:00 ] 127.0.0.1 GET /admin/event/funding.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000778s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `funding` [ RunTime:0.012946s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `funding` LIMIT 1 [ RunTime:0.002065s ]
+[ sql ] [ SQL ] SELECT * FROM `funding` ORDER BY `sort` DESC,`current` DESC,`people` DESC,`count` DESC,`update_at` DESC LIMIT 0,20 [ RunTime:0.000397s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:23:23+08:00 ] 127.0.0.1 GET /admin/index/setting.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001106s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.012229s ]
+[ sql ] [ SQL ] SELECT * FROM `config` WHERE  `token` = 'hello.setting' LIMIT 1 [ RunTime:0.000375s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:23:28+08:00 ] 127.0.0.1 GET /admin/account/dashboard.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011041s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.012280s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dashboard` `d` INNER JOIN `profile` `p` ON `p`.`username`=`d`.`username` LIMIT 1 [ RunTime:0.002492s ]
+[ sql ] [ SQL ] SELECT `p`.`avatar`,`p`.`idcard`,`p`.`nickname`,`d`.* FROM `dashboard` `d` INNER JOIN `profile` `p` ON `p`.`username`=`d`.`username` ORDER BY `d`.`power` DESC LIMIT 0,20 [ RunTime:0.000999s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:23:41+08:00 ] 127.0.0.1 GET /admin/account/promotion.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000786s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.011276s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dashboard` `d` INNER JOIN `profile` `p` ON `p`.`username`=`d`.`username` LIMIT 1 [ RunTime:0.000411s ]
+[ sql ] [ SQL ] SELECT `p`.`avatar`,`p`.`idcard`,`p`.`nickname`,`d`.* FROM `dashboard` `d` INNER JOIN `profile` `p` ON `p`.`username`=`d`.`username` ORDER BY `d`.`one` DESC LIMIT 0,20 [ RunTime:0.000842s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:23:54+08:00 ] 127.0.0.1 GET /admin/market/buy.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001032s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.011464s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` WHERE  `type` = 1 LIMIT 1 [ RunTime:0.000554s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` `t` WHERE  `type` = 1 ORDER BY `t`.`update_at` DESC,`t`.`id` DESC LIMIT 0,20 [ RunTime:0.000471s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:23:56+08:00 ] 127.0.0.1 GET /admin/market/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011269s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `market` [ RunTime:0.010541s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `market` `m` LIMIT 1 [ RunTime:0.000330s ]
+[ sql ] [ SQL ] SELECT * FROM `market` `m` ORDER BY `m`.`date` DESC LIMIT 0,20 [ RunTime:0.000634s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:24:06+08:00 ] 127.0.0.1 GET /admin/market/sell.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001053s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.012865s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` WHERE  `type` = 2 LIMIT 1 [ RunTime:0.000454s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` `t` WHERE  `type` = 2 ORDER BY `t`.`update_at` DESC,`t`.`id` DESC LIMIT 0,20 [ RunTime:0.000473s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:24:08+08:00 ] 127.0.0.1 GET /admin/market/buy.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000977s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.011952s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` WHERE  `type` = 1 LIMIT 1 [ RunTime:0.001766s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` `t` WHERE  `type` = 1 ORDER BY `t`.`update_at` DESC,`t`.`id` DESC LIMIT 0,20 [ RunTime:0.000597s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:24:20+08:00 ] 127.0.0.1 GET /admin/store/machine.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.009743s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.012388s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `store` WHERE  `catalog` = 1  AND `audit` = 1 LIMIT 1 [ RunTime:0.000408s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `catalog` = 1  AND `audit` = 1 ORDER BY `sort` DESC LIMIT 0,10 [ RunTime:0.000430s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:24:28+08:00 ] 127.0.0.1 GET /admin/store/order.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011603s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `order` [ RunTime:0.015533s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `order` `o` INNER JOIN `store` `s` ON `s`.`id`=`o`.`product` LIMIT 1 [ RunTime:0.000351s ]
+[ sql ] [ SQL ] SELECT `o`.`oid`,`o`.`buyer`,`o`.`seller`,`o`.`status`,`s`.`catalog`,`o`.`title`,`o`.`address`,`o`.`express`,o.update_at AS date FROM `order` `o` INNER JOIN `store` `s` ON `s`.`id`=`o`.`product` ORDER BY `o`.`update_at` DESC LIMIT 0,20 [ RunTime:0.000357s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.012309s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `store` ORDER BY `sort` DESC,`sales` DESC [ RunTime:0.000390s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:24:30+08:00 ] 127.0.0.1 GET /admin/machine/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000770s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.010275s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `store` WHERE  `catalog` = 1 ORDER BY `price` ASC [ RunTime:0.000445s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.011095s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `machine` `m` INNER JOIN `profile` `p` ON `p`.`username`=`m`.`username` LIMIT 1 [ RunTime:0.000444s ]
+[ sql ] [ SQL ] SELECT `p`.`nickname`,`m`.* FROM `machine` `m` INNER JOIN `profile` `p` ON `p`.`username`=`m`.`username` ORDER BY `m`.`profit_at` DESC,`m`.`id` DESC LIMIT 0,20 [ RunTime:0.000817s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:24:40+08:00 ] 127.0.0.1 GET /admin/wallet/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012000s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.011528s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wallet` `w` INNER JOIN `profile` `p` ON `p`.`username`=`w`.`username` LIMIT 1 [ RunTime:0.000618s ]
+[ sql ] [ SQL ] SELECT `p`.`avatar`,`p`.`idcard`,`p`.`nickname`,`w`.* FROM `wallet` `w` INNER JOIN `profile` `p` ON `p`.`username`=`w`.`username` ORDER BY `w`.`money` DESC LIMIT 0,20 [ RunTime:0.001114s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:24:43+08:00 ] 127.0.0.1 GET /admin/wallet/record.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000948s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `record` [ RunTime:0.019589s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `record` `r` INNER JOIN `profile` `p` ON `p`.`username`=`r`.`username` LIMIT 1 [ RunTime:0.000413s ]
+[ sql ] [ SQL ] SELECT `r`.`username`,`p`.`avatar`,`p`.`nickname`,`p`.`idcard`,`r`.* FROM `record` `r` INNER JOIN `profile` `p` ON `p`.`username`=`r`.`username` ORDER BY `r`.`create_at` DESC LIMIT 0,20 [ RunTime:0.001707s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:24:53+08:00 ] 127.0.0.1 GET /admin/wallet/record.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000700s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `record` [ RunTime:0.011243s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `record` `r` INNER JOIN `profile` `p` ON `p`.`username`=`r`.`username` LIMIT 1 [ RunTime:0.000441s ]
+[ sql ] [ SQL ] SELECT `r`.`username`,`p`.`avatar`,`p`.`nickname`,`p`.`idcard`,`r`.* FROM `record` `r` INNER JOIN `profile` `p` ON `p`.`username`=`r`.`username` ORDER BY `r`.`create_at` DESC LIMIT 0,20 [ RunTime:0.000968s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:24:55+08:00 ] 127.0.0.1 GET /admin/wallet/record.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010839s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `record` [ RunTime:0.010152s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `record` `r` INNER JOIN `profile` `p` ON `p`.`username`=`r`.`username` LIMIT 1 [ RunTime:0.000408s ]
+[ sql ] [ SQL ] SELECT `r`.`username`,`p`.`avatar`,`p`.`nickname`,`p`.`idcard`,`r`.* FROM `record` `r` INNER JOIN `profile` `p` ON `p`.`username`=`r`.`username` ORDER BY `r`.`create_at` DESC LIMIT 0,20 [ RunTime:0.001252s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:24:56+08:00 ] 127.0.0.1 GET /admin/wallet/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000962s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.010507s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wallet` `w` INNER JOIN `profile` `p` ON `p`.`username`=`w`.`username` LIMIT 1 [ RunTime:0.000466s ]
+[ sql ] [ SQL ] SELECT `p`.`avatar`,`p`.`idcard`,`p`.`nickname`,`w`.* FROM `wallet` `w` INNER JOIN `profile` `p` ON `p`.`username`=`w`.`username` ORDER BY `w`.`money` DESC LIMIT 0,20 [ RunTime:0.008745s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:25:10+08:00 ] 127.0.0.1 GET /admin/wallet/record.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010508s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `record` [ RunTime:0.010424s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `record` `r` INNER JOIN `profile` `p` ON `p`.`username`=`r`.`username` LIMIT 1 [ RunTime:0.000412s ]
+[ sql ] [ SQL ] SELECT `r`.`username`,`p`.`avatar`,`p`.`nickname`,`p`.`idcard`,`r`.* FROM `record` `r` INNER JOIN `profile` `p` ON `p`.`username`=`r`.`username` ORDER BY `r`.`create_at` DESC LIMIT 0,20 [ RunTime:0.000782s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:25:33+08:00 ] 127.0.0.1 GET /account.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001745s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.011160s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000578s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011186s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000365s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.010630s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`image`,`cycle`,`income`,`price` FROM `store` WHERE  `catalog` = 1  AND `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000408s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:25:33+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000684s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011006s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000362s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:25:34+08:00 ] 127.0.0.1 GET /account.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000777s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.011226s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000406s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011445s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000370s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.011591s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`image`,`cycle`,`income`,`price` FROM `store` WHERE  `catalog` = 1  AND `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000466s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:25:34+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000731s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011451s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000529s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:25:35+08:00 ] 127.0.0.1 GET /account.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000712s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.010659s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000301s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010619s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000312s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.010537s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`image`,`cycle`,`income`,`price` FROM `store` WHERE  `catalog` = 1  AND `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000500s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:25:35+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000768s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.017275s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000360s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:25:44+08:00 ] 127.0.0.1 GET /team/inviter.html
+[ error ] [64]Default value for parameters with a class type hint can only be NULL
+---------------------------------------------------------------
+[ 2019-06-23T11:25:47+08:00 ] 127.0.0.1 GET /account.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010496s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.011014s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000574s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010745s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000369s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.011231s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`image`,`cycle`,`income`,`price` FROM `store` WHERE  `catalog` = 1  AND `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000507s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:25:47+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000860s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011301s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000384s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:25:48+08:00 ] 127.0.0.1 GET /machine.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000808s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.012319s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000412s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.011354s ]
+[ sql ] [ SQL ] SELECT * FROM `machine` WHERE  `username` IS NULL  AND `status` = 1 ORDER BY `create_at` DESC [ RunTime:0.000475s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `clock` [ RunTime:0.011955s ]
+[ sql ] [ SQL ] SELECT `m`.`name`,`c`.* FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` WHERE  `c`.`username` IS NULL ORDER BY `c`.`create_at` DESC LIMIT 20 [ RunTime:0.000394s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.012367s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000615s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:25:48+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000681s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.014169s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000364s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:25:49+08:00 ] 127.0.0.1 GET /team.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010507s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011011s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000598s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` WHERE  `inviter` IS NULL LIMIT 1 [ RunTime:0.000397s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:25:50+08:00 ] 127.0.0.1 POST /team/member
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000703s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.023398s ]
+[ sql ] [ SQL ] SELECT `a`.`uid`,`p`.`realname`,`p`.`avatar`,`a`.`type`,`a`.`username`,`p`.`nickname`,`p`.`idcard` FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` WHERE  `inviter` IS NULL LIMIT 0,20 [ RunTime:0.000419s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.009976s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18888888888' LIMIT 1 [ RunTime:0.000465s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:25:50+08:00 ] 127.0.0.1 GET /market.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001224s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.009696s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000382s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.009727s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-06-23' [ RunTime:0.000458s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-06-23' [ RunTime:0.000383s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-06-23'  AND `t`.`create_at` < '2019-06-23 11:20:50' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000788s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-06-23'  AND `t`.`create_at` < '2019-06-23 11:20:50' LIMIT 1 [ RunTime:0.000425s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:25:51+08:00 ] 127.0.0.1 POST /market/overview
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000707s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `market` [ RunTime:0.010707s ]
+[ sql ] [ SQL ] SELECT `date`,`price`,`high`,`low` FROM `market` WHERE  `date` <= '2019-06-23' ORDER BY `date` DESC LIMIT 7 [ RunTime:0.000567s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.010395s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` <> 0  AND `status` <> 8  AND `create_at` > '2019-06-23' LIMIT 1 [ RunTime:0.000486s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` = 8  AND `create_at` > '2019-06-23' LIMIT 1 [ RunTime:0.000355s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:25:51+08:00 ] 127.0.0.1 GET /home.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.009879s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.010488s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000464s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011400s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000418s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.011638s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `machine` WHERE  `username` IS NULL  AND `status` = 1 LIMIT 1 [ RunTime:0.000376s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:26:01+08:00 ] 127.0.0.1 GET /financial.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011657s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `record` [ RunTime:0.012524s ]
+[ sql ] [ SQL ] SELECT `rid`,`business`,`now`,`create_at`,`after` FROM `record` WHERE  `username` IS NULL  AND `currency` = 7  AND `business` = 21 ORDER BY `create_at` DESC LIMIT 0,50 [ RunTime:0.000404s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM ( SELECT `rid`,`business`,`now`,`create_at`,`after`,count(1) AS think_count FROM `record` WHERE  `username` IS NULL  AND `currency` = 7  AND `business` = 21 ORDER BY `create_at` DESC LIMIT 0,50 ) `_group_count_` LIMIT 1 [ RunTime:0.000905s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:26:03+08:00 ] 127.0.0.1 GET /home.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.009924s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.013111s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000436s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011721s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000489s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.011867s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `machine` WHERE  `username` IS NULL  AND `status` = 1 LIMIT 1 [ RunTime:0.000350s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:26:05+08:00 ] 127.0.0.1 GET /zhuanchu.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000844s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.022139s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000525s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:26:06+08:00 ] 127.0.0.1 GET /home.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011522s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.010262s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000523s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011337s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000445s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.011077s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `machine` WHERE  `username` IS NULL  AND `status` = 1 LIMIT 1 [ RunTime:0.000412s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:26:07+08:00 ] 127.0.0.1 GET /jiefeng.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000938s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011512s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.003558s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:26:08+08:00 ] 127.0.0.1 GET /home.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010934s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.017990s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000460s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010435s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000513s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.010413s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `machine` WHERE  `username` IS NULL  AND `status` = 1 LIMIT 1 [ RunTime:0.000382s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:26:13+08:00 ] 127.0.0.1 GET /market.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001089s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011118s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000538s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.010852s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-06-23' [ RunTime:0.000468s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-06-23' [ RunTime:0.000406s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-06-23'  AND `t`.`create_at` < '2019-06-23 11:21:13' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000888s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-06-23'  AND `t`.`create_at` < '2019-06-23 11:21:13' LIMIT 1 [ RunTime:0.000425s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:26:13+08:00 ] 127.0.0.1 POST /market/overview
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000812s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `market` [ RunTime:0.011317s ]
+[ sql ] [ SQL ] SELECT `date`,`price`,`high`,`low` FROM `market` WHERE  `date` <= '2019-06-23' ORDER BY `date` DESC LIMIT 7 [ RunTime:0.000397s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.010808s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` <> 0  AND `status` <> 8  AND `create_at` > '2019-06-23' LIMIT 1 [ RunTime:0.000357s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` = 8  AND `create_at` > '2019-06-23' LIMIT 1 [ RunTime:0.000252s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:26:13+08:00 ] 127.0.0.1 GET /team.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011335s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011518s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000471s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` WHERE  `inviter` IS NULL LIMIT 1 [ RunTime:0.000374s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:26:14+08:00 ] 127.0.0.1 POST /team/member
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002305s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.009876s ]
+[ sql ] [ SQL ] SELECT `a`.`uid`,`p`.`realname`,`p`.`avatar`,`a`.`type`,`a`.`username`,`p`.`nickname`,`p`.`idcard` FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` WHERE  `inviter` IS NULL LIMIT 0,20 [ RunTime:0.000392s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.011907s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18888888888' LIMIT 1 [ RunTime:0.000437s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:26:15+08:00 ] 127.0.0.1 GET /home.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011502s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.015734s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000458s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010801s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000440s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.010867s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `machine` WHERE  `username` IS NULL  AND `status` = 1 LIMIT 1 [ RunTime:0.000461s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:26:17+08:00 ] 127.0.0.1 GET /signout.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000829s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `log` [ RunTime:0.011541s ]
+[ error ] [10501]SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'username' cannot be null
+---------------------------------------------------------------
+[ 2019-06-23T11:26:19+08:00 ] 127.0.0.1 GET /home.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010398s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.011470s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000392s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010568s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000492s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.011419s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `machine` WHERE  `username` IS NULL  AND `status` = 1 LIMIT 1 [ RunTime:0.000415s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:26:20+08:00 ] 127.0.0.1 GET /signout.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.009853s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `log` [ RunTime:0.010909s ]
+[ error ] [10501]SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'username' cannot be null
+---------------------------------------------------------------
+[ 2019-06-23T11:26:21+08:00 ] 127.0.0.1 GET /home.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011081s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.011912s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000485s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010204s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000488s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.011237s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `machine` WHERE  `username` IS NULL  AND `status` = 1 LIMIT 1 [ RunTime:0.000376s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:26:24+08:00 ] 127.0.0.1 GET /account.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010812s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.011372s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000398s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010703s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000545s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.012580s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`image`,`cycle`,`income`,`price` FROM `store` WHERE  `catalog` = 1  AND `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000623s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:26:24+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000717s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.020247s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000481s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:26:39+08:00 ] 127.0.0.1 GET /shop.html?id=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010351s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.015736s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000517s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.010649s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `catalog` = 1  AND `status` = 1  AND `id` = 1 LIMIT 1 [ RunTime:0.000715s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:26:40+08:00 ] 127.0.0.1 GET /home.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011257s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.010719s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000481s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010611s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000654s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.010146s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `machine` WHERE  `username` IS NULL  AND `status` = 1 LIMIT 1 [ RunTime:0.000392s ]
+---------------------------------------------------------------
+[ 2019-06-23T11:26:41+08:00 ] 127.0.0.1 GET /signout.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011348s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `log` [ RunTime:0.012542s ]
+[ error ] [10501]SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'username' cannot be null
+---------------------------------------------------------------
+[ 2019-06-23T13:57:35+08:00 ] 127.0.0.1 GET /signout.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011709s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `log` [ RunTime:0.011958s ]
+[ error ] [10501]SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'username' cannot be null
+---------------------------------------------------------------
+[ 2019-06-23T13:57:36+08:00 ] 127.0.0.1 GET /home.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010033s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.012694s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000486s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011483s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000482s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.012899s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `machine` WHERE  `username` IS NULL  AND `status` = 1 LIMIT 1 [ RunTime:0.000356s ]
+---------------------------------------------------------------
+[ 2019-06-23T13:57:38+08:00 ] 127.0.0.1 GET /market.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.009824s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.017144s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000528s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.011262s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-06-23' [ RunTime:0.000699s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-06-23' [ RunTime:0.000680s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-06-23'  AND `t`.`create_at` < '2019-06-23 13:52:38' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.001087s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-06-23'  AND `t`.`create_at` < '2019-06-23 13:52:38' LIMIT 1 [ RunTime:0.000412s ]
+---------------------------------------------------------------
+[ 2019-06-23T13:57:38+08:00 ] 127.0.0.1 POST /market/overview
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000669s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `market` [ RunTime:0.021874s ]
+[ sql ] [ SQL ] SELECT `date`,`price`,`high`,`low` FROM `market` WHERE  `date` <= '2019-06-23' ORDER BY `date` DESC LIMIT 7 [ RunTime:0.000461s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.011258s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` <> 0  AND `status` <> 8  AND `create_at` > '2019-06-23' LIMIT 1 [ RunTime:0.000599s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` = 8  AND `create_at` > '2019-06-23' LIMIT 1 [ RunTime:0.000620s ]
+---------------------------------------------------------------
+[ 2019-06-23T13:57:39+08:00 ] 127.0.0.1 GET /team.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010086s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.013067s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000519s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` WHERE  `inviter` IS NULL LIMIT 1 [ RunTime:0.000492s ]
+---------------------------------------------------------------
+[ 2019-06-23T13:57:39+08:00 ] 127.0.0.1 POST /team/member
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000786s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.012937s ]
+[ sql ] [ SQL ] SELECT `a`.`uid`,`p`.`realname`,`p`.`avatar`,`a`.`type`,`a`.`username`,`p`.`nickname`,`p`.`idcard` FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` WHERE  `inviter` IS NULL LIMIT 0,20 [ RunTime:0.000678s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.011593s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18888888888' LIMIT 1 [ RunTime:0.000460s ]
+---------------------------------------------------------------
+[ 2019-06-23T13:57:39+08:00 ] 127.0.0.1 GET /machine.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011460s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.012162s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000467s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.009999s ]
+[ sql ] [ SQL ] SELECT * FROM `machine` WHERE  `username` IS NULL  AND `status` = 1 ORDER BY `create_at` DESC [ RunTime:0.000477s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `clock` [ RunTime:0.010587s ]
+[ sql ] [ SQL ] SELECT `m`.`name`,`c`.* FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` WHERE  `c`.`username` IS NULL ORDER BY `c`.`create_at` DESC LIMIT 20 [ RunTime:0.000457s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.011328s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000594s ]
+---------------------------------------------------------------
+[ 2019-06-23T13:57:39+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000759s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010029s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000348s ]
+---------------------------------------------------------------
+[ 2019-06-23T13:57:41+08:00 ] 127.0.0.1 GET /account.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011065s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.010418s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011131s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000418s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.010618s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`image`,`cycle`,`income`,`price` FROM `store` WHERE  `catalog` = 1  AND `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000476s ]
+---------------------------------------------------------------
+[ 2019-06-23T13:57:41+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000924s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011054s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.001467s ]
+---------------------------------------------------------------
+[ 2019-06-23T13:57:42+08:00 ] 127.0.0.1 GET /machine.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010520s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010542s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000556s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.015483s ]
+[ sql ] [ SQL ] SELECT * FROM `machine` WHERE  `username` IS NULL  AND `status` = 1 ORDER BY `create_at` DESC [ RunTime:0.000484s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `clock` [ RunTime:0.010622s ]
+[ sql ] [ SQL ] SELECT `m`.`name`,`c`.* FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` WHERE  `c`.`username` IS NULL ORDER BY `c`.`create_at` DESC LIMIT 20 [ RunTime:0.000416s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.011177s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000602s ]
+---------------------------------------------------------------
+[ 2019-06-23T13:57:42+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011688s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.021466s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000484s ]
+---------------------------------------------------------------
+[ 2019-06-23T13:57:43+08:00 ] 127.0.0.1 GET /home.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010977s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.009663s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000412s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011500s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` IS NULL LIMIT 1 [ RunTime:0.000446s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.010438s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `machine` WHERE  `username` IS NULL  AND `status` = 1 LIMIT 1 [ RunTime:0.000315s ]
+---------------------------------------------------------------
+[ 2019-06-23T13:57:53+08:00 ] 127.0.0.1 GET /signout.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003682s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `log` [ RunTime:0.011098s ]
+[ error ] [10501]SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'username' cannot be null
+---------------------------------------------------------------
+[ 2019-06-23T13:57:56+08:00 ] 127.0.0.1 GET /signout.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000696s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `log` [ RunTime:0.012475s ]
+[ error ] [10501]SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'username' cannot be null
+---------------------------------------------------------------
+[ 2019-06-23T14:01:40+08:00 ] 127.0.0.1 POST /signup
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000730s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010158s ]
+[ sql ] [ SQL ] SELECT `username` FROM `account` WHERE  `uid` = '123456' LIMIT 1 [ RunTime:0.006556s ]
+---------------------------------------------------------------
+[ 2019-06-23T14:03:43+08:00 ] 127.0.0.1 POST /signup
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000901s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010500s ]
+[ sql ] [ SQL ] SELECT `username` FROM `account` WHERE  `uid` = 'K343243' LIMIT 1 [ RunTime:0.000404s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `account` LIMIT 1 [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SELECT `uid` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000322s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `uuid` [ RunTime:0.010501s ]
+[ sql ] [ SQL ] SELECT * FROM `uuid` WHERE  `id` = 'I301535' LIMIT 1 [ RunTime:0.000546s ]
+[ sql ] [ SQL ] INSERT INTO `uuid` (`id` , `type`) VALUES ('I301535' , 1) [ RunTime:0.001819s ]
+[ sql ] [ SQL ] INSERT INTO `account` (`uid` , `type` , `status` , `username` , `authen` , `inviter` , `password` , `safeword` , `create_at` , `update_at`) VALUES ('I301535' , 0 , 1 , '18005151538' , 0 , '18888888888' , 'cd7f7cacd4fc2f9074a68380bb7107b8' , 'e67b36ddd09a671967939cfe2b0255cf' , '2019-06-23 14:03:43' , '2019-06-23 14:03:43') [ RunTime:0.000455s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.011404s ]
+[ sql ] [ SQL ] INSERT INTO `profile` (`username` , `nickname` , `avatar` , `wechat` , `qq` , `alipay` , `realname` , `idcard` , `authen_reason` , `bankname` , `bankcard` , `bankaddress` , `create_at` , `update_at`) VALUES ('18005151538' , 'I301535' , NULL , '18005151538' , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , '2019-06-23 14:03:43' , '2019-06-23 14:03:43') [ RunTime:0.000396s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.010123s ]
+[ sql ] [ SQL ] INSERT INTO `wallet` (`username` , `money` , `deposit` , `score` , `score_deposit` , `spend` , `profit` , `team_profit` , `bonus` , `trade` , `sell` , `buy` , `create_at` , `update_at`) VALUES ('18005151538' , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , '2019-06-23 14:03:43' , '2019-06-23 14:03:43') [ RunTime:0.000414s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.010535s ]
+[ sql ] [ SQL ] INSERT INTO `dashboard` (`username` , `power` , `team_power` , `team_count` , `machine_count` , `machine_power` , `machine_expire` , `one` , `two` , `three` , `four` , `five` , `six` , `seven` , `eight` , `lv0` , `lv1` , `lv2` , `lv3` , `lv4` , `lv5` , `lv6` , `lv7` , `lv8` , `create_at` , `update_at`) VALUES ('18005151538' , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , '2019-06-23 14:03:43' , '2019-06-23 14:03:43') [ RunTime:0.000508s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.010490s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000498s ]
+[ sql ] [ SQL ] SELECT * FROM `uuid` WHERE  `id` = 'Z2524197' LIMIT 1 [ RunTime:0.000374s ]
+[ sql ] [ SQL ] INSERT INTO `uuid` (`id` , `type`) VALUES ('Z2524197' , 2) [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.010899s ]
+[ sql ] [ SQL ] INSERT INTO `machine` (`mid` , `status` , `source` , `username` , `product` , `divide` , `name` , `cycle` , `income` , `power` , `price` , `profit` , `count` , `profit_at` , `create_at` , `update_at`) VALUES ('Z2524197' , 1 , 2 , '18005151538' , 1 , 5 , 'Lv1蚁后' , 1440 , 15 , 1 , 10 , 0 , 0 , NULL , '2019-06-23 14:03:43' , '2019-06-23 14:03:43') [ RunTime:0.000437s ]
+[ sql ] [ SQL ] UPDATE `dashboard`  SET `machine_count` = machine_count+1 , `machine_power` = machine_power+1.000000000000 , `power` = power+1.000000000000 , `update_at` = '2019-06-23 14:03:43'  WHERE  `username` = '18005151538' [ RunTime:0.000508s ]
+[ sql ] [ SQL ] SELECT `type`,`inviter` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000278s ]
+[ sql ] [ SQL ] SELECT `type`,`inviter` FROM `account` WHERE  `username` = '18888888888' LIMIT 1 [ RunTime:0.000289s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000448s ]
+[ sql ] [ SQL ] SELECT * FROM `uuid` WHERE  `id` = 'B8477778' LIMIT 1 [ RunTime:0.000341s ]
+[ sql ] [ SQL ] INSERT INTO `uuid` (`id` , `type`) VALUES ('B8477778' , 2) [ RunTime:0.000314s ]
+[ sql ] [ SQL ] INSERT INTO `machine` (`mid` , `status` , `source` , `username` , `product` , `divide` , `name` , `cycle` , `income` , `power` , `price` , `profit` , `count` , `profit_at` , `create_at` , `update_at`) VALUES ('B8477778' , 1 , 2 , '18005151538' , 1 , 5 , 'Lv1蚁后' , 1440 , 15 , 1 , 10 , 0 , 0 , NULL , '2019-06-23 14:03:43' , '2019-06-23 14:03:43') [ RunTime:0.000385s ]
+[ sql ] [ SQL ] UPDATE `dashboard`  SET `machine_count` = machine_count+1 , `machine_power` = machine_power+1.000000000000 , `power` = power+1.000000000000 , `update_at` = '2019-06-23 14:03:43'  WHERE  `username` = '18005151538' [ RunTime:0.000273s ]
+[ sql ] [ SQL ] SELECT `type`,`inviter` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000266s ]
+[ sql ] [ SQL ] SELECT `type`,`inviter` FROM `account` WHERE  `username` = '18888888888' LIMIT 1 [ RunTime:0.000238s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000475s ]
+[ sql ] [ SQL ] SELECT * FROM `uuid` WHERE  `id` = 'S3695540' LIMIT 1 [ RunTime:0.000428s ]
+[ sql ] [ SQL ] INSERT INTO `uuid` (`id` , `type`) VALUES ('S3695540' , 2) [ RunTime:0.000378s ]
+[ sql ] [ SQL ] INSERT INTO `machine` (`mid` , `status` , `source` , `username` , `product` , `divide` , `name` , `cycle` , `income` , `power` , `price` , `profit` , `count` , `profit_at` , `create_at` , `update_at`) VALUES ('S3695540' , 1 , 2 , '18005151538' , 1 , 5 , 'Lv1蚁后' , 1440 , 15 , 1 , 10 , 0 , 0 , NULL , '2019-06-23 14:03:43' , '2019-06-23 14:03:43') [ RunTime:0.000347s ]
+[ sql ] [ SQL ] UPDATE `dashboard`  SET `machine_count` = machine_count+1 , `machine_power` = machine_power+1.000000000000 , `power` = power+1.000000000000 , `update_at` = '2019-06-23 14:03:43'  WHERE  `username` = '18005151538' [ RunTime:0.000347s ]
+[ sql ] [ SQL ] SELECT `type`,`inviter` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000275s ]
+[ sql ] [ SQL ] SELECT `type`,`inviter` FROM `account` WHERE  `username` = '18888888888' LIMIT 1 [ RunTime:0.000266s ]
+[ sql ] [ SQL ] UPDATE `dashboard`  SET `team_count` = team_count+1 , `one` = one+1 , `lv0` = lv0+1 , `update_at` = '2019-06-23 14:03:43'  WHERE  `username` = '18888888888' [ RunTime:0.000278s ]
+[ sql ] [ SQL ] SELECT `inviter` FROM `account` WHERE  `username` = '18888888888' LIMIT 1 [ RunTime:0.000254s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18888888888' LIMIT 1 [ RunTime:0.000313s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18888888888' LIMIT 1 [ RunTime:0.000377s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18888888888' LIMIT 1 [ RunTime:0.000315s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18888888888' LIMIT 1 [ RunTime:0.000331s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `authen` = 1 , `update_at` = '2019-06-23 14:03:43'  WHERE  `username` = '18005151538' [ RunTime:0.000262s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18888888888' LIMIT 1 [ RunTime:0.000302s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18888888888' LIMIT 1 [ RunTime:0.000303s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18888888888' LIMIT 1 [ RunTime:0.000300s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18888888888' LIMIT 1 [ RunTime:0.000340s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.011323s ]
+[ sql ] [ SQL ] SELECT * FROM `config` WHERE  `token` = 'hello.setting' LIMIT 1 [ RunTime:0.000452s ]
+[ sql ] [ SQL ] SELECT * FROM `uuid` WHERE  `id` = 'D19062312997350' LIMIT 1 [ RunTime:0.000364s ]
+[ sql ] [ SQL ] INSERT INTO `uuid` (`id` , `type`) VALUES ('D19062312997350' , 8) [ RunTime:0.000310s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `record` [ RunTime:0.011376s ]
+[ sql ] [ SQL ] INSERT INTO `record` (`rid` , `username` , `currency` , `business` , `before` , `now` , `after` , `create_at`) VALUES ( 'D19062312997350','18005151538',8,88,NULL,800,800,'2019-06-23 14:03:43' ) [ RunTime:0.000385s ]
+[ sql ] [ SQL ] UPDATE `wallet`  SET `poll` = `poll` + 800 , `update_at` = '2019-06-23 14:03:43'  WHERE  `username` = '18005151538' [ RunTime:0.000335s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000426s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000397s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000394s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000374s ]
+[ sql ] [ SQL ] SELECT * FROM `profile` WHERE  `idcard` = '320923198801132122'  AND `username` <> '18005151538' LIMIT 1 [ RunTime:0.000315s ]
+[ sql ] [ SQL ] UPDATE `profile`  SET `realname` = '素材火' , `bankcard` = '6214831218885555' , `idcard` = '320923198801132122' , `alipay` = '18005151538' , `update_at` = '2019-06-23 14:03:43'  WHERE  `username` = '18005151538' [ RunTime:0.000349s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `log` [ RunTime:0.010733s ]
+[ sql ] [ SQL ] INSERT INTO `log` (`username` , `type` , `text` , `ip` , `ua` , `create_at`) VALUES ('18005151538' , 1 , '来自于推荐人Array' , '127.0.0.1' , 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1' , '2019-06-23 14:03:43') [ RunTime:0.000522s ]
+---------------------------------------------------------------
+[ 2019-06-23T14:04:10+08:00 ] 127.0.0.1 POST /signin
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010930s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010126s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = ''  WHERE  `loginip` = '127.0.0.1' [ RunTime:0.000400s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = '127.0.0.1'  WHERE  `username` = '18005151538' [ RunTime:0.002109s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538'  AND `password` = 'cd7f7cacd4fc2f9074a68380bb7107b8' LIMIT 1 [ RunTime:0.000661s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.010565s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000730s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.010153s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000490s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.010532s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000629s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `log` [ RunTime:0.011888s ]
+[ sql ] [ SQL ] INSERT INTO `log` (`username` , `type` , `text` , `ip` , `ua` , `create_at`) VALUES ('18005151538' , 3 , NULL , '127.0.0.1' , 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1' , '2019-06-23 14:04:10') [ RunTime:0.000368s ]
+---------------------------------------------------------------
+[ 2019-06-23T14:04:11+08:00 ] 127.0.0.1 GET /account.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010242s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.016511s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000466s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010284s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000415s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.010399s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000424s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.011520s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000535s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.009703s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000498s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.010681s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`image`,`cycle`,`income`,`price` FROM `store` WHERE  `catalog` = 1  AND `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000687s ]
+---------------------------------------------------------------
+[ 2019-06-23T14:04:11+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001486s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011232s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000568s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.011261s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000414s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.015340s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000394s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.010749s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000476s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.011648s ]
+[ sql ] [ SQL ] SELECT * FROM `machine` WHERE  `username` = '18005151538'  AND `status` = 1 ORDER BY `create_at` DESC [ RunTime:0.000450s ]
+---------------------------------------------------------------
+[ 2019-06-23T14:04:12+08:00 ] 127.0.0.1 GET /home.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011480s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.017948s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000365s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011138s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000444s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.011050s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000686s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.011048s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000505s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.010908s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000457s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.012264s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `machine` WHERE  `username` = '18005151538'  AND `status` = 1 LIMIT 1 [ RunTime:0.000452s ]
+---------------------------------------------------------------
+[ 2019-06-23T14:04:14+08:00 ] 127.0.0.1 GET /market.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010887s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011375s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000512s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.010417s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000513s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.011223s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000488s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.011429s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000517s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.010276s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-06-23' [ RunTime:0.000578s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-06-23' [ RunTime:0.000445s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-06-23'  AND `t`.`create_at` < '2019-06-23 13:59:14' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000595s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-06-23'  AND `t`.`create_at` < '2019-06-23 13:59:14' LIMIT 1 [ RunTime:0.000626s ]
+---------------------------------------------------------------
+[ 2019-06-23T14:04:14+08:00 ] 127.0.0.1 POST /market/overview
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001024s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `market` [ RunTime:0.018450s ]
+[ sql ] [ SQL ] SELECT `date`,`price`,`high`,`low` FROM `market` WHERE  `date` <= '2019-06-23' ORDER BY `date` DESC LIMIT 7 [ RunTime:0.000830s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.009767s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` <> 0  AND `status` <> 8  AND `create_at` > '2019-06-23' LIMIT 1 [ RunTime:0.000339s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` = 8  AND `create_at` > '2019-06-23' LIMIT 1 [ RunTime:0.000251s ]
+---------------------------------------------------------------
+[ 2019-06-23T14:04:14+08:00 ] 127.0.0.1 GET /team.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010969s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010732s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000527s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.010965s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000504s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.010376s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000486s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.011201s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000569s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` WHERE  `inviter` = '18005151538' LIMIT 1 [ RunTime:0.000451s ]
+---------------------------------------------------------------
+[ 2019-06-23T14:04:15+08:00 ] 127.0.0.1 POST /team/member
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000691s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010902s ]
+[ sql ] [ SQL ] SELECT `a`.`uid`,`p`.`realname`,`p`.`avatar`,`a`.`type`,`a`.`username`,`p`.`nickname`,`p`.`idcard` FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` WHERE  `inviter` = '18005151538' LIMIT 0,20 [ RunTime:0.000386s ]
+---------------------------------------------------------------
+[ 2019-06-23T14:04:15+08:00 ] 127.0.0.1 GET /machine.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010960s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010787s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000487s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.011546s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000415s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.010115s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000472s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.011400s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000624s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.011596s ]
+[ sql ] [ SQL ] SELECT * FROM `machine` WHERE  `username` = '18005151538'  AND `status` = 1 ORDER BY `create_at` DESC [ RunTime:0.000480s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.010633s ]
+[ sql ] [ SQL ] SELECT `image` FROM `store` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000321s ]
+[ sql ] [ SQL ] SELECT `image` FROM `store` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000318s ]
+[ sql ] [ SQL ] SELECT `image` FROM `store` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000276s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `clock` [ RunTime:0.011195s ]
+[ sql ] [ SQL ] SELECT `m`.`name`,`c`.* FROM `clock` `c` INNER JOIN `machine` `m` ON `m`.`mid`=`c`.`mid` WHERE  `c`.`username` = '18005151538' ORDER BY `c`.`create_at` DESC LIMIT 20 [ RunTime:0.000566s ]
+[ sql ] [ SQL ] SELECT * FROM `store` WHERE  `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000397s ]
+---------------------------------------------------------------
+[ 2019-06-23T14:04:15+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000694s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.016534s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000420s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.012637s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000385s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.010532s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000350s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.011154s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000708s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.010973s ]
+[ sql ] [ SQL ] SELECT * FROM `machine` WHERE  `username` = '18005151538'  AND `status` = 1 ORDER BY `create_at` DESC [ RunTime:0.000553s ]
+---------------------------------------------------------------
+[ 2019-06-23T14:04:16+08:00 ] 127.0.0.1 GET /account.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011468s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.014202s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000542s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.010985s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000495s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.010823s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000698s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.011370s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000446s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.010154s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000486s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.012110s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`image`,`cycle`,`income`,`price` FROM `store` WHERE  `catalog` = 1  AND `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000668s ]
+---------------------------------------------------------------
+[ 2019-06-23T14:04:16+08:00 ] 127.0.0.1 POST /machine/allprofit
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000722s ] mysql:host=127.0.0.1;dbname=demo_6089;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.011307s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000474s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.010782s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000380s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.010445s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000406s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.011458s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000509s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.011052s ]
+[ sql ] [ SQL ] SELECT * FROM `machine` WHERE  `username` = '18005151538'  AND `status` = 1 ORDER BY `create_at` DESC [ RunTime:0.000476s ]

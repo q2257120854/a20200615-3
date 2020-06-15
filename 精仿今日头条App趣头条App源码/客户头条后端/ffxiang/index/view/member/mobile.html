@@ -1,0 +1,99 @@
+{include file="member/left" /}
+                <div class="right-container col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                	<div class="account-wrapper">
+					     {include file="member/nav"}
+					    <div class="panel panel-default">	
+					    	{present name='member.mobile'}
+					    	<div class="idupload maing-srigt">
+					    		<p class="tip text-center success"><span class="right-sign"></span> 已完成手机绑定</p>
+					    		<p class="tip-2 text-center">如果需要解绑或其他问题，请先联系客服 {:_webfig('phone')}</p>
+					    	</div>	
+					    	{else /}
+					    	<div class="account-form-modal">
+								<div class="form pop-form">
+							        <div class="form-group">
+							            <label class="col-sm-3 control-label">手机号码：</label>
+							            <div class="col-sm-4">
+							                <input type="text" placeholder="手机号码" class="form-control" name="mobile" maxlength="16" id="mobile" />
+							            </div>
+							        </div>
+							        <div class="form-group">
+							            <label class="col-sm-3 control-label">手机验证码：</label>
+							          
+							            	<div class="col-sm-2"> 
+							                <input type="text" placeholder="手机验证码" value="" class="form-control" name="code" maxlength="16" id="code" /></div>
+							                <div class="col-sm-2"> 
+							                <button type="botton" class="btn btn-primary" onclick="code()">获取验证码</button></div>
+							        </div>
+							        <div class="form-group">
+							            <div class="col-sm-3 col-sm-offset-3">
+							                <button type="botton" class="btn btn-primary btn-lg ladda-button" onclick="mobiless()">绑定手机</button>
+							            </div>
+							        </div>
+							    </div>
+							</div>
+							<script type="text/javascript">
+							var mobile='';
+							$(function(){
+								$('#mobile').blur(function(){
+									mobile=$(this).val();
+									if(mobile != ''){
+										if(!is_mobile(mobile)){
+											$(this).focus()
+											layer.msg('手机格式不正确');
+										}
+									}
+									 
+								})
+							})
+							// 验证手机号码
+							function is_mobile(mobile) {  
+							     if( mobile == "") {  
+							      return false;  
+							     } else {  
+							       if( ! /^0{0,1}(13[0-9]|15[0-9]|18[0-9]|14[0-9])[0-9]{8}$/.test(mobile) ) {  
+							        return false;  
+							      }  
+							      return true;  
+							    }  
+							} 
+							function code(){
+								if(!$('#mobile').val()){ layer.msg('请输入手机号码'); return false;}
+								var index = layer.load(1, {shade: [0.5,'#000']});
+								_ajax('{:url('api/index/code')}','post',{username:$('#mobile').val(),text:'绑定手机'},function(ret){
+									  if(ret.ret){
+							            layer.msg(ret.ret)
+							          }else{
+							            layer.msg(ret.err)
+							          }
+							          layer.close(index);
+								})
+							}
+							// 绑定
+							function mobiless(){
+								if(!$('#mobile').val()){ layer.msg('请输入手机号码'); return false;}
+								if(!$('#code').val()){ layer.msg('请输入验证码'); return false;}
+								var index = layer.load(1, {shade: [0.5,'#000']});
+								_ajax('{:url('api/member/mobile')}','post',{username:$('#mobile').val(),code:$('#code').val()},function(ret){
+									  if(ret.ret){
+							            layer.msg(ret.ret)
+							            setTimeout(function(){
+							            	location.reload()
+							            },1000) 
+							          }else{
+							            layer.msg(ret.err)
+							          }
+							          layer.close(index);
+								})
+							}
+							</script>
+					    	{/present}
+						</div>
+					</div>
+				</div>
+<script type="text/javascript">
+ 
+</script>
+{include file="member/footer" /}<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

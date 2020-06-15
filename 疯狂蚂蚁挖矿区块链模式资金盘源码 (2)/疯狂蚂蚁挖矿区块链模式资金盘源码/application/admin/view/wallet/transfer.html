@@ -1,0 +1,50 @@
+{extend name="common/world"}
+{block name="title"}转账记录{/block}
+{block name="style"}{/block}
+{block name="container"}
+<form method="get" class="">
+	<div class="row">
+		<div class="col-md-6 col-lg-3 mb-3">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">用户账号</span>
+				</div>
+				<input type="text" class="form-control" name="username" value="{$Think.get.username}" />
+			</div>
+		</div>
+		<div class="col-lg-2 mb-3">
+			<button class="btn btn-primary w-100" type="submit">立即查询</button>
+		</div>
+	</div>
+</form>
+<div class="card">
+	<div class="table-responsive">
+	    <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+	        <thead>
+	            <tr>
+	                <th class="text-left w-1">#</th>
+	                <th>转账人</th>
+	                <th>收钱人</th>
+	                <th>货币数量</th>
+	                <th>服务费</th>
+	                <th>时间</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	        	{volist name="logs" id="log"}
+	            <tr>
+	                <td class="text-left">{$log.tid}</td>
+	                <td>{$log.owner}</td>
+	                <td>{$log.target}</td>
+	                <td>{$log.number|money}</td>
+	                <td>{$log.charge|money}</td>
+	                <td>{$log.update_at}</td>
+	            </tr>
+	            {/volist}
+	        </tbody>
+	    </table>
+	</div>
+	<div class="card-footer">{$logs|raw}</div>
+</div>
+{/block}
+{block name="script"} {/block}

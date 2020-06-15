@@ -1,0 +1,45 @@
+ {include file="public/header" /}
+ <body class="gray-bg">
+    <div class="wrapper wrapper-content {:config('adminClass.main')}">
+        <div class="row">
+            <div class="col-sm-12">
+                {include file="public/tophead"}
+                {include file="public/top" /}
+                <div class="ibox-content">
+                {include file="public/topsection"}
+                    <form class="form-horizontal" method="post">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">说明：</label>
+                            <div class="col-sm-9">
+                                <span style='color:#1ab394; font-size: 15px;' class="help-block m-b-none">{title}是短名称，基本设置 > 网站设置。{code}是验证码，验证码系统自动随机生成6位数。<br><b>短信模板需在阿里云设置，可联系技术免费引导</b></span>
+                            </div>
+                        </div>
+                        <hr>
+                        {volist name='data' id='v'}
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$v.title}：</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" name="{$v.name}" rows="4">{$v.text}</textarea>
+                                <span class="help-block m-b-none">{$v.content}</span>
+                            </div>
+                        </div>
+                        {/volist}
+                    </form>
+                </div>
+            </div>
+        </div> 
+    </div>
+{include file="public/footer" /}
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+<script type="text/javascript">
+$(document).ready(function(){
+     $(".i-checks").iCheck({
+        checkboxClass: "icheckbox_square-green",
+        radioClass: "iradio_square-green",
+    })
+})
+</script>
+{include file="public/bottom" /}<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

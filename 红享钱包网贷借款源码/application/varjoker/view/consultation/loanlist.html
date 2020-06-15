@@ -1,0 +1,158 @@
+{include file="public/header" /}
+<link rel="stylesheet" href="/static/layui/css/layui.css">
+
+<div class="outter-wp">
+    <!--sub-heard-part-->
+    <div class="sub-heard-part">
+        <ol class="breadcrumb m-b-0">
+            <li><a>系统</a></li>
+            <li class="active">借款轮播</li>
+        </ol>
+    </div>
+    <!--//sub-heard-part-->
+    <div class="graph-visual tables-main">
+
+
+        <div class="graph">
+            <a class="btn green" data-toggle="modal" data-target="#myModal">添加借款轮播</a>
+            <div class="tables">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>内容</th>
+                        <th>添加时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="list" id="vo"}
+                    <tr>
+                        <th scope="row">{$vo.id}</th>
+                        <td>{$vo.content}</td>
+                        <td>{$vo.addtime}</td>
+                       <td> <!--<span class="label label-success" onclick="editd({$vo.id})">编辑</span>|--><span class="label label-danger" onclick="deld({$vo.id})">删除</span></td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+
+
+
+            </div>
+
+        </div>
+
+        <!--分页位置-->
+        {$list->render()}
+        <!--//graph-visual-->
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close second" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h2 class="modal-title">咨询添加</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="form-body">
+                        <form class="form-horizontal" action="{:url('consultation/addzixun')}" enctype="multipart/form-data" method="post">
+
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">内容</label>
+                                <div class="col-sm-9">
+                                    <textarea id="demo" style="display: none;" name="content"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-offset-2">
+                                <button type="submit" class="btn btn-default">提 交</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!--&lt;!&ndash;轮播修改&ndash;&gt;-->
+    <!--<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">-->
+        <!--<div class="modal-dialog">-->
+            <!--<div class="modal-content">-->
+                <!--<div class="modal-header">-->
+                    <!--<button type="button" class="close second" data-dismiss="modal" aria-hidden="true">×</button>-->
+                    <!--<h2 class="modal-title">咨询修改</h2>-->
+                <!--</div>-->
+                <!--<div class="modal-body">-->
+                    <!--<div class="form-body">-->
+                        <!--<form class="form-horizontal" action="{:url('notice/editd')}" enctype="multipart/form-data" method="post">-->
+                            <!--<div class="form-group">-->
+                                <!--<label for="inputPassword3" class="col-sm-2 control-label">标题</label>-->
+                                <!--<div class="col-sm-9">-->
+                                    <!--<input type="text" class="form-control" name="title" id="title" placeholder="标题" />-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label for="inputPassword3" class="col-sm-2 control-label">简介</label>-->
+                                <!--<div class="col-sm-9">-->
+                                    <!--<input type="text" class="form-control" name="key" id="key" placeholder="简介" />-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label for="inputEmail3" class="col-sm-2 control-label">图片上传</label>-->
+                                <!--<div class="col-sm-9">-->
+                                    <!--<input type="text" class="form-control" id="id" name="id" style="display: none;"/>-->
+                                    <!--<input type="file" class="form-control" name="image" id="img"/>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label for="inputPassword3" class="col-sm-2 control-label">内容</label>-->
+                                <!--<div class="col-sm-9">-->
+                                    <!--<textarea id="demo1" style="display: none;" name="content"></textarea>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="col-sm-offset-2">-->
+                                <!--<button type="submit" class="btn btn-default">提 交</button>-->
+                            <!--</div>-->
+                        <!--</form>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="modal-footer">-->
+                <!--</div>-->
+            <!--</div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
+        <!--</div>&lt;!&ndash; /.modal-dialog &ndash;&gt;-->
+    <!--</div>-->
+    <script src="/static/layui/layui.js"></script>
+    <script>
+        layui.use('layedit', function(){
+            layedit = layui.layedit;
+            layedit.build('demo'); //建立编辑器
+            index = layedit.build('demo1'); //建立编辑器
+        });
+    </script>
+    <script>
+        function deld(id) {
+            $.get('{:url('consultation/delds')}?id='+id,function(rety){
+                if(rety.code == 1){
+                    alert(rety.msg);
+                    location.reload();
+                }else{
+                    alert(rety.msg);
+                }
+
+            });
+        }
+        function editd(ids) {
+            $.get('{:url('notice/editd')}?id='+ids,function(retys){
+                $('#editModal').modal();
+
+                $('#id').val(retys.id);
+                $('#title').val(retys.title);
+                $('#key').val(retys.key);
+                layedit.setContent(index,retys.content);
+
+            });
+        }
+    </script>
+
+    {include file="public/footer" /}

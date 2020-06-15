@@ -1,0 +1,123 @@
+<div class="box">
+    
+  <div class="box-header">
+
+    <div class="row">
+    	<div class="col-sm-3">
+    		
+    		{assign name="file_id" value="$info.file_id|default='0'" /}
+            {:widget('file/index', ['name' => 'file_id', 'value' => $file_id, 'type' => 'file'])}
+        <button href="#" onclick="imports();" class="btn btn-xs"><i class="fa fa-edit"></i> 批量导入</button>
+        <a href="/static/addon/webexcel.xlsx" target="_blank" class="btn btn-xs"><i class="fa fa-download"></i> 下载模板</a>
+         <script>
+                function imports(){
+                    if ($(".upload-pre-file").children("a:first").text()){
+                        var path=$(".upload-pre-file").children("a:first").text();
+                        $.ajax({
+                            async : false,    //表示请求是否异步处理
+                            type : "post",    //请求类型
+                            url : "{:url('Seo/webdaoru')}",//请求的 URL地址
+                            data:{'path':path},
+                            dataType : "json",//返回的数据类型
+                            success: function (data) {
+                                obalert(data);
+                            },
+                            error:function (data) {
+                                alert(data.result);
+                            }
+                        });
+                    }else {
+                        alert("请选择上传的EXCEL表");
+                    }
+
+
+                }
+
+            </script>
+    	</div>
+        <div class="col-sm-4">
+            <ob_link><a class="btn" href="{:url('webAdd')}"><i class="fa fa-plus"></i> 新增网站</a></ob_link>
+            &nbsp;&nbsp;
+            <ob_link><a class="btn export" url="{:url('webexcel')}"><i class="fa fa-download"></i> 导 出</a></ob_link>
+        </div>
+        
+        <div class="col-sm-5">
+            <div class="box-tools search-form pull-right">
+                <div class="input-group input-group-sm">
+                    
+                    <input type="text" name="search_data" style="width: 200px;" class="form-control pull-right" value="{:input('search_data')}" placeholder="支持网站名称|用户名|域名">
+
+                    <div class="input-group-btn">
+                      <button type="button" id="search"  url="{:url('weblist')}" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
+                    </div>
+
+                </div>
+           </div>
+        </div>
+    </div>
+    
+  </div>
+    
+    
+  <div class="box-body table-responsive">
+    <table  class="table table-bordered table-hover">
+      <thead>
+      <tr>
+          <th>域名</th>
+          <th>网站名称</th>
+          <th>客户名</th>
+          <th>注册时间</th>
+          <th>关键词数量</th>
+          <th>今日达标</th>
+          <th>今日消费</th>
+          <th>累计消费</th>
+          <th>状态</th>
+          <th>操作</th>
+      </tr>
+      </thead>
+      
+      {notempty name='list["0"]["id"]'}
+        <tbody>
+            {volist name='list' id='vo' key="k"}
+                <tr>
+                  <td><a href="{:url('keywordlist',['search_data'=>$vo.url])}" target="_blank">{$vo.url}</a></td>
+                  <td>{$vo.web_name}</td>
+                  <td>{$vo.username|default='未绑定'}</td>
+                  <td>{$vo.create_time}</td>
+
+                    <td align="center"><a href="{:url('keywordlist',['search_data'=>$vo.url])}" target="_blank" style="font-size: 18px;">{$info[$k]['knum']}</a></td>
+
+                    <td align="center" style="color: #ff5d8e;font-size: 18px;">{$info[$k]['dbNum']}</td>
+                    <td align="center" style="color: red;font-size: 18px;">{$info[$k]['priceNum']|default='0'}元</td>
+                    <td align="center" style="color: #837ba6;font-size: 18px;">{$info[$k]['countNum']|default='0'}元</td>
+
+                    <td><a class="confirm ajax-get"  href="{:url('webStatus', array('id' => tp_encrypt($vo['id']),'status' =>$vo.status ))}">{$vo.status_text}</a></td>
+                  <td class="col-md-3 text-center">
+                      <ob_link><a href="{:url('webEdit', array('id' => tp_encrypt($vo['id'])))}" class="btn"><i class="fa fa-edit"></i> 编 辑</a></ob_link>
+                      &nbsp;
+                      <ob_link><a class="btn"  href="{:url('keywordadd', array('id' => tp_encrypt($vo['id'])))}"><i class="fa fa-plus"></i> 添加关键词</a></ob_link>
+                      &nbsp;
+                      <ob_link><a class="btn confirm ajax-get"  href="{:url('webDel', array('id' => tp_encrypt($vo['id'])))}"><i class="fa fa-trash-o"></i> 删 除</a></ob_link>
+                  </td>
+                </tr>
+            {/volist}
+        </tbody>
+        {else/}
+        <tbody><tr class="odd"><td colspan="8" class="text-center" valign="top">{:config('empty_list_describe')}</td></tr></tbody>
+      {/notempty}
+    </table>
+  </div>
+
+  <div class="box-footer clearfix text-center">
+      {$list->render()}
+  </div>
+
+</div>
+
+<script>
+    //导出功能
+    $(".export").click(function(){
+        
+        window.location.href = searchFormUrl($(".export"));
+    });
+</script>

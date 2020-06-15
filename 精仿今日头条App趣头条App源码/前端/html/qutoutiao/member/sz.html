@@ -1,0 +1,296 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/zs.css" />
+	</head>
+	<body>
+		<script id="fx-list" type="text/x-dot-template">
+		<div class="aui-content aui-margin-b-15">
+			<ul class="aui-list aui-list-in">
+				<li class="aui-list-item " id="fx-img"  tapmode onclick="touxiang()">
+					<div class="aui-list-item-inner aui-list-item-arrow">
+						<div class="aui-list-item-title">
+							头像
+						</div>
+						<div class="aui-list-item-right">
+							<img id="ffxiangImgCache" ffxiang-src="{{= _user.img}}" src="../../image/touxiang.png">
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item" tapmode onclick="nick()">
+					<div class="aui-list-item-inner aui-list-item-arrow">
+						<div class="aui-list-item-title">
+							昵称
+						</div>
+						<div class="aui-list-item-right" id="nickname">
+							{{= _user.username}}
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item" tapmode onclick="qianming()">
+					<div class="aui-list-item-inner aui-list-item-arrow">
+						<div class="aui-list-item-title">
+							个人签名
+						</div>
+						<div class="aui-list-item-right aui-ellipsis-1" id="qianming">
+							{{= _user.qianming}}
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="aui-content aui-margin-b-15 fx-bangding" style="display: none">
+			<ul class="aui-list aui-list-in" >
+				<!--<li class="aui-list-item" tapmode onclick="_url({title:'账户和绑定设置',url:'member/renzheng'})">
+					<div class="aui-list-item-inner aui-list-item-arrow">
+						实名认证
+					</div>
+				</li>-->
+				<li class="aui-list-item" tapmode onclick="_url({title:'手机绑定',url:'member/mobile'})">
+					<div class="aui-list-item-inner aui-list-item-arrow">
+						手机绑定
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="aui-content aui-margin-b-15">
+			<ul class="aui-list aui-list-in">
+				<li class="aui-list-item" tapmode onclick="clearCache()">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-title">
+							清除缓存
+						</div>
+						<div class="aui-list-item-right clearCache">
+							正在计算
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item" tapmode onclick="banben()">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-title">
+							当前版本
+						</div>
+						<div class="aui-list-item-right">
+							0.0.1
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="aui-content  fx-out aui-text-center" tapmode onclick="out()">
+			退出登录
+		</div>
+		</script>
+		<div id="fx-view"></div>
+	</body>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../../script/doT.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var app='';
+		apiready = function() {
+			app=$api.getStorage('app');
+			 view();
+			//获取缓存大小
+			api.getCacheSize(function(ret) {
+				var clearCache = ret.size / 1024 / 1024;
+				$api.html($api.dom('.clearCache'), clearCache.toFixed(2) + "MB")
+			});
+			_imageCache();
+			api.parseTapmode();
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+		}
+		function view(){
+			var evalData = doT.template($api.html($api.byId('fx-list')));
+			$api.html($api.byId('fx-view'), evalData());
+		}
+
+		// 头像
+		function touxiang() {
+			api.actionSheet({
+				title:'修改头像',
+				cancelTitle : '取消',
+				buttons : ['拍照','相册']
+			}, function(ret, err) {
+				var index = ret.buttonIndex;
+				if(index!=3){
+					var sourceType='album'
+					if(index==1){
+						sourceType='camera'
+					}
+					api.getPicture({
+					    sourceType: sourceType,
+					    encodingType: 'jpg',
+					    mediaValue: 'pic',
+					    destinationType: 'url',
+					    allowEdit: true,
+					    quality: 50,
+					    targetWidth: 800,
+					    targetHeight: 800,
+					}, function(ret, err) {
+					    if (ret) {
+					        if(ret.data){
+					        	imgAjax(ret.data)
+					        }
+					    }
+					});
+				}
+			});
+		}
+		// 封装上次图片方法
+		
+		function imgAjax(image){
+			if(!image){
+				_msg('图片地址出错')
+				return;
+			}
+			_loading()
+			api.ajax({
+			    url: fx_url+'api/member/touxiang',
+			    method: 'post',
+			    data: {
+			    	values:{
+			    		token:_token,
+			    	},
+			        files: {
+			            image: image
+			        }
+			    },
+			}, function(ret, err) {
+				_loadingCloes();
+			    if (ret) {
+			    	//api.alert({ msg: JSON.stringify(ret) });
+			        if(ret.ret){
+			        	$api.attr($api.dom('#fx-img img'), 'src', image);
+			        	_userInfo();
+			        	_msg('头像修改成功');
+			        }
+			    } else {
+			        api.alert({ msg: JSON.stringify(err) });
+			    }
+			});
+		}
+
+		// 昵称
+		function nick() {
+			api.prompt({
+				title : '修改昵称',
+				buttons : ['确定', '取消']
+			}, function(ret, err) {
+				var index = ret.buttonIndex;
+				var text = ret.text;
+				if (text && index==1) {
+					_ajax('api/member/nickname',function(ret,err){
+						if(ret){
+							if(ret.ret){
+								_userInfo()
+								$('#nickname').text(text)
+								_msg(ret.ret)
+							}else{
+								_msg(ret.err)
+							}
+						}else{
+							api.alert({ msg: JSON.stringify(err) });
+						}
+					},{nickname:text})
+				}
+			});
+		}
+
+		//签名
+		function qianming() {
+			api.prompt({
+				title : '修改个人签名',
+				buttons : ['确定', '取消']
+			}, function(ret, err) {
+				var index = ret.buttonIndex;
+				var text = ret.text;
+				if (text && index==1) {
+					_ajax('api/member/qianming',function(ret,err){
+						if(ret){
+							if(ret.ret){
+								_userInfo()
+								$('#qianming').text(text)
+								_msg(ret.ret)
+							}else{
+								_msg(ret.err)
+							}
+						}else{
+							api.alert({ msg: JSON.stringify(err) });
+						}
+					},{text:text})
+				}
+			});
+		}
+
+		// 清除缓存
+		function clearCache() {
+			_loading()
+			api.clearCache(function() {
+				_loadingCloes()
+				$api.html($api.dom('.clearCache'), "0MB")
+				_msg('清除完成')
+			});
+		}
+
+		// 版本
+		function banben() {
+			_loading();
+			_ajax('api/index/banben',function(ret,err){
+				_loadingCloes();
+				if(ret){
+					if(ret.ret){
+						api.confirm({
+						    title: ret.ret,
+						    msg: '是否跳转下载升级？',
+						    buttons: ['升级', '不升级']
+						}, function(rets, errs) {
+						    var index = rets.buttonIndex;
+						    if(index==1){
+						    	_url({url:ret.url},'curl')
+						    }
+						});
+					}else{
+						_msg(ret.err)
+					}
+				}
+			},{banben:'0.0.1'})
+		}
+		// 退出登录
+		function out(){
+			api.confirm({
+			    title: '退出确认',
+			    msg: '退出当前账户，将不能同步收藏，发布评论和分享',
+			    buttons: ['取消', '确定退出']
+			}, function(ret, err) {
+			    var index = ret.buttonIndex;
+			    if(index==2){
+			    	_uot();
+			    	var view = 'views();';
+					api.execScript({
+						name: 'member_win',
+						frameName: 'member',
+					    script: view
+					});
+			    	_msg('退出成功')
+			    	setTimeout(function(){
+			    		_hone();
+			    	},1000)
+			    }
+			});
+		}
+	</script>
+</html>
+

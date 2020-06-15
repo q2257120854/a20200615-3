@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>小视频</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/view.css" />
+		<style>
+			body {
+				background-color: transparent !important;
+			}
+			.aui-text-default i {
+				font-weight: bold !important;
+				font-size: 0.9rem !important;
+			}
+			header {
+				border-top-left-radius: 0.5rem;
+				border-top-right-radius: 0.5rem;
+				position: fixed  !important;
+				top: 0px;
+				left: 0px;
+			}
+			#asd{
+				width: 100%;
+				background: #fff; 
+				text-align: center;
+				height: 1000px
+			}
+			.pingList,#fx-view{
+				background: #fff;
+				overflow: hidden
+			}
+			.pingList{
+				height: 100%;
+				width: 100%;
+			}
+			.aui-list .aui-list-item{
+				padding-left: 0
+			}
+			.aui-list .aui-list-item-media{
+				padding-right: 0px;
+			}
+			#fx-view{
+				padding-bottom: 10rem;			
+			}
+			#loadingNo{
+				padding-top: 30%;
+			}
+		</style>
+	</head>
+	<body >
+		<header class="aui-bar aui-bar-nav" style="background: #fff;border-bottom: 1px solid #e8e8e8;padding:0 0.75rem">
+			<div class="aui-pull-left aui-text-default" id="sx-huifuNum">
+				0条回复
+			</div>
+			<div class="aui-pull-right aui-text-default" Tapmode onclick="g()">
+				<i class="aui-iconfont aui-icon-close aui-text-default"></i>
+			</div>
+		</header>
+		<div class="pingList" id="here">
+			<script id="fx-list" type="text/x-dot-template">
+				{{ for(var i=0,len=it.data.length; i < len; i++) { }}
+				<li class="aui-list-item aui-padded-b-10" >
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media">
+							<img id="ffxiangImgCache" ffxiang-src="{{=it.data[i].img}}" src="../image/touxiang.png" Tapmode onclick="_url({uid:{{= it.data[i].uid}},qian:0,fan:1},'u_win');" />
+						</div>
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title" Tapmode onclick="_url({uid:{{= it.data[i].uid}},qian:0,fan:1},'u_win');">
+									{{= it.data[i].username}}
+								</div>
+								<div class="aui-list-item-right {{? it.data[i].zanUser}} pingZanColor{{?}}" {{? it.data[i].zanUser}} data-id='1'{{?}} Tapmode onclick="pingZan(this,{{= it.data[i].id}} ,{{= it.data[i].zan}})">
+									<i class="aui-iconfont aui-icon-laud"></i>{{= it.data[i].zan}}
+								</div>
+							</div>
+							<div class="aui-list-item-text fx-contentuser" style="color:#333;" Tapmode onclick="_url({pingId:{{= it.data[i].id}},aid:{{= it.data[i].aid}}},'view_ping_win')">
+								{{= it.data[i].content}}
+							</div>
+							<div class="aui-info aui-font-size-12 aui-padded-t-5 aui-padded-b-5">
+								<div class="aui-info-item">
+									{{= it.data[i].time}}
+									 
+									<div class="aui-info-item fx-view-huifu" Tapmode onclick="_url({pingId:{{= it.data[i].id}},aid:{{= it.data[i].aid}}},'view_ping_win')">
+										{{= it.data[i].huifu}}回复
+									</div>
+									  
+									 
+									 
+								</div>
+								 
+							</div>
+							
+							<div class="fx-huifuList" id="fx-huifuList{{= it.data[i].id}}" {{? !it.data[i].huifu}}style="display: none"{{?}}>
+								<ul id="fx-huifuLists{{= it.data[i].id}}" Tapmode onclick="_url({aid:{{= it.data[i].aid}},pingId:{{= it.data[i].id}}},'view_ping_win')">
+									{{? it.data[i].pingDataList}}
+									{{= it.data[i].pingDataList}}
+									{{?}}
+								</ul>
+							</div>
+							
+						</div>
+					</div>
+				</li>
+				{{ } }}
+			</script>
+			<ul class="aui-list aui-media-list aui-content-padded" id="fx-view">
+				<div id="asd">加载中...</div>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/doT.js"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var sx
+		apiready = function() {
+			sx=api.pageParam
+			aid=api.pageParam['id'];
+			$('#sx-huifuNum').text(api.pageParam['pingNum']+'条回复')
+			api.parseTapmode();
+			var header=$api.offset($api.dom('header')).h;
+			$api.css($api.dom('.pingList'),'margin-top: '+header+"px");
+			_lists('api/article/pingList', 1, 1,{aid:aid});
+			// 监听滚动
+			api.addEventListener({
+				name : 'scrolltobottom',
+				extra : {
+					threshold : threshold //设置距离底部多少距离时触发，默认值为0，数字类型
+				}
+			}, function(ret, err) {
+				if (heigutgao == 1) {// heigutgao=1开启执行 0停止执行   防止连续滚动，等加载数据之后在进行滚动。
+					pagenum += 1
+					_lists('api/article/pingList', pagenum,'',{aid:aid});
+				}
+			});
+		};
+		// 关闭评论
+		function g(){
+			api.execScript({
+				name : 'xiaoshipin_win',
+				frameName : 'xiaoshipin_img',
+				script : 'xiaoshipin_ping_win_url()'
+			});
+			api.closeFrame({
+			    name: 'xiaoshipin_ping_win'
+			});
+		}
+		// 评论赞按钮
+		function pingZan(obj, aid,num) {
+			if(!_user){
+				_login();
+				return;
+			}
+			var type = $(obj).data('id');
+			if (!type) {
+				$(obj).addClass('pingZanColor');
+				$(obj).data('id', '1');
+				$(obj).html('<i class="aui-iconfont aui-icon-laud"></i>' + (num + 1))
+				_ajax('api/member/pingZan/',function(ret,err){
+					if(ret){
+						if(ret.err){
+							_msg(ret.err)
+						}
+					}
+				},{aid:aid})
+			} else {
+				_msg('您已经赞过')
+			}
+		}
+		// 更新评论数量
+		function pingnum(text){
+			$('#sx-huifuNum').text(text+'条回复')
+		}
+		 
+		 
+	</script>
+</html>

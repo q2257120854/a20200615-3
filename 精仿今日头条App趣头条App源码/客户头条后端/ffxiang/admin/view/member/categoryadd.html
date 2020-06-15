@@ -1,0 +1,101 @@
+ {include file="public/header" /}
+ <style type="text/css">.gray-bg{ background: #fff; }.wrapper{ padding:0px;}.asdh5 h5{border-top: 1px dotted #ccc; padding-top: 20px;margin-top: 20px;}</style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content">
+    <div class="row">
+        <form class="form-horizontal" method="post">
+            <div class="col-sm-12">
+                <div class="ibox-content">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">分类位置：</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="tid">
+                                <option value="0">顶级分类</option>
+                                {volist name='category' id='v'} 
+                                    <option value="{$v.id}" {eq name="v.id" value="$typeid" }selected{/eq}>{$v.title}</option>
+                                {/volist}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">分类标题：</label>
+                        <div class="col-sm-9">
+                            <input name="title" type="text"  class="form-control" value="{present name="name"}{$name.title}{/present}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">分类图标：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input name="img" type="text"  id="image" class="form-control" value="{present name="name"}{$name.img}{/present}">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary" id="tubiao">上传图片</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">排序：</label>
+                        <div class="col-sm-9">
+                            <input name="des" type="text"  class="form-control" value="{present name="name"}{$name.des}{else /}50{/present}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">状态：</label>
+                        <div class="col-sm-9">
+                            <div class="radio i-checks">
+                                <label>
+                                    <input type="radio" value="1" name="hide" {present name="name"}{eq name="name.hide" value="1"}checked{/eq}{else /}checked{/present}>显示
+                                </label>
+                                <label>
+                                    <input type="radio" value="0" name="hide" {present name="name"}{eq name="name.hide" value="0"}checked{/eq}{/present}>隐藏
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">描述说明：</label>
+                        <div class="col-sm-9">
+                            <textarea name="content" class="form-control">{present name="name"}{$name.content}{/present}</textarea>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">控制器：</label>
+                        <div class="col-sm-9">
+                            <input name="controller" type="text"  class="form-control" value="{present name="name"}{$name.controller}{/present}">
+                             <span class="help-block m-b-none">(二次开发用处，若不明白不要修改)</span>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">方法：</label>
+                        <div class="col-sm-9">
+                            <input name="function" type="text"  class="form-control" value="{present name="name"}{$name.function}{/present}">
+                            <span class="help-block m-b-none">(二次开发用处，若不明白不要修改)</span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+             
+        </form>
+    </div>
+</div>
+{include file="public/footer" /}
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+<script type="text/javascript">
+$(document).ready(function(){
+     $(".i-checks").iCheck({
+        checkboxClass: "icheckbox_square-green",
+        radioClass: "iradio_square-green",
+    })
+
+});
+</script>
+{include file="public/bottom" /}
+ 
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

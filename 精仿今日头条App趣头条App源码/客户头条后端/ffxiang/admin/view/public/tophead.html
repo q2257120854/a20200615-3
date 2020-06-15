@@ -1,0 +1,49 @@
+{php}
+$controller=strtolower(request()->controller());
+$action=strtolower(request()->action());
+$adminCtegory=db('category')->where(['controller'=>$controller,'function'=>$action])->cache(_cache('db'))->find();
+if($adminCtegory){
+	$adminCtegoryTid=db('category')->where(['tid'=>$adminCtegory['id'],'hideright'=>1])->order('des asc,id asc')->cache(_cache('db'))->select();
+}else{
+  $adminCtegoryTid=[];
+}
+{/php}
+<div class="">
+	{volist name='adminCtegoryTid' id='v'}
+  {php}
+  //print_r($adminCtegoryTid);
+  $get=$v['get'];
+  $geturl=[]; 
+  if($get){
+    if(strstr($get,"|")){
+      $tidexplode=explode("|",$get);
+      foreach($tidexplode as $va){
+        $geturl[$va]=input($va);
+      }
+    }else{
+        $geturl[$get]=input($get);
+    }
+  }
+  $geturl['url']='-1';
+  $url=url($v['controller'].'/'.$v['function'],$geturl);
+  {/php}
+  <a onclick="add('{$url}')" href="javascript:void(0);" class="btn btn-primary ">{$v.title}</a>
+  {/volist}
+</div>
+<script type="text/javascript">
+function add(url){
+        layer.open({
+          type: 2,
+          title: '提示',
+          shadeClose: false,
+          shade: 0.2,
+          area: ['90%', '90%'],
+          skin:'shangchuantup',
+          shift:-1,
+          content: url,
+          scrollbar: false,
+          moveType: 1,
+          moveOut: true
+        }); 
+}
+</script>

@@ -1,0 +1,31 @@
+---------------------------------------------------------------
+[ 2019-08-30T07:54:30+08:00 ] 47.93.180.168 GET /
+[ info ] / [运行时间：0.180567s][吞吐率：5.54req/s] [内存消耗：1,595.95kb] [文件加载：63]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => '',
+  'route' => 'index/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ LOG ] INIT File

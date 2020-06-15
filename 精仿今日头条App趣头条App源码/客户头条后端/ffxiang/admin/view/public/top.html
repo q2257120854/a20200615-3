@@ -1,0 +1,11 @@
+<div class="ibox-title">
+<h5>
+{php}
+$controller=request()->controller();
+$action=request()->action();
+$typename=db('category')->where('controller',$controller)->where('function',$action)->find();
+echo $typename['title'];
+{/php}</h5>
+</div><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

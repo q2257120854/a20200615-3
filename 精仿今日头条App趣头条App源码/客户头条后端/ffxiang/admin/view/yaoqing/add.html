@@ -1,0 +1,369 @@
+{include file="public/header" /}
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+{load href="__PLUGINS__laydate/laydate.js"}
+<!-- 加载编辑器的容器 -->
+{:ueditor()}
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content">
+    <div class="row">
+        <form class="form-horizontal" method="post">
+            <div class="col-sm-12">
+                <div class="tabs-container">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true">文章内容</a>
+                        </li>
+                        <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">其他设置</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane active">
+                            <div class="ibox-content">
+                             
+                               
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">投稿用户ID：</label>
+                                    <div class="col-sm-9">
+                                        <input  name="uid" type="text" class="form-control" value=" {present name="name"}{$name.uid}{/present}">
+                                    </div>
+                                </div>
+                             
+                                 
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">栏目位置：</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" name="typeid">
+                                            <option value="">选择栏目</option>
+                                            {php}
+                                            if(isset($name)){
+                                                $typeidname=$name['typeid'];
+                                            }else{
+                                                $typeidname='';
+                                            }
+                                            {/php}
+                                            {volist name='typeid' id='v'} 
+                                                <option value="{$v.id}" {eq name="v.id" value="$typeidname" }selected{/eq}>{:str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $v['depth'])}{gt name="$v['depth']" value="0"}┠&nbsp;&nbsp;{/gt}{$v.title}</option>
+                                            {/volist}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">标题：</label>
+                                    <div class="col-sm-9">
+                                        <input name="title" type="text" class="form-control" value="{present name="name"}{$name.title}{/present}">
+                                 
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">缩略图：</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input name="image" type="text"  id="image" class="form-control" value="{present name="name"}{$name.image}{/present}">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-primary" id="tubiao">上传图片</button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {eq name='mychannel["id"]' value='2'}
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">图片集：</label>
+                                    <div class="col-sm-9">
+                                        <div id="demo"></div>
+                                    </div>
+                                </div>
+                                <input name="images" id="images" type="hidden" class="form-control" value="">
+                                <style type="text/css">
+.meiyouuimmag{
+    margin-bottom: 20px;
+    height:284px;
+    overflow: hidden;
+}
+.meiyouuimmag div{
+    width: 100%;
+    margin-bottom: 10px;
+    overflow:hidden;
+    height: 200px
+}
+.meiyouuimmag div img{
+    width: 100%
+}
+.meiyouuimmag button{
+    position: absolute;
+    right: 15px;
+    display: block; 
+
+}
+#imagasdasd{
+    margin-left: 100px;
+    margin-right: 100px;
+}
+</style>
+                                <div class="form-group" id="imagasdasd">
+                                <?php
+ 
+                                ?>
+                                    <?php if(!empty($name)){?>
+                                    <?php if($name['weitoutiao']==0){ ?>
+                                    {php}$imagesdata=json_decode($name['images'],TRUE);$k=0;{/php}
+                                    {foreach $imagesdata as $v} 
+                                    <div class="col-md-3 col-sm-4 col-xs-6 meiyouuimmag" id="id{$k}">
+                                        <button type="button" class="btn btn btn-sm btn-danger" onclick="delImg({$k})">删除</button>
+                                        <div><img src="{:_imgUrl()}{$v['img']}" >  </div>
+                                         <textarea data-img="{$v.img}" style="resize:none" class="form-control" rows="3">{$v.img_text}</textarea>
+                                    </div>
+                                    <?php $k++;?>
+                                    {/foreach}
+                                    <?php }else{?>
+                                    {php}$imagesdata=json_decode(htmlspecialchars_decode($name['images']),TRUE);$k=0;{/php}
+                                    {foreach $imagesdata as $v} 
+                                    <div class="col-md-3 col-sm-4 col-xs-6 meiyouuimmag" id="id{$k}">
+                                        <button type="button" class="btn btn btn-sm btn-danger" onclick="delImg({$k})">删除</button>
+                                        <div><img src="{:_imgUrl()}{$v}" >  </div>
+                                         <textarea data-img="{$v}" style="resize:none" class="form-control" rows="3"></textarea>
+                                    </div>
+                                    <?php $k++;?>
+                                    {/foreach}
+
+                                    <?php }}?>
+                                    
+                                
+                                </div>
+<!-- 引用控制层插件样式 -->
+{load href="__PLUGINS__zyUpload/zyUpload.css"}
+<!-- 引用核心层插件 -->
+{load href="__PLUGINS__zyUpload/zyUpload.js"}
+<!-- 引用初始化JS -->
+<script type="text/javascript">var urlupload='{:url('index/uploads')}';</script>
+{load href="__PLUGINS__zyUpload/script.js"}
+                                {/eq} 
+                                {eq name='mychannel["id"]' value='3'}
+                                <div class="form-group" id="videoasd">
+                                    <label class="col-sm-2 control-label">视频地址：</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input name="video" type="text"  id="videoval" class="form-control" value="{present name="name"}{$name.video}{/present}">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-primary" id="video">上传视频</button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="form-group" id="videoType">
+                                    <label class="col-sm-2 control-label">视频类型：</label>
+                                    <div class="col-sm-9">
+                                        <div class="radio i-checks">
+                                            <label>
+                                                <input type="radio" value="0" name="videoType" {present name="name"}{eq name="name.videoType" value="0"}checked{/eq}{/present}>本站
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="youku" name="videoType" {present name="name"}{eq name="name.videoType" value="youku"}checked{/eq}{/present}>优酷
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="form-group" id="videoasd">
+                                    <label class="col-sm-2 control-label">视频时长：</label>
+                                    <div class="col-sm-9">
+                                        <input name="videodate" type="text"  class="form-control" value="{present name="name"}{$name.videodate}{/present}">
+                                    </div>
+                                </div>
+                                {/eq}
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">详细内容：</label>
+                                    <div class="col-sm-9">
+
+                                        <script type="text/plain" id="content" name="content" style="width:100%;height:240px;">
+
+{present name="name"}
+<?php
+$contet=$name['content'];
+preg_match_all("/src=\"(.*?)\"/", $contet,$img);
+foreach($img[1] as $k=>$v){
+
+    if(strpos($v,'http') !== false || strpos($v,'/public/uploads/us/') !== false){
+          
+    }else{
+        $contet=str_replace($v,_imgUrl().$v,$contet);
+    }
+}
+echo $contet;
+?>
+ 
+{/present}
+
+</script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+             
+                        <div id="tab-2" class="tab-pane">
+                            <div class="ibox-content">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">模板文件：</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" name="template">
+                                            <option value="">默认模板</option>
+                                             
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">状态显示：</label>
+                                    <div class="col-sm-9">
+                                        <div class="radio i-checks">
+                                            <label>
+                                                <input type="radio" value="1" name="hide" {present name="name"}{eq name="name.hide" value="1"}checked{/eq}{else /}checked{/present}>显示
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="0" name="hide" {present name="name"}{eq name="name.hide" value="0"}checked{/eq}{/present}>隐藏
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="2" name="hide" {present name="name"}{eq name="name.hide" value="2"}checked{/eq}{/present}>审核
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="3" name="hide" {present name="name"}{eq name="name.hide" value="3"}checked{/eq}{/present}>拒绝
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">排序：</label>
+                                    <div class="col-sm-9">
+                                        <input name="des" type="text" class="form-control" value="{present name="name"}{$name.des}{else }50{/present}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">关键词：</label>
+                                    <div class="col-sm-9">
+                                        <input name="keywords" type="text" class="form-control" value="{present name="name"}{$name.keywords}{/present}">
+                                 
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">栏目描述：</label>
+                                    <div class="col-sm-9">
+                                        <textarea name="description" class="form-control">{present name="name"}{$name.description}{/present}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">自定义属性：</label>
+                                    <div class="col-sm-9">
+                                        <div class="radio i-checks">
+                                            <label>
+                                                <input type="radio" value="0" name="flags" {present name="name"}{eq name="name.flags" value="0"}checked{/eq}{else }checked{/present}>取消</label>
+                                            </label>
+                                            {volist name='flags' id='va'}
+                                            <label>
+                                                <input type="radio" value="{$va.id}" name="flags" {present name="name"}{eq name="va.id" value="$name['flags']"}checked{/eq}{/present}>{$va.title}</label>
+        
+                                            </label>
+                                            {/volist}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">访问次数：</label>
+                                    <div class="col-sm-9">
+                                        <input name="click" type="text" class="form-control" value="{present name="name"}{$name.click}{else }0{/present}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">作者：</label>
+                                    <div class="col-sm-9">
+                                        <input name="writer" type="text" class="form-control" value="{present name="name"}{$name.writer}{/present}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">来源：</label>
+                                    <div class="col-sm-9">
+                                        <input name="source" type="text" class="form-control" value="{present name="name"}{$name.source}{else }{/present}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">TAG标签：</label>
+                                    <div class="col-sm-9">
+                                        <input name="tags" type="text" class="form-control" value="{present name="name"}{$name.tags}{/present}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">更新时间：</label>
+                                    <div class="col-sm-9">
+                                        <input placeholder="YYYY-MM-DD hh:mm:ss" onclick="time()" name="update_time" type="text" class="form-control" value="{present name="name"}{$name.update_time|date='Y-m-d H:i:s',###}{else /}{php}echo date('Y-m-d H:i:s',time());{/php}{/present}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">跳转网址：</label>
+                                    <div class="col-sm-9">
+                                        <input name="url" type="text" class="form-control" value="{present name="name"}{$name.url}{/present}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">微头条：</label>
+                                    <div class="col-sm-9">
+                                        <div class="radio i-checks">
+                                            <label>
+                                                <input type="radio" value="0" name="weitoutiao" {present name="name"}{eq name="name.weitoutiao" value="0"}checked{/eq}{else /}checked{/present}>否
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="1" name="weitoutiao" {present name="name"}{eq name="name.weitoutiao" value="1"}checked{/eq}{/present}>是
+                                            </label>
+                                             
+                                        </div>
+                                    </div
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".i-checks").iCheck({
+        checkboxClass: "icheckbox_square-green",
+        radioClass: "iradio_square-green",
+    })
+});
+function msg(){
+    layer.msg("上传成功")
+}
+function time(){
+    laydate(
+        {
+            fixed: false,
+            istime: true, 
+            format: 'YYYY-MM-DD hh:mm:ss',
+            zIndex: 999999999999,
+            isclear: false,
+        }
+    )
+}
+function delImg(id){
+    $('#id'+id).remove();
+}
+$("#video").click(function(){
+    layer.open({
+      type: 2,
+      title: '上传视频',
+      shadeClose: true,
+      shade: 0.2,
+      area: ['70%', '60%'],
+      skin:'shangchuantup',
+      content: '{:url("index/videoUploads")}',
+      shift:-1,
+      scrollbar: false,
+      moveType: 1,
+      moveOut: true
+    }); 
+})
+</script>
+{include file="public/bottom" /}
+
+ 
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

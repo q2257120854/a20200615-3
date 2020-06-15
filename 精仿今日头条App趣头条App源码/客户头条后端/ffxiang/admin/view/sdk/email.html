@@ -1,0 +1,79 @@
+ {include file="public/header" /}
+ <body class="gray-bg">
+    <div class="wrapper wrapper-content {:config('adminClass.main')}">
+        <div class="row">
+            <div class="col-sm-12">
+                {include file="public/tophead"}
+                {include file="public/top" /}
+                <div class="ibox-content">
+                {include file="public/topsection"}
+                    <form class="form-horizontal" method="post">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">说明：</label>
+                            <div class="col-sm-9">
+                                <span style='color:#1ab394; font-size: 15px;' class="help-block m-b-none">推荐使用163邮箱，邮箱配置若不懂可联系技术免费引导</span>
+                            </div>
+                        </div>
+                        <hr>
+                        {volist name='data' id='v'}
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$v.title}：</label>
+                            <div class="col-sm-5">
+                                {eq name='v.name' value='sdkEmailPwd'}
+                                <input name="{$v.name}" type="password" class="form-control" value="{$v.text}">
+                                {else /}
+                                <input name="{$v.name}" type="text" class="form-control" value="{$v.text}">
+                                {/eq}
+                                <span class="help-block m-b-none">{$v.content}</span>
+                            </div>
+                        </div>
+                        {/volist}
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-sm-5">
+                                <button type="button" class="btn btn-w-m btn-white" id="ceshiemail">测试邮箱</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> 
+    </div>
+{include file="public/footer" /}
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+<script type="text/javascript">
+$(document).ready(function(){
+     $(".i-checks").iCheck({
+        checkboxClass: "icheckbox_square-green",
+        radioClass: "iradio_square-green",
+    })
+    $("#ceshiemail").click(function(){
+        //prompt层
+        layer.prompt({title: '输入您的邮箱', formType: 0}, function(pass, index){
+          layer.close(index);
+            loading("#ceshiemail")
+            ajaxFun("POST","{:url('emails')}",{username:pass},"json",function(ret){
+                if(ret){
+                    if(ret.ret){
+                        swal_msg(ret.ret,'',"success",0)
+                        loadingClose("#ceshiemail",'测试邮箱')               
+                        return false;
+                    }else{
+                        layer.msg(ret.err)
+                    }
+                }else{
+                    swal_msg("错误",ret,"error");
+                }
+                loadingClose("#ceshiemail",'测试邮箱')
+                 
+            });
+        });
+         
+    });
+
+})
+</script>
+{include file="public/bottom" /}<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

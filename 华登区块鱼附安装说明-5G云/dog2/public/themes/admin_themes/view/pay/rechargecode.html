@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>vaeThink</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="__ADMIN__/lib/layui/css/layui.css"  media="all">
+</head>
+<body class="vae-body">
+
+<div class="vae-content">
+
+    <table class="layui-hide" id="test" lay-filter="test"></table>
+</div>
+
+<style type="text/css">
+.layui-table-body .layui-table-cell{
+height:100px;
+line-height: 100px;
+}
+</style>
+
+<script type="text/html" id="rechargecode">
+    <p style="display:flex;justify-content:center;align-items:center;"><img style="height:80px;" class="thumb" style="cursor: pointer" class="open_image" data-image="{{d.rechargecode}}" src="{{d.rechargecode}}" alt="{{d.rechargecode}}"></p>
+</script>
+<script type="text/html" id="status">
+    <i class="layui-icon {{#  if(d.status == 1){ }}layui-icon-ok{{#  } else { }}layui-icon-close{{#  } }}"></i>
+</script>
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <a class="layui-btn layui-btn-primary layui-btn-sm" href="/admin/pay/addRechargeCode">添加二维码</a>
+    </div>
+</script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+              
+<script src="__ADMIN__/lib/layui/layui.js" charset="utf-8"></script>
+ 
+<script>
+layui.config({
+    base: '/themes/admin_themes/module/'
+}).use(['table','vaeyo','form'], function(){
+    var table = layui.table
+    ,vae = layui.vaeyo
+    ,$ = layui.$
+    ,form = layui.form;
+  
+      var tableIns = table.render({
+        elem: '#test'
+        ,toolbar: '#toolbarDemo'
+        ,url: '/admin/pay/getCodeList' //数据接口
+        ,page: true //开启分页
+        ,limit: 15
+        ,cols: [[ //表头
+          {field: 'id', title: 'ID', sort: true, fixed: 'left', align:'center', width:80}
+          ,{field: 'rechargecode', title:'二维码', toolbar: '#rechargecode', align:'center'}
+          ,{field: 'createtime', title:'创建时间', width:250, align:'center'}
+          ,{field: 'status', title:'状态', toolbar: '#status', width:150, align:'center'}
+          ,{field: 'right', title:'操作', toolbar: '#barDemo', width:150, align:'center'}
+        ]]
+      });
+  
+  //监听行工具事件
+  table.on('tool(test)', function(obj){
+    var data = obj.data;
+    //console.log(obj)
+    if(obj.event === 'del'){
+      layer.confirm('确定放入回收站吗?', {icon: 3, title:'提示'}, function(index){
+        $.ajax({
+          url:"/admin/pay/deteleCode",
+          data:{id:data.id},
+          success:function(res){
+            layer.msg(res.msg);
+            if(res.code==1){
+              obj.del();
+            }
+          }
+        })
+        layer.close(index);
+      });
+    }
+  });
+
+  //监听搜索提交
+  form.on('submit(vaeform)', function(data){
+    console.log(data.field.keywords)
+    if(data.field.keywords) {
+      tableIns.reload({where:{keywords:data.field.keywords}});
+      vae.bundledTab();
+    }
+    return false;
+  });
+});
+</script>
+
+</body>
+</html>

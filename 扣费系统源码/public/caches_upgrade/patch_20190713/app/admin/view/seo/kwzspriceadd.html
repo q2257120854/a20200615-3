@@ -1,0 +1,61 @@
+<form action="{:url()}" method="post" class="form_single">
+    <div class="box">
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>第一页价格</label>
+              <input class="form-control" name="page_one" placeholder="请输入第一页价格" value="" type="number">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>第二页价格</label>
+              <input class="form-control" name="page_two" placeholder="请输入第二页价格" value="" type="number">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>关键词指数范围</label>
+              <input class="form-control" name="zhisu_range" placeholder="请输入关键词指数范围" value="" type="number">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>搜索引擎</label>
+              
+              <select name="search_engin" class="form-control">
+              	  <option value="百度" >百度</option>
+              	  <option value="百度移动">百度移动</option>
+              	  <option value="360">360</option>
+              	  <option value="360移动">360移动</option>
+              	  <option value="搜狗">搜狗</option>
+              	  <option value="搜狗移动">搜狗移动</option>
+              	  <option value="神马">神马</option>
+              </select>
+            </div>
+          </div>
+           <div class="col-md-6">
+            <div class="form-group">
+              <label>第一页成本价</label>
+              <input class="form-control" name="chenben_one" placeholder="请输入第一页成本价" value="" type="number">
+            </div>
+          </div>
+           <div class="col-md-6">
+            <div class="form-group">
+              <label>第二页成本价</label>
+              <input class="form-control" name="chenben_two" placeholder="请输入第二页成本价" value="" type="number">
+            </div>
+          </div>
+    
+        </div>
+      </div>
+      <div class="box-footer">
+        
+        
+          
+        {include file="layout/edit_btn_group"/}
+        
+      </div>
+    </div>
+</form>

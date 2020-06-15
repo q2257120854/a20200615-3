@@ -1,0 +1,155 @@
+{extend name="common/world"}
+{block name="title"}推广数据{/block}
+{block name="style"}{/block}
+{block name="container"}
+<form method="get" class="">
+	<div class="row">
+		<div class="col-md-6 col-lg-3 mb-3">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">用户账号</span>
+				</div>
+				<input type="text" class="form-control" name="username" value="{$Think.get.username}" />
+			</div>
+		</div>
+	    <div class="col-md-6 col-lg-4 mb-3">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<select class="custom-select input-group-text" name="numberField">
+						{volist name="fields" id="field"}
+							{eq name="Think.get.numberField" value="$key"}
+								<option selected="true" value="{$key}">{$field}</option>
+							{else /}
+								<option value="{$key}">{$field}</option>
+							{/eq}
+						{/volist}
+				    </select>
+				</div>
+				<select class="custom-select input-group-text" name="numberOperator">
+					{switch name="Think.get.numberOperator"}
+						{case 2}
+							<option value="1">大于</option>
+							<option value="2" selected="true">等于</option>
+							<option value="3">小于</option>
+						{/case}
+						{case 3}
+							<option value="1">大于</option>
+							<option value="2">等于</option>
+							<option value="3" selected="true">小于</option>
+						{/case}
+						{default /}
+							<option value="1">大于</option>
+							<option value="2">等于</option>
+							<option value="3">小于</option>
+					{/switch}
+			    </select>
+				<input type="text" class="form-control" aria-label="Text input with dropdown button" name="numberValue" value="{$Think.get.numberValue}" />
+			</div>
+		</div>
+		<div class="col-md-4 col-lg-4">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">排列顺序</span>
+				</div>
+				<select class="custom-select input-group-text" name="sortField">
+					{volist name="fields" id="field"}
+						{eq name="Think.get.sortField" value="$key"}
+							<option selected="true" value="{$key}">按{$field}</option>
+						{else /}
+							<option value="{$key}">按{$field}</option>
+						{/eq}
+					{/volist}
+			    </select>
+			    <select class="custom-select input-group-text" name="sortType">
+			    	{eq name="Think.get.sortType" value="asc"}
+			    		<option value="desc">降序</option>
+			    		<option value="asc" selected="true">升序</option>
+			    	{else /}
+			    		<option value="desc">降序</option>
+			    		<option value="asc">升序</option>
+			    	{/eq}
+			    </select>
+			</div>
+		</div>
+		<div class="col-lg-1 mb-3">
+			<button class="btn btn-primary w-100" type="submit">查询</button>
+		</div>
+	</div>
+</form>
+<div class="card">
+	<div class="table-responsive">
+	    <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+	        <thead>
+	            <tr>
+	                <th class="text-center w-1"><i class="icon-people"></i></th>
+	                <th>用户</th>
+	                <th>一代</th>
+	                <th>二代</th>
+	                <th>三代</th>
+	                <th>四代</th>
+	                <th>五代</th>
+	                <th>六代</th>
+	                <th>七代</th>
+	                <th>八代</th>
+	                <th>Lv0</th>
+	                <th>Lv1</th>
+	                <th>Lv2</th>
+	                <th>Lv3</th>
+	                <th>Lv4</th>
+	                <th>Lv5</th>
+	                <th>Lv6</th>
+	                <th>Lv7</th>
+	                <th>Lv8</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	        	{volist name="users" id="user"}
+	            <tr>
+	                <td class="text-center">
+	                    <div class="avatar d-block" style="background-image: url({:avatar($user.avatar, $user.idcard)})"></div>
+	                </td>
+	                <td>
+	                    <div>{$user.nickname}</div>
+	                    <div class="small text-muted">{$user.username}</div>
+	                </td>
+	                <td>{$user.one}</td>
+	                <td>{$user.two}</td>
+	                <td>{$user.three}</td>
+	                <td>{$user.four}</td>
+	                <td>{$user.five}</td>
+	                <td>{$user.six}</td>
+	                <td>{$user.seven}</td>
+	                <td>{$user.eight}</td>
+	                <td>{$user.lv0}</td>
+	                <td>{$user.lv1}</td>
+	                <td>{$user.lv2}</td>
+	                <td>{$user.lv3}</td>
+	                <td>{$user.lv4}</td>
+	                <td>{$user.lv5}</td>
+	                <td>{$user.lv6}</td>
+	                <td>{$user.lv7}</td>
+	                <td>{$user.lv8}</td>
+	            </tr>
+	            {/volist}
+	        </tbody>
+	    </table>
+	</div>
+	<div class="card-footer">{$users|raw}</div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+require(['jquery'], function($){
+	$(function(){
+		$('table td').each(function(key, item){
+			var txt = $(item).text();
+			if (txt != '0' && !isNaN(txt)) {
+				$(item).addClass('text-pink');
+			} else if (txt == '0') {
+				$(item).addClass('text-gray');
+			}
+		});
+	});
+});
+</script>
+{/block}

@@ -1,0 +1,37 @@
+<view catchtap="" catchtouchmove="" class="grace-date" style="top:{{top}}; zIndex:{{zIndex}}" wx:if="{{show}}">
+    <view class="grace-date-header">
+        <view bindtap="prevYear" class="grace-date-header-btn">
+            <text class="grace-icons icon-arrow-left"></text>
+            <text class="grace-icons icon-arrow-left"></text>
+        </view>
+        <view bindtap="prevMonth" class="grace-date-header-btn">
+            <text class=" grace-icons icon-arrow-left"></text>
+        </view>
+        <view class="grace-date-header-date">{{cYear}} 年 {{cMonth}} 月</view>
+        <view bindtap="nextMonth" class="grace-date-header-btn">
+            <text class="grace-icons icon-arrow-right"></text>
+        </view>
+        <view bindtap="nextYear" class="grace-date-header-btn">
+            <text class=" grace-icons icon-arrow-right"></text>
+            <text class=" grace-icons icon-arrow-right"></text>
+        </view>
+    </view>
+    <view class="grace-date-week">
+        <text class="grace-date-weeks" wx:for="{{weeks}}" wx:key="index">{{item}}</text>
+    </view>
+    <view class="grace-date-days">
+        <view bindtap="chooseDate" class="grace-date-ditems {{currentDayIn==cYear+'-'+cMonthStr+'-'+item.date?'grace-d-current':''}}" data-cdate="{{cYear+'-'+cMonthStr+'-'+item.date}}" xw:key="index" wx:for="{{days}}">
+            <view class="grace-date-day {{currentDayIn==cYear+'-'+cMonthStr+'-'+item.date?'grace-d-current-txt':''}}">{{item.date}}</view>
+            <view class="grace-date-nl {{currentDayIn==cYear+'-'+cMonthStr+'-'+item.date?'grace-d-current-txt':''}}">{{item.nl}}</view>
+        </view>
+    </view>
+    <view class="grace-nowrap grace-flex-center" style="margin-top:25rpx;" wx:if="{{isTime}}">
+        <picker bindchange="timechange" mode="time" value="{{currentTimeIn}}">
+            <text class="grace-date-time">时间 : {{currentTimeIn}}</text>
+        </picker>
+    </view>
+    <view class="grace-date-btns" wx:if="{{isTime}}">
+        <text bindtap="close" class="grace-date-btns-text" style="color:#888888;">关闭</text>
+        <text bindtap="submit" class="grace-date-btns-text">确定</text>
+    </view>
+</view>

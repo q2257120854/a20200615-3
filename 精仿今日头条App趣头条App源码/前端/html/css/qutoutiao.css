@@ -1,0 +1,105 @@
+/*
+// +----------------------------------------------------------------------
+// | 源码来自锦尚中国源码论坛，仅供学习研究
+// +----------------------------------------------------------------------
+// | 新闻资讯APP系统 V1.0版
+// +----------------------------------------------------------------------
+// | 锦尚中国
+// +----------------------------------------------------------------------
+// | 请务必尊重知识产权 严格保证不恶意传播产品源码、不得直接对产品本身
+// | 进行二次转售或倒卖、不得对产品进行简单包装后声称为自己的产品等。
+// | 否则我们有权利收回产品，并根据事态轻重追究相应法律责任。
+// +----------------------------------------------------------------------
+// | Copyright (c) 2018-2019 http://www.baidu.com/ All rights reserved.
+// +----------------------------------------------------------------------
+*/
+
+#fx-header, .aui-searchbar{
+	background: #fff;
+}
+.aui-bar-tab .aui-active{
+	color: #34B05C;
+}
+.aui-searchbar-input{
+	background: #F5F5F4
+}
+#fx-header .aui-btn img{
+	width: 1.1rem;
+	height: 1.1rem;
+}
+#fx-header .aui-btn{
+	padding-top: 0.6rem;
+	padding-left: 0.75rem;
+}
+#fx-header .aui-pull-right{
+	padding-top: 0;
+	line-height: 40px;
+ 	position: relative;
+}
+#fx-header .header-lingqu{
+	color: #FF7F00;
+	font-weight:bold;
+	background: #FFDF53;
+	font-size: 0.6rem;
+	display: inline-block;
+	height: 1rem;
+	line-height: 1rem;;
+	width:3.5rem;
+	border-radius: 1rem;
+	text-align: center;
+	padding-right: 0.4rem;
+	padding-left: 1.2rem;
+}
+#fx-header .header-yuan{
+	background: #FFDF53;
+	border-radius: 50%;
+	font-size: 0.45rem;
+	position: absolute;
+	top:0.45rem;
+	left:0.75rem;
+	width: 1.3rem;
+	height: 1.3rem;
+	line-height: 1.3rem;
+}
+#fx-header .header-yuan em{
+	display: block;
+	background: #FF8C15;
+	border-radius: 50%;
+	width: 1rem;
+	height: 1rem;
+	line-height: 1rem;
+	margin-top: 0.15rem;
+	margin-left: 0.15rem;
+}
+#fx-header .header-yuan em img{
+
+}
+#fx-header .header-time .header-lingqu{
+	 
+}
+.aui-tab-item.aui-active{
+	border-bottom: 1px solid #34B05C;
+	color: #34B05C;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

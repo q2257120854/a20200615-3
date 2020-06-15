@@ -1,0 +1,70 @@
+{include file="public/header" /}
+
+<div class="outter-wp">
+    <!--sub-heard-part-->
+    <div class="sub-heard-part">
+        <ol class="breadcrumb m-b-0">
+            <li><a>系统</a></li>
+            <li class="active">推广链接设置列表</li>
+        </ol>
+    </div>
+    <!--//sub-heard-part-->
+    <div class="graph-visual tables-main">
+			<button type="button" class="btn btn-outline-primary btn-icon-text btn-sm" style="margin-left:10px;" onclick="addlink()">
+                                    <i class="mdi mdi-file-check btn-icon-prepend"></i>
+                                    添加推广链接
+                                </button>
+
+        <div class="graph">
+            <div class="tables">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        
+                        <th>推广id</th>
+                        <th>推广链接</th>
+                       <th>推广用户数量</th>
+                        <th>推广用户下款金额</th>
+                        <th>添加时间</th>
+						<th>操作</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="list" id="vo"}
+                    <tr>
+                        <th scope="row">{$vo.id}</th>
+                        <td>{$Think.config.config.domain}/login/register.html?source={$vo.id}</td>
+                        <td>{php}$datas = db('user')->where('source',$vo['id'])->count();echo $datas;{/php}</td>
+                        <td>{php}$data = db('loan')->where(['source'=>$vo['id'],'status'=>5])->sum('loanamount');echo $data;{/php}</td>
+                        <td>{$vo.addtime}</td>
+						<td><span class="label label-danger" onclick="deld({$vo.id})">删除</span></td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+
+
+
+            </div>
+
+        </div>
+
+        <!--分页位置-->
+        {$list->render()}
+        <!--//graph-visual-->
+    </div>
+  <script>
+  function addlink(){
+  $.get('{:url('index/addlink')}',function(data){
+  window.location.reload();
+  });
+  }
+  function deld(id){
+    $.get('{:url('index/dellink')}?id='+id,function(data){
+  window.location.reload();
+  });
+  }
+  </script>
+
+    {include file="public/footer" /}

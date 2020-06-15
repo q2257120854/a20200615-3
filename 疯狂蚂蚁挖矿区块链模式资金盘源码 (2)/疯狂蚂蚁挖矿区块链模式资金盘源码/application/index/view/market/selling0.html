@@ -1,0 +1,75 @@
+﻿{extend name="common/world"}
+{block name="title"}{$Think.config.hello.title}{/block}
+{block name="header"}交易平台{/block}
+{block name="container"}
+<div class="buttons-tab">
+    <a href="../market.html" class=" button">交易大厅</a>
+    <a href="buying.html" class=" button">买鱼</a>
+    <a href="selling.html" class="active button">卖鱼</a>
+</div>
+<br/>
+<div class="tabs"><br>
+    <h4 style="color: #333333; font-size:18px;">我的卖出列表</h4>
+    <hr color="#333333" size="1">
+    <div class="card">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" id="table-5">
+            <thead>
+            <tr>
+                <th align="center"><div align="center">时间</div></th>
+                <th align="center"><div align="center">数量</div></th>
+
+                <th align="center"><div align="center">单价</div></th>
+                <th align="center"><div align="center">合计金额</div></th>
+                <th align="center"><div align="center">状态</div></th>
+                <th align="center"><div align="center">操作</div></th>
+            </tr>
+            </thead>
+            <tbody>	         </tbody>
+        </table>
+        <!-- 分页开始 -->
+        <div align="right" class="pages" style="background-color: #fff">
+            <br/>
+            {if $page>1}
+            <a class="previous" href="selling.html?page={$page-1}">上一页</a>
+            {/if}
+            <span class="current">{$page}</span>
+            {if ($page+1)<$index}
+            <a class="next" href="selling.html?page={$page+1}">下一页</a>
+            {/if}
+            <span class="rows"> 第<b>{$page}</b>页/共<b>{$index}</b>页</span>
+        </div>
+        <br/>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        var statuses = ['已取消', '匹配中', '待付款', '待确认', '投诉中', '', '', '', '交易成功'];
+        ajax(api.market.list, {page:{$page},type:4}, function(res){
+            if (res.code == 200) {
+                var html = '';
+                for (var i = 0; i < res.data.length; i++) {
+                    var item = res.data[i];
+                    html += '<tr>';
+                    html += '<td>';
+                    html += '<div class="text-center">' + item.date.substr(0, 10) + '</div>';
+                    html += '</td>';
+                    html += '<td class="text-center">' + item.number + '</td>';
+                    html += '<td class="text-center">' + item.price + '</td>';
+                    html += '<td class="text-center">￥' + item.mprice + '</td>';
+                    html += '<td class="text-center"><strong>' + statuses[item.status] + '</strong></td>';
+                    var href = '/transaction.html?id=' + item.id, button = '查看';
+                    html += '<td class="text-center"><a class="btn btn-sm btn-secondary" href="' + href + '">';
+                    html += button;
+                    html += '</a></td>';
+                    html += '</tr>';
+                }
+                $('#table-5 tbody').append(html);
+            }
+        });
+    });
+
+</script>
+{/block}

@@ -1,0 +1,244 @@
+{template 'public_head'}
+		<!--中间内容开始-->
+		<section>
+		    <section class="hbox stretch">
+		    {template 'public_left'}
+		    <!--右边框架-->
+			  <section id="content">
+			    <section class="vbox">
+			        <section class="scrollable padder">
+                        <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                          <li><a href="index.html"><i class="fa fa-home"></i> 首页 </a></li>
+                          <li class="active">代理等级管理</li>
+                        </ul>
+												<a href="{php echo $this->createWebUrl('dailidjset', array('op' => 'post'));}" class="btn btn-s-md btn-info tigerbtn"><i class="fa fa-plus"></i> 添加代理等级</a>
+												<a href="{php echo $this->createWebUrl('dailidjset', array('op' => 'display'));}" class="btn btn-s-md btn-success tigerbtn"><i class="fa fa-pencil-square-o "></i> 管理管理代理等级</a>
+												
+												<style type="text/css">
+													.tigerbtn{margin-right:10px;margin-bottom: 10px;}
+												</style>
+                        <!--编辑内容-->
+                        {if $operation == 'post'}
+
+                        <div class="panel panel-default">
+                           <div class="panel-heading">
+                              <h3 class="panel-title">
+                               编辑代理等级
+                              </h3>
+                           </div>
+                           <div class="panel-body">
+													<form action="" method="post" class="form-horizontal form" enctype="multipart/form-data">
+																<div class="form-group">
+																	<label for="inputEmail3" class="col-sm-2 control-label">名称</label>
+																	<div class="col-sm-10">
+																		<input type="text" class="form-control" name="title" value="{$item['title']}"  placeholder="{$item['title']}">
+																		<span class="help-block">代理对应等级名称</span>
+																	</div>
+																</div>
+																<div class="form-group">
+																	<label for="inputEmail3" class="col-sm-2 control-label">权重</label>
+																	<div class="col-sm-10">
+																		<input type="text" class="form-control" name="px" value="{$item['px']}"  placeholder="{$item['px']}">
+																		<span class="help-block">填写数字1-10数字越大权重越高，不要重复</span>
+																	</div>
+																</div>
+													
+																<div class="form-group">
+																		<label class="col-sm-2 control-label">条件</label>
+																			<div class="col-sm-4 col-xs-4">
+																						<label class="radio-inline">直属粉丝满</label>
+																						<span class="help-block"></span>
+																						<div class="input-group">											
+																							<input type="text" name="fssum" class="form-control" value="{$item['fssum']}">
+																								<span class="input-group-addon">个</span>
+																						</div>
+																						<span class="help-block">推荐直属粉丝满多少个自动升级为当前等级</span>
+																			</div>
+																</div>
+																<div class="form-group">
+																		<label class="col-sm-2 control-label">权益说明</label>
+																			<div class="col-sm-4 col-xs-4">
+																						 <textarea style="height:150px;" name="sm" class="form-control" cols="60">{$item['sm']}</textarea>
+																						<span class="help-block">填写一些介绍</span>
+																			</div>
+																</div>
+																
+																
+																
+																<!-- <div class="form-group">
+																		<label class="col-sm-2 control-label">升级条件2</label>
+																			<div class="col-sm-4 col-xs-4">
+																						<label class="radio-inline"><input type="radio" name="sjtype" value="0" 
+																						{if $item['sjtype']==0} checked="checked" {/if}>推荐满多少个粉丝</label>
+																						<label class="radio-inline"><input type="radio" name="sjtype" value="1"
+																						{if $item['sjtype']==1} checked="checked" {/if}>推荐满多少个代理</label>
+																						<label class="radio-inline">直属粉丝满</label>
+																						<span class="help-block"></span>
+																						<div class="input-group">											
+																							<input type="text" name="fsm" class="form-control" value="{$item['fsm']}">
+																								<span class="input-group-addon">个</span>
+																						</div>
+																						<span class="help-block">如果达到上面的要求，才能申请（不填不限制）</span>
+																			</div>
+																</div> -->
+																<!-- <div class="form-group">
+																		<label class="col-sm-2 control-label">升级条件3</label>
+																			<div class="col-sm-4 col-xs-4">
+																						<label class="radio-inline">购买订单数量</label>
+																						<span class="help-block"></span>
+																						<div class="input-group">											
+																							<input type="text" name="ordermsum" class="form-control" value="{$item['ordermsum']}">
+																								<span class="input-group-addon">单</span>
+																						</div>
+																						<span class="help-block">达到多少订单才能审核（不填不限制）</span>
+																			</div>
+																</div> -->
+																
+																<table class="yjtable">
+																       <thead>
+																           <tr>
+																               <th>一级代理比率设置</th>
+																               <th>二级代理比率设置</th>
+																               <th>三级代理比率设置</th>
+																           </tr>
+																       </thead>
+																       <tbody>
+																          <!-- <tr>
+																               <td>
+																                   <div class="input-group">
+																                     <div class="input-group-addon" style="color:#ff0000">一级名称</div>
+																                     <input type="text" name="dlname1" value="{$item['dlname1']}" class="form-control" placeholder="">
+																                   </div>
+																               </td>
+																               <td>
+																                   <div class="input-group">
+																                     <div class="input-group-addon" style="color:#ff0000">二级名称</div>
+																                     <input type="text" name="dlname2" value="{$item['dlname2']}" class="form-control" placeholder="">
+																                   </div>
+																               </td>
+																               <td>
+																                   <div class="input-group">
+																                     <div class="input-group-addon" style="color:#ff0000">三级名称</div>
+																                     <input type="text" name="dlname3" value="{$item['dlname3']}" class="form-control" placeholder="">
+																                   </div>
+																               </td>
+																           </tr> -->
+																           <tr>
+																               <td>
+																                   <div class="input-group">
+																                     <div class="input-group-addon">自己产生佣金比率<span style="color:#ff0000"> (一级)</span></div>
+																                     <input type="text" name="dlbl1" value="{$item['dlbl1']}" class="form-control" placeholder="填写数字">
+																                     <span class="input-group-addon">%</span>
+																                   </div>
+																               </td>
+																               <td>
+																                   <div class="input-group">
+																                     <div class="input-group-addon">自己产生佣金比率<span style="color:#ff0000"> (二级)</span></div>
+																                     <input type="text" name="dlbl2" value="{$item['dlbl2']}" class="form-control" placeholder="填写数字">
+																                     <span class="input-group-addon">%</span>
+																                   </div>
+																               </td>
+																               <td style="border-right:0">
+																                   <div class="input-group">
+																                     <div class="input-group-addon">自己产生佣金比率<span style="color:#ff0000"> (三级)</span></div>
+																                     <input type="text" name="dlbl3" value="{$item['dlbl3']}" class="form-control" placeholder="填写数字">
+																                     <span class="input-group-addon">%</span>
+																                   </div>
+																               </td>
+																           </tr>
+																           <tr>
+																               <td>
+																                   <div class="input-group">
+																                     <div class="input-group-addon">提取二级佣金比率</div>
+																                     <input type="text" name="dlbl1t2" value="{$item['dlbl1t2']}" class="form-control" placeholder="填写数字">
+																                     <span class="input-group-addon">%</span>
+																                   </div>
+																               </td>
+																               <td>
+																                   <div class="input-group">
+																                     <div class="input-group-addon">提取三级佣金比率</div>
+																                     <input type="text" name="dlbl2t3" value="{$item['dlbl2t3']}" class="form-control" placeholder="填写数字">
+																                     <span class="input-group-addon">%</span>
+																                   </div>
+																               </td>
+																           </tr>
+																           <tr>
+																               <td>
+																                   <div class="input-group">
+																                     <div class="input-group-addon">提取三级佣金比率</div>
+																                     <input type="text" name="dlbl1t3" value="{$item['dlbl1t3']}" class="form-control" placeholder="填写数字">
+																                     <span class="input-group-addon">%</span>
+																                   </div>
+																               </td>
+																           </tr>
+																       </tbody>
+																 </table>
+																
+																
+																
+																
+                               	<div class="form-group">
+                               		<div class="col-sm-offset-2 col-sm-10">
+                               			<input type="hidden" name="id" value="{$item['id']}" />
+                               			<input type="submit" name="submit" class="btn btn-default" value="提交"  class="btn btn-primary"/>
+                               			<input type="hidden" name="token" value="{$_W['token']}" />
+                               		</div>
+                               	</div>
+                               </form>
+                           </div>
+                        </div>
+
+                         <style>td,th{padding: 10px;}</style>
+
+                        <script language='javascript'>
+                          require(['jquery', 'util'], function($, u){
+                            $(function(){
+                              $('.richtext-clone').each( function() {
+                                u.editor(this);
+                              });
+                            });
+                          });
+                        </script>
+
+                        {elseif $operation == 'display'}
+                        <div class="panel panel-default">
+                              <table class="table">
+																				<th style="width:80px;">权重</th>
+                                        <th>名称</th>
+																				<th>升级条件</th>
+                                        <th  style="text-align:right;">操作</th>
+                              
+                                    {loop $list $item}
+                                      <tr>
+																				<td>{$item['px']}</td>
+                                        <td>{$item['title']}</td>
+																				<td>满{$item['fssum']}人</td>
+                                        <td style="text-align:right;">
+                                          <a href="{php echo $this->createWebUrl('dailidjset', array('id' => $item['id'], 'op' => 'post'))}" title="编辑" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>编辑</a>
+                                          <a href="{php echo $this->createWebUrl('dailidjset', array('id' => $item['id'], 'op' => 'delete'))}" onclick="return confirm('此操作不可恢复，确认删除？');return false;" title="删除" class="btn btn-sm btn-default"><i class="fa fa-remove"></i>删除</a>
+                                        </td>
+                                      </tr>
+                                      {/loop}
+                              </table>
+                         
+                        </div>
+                        {/if}
+
+  
+                        <!--编辑内容结束-->			            
+			        </section>
+			        {template 'public_bottom'}
+			    </section>
+			    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+			  </section>
+			  <aside class="bg-light lter b-l aside-md hide" id="notes">
+			       <div class="wrapper"></div>
+			  </aside>
+			<!--右边框架结束-->
+			</section>
+		  </section>
+		<!--中间内容结束-->
+	</section>
+
+</body>
+</html>

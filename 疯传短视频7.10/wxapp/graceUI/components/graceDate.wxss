@@ -1,0 +1,119 @@
+@import "../../wuBaseWxss/0.wxss";
+
+.grace-date {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 730rpx;
+    height: 100%;
+    padding: 0 10rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #FFFFFF;
+}
+
+.grace-date-header {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+    margin-top: 20rpx;
+}
+
+.grace-date-header-btn {
+    font-size: 36rpx;
+    line-height: 88rpx;
+    padding: 0 10rpx;
+    color: #888888;
+}
+
+.grace-date-header-date {
+    line-height: 88rpx;
+    font-size: 36rpx;
+    margin: 0 20rpx;
+}
+
+.grace-date-week {
+    text-align: center;
+    width: 702rpx;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+.grace-date-weeks {
+    display: block;
+    width: 100rpx;
+    height: 80rpx;
+    text-align: center;
+    font-size: 32rpx;
+    line-height: 80rpx;
+    color: #666666;
+}
+
+.grace-date-days {
+    width: 702rpx;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.grace-date-ditems {
+    width: 96rpx;
+    height: 96rpx;
+    text-align: center;
+    margin: 2rpx;
+    background-color: #F6F7F8;
+    border-radius: 5rpx;
+}
+
+.grace-d-current {
+    background-color: #3688FF;
+}
+
+.grace-d-current-txt {
+    color: #FFFFFF!important;
+}
+
+.grace-date-day {
+    height: 46rpx;
+    line-height: 46rpx;
+    text-align: center;
+    margin-top: 10rpx;
+}
+
+.grace-date-nl {
+    height: 30rpx;
+    line-height: 30rpx;
+    color: #888888;
+    font-size: 20rpx;
+}
+
+.grace-date-btns {
+    text-align: center;
+    margin-top: 10rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.grace-date-btns-text {
+    display: block;
+    color: #3688FF;
+    line-height: 80rpx;
+    font-size: 30rpx;
+    margin: 0rpx 80rpx;
+    text-align: center;
+    width: 200rpx;
+}
+
+.grace-date-time {
+    font-size: 30rpx;
+    line-height: 60rpx;
+    margin-top: 15rpx;
+    color: #666666;
+}

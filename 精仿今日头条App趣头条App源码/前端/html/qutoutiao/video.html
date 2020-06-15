@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+	 	 
+	</body>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var videoPlayer ;
+		apiready = function() {
+			videoPlayer = api.require('videoPlayer');
+			view()
+		}
+		function view(){
+			var y = $api.offset($api.dom('.fx-video-view'));
+			videoPlayer.open({
+				rect:{
+				    x: 0,   //（可选项）数字类型；模块左上角的 x 坐标（相对于所属的 Window 或 Frame）；默认：0
+				    y: 0, 
+				    w:api.winWidth,
+				    h: y.h
+				},
+				autoPlay:false,
+			    path: 'http://v3.365yg.com/0c781e441a8743a3638cb8be7331d8a9/5960c841/video/m/220455a6cee5c9142128cda86153611a3f51149e55000048b6399f0e4d/'
+			}, function(ret, err) {
+			    if (ret) {
+			     	console.log(JSON.stringify(ret))
+			    } else {
+			        console.log(JSON.stringify(err))
+			    }
+			});
+			videoPlayer.addEventListener({
+				name: 'rightUp'
+			}, function(ret, err) {
+				if (ret) {
+					console.log("ret"+JSON.stringify(ret))
+				} else {
+				    console.log("err"+JSON.stringify(err))
+				}
+			});
+		}
+		function _video(type){
+			if(type=='b'){		// 播放
+				videoPlayer.start();
+			}else if(type=='z'){
+				videoPlayer.pause();
+			}else if(type=='q'){
+				videoPlayer.fullScreen();
+			}
+		}
+	</script>
+</html>
+

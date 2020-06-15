@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>小视频</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+	</head>
+	<style>
+		html, body {
+			background-color: transparent !important;
+		}
+		img {
+			width: 80px;
+			height: 34px;
+		}
+	</style>
+	<body>
+		<img src="../image/typeid_add.png" Tapmode onclick="win()" />
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			//win()
+			api.parseTapmode();
+		}
+		function win() {
+			api.execScript({
+				name:'root',
+				frameName : 'ffxiang_win',
+				script : 'typeid_keyback_true()'
+			});
+			var s = api.pageParam['h'] ? api.pageParam['h'] - 75 : 50;
+			var h = api.winHeight - s;
+			 
+			api.openFrame({
+				name : 'typeid_add_info',
+				url : html_win + 'typeid.html',
+				bounces : false,
+				rect : {
+					x : 0,
+					y : s,
+					w : 'auto',
+					h : h,
+				},
+				bgColor : 'rgba(0,0,0,0)',
+				animation : {
+					type : "movein", //动画类型（详见动画类型常量）
+					subType : "from_bottom", //动画子类型（详见动画子类型常量）
+					duration : 300
+				},
+				pageParam : {
+					h : api.pageParam['h']
+				}
+			})
+		}
+	</script>
+</html>
+

@@ -1,0 +1,195 @@
+{include file="m/top" /}
+    {css href="__STYLE__m/css/u.css"}
+        {css href="__STYLE__m/css/fx-weitoutiao.css"}
+    <style type="text/css">
+        .fx-beiying ul{
+            padding-top: 1rem;
+        }
+        .aui-list .aui-list-item-inner{
+            padding-left: 0px;
+        }
+        .aui-content{
+            margin-left: 0px;
+            margin-top: 0px;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="fx-beiying" style="position: relative;height: auto;;">
+             <ul class="aui-list aui-media-list"> 
+                <li class="aui-list-item aui-list-item-middle">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-media asdasd123" style="padding: 0px;height:auto;">
+                            <img id="ffxiangImgCache" data-original="{:_imgurl()}{$user.img}?imageView2/1/w/100/h/100" style="max-width: 3rem;width: 3rem;height:3rem;" src="__STYLE__m/image/touxiang.png" class="aui-img-round aui-list-img-sm">
+                        </div>
+                        <div class="aui-list-item-inner" style="padding-left: 0.5rem">
+                            {$user.username}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div style="color: #fff;padding: 0.75rem; font-size: 0.65rem;background: #3c3c3c;">
+                {$user.qianming}
+            </div>
+            <div style="position: absolute;right: 0.75rem;top: 2rem; color: #fff; font-size: 0.65rem;"><b>{$user.guanzhu}</b>关注 </span><span><b>{$user.fensi}</b>粉丝</div>
+        </div>
+        <script id="fx-list" type="text/x-dot-template">
+            {{ for(var i=0,len=it.data.length; i < len; i++) { }}
+            {{? it.data[i].weitoutiao==2 || it.data[i].weitoutiao==1}}
+            {{??}}
+                {{? it.data[i].mychannel == 1}}
+                {{? it.data[i].imagesArticleList.length >= 3}}
+                <li class="aui-list-item" onclick="_url('/m/a/{{= it.data[i].id }}.html')">
+                    <div class="aui-list-item-inner fx-item-inner">
+                        <div class="aui-list-item-title fx-title aui-ellipsis-2">{{= it.data[i].title }}</div>
+                            <div class="aui-row aui-row-padded aui-margin-t-5 fx-article-images">
+                                {{ for(var is=0; is < 3; is++) { }}
+                                <div class="aui-col-xs-4"><img id="ffxiangImgCache" data-original="{{= it.data[i].imagesArticleList[is]}}?imageView2/1/w/192/h/124" src="__STYLE__m/image/loadingImage.png"></div>
+                                {{}}}
+                            </div>
+                        </div>
+                        <div class="aui-info  aui-padded-t-5 aui-padded-r-15  fx-item-inner">
+                            <div class="aui-info-item aui-font-size-12">
+                            <span class="">{{= it.data[i].source}}</span>
+                            <span class="aui-margin-l-10">{{= it.data[i].pingNum}}评价</span>
+                            <span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+                        </div>
+                    </div>
+                </li>
+                {{?? it.data[i].image}}
+                <li class="aui-list-item" onclick="_url('/m/a/{{= it.data[i].id }}.html')">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title aui-ellipsis-2 fx-title">{{= it.data[i].title }}</div>
+                            </div>
+                            <div class="aui-info aui-padded-t-5 aui-padded-b-0" style="padding-top: 5px">
+                                <div class="aui-info-item aui-font-size-12 fx-index-infp-span">
+                                    <span class="">{{= it.data[i].source}}</span>
+                                    <span class="aui-margin-l-10">{{= it.data[i].pingNum}}评价</span>
+                                    <span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-list-item-media">
+                            <img data-original="{{= it.data[i].image}}"  src="__STYLE__m/image/loadingImage.png">
+                        </div>
+                    </div>
+                </li>
+                {{??}}
+                <li class="aui-list-item" onclick="_url('/m/a/{{= it.data[i].id }}.html')">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-title aui-ellipsis-2 fx-title">{{= it.data[i].title }}</div>
+                            <div class="aui-list-item-text">
+                                <p class="aui-ellipsis-2 aui-font-size-14">{{= it.data[i].description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-info  fx-item-inner">
+                        <div class="aui-info-item aui-font-size-12">
+                            <span class="">{{= it.data[i].source}}</span>
+                            <span class="aui-margin-l-10">{{= it.data[i].pingNum}}评价</span>
+                            <span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+                        </div>
+                       <!--  <div class="aui-info-item fx-icon-plus aui-iconfont aui-icon-close">     
+                        </div> -->
+                    </div>
+                </li>
+                {{?}}
+                {{?? it.data[i].mychannel == 2}}
+                <!--  图片集-->
+                <li class="aui-list-item"  onclick="_url('/m/a/{{= it.data[i].id }}.html')">
+                    <div class="aui-list-item-inner fx-item-inner">
+                        <div class="aui-list-item-title fx-title aui-ellipsis-2">{{= it.data[i].title }}</div>
+                            <div class="aui-row aui-row-padded aui-margin-t-5 fx-article-images">
+                                {{= it.data[i].images.replace('ffxiang-src', 'data-original') }}
+                            </div>
+                        </div>
+                        <div class="aui-info  aui-padded-t-5 aui-padded-r-15  fx-item-inner">
+                            <div class="aui-info-item aui-font-size-12">
+                            <span class="">{{= it.data[i].source}}</span>
+                            <span class="aui-margin-l-10">{{= it.data[i].pingNum}}评价</span>
+                            <span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+                        </div>
+                    </div>
+                </li>
+                {{?? it.data[i].mychannel == 3}}
+                <!--视频-->
+                <li class="aui-list-item"  onclick="_url('/m/a/{{= it.data[i].id }}.html')">
+                    <div class="aui-list-item-inner fx-item-inner">
+                        <div class="aui-list-item-title fx-title aui-ellipsis-2">{{= it.data[i].title }}</div>
+                    </div>
+                    <div class="aui-card-list-content fx-video-content aui-padded-b-10">
+                        <img id="ffxiangImgCache" data-original="{{= it.data[i].image }}" src="__STYLE__m/image/load-video.png" class="fx-video-img">
+                        <i class="fx-video-bofang"></i>
+                        <em class="fx-video-em aui-margin-b-5">{{? it.data[i].videodate}}{{= it.data[i].videodate }}{{?}}</em>
+                    </div>
+                    <div class="aui-info  aui-padded-t-0 aui-padded-r-15  fx-item-inner">
+                        <div class="aui-info-item aui-font-size-12">
+                            {{? it.data[i].source}}<span class="">{{= it.data[i].source}}</span>{{?}}
+                            <span {{? it.data[i].source}}class="aui-margin-l-10"{{?}}>{{= it.data[i].pingNum}}评价</span>
+                            <span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+                        </div>
+                    </div>
+                </li>
+                {{?}}
+            {{?}}
+            {{ } }}
+        </script>
+        <div class="aui-content mescroll" id="mescroll" style="background: #fff;position: fixed;padding-bottom: 85px;margin-left: : 0px;">
+            <ul class="aui-list aui-media-list fx-article-list fx-weitoutiao-list" id="fx-view" style="border-top: 0px">
+            </ul>
+        </div>
+        {js href="__STYLE__m/js/mescroll.min.js"}
+        {js href="__STYLE__m/js/jquery-3.2.1.min.js"}
+        {js href="__STYLE__m/js/doT.js"}
+        {js href="__JS__index.js"}
+        {js href="__STYLE__m/js/jquery.lazyload.js"}
+        <script type="text/javascript">
+            $("img#ffxiangImgCache").lazyload({
+                effect:'fadeIn' //懒加载淡入
+            })
+            var mescroll = new MeScroll("mescroll", {
+                up: {
+                    callback: getListData, 
+                    toTop:{
+                        src : "__STYLE__m/image/mescroll-totop.png", 
+                    },
+                    offset:500
+                }
+            });
+            function getListData(page){
+                $('img#ffxiangImgCache').removeAttr('id')
+                _ajax('/api/article/lists/weitoutiao/0/uid/{$user.id}/?page='+page.num,function(ret){
+                    if(ret){
+                        var evalData = doT.template($('#fx-list').html());
+                        if(page.num==1){
+                            if(ret.total){
+                                $('#fx-view').html(evalData(ret))
+                            }else{
+                                 $('#fx-view').html('');
+                            }
+                        }else{
+                            $('#fx-view').append(evalData(ret))
+                        }
+                        $("img#ffxiangImgCache").lazyload({
+                            effect:'fadeIn' //懒加载淡入
+                            ,container: $("#mescroll"),
+                        })
+                        mescroll.endBySize(ret.data.length,ret.total);
+                    }
+                })
+            }
+            // 替换
+            function imgtihuan(strss){
+                var aaaa=strss;
+                 
+            //    aaaa=aaaa.replace('src="../image/loadingImage.png"', 'src="__STYLE__m/image/loadingImage.png"');
+                return aaaa.replace('ffxiang-src', 'data-original');
+            }
+        </script>
+    </body>
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<style>
+		</style>
+	</head>
+	<body></body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var videoUrl, videoPlayer
+		apiready = function() {
+			videoUrl=api.pageParam['video'];
+			playModule = api.require('playModule');
+			playModule.init();
+			video();
+			// 回到应用前台
+			api.addEventListener({
+				name : 'resume'
+			}, function(ret, err) {
+				 start();
+			});
+		}
+		function video() {
+			playModule.play({
+			    rect:
+			    {    x: 0,
+			        y : 0,
+			       w:api.winWidth,
+					h:api.winHeight,
+			    },
+			    fixedOn: api.frameName,
+			    url: videoUrl,
+			    isLoop:true,
+			    defaultBtn:false,
+			    isTopView:false,
+			    isFullBtn:false,
+			    scalingMode:3,
+			    fullscreenMode : 'PORTRAIT', //	设置全屏按钮控制全屏显示模式是横屏还是竖屏 竖屏:PORTRAIT ; 横屏:LANDSCAPE
+			    isShowProcessView:false,
+			    isShowTimeLable:false,
+			    isOpenGesture:false,
+			    isLoop:true,
+			}, function(ret, err) {
+				//console.log(JSON.stringify(ret)+JSON.stringify(err));
+				if(ret.status){
+					win();
+				}
+			});
+		}
+		// 打开新窗口
+		function win() {
+			var data={videoUrl:videoUrl,img:api.pageParam['img']}
+			api.openFrame({
+				name : 'xiaoshipin_add_info',
+				url : html_win + 'xiaoshipin_add_info.html',
+				bounces : false,
+				rect : {
+					x : 0, 
+					y : 0,
+					w : 'auto',
+					h : 'auto',
+				},
+				pageParam : data,
+				bgColor : 'rgba(0,0,0,0)',
+				animation:{
+					type:"push",                //动画类型（详见动画类型常量）
+				    subType:"from_bottom",       //动画子类型（详见动画子类型常量）
+				    duration:300    
+				},
+			})
+		}
+		// 开始播放
+		function start(){
+			playModule.start(function(ret, err) {
+			    console.log('暂停开始播放'+JSON.stringify(ret));
+			});
+		}
+	</script>
+</html>

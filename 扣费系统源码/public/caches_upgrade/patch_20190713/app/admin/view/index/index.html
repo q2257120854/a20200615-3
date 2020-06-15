@@ -1,0 +1,241 @@
+
+
+<link rel="stylesheet" href="__STATIC__/module/admin/css/index_style.css">
+<div class="row">
+
+  <div class="col-sm-3">
+    <div class="ibox float-e-margins">
+      <div class="ibox-title">
+        <span class="label label-success pull-right">余额</span>
+        <h5>账户余额</h5>
+      </div>
+      <div class="ibox-content">
+        <h1 class="no-margins">{$info.zhye} 元</h1>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-3">
+    <div class="ibox float-e-margins">
+      <div class="ibox-title">
+        <span class="label label-info pull-right">数量</span>
+        <h5>网站数量</h5>
+      </div>
+      <div class="ibox-content">
+        <h1 class="no-margins">{$info.webnum} 个</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="ibox float-e-margins">
+      <div class="ibox-title">
+        <span class="label label-primary pull-right">关键词</span>
+        <h5>关键词数量</h5>
+      </div>
+      <div class="ibox-content">
+        <h1 class="no-margins">{$info.keywordnum} 个</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="ibox float-e-margins">
+      <div class="ibox-title">
+        <a href="{:url('seo/xiaofeilist');}?create_time={:date('Y-m-d')}"><span class="label label-success pull-right" >今日达标</span><点击查看详情></a>
+        <h5>今日达标关键词数量</h5>
+      </div>
+      <div class="ibox-content">
+        <h1 class="no-margins">{$info.dbNum} 个</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="ibox float-e-margins">
+      <div class="ibox-title">
+        <span class="label label-danger pull-right">累计消费</span>
+        <h5>今日消费金额</h5>
+      </div>
+      <div class="ibox-content">
+        <h1 class="no-margins">{$info.todayPrice|default='0'} 元</h1>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-3">
+    <div class="ibox float-e-margins">
+      <div class="ibox-title">
+        <span class="label label-danger pull-right">昨日消费</span>
+        <h5>昨日消费金额</h5>
+      </div>
+      <div class="ibox-content">
+        <h1 class="no-margins">{$info.yesterPrice|default='0'} 元</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="ibox float-e-margins">
+      <div class="ibox-title">
+        <span class="label label-danger pull-right">本月消费</span>
+        <h5>本月消费金额</h5>
+      </div>
+      <div class="ibox-content">
+        <h1 class="no-margins">{$info.momPrice|default='0'} 元</h1>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-3">
+    <div class="ibox float-e-margins">
+      <div class="ibox-title">
+        <span class="label label-danger pull-right">消费金额</span>
+        <h5>累计消费金额</h5>
+      </div>
+      <div class="ibox-content">
+        <h1 class="no-margins">{$info.allPrice|default='0'} 元</h1>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+
+
+
+  <div class="col-md-6">
+
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">产品信息</h3>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body no-padding">
+        <table class="table table-striped">
+          <tbody>
+
+          <tr>
+            <td>产品名称</td>
+            <td>{:config('seo_title');}</td>
+          </tr>
+
+          <tr>
+            <td>产品设计及研发团队</td>
+            <td>自主研发</td>
+          </tr>
+          <tr>
+            <td>所在用户组</td>
+            <td style="color: #0d6aad;font-size: 20px;">{$info['name']}</td>
+          </tr>
+
+          {eq name="$info.isbake" value="1"}
+          <tr>
+            <td>普通用户</td>
+            <td><span style="color: #bf8fca;font-size: 20px;">{$info['ptnum']}</span>人</td>
+          </tr>
+          {/eq}
+
+          {eq name="$info.isbake" value="0"}
+
+
+
+          <tr>
+            <td>代理用户</td>
+            <td><span style="color: #4a69f7;font-size: 20px;">{$info['dlnum']}</span>人</td>
+          </tr>
+          <tr>
+            <td>普通用户</td>
+            <td><span style="color: #bf8fca;font-size: 20px;">{$info['ptnum']}</span>人</td>
+          </tr>
+          <tr>
+            <td>查询剩余次数</td>
+            <td><span style="color: red;font-size: 20px;">{$info['num']}</span>次(请及时充值)</td>
+          </tr>
+
+
+          <tr>
+            <td>定时获取关键词查询说明</td>
+            <td>
+              <div class="alert alert-success">
+               <p> 根据用户对于关键词查询需求， 用宝塔面板直接访问查询API.</p>
+                <p> API网站:[---服务器域名/api.php/seo/timing--]</p>
+                <p>比如每天设定三次查询，那么在宝塔面板设置访问时间</p>
+              </div>
+            </td>
+          </tr>
+          {/eq}
+          </tbody>
+        </table>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </div>
+
+
+<div class="col-md-6">
+    <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">系统信息</h3>
+          <span style="display: inline-block;float: right;">
+          	{if condition="$member eq 1"}
+              		<script src='http://www.9e.gs/mh/ad_js.php?aid=1' language='javascript'></script>
+              		{/if}
+              	</span>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body no-padding">
+          <table class="table table-striped">
+            <tbody>
+                
+            <tr>
+              <td>{:config('seo_title');}系统版本
+              	   
+              </td>
+           
+              <td>当前版本：<span class="label label-warning">{:config('system_version')}</span></td>
+              <td style="clear: both;"></td>
+            </tr>
+
+            {eq name="$info.isbake" value="0"}
+            <tr>
+              <td style="text-align: center;font-size: 20px;">在线升级</td>
+              <td>
+                <ul class="list-group">
+                  <li class="list-group-item"> 当前更新包：<span class="label label-success">{$info.pathcont}</span>{gt name="$info.pathcont" value="0"} <a class="badge confirm ajax-get" href="{:url('Upgrade/index');}">点击升级</a> {/gt}</li>
+
+                  {volist name="$info.pathlist" id="vo"}
+                  <li class="list-group-item">{$vo}</li>
+                  {/volist}
+                </ul>
+
+              </td>
+            </tr>
+            {/eq}
+
+
+
+            <tr>
+            <td colspan="2">
+
+            </td>
+            </tr>
+          </tbody>
+          </table>
+        </div>
+        <!-- /.box-body -->
+      </div>
+          <!-- /.box -->
+
+          <!-- /.box -->
+    </div>
+
+
+
+
+  
+  </div>

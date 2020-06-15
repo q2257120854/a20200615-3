@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/u.css" />
+	</head>
+	<body>
+		<!--<header class="aui-bar aui-bar-nav fx-view-header " id="fx-header">
+		<a class="aui-pull-left aui-btn" tapmode onclick="_close()"> <span class="aui-iconfont aui-icon-left"></span> </a>
+		<div class="aui-title"></div>
+		</header>-->
+		<script id="fx-list" type="text/x-dot-template">
+	 			<div class="fx-beiying">
+	 			 <a class="aui-pull-left aui-btn asdasd" tapmode onclick="c()"> <span class="aui-iconfont aui-icon-left"></span> </a>
+	<!--			 <a class="aui-pull-right aui-btn asdasd2" tapmode onclick="_close()"> <span class="aui-iconfont aui-icon-right"></span> </a>
+	-->				<ul class="aui-list aui-media-list">
+						<li class="aui-list-item aui-list-item-middle">
+							<div class="aui-media-list-item-inner">
+								<div class="aui-list-item-media asdasd123">
+									<img id="ffxiangImgCache" ffxiang-src="{{=it.img}}?imageView2/1/w/100/h/100" onclick="img(['{{=it.img}}'])" src="../image/touxiang.png" class="aui-img-round aui-list-img-sm">
+								</div>
+								<div class="aui-list-item-inner">
+									{{= it.username}}
+								</div>
+							</div>
+						</li>
+						{{? it.id != _user.id}}
+						{{? it.guanzhu}}
+						<em  class="aui-btn aui-btn-info fx-guanzhu guanzhuhovew" tapmode  onclick="guanzhu(this,{{=it.id}})" data-id='2'>
+							已关注
+						</em>
+						{{??}}
+						<em class="aui-btn aui-btn-info fx-guanzhu" tapmode  onclick="guanzhu(this,{{=it.id}})" data-id='1'>
+								关注
+						</em>
+						{{?}}
+						{{?}}
+					</ul>
+				</div>
+				<div class="aui-content fx-content" style="background: #fff">
+					{{= it.qianming}}
+				</div>
+				<div class="aui-content fx-f" style="background: #fff">
+					<span><b>{{= it.guanzhu}}</b>关注 </span><span><b>{{= it.fensi}}</b>粉丝</span>
+				</div>
+ 	 
+			<div class="aui-grid aui-padded-t-10" style="border-bottom: 0.05rem solid #F4F5F6;">
+				<div class="aui-row fx-tab">
+					<div class="aui-col-5 hover" id="tab0" tapmode onclick="randomSwitchBtn(0)">
+						<div class="aui-grid-label">
+							全部
+						</div>
+					</div>
+					<div class="aui-col-5" id="tab1" tapmode onclick="randomSwitchBtn(1)">
+						<div class="aui-grid-label">
+							文章
+						</div>
+					</div>
+					<div class="aui-col-5" id="tab2" tapmode onclick="randomSwitchBtn(2)">
+						<div class="aui-grid-label">
+							图片
+						</div>
+					</div>
+					<div class="aui-col-5" id="tab3" tapmode onclick="randomSwitchBtn(3)">
+						<div class="aui-grid-label">
+							视频
+						</div>
+					</div>
+					<!--<div class="aui-col-5" id="tab4" tapmode onclick="randomSwitchBtn(4)">
+						<div class="aui-grid-label">
+							小视频
+						</div>
+					</div>-->
+				</div>
+			</div>
+		</script>
+		<div id="fx-view" style="background: #323332"><div id="jiazai"><img src="../image/loading_more.gif" /></div></div>
+	</body>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/doT.js"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var uid=0,fan;
+		apiready = function() {
+			api.addEventListener({
+			    name:'viewappear'
+			}, function(ret, err){      
+				_heibai()  
+			});
+			fan=api.pageParam['fan'];
+			_heibai(api.pageParam['qian']);
+			uid=api.pageParam['id'];
+			if(!uid){ 
+				uid=api.pageParam['uid'];
+				if(!uid){
+					_alert('会员不存在或已封号',function(ret,err){
+						_close();
+					})
+					return;
+				}
+			}
+			info()
+			if(_user){
+				fangke()
+			}
+		}
+		// 会员信息
+		function info(){
+			_ajax('api/user/info',function(ret,err){
+				//alert(JSON.stringify(ret))
+				var evalData = doT.template($api.html($api.byId('fx-list')));
+				$api.html($api.byId('fx-view'), evalData(ret));
+				$api.fixStatusBar($api.dom('#fx-view'));
+				
+				_imageCache();
+				api.parseTapmode();
+				var frames = [];
+				for (var i = 0; i < 5; i++) {
+					var frame = {};
+					frame.name = i;
+					frame.url =  html_win+'u_frame.html';
+					frame.pageParam = {
+						id : api.pageParam['id'],
+						uid : api.pageParam['uid'],
+						mychannel : i,
+					};
+					frame.bgColor = '#fff';
+					frames.push(frame);
+				}
+				openFrameGroup(frames)
+				// 监听夜间
+				api.addEventListener({
+				    name: 'yejian'
+				}, function(ret, err) {
+					if(ret){
+						_yejians();
+					}
+				});
+			},{id:uid})
+		}
+		function openFrameGroup(frames) {
+			var gaodu=$("#fx-view").height();
+			api.openFrameGroup({
+				name : 'GzFsFk',
+				scrollEnabled : true,
+				bounces : true,
+				rect : {
+					x : 0,
+					y : gaodu,
+					w : 'auto',
+					h : api.winHeight-gaodu,
+				},
+				index : api.pageParam['index'],
+				frames : frames,
+				preload : 0, // 预加载的 frame 个数，默认加载当前页后面一个
+				bgColor : '#fff'
+			}, function(ret, err) {
+				var index = ret.index;
+				active(index)
+			});
+		}
+		 
+		// 关注
+		function guanzhu(jgo, uid) {
+			if(!_user){
+				_login();
+				return;
+			}
+			_loading()
+			var text=$(jgo).text();
+			// 1关注 2取消关注
+			var type = $(jgo).data('id')
+			if (type == 1) {
+				$(jgo).text('关注中');
+				_ajax('api/member/guanzhu/',function(ret,err){
+					_loadingCloes()
+					if(ret.ret){
+						$(jgo).text('已关注')
+						$(jgo).data('id', 2)
+						$(jgo).addClass('guanzhuhovew')
+					}else{
+						$(jgo).text(text);
+						_msg(ret.err)
+					}
+				},{gz_uid:uid})
+			} else if (type == 2) {
+				$(jgo).text('取消中');
+				_ajax('api/member/guanzhuDel/',function(ret,err){
+					_loadingCloes()
+					if(ret.ret){
+						$(jgo).text('关注')
+						$(jgo).data('id', 1)
+						$(jgo).removeClass('guanzhuhovew');
+					}else{
+						$(jgo).text(text);
+						_msg(ret.err)
+					}
+				},{gz_uid:uid})
+			} 
+		}
+
+		// 点击分类栏目时，设置 frame 组当前可见 frame
+		function randomSwitchBtn(index) {
+			active(index)
+			api.setFrameGroupIndex({
+				name : 'GzFsFk',
+				index : index,
+				scroll : true, //是否平滑滚动至目标窗口，即是否带有动画
+			});
+		}
+
+		// 点击样式
+		function active(index) {
+			$api.removeCls($api.dom(".fx-tab .hover"), 'hover');
+			$api.addCls($api.byId('tab' + index), 'hover');
+		}
+		
+		// 增加访客记录
+		function fangke(){
+			if(_user){
+				if(_user.id != uid){
+					_ajax('api/member/fangkejilu',function(ret,err){},{f_uid:uid})
+				}
+			}
+		}
+		// 点击头像
+		function img(images){
+			api.openWin({
+			    name: 'view_photo',
+			    url: html_win+'view_photo.html',
+			    slidBackEnabled:false,
+			    pageParam: {
+			        images:images,
+			        index:0
+			    },
+			    animation:{
+			    	type:"fade",                //动画类型（详见动画类型常量）
+				    subType:"from_right",       //动画子类型（详见动画子类型常量）
+				    duration:300   
+			    }
+			});
+		}
+		function c(){
+			_close(fan)
+		}
+	</script>
+</html>
+

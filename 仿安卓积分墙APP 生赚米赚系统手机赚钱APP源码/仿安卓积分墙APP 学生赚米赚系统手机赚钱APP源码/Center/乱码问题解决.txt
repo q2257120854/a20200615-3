@@ -1,0 +1,25 @@
+
+-----------------------------------------------------------------------
+以下是头部的源代码
+-----------------------------------------------------------------------
+
+<?php
+	include '../conf/config.php';
+	header("content-type:text/html;charset=utf-8");
+	if(!isset($_SESSION['username'])||empty($_SESSION['username'])||!isset($_SESSION['uid'])||empty($_SESSION['uid'])){
+		echo "<script>alert('请登录！');window.location.href='../index.php'</script>";
+		exit();
+	}
+?>
+
+--------------------------------------------------------
+以下是修改的代码，解决了输出乱码问题
+-----------------------------------------------------------------------
+
+<?php
+	include 'sjk.php';
+	header("content-type:text/html;charset=utf-8");
+?>
+
+
+----------------------------------------------------------------------

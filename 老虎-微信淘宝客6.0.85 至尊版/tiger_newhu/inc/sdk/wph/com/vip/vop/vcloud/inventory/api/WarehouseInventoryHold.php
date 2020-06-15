@@ -1,0 +1,318 @@
+<?php
+
+
+/*
+* Copyright (c) 2008-2016 vip.com, All Rights Reserved.
+*
+* Powered by com.vip.osp.osp-idlc-2.5.11.
+*
+*/
+
+namespace com\vip\vop\vcloud\inventory\api;
+
+class WarehouseInventoryHold {
+	
+	static $_TSPEC;
+	public $transId = null;
+	public $partnerId = null;
+	public $channelId = null;
+	public $vipCooperationNo = null;
+	public $vipWarehouseCode = null;
+	public $vipCooperationType = null;
+	public $skuList = null;
+	
+	public function __construct($vals=null){
+		
+		if (!isset(self::$_TSPEC)){
+			
+			self::$_TSPEC = array(
+			1 => array(
+			'var' => 'transId'
+			),
+			2 => array(
+			'var' => 'partnerId'
+			),
+			3 => array(
+			'var' => 'channelId'
+			),
+			4 => array(
+			'var' => 'vipCooperationNo'
+			),
+			5 => array(
+			'var' => 'vipWarehouseCode'
+			),
+			6 => array(
+			'var' => 'vipCooperationType'
+			),
+			7 => array(
+			'var' => 'skuList'
+			),
+			
+			);
+			
+		}
+		
+		if (is_array($vals)){
+			
+			
+			if (isset($vals['transId'])){
+				
+				$this->transId = $vals['transId'];
+			}
+			
+			
+			if (isset($vals['partnerId'])){
+				
+				$this->partnerId = $vals['partnerId'];
+			}
+			
+			
+			if (isset($vals['channelId'])){
+				
+				$this->channelId = $vals['channelId'];
+			}
+			
+			
+			if (isset($vals['vipCooperationNo'])){
+				
+				$this->vipCooperationNo = $vals['vipCooperationNo'];
+			}
+			
+			
+			if (isset($vals['vipWarehouseCode'])){
+				
+				$this->vipWarehouseCode = $vals['vipWarehouseCode'];
+			}
+			
+			
+			if (isset($vals['vipCooperationType'])){
+				
+				$this->vipCooperationType = $vals['vipCooperationType'];
+			}
+			
+			
+			if (isset($vals['skuList'])){
+				
+				$this->skuList = $vals['skuList'];
+			}
+			
+			
+		}
+		
+	}
+	
+	
+	public function getName(){
+		
+		return 'WarehouseInventoryHold';
+	}
+	
+	public function read($input){
+		
+		$input->readStructBegin();
+		while(true){
+			
+			$schemeField = $input->readFieldBegin();
+			if ($schemeField == null) break;
+			$needSkip = true;
+			
+			
+			if ("transId" == $schemeField){
+				
+				$needSkip = false;
+				$input->readString($this->transId);
+				
+			}
+			
+			
+			
+			
+			if ("partnerId" == $schemeField){
+				
+				$needSkip = false;
+				$input->readI64($this->partnerId); 
+				
+			}
+			
+			
+			
+			
+			if ("channelId" == $schemeField){
+				
+				$needSkip = false;
+				$input->readI64($this->channelId); 
+				
+			}
+			
+			
+			
+			
+			if ("vipCooperationNo" == $schemeField){
+				
+				$needSkip = false;
+				$input->readI32($this->vipCooperationNo); 
+				
+			}
+			
+			
+			
+			
+			if ("vipWarehouseCode" == $schemeField){
+				
+				$needSkip = false;
+				$input->readString($this->vipWarehouseCode);
+				
+			}
+			
+			
+			
+			
+			if ("vipCooperationType" == $schemeField){
+				
+				$needSkip = false;
+				$input->readI32($this->vipCooperationType); 
+				
+			}
+			
+			
+			
+			
+			if ("skuList" == $schemeField){
+				
+				$needSkip = false;
+				
+				$this->skuList = array();
+				$_size0 = 0;
+				$input->readListBegin();
+				while(true){
+					
+					try{
+						
+						$elem0 = null;
+						
+						$elem0 = new \com\vip\vop\vcloud\inventory\api\ChannelInventoryHold();
+						$elem0->read($input);
+						
+						$this->skuList[$_size0++] = $elem0;
+					}
+					catch(\Exception $e){
+						
+						break;
+					}
+				}
+				
+				$input->readListEnd();
+				
+			}
+			
+			
+			
+			if($needSkip){
+				
+				\Osp\Protocol\ProtocolUtil::skip($input);
+			}
+			
+			$input->readFieldEnd();
+		}
+		
+		$input->readStructEnd();
+		
+		
+		
+	}
+	
+	public function write($output){
+		
+		$xfer = 0;
+		$xfer += $output->writeStructBegin();
+		
+		if($this->transId !== null) {
+			
+			$xfer += $output->writeFieldBegin('transId');
+			$xfer += $output->writeString($this->transId);
+			
+			$xfer += $output->writeFieldEnd();
+		}
+		
+		
+		if($this->partnerId !== null) {
+			
+			$xfer += $output->writeFieldBegin('partnerId');
+			$xfer += $output->writeI64($this->partnerId);
+			
+			$xfer += $output->writeFieldEnd();
+		}
+		
+		
+		if($this->channelId !== null) {
+			
+			$xfer += $output->writeFieldBegin('channelId');
+			$xfer += $output->writeI64($this->channelId);
+			
+			$xfer += $output->writeFieldEnd();
+		}
+		
+		
+		if($this->vipCooperationNo !== null) {
+			
+			$xfer += $output->writeFieldBegin('vipCooperationNo');
+			$xfer += $output->writeI32($this->vipCooperationNo);
+			
+			$xfer += $output->writeFieldEnd();
+		}
+		
+		
+		if($this->vipWarehouseCode !== null) {
+			
+			$xfer += $output->writeFieldBegin('vipWarehouseCode');
+			$xfer += $output->writeString($this->vipWarehouseCode);
+			
+			$xfer += $output->writeFieldEnd();
+		}
+		
+		
+		if($this->vipCooperationType !== null) {
+			
+			$xfer += $output->writeFieldBegin('vipCooperationType');
+			$xfer += $output->writeI32($this->vipCooperationType);
+			
+			$xfer += $output->writeFieldEnd();
+		}
+		
+		
+		if($this->skuList !== null) {
+			
+			$xfer += $output->writeFieldBegin('skuList');
+			
+			if (!is_array($this->skuList)){
+				
+				throw new \Osp\Exception\OspException('Bad type in structure.', \Osp\Exception\OspException::INVALID_DATA);
+			}
+			
+			$output->writeListBegin();
+			foreach ($this->skuList as $iter0){
+				
+				
+				if (!is_object($iter0)) {
+					
+					throw new \Osp\Exception\OspException('Bad type in structure.', \Osp\Exception\OspException::INVALID_DATA);
+				}
+				
+				$xfer += $iter0->write($output);
+				
+			}
+			
+			$output->writeListEnd();
+			
+			$xfer += $output->writeFieldEnd();
+		}
+		
+		
+		$xfer += $output->writeFieldStop();
+		$xfer += $output->writeStructEnd();
+		return $xfer;
+	}
+	
+}
+
+?>

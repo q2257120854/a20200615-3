@@ -1,0 +1,52 @@
+{extend name="common/world"}
+{block name="title"}公告管理{/block}
+{block name="style"}
+<style type="text/css">
+</style>
+{/block}
+{block name="container"}
+<div class="card">
+	<div class="card-header">
+		<div class="card-title">新闻公告</div>
+		<div class="card-options">
+			<a class="btn btn-primary btn-sm" href="/admin/news/create.html">发布公告</a>
+		</div>
+	</div>
+	<div class="table-responsive">
+		<table class="table card-table table-vcenter text-nowrap">
+			<tr>
+				<th>#</th>
+				<th>顺序</th>
+				<th>图片</th>
+				<th>标题</th>
+				<th>时间</th>
+				<th>操作</th>
+			</tr>
+			{volist name="articles" id="article"}
+			<tr>
+				<td>{$article.id}</td>
+				<td>{$article.sort}</td>
+				<td>
+					{notempty name="article.image"}
+					<img src="/upload/{$article.image}" class="w-7 h-7" />
+					{/notempty}
+				</td>
+				<td>
+					{$article.title}
+					{eq name="article.top" value="1"}
+						<span class="badge badge-danger badge-md">置顶</span>
+					{/eq}
+				</td>
+				<td>{$article.date}</td>
+				<td>
+					<a href="/admin/news/edit.html?id={$article.id}" class="btn btn-secondary btn-sm">编辑</a>
+					<a href="/admin/news/remove.html?id={$article.id}" class="btn btn-danger btn-sm ml-2" onclick="javascript:return confirm('确定要删除吗？');">删除</a>
+				</td>
+			</tr>
+			{/volist}
+		</table>
+	</div>
+	<div class="card-footer">{$articles|raw}</div>
+</div>
+{/block}
+{block name="script"} {/block}

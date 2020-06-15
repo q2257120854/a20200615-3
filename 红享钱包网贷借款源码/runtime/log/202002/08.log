@@ -1,0 +1,4077 @@
+---------------------------------------------------------------
+[ 2020-02-08T15:26:47+08:00 ] 119.98.186.246 GET chat.kstao.com/
+[运行时间：0.080242s] [吞吐率：12.46req/s] [内存消耗：3,589.30kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'dnt' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1573805696,1574531166',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/index/controller/Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/index/view/index/index.html [ array (
+  0 => 'data',
+  1 => 'msg',
+  2 => 'maxm',
+  3 => 'zixun',
+  4 => 'user',
+  5 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000747s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_broadcast` [ RunTime:0.002114s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_broadcast` [ RunTime:0.000459s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_zixun` [ RunTime:0.001480s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_zixun` [ RunTime:0.000388s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001726s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` IS NULL ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000577s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001813s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000396s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` IS NULL  AND `status` < '4' LIMIT 1 [ RunTime:0.000520s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:26:48+08:00 ] 42.236.10.75 GET chat.kstao.com/
+[运行时间：0.074473s] [吞吐率：13.43req/s] [内存消耗：3,386.63kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 8.1.0; zh-CN; EML-AL00 Build/HUAWEIEML-AL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 baidu.sogo.uc.UCBrowser/11.9.4.974 UWS/2.13.1.48 Mobile Safari/537.36 AliApp(DingTalk/4.5.11) com.alibaba.android.rimet/10487439 Channel/227200 language/zh-CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://baidu.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/index/controller/Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/index/view/index/index.html [ array (
+  0 => 'data',
+  1 => 'msg',
+  2 => 'maxm',
+  3 => 'zixun',
+  4 => 'user',
+  5 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000754s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_broadcast` [ RunTime:0.001714s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_broadcast` [ RunTime:0.000558s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_zixun` [ RunTime:0.001305s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_zixun` [ RunTime:0.000491s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001520s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` IS NULL ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000584s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001625s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000551s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` IS NULL  AND `status` < '4' LIMIT 1 [ RunTime:0.000552s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:26:51+08:00 ] 119.98.186.246 GET chat.kstao.com/
+[运行时间：0.072651s] [吞吐率：13.76req/s] [内存消耗：3,386.22kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'dnt' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1573805696,1574531166; PHPSESSID=7q71t44fmrkhr9isioi2r2dmh3',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/index/controller/Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/index/view/index/index.html [ array (
+  0 => 'data',
+  1 => 'msg',
+  2 => 'maxm',
+  3 => 'zixun',
+  4 => 'user',
+  5 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000805s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_broadcast` [ RunTime:0.001626s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_broadcast` [ RunTime:0.000461s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_zixun` [ RunTime:0.001349s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_zixun` [ RunTime:0.000469s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001723s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` IS NULL ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000609s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001624s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000495s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` IS NULL  AND `status` < '4' LIMIT 1 [ RunTime:0.000504s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:26:52+08:00 ] 119.98.186.246 GET chat.kstao.com/
+[运行时间：0.064380s] [吞吐率：15.53req/s] [内存消耗：3,386.22kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'dnt' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1573805696,1574531166; PHPSESSID=7q71t44fmrkhr9isioi2r2dmh3',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/index/controller/Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/index/view/index/index.html [ array (
+  0 => 'data',
+  1 => 'msg',
+  2 => 'maxm',
+  3 => 'zixun',
+  4 => 'user',
+  5 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000614s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_broadcast` [ RunTime:0.001559s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_broadcast` [ RunTime:0.000491s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_zixun` [ RunTime:0.001267s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_zixun` [ RunTime:0.000371s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001468s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` IS NULL ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000565s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001618s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000511s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` IS NULL  AND `status` < '4' LIMIT 1 [ RunTime:0.000572s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:26:58+08:00 ] 119.103.136.229 GET chat.kstao.com/
+[运行时间：0.073304s] [吞吐率：13.64req/s] [内存消耗：3,386.52kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'dnt' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/index/controller/Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/index/view/index/index.html [ array (
+  0 => 'data',
+  1 => 'msg',
+  2 => 'maxm',
+  3 => 'zixun',
+  4 => 'user',
+  5 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000775s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_broadcast` [ RunTime:0.001588s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_broadcast` [ RunTime:0.000414s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_zixun` [ RunTime:0.001288s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_zixun` [ RunTime:0.000436s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001525s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` IS NULL ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000590s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001557s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000597s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` IS NULL  AND `status` < '4' LIMIT 1 [ RunTime:0.000505s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:27:05+08:00 ] 119.98.186.246 GET chat.kstao.com/admin
+[运行时间：0.041384s] [吞吐率：24.16req/s] [内存消耗：1,879.18kb] [文件加载：44]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'admin',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'dnt' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'admin_token=1aa8Yp8n00oB3XWQRJ0AvQNLo7SRMFZTO%2BXw57Zaou0es%2FlCQEH0tt%2BUPNq59N0fhqz%2B0AY%2FIjtAPO9o923Vefy6hA; Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1573805696,1574531166; PHPSESSID=7q71t44fmrkhr9isioi2r2dmh3',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-02-08T15:27:08+08:00 ] 42.236.10.114 GET chat.kstao.com/admin
+[运行时间：0.039836s] [吞吐率：25.10req/s] [内存消耗：1,878.27kb] [文件加载：44]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'admin',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 8.1.0; zh-CN; EML-AL00 Build/HUAWEIEML-AL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 baidu.sogo.uc.UCBrowser/11.9.4.974 UWS/2.13.1.48 Mobile Safari/537.36 AliApp(DingTalk/4.5.11) com.alibaba.android.rimet/10487439 Channel/227200 language/zh-CN',
+  'upgrade-insecure-requests' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-02-08T15:27:08+08:00 ] 42.236.10.114 GET chat.kstao.com/admin
+[运行时间：0.039638s] [吞吐率：25.23req/s] [内存消耗：1,879.33kb] [文件加载：44]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'admin',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 8.1.0; zh-CN; EML-AL00 Build/HUAWEIEML-AL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 baidu.sogo.uc.UCBrowser/11.9.4.974 UWS/2.13.1.48 Mobile Safari/537.36 AliApp(DingTalk/4.5.11) com.alibaba.android.rimet/10487439 Channel/227200 language/zh-CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://baidu.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-02-08T15:27:18+08:00 ] 42.236.10.114 GET chat.kstao.com/admin
+[运行时间：0.041147s] [吞吐率：24.30req/s] [内存消耗：1,879.33kb] [文件加载：44]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'admin',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 8.1.0; zh-CN; EML-AL00 Build/HUAWEIEML-AL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 baidu.sogo.uc.UCBrowser/11.9.4.974 UWS/2.13.1.48 Mobile Safari/537.36 AliApp(DingTalk/4.5.11) com.alibaba.android.rimet/10487439 Channel/227200 language/zh-CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://baidu.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-02-08T15:27:18+08:00 ] 119.98.186.246 GET chat.kstao.com/admin.php/login/index.html
+[运行时间：0.044653s] [吞吐率：22.39req/s] [内存消耗：2,369.51kb] [文件加载：50]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'dnt' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1573805696,1574531166; PHPSESSID=7q71t44fmrkhr9isioi2r2dmh3',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\varjoker\controller\Login->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Login.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/login/index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-02-08T15:27:32+08:00 ] 119.98.186.246 POST chat.kstao.com/admin.php/login/LogChek.html
+[运行时间：0.061156s] [吞吐率：16.35req/s] [内存消耗：3,683.90kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'login',
+    2 => 'LogChek',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'content-length' => '31',
+  'accept' => '*/*',
+  'origin' => 'http://chat.kstao.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'dnt' => '1',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://chat.kstao.com/admin.php/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1573805696,1574531166; PHPSESSID=7q71t44fmrkhr9isioi2r2dmh3',
+)
+[ info ] [ PARAM ] array (
+  'user' => 'admin',
+  'pass' => 'www.69yuanma.cn',
+)
+[ info ] [ RUN ] app\varjoker\controller\Login->LogChek[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000792s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_admin` [ RunTime:0.001989s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_admin` WHERE  `adminuser` = 'admin'  AND `adminpass` = 'www.69yuanma.cn' LIMIT 1 [ RunTime:0.000532s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:27:38+08:00 ] 119.98.186.246 POST chat.kstao.com/admin.php/login/LogChek.html
+[运行时间：0.065451s] [吞吐率：15.28req/s] [内存消耗：3,683.90kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'login',
+    2 => 'LogChek',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'content-length' => '31',
+  'accept' => '*/*',
+  'origin' => 'http://chat.kstao.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'dnt' => '1',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://chat.kstao.com/admin.php/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1573805696,1574531166; PHPSESSID=7q71t44fmrkhr9isioi2r2dmh3',
+)
+[ info ] [ PARAM ] array (
+  'user' => 'admin',
+  'pass' => 'www.69yuanma.cn',
+)
+[ info ] [ RUN ] app\varjoker\controller\Login->LogChek[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000738s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_admin` [ RunTime:0.001614s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_admin` WHERE  `adminuser` = 'admin'  AND `adminpass` = 'www.69yuanma.cn' LIMIT 1 [ RunTime:0.000515s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:27:44+08:00 ] 119.98.186.246 POST chat.kstao.com/admin.php/login/LogChek.html
+[运行时间：0.064133s] [吞吐率：15.59req/s] [内存消耗：3,683.59kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'login',
+    2 => 'LogChek',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'content-length' => '24',
+  'accept' => '*/*',
+  'origin' => 'http://chat.kstao.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'dnt' => '1',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://chat.kstao.com/admin.php/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1573805696,1574531166; PHPSESSID=7q71t44fmrkhr9isioi2r2dmh3',
+)
+[ info ] [ PARAM ] array (
+  'user' => 'admin',
+  'pass' => 'admin888',
+)
+[ info ] [ RUN ] app\varjoker\controller\Login->LogChek[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000691s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_admin` [ RunTime:0.001584s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_admin` WHERE  `adminuser` = 'admin'  AND `adminpass` = 'admin888' LIMIT 1 [ RunTime:0.000578s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:27:50+08:00 ] 119.98.186.246 POST chat.kstao.com/admin.php/login/LogChek.html
+[运行时间：0.065721s] [吞吐率：15.22req/s] [内存消耗：3,683.77kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'login',
+    2 => 'LogChek',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'content-length' => '21',
+  'accept' => '*/*',
+  'origin' => 'http://chat.kstao.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'dnt' => '1',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://chat.kstao.com/admin.php/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1573805696,1574531166; PHPSESSID=7q71t44fmrkhr9isioi2r2dmh3',
+)
+[ info ] [ PARAM ] array (
+  'user' => 'admin',
+  'pass' => 'admin',
+)
+[ info ] [ RUN ] app\varjoker\controller\Login->LogChek[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000702s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_admin` [ RunTime:0.002179s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_admin` WHERE  `adminuser` = 'admin'  AND `adminpass` = 'admin' LIMIT 1 [ RunTime:0.000724s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:27:55+08:00 ] 119.98.186.246 POST chat.kstao.com/admin.php/login/LogChek.html
+[运行时间：0.075381s] [吞吐率：13.27req/s] [内存消耗：3,883.59kb] [文件加载：62]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'login',
+    2 => 'LogChek',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'content-length' => '22',
+  'accept' => '*/*',
+  'origin' => 'http://chat.kstao.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'dnt' => '1',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://chat.kstao.com/admin.php/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1573805696,1574531166; PHPSESSID=7q71t44fmrkhr9isioi2r2dmh3',
+)
+[ info ] [ PARAM ] array (
+  'user' => 'admin',
+  'pass' => '123456',
+)
+[ info ] [ RUN ] app\varjoker\controller\Login->LogChek[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000569s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_admin` [ RunTime:0.001648s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_admin` WHERE  `adminuser` = 'admin'  AND `adminpass` = '123456' LIMIT 1 [ RunTime:0.000573s ]
+[ sql ] [ SQL ] UPDATE `dk_admin`  SET `getip`='119.98.186.246',`arrip`='123.101.227.105'  WHERE  `id` = 1 [ RunTime:0.004179s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:27:55+08:00 ] 119.98.186.246 GET chat.kstao.com/admin.php/index/index.html
+[运行时间：0.065581s] [吞吐率：15.25req/s] [内存消耗：3,606.71kb] [文件加载：60]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1573805696,1574531166; PHPSESSID=7q71t44fmrkhr9isioi2r2dmh3',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000647s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001574s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000559s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001224s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000332s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000508s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000433s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000408s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001325s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000290s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:28:05+08:00 ] 119.98.186.246 GET chat.kstao.com/admin.php/index/source.html
+[运行时间：0.096026s] [吞吐率：10.41req/s] [内存消耗：3,779.85kb] [文件加载：63]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'source',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1573805696,1574531166; PHPSESSID=7q71t44fmrkhr9isioi2r2dmh3',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->source[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/source.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006051s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.002727s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000519s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_source` [ RunTime:0.001527s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_source` LIMIT 1 [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_source` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000343s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001539s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '48' LIMIT 1 [ RunTime:0.000437s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001476s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 48  AND `status` = '5' LIMIT 1 [ RunTime:0.000501s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '47' LIMIT 1 [ RunTime:0.000399s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 47  AND `status` = '5' LIMIT 1 [ RunTime:0.000498s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '46' LIMIT 1 [ RunTime:0.000519s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 46  AND `status` = '5' LIMIT 1 [ RunTime:0.000551s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '45' LIMIT 1 [ RunTime:0.000517s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 45  AND `status` = '5' LIMIT 1 [ RunTime:0.000610s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '44' LIMIT 1 [ RunTime:0.000542s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 44  AND `status` = '5' LIMIT 1 [ RunTime:0.000581s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '37' LIMIT 1 [ RunTime:0.000573s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 37  AND `status` = '5' LIMIT 1 [ RunTime:0.000527s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '36' LIMIT 1 [ RunTime:0.000556s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 36  AND `status` = '5' LIMIT 1 [ RunTime:0.000571s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '35' LIMIT 1 [ RunTime:0.000566s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 35  AND `status` = '5' LIMIT 1 [ RunTime:0.000482s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '34' LIMIT 1 [ RunTime:0.000514s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 34  AND `status` = '5' LIMIT 1 [ RunTime:0.000440s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '33' LIMIT 1 [ RunTime:0.000527s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 33  AND `status` = '5' LIMIT 1 [ RunTime:0.000537s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:28:06+08:00 ] 119.98.186.246 GET chat.kstao.com/admin.php/index/index.html
+[运行时间：0.056685s] [吞吐率：17.64req/s] [内存消耗：3,395.75kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/source.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1573805696,1574531166; PHPSESSID=7q71t44fmrkhr9isioi2r2dmh3',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000476s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001531s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000436s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001279s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000356s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000319s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000307s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000240s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001005s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000284s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:28:07+08:00 ] 119.98.186.246 GET chat.kstao.com/admin.php/index/source.html
+[运行时间：0.096746s] [吞吐率：10.34req/s] [内存消耗：3,571.43kb] [文件加载：61]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'source',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1573805696,1574531166; PHPSESSID=7q71t44fmrkhr9isioi2r2dmh3',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->source[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/source.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000701s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001637s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000537s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_source` [ RunTime:0.001277s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_source` LIMIT 1 [ RunTime:0.000429s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_source` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000469s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001585s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '48' LIMIT 1 [ RunTime:0.000375s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001474s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 48  AND `status` = '5' LIMIT 1 [ RunTime:0.000573s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '47' LIMIT 1 [ RunTime:0.000544s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 47  AND `status` = '5' LIMIT 1 [ RunTime:0.000542s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '46' LIMIT 1 [ RunTime:0.000506s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 46  AND `status` = '5' LIMIT 1 [ RunTime:0.000501s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '45' LIMIT 1 [ RunTime:0.000491s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 45  AND `status` = '5' LIMIT 1 [ RunTime:0.000498s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '44' LIMIT 1 [ RunTime:0.000413s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 44  AND `status` = '5' LIMIT 1 [ RunTime:0.000485s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '37' LIMIT 1 [ RunTime:0.000419s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 37  AND `status` = '5' LIMIT 1 [ RunTime:0.000558s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '36' LIMIT 1 [ RunTime:0.000542s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 36  AND `status` = '5' LIMIT 1 [ RunTime:0.000573s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '35' LIMIT 1 [ RunTime:0.000509s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 35  AND `status` = '5' LIMIT 1 [ RunTime:0.000420s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '34' LIMIT 1 [ RunTime:0.000400s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 34  AND `status` = '5' LIMIT 1 [ RunTime:0.000416s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '33' LIMIT 1 [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 33  AND `status` = '5' LIMIT 1 [ RunTime:0.000416s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:28:13+08:00 ] 119.98.186.246 GET chat.kstao.com/admin.php/index/addlink.html
+[运行时间：0.060520s] [吞吐率：16.52req/s] [内存消耗：3,251.56kb] [文件加载：55]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'addlink',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'dnt' => '1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'referer' => 'http://chat.kstao.com/admin.php/index/source.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1573805696,1574531166; PHPSESSID=7q71t44fmrkhr9isioi2r2dmh3',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->addlink[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000760s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001613s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000532s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_source` [ RunTime:0.001267s ]
+[ sql ] [ SQL ] INSERT INTO `dk_source` (`addtime`) VALUES ('2020-02-08 15:28:13') [ RunTime:0.000479s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:28:14+08:00 ] 119.98.186.246 GET chat.kstao.com/admin.php/index/source.html
+[运行时间：0.079444s] [吞吐率：12.59req/s] [内存消耗：3,571.73kb] [文件加载：61]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'source',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/source.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1573805696,1574531166; PHPSESSID=7q71t44fmrkhr9isioi2r2dmh3',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->source[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/source.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000714s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001628s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000603s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_source` [ RunTime:0.001296s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_source` LIMIT 1 [ RunTime:0.000424s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_source` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000547s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001572s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '49' LIMIT 1 [ RunTime:0.000509s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001455s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 49  AND `status` = '5' LIMIT 1 [ RunTime:0.000506s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '48' LIMIT 1 [ RunTime:0.000355s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 48  AND `status` = '5' LIMIT 1 [ RunTime:0.000389s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '47' LIMIT 1 [ RunTime:0.000546s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 47  AND `status` = '5' LIMIT 1 [ RunTime:0.000550s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '46' LIMIT 1 [ RunTime:0.000541s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 46  AND `status` = '5' LIMIT 1 [ RunTime:0.000549s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '45' LIMIT 1 [ RunTime:0.000382s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 45  AND `status` = '5' LIMIT 1 [ RunTime:0.000498s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '44' LIMIT 1 [ RunTime:0.000567s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 44  AND `status` = '5' LIMIT 1 [ RunTime:0.000543s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '37' LIMIT 1 [ RunTime:0.000492s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 37  AND `status` = '5' LIMIT 1 [ RunTime:0.000363s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '36' LIMIT 1 [ RunTime:0.000428s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 36  AND `status` = '5' LIMIT 1 [ RunTime:0.000505s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '35' LIMIT 1 [ RunTime:0.000349s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 35  AND `status` = '5' LIMIT 1 [ RunTime:0.000349s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '34' LIMIT 1 [ RunTime:0.000343s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 34  AND `status` = '5' LIMIT 1 [ RunTime:0.000443s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:28:15+08:00 ] 119.98.186.246 GET chat.kstao.com/admin.php/index/addlink.html
+[运行时间：0.050168s] [吞吐率：19.93req/s] [内存消耗：3,251.61kb] [文件加载：55]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'addlink',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'dnt' => '1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'referer' => 'http://chat.kstao.com/admin.php/index/source.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1573805696,1574531166; PHPSESSID=7q71t44fmrkhr9isioi2r2dmh3',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->addlink[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000462s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001376s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000505s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_source` [ RunTime:0.001143s ]
+[ sql ] [ SQL ] INSERT INTO `dk_source` (`addtime`) VALUES ('2020-02-08 15:28:15') [ RunTime:0.000390s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:28:16+08:00 ] 119.98.186.246 GET chat.kstao.com/admin.php/index/source.html
+[运行时间：0.092794s] [吞吐率：10.78req/s] [内存消耗：3,571.73kb] [文件加载：61]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'source',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/source.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1573805696,1574531166; PHPSESSID=7q71t44fmrkhr9isioi2r2dmh3',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->source[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/source.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000659s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001570s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000469s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_source` [ RunTime:0.001277s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_source` LIMIT 1 [ RunTime:0.000318s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_source` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000515s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001584s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '50' LIMIT 1 [ RunTime:0.000420s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001469s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 50  AND `status` = '5' LIMIT 1 [ RunTime:0.000486s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '49' LIMIT 1 [ RunTime:0.000396s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 49  AND `status` = '5' LIMIT 1 [ RunTime:0.000405s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '48' LIMIT 1 [ RunTime:0.000428s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 48  AND `status` = '5' LIMIT 1 [ RunTime:0.000428s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '47' LIMIT 1 [ RunTime:0.000332s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 47  AND `status` = '5' LIMIT 1 [ RunTime:0.000325s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '46' LIMIT 1 [ RunTime:0.000431s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 46  AND `status` = '5' LIMIT 1 [ RunTime:0.000329s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '45' LIMIT 1 [ RunTime:0.000248s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 45  AND `status` = '5' LIMIT 1 [ RunTime:0.000550s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '44' LIMIT 1 [ RunTime:0.000532s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 44  AND `status` = '5' LIMIT 1 [ RunTime:0.000559s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '37' LIMIT 1 [ RunTime:0.000531s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 37  AND `status` = '5' LIMIT 1 [ RunTime:0.000455s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '36' LIMIT 1 [ RunTime:0.000477s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 36  AND `status` = '5' LIMIT 1 [ RunTime:0.000648s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '35' LIMIT 1 [ RunTime:0.000581s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 35  AND `status` = '5' LIMIT 1 [ RunTime:0.000611s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:28:25+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/source.html
+[运行时间：0.043617s] [吞吐率：22.93req/s] [内存消耗：2,478.08kb] [文件加载：53]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'source',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'dnt' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/thinkphp/tpl/dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-02-08T15:28:28+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/login/index.html
+[运行时间：0.042621s] [吞吐率：23.46req/s] [内存消耗：2,174.81kb] [文件加载：48]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/source.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\varjoker\controller\Login->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Login.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/login/index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-02-08T15:28:35+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/source.html
+[运行时间：0.043275s] [吞吐率：23.11req/s] [内存消耗：2,286.78kb] [文件加载：51]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'source',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'dnt' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/thinkphp/tpl/dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-02-08T15:28:40+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/source.html
+[运行时间：0.044414s] [吞吐率：22.52req/s] [内存消耗：2,286.78kb] [文件加载：51]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'source',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'dnt' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/thinkphp/tpl/dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-02-08T15:28:43+08:00 ] 119.103.136.229 POST chat.kstao.com/admin.php/login/LogChek.html
+[运行时间：0.069215s] [吞吐率：14.45req/s] [内存消耗：3,883.91kb] [文件加载：62]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'login',
+    2 => 'LogChek',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'content-length' => '22',
+  'accept' => '*/*',
+  'origin' => 'http://chat.kstao.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'dnt' => '1',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://chat.kstao.com/admin.php/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+)
+[ info ] [ PARAM ] array (
+  'user' => 'admin',
+  'pass' => '123456',
+)
+[ info ] [ RUN ] app\varjoker\controller\Login->LogChek[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000775s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_admin` [ RunTime:0.001563s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_admin` WHERE  `adminuser` = 'admin'  AND `adminpass` = '123456' LIMIT 1 [ RunTime:0.000572s ]
+[ sql ] [ SQL ] UPDATE `dk_admin`  SET `getip`='119.103.136.229',`arrip`='119.98.186.246'  WHERE  `id` = 1 [ RunTime:0.005749s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:28:43+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/index.html
+[运行时间：0.061361s] [吞吐率：16.30req/s] [内存消耗：3,396.20kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000607s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001386s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000459s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001274s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000411s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000402s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000360s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000278s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001266s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000387s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:28:50+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/setting/index.html
+[运行时间：0.063858s] [吞吐率：15.66req/s] [内存消耗：3,575.00kb] [文件加载：59]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'setting',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Setting->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Setting.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/setting/index.html [ array (
+  0 => 'admin',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000686s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001505s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000556s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:29:17+08:00 ] 119.103.136.229 POST chat.kstao.com/admin.php/setting/savesys.html
+[运行时间：0.064997s] [吞吐率：15.39req/s] [内存消耗：3,289.41kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'setting',
+    2 => 'savesys',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'content-length' => '412',
+  'cache-control' => 'max-age=0',
+  'origin' => 'http://chat.kstao.com',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/setting/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+)
+[ info ] [ PARAM ] array (
+  'title' => '站码之家zhanmazj.com',
+  'description' => '站码之家zhanmazj.com',
+  'domain' => 'zhanmazj.com',
+  'kfurl' => '站码之家zhanmazj.com',
+  'txjifen' => '6',
+  'txmoney' => '100',
+  'icp' => '京 ICP备案 123456号',
+  'copyright' => ' 版权所有 ©站码之家zhanmazj.com',
+  'switchcontent' => '站码之家zhanmazj.com',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Setting->savesys[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Setting.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/thinkphp/tpl/dispatch_jump.tpl [ array (
+  0 => 'admin',
+  1 => 'code',
+  2 => 'msg',
+  3 => 'data',
+  4 => 'url',
+  5 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000737s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001527s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000505s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_syslog` [ RunTime:0.001552s ]
+[ sql ] [ SQL ] INSERT INTO `dk_syslog` (`username` , `sysaction` , `addtime`) VALUES ('admin' , '保存系统配置' , '2020-02-08 15:29:17') [ RunTime:0.003282s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:29:19+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/setting/index.html
+[运行时间：0.065088s] [吞吐率：15.36req/s] [内存消耗：3,359.13kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'setting',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/setting/savesys.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Setting->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Setting.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/setting/index.html [ array (
+  0 => 'admin',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000508s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001603s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000573s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:29:37+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/index.html
+[运行时间：0.071487s] [吞吐率：13.99req/s] [内存消耗：3,395.93kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/setting/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000676s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001501s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000603s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001272s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000403s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000351s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000383s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000334s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001282s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000393s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:29:40+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/index.html
+[运行时间：0.072620s] [吞吐率：13.77req/s] [内存消耗：3,396.20kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000644s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001391s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000468s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001343s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000409s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000409s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000307s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000378s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001324s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000532s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:29:42+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/index.html
+[运行时间：0.072572s] [吞吐率：13.78req/s] [内存消耗：3,396.20kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000770s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001567s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000585s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001196s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000536s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000424s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000356s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000278s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001217s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000436s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:29:47+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/index.html
+[运行时间：0.070781s] [吞吐率：14.13req/s] [内存消耗：3,396.20kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000685s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001580s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000560s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001342s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000417s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000310s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000372s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000315s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001264s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000354s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:29:49+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/index.html
+[运行时间：0.071599s] [吞吐率：13.97req/s] [内存消耗：3,396.20kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000654s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001423s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000498s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001267s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000503s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000351s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000367s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000322s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001272s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000326s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:29:51+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/index.html
+[运行时间：0.069792s] [吞吐率：14.33req/s] [内存消耗：3,396.20kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000648s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001616s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000478s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001271s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000437s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000402s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000256s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000258s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001249s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000409s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:29:52+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/index.html
+[运行时间：0.071166s] [吞吐率：14.05req/s] [内存消耗：3,395.97kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000662s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001581s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000512s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001263s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000432s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000420s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000305s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000391s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001210s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000398s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:29:53+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/index.html
+[运行时间：0.072458s] [吞吐率：13.80req/s] [内存消耗：3,396.20kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000751s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001571s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000536s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001280s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000555s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000395s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000362s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000371s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001319s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000500s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:29:55+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/index.html
+[运行时间：0.068343s] [吞吐率：14.63req/s] [内存消耗：3,396.20kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000697s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001415s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000418s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001301s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000421s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000380s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000324s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000346s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001274s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000398s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:29:56+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/index.html
+[运行时间：0.063472s] [吞吐率：15.75req/s] [内存消耗：3,396.20kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000557s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001562s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000580s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001287s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000500s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000415s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000412s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000292s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001305s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000481s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:29:57+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/index.html
+[运行时间：0.059378s] [吞吐率：16.84req/s] [内存消耗：3,396.20kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000555s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001537s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000564s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001298s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000500s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000405s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000453s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000282s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001307s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000481s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:30:00+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/index.html
+[运行时间：0.058410s] [吞吐率：17.12req/s] [内存消耗：3,396.20kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000567s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001597s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000502s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001213s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000441s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000377s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000400s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000332s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001299s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000407s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:30:01+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/index.html
+[运行时间：0.066691s] [吞吐率：14.99req/s] [内存消耗：3,396.20kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/index.html [ array (
+  0 => 'admin',
+  1 => 'scount',
+  2 => 'alldata',
+  3 => 'data',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000647s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001535s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000579s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_province` [ RunTime:0.001388s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_province` [ RunTime:0.000500s ]
+[ sql ] [ SQL ] SELECT SUM(count) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000378s ]
+[ sql ] [ SQL ] SELECT SUM(zhuce) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000458s ]
+[ sql ] [ SQL ] SELECT SUM(ziliao) AS tp_sum FROM `dk_province` LIMIT 1 [ RunTime:0.000450s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_getdata` [ RunTime:0.001290s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_getdata` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000331s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:30:03+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/source.html
+[运行时间：0.078956s] [吞吐率：12.67req/s] [内存消耗：3,571.81kb] [文件加载：61]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'source',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->source[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/source.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000676s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001624s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000516s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_source` [ RunTime:0.001127s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_source` LIMIT 1 [ RunTime:0.000320s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_source` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000465s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001574s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '50' LIMIT 1 [ RunTime:0.000460s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001463s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 50  AND `status` = '5' LIMIT 1 [ RunTime:0.000412s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '49' LIMIT 1 [ RunTime:0.000272s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 49  AND `status` = '5' LIMIT 1 [ RunTime:0.000389s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '48' LIMIT 1 [ RunTime:0.000358s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 48  AND `status` = '5' LIMIT 1 [ RunTime:0.000475s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '47' LIMIT 1 [ RunTime:0.000493s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 47  AND `status` = '5' LIMIT 1 [ RunTime:0.000541s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '46' LIMIT 1 [ RunTime:0.000537s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 46  AND `status` = '5' LIMIT 1 [ RunTime:0.000459s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '45' LIMIT 1 [ RunTime:0.000617s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 45  AND `status` = '5' LIMIT 1 [ RunTime:0.000612s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '44' LIMIT 1 [ RunTime:0.000598s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 44  AND `status` = '5' LIMIT 1 [ RunTime:0.000572s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '37' LIMIT 1 [ RunTime:0.000514s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 37  AND `status` = '5' LIMIT 1 [ RunTime:0.000469s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '36' LIMIT 1 [ RunTime:0.000342s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 36  AND `status` = '5' LIMIT 1 [ RunTime:0.000354s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '35' LIMIT 1 [ RunTime:0.000339s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 35  AND `status` = '5' LIMIT 1 [ RunTime:0.000422s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:30:10+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/broadcast/index.html
+[运行时间：0.061485s] [吞吐率：16.26req/s] [内存消耗：3,721.71kb] [文件加载：63]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'broadcast',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/source.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Broadcast->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Broadcast.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/broadcast/index.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000525s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001557s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000468s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_broadcast` [ RunTime:0.001238s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_broadcast` LIMIT 1 [ RunTime:0.000429s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_broadcast` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000336s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:30:12+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/source.html
+[运行时间：0.093282s] [吞吐率：10.72req/s] [内存消耗：3,571.65kb] [文件加载：61]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'source',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/broadcast/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->source[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/source.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000717s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001503s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000497s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_source` [ RunTime:0.001274s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_source` LIMIT 1 [ RunTime:0.000405s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_source` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000470s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001591s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '50' LIMIT 1 [ RunTime:0.000424s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001509s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 50  AND `status` = '5' LIMIT 1 [ RunTime:0.000474s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '49' LIMIT 1 [ RunTime:0.000517s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 49  AND `status` = '5' LIMIT 1 [ RunTime:0.000565s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '48' LIMIT 1 [ RunTime:0.000553s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 48  AND `status` = '5' LIMIT 1 [ RunTime:0.000480s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '47' LIMIT 1 [ RunTime:0.000498s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 47  AND `status` = '5' LIMIT 1 [ RunTime:0.000461s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '46' LIMIT 1 [ RunTime:0.000397s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 46  AND `status` = '5' LIMIT 1 [ RunTime:0.000408s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '45' LIMIT 1 [ RunTime:0.000433s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 45  AND `status` = '5' LIMIT 1 [ RunTime:0.000568s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '44' LIMIT 1 [ RunTime:0.000549s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 44  AND `status` = '5' LIMIT 1 [ RunTime:0.000481s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '37' LIMIT 1 [ RunTime:0.000485s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 37  AND `status` = '5' LIMIT 1 [ RunTime:0.000379s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '36' LIMIT 1 [ RunTime:0.000355s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 36  AND `status` = '5' LIMIT 1 [ RunTime:0.000469s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '35' LIMIT 1 [ RunTime:0.000358s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 35  AND `status` = '5' LIMIT 1 [ RunTime:0.000373s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:30:14+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/notice/index.html
+[运行时间：0.062845s] [吞吐率：15.91req/s] [内存消耗：3,729.66kb] [文件加载：63]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'notice',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/source.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Notice->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Notice.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/notice/index.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000526s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001567s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000536s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_notice` [ RunTime:0.001642s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_notice` LIMIT 1 [ RunTime:0.000496s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_notice` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000343s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:30:16+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/notice/editd.html?id=1
+[运行时间：0.061446s] [吞吐率：16.27req/s] [内存消耗：3,273.55kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'notice',
+    2 => 'editd',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'dnt' => '1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'referer' => 'http://chat.kstao.com/admin.php/notice/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'id' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Notice->editd[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Notice.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000746s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001464s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000483s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_notice` [ RunTime:0.001284s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_notice` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000444s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:30:20+08:00 ] 119.103.136.229 POST chat.kstao.com/admin.php/notice/editd.html
+[运行时间：0.073829s] [吞吐率：13.54req/s] [内存消耗：3,395.38kb] [文件加载：60]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'notice',
+    2 => 'editd',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'content-length' => '769',
+  'cache-control' => 'max-age=0',
+  'origin' => 'http://chat.kstao.com',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundaryR8UlRtauMVEDiyyX',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/notice/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+)
+[ info ] [ PARAM ] array (
+  'title' => '站码之家zhanmazj.com',
+  'key' => '站码之家zhanmazj.com',
+  'id' => '1',
+  'content' => '<p>站码之家zhanmazj.com</p>',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Notice->editd[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Notice.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/thinkphp/tpl/dispatch_jump.tpl [ array (
+  0 => 'admin',
+  1 => 'code',
+  2 => 'msg',
+  3 => 'data',
+  4 => 'url',
+  5 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000725s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001465s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000566s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_notice` [ RunTime:0.001370s ]
+[ sql ] [ SQL ] UPDATE `dk_notice`  SET `title`='站码之家zhanmazj.com',`key`='站码之家zhanmazj.com',`content`='<p>站码之家zhanmazj.com</p>'  WHERE  `id` = 1 [ RunTime:0.003386s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_syslog` [ RunTime:0.001320s ]
+[ sql ] [ SQL ] INSERT INTO `dk_syslog` (`username` , `sysaction` , `addtime`) VALUES ('admin' , '修改首页公告' , '2020-02-08 15:30:20') [ RunTime:0.003713s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:30:21+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/notice/index.html
+[运行时间：0.070582s] [吞吐率：14.17req/s] [内存消耗：3,512.76kb] [文件加载：61]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'notice',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/notice/editd.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Notice->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Notice.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/notice/index.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000764s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001489s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000447s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_notice` [ RunTime:0.001272s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_notice` LIMIT 1 [ RunTime:0.000350s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_notice` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000313s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:30:25+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/consultation/index.html
+[运行时间：0.076998s] [吞吐率：12.99req/s] [内存消耗：3,734.44kb] [文件加载：63]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'consultation',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/notice/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Consultation->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Consultation.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/consultation/index.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000704s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001489s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000478s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_consultation` [ RunTime:0.001657s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_consultation` LIMIT 1 [ RunTime:0.000389s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_consultation` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000360s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:30:27+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/source.html
+[运行时间：0.077439s] [吞吐率：12.91req/s] [内存消耗：3,571.66kb] [文件加载：61]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'source',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/consultation/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->source[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/source.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000457s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001448s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000472s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_source` [ RunTime:0.001224s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_source` LIMIT 1 [ RunTime:0.000258s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_source` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000358s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001499s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '50' LIMIT 1 [ RunTime:0.000388s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001432s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 50  AND `status` = '5' LIMIT 1 [ RunTime:0.000323s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '49' LIMIT 1 [ RunTime:0.000320s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 49  AND `status` = '5' LIMIT 1 [ RunTime:0.000363s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '48' LIMIT 1 [ RunTime:0.000371s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 48  AND `status` = '5' LIMIT 1 [ RunTime:0.000295s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '47' LIMIT 1 [ RunTime:0.000289s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 47  AND `status` = '5' LIMIT 1 [ RunTime:0.000298s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '46' LIMIT 1 [ RunTime:0.000290s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 46  AND `status` = '5' LIMIT 1 [ RunTime:0.000295s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '45' LIMIT 1 [ RunTime:0.000283s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 45  AND `status` = '5' LIMIT 1 [ RunTime:0.000310s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '44' LIMIT 1 [ RunTime:0.000279s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 44  AND `status` = '5' LIMIT 1 [ RunTime:0.000299s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '37' LIMIT 1 [ RunTime:0.000281s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 37  AND `status` = '5' LIMIT 1 [ RunTime:0.000306s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '36' LIMIT 1 [ RunTime:0.000278s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 36  AND `status` = '5' LIMIT 1 [ RunTime:0.000300s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '35' LIMIT 1 [ RunTime:0.000300s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 35  AND `status` = '5' LIMIT 1 [ RunTime:0.000305s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:30:49+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/index/source.html
+[运行时间：0.091155s] [吞吐率：10.97req/s] [内存消耗：3,571.64kb] [文件加载：61]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'index',
+    2 => 'source',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/source.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Index->source[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/index/source.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000641s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001531s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000532s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_source` [ RunTime:0.001270s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_source` LIMIT 1 [ RunTime:0.000358s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_source` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000447s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001575s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '50' LIMIT 1 [ RunTime:0.000411s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001486s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 50  AND `status` = '5' LIMIT 1 [ RunTime:0.000460s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '49' LIMIT 1 [ RunTime:0.000469s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 49  AND `status` = '5' LIMIT 1 [ RunTime:0.000488s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '48' LIMIT 1 [ RunTime:0.000410s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 48  AND `status` = '5' LIMIT 1 [ RunTime:0.000362s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '47' LIMIT 1 [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 47  AND `status` = '5' LIMIT 1 [ RunTime:0.000265s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '46' LIMIT 1 [ RunTime:0.000319s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 46  AND `status` = '5' LIMIT 1 [ RunTime:0.000475s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '45' LIMIT 1 [ RunTime:0.000551s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 45  AND `status` = '5' LIMIT 1 [ RunTime:0.000518s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '44' LIMIT 1 [ RunTime:0.000520s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 44  AND `status` = '5' LIMIT 1 [ RunTime:0.000559s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '37' LIMIT 1 [ RunTime:0.000374s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 37  AND `status` = '5' LIMIT 1 [ RunTime:0.000536s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '36' LIMIT 1 [ RunTime:0.000586s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 36  AND `status` = '5' LIMIT 1 [ RunTime:0.000632s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` WHERE  `source` = '35' LIMIT 1 [ RunTime:0.000517s ]
+[ sql ] [ SQL ] SELECT SUM(loanamount) AS tp_sum FROM `dk_loan` WHERE  `source` = 35  AND `status` = '5' LIMIT 1 [ RunTime:0.000379s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:30:51+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/notice/index.html
+[运行时间：0.063795s] [吞吐率：15.68req/s] [内存消耗：3,512.50kb] [文件加载：61]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'notice',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/index/source.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Notice->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/Notice.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/notice/index.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000696s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001528s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000526s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_notice` [ RunTime:0.001282s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_notice` LIMIT 1 [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_notice` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000350s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:31:02+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/user/index.html
+[运行时间：0.076497s] [吞吐率：13.07req/s] [内存消耗：3,846.10kb] [文件加载：63]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/admin.php/notice/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\User->index[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/User.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/varjoker/view/user/index.html [ array (
+  0 => 'admin',
+  1 => 'alluser',
+  2 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000659s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001615s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000554s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001599s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_user` LIMIT 1 [ RunTime:0.000418s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000461s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:31:07+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/user/editd.html?id=17
+[运行时间：0.051942s] [吞吐率：19.25req/s] [内存消耗：3,305.90kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'user',
+    2 => 'editd',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'dnt' => '1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'referer' => 'http://chat.kstao.com/admin.php/user/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'id' => '17',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\User->editd[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/User.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000572s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001550s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000488s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001494s ]
+[ sql ] [ SQL ] SELECT `mobile`,`password` FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000388s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:31:15+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/user/editd.html?id=17
+[运行时间：0.061004s] [吞吐率：16.39req/s] [内存消耗：3,305.90kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'user',
+    2 => 'editd',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'dnt' => '1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'referer' => 'http://chat.kstao.com/admin.php/user/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'id' => '17',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\User->editd[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/User.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000418s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001463s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000447s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001579s ]
+[ sql ] [ SQL ] SELECT `mobile`,`password` FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000356s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:31:41+08:00 ] 119.103.136.229 GET chat.kstao.com/login/index.html
+[运行时间：0.048256s] [吞吐率：20.72req/s] [内存消耗：2,482.78kb] [文件加载：51]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->index[ /www/wwwroot/chat.kstao.com/application/index/controller/Login.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/index/view/login/index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-02-08T15:32:00+08:00 ] 119.103.136.229 POST chat.kstao.com/login/logchek.html
+[运行时间：0.066819s] [吞吐率：14.97req/s] [内存消耗：3,843.84kb] [文件加载：59]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'logchek',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'content-length' => '34',
+  'accept' => '*/*',
+  'origin' => 'http://chat.kstao.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'dnt' => '1',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://chat.kstao.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '13388888888',
+  'password' => '123456',
+)
+[ info ] [ RUN ] app\index\controller\Login->logchek[ /www/wwwroot/chat.kstao.com/application/index/controller/Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000637s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001880s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `mobile` = '13388888888'  AND `password` = '123456' LIMIT 1 [ RunTime:0.000833s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:32:03+08:00 ] 119.103.136.229 POST chat.kstao.com/login/logchek.html
+[运行时间：0.064294s] [吞吐率：15.55req/s] [内存消耗：3,843.88kb] [文件加载：59]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'logchek',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'content-length' => '34',
+  'accept' => '*/*',
+  'origin' => 'http://chat.kstao.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'dnt' => '1',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://chat.kstao.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '13388888888',
+  'password' => '123456',
+)
+[ info ] [ RUN ] app\index\controller\Login->logchek[ /www/wwwroot/chat.kstao.com/application/index/controller/Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000533s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001830s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `mobile` = '13388888888'  AND `password` = '123456' LIMIT 1 [ RunTime:0.000687s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:32:03+08:00 ] 119.103.136.229 GET chat.kstao.com/index/index.html
+[运行时间：0.074665s] [吞吐率：13.39req/s] [内存消耗：3,399.66kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/index/controller/Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/index/view/index/index.html [ array (
+  0 => 'data',
+  1 => 'msg',
+  2 => 'maxm',
+  3 => 'zixun',
+  4 => 'user',
+  5 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000757s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_broadcast` [ RunTime:0.001529s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_broadcast` [ RunTime:0.000504s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_zixun` [ RunTime:0.001271s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_zixun` [ RunTime:0.000507s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001509s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '17' ORDER BY `id` DESC LIMIT 1 [ RunTime:0.001583s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001658s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000726s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '17'  AND `status` < '4' LIMIT 1 [ RunTime:0.000685s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:32:08+08:00 ] 42.236.10.114 GET chat.kstao.com/index/index.html
+[运行时间：0.065253s] [吞吐率：15.32req/s] [内存消耗：3,389.76kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 8.1.0; zh-CN; EML-AL00 Build/HUAWEIEML-AL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 baidu.sogo.uc.UCBrowser/11.9.4.974 UWS/2.13.1.48 Mobile Safari/537.36 AliApp(DingTalk/4.5.11) com.alibaba.android.rimet/10487439 Channel/227200 language/zh-CN',
+  'upgrade-insecure-requests' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/index/controller/Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/index/view/index/index.html [ array (
+  0 => 'data',
+  1 => 'msg',
+  2 => 'maxm',
+  3 => 'zixun',
+  4 => 'user',
+  5 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000439s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_broadcast` [ RunTime:0.001550s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_broadcast` [ RunTime:0.000383s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_zixun` [ RunTime:0.001193s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_zixun` [ RunTime:0.000362s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001423s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` IS NULL ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000469s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001577s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000428s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` IS NULL  AND `status` < '4' LIMIT 1 [ RunTime:0.000510s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:32:08+08:00 ] 42.236.10.117 GET chat.kstao.com/index/index.html
+[运行时间：0.073045s] [吞吐率：13.69req/s] [内存消耗：3,391.30kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 8.1.0; zh-CN; EML-AL00 Build/HUAWEIEML-AL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 baidu.sogo.uc.UCBrowser/11.9.4.974 UWS/2.13.1.48 Mobile Safari/537.36 AliApp(DingTalk/4.5.11) com.alibaba.android.rimet/10487439 Channel/227200 language/zh-CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://baidu.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=vcummpc8o4afbmkcso7orcapb4',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/index/controller/Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/index/view/index/index.html [ array (
+  0 => 'data',
+  1 => 'msg',
+  2 => 'maxm',
+  3 => 'zixun',
+  4 => 'user',
+  5 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000612s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_broadcast` [ RunTime:0.001525s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_broadcast` [ RunTime:0.000482s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_zixun` [ RunTime:0.001271s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_zixun` [ RunTime:0.000474s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001538s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` IS NULL ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000556s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001566s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000577s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` IS NULL  AND `status` < '4' LIMIT 1 [ RunTime:0.000549s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:32:42+08:00 ] 119.103.136.229 GET chat.kstao.com/loan/index.html
+[运行时间：0.088175s] [吞吐率：11.34req/s] [内存消耗：4,104.23kb] [文件加载：62]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'loan',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Loan->index[ /www/wwwroot/chat.kstao.com/application/index/controller/Loan.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/index/view/loan/index.html [ array (
+  0 => 'vuser',
+  1 => 'viptype',
+  2 => 'status',
+  3 => 'exc',
+  4 => 'sucount',
+  5 => 'count',
+  6 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000726s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001788s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000739s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000708s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001659s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '17'  AND `status` = '0' LIMIT 1 [ RunTime:0.000720s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000770s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '17'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000680s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '17'  AND `status` < '4' [ RunTime:0.000589s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_loan` WHERE  `uid` = '17' LIMIT 1 [ RunTime:0.000339s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '17'  AND `status` < '4' LIMIT 1 [ RunTime:0.000745s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000750s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:32:49+08:00 ] 42.236.10.84 GET chat.kstao.com/loan/index.html
+[运行时间：0.062403s] [吞吐率：16.02req/s] [内存消耗：3,773.02kb] [文件加载：59]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'loan',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 8.1.0; zh-CN; EML-AL00 Build/HUAWEIEML-AL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 baidu.sogo.uc.UCBrowser/11.9.4.974 UWS/2.13.1.48 Mobile Safari/537.36 AliApp(DingTalk/4.5.11) com.alibaba.android.rimet/10487439 Channel/227200 language/zh-CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://baidu.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/thinkphp/tpl/dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-02-08T15:32:54+08:00 ] 119.103.136.229 GET chat.kstao.com/index/index.html
+[运行时间：0.072496s] [吞吐率：13.79req/s] [内存消耗：3,399.42kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'dnt' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/index/controller/Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/index/view/index/index.html [ array (
+  0 => 'data',
+  1 => 'msg',
+  2 => 'maxm',
+  3 => 'zixun',
+  4 => 'user',
+  5 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000625s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_broadcast` [ RunTime:0.001496s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_broadcast` [ RunTime:0.000586s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_zixun` [ RunTime:0.001348s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_zixun` [ RunTime:0.000598s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001517s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '17' ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000554s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001613s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000616s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '17'  AND `status` < '4' LIMIT 1 [ RunTime:0.000564s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:32:55+08:00 ] 42.236.10.93 GET chat.kstao.com/login/index.html
+[运行时间：0.043126s] [吞吐率：23.19req/s] [内存消耗：2,289.14kb] [文件加载：49]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 8.1.0; zh-CN; EML-AL00 Build/HUAWEIEML-AL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 baidu.sogo.uc.UCBrowser/11.9.4.974 UWS/2.13.1.48 Mobile Safari/537.36 AliApp(DingTalk/4.5.11) com.alibaba.android.rimet/10487439 Channel/227200 language/zh-CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/loan/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=arrmbr86qa3b0sr97uau7ng8v1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->index[ /www/wwwroot/chat.kstao.com/application/index/controller/Login.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/index/view/login/index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-02-08T15:32:56+08:00 ] 119.103.136.229 GET chat.kstao.com/user/cion.html
+[运行时间：0.076897s] [吞吐率：13.00req/s] [内存消耗：4,124.60kb] [文件加载：61]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'cion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->cion[ /www/wwwroot/chat.kstao.com/application/index/controller/User.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/index/view/user/cion.html [ array (
+  0 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000577s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001965s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000752s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000540s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001454s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '17'  AND `status` = '0' LIMIT 1 [ RunTime:0.000610s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000727s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '17'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000668s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000631s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:33:02+08:00 ] 27.115.124.70 GET chat.kstao.com/user/cion.html
+[运行时间：0.061517s] [吞吐率：16.26req/s] [内存消耗：3,803.50kb] [文件加载：59]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'cion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 8.1.0; zh-CN; EML-AL00 Build/HUAWEIEML-AL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 baidu.sogo.uc.UCBrowser/11.9.4.974 UWS/2.13.1.48 Mobile Safari/537.36 AliApp(DingTalk/4.5.11) com.alibaba.android.rimet/10487439 Channel/227200 language/zh-CN',
+  'upgrade-insecure-requests' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/thinkphp/tpl/dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-02-08T15:33:02+08:00 ] 27.115.124.70 GET chat.kstao.com/user/cion.html
+[运行时间：0.064353s] [吞吐率：15.54req/s] [内存消耗：3,804.69kb] [文件加载：59]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'cion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 8.1.0; zh-CN; EML-AL00 Build/HUAWEIEML-AL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 baidu.sogo.uc.UCBrowser/11.9.4.974 UWS/2.13.1.48 Mobile Safari/537.36 AliApp(DingTalk/4.5.11) com.alibaba.android.rimet/10487439 Channel/227200 language/zh-CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://baidu.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/thinkphp/tpl/dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-02-08T15:33:06+08:00 ] 27.115.124.70 GET chat.kstao.com/login/index.html
+[运行时间：0.043139s] [吞吐率：23.18req/s] [内存消耗：2,289.14kb] [文件加载：49]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 8.1.0; zh-CN; EML-AL00 Build/HUAWEIEML-AL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 baidu.sogo.uc.UCBrowser/11.9.4.974 UWS/2.13.1.48 Mobile Safari/537.36 AliApp(DingTalk/4.5.11) com.alibaba.android.rimet/10487439 Channel/227200 language/zh-CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/user/cion.html',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=9ngke2tghm0h9ep73bml4ns7a6',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->index[ /www/wwwroot/chat.kstao.com/application/index/controller/Login.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/index/view/login/index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-02-08T15:33:07+08:00 ] 119.103.136.229 GET chat.kstao.com/user/getdata.html
+[运行时间：0.076736s] [吞吐率：13.03req/s] [内存消耗：3,829.93kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'getdata',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'dnt' => '1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'referer' => 'http://chat.kstao.com/user/cion.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->getdata[ /www/wwwroot/chat.kstao.com/application/index/controller/User.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000642s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001855s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000688s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000624s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001449s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '17'  AND `status` = '0' LIMIT 1 [ RunTime:0.000646s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000653s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '17'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000609s ]
+[ sql ] [ SQL ] SELECT `money`,`vipend`,`viptype` FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000638s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:33:14+08:00 ] 119.103.136.229 GET chat.kstao.com/admin.php/user/editd.html?id=17
+[运行时间：0.060602s] [吞吐率：16.50req/s] [内存消耗：3,306.06kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'user',
+    2 => 'editd',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'dnt' => '1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'referer' => 'http://chat.kstao.com/admin.php/user/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'id' => '17',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\User->editd[ /www/wwwroot/chat.kstao.com/application/varjoker/controller/User.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000541s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001525s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000490s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001537s ]
+[ sql ] [ SQL ] SELECT `mobile`,`password` FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000388s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:33:17+08:00 ] 119.103.136.229 GET chat.kstao.com/user/getdata.html
+[运行时间：0.061124s] [吞吐率：16.36req/s] [内存消耗：3,829.93kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'getdata',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'dnt' => '1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'referer' => 'http://chat.kstao.com/user/cion.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->getdata[ /www/wwwroot/chat.kstao.com/application/index/controller/User.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000424s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001815s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000603s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000546s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001468s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '17'  AND `status` = '0' LIMIT 1 [ RunTime:0.000542s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000500s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '17'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000471s ]
+[ sql ] [ SQL ] SELECT `money`,`vipend`,`viptype` FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000344s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:33:18+08:00 ] 119.103.136.229 GET chat.kstao.com/user/index.html
+[运行时间：0.078338s] [吞吐率：12.77req/s] [内存消耗：4,121.09kb] [文件加载：61]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/user/cion.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\User->index[ /www/wwwroot/chat.kstao.com/application/index/controller/User.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/index/view/user/index.html [ array (
+  0 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000562s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001624s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000692s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000558s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001278s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '17'  AND `status` = '0' LIMIT 1 [ RunTime:0.000528s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000573s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '17'  AND `viptype` = '2'  AND `status` = '1' LIMIT 1 [ RunTime:0.000472s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000511s ]
+---------------------------------------------------------------
+[ 2020-02-08T15:33:24+08:00 ] 180.163.220.3 GET chat.kstao.com/user/index.html
+[运行时间：0.052942s] [吞吐率：18.89req/s] [内存消耗：3,804.70kb] [文件加载：59]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'user',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 8.1.0; zh-CN; EML-AL00 Build/HUAWEIEML-AL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 baidu.sogo.uc.UCBrowser/11.9.4.974 UWS/2.13.1.48 Mobile Safari/537.36 AliApp(DingTalk/4.5.11) com.alibaba.android.rimet/10487439 Channel/227200 language/zh-CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://baidu.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/thinkphp/tpl/dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-02-08T15:33:28+08:00 ] 180.163.220.4 GET chat.kstao.com/login/index.html
+[运行时间：0.044148s] [吞吐率：22.65req/s] [内存消耗：2,289.14kb] [文件加载：49]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 8.1.0; zh-CN; EML-AL00 Build/HUAWEIEML-AL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 baidu.sogo.uc.UCBrowser/11.9.4.974 UWS/2.13.1.48 Mobile Safari/537.36 AliApp(DingTalk/4.5.11) com.alibaba.android.rimet/10487439 Channel/227200 language/zh-CN',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/user/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=jvlsi3brddkho2jr7ilp8bth13',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->index[ /www/wwwroot/chat.kstao.com/application/index/controller/Login.php ]
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/index/view/login/index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-02-08T15:34:11+08:00 ] 119.103.136.229 GET chat.kstao.com/index/index.html
+[运行时间：0.058698s] [吞吐率：17.04req/s] [内存消耗：3,399.33kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/chat.kstao.com/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'chat.kstao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://chat.kstao.com/user/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_be77cbc06d5d5ed80e02b47bc912e112=1581076449,1581093566,1581094295,1581133380; Hm_lpvt_be77cbc06d5d5ed80e02b47bc912e112=1581133380; PHPSESSID=mvihcivvkd180tacgobm3eh8m5',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/wwwroot/chat.kstao.com/application/index/controller/Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] /www/wwwroot/chat.kstao.com/public/../application/index/view/index/index.html [ array (
+  0 => 'data',
+  1 => 'msg',
+  2 => 'maxm',
+  3 => 'zixun',
+  4 => 'user',
+  5 => 'loan',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000420s ] mysql:host=localhost;port=3306;dbname=cnmmmcom;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_broadcast` [ RunTime:0.001506s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_broadcast` [ RunTime:0.000359s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_zixun` [ RunTime:0.001201s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_zixun` [ RunTime:0.000366s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_loan` [ RunTime:0.001628s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '17' ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000459s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_user` [ RunTime:0.001546s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_user` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000433s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_loan` WHERE  `uid` = '17'  AND `status` < '4' LIMIT 1 [ RunTime:0.000452s ]

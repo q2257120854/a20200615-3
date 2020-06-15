@@ -1,0 +1,63 @@
+{include file="public/css" /}
+<body>
+<div class="head">
+  <div id="top">
+    <div id="topleft">
+      <ul>
+        <li><a href="http://t.qq.com" target="_blank" class="tengxun">腾讯微博</a></li>
+        <li><a href="http://weibo.com" target="_blank" rel="nofollow" class="xinlang">新浪微博</a></li>
+        <li><a href="/map.html" class="rss" target="_blank">网站地图</a></li>
+        <li><a href="http://a003.83ju.com/m" target="_blank" class="phone">手机站</a></li>
+      </ul>
+    </div>
+    <div id="topright" data-unuse="1">
+      <ul>      
+        <li><a href="/help/1488.html" target="_blank">登录</a></li>
+        <li style="border-right: none;"><a href="/member/index.php" target="_blank">注册</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="retrieve">
+    <div class="logo">
+      <a class="logo_img" href="{:_webfig('url')}"><img src="{:_webfig('logo')}" width="166" height="75"></a>
+    </div>
+        <div class="adlogo">
+            {:_ad(1)}
+        </div>
+    <div class="search" id="search">
+            <div class="login_top" >
+      </div>
+      <div class="search_top">
+        <div class="inputBox">
+          <div class="inputVal">
+            <span class="val2">
+            <form action="{:url('search')}">
+              <input type="text" name="q" id="mytxtdafdfasdf" class="input_txt2" placeholder="输入要找的关键词">
+            </form>
+            </span><span class="buttonVal"><input style="width:22px" type="submit" value="&#160;&#160;"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clear">
+    </div>
+  </div>
+</div>
+<div class="m">
+  <div class="menu">
+    <ul class="naval">
+      {fx:typeid limit="32"}
+      {php}$nk=$k%8;{/php}
+      <li><a href="{$fx.url}"><b>{:_substr($fx['title'],2,' ')}</b></a></li>
+      {eq name="$nk" value="7"}
+      </ul><span class="navb"></span><ul class="naval">
+      {/eq}
+      {/fx:typeid}
+    </ul>
+    <span class="navb"></span>
+  </div>
+</div><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

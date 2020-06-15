@@ -1,0 +1,297 @@
+{extend name="common/world"} {block name="title"}链上合约{/block} {block name="style"}
+<style type="text/css">
+</style>
+{/block} {block name="container"}
+<div class="d-flex">
+    <div class="btn-list">
+        <a href="/admin/event/contract.html" class="btn btn-secondary">代理商列表</a>
+        <a href="/admin/event/contract_store.html" class="btn btn-primary">商品列表</a>
+        <a href="/admin/event/contract_log.html" class="btn btn-secondary">操作记录</a>
+    </div>
+    <div class="btn-list ml-auto">
+        <button class="btn btn-secondary" data-toggle="modal" data-target=".modal-create">发布新商品</button>
+    </div>
+</div>
+<div class="card mt-3">
+    <div class="card-body p-0">
+        <table class="table table-hover table-outline table-vcenter card-table">
+            <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>图片</th>
+                    <th>状态</th>
+                    <th>基础价格</th>
+                    <th>当前价格</th>
+                    <th>增幅</th>
+                    <th>手续费</th>
+                    <th>轮次</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {volist name="logs" id="log"}
+                    <tr>
+                        <td>{$log.title} <span class="badge badge-default badge-md">{$Think.config.hello.contract.catalog[$log.catalog]}</span>{empty name="log.visible"} <span class="badge badge-default badge-md">不可见</span>{/empty}</td>
+                        <td><a href="/upload/{$log.image}" target="_blank"><img src="/upload/{$log.image}" class="w-7 h-5" /></a></td>
+                        <td>
+                            <span class="tag">
+                            {switch log.status}
+                                {case 1}空闲{/case}
+                                {case 2}一口价{/case}
+                                {case 3}团购{/case}
+                            {/switch}
+                            </span>
+                        </td>
+                        <td>{$log.base_price|money}</td>
+                        <td>{$log.now_price|money}</td>
+                        <td>{$log.inc|money}</td>
+                        <td>{$log.charge|money}</td>
+                        <td>{$log.loop}</td>
+                        <td>
+                            <button class="btn btn-secondary btn-sm btn-edit" data-id="{$log.id}">编辑</button>
+                        </td>
+                    </tr>
+                {/volist}
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">{$logs|raw}</div>
+</div>
+<div class="modal modal-create" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" name="action" value="create" />
+                <div class="modal-header">
+                    <h5 class="modal-title">发布新商品</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label class="form-label">商品分类</label>
+                                <select class="custom-select input-group-text" name="catalog">
+                                    {volist name="Think.config.hello.contract.catalog" id="item"}
+                                        <option value="{$key}">{$item}</option>
+                                    {/volist}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label class="form-label">商品名称</label>
+                                <input type="text" class="form-control" placeholder="商品名称" name="title" />
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label class="form-label">商品图片</label>
+                                <div class="custom-file">
+                                    <input type="file" accept="image/*" class="custom-file-input" name="image" />
+                                    <label class="custom-file-label">选择图片</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">首发价格</label>
+                                <input type="text" class="form-control" placeholder="首发价格" name="base_price" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">增幅比例</label>
+                                <input type="text" class="form-control" placeholder="填0.01，表示下一轮价格涨1%" name="inc" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">手续费比例</label>
+                                <input type="text" class="form-control" placeholder="填0.01，表示手续费为1%" name="charge" />
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">每秒收益</label>
+                                <input type="text" class="form-control" placeholder="小于等于0表示没有收益" name="profit" />
+                            </div>
+                        </div> -->
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="form-label">宝贝详情</label>
+                                <script id="editor" name="content" type="text/plain" style="height: 20rem;"></script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary">发布商品</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal modal-update" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" />
+                <input type="hidden" name="action" value="update" />
+                <div class="modal-header">
+                    <h5 class="modal-title">编辑商品</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label class="form-label">商品分类</label>
+                                <select class="custom-select input-group-text" name="catalog">
+                                    {volist name="Think.config.hello.contract.catalog" id="item"}
+                                        <option value="{$key}">{$item}</option>
+                                    {/volist}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label class="form-label">商品名称</label>
+                                <input type="text" class="form-control" placeholder="商品名称" name="title" />
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label class="form-label">商品图片</label>
+                                <div class="custom-file">
+                                    <input type="file" accept="image/*" class="custom-file-input" name="image" />
+                                    <label class="custom-file-label">不选，代表不改图片</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">排列顺序</label>
+                                <input type="text" class="form-control" placeholder="数字越大越靠前" name="sort" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">是否显示</label>
+                                <div class="custom-controls-stacked">
+                                    <label class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" name="visible" value="1" checked="">
+                                        <span class="custom-control-label">显示</span>
+                                    </label>
+                                    <label class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" name="visible" value="0">
+                                        <span class="custom-control-label">隐藏</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">代理商</label>
+                                <input type="text" class="form-control" placeholder="代理商手机号码" name="agent" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">归属人（修改归属人将自动执行转让）</label>
+                                <input type="text" class="form-control" placeholder="归属人手机号码" name="owner" />
+                            </div>
+                        </div> -->
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">首发价格</label>
+                                <input type="text" class="form-control" placeholder="首发价格" name="base_price" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">当前价格</label>
+                                <input type="text" class="form-control" placeholder="本轮当前价格" name="now_price" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">增幅比例</label>
+                                <input type="text" class="form-control" placeholder="填0.01，表示下一轮价格涨1%" name="inc" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">手续费比例</label>
+                                <input type="text" class="form-control" placeholder="填0.01，表示手续费为1%" name="charge" />
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">每秒收益</label>
+                                <input type="text" class="form-control" placeholder="小于等于0表示没有收益" name="profit" />
+                            </div>
+                        </div> -->
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="form-label">宝贝详情</label>
+                                <script id="editor2" name="content" type="text/plain" style="height: 20rem;"></script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary">保存商品</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script>
+require(['jquery', 'ZeroClipboard'], function($, ZeroClipboard){
+    window['ZeroClipboard'] = ZeroClipboard;
+    $(function(){
+        // 实例化编辑器
+        var ue = UE.getEditor('editor');
+        var ue2 = UE.getEditor('editor2');
+        // 编辑商品
+        $('.btn-edit').on('click', function(){
+            if ($('.btn-loading').length) {
+                return false;
+            }
+            $(this).addClass('btn-loading');
+            var id = $(this).data('id');
+            ajax('/admin/event/contract_store', {action: 'get', id: id}, function(res){
+                $('.btn-edit[data-id=' + id + ']').removeClass('btn-loading');
+                $('.modal-update input[name=id]').val(res.data.id);
+                $('.modal-update select[name=catalog]').val(res.data.catalog);
+                $('.modal-update input[name=title]').val(res.data.title);
+                $('.modal-update input[name=sort]').val(res.data.sort);
+                if (res.data.visible) {
+                    $('.modal-update input[name=visible][value=1]').prop('checked', true);
+                } else {
+                    $('.modal-update input[name=visible][value=1]').prop('checked', false);
+                    $('.modal-update input[name=visible][value=0]').prop('checked', true);
+                }
+                /*$('.modal-update input[name=agent]').val(res.data.agent);
+                $('.modal-update input[name=owner]').val(res.data.owner);*/
+                $('.modal-update input[name=base_price]').val(res.data.base_price);
+                $('.modal-update input[name=now_price]').val(res.data.now_price);
+                $('.modal-update input[name=inc]').val(res.data.inc);
+                $('.modal-update input[name=charge]').val(res.data.charge);
+                $('.modal-update input[name=profit]').val(res.data.profit);
+                ue2.setContent(res.data.content ? res.data.content : '');
+                $('.modal-update').modal();
+            });
+        });
+    });
+});
+</script>
+{/block}

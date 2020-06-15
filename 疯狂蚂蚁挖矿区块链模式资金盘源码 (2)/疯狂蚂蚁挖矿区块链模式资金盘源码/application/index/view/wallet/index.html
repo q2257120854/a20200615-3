@@ -1,0 +1,47 @@
+{extend name="common/world"}
+{block name="title"}我的钱包{/block}
+{block name="style"}{/block}
+{block name="container"}
+<div class="d-flex">
+    <div class="form-group mb-3">
+        <select class="form-control custom-select w-auto">
+            <option value="all">全部类型</option>
+            {volist name="businesses" id="business"}
+                {eq name="Think.get.t" value="$key"}
+                    <option selected="selected" value="{$key}">{$business}</option>
+                {else /}
+                    <option value="{$key}">{$business}</option>
+                {/eq}
+            {/volist}
+        </select>
+    </div>
+    <div class="text-muted mt-2 ml-3">合计：11230 {$currency.name}</div>
+</div>
+<div class="card">
+    <table class="table card-table table-vcenter text-nowrap">
+        <thead>
+            <tr>
+                <th>基本</th>
+                <th>信息</th>
+                <th>数额</th>
+            </tr>
+        </thead>
+        <tbody>
+            {for start="1" end="30"}
+            <tr>
+                <td>
+                    <span>A140001401</span>
+                    <div class="text-muted small">2018-08-08 13:15:30</div>
+                </td>
+                <td>
+                    <span>交易买入</span>
+                    <div class="text-muted small">18721889831</div>
+                </td>
+                <td>-800</td>
+            </tr>
+            {/for}
+        </tbody>
+    </table>
+</div>
+{/block}
+{block name="script"} {/block}

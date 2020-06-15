@@ -1,0 +1,353 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/login.css" />
+	</head>
+	<body>
+		<!--	<section class="aui-grid fx-top">
+		<div class="aui-row">
+		<div class="aui-col-xs-6 chait" data-id='1' style="border-right: 1px solid #e8e8e8;" Tapmode onclick="xuan(this,1)">
+		<div class="aui-grid-label">
+		手机登录
+		</div>
+		</div>
+		<div class="aui-col-xs-6" data-id='2' Tapmode onclick="xuan(this,2)">
+		<div class="aui-grid-label">
+		邮箱登录
+		</div>
+		</div>
+		</div>
+		</section>-->
+		<div class="aui-content aui-margin-b-15 fx-yejian-by" style="padding-top: 50px;">
+			<ul class="aui-list aui-form-list" id="login-1">
+				<li class="aui-list-item" id="mobile">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-input">
+							<input type="tel" placeholder="请输入手机号" value="">
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item" id="yzm">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-input">
+							<input type="password" placeholder="请输入密码" value="">
+						</div>
+						<!--<div class="aui-list-item-label-icon fx-yzm" >
+						获取验证码
+						</div>-->
+					</div>
+				</li>
+				 
+			</ul>
+			<ul class="aui-list aui-form-list" id="login-2" style="display: none">
+				<li class="aui-list-item" id="mobile">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-input">
+							<input type="text" placeholder="请输入手机号">
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item" id="pwa">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-input">
+							<input type="password" placeholder="请输入密码">
+						</div>
+						<div class="aui-list-item-label-icon fx-yzm" style="color: #212121 !important;width: 90px !important;">
+							忘记密码？
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="aui-content aui-margin-b-15 fx-login fx-yejian-by">
+			<div class="aui-btn aui-btn-danger aui-btn-block aui-btn-sm" Tapmode onclick="login()">
+				登录
+			</div>
+			 
+			<div class="fx-login-b">
+				<span class="aui-pull-left" Tapmode onclick="_url({url:'reg',title:'手机注册'})">手机注册</span><span class="aui-pull-right" Tapmode onclick="_url({url:'pwd',title:'密码找回'})">密码找回</span>
+			</div>
+		</div>
+		<div class="aui-content fx-b fx-yejian-by fx-yijiandengl" style="display: none">
+			<div class="fx-shanghuaxian"></div>
+			<div class="fx-b-title">
+				一键登录
+			</div>
+			<div class="aui-grid">
+				<div class="aui-row URLwai">
+					<div class="aui-col-xs-4" tapmode data-id="wx">
+						<img src="../image/wx.png" />
+						<div class="aui-grid-label">
+							微信
+						</div>
+					</div>
+					<div class="aui-col-xs-4" tapmode data-id="qq">
+						<img src="../image/qq.png" />
+						<div class="aui-grid-label">
+							QQ
+						</div>
+					</div>
+					<div class="aui-col-xs-4" tapmode data-id="wb">
+						<img src="../image/weibo.png" />
+						<div class="aui-grid-label">
+							微博
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/fastclick.js"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			FastClick.attach(document.body);
+			// 监听夜间
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+			$('.URLwai div').click(function() {
+				_loading()
+				var id = $(this).data('id');
+				_loginTyle(id)
+			})
+			if(!$api.getStorage('app')){
+				$('.fx-yijiandengl').removeAttr('style')
+			}
+		}
+		function xuan(job, type) {
+			$('.fx-top .aui-row div').removeClass('chait');
+			$(job).addClass('chait');
+			if (type == 2) {
+				$('#login-1').hide();
+				$('#login-2').show();
+				$('#shuoming').hide();
+			} else {
+				$('#login-1').show();
+				$('#login-2').hide();
+				$('#shuoming').show();
+			}
+		}
+
+		function login() {
+			var type = $('.fx-top .aui-row div.chait').data('id')
+			type = 1
+			if (type == 1) {
+				var username = $('#login-1 #mobile input').val();
+				var password = $('#login-1 #yzm input').val();
+				if (!_isMobile(username)) {
+					_msg('手机号码不正确！')
+					return;
+				}
+				if (!yzm) {
+					_msg('请输入验证码！')
+					return;
+				}
+			} else {
+				var username = $('#login-2 #mobile input').val();
+				var password = $('#login-2 #yzm input').val();
+				if (!_isMobile(username)) {
+					_msg('手机号码不正确！')
+					return;
+				}
+				if (!pwa) {
+					_msg('请输入密码！')
+					return;
+				}
+			}
+			_loading()
+			_ajax('api/user/login', function(ret, err) {
+				if (ret.ret) {
+					//console.info("ret:" + JSON.stringify(ret))
+					_ajax('api/member/info', function(rets, errs) {
+					//	console.info("ret:" + JSON.stringify(rets))
+						//console.info("err:" + JSON.stringify(errs))
+						if (rets.ret) {
+							_loadingCloes()
+							$api.setStorage('token', ret.ret);
+							$api.setStorage('user', rets.ret);
+//							_msg('登录成功')
+//					    	setTimeout(function(){
+//					    		_hone();
+//					    	},1000)
+					    	_msg('登录成功')
+					    	api.sendEvent({
+							    name: 'ext',
+							    extra: {
+							        key1: 'value1',
+							    }
+							});
+					    	setTimeout(function(){
+					    		_hone()
+					    	},1000)
+						} else {
+							_loadingCloes()
+							_msg(rets.err)
+						}
+					}, {
+						token : ret.ret
+					})
+				} else {
+					_loadingCloes()
+					_msg(ret.err)
+				}
+			}, {
+				username : username,
+				password : password
+			})
+		}
+		// 第三方登录
+		function _loginTyle(type){
+			_loading()
+			if(type=='wx'){
+				var wx = api.require('wx');
+				wx.isInstalled(function(ret, err) {
+					_loadingCloes();
+					if (ret.installed) {
+						wx.auth({
+						}, function(reta, erra) {
+							if (reta.status) {
+								wx.getToken({
+									code : reta.code
+								}, function(retg, errg) {
+									if (retg.status) {
+										wx.getUserInfo({
+											accessToken : retg.accessToken,
+											openId : retg.openId
+										}, function(retw, errw) {
+											if (retw.status) {
+												var openid = retw.openid//唯一识别ID
+												if (openid) { 
+													_loginToken({type:'wxapp',openid:retw.openid,img:retw.headimgurl,nickname:retw.nickname,info:retw})
+												} else {
+													_loadingCloes();
+													_alert('openId值为空')
+												}
+											} 
+										});
+									} 
+								});
+							}
+						});
+					} else {
+						_alert('当前设备未安装微信客户端')
+					}
+				});
+			}else if(type=='qq'){
+				var qq = api.require('qq');
+				qq.installed(function(ret, err) {
+					_loadingCloes();
+					if (ret.status) {
+						qq.login(function(retl, errl) {
+							if (retl.status) {
+								qq.getUserInfo(function(retg, errg) {
+									var openid = retl.openId;
+									if (openid && retg.status) {
+										_loginToken({type:'qqapp',openid:openid,img:retg.info.figureurl_qq_2,nickname:retg.info.nickname,info:retg.info})
+									} else {
+										_alert('获取QQ资料失败')
+									}
+								});
+							}
+						});
+					} else {
+						_alert('当前设备未安装QQ客户端')
+					}
+				});
+			}else if(type=='wb'){
+				var weibo = api.require('weibo');
+				weibo.isInstalled(function(ret) {
+					_loadingCloes();
+					if (ret.status) {
+						weibo.auth(function(reta, erra) {
+							if (reta) {
+								if (reta.status) {
+									weibo.getUserInfo({
+										token : reta.token,
+										userId : reta.userId
+									}, function(retg, errg) {
+										if(retg.status){
+											var openid = retg.userInfo.id
+											if (openid) {
+												_loginToken({type:'wbapp',openid:openid,img:retg.userInfo.avatar_hd,nickname:retg.userInfo.name,info:retg.userInfo})
+												_login(openid, 'wbapp')
+											} else {
+												_loadingCloes();
+												_alert('openId值为空')
+											}
+											return;
+										}
+									});
+								}
+							}
+						});
+					} else {
+						api.alert({
+							msg : '当前设备未安装新浪微博客户端'
+						});
+						return
+					}
+				});			
+			}
+		}
+		// 封装ajax登录获取token
+		function _loginToken(data) {
+			_ajax('api/user/oauth', function(ret, err) {
+			//alert('ret:'+JSON.stringify(ret)+"\r\nerr:"+JSON.stringify(err))
+				if (ret.ret) {
+					_ajax('api/member/info', function(rets, errs) {
+						if (rets.ret) {
+							_loadingCloes();
+							$api.setStorage('token', ret.ret);
+							$api.setStorage('user', rets.ret);
+					    	_msg('登录成功')
+					    	api.sendEvent({
+							    name: 'ext',
+							    extra: {
+							        key1: 'value1',
+							    }
+							});
+					    	setTimeout(function(){
+					    		_hone()
+					    	},1000)
+						} else {
+							_loadingCloes()
+							_alert(rets.err)
+						}
+					}, {
+						token : ret.ret
+					})
+				} else {
+					_loadingCloes()
+					_alert(ret.err)
+				}
+			},data)
+		}
+		
+		 
+
+		// 验证手机号码
+		function _isMobile(mobile) {
+			if (mobile == "") {
+				return false;
+			} else {
+				if (! /^0{0,1}(13[0-9]|15[0-9]|17[0-9]|18[0-9]|14[0-9])[0-9]{8}$/.test(mobile)) {
+					return false;
+				}
+				return true;
+			}
+		}
+	</script>
+</html>
+

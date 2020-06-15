@@ -1,0 +1,1 @@
+<?php include '../fhincludes/common.php'; echo $conf['cishu']?>

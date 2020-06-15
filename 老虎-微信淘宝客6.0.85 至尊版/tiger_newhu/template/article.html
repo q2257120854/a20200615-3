@@ -1,0 +1,169 @@
+
+		{template 'public_head'}
+		<!--中间内容开始-->
+		<section>
+		    <section class="hbox stretch">
+		    {template 'public_left'}
+		    <!--右边框架-->
+			  <section id="content">
+			    <section class="vbox">
+			        <section class="scrollable padder"  style="padding-bottom:50px;">
+                        <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                          <li><a href="index.html"><i class="fa fa-home"></i> 首页  </a></li>
+                          <li class="active">商学院</li>
+                        </ul>
+						<a href="{php echo $this->createWebUrl('article', array('op' => 'post'));}" class="btn btn-s-md btn-info tigerbtn"><i class="fa fa-plus"></i> 添加文章</a>
+						<a href="{php echo $this->createWebUrl('article', array('op' => 'display'));}" class="btn btn-s-md btn-success tigerbtn"><i class="fa fa-pencil-square-o "></i> 管理文章</a>
+						
+						<style type="text/css">
+							.tigerbtn{margin-right:10px;margin-bottom: 10px;}
+						</style>
+			            <!--编辑内容-->
+                        {if $operation == 'post'}
+
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <h3 class="panel-title">
+       添加/编辑文章
+      </h3>
+   </div>
+   <div class="panel-body">
+        <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">文章名称</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="title" value="{$item['title']}"  placeholder="文章名称">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">排序</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="px" value="{$item['px']}"  placeholder="请输入数字">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">分类</label>
+            <div class="col-sm-10">
+                <div class="input-group">
+                <select class="form-control" name="type" style="width: 150px;">
+					{loop $articletype $v}
+                    <option {if !empty($item) && $item['type'] == $v['id']}selected{/if} value="{$v['id']}">{$v['title']}</option>
+					{/loop}
+                </select>                
+                </div>
+            </div>
+          </div>
+		  
+		  <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label" style="color:#ff0000">首页推荐</label>
+		            <div class="col-xs-12 col-sm-9">
+		                <label class="radio-inline"><input type="radio" name="tj" value="0" 
+		                 {if $item['tj']==0 }checked="checked" {/if}>不推荐</label>
+		                <label class="radio-inline"><input type="radio" name="tj" value="1"
+		                 {if $item['tj']==1} checked="checked" {/if}>首页头部</label>
+						 <label class="radio-inline"><input type="radio" name="tj" value="2"
+						  {if $item['tj']==2} checked="checked" {/if}>首页中部</label>
+						 		              
+		              
+		                  <span class="help-block"></span>
+		            </div>
+		  </div>
+
+          
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">点击数</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="click" value="{$item['click']}"  placeholder="">
+              <span class="help-block"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">奖品图片</label>
+            <div class="col-sm-10">
+              {php echo tpl_form_field_image('picurl',$item['picurl'])}
+            </div>
+          </div>
+ 
+
+
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">内容</label>
+            <div class="col-sm-10">
+              <textarea name="content" class="form-control richtext-clone" cols="70" rows="20">{$item['content']}</textarea>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+               <input type="hidden" name="id" value="{$item['id']}" />
+               <input type="submit" name="submit" class="btn btn-default" value="提交"  class="btn btn-primary"/>
+               <input type="hidden" name="token" value="{$_W['token']}" />
+            </div>
+          </div>
+        </form>
+   </div>
+</div>
+
+
+<script language='javascript'>
+  require(['jquery', 'util'], function($, u){
+    $(function(){
+      $('.richtext-clone').each( function() {
+        u.editor(this);
+      });
+    });
+  });
+</script>
+
+{elseif $operation == 'display'}
+<div class="panel panel-default">
+      <table class="table">
+          <th width="80">排序</th>
+          <th>名称</th>
+          <th>点击数</th>
+          <th  style="text-align:right;">操作</th>
+
+      {loop $list $item}
+        <tr>
+          <td>{$item['px']}</td>
+          <td>{if $item['tj']==1}<span style="color: #ff0000;">【首页推荐】</span>{/if}{$item['title']}</td>
+          <td>{$item['click']}</td>
+          <td style="text-align:right;">
+            <a href="{php echo $this->createWebUrl('article', array('id' => $item['id'], 'op' => 'post'))}" title="编辑" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>编辑</a>
+            <a href="{php echo $this->createWebUrl('article', array('id' => $item['id'], 'op' => 'delete'))}" onclick="return confirm('此操作不可恢复，确认删除？');return false;" title="删除" class="btn btn-sm btn-default"><i class="fa fa-remove"></i>删除</a>
+          </td>
+        </tr>
+        {/loop}
+       </table>
+ 
+</div>
+{/if}
+
+<script>
+require(['jquery', 'util'], function($, u){
+	$(function(){ $('.richtext-clone').each( function() { u.editor(this); });		});
+  $('.btn').hover(function(){$(this).tooltip('show');},function(){$(this).tooltip('hide');});
+  $('.full').hover(function(){$(this).tooltip('show');},function(){$(this).tooltip('hide');});
+});
+</script>
+
+                        <!--编辑内容结束-->
+			        </section>
+			        {template 'public_bottom'}
+			    </section>
+			    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+			  </section>
+			  <aside class="bg-light lter b-l aside-md hide" id="notes">
+			       <div class="wrapper"></div>
+			  </aside>
+			<!--右边框架结束-->
+			</section>
+		  </section>
+		<!--中间内容结束-->
+	</section>
+
+
+</body>
+</html>

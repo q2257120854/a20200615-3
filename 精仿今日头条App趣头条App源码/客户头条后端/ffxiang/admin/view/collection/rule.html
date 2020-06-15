@@ -1,0 +1,256 @@
+ {include file="public/header" /}
+ <style type="text/css">
+     .fixed-table-body{
+        overflow-x:auto !important;
+        overflow-y:auto !important;
+    } 
+#delid{ width: 30px; }
+#typeid,.bs-th1{ width: 45px; text-align: center;}
+#title,.bs-th2{ width: 50%; }
+#img,.bs-th3{ width: 45px; }
+#img img{ height: 20px; }
+#laiyuan,.bs-th4{ width: 150px; }
+#date{ }
+.btn-outline{
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+ </style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox-title">
+                <h5>点击你要采集目标分类</h5>
+            </div>
+            <div class="ibox-content">
+                <button type="button" class="btn btn-w-m btn-outline btn-primary" onclick="caiji('toutiao',1)">头条</button>
+                <button type="button" class="btn btn-w-m btn-outline btn-primary" onclick="caiji('shehui',1)">社会</button>
+                <button type="button" class="btn btn-w-m btn-outline btn-primary" onclick="caiji('guonei',1)">国内</button>
+                <button type="button" class="btn btn-w-m btn-outline btn-primary" onclick="caiji('guoji',1)">国际</button>
+                <button type="button" class="btn btn-w-m btn-outline btn-primary" onclick="caiji('yule',1)">娱乐</button>
+                <button type="button" class="btn btn-w-m btn-outline btn-primary" onclick="caiji('tiyu',1)">体育</button>
+                <button type="button" class="btn btn-w-m btn-outline btn-primary" onclick="caiji('junshi',1)">军事</button>
+                <button type="button" class="btn btn-w-m btn-outline btn-primary" onclick="caiji('keji',1)">科技</button>
+                <button type="button" class="btn btn-w-m btn-outline btn-primary" onclick="caiji('caijing',1)">财经</button>
+                <button type="button" class="btn btn-w-m btn-outline btn-primary" onclick="caiji('shishang',1)">时尚</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="margin-top:20px">
+            <div class="ibox-title">
+                <h5>采集结果</h5>
+            </div>
+            <div class="ibox-content">
+               <form class="form-horizontal" method="post">
+                    <table data-toggle="table" data-height="300" id="table"  >
+                        <thead>
+                            <tr>
+                               <th id="delid" class="bs-checkbox"><input type="checkbox" id="delidAll"></th>
+                                <th class="bs-th1">分类</th>
+                                <th class="bs-th2">标题</th>
+                                <th class="bs-th3">图片</th>
+                                <th class="bs-th4">来源</th>
+                                <th class="bs-th5">时间</th>
+                                <th class="bs-th6">状态</th> 
+                            </tr>
+                        </thead> 
+                        <tbody id="form"> 
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox-content ">
+                
+                <button type="button" class="btn btn-w-m btn-primary" id="typeidAjax">开始发布</button>
+              
+            </div>
+
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<script type="text/javascript">
+var typeid='';
+var jian=0;
+$(document).ready(function(){
+    $('#delidAll').click(function(){
+        $('input[type=checkbox]').each(function(){
+            var self=$(this);
+            if(!self.prop('checked')){
+                self.prop('checked',true);
+            }else{
+                self.prop('checked',false);
+            }
+        });
+    })
+});
+var mychannel='';
+function caiji(type,myid){
+    if(!type){layer.msg('请先点击分类采集')}
+    var index = layer.load(1, {
+    })
+    mychannel=myid;
+    ajaxFun("post","{:url('rule')}",{type:type},'json',function(ret){
+        if(ret){
+            var json=ret.result.data;
+            if(json){
+                var html='';
+                var typeid='';
+                var uniquekey='';
+                for (var i=0; i < json.length ; i++) {
+                     uniquekey=json[i].url;
+                        uniquekey=/mobile.+?(\d+).+.html/.exec(uniquekey)[0];
+                        uniquekey=uniquekey.replace("mobile/", "");
+                        uniquekey=uniquekey.replace(".html", "");
+                    html+='<tr id="id'+uniquekey+'" class="class i-checks">';
+                    html+='<td id="delid" ><input name="delAll[]" type="checkbox" checked value="'+uniquekey+'"></td>';
+                    if(json[i].category){
+                        typeid=json[i].category;
+                    }else{
+                        typeid=json[i].realtype;
+                    }
+                    html+='<td id="typeid">'+typeid+'</td>';
+                    html+='<td id="title"><a href="http://mini.eastday.com/mobile/'+uniquekey+'.html" target="_blank">'+json[i].title+'</a></td>';
+                    html+='<td id="img"><img src="'+json[i].thumbnail_pic_s+'"></td>'
+                    html+='<td id="laiyuan">'+json[i].author_name+'</td>';
+                    html+='<td id="date">'+json[i].date+'</td>';
+                    html+='<td id="fabu">未发布</td>';
+                    html+='</tr>';
+                }
+                $('#form').html(html);   
+            }
+        }else{
+            swal_msg("错误 ",ret,"error");
+        }
+        layer.close(index); 
+    })
+}
+$('#typeidAjax').click(function(){
+    var des=$(".form-horizontal").serialize();
+    if(!des){layer.msg('请先选择导入文章');return false}
+    var index = layer.load(1)
+    ajaxFun("post","{:url('ruledata')}",{urls:'urls',mychannel:mychannel},'json',function(ret){
+        if(ret){
+             if(ret.err){
+                layer.msg(ret.err)
+             }else{
+                layer.open({
+                  type: 2,
+                  title: '导入数据',
+                  shadeClose: false,
+                  shade: 0.2,
+                  area: ['400px', '250px'],
+                  skin:'shangchuantup',
+                  shift:-1,
+                  content: ret,
+                  scrollbar: false,
+                  moveType: 1,
+                  moveOut: true
+                });
+             }
+
+        }else{
+            swal_msg("错误 ",ret,"error");
+        }
+        layer.close(index); 
+    })
+})
+// 开始执行
+
+var zong=0
+function kaishi(typeid){
+    var id=$(".form-horizontal").serialize();
+    var strs= new Array();
+    strs=id.split("delAll%5B%5D=");
+    jian=strs.length-1;
+    zong=jian;
+    if(jian<=0){
+        layer.msg("采集数据为空")
+    }else{
+        var index = layer.msg('剩余采集'+jian+'个',{
+            time: 0,
+            shade: [0.5, '#000']
+        });
+        post(typeid)
+    }
+    
+}
+var zongs=0;
+function post(typeid){
+    var id=$(".form-horizontal").serialize();
+    var strs= new Array(); //定义一数组 
+    strs=id.split("delAll%5B%5D="); //字符分割
+    var ids=strs[jian].replace("&", "");
+    if(jian<=0){
+        layer.closeAll('dialog');
+        zong=zong-zongs;
+        if(zongs==0){
+            layer.alert('成功采集'+zong+'个文章'+"<br>失败采集"+zongs+'个文章')
+        }else{
+            layer.alert('成功采集'+zong+'个文章')
+        }
+    }else{
+        if(ids){
+            $.ajax({
+                type: 'post',
+                url: '{:url('ruledataview')}',
+                data: {id:ids,typeid:typeid},
+                dataType: 'json',
+                success:function(ret){
+                    if(ret){
+                        if(ret.err){
+                            $('#id'+ids+' #fabu').html('<font color="#f00">'+ret.err+'</font>')
+                            zongs=zongs+1
+                         }else if(ret.ret){
+                            $('#id'+ids+' #fabu').html('<font color="##1ab394">发布成功</font>')
+                         }else{
+                            $('#id'+ids+' #fabu').html(ret)
+                         }
+                        $('.layui-layer-content').html('正在采集，请不要关闭页面<br>采集剩余'+jian+'个文章')
+                        jian=jian-1;
+                        post(typeid)
+                    }else{
+                        swal_msg("错误 ",ret,"error");
+                    }
+                },
+                error:function(err){
+                   // swal_msg("错误",JSON.stringify(err),"error");
+                   post(typeid)
+                }
+            });
+            // ajaxFun("post","{:url('ruledataview')}",{id:ids,typeid:typeid},'json',function(ret){
+            //     if(ret){
+            //          if(ret.err){
+            //             $('#id'+ids+' #fabu').html('<font color="#f00">'+ret.err+'</font>')
+            //             zongs=zongs+1
+            //          }else if(ret.ret){
+            //             $('#id'+ids+' #fabu').html('<font color="##1ab394">发布成功</font>')
+            //          }else{
+            //             $('#id'+ids+' #fabu').html(ret)
+            //          }
+            //         $('.layui-layer-content').html('正在采集，请不要关闭页面<br>采集剩余'+jian+'个文章')
+            //         jian=jian-1;
+            //         post(typeid)
+            //     }else{
+            //         swal_msg("错误 ",ret,"error");
+            //     }
+            // })
+        }else{
+            $('#id'+ids+' #fabu').html('<font color="#f00">发布失败</font>')
+        }     
+    }
+}
+
+</script>
+ 
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

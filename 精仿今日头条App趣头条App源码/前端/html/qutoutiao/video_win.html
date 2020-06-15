@@ -1,0 +1,433 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/ffxiang.css" />
+	<!--	<link rel="stylesheet" type="text/css" href="../css/video.css" />-->
+		<link rel="stylesheet" type="text/css" href="../css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../css/qutoutiao.css" />
+		<style>
+			#fx-header {
+				margin-bottom: 0px;
+				padding-bottom: 36px;
+				border-bottom: 1px solid #E2E2E2;
+			}
+			#fx-header .aui-btn p{
+				color:#fff;
+				font-weight: bold;
+			}
+			@-webkit-keyframes rotation{
+				from {-webkit-transform: rotate(0deg);}
+				to {-webkit-transform: rotate(360deg);}
+			}
+			.Rotation{
+				-webkit-transform: rotate(360deg);
+				animation: rotation 1s linear infinite;
+				-moz-animation: rotation 1s linear infinite;
+				-webkit-animation: rotation 1s linear infinite;
+				-o-animation: rotation 1s linear infinite;
+			}
+		</style>
+	</head>
+	<body>
+
+		<!--<header class="" id="sx-header"></header>-->
+		<header class="aui-bar aui-bar-nav" id="fx-header"></header>
+		<footer class="aui-bar aui-bar-tab" id="fx-footer">
+			<div class="aui-bar-tab-item" tapmode onclick="_hone()">
+				<img class="aui-img-object" src="../image/w1.png" />
+				<div class="aui-bar-tab-label">
+					主页
+				</div>
+			</div>
+			<div class="aui-bar-tab-item aui-active" tapmode onclick="shuaxin()" >
+				<img class="aui-img-object Rotation" src="../image/shuaxin_2.png" />
+				<div class="aui-bar-tab-label">
+					刷新
+				</div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode onclick="_index_win('weitoutiao_win')">
+				<img class="aui-img-object" src="../image/w3.png" />
+				<div class="aui-bar-tab-label">
+					微头条
+				</div>
+			</div>
+			<!--<div class="aui-bar-tab-item" tapmode onclick="_index_win('xiaoshipin_win')">
+				<img class="aui-img-object" src="../image/w5.png" />
+				<div class="aui-bar-tab-label">
+					小视频
+				</div>
+			</div>-->
+			<!--<div class="aui-bar-tab-item" tapmode onclick="_index_win('renwu_win')" >
+				<img class="aui-img-object" src="../image/qutoutiao/w6.png" />
+				<div class="aui-bar-tab-label">
+					任务
+				</div>
+			</div>-->
+			<div class="aui-bar-tab-item" tapmode onclick="_index_win('member_wins')">
+				<img class="aui-img-object" src="../image/w4.png" />
+				<div class="aui-bar-tab-label">
+					我的
+				</div>
+			</div>
+
+		</footer>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var body_h;
+		var headerPos;
+		var typeid;
+		var NVNavigationBar;
+		// 分类栏目模块
+		var heiff = 35;
+		var retindex=0;
+		//输入35会显示右侧点击
+		apiready = function() {
+			mnPopups = api.require('MNPopups');
+			// 判断返回键
+			api.addEventListener({
+				name : 'keyback'
+			}, function(ret, err) {
+				api.sendEvent({
+				    name: 'video_frm',
+				    extra: {
+				        k: 'keyback',
+				    }
+				});
+			});
+			NVNavigationBar = api.require('NVNavigationBar');
+			api.addEventListener({
+			    name:'viewappear'
+			}, function(ret, err){
+			   _heibai(1)
+			   	api.setFullScreen({
+				    fullScreen: false
+				});
+			});
+			// 监听夜间
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+			header = $api.byId('fx-header');
+			$api.fixStatusBar(header);
+			headerPos = $api.offset(header);
+			//alert(headerPos.h)
+			body_h = $api.offset($api.dom('body')).h;
+			$api.fixTabBar($api.byId('fx-footer'));
+			footerh = $api.offset($api.byId('fx-footer')).h;
+
+			//Window 离开屏幕的事件
+			api.addEventListener({
+			    name:'viewdisappear'
+			}, function(ret, err){
+				//	关闭播放
+			  	api.sendEvent({
+				    name: 'video_frm',
+				    extra: {
+				        k: 'hidePlayer',
+				    }
+				});
+			});
+			//应用进入后台事件
+			api.addEventListener({
+				name : 'pause'
+			}, function(ret, err) {
+				//	关闭播放
+			  	api.sendEvent({
+				    name: 'video_frm',
+				    extra: {
+				        k: 'hidePlayer',
+				    }
+				});
+			});
+			view();
+		}
+		function view() {
+			header = $api.byId('fx-header');
+			$api.fixStatusBar(header);
+			headerPos = $api.offset(header);
+			body_h = $api.offset($api.dom('body')).h;
+			$api.fixTabBar($api.byId('fx-footer'))
+			footerh = $api.offset($api.byId('fx-footer')).h;
+			footerh = footerh - 5
+			var ret=$api.getStorage('videoTypeid');
+		//	console.log(JSON.stringify(ret))
+				if (ret) {
+					typeid = ret.typeid// 获取分类json
+					// 读取栏目分类模块
+					NVNavigationBar.open({
+						rect : {
+							x : 0,
+							y : headerPos.h - 36,
+							w : api.frameWidth,
+							h : heiff
+						},
+						styles : {
+							orientation : 'horizontal',
+							bg : '#fff',
+							bgAlpha : 1,
+							font : {
+								size : 18,
+								sizeSelected : 18,
+								color : '#222222',
+								colorSelected : '#34B05C',
+								alpha : 1
+							},
+							itemSize : {
+								w : 55,
+								h : heiff
+							}
+						},
+						items : ret.data,
+						selectedIndex : 0,
+						fixedOn : api.frameName,
+						id : 'first'
+					}, function(ret, err) {
+						//console.log(JSON.stringify(ret))
+					// UILoadingClose();
+						if (ret.eventType == 'click') {
+							randomSwitchBtn(ret.index)
+						}
+
+					});
+					// 读取frm文件
+					var frames = [];
+					for (var i = 0; i < typeid.length; i++) {
+						var frame = {};
+						frame.name = 'frame_' + i;
+						frame.url = html_win + 'video_frm.html';
+						frame.pageParam = {
+							id : typeid[i],
+						};
+						//				frame.vScrollBarEnabled = false;
+						//				frame.hScrollBarEnabled = false;
+						frames.push(frame);
+						frames.useWKWebView = true;
+						frames.historyGestureEnabled = true;
+					}
+					openFrameGroup(frames);
+					// 上面全部加载完毕解析 属性 不然点击按钮会有延时300
+					api.parseTapmode();
+				} else {
+					api.openFrame({
+						name : 'error',
+						url : html_win + 'error.html',
+						bounces : false,
+						rect : {
+							x : 0,
+							y : 0,
+							w : 'auto',
+							h : 'auto'
+						},
+						useWKWebView : true,
+						historyGestureEnabled : true,
+						vScrollBarEnabled : false,
+						hScrollBarEnabled : false,
+					})
+
+					//alert(JSON.stringify(err))
+				}
+
+
+		}
+		function openFrameGroup(frames) {
+			api.openFrameGroup({
+				name : 'video_frm',
+				scrollEnabled : true,
+				rect : {
+					x : 0,
+					y : headerPos.h + heiff - 35,
+					w : 'auto',
+					h : body_h - headerPos.h - heiff + 30 - footerh,
+				},
+				index : 0,
+				frames : frames,
+				preload : 0,	// 预加载的 frame 个数，默认加载当前页后面一个
+			}, function(ret, err) {
+				// 当滑动时，设置栏目选中颜色
+				NVNavigationBar.setSelected({
+					id : 'first',
+					index : ret.index,
+					selected : true
+				});
+				retindex=ret.index
+				// 关闭播放 video视频列表
+				api.sendEvent({
+				    name: 'video_frm',
+				    extra: {
+				        k: 'hidePlayer',
+				    }
+				});
+			});
+		}
+		function openFrameGroups(frames) {
+			api.openFrameGroup({
+				name : 'video_frm',
+				scrollEnabled : true,
+				rect : {
+					x : 0,
+					y : headerPos.h+heiff,
+					w : 'auto',
+					h : body_h - headerPos.h -heiff  -footerh,
+				},
+				index : 0,
+				frames : frames,
+				preload : 0,	// 预加载的 frame 个数，默认加载当前页后面一个
+			}, function(ret, err) {
+				// 当滑动时，设置栏目选中颜色
+				NVNavigationBar.setSelected({
+					id : 'first',
+					index : ret.index,
+					selected : true
+				});
+				// 关闭播放 video视频列表
+				api.sendEvent({
+				    name: 'video_frm',
+				    extra: {
+				        k: 'hidePlayer',
+				    }
+				});
+			});
+		}
+
+		// 点击分类栏目时，设置 frame 组当前可见 frame
+		function randomSwitchBtn(index) {
+			if(index==retindex){
+				shuaxin()
+				return;
+			}
+			api.setFrameGroupIndex({
+				name : 'video_frm',
+				index : index,
+				scroll : true,	//是否平滑滚动至目标窗口，即是否带有动画
+				//reload:true,	// 刷新
+			});
+		}
+		// 显示登录头像
+		function userImg(){
+
+			var user=$api.getStorage('user');
+			if(user){
+				$api.css($api.dom('.user1'),"display: block");
+				$api.css($api.dom('.user2'),"display: none");
+				$api.attr($api.dom('.sx-user-img'),"src",user.img);
+			}else{
+				$api.css($api.dom('.user1'),"display: none");
+				$api.css($api.dom('.user2'),"display: block");
+			}
+		}
+		// 打开菜单
+		// 打开菜单
+		function right(){
+			var y=$api.offset($api.byId('fx-header')).h-40;
+			mnPopups.open({
+			    rect: {
+			        w: 130,
+			        h: 135
+			    },
+			    position: {
+			        x: api.winWidth - 25,
+			        y: y
+			    },
+			    styles: {
+			        mask: 'rgba(0,0,0,0)',
+			        bg: '#565656',
+			        corner:5,
+			        cell: {
+			            bg: {
+			                normal: '#565656',
+			                highlight: '#404040'
+			            },
+			            h: 45,
+			            title: {
+			                marginL: 45,
+			                color: '#fff',
+			                size: 14,
+			            },
+			            icon: {
+			                marginL: 10,
+			                w: 20,
+			                h: 20,
+			                corner: 2
+			            },
+			            separateLine: {              //（可选项）JSON 类型；分割线的样式设置
+				            width: 1,                //（可选项）数字类型；分割线的粗细，默认为1
+				            marginLR: 10,              //（可选项）数字类型；分割线距离左右的间距，默认为0
+				            bg: '#838383',            //（可选项）字符类型；分割线的背景颜色，支持rgb、rgba、#；默认：#C0C0C0
+				            hideLastSeparateLine: true //(可选项)布尔类型；是否隐藏最后一条分割线，默认false
+				        },
+			        },
+			        pointer: {
+			            size: 7,
+			            xPercent: 90,
+			            yPercent: 0,
+			            orientation: 'downward'
+			        }
+			    },
+			    datas: [{
+			        title: '发图文',
+			        icon: _image+'sx-index-right-1.png'
+			    }, {
+			        title: '拍小视频',
+			        icon: _image+'sx-index-right-2.png'
+			    }, {
+			        title: '上传视频',
+			        icon: _image+'sx-index-right-3.png'
+			    } ],
+//			    , {
+//			        title: '提问',
+//			        icon: '../image/sx-index-right-4.png'
+//			    }
+			    animation: true
+			}, function(ret) {
+			    if(ret.eventType=="click"){
+			    	var index=ret.index;
+			    	if(index==0){
+			    		_url({type:'text'},'member/weitoutiaoAdd_win',true)
+			    	}else if(index==1){
+			    		_svideo()
+			    	}else if(index==2){
+			    		_url({type:'video'},'member/weitoutiaoAdd_win',true)
+			    	}
+			    }
+			});
+		}
+		// 刷新
+		function shuaxin(){
+			$api.addCls($api.dom('.aui-active img'),'Rotation')
+			api.execScript({
+				frameName:'frame_'+retindex,
+				script: 'shuaxin()'
+			});
+		}
+		// 搜索
+		function search() {
+			api.openWin({
+				name : 'search_win',
+				url : html_win+'search_win.html',
+				slidBackEnabled : false,
+				animation : {
+					type : "fade", //动画类型（详见动画类型常量）
+					subType : "from_right", //动画子类型（详见动画子类型常量）
+					duration : 300
+				},
+				pageParam : {
+					qian : 1,
+					fan : 0
+				}
+			});
+		}
+	</script>
+</html>
+
+

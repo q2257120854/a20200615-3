@@ -1,0 +1,3 @@
+<view class="graceProgressButton {{val>0&&val<100?'ganimate':''}}" style="height:{{height+'rpx'}}; line-height:{{height+'rpx'}}; border-radius:{{borderRadius}}; background:{{background}};">
+    <text style="font-size:{{fontSize+'rpx'}}; color:{{color}};">{{val>0&&val<100?progressText+val+'%':buttonText}}</text>
+</view>

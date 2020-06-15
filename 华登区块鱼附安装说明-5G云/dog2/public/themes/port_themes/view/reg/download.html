@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>{$webtitle}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+	  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="__PORT__/lib/style.css">
+</head>
+<body class="uni-body pages-reg-reg">
+    <div class="uni-page-head">
+        下载APP
+        <div class="return" onclick="back()">返回</div>
+    </div>
+    <div class="uni-placeholder"></div>
+    
+    <div class="popup">
+        <div class="text"></div>
+    </div>
+
+    <div class="content">
+        <img src="__PORT__/lib/upload.jpg" class='back'>
+        <img src="{$logo}" class="logo">
+        <div class='welcome'>
+            歡迎下載<br />
+            {$webtitle}APP
+        </div>
+        <div class='button'>
+            {if $androidDownloadlink}
+            <a data-href="{$androidDownloadlink}" class="left" onclick="downloadClick1()">安卓版</a>
+            {/if}
+            {if $iosDownloadlink}
+            <a data-href="{$iosDownloadlink}" class="right" onclick="downloadClick2()">蘋果版(IOS)</a>
+            {/if}
+        </div>
+    </div>
+    <script type="text/javascript" src="__PORT__/lib/jquery.js"></script>
+    <script type="text/javascript" src="__PORT__/lib/register.js"></script>
+</body>
+</html>

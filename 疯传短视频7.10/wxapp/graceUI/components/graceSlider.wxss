@@ -1,0 +1,27 @@
+.grace-slider {
+    position: relative;
+    padding: 10px 0;
+}
+
+.grace-slider-bar {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+}
+
+.grace-slider-block {
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+    left: 0;
+    border-radius: 50%;
+    box-shadow: 0rpx 0rpx 6rpx #ccc;
+}
+
+.grace-slider-active-bar {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+}

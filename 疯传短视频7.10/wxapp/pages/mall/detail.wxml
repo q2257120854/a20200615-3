@@ -1,0 +1,62 @@
+<gracePage customHeader="{{false}}" headerBG="#FFFFFF" headerHeight="0">
+    <view slot="gBody" style="padding-bottom:120rpx;">
+        <swiper indicatorDots autoplay="{{true}}" class="grace-swiper grace-skeletons-swiper {{graceSkeleton?'grace-skeletons':''}}" indicatorActiveColor="#3688FF" indicatorColor="rgba(255, 255, 255, 1)" interval="5000" style="width: 100%;height:700rpx;">
+            <swiper-item class="grace-swiper-item" wx:for="{{product.photos}}" wx:key="index">
+                <image class="grace-swiper-image" mode="widthFix" src="{{item}}"></image>
+            </swiper-item>
+        </swiper>
+        <view class="grace-product-padding grace-space-between grace-flex-vcenter">
+            <text class="grace-product-title grace-bold grace-skeletons-title {{graceSkeleton?'grace-skeletons':''}}">{{product.title}}</text>
+        </view>
+        <view class="grace-product-padding">
+            <view class="grace-product-info">
+                <graceFlex classes="row nowrap">
+                    <view class="grace-flex1">
+                        <view class="grace-product-price grace-skeletons-text-line {{graceSkeleton?'grace-skeletons':''}}">
+                            <block wx:if="{{product.order_price>0}}">
+                                <text class="small">￥</text>
+                                <text class="em">{{product.order_price}}</text>
+                                <text class="small">券后价</text>
+                            </block>
+                        </view>
+                    </view>
+                    <view class="grace-flex1">
+                        <view class="grace-product-oprice grace-text grace-gray grace-line-through grace-skeletons-text-line {{graceSkeleton?'grace-skeletons':''}}" style="margin-left:30rpx;">
+                            <block wx:if="{{product.price>0}}">
+                                <text class="small">￥</text>{{product.price}}
+							</block>
+                        </view>
+                    </view>
+                    <view class="grace-flex1">
+                        <text class="grace-text-small grace-gray grace-product-sales grace-skeletons-text-line {{graceSkeleton?'grace-skeletons':''}}" wx:if="{{product.price>0}}">
+									已售{{product.sales}}
+							</text>
+                    </view>
+                </graceFlex>
+            </view>
+        </view>
+        <view class="grace-common-line"></view>
+        <view class="grace-margin-top">
+            <view class="grace-h5 grace-blod grace-text-center">
+                <text class="grace-icons icon-spliter"></text>
+                <text class="grace-black" style="margin:0 20rpx;font-size: 40rpx;">商品详情</text>
+                <text class="grace-icons icon-spliter"></text>
+            </view>
+        </view>
+        <view class="grace-product-padding">
+            <view class="grace-goods-desc {{graceSkeleton?'grace-skeletons':''}}">
+                <text>{{product.desc}}</text>
+            </view>
+            <view bindtap="openGoods" class="grace-goods-coupon" wx:if="{{product.discount>0}}">
+                <graceCoupons coupon="{{coupon}}"></graceCoupons>
+            </view>
+            <image class="grace-product-info-img" mode="widthFix" src="{{item}}" wx:for="{{product.photos}}" wx:key="index"></image>
+        </view>
+        <graceToTop bindtap="top" bottom="140rpx"></graceToTop>
+    </view>
+    <view class="grace-space-between grace-flex-vcenter grace-bg-white" slot="gFooter">
+        <view class="grace-flex-end" style="width:100%;">
+            <button bindtap="openGoods" class="grace-footer-button" type="warn">立即领券购买</button>
+        </view>
+    </view>
+</gracePage>

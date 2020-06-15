@@ -1,0 +1,85 @@
+{extend name="common/world"}
+{block name="title"}订单详情#{$Think.get.id}{/block}
+{block name="style"}
+<link rel="stylesheet" href="/static/css/transaction.css" />
+{/block}
+{block name="container"}
+<div class="card card-message">
+    <div class="card-header">
+        <div class="card-title f1">
+            <div class="d-flex align-items-center">
+                <!-- <span class="avatar owner-avatar" style="background-image: ;"></span> -->
+                <!-- <span class="owner-nickname">-</span> -->
+                <span class="tag">#{$Think.get.id}<span class="tag-addon tag-blue tag-status">投诉中</span></span>
+            </div>
+        </div>
+        <div class="card-options pr-2">
+            <a href="#"><i class="fe fe-help-circle" style="vertical-align: baseline;"></i></a>
+            <a href="#" class="card-options-fullscreen" data-toggle="card-fullscreen"><i class="fe fe-maximize" style="vertical-align: baseline;"></i></a>
+        </div>
+    </div>
+    <div class="card-body p-3 o-auto">
+        <div class="dimmer">
+            <div class="loader"></div>
+            <div class="dimmer-content chat-content"></div>
+        </div>
+    </div>
+    <div class="card-footer chat-option" style="padding: 1rem;">
+        <!-- <button class="btn btn-secondary btn-receive" data-option="1">买方胜算</button>
+        <button class="btn btn-secondary btn-receive" data-option="2">卖方胜算</button>
+        <button class="btn btn-secondary btn-cancel" data-option="0">取消订单</button> -->
+        <div class="input-group">
+            <div class="input-group-append">
+                <button type="button" class="btn btn-secondary">判决选择</button>
+                <button data-toggle="dropdown" type="button" class="btn btn-secondary dropdown-toggle"></button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="javascript:trial(1);">判决:买方胜</a>
+                    <a class="dropdown-item" href="javascript:trial(2);">判决:卖方胜</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/admin/market/cancel?id={$Think.get.id}">强行关闭订单</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+var id = '{$Think.get.id}';
+var guest = true;
+</script>
+<script type="text/javascript" src="/static/js/transaction.js"></script>
+<script type="text/javascript">
+var say = function(){
+    var content = $('#say').val();
+    if (content == '') {
+        $('#say').focus();
+        return false;
+    } else {
+        $('.dimmer').addClass('active');
+        ajax(api.trade.system, {id: id, content: content}, function(res){
+            $('.dimmer').removeClass('active');
+            if (res.code == 200) {
+                chat(18, {
+                    content: content,
+                    create_at: now()
+                });
+            } else {
+                toast(res.message);
+            }
+        });
+    }
+}
+var trial = function(role){
+    $('.dimmer').addClass('active');
+    ajax(api.trade.trial, {id: id, role: role}, function(res){
+        $('.dimmer').removeClass('active');
+        if (res.code == 200) {
+            chat(role == 1 ? 30 : 31);
+        } else {
+            toast(res.message);
+        }
+    });
+}
+</script>
+{/block}

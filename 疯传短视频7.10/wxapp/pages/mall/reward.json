@@ -1,0 +1,8 @@
+{
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "grace-page": "/graceUI/components/gracePage",
+        "grace-header": "/graceUI/components/graceHeader",
+        "txv-video": "plugin://wxa75efa648b60994b/video"
+    }
+}

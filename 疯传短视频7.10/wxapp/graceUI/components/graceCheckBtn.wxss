@@ -1,0 +1,26 @@
+.grace-check-btn-wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.grace-check-btn,.grace-check-checked {
+    flex-shrink: 0;
+    font-family: "grace-iconfont"!important;
+}
+
+.grace-check-btn:after {
+    content: "\e762";
+}
+
+.grace-check-checked:after {
+    content: "\e7f8"!important;
+}
+
+.grace-check-lable {
+    color: #555555;
+    margin-left: 20rpx;
+    font-size: 26rpx;
+    width: 700rpx;
+}

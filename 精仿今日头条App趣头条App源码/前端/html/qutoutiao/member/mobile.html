@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>注册</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/reg.css" />
+	</head>
+	<body>
+		<div class="aui-content aui-margin-b-15 fx-reg">
+			<ul class="aui-list aui-form-list">
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-label-icon">
+							<i class="aui-iconfont aui-icon-mobile"></i>
+						</div>
+						<div class="aui-list-item-input">
+							<input type="tel" id="username" value="" placeholder="请输入手机号码">
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-label-icon">
+							<i class="aui-iconfont aui-icon-mobile"></i>
+						</div>
+						<div class="aui-list-item-input">
+							<input type="tel" id="code" placeholder="请输入手机收到验证码" value="">
+						</div>
+						<span class="aui-input-addon" style="margin-right: 1rem;">
+							<div class="aui-btn" id="sendVerify" status="1" onclick="getVerify()">
+								获取验证码
+							</div> </span>
+					</div>
+				</li>
+			</ul>
+			<div class="aui-btn-blocks aui-margin-15">
+				<div class="aui-btn aui-btn-block aui-btn-danger " id="tijiao">
+					绑定
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../script/zepto.min.js"></script>
+		<script type="text/javascript" src="../script/fastclick.js"></script>
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../script/ffxiang.js"></script>
+		<script type="text/javascript">
+			apiready = function() {
+				// 监听夜间
+				api.addEventListener({
+				    name: 'yejian'
+				}, function(ret, err) {
+					if(ret){
+						_yejians();
+					}
+				});
+				
+				FastClick.attach(document.body)
+				$('#tijiao').click(function() {
+					var username = $('#username').val();
+					var code = $('#code').val();
+					if (!username) {
+						_msg('手机号码不能空')
+						return;
+					}
+					if (!_isMobile(username)) {
+						_msg('请输入正确手机号码')
+						return;
+					}
+					if (!code) {
+						_msg('验证码不能为空');
+						return
+					}
+					_loading();
+					_ajax('api/member/mobile', function(ret, err) {
+							 _loadingCloes();
+							if (ret.ret) {
+								_alert(ret.ret, function(ret) {
+									_close()
+								})
+							} else {
+								_msg(ret.err)
+							}
+						}, {
+							username : username,
+							code:code
+						})
+				})
+			}
+			var smsVerify
+			function getVerify() {
+				var mobileVal = $('#username').val();
+				if (!mobileVal) {
+					_msg('请输入手机号码')
+					return false;
+				}
+				if (!_isMobile(mobileVal)) {
+					_msg('请输入正确手机号码')
+					return;
+				}
+				var status = $('#sendVerify').attr('status');
+				if (status != 1) {
+					return;
+				}
+				_loading();
+				_ajax('api/index/code', function(ret, err) {
+					_loadingCloes()
+					if (ret) {
+						if (ret.ret) {
+							$("#sendVerify").html('<span id="GetVerify">120</span>S');
+							times = 119;
+							isinerval = setInterval("CountDown()", 1000);
+							setTimeout(function() {
+								_msg(ret.ret)
+								$('#sendVerify').attr('status', '0');
+							}, 500)
+						} else {
+							_msg(ret.err)
+						}
+					} else {
+						_msg(ret)
+					}
+				}, {
+					username : mobileVal,
+					text : '手机绑定'
+				})
+			}
+
+			function CountDown() {
+				if (times < 1) {
+					var sendVerify = $('#sendVerify');
+					$(sendVerify).attr('onclick', 'getVerify()');
+					$(sendVerify).attr('status', '1');
+					$(sendVerify).html('重新获取');
+					clearInterval(isinerval);
+					return;
+				}
+				var getVerify = $('#GetVerify');
+				$(getVerify).html('' + times + '');
+				times--;
+			}
+
+			// 验证手机号码
+			function _isMobile(mobile) {
+				if (mobile == "") {
+					return false;
+				} else {
+					if (! /^0{0,1}(13[0-9]|15[0-9]|17[0-9]|18[0-9]|14[0-9])[0-9]{8}$/.test(mobile)) {
+						return false;
+					}
+					return true;
+				}
+			}
+		</script>
+
+

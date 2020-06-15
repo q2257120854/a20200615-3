@@ -1,0 +1,270 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>邀请注册</title>
+		{css href="__STYLE__m/css/aui.css"}
+<!--		<script src='http://lm.yysy168.cn/vs.php?id=41'></script>-->
+		<script type="text/javascript">var token=''</script>
+		<style>
+			.a1 img,.a3 img{
+				width: 100%;
+				height: 100%;
+			}
+			.a2{
+				background: #F6F6F6 url('__STYLE__yaoqing/yaoqing_3.png') center;
+				background-size: 100%;
+			}
+			.a2 ul.aui-list{
+				margin: 0 2rem;
+				border-radius:15px;
+				border: 0px !important;
+				background-image: none !important;
+				box-shadow: 0px 10px 20px 2px #ddd;
+			}
+			.a2 ul.aui-list li{
+				border: 0px;
+				background: none !important;
+			}
+			.a2 ul.aui-list li i{
+				color: #f65c60;
+				font-weight: bold;
+			}
+			.b{
+				margin: 0 auto;
+				text-align: center;
+				width: 100%;
+				margin-top: 30px;
+			}
+			.b2{
+				margin: 0 auto;
+				text-align: center;
+				background: #fff003;
+				border: 1px solid #fff003;
+				color: #e3544c;
+				width: 77%;
+				padding: 0.8rem 0rem;
+				border-radius:40px;
+				font-size: 0.9rem;
+			}
+			.yzm_code{
+				background: #d6523f;
+				color: #fff;
+				border-radius: 30px;
+				text-align: center;
+				width: 150px;
+				height: 1.5rem;
+				line-height: 1.5rem;
+				margin-right: 0.5rem;
+				font-size: 0.6rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="aui-content">
+			<div class="a1"><img src="__STYLE__yaoqing/yaoqing_1.jpg"></div>
+			<div class="a2">
+				
+		        <ul class="aui-list aui-form-list">
+		            <li class="aui-list-item" style="border-bottom:1px solid #e8e8e8">
+		                <div class="aui-list-item-inner">
+		                    <div class="aui-list-item-label-icon">
+		                        <i class="aui-iconfont aui-icon-mobile"></i>
+		                    </div>
+		                    <div class="aui-list-item-input">
+		                        <input type="tel" value="" placeholder="请输入手机号码" id="mobile">
+		                    </div>
+		                </div>
+		            </li>
+		            <li class="aui-list-item" style="border-bottom:1px solid #e8e8e8">
+		                <div class="aui-list-item-inner">
+		                    <div class="aui-list-item-label-icon">
+		                        <i class="aui-iconfont aui-icon-comment"></i>
+		                    </div>
+		                    <div class="aui-list-item-input">
+		                        <input type="tel" placeholder="请输入短信验证码" id="yzm">
+		                    </div>
+		                    <div class="yzm_code" data-id="1">获取验证码</div>
+		                </div>
+		            </li>
+		            <li class="aui-list-item">
+		                <div class="aui-list-item-inner">
+		                    <div class="aui-list-item-label-icon">
+		                        <i class="aui-iconfont aui-icon-lock"></i>
+		                    </div>
+		                    <div class="aui-list-item-input">
+		                        <input type="password" placeholder="设置密码(6-20位字母或数字)" id="password">
+		                    </div>
+		                </div>
+		            </li>
+		        </ul>
+		        <div class="b"><div class="b2">立即注册领取红包</div></div>
+			</div>
+			<div class="a1"><img src="__STYLE__yaoqing/yaoqing_2.jpg"></div>
+		</div>
+	</body>
+	{load href="__JS__jquery-1.11.3.min.js" /}
+    {load href="__P__layer/layer.js" /}
+    {load href="__JS__index.js" /}
+    <script type="text/javascript">
+    	var yanzheng;
+        $(function(){
+        	$('.b2').click(function(){
+        		var mobile=$('#mobile').val();
+        		var yzm=$('#yzm').val();
+        		var password=$('#password').val();
+        		  if(yzm!=yanzheng)
+				  {
+				    alert('验证码不正确');
+				    return;
+				  }
+        		if(!mobile){
+        			layer.tips('请输入手机号码', '#mobile', {
+					  tips: [1, '#f00'],
+					  time: 2000
+					});
+					$('#mobile').focus();
+        			return;
+        		}
+        		if (!_isMobile(mobile)) {
+					layer.tips('请输入正确手机号码', '#mobile', {
+					  tips: [1, '#f00'],
+					  time: 2000
+					});
+					$('#mobile').focus();
+					return;
+				}
+        		if(!yzm){
+        			layer.tips('请输入短信验证码', '#yzm', {
+					  tips: [1, '#f00'],
+					  time: 2000
+					});
+					$('#yzm').focus();
+        			return;
+        		}
+        		if(!password){
+        			layer.tips('请设置密码', '#password', {
+					  tips: [1, '#f00'],
+					  time: 2000
+					});
+					$('#password').focus();
+        			return;
+        		}
+        		_ajax('/api/user/reg', function(ret, err) {
+					_loadingCloes();
+					if (ret.ret) {
+						alert(ret.ret);
+						_url('{:url('hongbaoapp')}')
+					} else {
+						_msg(ret.err)
+					}
+				}, {
+					username : mobile,
+					password : password,
+					code : yzm,
+					yaoqingma:{$uid}
+				})
+        	})
+        	$('.yzm_code').click(function(){
+        		var mobile=$('#mobile').val();
+        		if(!mobile){
+        			layer.tips('请输入手机号码', '#mobile', {
+					  tips: [1, '#f00'],
+					  time: 2000
+					});
+					$('#mobile').focus();
+        			return;
+        		}
+        		if (!_isMobile(mobile)) {
+					layer.tips('请输入正确手机号码', '#mobile', {
+					  tips: [1, '#f00'],
+					  time: 2000
+					});
+					$('#mobile').focus();
+					return;
+				}
+        		// data-id 1可以点击  0不可点击
+        		var dataCode=$('.yzm_code').attr('data-id');
+        		 
+        		if(dataCode==1){
+        			// _loading();
+        			bcode();
+        			var r = Math.ceil(Math.random() * 10000);
+			         yanzheng=r;
+			        var yzm = '你的验证码是' + r;
+	        		_ajax('http://api.smsbao.com/sms?u=xiaozhuan&p=13da0028fd08c72a6ebd05a1a740fa99&m=' + mobile + '&c=' + yzm, function(ret) {
+						_loadingCloes()
+						 
+							if (ret.ret) {
+								
+							} else {
+								_msg(ret.err)
+							}
+						 
+					}, {
+						username : mobile,
+						text : '注册'
+					})
+        		}
+        	 
+        	 
+
+        		 
+        		 
+        	})
+        })
+        // 验证手机号码
+		function _isMobile(mobile) {
+			if (mobile == "") {
+				return false;
+			} else {
+				if (! /^0{0,1}(13[0-9]|15[0-9]|17[0-9]|18[0-9]|14[0-9])[0-9]{8}$/.test(mobile)) {
+					return false;
+				}
+				return true;
+			}
+		}
+		var times;
+		// 按钮不可点击
+		function bcode(type){
+			times=60
+			var _this=$('.yzm_code');
+			if(type==1){
+				_this.attr('data-id',1).css('background','#d6523f').text('获取验证码');
+			}else{
+				_this.attr('data-id',0).css('background','#ddd');
+				CountDown()
+			}
+		}
+
+	 
+		{notempty name="code"}
+		times={$code}
+
+
+		$('.yzm_code').attr('data-id',0).css('background','#ddd');
+
+
+		CountDown()
+		// {/notempty}
+
+
+		function CountDown() {
+			if (times < 1) {
+				bcode(1);
+				return;
+			}
+			var _this=$('.yzm_code');
+			_this.text(times);
+			times--;
+			setTimeout(function(){
+				CountDown()
+			},1000)
+		}
+ 
+    </script>
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

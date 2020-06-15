@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<style>
+			.aui-list {
+				border: 0px;
+				background: none;
+			}
+			.aui-list .aui-list-item {
+				margin-left: 0.7rem;
+				padding: 0.3rem 0px;
+			}
+			.aui-list-item-inner.aui-list-item-arrow {
+				font-size: 0.75rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="aui-content">
+			<ul class="aui-list aui-media-list">
+				<li class="aui-list-item aui-list-item-middle" tapmode onclick="_url({title:'评论',url:'member/xxtzPing',qian:1,fan:1})">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media" style="width: 2.8rem;">
+							<img src="../../image/fx_xxtz_1.png" class="aui-img-round aui-list-img-sm">
+						</div>
+						<div class="aui-list-item-inner aui-list-item-arrow">
+							评论
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item aui-list-item-middle" tapmode onclick="_url({title:'赞',url:'member/xxtzZan',qian:1,fan:1})">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media" style="width: 2.8rem;">
+							<img src="../../image/fx_xxtz_2.png" class="aui-img-round aui-list-img-sm">
+						</div>
+						<div class="aui-list-item-inner aui-list-item-arrow">
+							赞
+						</div>
+					</div>
+				</li>
+				<!--<li class="aui-list-item aui-list-item-middle">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media" style="width: 2.8rem;">
+							<img src="../../image/fx_xxtz_3.png" class="aui-img-round aui-list-img-sm">
+						</div>
+						<div class="aui-list-item-inner aui-list-item-arrow">
+							系统通知
+						</div>
+					</div>
+				</li>-->
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			api.addEventListener({
+			    name:'viewappear'
+			}, function(ret, err){      
+				_heibai(1)  
+			});
+			_heibai(1)
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+		}
+	</script>
+</html>
+

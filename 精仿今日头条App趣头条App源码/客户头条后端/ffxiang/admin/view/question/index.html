@@ -1,0 +1,158 @@
+ {include file="public/header" /}
+ {load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<style type="text/css">
+#des,#des input{ width: 40px;text-align:center;}
+#id{ width: 78px; }
+.bs-checkbox{ width: 36px; height: 40px }
+.fixed-table-toolbar .columns,.fixed-table-toolbar .search{margin-left:0px; margin-top: 0px }
+#title span{ float: right; margin-left: 3.333px;}
+.search{ margin-bottom: 0px !important; }
+.asdlkjasd{ background: #1ab394; color: #fff}
+</style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        {include file="public/tophead"}
+        {include file="public/top" /}
+        <div class="ibox-content">
+        {include file="public/topsection"}
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <div class="fixed-table-toolbar">
+                        <a class="btn btn-default btn-outline {present name="mychannel"}{else /}asdlkjasd{/present}" href="{:url('add')}">添加问题</a>
+                        
+                        
+                        
+                    </div>  <div style="display:block;clear: both;"></div>
+                    <div class="fixed-table-toolbar">
+                        <form  method="get" action="">
+                            <div class="pull-left search">
+                             
+                                
+                                
+                            </div>
+                        </form>
+                    </div>
+                    <div class="example">
+                        <form class="form-horizontal" method="post">
+                        <table data-toggle="table">
+                            <thead>
+                                <tr>
+                                  <th class="bs-checkbox"><input type="checkbox" id="delidAll"></th>
+                                    <th data-align="center">id</th>
+                                    <th>问题标题</th>
+                                    <th>问题内容</th>
+                                    <th>管理</th>
+                                </tr>
+                            </thead> 
+                            <tbody id="form">
+                                {volist name="questionRes" id="question"}
+                                <tr id="" class="class">
+                                    
+                                    <td id="delid" ><input name="delAll[]" type="checkbox" value=""></td>
+                                    <td id="id">{$question.id}</td>
+                                    
+                                    <td>{$question.title}</td>
+                                    <td>{$question.content|cut_str=###,20}</td>
+
+
+                                    <td align="center">
+                                    <a href="{:url('edit',array('id'=>$question['id']))}" class="btn btn-primary btn-sm shiny">
+                                        <i class="fa fa-edit"></i> 编辑
+                                    </a>
+                                    <a href="{:url('del',array('id'=>$question['id']))}" class="btn btn-danger btn-sm shiny" >
+                                        <i class="fa fa-trash-o"></i> 删除
+                                    </a>
+                                </td>
+
+                                </tr>
+                               {/volist} 
+                            </tbody>
+                        </table>
+                        </form>
+                    </div>
+                </div>  
+            </div>
+            <hr>
+            <div class="row row-lg">
+                
+                <div class="col-sm-6 pages">
+                    {$questionRes->render()}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#desAll').click(function(){
+        var des=$(".form-horizontal").serialize();
+        ajaxFun("post",'{:url('article/desAll')}',des,'json',function(ret){
+            if(ret){
+                if(ret.ret){
+                    self.location.reload();
+                }else{
+                    layer.msg(ret.err)
+                }
+            }else{
+                swal_msg("错误",ret,"error");
+            }
+        })
+    })
+     
+    $('#delidAll').click(function(){
+        $('input[type=checkbox]').each(function(){
+            var self=$(this);
+            if(!self.prop('checked')){
+                self.prop('checked',true);
+            }else{
+                self.prop('checked',false);
+            }
+        });
+    })
+});
+function del(id){
+    swal_del(id,"{:url('del')}")
+}
+function alla(types){
+    var all=$(".form-horizontal").serialize();
+    var alls=$(".form-horizontal").serializeArray();
+   //console.log(JSON.stringify(alls))
+
+    ajaxFun("post",'{:url('article/all')}?type='+types,all,'json',function(ret){
+        
+        if(ret){
+            var text
+            switch(types)
+            {
+            case 0:
+              text='<font color="#f00">隐藏</font>';
+              break;
+            case 1:
+              text='<font color="#1ab394">通过</font>'
+              break;
+            case 2:
+              text ='审核';
+              break;
+            case 3:
+              text ='<font color="#f00">拒绝</font>';
+              break;
+            }
+            for(var i=0;i<alls.length;i++){
+                if(types=='del'){
+                    $('#id'+alls[i]['value']).remove();
+                }else{
+                    $('#hide'+alls[i]['value']).html(text);
+                }
+            }
+             
+            swal_msg('操作成功')
+        }
+    })
+}
+</script>
+ <SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

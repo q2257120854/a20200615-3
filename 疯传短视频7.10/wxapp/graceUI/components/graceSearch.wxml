@@ -1,0 +1,5 @@
+<view class="gui-search" style="height:{{height}}; background:{{background}};">
+    <view class="gui-search-icon grace-icons icon-search" style="color:{{iconColor}}; font-size:{{iconFontSize}}; line-height:{{height}}; width:{{iconWidth}};"></view>
+    <input bindconfirm="confirm" bindinput="inputting" class="gui-search-input" confirmType="search" placeholder="{{placeholder}}" style="height:{{inputHeight}}; line-height:{{inputHeight}}; font-size:{{inputFontSize}};" type="text" value="{{kwd}}"></input>
+    <view catchtap="clearKwd" class="gui-search-icon grace-icons icon-close" style="color:{{iconColor}}; font-size:{{iconFontSize}}; line-height:{{height}}; width:{{iconWidth}};" wx:if="{{kwd!=''}}"></view>
+</view>

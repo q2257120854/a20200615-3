@@ -1,0 +1,297 @@
+{extend name="common/world"} {block name="title"}创业众筹{/block} {block name="style"}
+<style type="text/css">
+</style>
+{/block} {block name="container"}
+<div class="d-flex">
+    <div class="btn-list">
+        <a href="/admin/event/funding.html" class="btn btn-primary">内排中心</a>
+        <a href="/admin/event/funding_audit.html" class="btn btn-secondary">内排审核</a>
+        <a href="/admin/event/funding_log.html" class="btn btn-secondary">内排记录</a>
+    </div>
+
+</div>
+<div class="card mt-3">
+    <div class="card-body p-0">
+        <table class="table table-hover table-outline table-vcenter card-table">
+            <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>状态</th>
+                    <th>目标金额</th>
+                    <th>当前金额</th>
+                    <th>参与人数</th>
+                    <th>参与次数</th>
+                    <th>到期时间</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {volist name="logs" id="log"}
+                    <tr>
+                        <td>
+                            {eq name="log.type" value="8"}<span class="badge badge-primary badge-md">官</span>{/eq}
+                            {$log.title} {empty name="log.visible"} <span class="badge badge-default badge-md">不可见</span>{/empty}</td>
+                        <td>
+                            {switch log.status}
+                                {case 1}<span class="status-icon bg-success"></span>进行中{/case}
+                                {case 2}<span class="status-icon bg-warning"></span>待审核{/case}
+                                {case 3}<span class="status-icon bg-danger"></span>已结束{/case}
+                            {/switch}
+                        </td>
+                        <td>{$log.target|money}</td>
+                        <td>{$log.current|money}</td>
+                        <td>{$log.people}</td>
+                        <td>{$log.count}</td>
+                        <td>{$log.expire_at}</td>
+                        <td>
+                            <button class="btn btn-secondary btn-sm btn-edit" data-id="{$log.id}">编辑</button>
+                        </td>
+                    </tr>
+                {/volist}
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">{$logs|raw}</div>
+</div>
+<div class="modal modal-create" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" name="action" value="create" />
+                <div class="modal-header">
+                    <h5 class="modal-title">发布新项目</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-3" style="display: none">
+                            <div class="form-group">
+                                <label class="form-label">项目分类</label>
+                                <select class="custom-select input-group-text" name="catalog">
+                                    {volist name="Think.config.hello.funding.catalog" id="item"}
+                                        <option value="{$key}">{$item}</option>
+                                    {/volist}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label class="form-label">项目名称</label>
+                                <input type="text" class="form-control" placeholder="项目名称" name="title" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4" style="display: none">
+                            <div class="form-group">
+                                <label class="form-label">项目图片</label>
+                                <div class="custom-file">
+                                    <input type="file" accept="image/*" class="custom-file-input" name="image" />
+                                    <label class="custom-file-label">选择图片</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3" style="display: none">
+                            <div class="form-group">
+                                <label class="form-label">项目类型</label>
+                                <select class="custom-select input-group-text" name="type">
+                                        <option value="1">普通项目</option>
+                                        <option value="8">官方项目</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-5" style="display: none">
+                            <div class="form-group">
+                                <label class="form-label">项目发起人</label>
+                                <input type="text" class="form-control" placeholder="选填、发起人的手机号码" name="owner" maxlength="11" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="form-label">目标金额</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="必填" name="target" />
+                                    <span class="input-group-append" id="basic-addon2">
+                                        <span class="input-group-text">{$Think.config.hello.unit}</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="display: none">
+                            <div class="form-group">
+                                <label class="form-label">项目详情</label>
+                                <script id="editor" name="content" type="text/plain" style="height: 20rem;"></script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary">发布项目</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal modal-update" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" />
+                <input type="hidden" name="action" value="update" />
+                <div class="modal-header">
+                    <h5 class="modal-title">编辑内排中心</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-3" style="display: none">
+                            <div class="form-group">
+                                <label class="form-label">项目分类</label>
+                                <select class="custom-select input-group-text" name="catalog">
+                                    {volist name="Think.config.hello.funding.catalog" id="item"}
+                                        <option value="{$key}">{$item}</option>
+                                    {/volist}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label class="form-label">项目名称</label>
+                                <input type="text" class="form-control" placeholder="项目名称" name="title" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4" style="display: none">
+                            <div class="form-group">
+                                <label class="form-label">项目图片</label>
+                                <div class="custom-file">
+                                    <input type="file" accept="image/*" class="custom-file-input" name="image" />
+                                    <label class="custom-file-label">不选，代表不改图片</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3" style="display: none">
+                            <div class="form-group">
+                                <label class="form-label">排列顺序</label>
+                                <input type="text" class="form-control" placeholder="数字越大越靠前" name="sort" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3" style="display: none">
+                            <div class="form-group">
+                                <label class="form-label">是否显示</label>
+                                <div class="custom-controls-stacked">
+                                    <label class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" name="visible" value="1" checked="">
+                                        <span class="custom-control-label">显示</span>
+                                    </label>
+                                    <label class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" name="visible" value="0">
+                                        <span class="custom-control-label">隐藏</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3" style="display: none">
+                            <div class="form-group">
+                                <label class="form-label">项目类型</label>
+                                <select class="custom-select input-group-text" name="type">
+                                        <option value="1">普通项目</option>
+                                        <option value="8">官方项目</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label class="form-label">项目状态</label>
+                                <select class="custom-select input-group-text" name="status">
+                                        <option value="1">进行中</option>
+                                        <option value="2">待审核</option>
+                                        <option value="3">已结束</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4" style="display: none">
+                            <div class="form-group">
+                                <label class="form-label">发布人</label>
+                                <input type="text" class="form-control" placeholder="选填、发布人手机号码" name="owner" maxlength="11" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="form-label">目标金额</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="必填" name="target" />
+                                    <span class="input-group-append" id="basic-addon2">
+                                        <span class="input-group-text">{$Think.config.hello.unit}</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="form-label">到期时间</label>
+                                <input type="text" class="form-control" placeholder="格式 2018-08-08 12:30:00" name="expire_at" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="display: none">
+                            <div class="form-group">
+                                <label class="form-label">宝贝详情</label>
+                                <script id="editor2" name="content" type="text/plain" style="height: 20rem;"></script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary">保存设置</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script>
+require(['jquery', 'ZeroClipboard'], function($, ZeroClipboard){
+    window['ZeroClipboard'] = ZeroClipboard;
+    $(function(){
+        // 实例化编辑器
+        var ue = UE.getEditor('editor', {
+            zIndex: 2900,
+        });
+        var ue2 = UE.getEditor('editor2', {
+            zIndex: 2900,
+        });
+        // 编辑项目
+        $('.btn-edit').on('click', function(){
+            if ($('.btn-loading').length) {
+                return false;
+            }
+            $(this).addClass('btn-loading');
+            var id = $(this).data('id');
+            ajax('/admin/event/funding', {action: 'get', id: id}, function(res){
+                $('.btn-edit[data-id=' + id + ']').removeClass('btn-loading');
+                $('.modal-update input[name=id]').val(res.data.id);
+                $('.modal-update select[name=catalog]').val(res.data.catalog);
+                $('.modal-update input[name=title]').val(res.data.title);
+                $('.modal-update input[name=sort]').val(res.data.sort);
+                if (res.data.visible) {
+                    $('.modal-update input[name=visible][value=1]').prop('checked', true);
+                } else {
+                    $('.modal-update input[name=visible][value=1]').prop('checked', false);
+                    $('.modal-update input[name=visible][value=0]').prop('checked', true);
+                }
+                $('.modal-update select[name=type]').val(res.data.type);
+                $('.modal-update select[name=status]').val(res.data.status);
+                $('.modal-update input[name=owner]').val(res.data.owner);
+                $('.modal-update input[name=target]').val(res.data.target);
+                $('.modal-update input[name=expire_at]').val(res.data.expire_at);
+                ue2.setContent(res.data.content ? res.data.content : '');
+                $('.modal-update').modal();
+            });
+        });
+    });
+});
+</script>
+{/block}

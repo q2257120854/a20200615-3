@@ -1,0 +1,87 @@
+ {include file="public/header" /}
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content">
+    <div class="row">
+        <form class="form-horizontal" method="post">
+            <div class="col-md-8 {:config('adminClass.left')}">
+                {include file="public/tophead"}
+                {include file="public/top" /}
+                <div class="ibox-content">
+                {include file="public/topsection"}
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">账户：</label>
+                        <div class="col-sm-9">
+                            <input name="name" type="text" class="form-control" value="{present name="name"}{$name.name}{/present}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">密码：</label>
+                        <div class="col-sm-9">
+                            <input name="password" type="password" class="form-control" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">确认密码：</label>
+                        <div class="col-sm-9">
+                            <input name="password2" type="password" class="form-control" value="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 {:config('adminClass.right')}" {php}if(input("id")==1){echo 'style="display:none"';}{/php}>
+                <div class="ibox-title">
+                        <h5>其他设置</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">权限：</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="type">
+                            {php}$a=input("id");{/php}
+                                {volist name="admintype" id="v"}
+                                {eq name='v.id' value='$a'}
+                                <option value="{$v.id}" selected="selected">{$v.title}</option>
+                                {else /}
+                                <option value="{$v.id}">{$v.title}</option>
+                                {/eq}
+                                {/volist}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">禁用：</label>
+                        <div class="col-sm-8">
+                            <div class="radio i-checks">
+                            <label>
+                                <input type="radio" value="1" name="hide" {present name="name"}{eq name="name.hide" value="1"}checked{/eq}{else /}checked{/present}>正常账户
+                            </label>
+                            <label>
+                                <input type="radio" value="0" name="hide" {present name="name"}{eq name="name.hide" value="0"}checked{/eq}{/present}>禁止账户
+                            </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{include file="public/footer" /}
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+<script type="text/javascript">
+$(document).ready(function(){
+     $(".i-checks").iCheck({
+        checkboxClass: "icheckbox_square-green",
+        radioClass: "iradio_square-green",
+    })
+});
+function msg(){
+    layer.msg("上传成功")
+}
+</script>
+{include file="public/bottom" /}
+ 
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

@@ -1,0 +1,166 @@
+ {include file="public/header" /}
+ {load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<style type="text/css">
+#des,#des input{ width: 40px;text-align:center;}
+#id{ width: 78px; }
+.bs-checkbox{ width: 36px; height: 40px }
+.fixed-table-toolbar .columns,.fixed-table-toolbar .search{margin-left:0px; margin-top: 0px }
+#title span{ float: right; margin-left: 3.333px;}
+.search{ margin-bottom: 0px !important; }
+.asdlkjasd{ background: #1ab394; color: #fff}
+
+</style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        {include file="public/tophead"}
+        {include file="public/top" /}
+        <div class="ibox-content">
+        {include file="public/topsection"}
+        <?php
+function article($id){
+    $data=db('article')->where('id',$id)->find();
+    return $data;
+
+    if(!$data){
+        $a=[1=>'',2=>''];
+        return '文章不存在';
+        exit();
+    }
+
+ 
+  
+     
+      
+    $a=[1=>'['.$m.']'.$a,2=>$data['mychannel']];
+    return $a;
+}
+        ?>
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <div class="example">
+                        <form class="form-horizontal" method="post">
+                        <table data-toggle="table">
+                            <thead>
+                                <tr>
+                                    <th data-align="center">id</th>
+                                    <th data-align="center">aid</th>
+                                    <th>用户</th>
+                                    <th>举报/回复</th>
+                                    <th>时间</th>
+                                    <th>管理</th>
+                                </tr>
+                            </thead> 
+                            <tbody id="form">
+                                {volist name="data" id="v"}
+                                <tr id="id{$v.id}" class="class">
+                                    <td id="id">{$v.id}</td>
+
+                                    <td>
+<?php
+$data=article($v['aid']);
+if(!$data){
+    $a="0";
+}else{
+    if($data['mychannel']==1){
+        $m='文章';
+    }else if($data['mychannel']==2){
+        $m='图片';
+    }else if($data['mychannel']==3){
+        $m='视频';
+    }else{
+        $m='文章';
+    }
+    if($data['title']){
+        $a=$data['title'];
+    }else if($data['description']){
+        $a=$data['description'];
+    }else{
+        $a='';
+    }
+    $a='['.$m.']['.$v['aid'].']'.$a;
+} 
+?> 
+{eq name="a" value="0"}文章已删除{else /}<a onclick="add('{:url('add',['id'=>$v['aid'],'mychannel'=>$data['mychannel'],'url'=>-1])}')">{$a}</a>{/eq}
+                                    </td>
+ 
+                                    <td><?php
+    $user=_user($v['uid']);
+    echo $user['username'];
+                                    ?></td>
+                                    
+                                    
+<td id="title">
+                                    <?php if($v['admin_id']){
+                                        echo '回复：';
+                                    }else{
+                                        echo '举报：';
+                                    }
+                                    ?>
+                                   {:_substr($v['content'])}
+                                    </td>
+                                    <td> 
+                                        <span {php}if(date('Ymd')==date('Ymd',$v['time']))echo 'style="color: #ed5565"';{/php}>{$v.time|date='Y-m-d H:i:s',###}</span>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <div data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span>
+                                            </div>
+                                            <ul class="dropdown-menu">
+                                                <?php if(!$v['admin_id']){?>
+                                                <li><a onclick="huifu({$v.id})">回复</a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <?php }?>
+                                                 
+                                                <li><a onclick="del({$v.id})">删除</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                        </form>
+                    </div>
+                </div>  
+            </div>
+            <hr>
+            <div class="row row-lg">
+                <div class="col-sm-12 pages">{$page}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+$(document).ready(function(){
+});
+function del(id){
+    swal_del(id,"{:url('pingDel')}")
+}
+function huifu(id){
+    layer.prompt({title: '回复用户', formType: 2,maxlength:255}, function(pass, index){
+        if(pass){
+            ajaxFun('post','{:url('jubaoHuifu')}',{content:pass,id:id},'json',function(ret,err){
+                if(ret){
+                    if(ret.ret){
+                        layer.msg(ret.ret)
+                        layer.close(index)
+                        setTimeout(function(){
+                            location.reload() 
+                        },1500)
+                    }else{
+                        layer.msg(ret.err)
+                    }
+                }
+            })
+        }
+    });
+}
+</script>
+ <SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

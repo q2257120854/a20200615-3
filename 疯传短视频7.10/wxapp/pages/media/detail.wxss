@@ -1,0 +1,335 @@
+.grace-header-body {
+    position: absolute;
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    color: #ffffff;
+    font-size: 40rpx;
+    display: block;
+    padding-left: 25rpx;
+}
+
+.grace-header-body .link-back {
+    font-size: 50rpx;
+}
+
+.media-share {
+    background-color: #000000;
+    padding: 40rpx 40rpx;
+    height: 170rpx;
+    box-sizing: border-box;
+}
+
+.media-share .grace-button {
+    width: 280rpx;
+    display: block;
+    box-shadow: none;
+    border-radius: 10rpx;
+    overflow: hidden;
+    font-size: 36rpx;
+    padding: 0;
+}
+
+.media-share>uni-view {
+    background: #000000;
+    margin: 0;
+    height: 100rpx;
+}
+
+.media-share.grace-space-between {
+    padding-bottom: 0;
+}
+
+.media-share .grace-button::before {
+    margin-right: 10rpx;
+}
+
+.media-share .grace-button:after {
+    display: none;
+}
+
+.media-share .icon-share2 {
+    animation: free_download 0.6s linear alternate infinite;
+}
+
+@-webkit-keyframes free_download {
+    0% {
+        -webkit-transform: scale(0.9);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+    }
+}
+
+@keyframes free_download {
+    0% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.grace-author {
+    background-color: #FFFFFF;
+}
+
+.grace-author-box {
+    padding-left: 20rpx;
+}
+
+.grace-author-box .grace-list-body {
+    padding: 0rpx 0;
+}
+
+.grace-author-box .grace-list-items {
+    margin-top: 15rpx;
+}
+
+.grace-tomall {
+    padding: 20rpx 25rpx;
+}
+
+.grace-tomall button {
+    height: 70rpx;
+    width: 260rpx;
+    line-height: 74rpx;
+    font-size: 32rpx;
+}
+
+.grace-tomall button::before {
+    margin-right: 10rpx;
+}
+
+.grace-tomall button::after {
+    display: none;
+}
+
+.media-player {
+    width: 100%;
+    background: #000000;
+    box-sizing: border-box;
+    min-height: 500rpx;
+}
+
+.media-player>tvc-player {
+    width: 100%;
+    height: 100%;
+}
+
+.grace-adsense {
+    width: 100%;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0 25rpx 20rpx 25rpx;
+}
+
+.grace-adsense-img {
+    width: 100%;
+    height: 200rpx;
+    border-radius: 8rpx;
+}
+
+.media-title {
+    font-size: 36rpx;
+    padding: 20rpx 20rpx 0 20rpx;
+    font-weight: 600;
+    overflow: hidden;
+    background-color: #fff;
+    margin-bottom: 20rpx;
+}
+
+.grace-title {
+    padding: 20rpx;
+    margin-top: 20rpx;
+}
+
+.grace-title .grace-title-text {
+    font-size: 30rpx;
+}
+
+.media-list {
+    padding: 20rpx;
+    background-color: #ffffff;
+    margin: 0;
+}
+
+.media-list .grace-news-item {
+    padding: 20rpx 0;
+}
+
+.media-list .grace-news-img {
+    width: 220rpx;
+    height: 180rpx;
+    border-radius: 10rpx;
+}
+
+.media-list .grace-news-title {
+    font-size: 34rpx;
+    font-weight: 600;
+    line-height: 50rpx;
+}
+
+.media-list .grace-news-play {
+    width: 60rpx;
+    height: 60rpx;
+    position: absolute;
+    left: 80rpx;
+    top: 80rpx;
+}
+
+.grace-guide {
+    position: absolute;
+    top: 400rpx;
+    width: 500rpx;
+    left: calc(50% - 250rpx);
+    text-align: center;
+}
+
+.grace-alert {
+    width: 500rpx;
+    font-size: 30rpx;
+    position: absolute;
+    top: 200rpx;
+    left: 0;
+    color: #ffffff;
+}
+
+.grace-guide .grace-button {
+    position: absolute;
+    top: 400rpx;
+    width: 160rpx;
+    left: calc(50% - 80rpx);
+    border-radius: 200rpx;
+}
+
+.grace-chevron {
+    position: absolute;
+    width: 80rpx;
+    height: 15rpx;
+    opacity: 0;
+    transform: scale3d(0.5,0.5,0.5);
+    animation: move 3s ease-out infinite;
+    left: calc(50% - 40rpx);
+}
+
+.grace-chevron:first-child {
+    animation: move 3s ease-out 1s infinite;
+}
+
+.grace-chevron:nth-child(2) {
+    animation: move 3s ease-out 2s infinite;
+}
+
+.grace-chevron:before,.grace-chevron:after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 51%;
+    background: #fff;
+}
+
+.grace-chevron:before {
+    left: 0;
+    transform: skew(0deg,30deg);
+}
+
+.grace-chevron:after {
+    right: 0;
+    width: 50%;
+    transform: skew(0deg,-30deg);
+}
+
+@keyframes move {
+    25% {
+        opacity: 1;
+    }
+
+    33% {
+        opacity: 1;
+        transform: translateY(60rpx);
+    }
+
+    67% {
+        opacity: 1;
+        transform: translateY(80rpx);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(120rpx) scale3d(0.5,0.5,0.5);
+    }
+}
+
+.box-stop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 8888888;
+}
+
+.box-stop .stop-inner {
+    position: absolute;
+    height: 260rpx;
+    text-align: center;
+    overflow: hidden;
+    top: calc(50% - 260rpx);
+    width: 100%;
+    z-index: 999999999;
+}
+
+.box-stop .stop-play {
+    width: 50%;
+    float: left;
+    height: 260rpx;
+    text-align: center;
+}
+
+.box-stop .stop-share {
+    width: 50%;
+    float: left;
+    height: 260rpx;
+    text-align: center;
+    background-color: rgba(0,0,0,0);
+}
+
+.box-stop .stop-share::after {
+    display: none!important;
+}
+
+.box-stop .stop-icon {
+    width: 140rpx;
+    height: 140rpx;
+    margin: 20rpx auto;
+    display: block;
+}
+
+.box-stop .stop-text {
+    font-size: 40rpx;
+    color: #FFFFFF;
+}
+
+.box-stop .stop-icon-share {
+    animation: free_download 0.6s linear alternate infinite;
+}
+
+.grace-follow {
+    padding: 20rpx 25rpx;
+    background-color: #FFFFFF;
+}
+
+.grace-reward {
+    position: fixed;
+    right: 20rpx;
+    top: 40%;
+    width: 80rpx;
+    height: 100rpx;
+    z-index: 9999999;
+    animation: free_download 0.6s linear alternate infinite;
+}

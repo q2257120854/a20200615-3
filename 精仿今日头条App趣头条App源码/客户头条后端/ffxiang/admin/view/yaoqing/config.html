@@ -1,0 +1,879 @@
+ {include file="public/header" /}
+ <style>h2{ text-align: center; }hr{border-top: 20px solid #eee}</style>
+
+ <body class="gray-bg">
+    <div class="wrapper wrapper-content {:config('adminClass.main')}">
+        <div class="row">
+            <div class="col-sm-12">
+                {include file="public/tophead"}
+                {include file="public/top" /}
+                <div class="ibox-content">
+                {include file="public/topsection"}
+                    <h4 style="text-align: center;">例子：A是徒弟 ， B是师傅；A的师傅就是B ， B的徒弟就是A</h4>
+                    <form class="form-horizontal" method="post">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">标题：</label>
+                            <div class="col-sm-9">
+                                <input name="title" type="text" class="form-control" value="{$cfg.title}">
+                                <span class="help-block m-b-none">会员中心的标题</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">描述：</label>
+                            <div class="col-sm-9">
+                                <input name="msg" type="text" class="form-control" value="{$cfg.msg}">
+                                <span class="help-block m-b-none">会员中心的描述</span>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">分享标题：</label>
+                            <div class="col-sm-9">
+                                <input name="fenxiang_title" type="text" class="form-control" value="{$cfg.fenxiang_title}">
+                                <span class="help-block m-b-none">分享到第三方平台的显示标题</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">分享描述：</label>
+                            <div class="col-sm-9">
+                                <input name="fenxiang_content" type="text" class="form-control" value="{$cfg.fenxiang_content}">
+                                <span class="help-block m-b-none">分享到第三方平台的显示描述</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">分享描述：</label>
+                            <div class="col-sm-9">
+                                <input name="fenxiang_content" type="text" class="form-control" value="{$cfg.fenxiang_content}">
+                                <span class="help-block m-b-none">分享到第三方平台的显示描述</span>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">任务系统：</label>
+                            <div class="col-sm-9">
+                                <input name="renwu" type="text" class="form-control" value="{$cfg.renwu}">
+                                <span class="help-block m-b-none">会员中心的列表显示小标题</span>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">兑换提现：</label>
+                            <div class="col-sm-9">
+                                <input name="duihuan" type="text" class="form-control" value="{$cfg.duihuan}">
+                                <span class="help-block m-b-none">会员中心的列表显示小标题</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <h2>零钱奖励</h2>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">A徒弟注册：</label>
+                            <div class="col-sm-9">
+                                <input name="money_yaoqing" type="text" class="form-control" value="{$cfg.money_yaoqing}">
+                                <span class="help-block m-b-none">B邀请A，A注册成功后，给A奖励</span>
+                            </div>  
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">B师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="money_yaoqing_s1" type="text" class="form-control" value="{$cfg.money_yaoqing_s1}">
+                                <span class="help-block m-b-none">B邀请A，A注册成功后，给B奖励</span>
+                            </div> 
+                        </div>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="money_yaoqing_s0" type="text" class="form-control" value="{$cfg.money_yaoqing_s0}">
+                            </div> 
+                        </div>
+						
+						
+                        <h2>金币奖励</h2>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">A徒弟注册：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_yaoqing" type="text" class="form-control" value="{$cfg.jinbi_yaoqing}">
+                                <span class="help-block m-b-none">B邀请A，A注册成功后，给A奖励</span>
+                            </div> 
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">B师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_yaoqing_s1" type="text" class="form-control" value="{$cfg.jinbi_yaoqing_s1}">
+                                <span class="help-block m-b-none">B邀请A，A注册成功后，给B奖励</span>
+                            </div>
+                             
+                        </div>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_yaoqing_s0" type="text" class="form-control" value="{$cfg.jinbi_yaoqing_s0}">
+                            </div> 
+                        </div>
+                        <hr>
+                         
+                        <h2>零钱奖励</h2>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">A徒弟每天登录：</label>
+                            <div class="col-sm-9">
+                                <input name="money_login" type="text" class="form-control" value="{$cfg.money_login}">
+                                <span class="help-block m-b-none">A每天上APP，给A奖励</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">B师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="money_login_s1" type="text" class="form-control" value="{$cfg.money_login_s1}">
+                                <span class="help-block m-b-none">A每天上APP，给A的师傅奖励</span>
+                            </div>
+                        </div>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="money_login_s0" type="text" class="form-control" value="{$cfg.money_login_s0}">
+                            </div> 
+                        </div>
+                        <h2>金币奖励</h2>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">A徒弟每天登录：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_login" type="text" class="form-control" value="{$cfg.jinbi_login}">
+                                <span class="help-block m-b-none">A每天上APP，给A奖励</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">B师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_login_s1" type="text" class="form-control" value="{$cfg.jinbi_login_s1}">
+                                <span class="help-block m-b-none">A每天上APP，给A的师傅奖励</span>
+                            </div>
+                        </div>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_login_s0" type="text" class="form-control" value="{$cfg.jinbi_login_s0}">
+                            </div> 
+                        </div>
+                        <hr>
+
+                         
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">阅读多少篇文章：</label>
+                            <div class="col-sm-9">
+                                <input name="money_news_num" type="text" class="form-control" value="{$cfg.money_news_num}">
+                                <span class="help-block m-b-none">A徒弟阅读多少篇文章给奖励</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">阅读时长文章：</label>
+                            <div class="col-sm-9">
+                                <input name="money_news_time" type="text" class="form-control" value="{$cfg.money_news_time}">
+                                <span class="help-block m-b-none">打开文章，阅读达到该设置秒后才算成功</span>
+                            </div>
+                        </div>
+                        <h2>零钱奖励</h2>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">A徒弟阅读文章：</label>
+                            <div class="col-sm-9">
+                                <input name="money_news" type="text" class="form-control" value="{$cfg.money_news}">
+                                <span class="help-block m-b-none">A徒弟每天阅读XX篇文章，给A奖励</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">B师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="money_news_s1" type="text" class="form-control" value="{$cfg.money_news_s1}">
+                                <span class="help-block m-b-none">A徒弟阅读XX篇文章，给A的师傅奖励</span>
+                            </div>
+                        </div>
+							<div class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="money_news_s0" type="text" class="form-control" value="{$cfg.money_news_s0}">
+                            </div> 
+                        </div>
+                        <h2>金币奖励</h2>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">A徒弟阅读文章：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_news" type="text" class="form-control" value="{$cfg.jinbi_news}">
+                                <span class="help-block m-b-none">A徒弟每天阅读XX篇文章，给A奖励</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">B师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_news_s1" type="text" class="form-control" value="{$cfg.jinbi_news_s1}">
+                                <span class="help-block m-b-none">A徒弟阅读XX篇文章，给A的师傅奖励</span>
+                            </div>
+                        </div>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_news_s0" type="text" class="form-control" value="{$cfg.jinbi_news_s0}">
+                            </div> 
+                        </div>
+                        <hr>
+
+                        <h2>零钱奖励</h2>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">A徒弟发布微头条：</label>
+                            <div class="col-sm-9">
+                                <input name="money_weitoutiao" type="text" class="form-control" value="{$cfg.money_weitoutiao}">
+                                <span class="help-block m-b-none">A徒弟每天发布1条微头条，给A奖励</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">B师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="money_weitoutiao_s1" type="text" class="form-control" value="{$cfg.money_weitoutiao_s1}">
+                                <span class="help-block m-b-none">A徒弟每天发布1条微头条，给A的师傅奖励</span>
+                            </div>
+                        </div>
+							<div class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="money_weitoutiao_s0" type="text" class="form-control" value="{$cfg.money_weitoutiao_s0}">
+                            </div> 
+                        </div>
+                        <h2>金币奖励</h2>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">A徒弟发布微头条：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_weitoutiao" type="text" class="form-control" value="{$cfg.jinbi_weitoutiao}">
+                                <span class="help-block m-b-none">A徒弟每天发布1条微头条，给A奖励</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">B师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_weitoutiao_s1" type="text" class="form-control" value="{$cfg.jinbi_weitoutiao_s1}">
+                                <span class="help-block m-b-none">A徒弟每天发布1条微头条，给A的师傅奖励</span>
+                            </div>
+                        </div>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_weitoutiao_s0" type="text" class="form-control" value="{$cfg.jinbi_weitoutiao_s0}">
+                            </div> 
+                        </div>
+                        <hr>
+
+                        <h2>零钱奖励</h2>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">A徒弟分享师徒：</label>
+                            <div class="col-sm-9">
+                                <input name="money_fenxiang_1" type="text" class="form-control" value="{$cfg.money_fenxiang_1}">
+                                <span class="help-block m-b-none">A徒弟每天分享师徒到第三方平台，给A奖励</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">B师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="money_fenxiang_1_s1" type="text" class="form-control" value="{$cfg.money_fenxiang_1_s1}">
+                                <span class="help-block m-b-none">A徒弟每天分享师徒到第三方平台，给A奖励</span>
+                            </div>
+                        </div>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="money_fenxiang_1_s0" type="text" class="form-control" value="{$cfg.money_fenxiang_1_s0}">
+                            </div> 
+                        </div>
+                        <h2>金币奖励</h2>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">A徒弟分享师徒：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_fenxiang_1" type="text" class="form-control" value="{$cfg.jinbi_fenxiang_1}">
+                                <span class="help-block m-b-none">A徒弟每天分享师徒到第三方平台，给A奖励</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">B师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_fenxiang_1_s1" type="text" class="form-control" value="{$cfg.jinbi_fenxiang_1_s1}">
+                                <span class="help-block m-b-none">A徒弟每天分享师徒到第三方平台，给A奖励</span>
+                            </div>
+                        </div>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_fenxiang_1_s0" type="text" class="form-control" value="{$cfg.jinbi_fenxiang_1_s0}">
+                            </div> 
+                        </div>
+                        <hr>
+
+                        <h2>零钱奖励</h2>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">A徒弟分享文章：</label>
+                            <div class="col-sm-9">
+                                <input name="money_fenxiang_2" type="text" class="form-control" value="{$cfg.money_fenxiang_2}">
+                                <span class="help-block m-b-none">A徒弟每天分享文章到第三方平台，给A奖励</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">B师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="money_fenxiang_2_s1" type="text" class="form-control" value="{$cfg.money_fenxiang_2_s1}">
+                                <span class="help-block m-b-none">A徒弟每天分享文章到第三方平台，给A奖励</span>
+                            </div>
+                        </div>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="money_fenxiang_2_s0" type="text" class="form-control" value="{$cfg.money_fenxiang_2_s0}">
+                            </div> 
+                        </div>
+                        <h2>金币奖励</h2>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">A徒弟分享文章：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_fenxiang_2" type="text" class="form-control" value="{$cfg.jinbi_fenxiang_2}">
+                                <span class="help-block m-b-none">A徒弟每天分享文章到第三方平台，给A奖励</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">B师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_fenxiang_2_s1" type="text" class="form-control" value="{$cfg.jinbi_fenxiang_2_s1}">
+                                <span class="help-block m-b-none">A徒弟每天分享文章到第三方平台，给A奖励</span>
+                            </div>
+                        </div>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_fenxiang_2_s0" type="text" class="form-control" value="{$cfg.jinbi_fenxiang_2_s0}">
+                            </div> 
+                        </div>
+                        <hr>
+						
+						
+						
+                      
+                        <h2>阅读奖励</h2>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">浏览每篇文章：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_article_view" type="text" class="form-control" value="{$cfg.jinbi_article_view}">
+                                <span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100 固定请填100-100</span>
+							</div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_article_view_s1" type="text" class="form-control" value="{$cfg.jinbi_article_view_s1}">
+                                <span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100 固定请填100-100</span>
+							</div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_article_view_s0" type="text" class="form-control" value="{$cfg.jinbi_article_view_s0}">
+                                <span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100 固定请填100-100</span>
+							</div>
+                        </div>
+						
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">阅读额外奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_article_view_extend" type="text" class="form-control" value="{$cfg.jinbi_article_view_extend}">
+                                <span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100 固定请填100-100</span>
+							</div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师傅额外奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_article_view_extend_s1" type="text" class="form-control" value="{$cfg.jinbi_article_view_extend_s1}">
+                                <span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100 固定请填100-100</span>
+							</div>
+                        </div>
+						
+							<div class="form-group">
+                            <label class="col-sm-2 control-label">师公额外奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_article_view_extend_s0" type="text" class="form-control" value="{$cfg.jinbi_article_view_extend_s0}">
+                                <span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100 固定请填100-100</span>
+							</div>
+                        </div>
+						
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">额外阅读次数：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_article_view_extend_time" type="text" class="form-control" value="{$cfg.jinbi_article_view_extend_time}">
+                                <span class="help-block m-b-none">达到此次数额外奖励</span>
+							</div>
+                        </div>
+						
+						
+						
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">文章浏览(百分比)：</label>
+                            <div class="col-sm-9">
+                                <input name="article_view_time" type="text" class="form-control" value="{$cfg.article_view_time}">
+								<span class="help-block m-b-none">如50% 请写50</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">每屏浏览速度：</label>
+                            <div class="col-sm-9">
+                                <input name="article_view_swap" type="text" class="form-control" value="{$cfg.article_view_swap}">
+								<span class="help-block m-b-none">如3秒</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">文章浏览每天奖励次数上限：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_views_time" type="text" class="form-control" value="{$cfg.jinbi_views_time}">
+								<span class="help-block m-b-none">0为没有限制</span>
+                            </div>
+                        </div>
+						
+						<h2>视频奖励</h2>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">观看视频：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_video_view" type="text" class="form-control" value="{$cfg.jinbi_video_view}">
+								<span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_video_view_s1" type="text" class="form-control" value="{$cfg.jinbi_video_view_s1}">
+								<span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_video_view_s0" type="text" class="form-control" value="{$cfg.jinbi_video_view_s0}">
+								<span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">视频额外奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_video_view_extend" type="text" class="form-control" value="{$cfg.jinbi_video_view_extend}">
+                                <span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100 固定请填100-100</span>
+							</div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师傅额外奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_video_view_extend_s1" type="text" class="form-control" value="{$cfg.jinbi_video_view_extend_s1}">
+								<span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师公额外奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_video_view_extend_s0" type="text" class="form-control" value="{$cfg.jinbi_video_view_extend_s0}">
+								<span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+                            </div>
+                        </div>
+						
+							<div class="form-group">
+                            <label class="col-sm-2 control-label">视频额外奖励次数：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_video_view_extend_time" type="text" class="form-control" value="{$cfg.jinbi_video_view_extend_time}">
+                                <span class="help-block m-b-none">达到此次数额外奖励</span>
+							</div>
+                        </div>
+						
+						
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">观看视频时间(百分比)：</label>
+                            <div class="col-sm-9">
+                                <input name="article_watch_time" type="text" class="form-control" value="{$cfg.article_watch_time}">
+								<span class="help-block m-b-none">如50% 请写50</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">观看视频每天奖励次数上限：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_views_time1" type="text" class="form-control" value="{$cfg.jinbi_views_time1}">
+								<span class="help-block m-b-none">0为没有限制</span>
+                            </div>
+                        </div>
+						
+						<h2>小视频奖励</h2>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">观看小视频：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_smallvideo_view" type="text" class="form-control" value="{$cfg.jinbi_smallvideo_view}">
+                                <span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+							</div>
+                        </div>
+						
+						<div  class="form-group">
+                            <label class="col-sm-2 control-label">师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_smallvideo_view_s1" type="text" class="form-control" value="{$cfg.jinbi_smallvideo_view_s1}">
+                                <span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+							</div>
+                        </div>
+						
+						<div  class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_smallvideo_view_s0" type="text" class="form-control" value="{$cfg.jinbi_smallvideo_view_s0}">
+                                <span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+							</div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">小视频额外奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_smallvideo_view_extend" type="text" class="form-control" value="{$cfg.jinbi_smallvideo_view_extend}">
+                                <span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100 固定请填100-100</span>
+							</div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师傅额外奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_smallvideo_view_extend_s1" type="text" class="form-control" value="{$cfg.jinbi_smallvideo_view_extend_s1}">
+                                <span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100 固定请填100-100</span>
+							</div>
+                        </div>
+						
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师公额外奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_smallvideo_view_extend_s0" type="text" class="form-control" value="{$cfg.jinbi_smallvideo_view_extend_s0}">
+                                <span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100 固定请填100-100</span>
+							</div>
+                        </div>
+						
+						
+							<div class="form-group">
+                            <label class="col-sm-2 control-label">小视频额外奖励次数：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_smallvideo_view_extend_time" type="text" class="form-control" value="{$cfg.jinbi_smallvideo_view_extend_time}">
+                                <span class="help-block m-b-none">达到此次数额外奖励</span>
+							</div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">小视频观看时间(s)：</label>
+                            <div class="col-sm-9">
+                                <input name="smallvideo_view_time" type="text" class="form-control" value="{$cfg.smallvideo_view_time}">
+                                <span class="help-block m-b-none">每观看xx秒奖励</span>
+                            </div>
+                        </div>
+						
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">观看小视频每天奖励次数上限：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_views_time2" type="text" class="form-control" value="{$cfg.jinbi_views_time2}">
+								<span class="help-block m-b-none">0为没有限制</span>
+                            </div>
+                        </div>
+						
+						
+                      
+                        <hr>
+						
+						
+						<h2>阅读分享金币奖励</h2>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">阅读分享奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_article_share" type="text" class="form-control" value="{$cfg.jinbi_article_share}">
+                                <span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100 固定请填100-100</span>
+							</div>
+                        </div>
+						
+						
+						
+						  <div class="form-group">
+                            <label class="col-sm-2 control-label">文章浏览(百分比)：</label>
+                            <div class="col-sm-9">
+                                <input name="article_view_time2" type="text" class="form-control" value="{$cfg.article_view_time2}">
+								<span class="help-block m-b-none">如50% 请写50</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">每屏浏览速度：</label>
+                            <div class="col-sm-9">
+                                <input name="article_view_swap2" type="text" class="form-control" value="{$cfg.article_view_swap2}">
+								<span class="help-block m-b-none">如3秒</span>
+                            </div>
+                        </div>
+						
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">阅读每天分享奖励上限：</label>
+                            <div class="col-sm-9">
+                                <input name="article_share_time" type="text" class="form-control" value="{$cfg.article_share_time}">
+                                
+							</div>
+                        </div>
+						
+						<h2>视频分享金币奖励</h2>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">视频分享奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_video_share" type="text" class="form-control" value="{$cfg.jinbi_video_share}">
+                                <span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100 固定请填100-100</span>
+							</div>
+                        </div>
+						
+				
+						
+							<div class="form-group">
+                            <label class="col-sm-2 control-label">观看视频时间(百分比)：</label>
+                            <div class="col-sm-9">
+                                <input name="article_watch_time2" type="text" class="form-control" value="{$cfg.article_watch_time2}">
+								<span class="help-block m-b-none">如50% 请写50</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">视频每天分享奖励上限：</label>
+                            <div class="col-sm-9">
+                                <input name="video_share_time" type="text" class="form-control" value="{$cfg.video_share_time}">
+                                
+							</div>
+                        </div>
+						
+						
+						<h2>小视频分享金币奖励</h2>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">小视频分享奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_smallvideo_share" type="hidden" class="form-control" value="{$cfg.jinbi_smallvideo_share}">
+                                <span class="help-block m-b-none">按app视频观看时间设置</span>
+							</div>
+                        </div>
+						<input name="share_view_time" type="hidden" class="form-control" value="{$cfg.share_view_time}">
+						<input name="share_watch_time" type="hidden" class="form-control" value="{$cfg.share_watch_time}">
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">小视频观看时间：</label>
+                            <div class="col-sm-9">
+                                <input name="share_smallwatch_time" type="text" class="form-control" value="{$cfg.share_smallwatch_time}">
+                                
+							</div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">小视频每天分享奖励上限：</label>
+                            <div class="col-sm-9">
+                                <input name="smallvideo_share_time" type="text" class="form-control" value="{$cfg.smallvideo_share_time}">
+                                
+							</div>
+                        </div>
+						
+						
+						<div style="display:none" class="form-group">
+                            <label class="col-sm-2 control-label">师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_article_share_s1" type="text" class="form-control" value="{$cfg.jinbi_article_share_s1}">
+                                <span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100 固定请填100-100</span>
+							</div>
+                        </div>
+						
+						<div style="display:none" class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_article_share_s0" type="text" class="form-control" value="{$cfg.jinbi_article_share_s0}">
+                                <span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100 固定请填100-100</span>
+							</div>
+                        </div>
+						
+						
+						
+						<hr>
+						<h2>广告奖励</h2>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">广告奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_ad_view" type="text" class="form-control" value="{$cfg.jinbi_ad_view}">
+								<span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_ad_view_s1" type="text" class="form-control" value="{$cfg.jinbi_ad_view_s1}">
+								<span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_ad_view_s0" type="text" class="form-control" value="{$cfg.jinbi_ad_view_s0}">
+								<span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">广告浏览时间：</label>
+                            <div class="col-sm-9">
+                                <input name="ad_view_time" type="text" class="form-control" value="{$cfg.ad_view_time}">
+								<span class="help-block m-b-none">如30s</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">广告每天奖励上限：</label>
+                            <div class="col-sm-9">
+                                <input name="ad_view_limit" type="text" class="form-control" value="{$cfg.ad_view_limit}">
+							</div>
+                        </div>
+						
+						
+						<hr>
+						<h2>贴吧奖励</h2>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">成功创建贴吧奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_tieba_create" type="text" class="form-control" value="{$cfg.jinbi_tieba_create}">
+								<span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+                            </div>
+                        </div>
+						
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_tieba_create_s1" type="text" class="form-control" value="{$cfg.jinbi_tieba_create_s1}">
+								<span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_tieba_create_s0" type="text" class="form-control" value="{$cfg.jinbi_tieba_create_s0}">
+								<span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+                            </div>
+                        </div>
+						
+						<h2>发帖奖励</h2>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">发帖奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_tiezi_create" type="text" class="form-control" value="{$cfg.jinbi_tiezi_create}">
+								<span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_tiezi_create_s1" type="text" class="form-control" value="{$cfg.jinbi_tiezi_create_s1}">
+								<span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_tiezi_create_s0" type="text" class="form-control" value="{$cfg.jinbi_tiezi_create_s0}">
+								<span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">发帖奖励上限：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_tiezi_limit" type="text" class="form-control" value="{$cfg.jinbi_tiezi_limit}">
+							</div>
+                        </div>
+						
+						<h2>回帖奖励</h2>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">回帖奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_huitie_create" type="text" class="form-control" value="{$cfg.jinbi_huitie_create}">
+								<span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师傅奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_huitie_create_s1" type="text" class="form-control" value="{$cfg.jinbi_huitie_create_s1}">
+								<span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">师公奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_huitie_create_s0" type="text" class="form-control" value="{$cfg.jinbi_huitie_create_s0}">
+								<span class="help-block m-b-none">固定值填写格式1,随机数填写格式为 0-100</span>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">发帖奖励上限：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_huitie_limit" type="text" class="form-control" value="{$cfg.jinbi_huitie_limit}">
+							</div>
+                        </div>
+						
+						<hr>
+						<h2>首次登录奖励</h2>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">首次登录奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="jinbi_first_login" type="text" class="form-control" value="{$cfg.jinbi_first_login}">
+							</div>
+                        </div>
+						
+						<hr>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">提现手续费：</label>
+                            <div class="col-sm-9">
+                                <input name="shouxufei" type="text" class="form-control" value="{$cfg.shouxufei}">
+                                <span class="help-block m-b-none">输入百分之百比例。比如输入：5%，提现100元扣除5元</span>
+                            </div>
+                        </div>
+                        <hr>
+
+
+                         
+                    </form>
+                </div>
+            </div>
+        </div> 
+    </div>
+{include file="public/footer" /}
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+<script type="text/javascript">
+$(document).ready(function(){
+     $(".i-checks").iCheck({
+        checkboxClass: "icheckbox_square-green",
+        radioClass: "iradio_square-green",
+    })
+})
+function msg(){
+    layer.msg("上传成功")
+}
+
+</script>
+{include file="public/bottom" /}<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

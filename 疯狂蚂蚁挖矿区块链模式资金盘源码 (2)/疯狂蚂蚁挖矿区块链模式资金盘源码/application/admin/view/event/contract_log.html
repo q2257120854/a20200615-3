@@ -1,0 +1,117 @@
+{extend name="common/world"} {block name="title"}链上合约{/block} {block name="style"}
+<style type="text/css">
+</style>
+{/block} {block name="container"}
+<div class="d-flex">
+    <div class="btn-list">
+        <a href="/admin/event/contract.html" class="btn btn-secondary">代理商列表</a>
+        <a href="/admin/event/contract_store.html" class="btn btn-secondary">商品列表</a>
+        <a href="/admin/event/contract_log.html" class="btn btn-primary">操作记录</a>
+    </div>
+</div>
+<form method="get" class="mt-3">
+    <div class="row">
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">用户账号</span>
+                </div>
+                <input type="text" class="form-control" name="username" value="{$Think.get.username}" />
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">操作类型</span>
+                </div>
+                <select class="custom-select input-group-text" name="action">
+                    <option value="">全部</option>
+                    {volist name="actions" id="action"}
+                        {if is_null($Think.get.action) || $Think.get.action == ''}
+                            <option value="{$key}">{$action}</option>
+                        {else /}
+                            {eq name="Think.get.action" value="$key"}
+                                <option selected="true" value="{$key}">{$action}</option>
+                            {else /}
+                                <option value="{$key}">{$action}</option>
+                            {/eq}
+                        {/if}
+                    {/volist}
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">具体商品</span>
+                </div>
+                <select class="custom-select input-group-text" name="cid">
+                    <option value="">全部</option>
+                    {volist name="cids" id="item"}
+                        {if is_null($Think.get.cid) || $Think.get.cid == ''}
+                            <option value="{$item.id}">{$item.title}</option>
+                        {else /}
+                            {eq name="Think.get.cid" value="$item.id"}
+                                <option selected="true" value="{$item.id}">{$item.title}</option>
+                            {else /}
+                                <option value="{$item.id}">{$item.title}</option>
+                            {/eq}
+                        {/if}
+                    {/volist}
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-2 mb-3">
+            <button class="btn btn-primary w-100" type="submit">立即查询</button>
+        </div>
+    </div>
+</form>
+<div class="card mt-3">
+    <div class="card-body p-0">
+        <table class="table table-hover table-outline table-vcenter card-table">
+            <thead>
+                <tr>
+                    <th>商品</th>
+                    <th>用户</th>
+                    <th>操作</th>
+                    <th>货币</th>
+                    <th>手续费</th>
+                    <th>对象</th>
+                    <th>比例</th>
+                    <th>备注</th>
+                    <th>时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                {volist name="logs" id="log"}
+                    <tr>
+                        <td>{$log.title}</td>
+                        <td>{$log.username}</td>
+                        <td>
+                            <span class="tag">
+                            {switch log.action}
+                                {case 1}一口价{/case}
+                                {case 2}团购{/case}
+                                {case 3}转让{/case}
+                                {case 4}继承{/case}
+                                {case 5}出售{/case}
+                                {case 6}领取收益{/case}
+                                {default /} 其他
+                            {/switch}
+                            </span>
+                        </td>
+                        <td>{$log.money|money}{$Think.config.hello.unit}</td>
+                        <td>{$log.charge|money}{$Think.config.hello.unit}</td>
+                        <td>{$log.target}</td>
+                        <td>{$log.ratio}</td>
+                        <td>{$log.remark|default=""}</td>
+                        <td>{$log.create_at}</td>
+                    </tr>
+                {/volist}
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">{$logs|raw}</div>
+</div>
+{/block}
+{block name="script"}{/block}

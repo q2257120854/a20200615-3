@@ -1,0 +1,97 @@
+{extend name="common/world"}
+{block name="title"}订单详情#{$Think.get.id}{/block}
+{block name="style"}
+<link rel="stylesheet" href="/static/css/transaction.css" />
+<!--<link rel="stylesheet" href="/assets/css/dashboard.css?3" />-->
+<link rel="stylesheet" href="/static/css/global.css?3" />
+{/block}
+{block name="container"}
+
+<style>
+    .chat-content{
+        padding-left: 15px;
+        padding-top: 15px;
+        line-height: 20px;
+    }
+    .alert{
+        padding: 0;
+    }
+    .modal {
+        width: 13.5rem;
+        position: absolute;
+        z-index: 11000;
+        left: 50%;
+        margin-left: -6.75rem;
+        margin-top: 0;
+        top: 50%;
+        text-align: center;
+        border-radius: 0.35rem;
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1.185);
+        transition-property: transform, opacity;
+        color: #3d4145;
+        display: none;
+    }
+
+</style>
+<div class="card card-message">
+    <div class="card-header">
+        <div class="card-title f1">
+            <div class="d-flex align-items-center">
+                <!-- <span class="avatar owner-avatar" style="background-image: ;"></span> -->
+                <!-- <span class="owner-nickname">-</span> -->
+                <span class="tag">#{$Think.get.id}<span class="tag-addon tag-blue tag-status">-</span></span>
+            </div>
+        </div>
+        <div class="card-options pr-2">
+            <a href="#"><i class="fe fe-help-circle" style="vertical-align: baseline;"></i></a>
+            <a href="#" class="card-options-fullscreen" data-toggle="card-fullscreen"><i class="fe fe-maximize" style="vertical-align: baseline;"></i></a>
+        </div>
+    </div>
+    <div class="card-body p-3 o-auto">
+        <div class="dimmer">
+            <div class="loader"></div>
+            <div class="dimmer-content chat-content"></div>
+        </div>
+    </div>
+    <div class="card-footer chat-option">
+        <div hidden class="text-muted small tips">友情提示：接单后双方将互换联系方式！</div>
+        <a hidden class="btn btn-secondary btn-call">联系对方</a>
+        <button hidden class="btn btn-secondary btn-receive" data-option="1">申请接单</button>
+        <button hidden class="btn btn-secondary btn-payment" data-option="2">我已付款</button>
+        <button hidden class="btn btn-secondary btn-urge" data-option="3">未收到款</button>
+        <button hidden class="btn btn-secondary btn-proof" data-option="5" data-type="image">发送图片<input type="file" accept="image/*" /></button>
+        <button hidden class="btn btn-secondary btn-quit" data-option="6">退出交易</button>
+        <button hidden class="btn btn-secondary btn-confirm" data-option="8" data-type="modal">确认到账</button>
+        <button hidden class="btn btn-secondary btn-report" data-option="4">投诉举报</button>
+        <span hidden class="float-right mt-2 count-down small"><i class="fe fe-clock" style="vertical-align:-1px"></i> <span class="count-down-time"></span>后可<span class="count-down-label">退出交易</span></span>
+      	<button hidden class="btn btn-secondary btn-cancel" data-option="0">取消订单</button>
+        
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="border: 1px solid #abadaf;background: rgb(239, 239, 239)">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">输入二级密码</h5>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <input type="password" name="safeword" class="form-control" placeholder="请输入安全密码" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary btn-confirmation">确认提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+var id = '{$Think.get.id}';
+</script>
+<script type="text/javascript" src="/static/js/transaction.js?2"></script>
+{/block}

@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/control.css" />
+	</head>
+	<body>
+		<div class="click" tapmode onclick="clicks()" data-id="1"></div>
+		<div class="fx-shu" style="display: block">
+			<div class="fx-left" tapmode onclick="_close(1)"><img src="../image/shu_left.png" />
+			</div>
+			<i class="fx-video-bofang" tapmode onclick="_video('z')" data-type="1"></i>
+			<div class="fx-botton">
+				<div class="aui-pull-left" id="current">
+					00:00
+				</div>
+				<div class="aui-pull-right">
+					<span class="aui-pull-left">00:00</span>
+					<img class="aui-pull-right" src="../image/video_quanping.png" tapmode onclick="_video('q')" />
+				</div>
+			</div>
+		</div>
+		<div class="fx-heng" style="display: none">
+			<div class="fx-left" tapmode onclick="_video('qq')"><img src="../image/heng_left.png" />
+			</div>
+			<i class="fx-video-bofang" tapmode onclick="_video('z')" data-type="1"></i>
+			<div class="aui-pull-left" id="current">
+				00:00
+			</div>
+			<div class="aui-pull-right" id="qq">
+				<span class="">00:00</span>
+				<img class="" src="../image/video_quanping_heng.png" tapmode onclick="_video('qq')" />
+			</div>
+		</div>
+		<div class="fx-jindu" style="width: 0%;"></div>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var time = 0,zong=0;
+		apiready = function() {
+		}
+		function formatSeconds2(a, hide) {
+		
+			var hh = parseInt(a / 3600);
+			//			if (hh < 10)
+			//				hh = "0" + hh;
+			var mm = parseInt((a - hh * 3600) / 60);
+			if (mm < 10)
+				mm = "0" + mm;
+			var ss = parseInt((a - hh * 3600) % 60);
+			if (ss < 10)
+				ss = "0" + ss;
+			var length = mm + ":" + ss;
+			if (a > 0) {
+				return length;
+			} else {
+				return "00:00";
+			}
+		}
+
+		function duration(a) {
+			zong=a
+			a = formatSeconds2(a);
+			$api.text($api.dom('.fx-shu .aui-pull-right .aui-pull-left'), a);
+			$api.text($api.dom('.fx-heng #qq span'), a);
+			start()
+		}
+
+		function current(a) {
+			var jindu=width(a,zong,100)
+			$api.css($api.dom('.fx-jindu'),'width: '+jindu+'%;')
+			a = formatSeconds2(a);
+			$api.text($api.dom('.fx-shu #current'), a);
+			$api.text($api.dom('.fx-heng #current'), a);
+			// 隐藏界面
+			var timestamp = Date.parse(new Date());
+			timestamp = timestamp / 1000
+			if (timestamp == time) {
+				hide();
+				//alert(time)
+				//console.log(111)
+			} else {
+				//console.log(222)
+			}
+		}
+
+		function _video(type) {
+			if (type == 'z') {
+				var bd = $api.cssVal($api.dom('.fx-shu .fx-video-bofang'), 'display');
+				if (bd == 'block') {
+					var data = $api.attr($api.dom('.fx-shu .fx-video-bofang'), 'data-type');
+				} else {
+					var data = $api.attr($api.dom('.fx-heng .fx-video-bofang'), 'data-type');
+				}
+				// 1=暂停 2播放
+				var data = $api.attr($api.dom('.fx-video-bofang'), 'data-type');
+				if (data == 1) {
+					type = 'z';
+					$api.attr($api.dom('.fx-shu .fx-video-bofang'), 'data-type', '2');
+					$api.addCls($api.dom('.fx-shu .fx-video-bofang'), 'fx-video-zanting');
+					$api.attr($api.dom('.fx-heng .fx-video-bofang'), 'data-type', '2');
+					$api.addCls($api.dom('.fx-heng .fx-video-bofang'), 'fx-video-zanting');
+				} else {
+					type = 'b';
+					$api.attr($api.dom('.fx-shu .fx-video-bofang'), 'data-type', '1');
+					$api.removeCls($api.dom('.fx-shu .fx-video-bofang'), 'fx-video-zanting');
+					$api.attr($api.dom('.fx-heng .fx-video-bofang'), 'data-type', '1');
+					$api.removeCls($api.dom('.fx-heng .fx-video-bofang'), 'fx-video-zanting');
+					hide()
+				}
+			} else if (type == 'q') {
+				$api.css($api.dom('.fx-shu'), 'display: none');
+				$api.css($api.dom('.fx-heng'), 'display: block');
+			} else if (type == 'qq') {
+				$api.css($api.dom('.fx-shu'), 'display: block');
+				$api.css($api.dom('.fx-heng'), 'display: none');
+				//show()
+			}
+			var _video = '_video("' + type + '");';
+			api.execScript({
+				script : _video
+			});
+		}
+
+		// 隐藏界面
+		function hide() {
+			api.execScript({
+				script : '_frame("hide");'
+			});
+			$api.css($api.dom('.fx-shu .fx-video-bofang'), 'display: none');
+			$api.css($api.dom('.fx-heng .fx-video-bofang'), 'display: none');
+			$api.css($api.dom('.fx-botton'), 'display: none');
+			$api.css($api.dom('.fx-shu #current'), 'display: none');
+			$api.css($api.dom('.fx-heng #current'), 'display: none');
+			$api.css($api.dom('#qq'), 'display: none');
+			$api.css($api.dom('body'), 'background-color:rgba(0,0,0,0.0) !important');
+			
+			$api.attr($api.dom('.click'), 'data-type', '2');
+		}
+
+		// 显示界面
+		function show() {
+			$api.css($api.dom('.fx-shu .fx-video-bofang'), 'display: block');
+			$api.css($api.dom('.fx-heng .fx-video-bofang'), 'display: block');
+			$api.css($api.dom('.fx-botton'), 'display: block');
+			$api.css($api.dom('.fx-shu #current'), 'display: block');
+			$api.css($api.dom('.fx-heng #current'), 'display: block');
+			$api.css($api.dom('#qq'), 'display: block');
+			$api.css($api.dom('body'), 'background-color:rgba(0,0,0,0.5) !important');
+		}
+
+		var timeID
+		// 点击屏幕显示界面
+		function click(times) {
+			alert('123')
+			time = times
+			show();
+		}
+
+		// 开始播放
+		function start() {
+			hide();
+		}
+
+		// 播放完毕显示界面
+		function complete() {
+			$api.attr($api.dom('.fx-shu .fx-video-bofang'), 'data-type', '2');
+			$api.addCls($api.dom('.fx-shu .fx-video-bofang'), 'fx-video-zanting');
+			$api.attr($api.dom('.fx-heng .fx-video-bofang'), 'data-type', '2');
+			$api.addCls($api.dom('.fx-heng .fx-video-bofang'), 'fx-video-zanting');
+			show();
+		}
+
+		// 暂停
+		function pause() {
+			show();
+			clearTimeout(timeID);
+		}
+
+		function clicks() {
+			var data=$api.attr($api.dom('.click'), 'data-type');
+			//_msg(data)
+			if(data==2){
+				$api.attr($api.dom('.click'), 'data-type', '1');
+				var timestamp = Date.parse(new Date());
+				timestamp = timestamp / 1000 + 2
+				time=timestamp;
+				show()
+			}else{
+				hide();
+			}
+			 
+		}
+		// 进度时间
+		function width(p, t, w) {
+			return p / t * w;
+		}
+		function jindu(){
+			$api.css($api.dom('.fx-jindu'),'width: 100%;')
+		}
+		 
+	</script>
+</html>
+

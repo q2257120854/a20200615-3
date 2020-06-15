@@ -1,0 +1,98 @@
+<form action="{:url()}" method="post" class="form_single">
+    <div class="box">
+      <div class="box-body">
+        <div class="row">
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>补录关键词</label>
+              <span class="">（补录关键词）<span style="color: red;">*补录排名，等于补扣费用，直接添加到消费记录，扣除用户余额</span></span>
+              <input class="form-control"  disabled  value="{$info['keywords']|default=''}" type="text">
+                <input type="hidden" name="keyword_id" value="{$info['id']|tp_encrypt}">
+            </div>
+          </div>
+
+
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>补录搜索引擎</label>
+                    <div>
+                        <select class="form-control" disabled style="width: 200px;" >
+                            <option value="">请选择搜索引擎</option>
+                            <option value="baidupc" {eq name="$info.search_engine" value="baidupc" } selected = "selected" {/eq} >百度电脑端</option>
+                            <option value="baidumobile" {eq name="$info.search_engine" value="baidumobile" } selected = "selected" {/eq} >百度移动端</option>
+                            <option value="360pc" {eq name="$info.search_engine" value="360pc" } selected = "selected" {/eq} >360电脑端</option>
+                            <option value="360mobile" {eq name="$info.search_engine" value="360mobile" } selected = "selected" {/eq} >360移动端</option>
+                            <option value="sougoupc" {eq name="$info.search_engine" value="sogoupc" } selected = "selected" {/eq} >搜狗电脑端</option>
+                            <option value="sougoumobile" {eq name=":input('search_engine')" value="sogoumobile" } selected = "selected" {/eq} >搜狗移动端</option>
+                            <option value="smmobile" {eq name=":input('search_engine')" value="smmobile" } selected = "selected" {/eq} >神马搜索</option>
+
+                        </select>
+                    </div>
+                    <input type="hidden" name="search_engine" value="{$info.search_engine}">
+                </div>
+            </div>
+
+
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>排名</label>
+                    <span class="">（补录排名）</span>
+                    <input class="form-control" name="rand" placeholder="排名" value="" type="number">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>选择页数</label>
+                    <select name="page" class="form-control"  >
+                        <option value="">请选页数</option>
+                        <option value="1"  >第一页</option>
+                        <option value="2"  >第二页</option>
+                    </select>
+                </div>
+            </div>
+ <input type="hidden" name="url" value="{$url}">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>补录时间</label>
+                    <span class="">（补录时间）</span>
+                    <input class="form-control" id="test" name="create_time" placeholder="请选择补录时间"  value="" type="text">
+                </div>
+            </div>
+
+          <div class="col-md-12">
+            <div class="form-group">
+                <label>排名图片</label>
+                <span class="">（请上传单张排名截图）</span>
+                <br/>
+                {assign name="cover_id" value="$info.cover_id|default='0'" /}
+                {:widget('file/index', ['name' => 'cover_id', 'value' => $cover_id, 'type' => 'img'])}
+            </div>
+          </div>
+
+            
+          </div>
+
+        
+      <div class="box-footer">
+        
+        {include file="layout/edit_btn_group"/}
+        
+      </div>
+        
+      </div>
+      </div>
+</form>
+
+<script>
+    laydate.render({
+        elem: '#test'
+        ,type: 'datetime'
+    });
+
+</script>

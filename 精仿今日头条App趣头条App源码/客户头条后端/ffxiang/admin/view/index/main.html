@@ -1,0 +1,310 @@
+ {include file="public/header" /}
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <h5>新增内容</h5>
+                        <table class="table table-stripped small m-t-md">
+                            <tbody>
+                                <tr>
+                                    <td class="no-borders">
+                                        <i class="fa fa-circle text-navy"></i>
+                                    </td>
+                                    <td class="no-borders">
+                                       今日内容
+                                       <b>
+                                       {:db('article')->whereTime('update_time','today')->count()}
+                                       </b>
+                                       个
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-circle text-navy"></i>
+                                    </td>
+                                    <td>
+                                        本周内容
+                                       <b>
+                                       {:db('article')->whereTime('update_time','week')->count()}
+                                       </b>
+                                       个
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-circle text-navy"></i>
+                                    </td>
+                                    <td>
+                                        本月内容
+                                       <b>
+                                       {:db('article')->whereTime('update_time','month')->count()}
+                                       </b>
+                                       个
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-circle text-navy"></i>
+                                    </td>
+                                    <td>
+                                        总共内容 
+                                       <b>
+                                       {:db('article')->count()}
+                                       </b>
+                                       个
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <h5>新增评论</h5>
+                        <table class="table table-stripped small m-t-md">
+                            <tbody>
+                                <tr>
+                                    <td class="no-borders">
+                                        <i class="fa fa-circle text-navy"></i>
+                                    </td>
+                                    <td class="no-borders">
+                                       今日评论 
+                                       <b>
+                                       {:db('article_ping')->whereTime('time','today')->count()}
+                                       </b>
+                                       个
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-circle text-navy"></i>
+                                    </td>
+                                    <td>
+                                        本周评论
+                                       <b>
+                                       {:db('article_ping')->whereTime('time','week')->count()}
+                                       </b>
+                                       个
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-circle text-navy"></i>
+                                    </td>
+                                    <td>
+                                        本月评论
+                                       <b>
+                                       {:db('article_ping')->whereTime('time','month')->count()}
+                                       </b>
+                                       个
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-circle text-navy"></i>
+                                    </td>
+                                    <td>
+                                        总共评论 
+                                       <b>
+                                       {:db('article_ping')->count()}
+                                       </b>
+                                       个
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <h5>新增会员</h5>
+                        <table class="table table-stripped small m-t-md">
+                            <tbody>
+                                <tr>
+                                    <td class="no-borders">
+                                        <i class="fa fa-circle text-navy"></i>
+                                    </td>
+                                    <td class="no-borders">
+                                       今日会员 
+                                       <b>
+                                       {:db('member')->whereTime('update_time','today')->count()}
+                                       </b>
+                                       个
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-circle text-navy"></i>
+                                    </td>
+                                    <td>
+                                        本周会员 
+                                       <b>
+                                       {:db('member')->whereTime('update_time','week')->count()}
+                                       </b>
+                                       个
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-circle text-navy"></i>
+                                    </td>
+                                    <td>
+                                        本月会员 
+                                       <b>
+                                       {:db('member')->whereTime('update_time','month')->count()}
+                                       </b>
+                                       个
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-circle text-navy"></i>
+                                    </td>
+                                    <td>
+                                        总共会员 
+                                       <b>
+                                       {:db('member')->count()}
+                                       </b>
+                                       个
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>举报消息</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content ibox-heading" style="display: block;">
+                        <h3><i class="fa fa-envelope-o"></i> 新举报</h3>
+                        <small><i class="fa fa-tim"></i> 今日已有{:db('jubao')->where('admin_id',null)->whereTime('time','month')->count()}条举报，<a class="J_menuItem" href="{:url('article/jubao')}">举报管理</a></small>
+                    </div>
+                    <div class="ibox-content" style="display: block;">
+                        <div class="feed-activity-list">
+                            {volist name="jubao" id="v"}
+                            <div class="feed-element">
+                                <div>
+                                    <strong><?php
+$user=_user($v['uid']);
+echo $user['username'];
+                                    ?></strong>
+                                    <div>举报：{$v.content}</div>
+                                    <?php
+$huifu=db('jubao')->where(['uid'=>$v['uid'],'aid'=>$v['aid'],'admin_id'=>['<>','']])->order('id desc')->value('content');
+                                    ?>
+                                    <?php if($huifu){?>
+                                    <div style="background: #ddd;padding: 10px;margin:10px 0px">回复：{$huifu}</div>
+                                    <?php }?>
+                                    <small class="text-muted">
+                                    {$v.time|date='Y-m-d H:i:s',###}
+                                    </small>
+                                </div>
+                            </div>
+                            {/volist}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>最新评论</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content" style="display: block;">
+                        <div class="feed-activity-list">
+                            {volist name="ping" id="v"}
+                            <div class="feed-element">
+                                <div>
+                                    <strong><?php
+$user=_user($v['uid']);
+echo $user['username'];
+                                    ?></strong>
+                                    <div>评论：{$v.content}</div>
+                                    <?php
+$huifu=db('jubao')->where(['uid'=>$v['uid'],'aid'=>$v['aid'],'admin_id'=>['<>','']])->order('id desc')->value('content');
+                                    ?>
+                                  
+                                    <small class="text-muted">
+                                    {$v.time|date='Y-m-d H:i:s',###}
+                                    </small>
+                                </div>
+                            </div>
+                            {/volist}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>关于我们</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <table class="table table-hover no-margins">
+                                    <tbody>
+                                        <tr>
+                                            <td style="border-top: 0px;">PHP版本：<span>{:phpversion()}</span></td>
+                                            <td style="border-top: 0px;">操作系统：<span>{:PHP_OS}</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>上传限制：<span>{:ini_get('upload_max_filesize')}</span></td>
+                                            <td>POST限制：<span>{:ini_get('post_max_size')}</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>更新版本：<span>2017年07月01日</span></td>
+                                            <td>程序版本：<span>1.0</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>技术支持：<span><a href="http://bbs.52jscn.com/" target="_blank">锦尚中国</a></td>
+                                            <td>技术 Q Q：<span>123456789</span></td>
+                                        </tr>
+                                         
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+          
+    </div>
+</div>
+{include file="public/footer" /}<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

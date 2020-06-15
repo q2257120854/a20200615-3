@@ -1,0 +1,28 @@
+/*
+// +----------------------------------------------------------------------
+// | 源码来自锦尚中国源码论坛，仅供学习研究
+// +----------------------------------------------------------------------
+// | 新闻资讯APP系统 V1.0版
+// +----------------------------------------------------------------------
+// | 锦尚中国
+// +----------------------------------------------------------------------
+// | 请务必尊重知识产权 严格保证不恶意传播产品源码、不得直接对产品本身
+// | 进行二次转售或倒卖、不得对产品进行简单包装后声称为自己的产品等。
+// | 否则我们有权利收回产品，并根据事态轻重追究相应法律责任。
+// +----------------------------------------------------------------------
+// | Copyright (c) 2018-2019 http://www.baidu.com/ All rights reserved.
+// +----------------------------------------------------------------------
+*/
+html, body, header, footer, .fx-view-header {
+	background: transparent !important;
+	background-color: transparent !important;
+	border: 0px !important;
+}
+.fx-view-header .aui-pull-left span, .aui-badge, .aui-bar-tab .aui-bar-tab-item .aui-iconfont {
+	color: #fff !important;
+}
+.aui-bar-nav {
+	background-color: rgba(0, 0, 0, 0) !important;
+	background-image: -webkit-linear-gradient(top,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%) !important;
+	color: #ffffff !important;
+}

@@ -1,0 +1,1077 @@
+<script type="text/javascript" src="__STATIC__/siy/js/echarts.min.js"></script>
+<style type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+	}
+</style>
+<link rel="stylesheet" type="text/css" href="/static/module/admin/css/index_style.css" />
+
+<script src="/static/module/common/fakeloader/js/one.js" type="text/javascript" charset="utf-8"></script>
+
+<!--网站详情统计-->
+<div class='col-md-8 content_bg'>
+
+	<!--网站基础信息-->
+	<div class="box2">
+
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover" style="margin-bottom: 0px;">
+				<tbody id="data">
+					<tr>
+						<td class="col-md-2">网站域名：</td>
+						<td class="col-md-2">{$webinfo.url}</td>
+						<td class="col-md-2">优化公司：</td>
+						<td class="col-md-2">{$webinfo.userpid}</td>
+						<td class="col-md-2">所属客户：</td>
+						<td class="col-md-2">{$webinfo.userid}</td>
+					</tr>
+					<tr>
+						<td class="col-md-1">后台地址：</td>
+						<td> <a href="{$webinfo.bake_name}" class="copyable1">{$webinfo.bake_name}</a>
+							<a id="copy1" style="" class="fz">复制</button>
+						</td>
+						<div id="copy-temp"></div>
+
+						<td class="col-md-1">后台账号：</td>
+						<td><span class="copyable2">{$webinfo.bake_username}</span>
+							<a id="copy2" style="" class="fz">复制</button>
+						</td>
+						<div id="copy-temp"></div>
+
+						<td class="col-md-1">后台密码：</td>
+						<td> <span class="copyable3">{$webinfo.base_pass}</span>
+							<a id="copy3" style="" class="fz">复制</button>
+						</td>
+						<div id="copy-temp"></div>
+
+					</tr>
+
+					<script src="/static/siy/js/jquery.min.js"></script>
+					<script>
+						$("#copy1").click(function() {
+							var $o = $("<textarea rows='10' cols='50'>");
+							$o.val($("#data .copyable1").text()) //填充要复制的文字
+							$("#copy-temp").append($o)
+							if (copy($o[0])) {
+								$o.remove()
+								toast.success("复制成功！");
+							} else {
+								toast.error("复制失败，请手动复制");
+							}
+						});
+
+						$("#copy2").click(function() {
+							var $o = $("<textarea rows='10' cols='50'>");
+							$o.val($("#data .copyable2").text()) //填充要复制的文字
+							$("#copy-temp").append($o)
+							if (copy($o[0])) {
+								$o.remove()
+								toast.success("复制成功！");
+							} else {
+								toast.error("复制失败，请手动复制");
+							}
+						});
+						$("#copy3").click(function() {
+							var $o = $("<textarea rows='10' cols='50'>");
+							$o.val($("#data .copyable3").text()) //填充要复制的文字
+							$("#copy-temp").append($o)
+							if (copy($o[0])) {
+								$o.remove()
+								toast.success("复制成功！");
+							} else {
+								toast.error("复制失败，请手动复制");
+							}
+						});
+
+						function copy(obj) {
+							obj.select();
+							try {
+								if (document.execCommand('copy', false, null)) {
+									document.execCommand("Copy");
+									return true;
+								}
+							} catch (err) {
+
+							}
+							return false;
+						};
+					</script>
+					<tr>
+						<td class="col-md-1">FTP登录地址：</td>
+						<td><a target="_blank" href="{$webinfo.ftp_addr}" class="copyable4">{$webinfo.ftp_addr}</a>
+							<a id="copy4" style="" class="fz">复制</button>
+						</td>
+						<td class="col-md-1">FTP账号：</td>
+						<td><span class="copyable5">{$webinfo.ftp_username}</span>
+							<a id="copy5" style="" class="fz">复制</button></td>
+						<td class="col-md-1">FTP密码：</td>
+						<td><span class="copyable6">{$webinfo.ftp_pass}</span><span class="glyphicon glyphicon-eye-open cursor pw-ico" id="chakan" style="margin-left:10px"></span>
+							<a id="copy6" style="" class="fz">复制</button>
+						</td>
+					</tr>
+					<tr>
+						<td>关键词总数：</td>
+						<td>{$webinfo.totalkeyword}</td>
+						<td>达标词总数：</td>
+						<td>{$webinfo.dbnum}</td>
+						<td>累计消费：</td>
+						<td>￥{$xiaofei.listprice}</td>
+					</tr>
+					<tr>
+						<td>今日前20名关键词数：</td>
+						<td>{$webinfo.qershikeyword}</td>
+						<td>今日前10名关键词数：</td>
+						<td>{$webinfo.qskeyword}</td>
+						<td>今日前5名关键词数：</td>
+						<td>{$webinfo.qwkeyword}</td>
+					</tr>
+					<tr>
+						<td>今日跌落前20名关键词数：</td>
+						<td>{$webinfo.dleskeyword}</td>
+						<td>今日跌落前10名关键词数：</td>
+						<td>{$webinfo.dlqskeyword}</td>
+						<td>今日跌落前5名关键词数：</td>
+						<td>{$webinfo.dlqwkeyword}</td>
+					</tr>
+					<tr>
+						<td>今日前3名关键词数：</td>
+						<td>{$webinfo.qshkeyword}</td>
+						<td>今日前2名关键词数：</td>
+						<td>{$webinfo.qekeyword}</td>
+						<td>今日第1名关键词数：</td>
+						<td>{$webinfo.firstkeyword}</td>
+					</tr>
+					<tr>
+						<td>今日跌落前3名关键词数：</td>
+						<td>{$webinfo.dlqshkeyword}</td>
+						<td>今日跌落前2名关键词数：</td>
+						<td>{$webinfo.dlqekeyword}</td>
+						<td>今日跌落第1名关键词数：</td>
+						<td>{$webinfo.dlfirstkeyword}</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+
+	</div>
+
+	<!--总计消费信息-->
+
+</div>
+<script type="text/javascript">
+	$("#copy4").click(function() {
+		var $o = $("<textarea rows='10' cols='50'>");
+		$o.val($("#data .copyable4").text()) //填充要复制的文字
+		$("#copy-temp").append($o)
+		if (copy($o[0])) {
+			$o.remove()
+			toast.success("复制成功！");
+		} else {
+			toast.error("复制失败，请手动复制");
+		}
+	});
+
+	$("#copy5").click(function() {
+		var $o = $("<textarea rows='10' cols='50'>");
+		$o.val($("#data .copyable5").text()) //填充要复制的文字
+		$("#copy-temp").append($o)
+		if (copy($o[0])) {
+			$o.remove()
+			toast.success("复制成功！");
+		} else {
+			toast.error("复制失败，请手动复制");
+		}
+	})
+	$("#copy6").click(function() {
+		var $o = $("<textarea rows='10' cols='50'>");
+		$o.val($("#data .copyable6").text()) //填充要复制的文字
+		$("#copy-temp").append($o)
+		if (copy($o[0])) {
+			$o.remove()
+			toast.success("复制成功！");
+		} else {
+			toast.error("复制失败，请手动复制");
+		}
+	})
+</script>
+<!--财务统计-->
+<div class='col-md-4  tab'>
+	<div class="ibox-title  tab-hd">
+		
+		<span class="label label-info pull-right active">消费统计</span>
+		
+		{elt name="$member.leader_id" value='1'}
+		<span class="label label-warning pull-right">代理盈利</span>
+		{/elt}
+		{eq name='$member.leader_id' value='0'}
+		<span class="label label-danger pull-right">平台盈利</span>
+		{/eq}
+		<h5>网站消费统计</h5>
+	</div>
+
+	<div class="content_bg2 tab-bd">
+
+		<table class="table table-striped thisclass">
+			<tbody>
+
+				<tr>
+					<td class="col-md-2">今日消费</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success today"></div>
+						</div>
+					</td>
+					<td class="col-md-3" id="today" data-price='{$xiaofei.todayprice}'>￥{$xiaofei.todayprice}</td>
+				</tr>
+				
+				<tr>
+					<td class="col-md-2">昨日消费</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success yesterday"></div>
+						</div>
+					</td>
+					<td class="col-md-3" id="yesterday" data-price='{$xiaofei.yesterdayprice}'>￥{$xiaofei.yesterdayprice}</td>
+				</tr>
+				
+				<tr>
+					<td class="col-md-2">本周消费</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success toweek"></div>
+						</div>
+					</td>
+					<td class="col-md-3" id="toweek" data-price='{$xiaofei.toweekprice}'>￥{$xiaofei.toweekprice}</td>
+				</tr>
+				
+				<tr>
+					<td class="col-md-2">上周消费</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success lastweek"></div>
+						</div>
+					</td>
+					<td class="col-md-3" id="lastweek" data-price="{$xiaofei.lastweekprice}">￥{$xiaofei.lastweekprice}</td>
+				</tr>
+				
+				<tr>
+					<td class="col-md-2">本月消费</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success tomonth"></div>
+						</div>
+					</td>
+					<td class="col-md-3" id="tomonth" data-price="{$xiaofei.tomonthprice}">￥{$xiaofei.tomonthprice}</td>
+				</tr>
+				
+				<tr>
+					<td class="col-md-2">上月消费</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success lastmonth"></div>
+						</div>
+					</td>
+					<td class="col-md-3" id="lastmonth" data-price='{$xiaofei.lastmonthprice}'>￥{$xiaofei.lastmonthprice}</td>
+				</tr>
+				
+				<tr>
+					<td class="col-md-2">历史消费</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div style="width: 100%" class="progress-bar progress-bar-success"></div>
+						</div>
+					</td>
+					<td class="col-md-3">￥{$xiaofei.listprice}</td>
+				</tr>
+				<script type="text/javascript">
+					var lishi = {$xiaofei.listprice};
+					//今日消费比例
+					var today = $("#today").attr('data-price') / lishi * 100;
+					$(".today").css('width',today + '%');
+					//昨日消费
+					var yesterday = $("#yesterday").attr('data-price') / lishi * 100;
+					$(".yesterday").css('width',yesterday + '%');
+					//本周消费
+					var toweek = $("#toweek").attr('data-price') / lishi * 100;
+					$(".toweek").css('width',toweek + '%');
+					//上周消费
+					var lastweek = $("#lastweek").attr('data-price') / lishi * 100;
+					$(".lastweek").css('width',lastweek + '%');
+					//本月消费
+					var tomonth = $("#tomonth").attr('data-price') / lishi * 100;
+					$(".tomonth").css('width',tomonth + '%');
+					//上月消费
+					var lastmonth = $("#lastmonth").attr('data-price') / lishi * 100;
+					$(".lastmonth").css('width',lastmonth + '%');
+				
+				</script>
+
+			</tbody>
+
+		</table>
+
+		{elt name="$member.leader_id" value='1'}
+		<table class="table table-striped ">
+			<tbody>
+
+
+				<tr>
+					<td class="col-md-2">今日盈利</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success dltoday"></div>
+						</div>
+					</td>
+					<td class="col-md-3" id="dltoday" data-price="{$dllirun.todayprice}">￥{$dllirun.todayprice}</td>
+				</tr>
+				
+				<tr>
+					<td class="col-md-2">昨日盈利</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success dlyesterday"></div>
+						</div>
+					</td>
+					<td class="col-md-3" id="dlyesterday" data-price="{$dllirun.yesterdaypric}">￥{$dllirun.yesterdaypric}</td>
+				</tr>
+
+				<tr>
+					<td class="col-md-2">本周盈利</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success dltoweek"></div>
+						</div>
+					</td>
+					<td class="col-md-3" id="dltoweek" data-price="{$dllirun.toweekprice}">￥{$dllirun.toweekprice}</td>
+				</tr>
+
+				<tr>
+					<td class="col-md-2">上周盈利</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success dllastweek"></div>
+						</div>
+					</td>
+					<td class="col-md-3" id="dllastweek" data-price="{$dllirun.lastweekprice}">￥{$dllirun.lastweekprice}</td>
+				</tr>
+
+				<tr>
+					<td class="col-md-2">本月盈利</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success dlmonth"></div>
+						</div>
+					</td>
+					<td class="col-md-3" id="dlmonth" data-price="{$dllirun.tomonthprice}">￥{$dllirun.tomonthprice}</td>
+				</tr>
+
+				<tr>
+					<td class="col-md-2">上月盈利</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success dllastmonth"></div>
+						</div>
+					</td>
+					<td class="col-md-3" id="dllastmonth" data-price="{$dllirun.lastmonthprice}">￥{$dllirun.lastmonthprice}</td>
+				</tr>
+
+				<tr>
+					<td class="col-md-2">历史盈利</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div style="width: 100%" class="progress-bar progress-bar-success"></div>
+						</div>
+					</td>
+					<td class="col-md-3">￥{$dllirun.lishiprice}</td>
+				</tr>
+				<script type="text/javascript">
+						//代理盈利
+					var dlrun = {$dllirun.lishiprice};
+					//今日盈利
+					var dltoday = $("#dltoday").attr('data-price') / dlrun * 100;
+					$(".dltoday").css('width',dltoday + '%');
+					//昨日盈利
+					var dlyesterday = $("#dlyesterday").attr('data-price') / dlrun * 100;
+					$(".dlyesterday").css('width',dlyesterday + '%');
+					//本周盈利
+					var dltoweek = $("#dltoweek").attr('data-price') / dlrun * 100;
+					$(".dltoweek").css('width',dltoweek + '%');
+					//上周盈利
+					var dllastweek = $("#dllastweek").attr('data-price') / dlrun * 100;
+					$(".dllastweek").css('width',dllastweek + '%');
+					//本月盈利
+					var dlmonth = $("#dlmonth").attr('data-price') / dlrun * 100;
+					$(".dlmonth").css('width',dlmonth + '%');
+					//上月盈利
+					var dllastmonth = $("#dllastmonth").attr('data-price') / dlrun * 100;
+					$(".dllastmonth").css('width',dllastmonth + '%');
+				</script>
+			</tbody>
+		</table>
+		{/elt}
+		{eq name='$member.leader_id' value='0'}
+		<table class="table table-striped ">
+			<tbody>
+
+				<tr>
+					<td class="col-md-2">今日盈利</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success ptoday"></div>
+						</div>
+					</td>
+					<td class="col-md-3" id="ptoday" data-price="{$plirun.todayprice}">￥{$plirun.todayprice}</td>
+				</tr>
+				
+				<tr>
+					<td class="col-md-2">昨日盈利</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success pyesertday"></div>
+						</div>
+					</td>
+					<td class="col-md-3" id="pyesertday" data-price="{$plirun.yesterdayprice}">￥{$plirun.yesterdayprice}</td>
+				</tr>
+
+				<tr>
+					<td class="col-md-2">本周盈利</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success pweek"></div>
+						</div>
+					</td>
+					<td class="col-md-3" id="pweek" data-price="{$plirun.toweekprice}">￥{$plirun.toweekprice}</td>
+				</tr>
+
+				<tr>
+					<td class="col-md-2">上周盈利</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success plastweek"></div>
+						</div>
+					</td>
+					<td class="col-md-3" id="plastweek" data-price="{$plirun.lastweekprice}">￥{$plirun.lastweekprice}</td>
+				</tr>
+
+				<tr>
+					<td class="col-md-2">本月盈利</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success pmonth"></div>
+						</div>
+					</td>
+					<td class="col-md-3" id="pmonth" data-price='{$plirun.tomonthprice}'>￥{$plirun.tomonthprice}</td>
+				</tr>
+
+				<tr>
+					<td class="col-md-2">上月盈利</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success plastmonth"></div>
+						</div>
+					</td>
+					<td class="col-md-3" id="plastmonth" data-price="{$plirun.lastmonthprice}">￥{$plirun.lastmonthprice}</td>
+				</tr>
+
+				<tr>
+					<td class="col-md-2">历史盈利</td>
+					<td class="col-md-7">
+						<div class="progress">
+							<div style="width:100%" class="progress-bar progress-bar-success"></div>
+						</div>
+					</td>
+					<td class="col-md-3">￥{$plirun.lishiprice}</td>
+				</tr>
+					<script type="text/javascript">
+						var plirun = {$plirun.lishiprice};
+						//今日盈利
+						var ptoday = $("#ptoday").attr('data-price') / plirun * 100;
+						$(".ptoday").css('width',ptoday + '%');
+						//昨日盈利
+						var pyesertday = $("#pyesertday").attr('data-price') / plirun * 100;
+						$(".pyesertday").css('width',pyesertday + '%');
+						//本周利润
+						var pweek = $("#pweek").attr('data-price') / plirun * 100;
+						$(".pweek").css('width',pweek + '%');
+						//上周盈利
+						var plastweek = $("#plastweek").attr('data-price') / plirun * 100;
+						$(".plastweek").css('width',plastweek + '%');
+						//本月盈利
+						var pmonth = $("#pmonth").attr('data-price') / plirun * 100;
+						$(".pmonth").css('width',pmonth + '%');
+						//上月盈利
+						var plastmonth = $("#plastmonth").attr('data-price') / plirun * 100;
+						$(".plastmonth").css('width',plastmonth + '%');
+					</script>
+			</tbody>
+		</table>
+		{/eq}
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(function() {
+		//声明函数，参数三个：导航标题、当前选择项、当前标题显示内容
+		function tabs(tabTit, on, tabCon) {
+			//找到所有标题并添加单机事件
+			$(tabTit).children().click(function() {
+				//声明当前选择项
+				var index = $(tabTit).children().index(this);
+				//为当前选中项增加active，移除其兄弟元素的active
+				$(this).addClass(on).siblings().removeClass(on);
+				//选中项显示内容，未选中项隐藏内容
+				$(tabCon).children().eq(index).show().siblings().hide();
+			});
+		};
+		tabs(".tab-hd", "active", ".tab-bd");
+	});
+</script>
+
+<!-- 按浏览器统计 -->
+<!-- 百度PC端 -->
+<div class="col-sm-4 pl0 " >
+	<div class="ibox-title">
+		
+		<h5>百度电脑端</h5>
+	</div>
+	
+	<div class="ibox-content" style="padding: 0px;height: 340px;">
+
+		<div id="containerbaidupc" style="height: 100%;"></div>
+			
+			<script type="text/javascript">
+        var dom = document.getElementById("containerbaidupc");
+        var myChart = echarts.init(dom);
+        var app = {};
+        option = null;
+        option = {
+            legend: {},
+            tooltip: {},
+            dataset: {
+                source: [
+                    ['product', '达标', '未达标'],
+                    ['{$week[1]}', {$baidupc.zuih}, {$baidupc.wzuih}],
+                    ['{$week[2]}', {$baidupc.ddqt}, {$baidupc.wddqt}],
+                    ['{$week[3]}', {$baidupc.dqt}, {$baidupc.wdqt}],
+                    ['{$week[4]}', {$baidupc.sqt}, {$baidupc.wsqt}],
+                    ['{$week[5]}', {$baidupc.qiantian}, {$baidupc.wqiantian}],
+                    ['{$week[6]}', {$baidupc.yesterday}, {$baidupc.wyesterday}],
+                    ['{$week[7]}', {$baidupc.today}, {$baidupc.wtoday}],
+                ]
+            },
+            xAxis: { type: 'category' },
+            yAxis: {},
+    
+            series: [
+                { type: 'bar',barWidth:15,},
+                { type: 'bar',barWidth:15, },
+                
+            ]
+        };
+        ;
+       if (option && typeof option === "object") {
+		    myChart.setOption(option, true);
+		   
+		}
+    </script>
+			
+
+      
+				</div>
+</div>
+
+<!-- 百度移动端 -->
+<div class="col-sm-4 ">
+	<div class="ibox-title">
+		
+		<h5>百度移动端</h5>
+	</div>
+	<div class="ibox-content" style="padding: 0px;height: 340px;">
+
+		<div id="containerbaidumobile" style="height: 100%;"></div>
+			
+			<script type="text/javascript">
+        var dom = document.getElementById("containerbaidumobile");
+        var myChart = echarts.init(dom);
+        var app = {};
+        option = null;
+        option = {
+            legend: {},
+            tooltip: {},
+            dataset: {
+                source: [
+                    ['product', '达标', '未达标'],
+                    ['{$week[1]}', {$baidumobile.zuih}, {$baidumobile.wzuih}],
+                    ['{$week[2]}', {$baidumobile.ddqt}, {$baidumobile.wddqt}],
+                    ['{$week[3]}', {$baidumobile.dqt}, {$baidumobile.wdqt}],
+                    ['{$week[4]}', {$baidumobile.sqt}, {$baidumobile.wsqt}],
+                    ['{$week[5]}', {$baidumobile.qiantian}, {$baidumobile.wqiantian}],
+                    ['{$week[6]}', {$baidumobile.yesterday}, {$baidumobile.wyesterday}],
+                    ['{$week[7]}', {$baidumobile.today}, {$baidumobile.wtoday}],
+                ]
+            },
+            xAxis: { type: 'category' },
+            yAxis: {},
+    
+            series: [
+                { type: 'bar',barWidth:15,},
+                { type: 'bar',barWidth:15, },
+                
+            ]
+        };
+        ;
+       if (option && typeof option === "object") {
+		    myChart.setOption(option, true);
+		   
+		}
+    </script>
+			
+				</div>
+</div>
+
+<!-- 神马搜素 -->
+<div class="col-sm-4 ">
+	<div class="ibox-title">
+		
+		<h5>神马搜素</h5>
+	</div>
+	<div class="ibox-content" style="padding: 0px;height: 340px;">
+
+		<div id="containersmmobile" style="height: 100%;"></div>
+			
+			<script type="text/javascript">
+        var dom = document.getElementById("containersmmobile");
+        var myChart = echarts.init(dom);
+        var app = {};
+        option = null;
+        option = {
+            legend: {},
+            tooltip: {},
+            dataset: {
+                source: [
+                    ['product', '达标', '未达标'],
+                    ['{$week[1]}', {$smmobile.zuih}, {$smmobile.wzuih}],
+                    ['{$week[2]}', {$smmobile.ddqt}, {$smmobile.wddqt}],
+                    ['{$week[3]}', {$smmobile.dqt}, {$smmobile.wdqt}],
+                    ['{$week[4]}', {$smmobile.sqt}, {$smmobile.wsqt}],
+                    ['{$week[5]}', {$smmobile.qiantian}, {$smmobile.wqiantian}],
+                    ['{$week[6]}', {$smmobile.yesterday}, {$smmobile.wyesterday}],
+                    ['{$week[7]}', {$smmobile.today}, {$smmobile.wtoday}],
+                ]
+            },
+            xAxis: { type: 'category' },
+            yAxis: {},
+    
+            series: [
+                { type: 'bar',barWidth:15,},
+                { type: 'bar',barWidth:15, },
+                
+            ]
+        };
+        ;
+       if (option && typeof option === "object") {
+		    myChart.setOption(option, true);
+		   
+		}
+    </script>
+			
+	</div>
+</div>
+
+<!-- 360PC端 -->
+<div class="col-sm-4 mt15 pl0 ">
+	<div class="ibox-title">
+		
+		
+		<h5>360电脑端</h5>
+	</div>
+	<div class="ibox-content" style="padding:0px;height: 340px;">
+
+		<div id="container360pc" style="height: 100%;"></div>
+			
+			<script type="text/javascript">
+        var dom = document.getElementById("container360pc");
+        var myChart = echarts.init(dom);
+        var app = {};
+        option = null;
+        option = {
+            legend: {},
+            tooltip: {},
+            dataset: {
+                source: [
+                    ['product', '达标', '未达标'],
+                    ['{$week[1]}', {$sllpc.zuih}, {$sllpc.wzuih}],
+                    ['{$week[2]}', {$sllpc.ddqt}, {$sllpc.wddqt}],
+                    ['{$week[3]}', {$sllpc.dqt}, {$sllpc.wdqt}],
+                    ['{$week[4]}', {$sllpc.sqt}, {$sllpc.wsqt}],
+                    ['{$week[5]}', {$sllpc.qiantian}, {$sllpc.wqiantian}],
+                    ['{$week[6]}', {$sllpc.yesterday}, {$sllpc.wyesterday}],
+                    ['{$week[7]}', {$sllpc.today}, {$sllpc.wtoday}],
+                ]
+            },
+            xAxis: { type: 'category' },
+            yAxis: {},
+    
+            series: [
+                { type: 'bar',barWidth:15,},
+                { type: 'bar',barWidth:15, },
+                
+            ]
+        };
+        ;
+       if (option && typeof option === "object") {
+		    myChart.setOption(option, true);
+		   
+		}
+    </script>
+			
+	</div>
+</div>
+<!-- 360移动端 -->
+<div class="col-sm-4 mt15 ">
+	<div class="ibox-title">
+		
+		<h5>360移动端</h5>
+	</div>
+	<div class="ibox-content" style="padding:0px;">
+		<div class="ibox-content" style="padding:0px;height: 340px;">
+
+		<div id="container360mobile" style="height: 100%;"></div>
+			
+			<script type="text/javascript">
+        var dom = document.getElementById("container360mobile");
+        var myChart = echarts.init(dom);
+        var app = {};
+        option = null;
+        option = {
+            legend: {},
+            tooltip: {},
+            dataset: {
+                source: [
+                    ['product', '达标', '未达标'],
+                    ['{$week[1]}', {$sllmobile.zuih}, {$sllmobile.wzuih}],
+                    ['{$week[2]}', {$sllmobile.ddqt}, {$sllmobile.wddqt}],
+                    ['{$week[3]}', {$sllmobile.dqt}, {$sllmobile.wdqt}],
+                    ['{$week[4]}', {$sllmobile.sqt}, {$sllmobile.wsqt}],
+                    ['{$week[5]}', {$sllmobile.qiantian}, {$sllmobile.wqiantian}],
+                    ['{$week[6]}', {$sllmobile.yesterday}, {$sllmobile.wyesterday}],
+                    ['{$week[7]}', {$sllmobile.today}, {$sllmobile.wtoday}],
+                ]
+            },
+            xAxis: { type: 'category' },
+            yAxis: {},
+    
+            series: [
+                { type: 'bar',barWidth:15,},
+                { type: 'bar',barWidth:15, },
+                
+            ]
+        };
+        ;
+       if (option && typeof option === "object") {
+		    myChart.setOption(option, true);
+		   
+		}
+    </script>
+	
+	</div>
+</div>
+</div>
+<!-- 搜狗PC端 -->
+<div class="col-sm-4 mt15  ">
+	<div class="ibox-title">
+		<h5>搜狗电脑端</h5>
+	</div>
+	<div class="ibox-content" style="padding:0px;height: 340px;">
+		<div id="containersogoupc" style="height: 100%;"></div>
+			
+			<script type="text/javascript">
+        var dom = document.getElementById("containersogoupc");
+        var myChart = echarts.init(dom);
+        var app = {};
+        option = null;
+        option = {
+            legend: {},
+            tooltip: {},
+            dataset: {
+                source: [
+                    ['product', '达标', '未达标'],
+                    ['{$week[1]}', {$sogoupc.zuih}, {$sogoupc.wzuih}],
+                    ['{$week[2]}', {$sogoupc.ddqt}, {$sogoupc.wddqt}],
+                    ['{$week[3]}', {$sogoupc.dqt}, {$sogoupc.wdqt}],
+                    ['{$week[4]}', {$sogoupc.sqt}, {$sogoupc.wsqt}],
+                    ['{$week[5]}', {$sogoupc.qiantian}, {$sogoupc.wqiantian}],
+                    ['{$week[6]}', {$sogoupc.yesterday}, {$sogoupc.wyesterday}],
+                    ['{$week[7]}', {$sogoupc.today}, {$sogoupc.wtoday}],
+                ]
+            },
+            xAxis: { type: 'category' },
+            yAxis: {},
+    
+            series: [
+                { type: 'bar',barWidth:15,},
+                { type: 'bar',barWidth:15, },
+                
+            ]
+        };
+        ;
+       if (option && typeof option === "object") {
+		    myChart.setOption(option, true);
+		   
+		}
+    </script>
+
+	</div>
+</div>
+
+<!-- 搜狗移动端 -->
+<div class="col-sm-4 mt15 pl0 ">
+	<div class="ibox-title">
+		
+		<h5>搜狗移动端</h5>
+	</div>
+	<div class="ibox-content" style="padding:0px;height: 340px;">
+
+		<div id="containersogoumobile" style="height: 100%;"></div>
+			
+			<script type="text/javascript">
+        var dom = document.getElementById("containersogoumobile");
+        var myChart = echarts.init(dom);
+        var app = {};
+        option = null;
+        option = {
+            legend: {},
+            tooltip: {},
+            dataset: {
+                source: [
+                    ['product', '达标', '未达标'],
+                    ['{$week[1]}', {$sogoumobile.zuih}, {$sogoumobile.wzuih}],
+                    ['{$week[2]}', {$sogoumobile.ddqt}, {$sogoumobile.wddqt}],
+                    ['{$week[3]}', {$sogoumobile.dqt}, {$sogoumobile.wdqt}],
+                    ['{$week[4]}', {$sogoumobile.sqt}, {$sogoumobile.wsqt}],
+                    ['{$week[5]}', {$sogoumobile.qiantian}, {$sogoumobile.wqiantian}],
+                    ['{$week[6]}', {$sogoumobile.yesterday}, {$sogoumobile.wyesterday}],
+                    ['{$week[7]}', {$sogoumobile.today}, {$sogoumobile.wtoday}],
+                ]
+            },
+            xAxis: { type: 'category' },
+            yAxis: {},
+    
+            series: [
+                { type: 'bar',barWidth:15,},
+                { type: 'bar',barWidth:15, },
+                
+            ]
+        };
+        ;
+       if (option && typeof option === "object") {
+		    myChart.setOption(option, true);
+		   
+		}
+    </script>
+			
+				</div>
+</div>
+	
+			
+
+
+<style>
+	.ibox-content{height: 340px!important;padding: 0px!important;}
+	.tab-bd table.thisclass{ display:table;}
+	.pl0{padding-left: 0px;}
+	.mt15{margin-top: 15px;}
+	.pdl{padding: 0;}
+	.label-hui{color: #fff;background-color: #cacaca;}
+	.label-lv{color: #fff;background-color: #1AB394;}
+	.ttt {
+		width: 100%;
+	}
+
+	.content-wrapper {
+		min-height: 1560px !important;
+	}
+
+	.content_bg {
+		-moz-border-bottom-colors: none;
+		-moz-border-left-colors: none;
+		-moz-border-right-colors: none;
+		-moz-border-top-colors: none;
+		background-color: #ffffff;
+		border-color: #e7eaec;
+		-webkit-border-image: none;
+		-o-border-image: none;
+		border-image: none;
+		border-style: solid solid none;
+		border-width: 4px 0px 0;
+		color: inherit;
+		margin-bottom: 0;
+		padding: 0px;
+		min-height: 48px;
+	}
+
+	.tab-bd table {
+		display: none;
+		cursor: pointer;
+	}
+
+	.tab-bd table.thisclass {
+		display: revert;
+	}
+
+	.content_bg2 {
+		-moz-border-bottom-colors: none;
+		-moz-border-left-colors: none;
+		-moz-border-right-colors: none;
+		-moz-border-top-colors: none;
+		background-color: #ffffff;
+		border-color: #fff;
+		-webkit-border-image: none;
+		-o-border-image: none;
+		border-image: none;
+		border-style: solid solid none;
+		border-width: 4px 0px 0;
+		color: inherit;
+		margin-bottom: 0;
+		padding: 0px;
+		min-height: 48px;
+	}
+
+	.box2 {
+		position: relative;
+		border-radius: 3px;
+		background: #fff;
+		width: 100%;
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+		border-top: 3px solid #222d32;
+	}
+
+	.ibox-title {
+		min-height: 40px;
+	}
+
+	#copy {
+		display: inline-block;
+		border: none;
+		background: none;
+		float: right;
+	}
+
+	.progress {
+		margin-top: 5px;
+		height: 5px;
+	}
+
+	.progress-bar {
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		line-height: 22px;
+	}
+
+	.progress-bar-success {
+		background-color: #34a853;
+	}
+
+	.fz {
+		background: none;
+		color: #676A6C;
+		float: right;
+	}
+	.card {
+		border: none;
+		-webkit-box-shadow: 0 0 35px 0 rgba(154, 161, 171, .15);
+		box-shadow: 0 0 35px 0 rgba(154, 161, 171, .15);
+		margin-bottom: 30px;
+	}
+
+	.card {
+		position: relative;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		min-width: 0;
+		word-wrap: break-word;
+		background-color: #fff;
+		background-clip: border-box;
+		border: 1px solid #e3eaef;
+		border-radius: .25rem;
+	}
+
+	.card-body {
+		-webkit-box-flex: 1;
+		-ms-flex: 1 1 auto;
+		flex: 1 1 auto;
+		padding: 1.5rem;
+	}
+
+	.float-right {
+		float: right !important;
+	}
+
+	.dropdown,
+	.dropleft,
+	.dropright,
+	.dropup {
+		position: relative;
+	}
+
+	.card .header-title {
+		margin-bottom: .5rem;
+		text-transform: uppercase;
+		letter-spacing: .02em;
+		font-size: .875rem;
+		margin-top: 0;
+	}
+
+	.mb-3,
+	.my-3 {
+		margin-bottom: 1.5rem !important;
+	}
+
+	.chartjs-chart {
+		margin: auto;
+		position: relative;
+		width: 100%;
+	}
+
+	.chartjs-size-monitor,
+	.chartjs-size-monitor-expand,
+	.chartjs-size-monitor-shrink {
+		position: absolute;
+		direction: ltr;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		overflow: hidden;
+		pointer-events: none;
+		visibility: hidden;
+		z-index: -1;
+	}
+
+	.chartjs-size-monitor-expand>div {
+		position: absolute;
+		width: 1000000px;
+		height: 1000000px;
+		left: 0;
+		top: 0;
+	}
+
+	.chartjs-size-monitor-shrink>div {
+		position: absolute;
+		width: 200%;
+		height: 200%;
+		left: 0;
+		top: 0;
+	}
+</style>
+
+
+</script>
+

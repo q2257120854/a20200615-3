@@ -1,0 +1,20 @@
+<view class="video-contain">
+    <cover-view bindtap="changeStatus" bindtouchend="touchEnd" bindtouchstart="touchStart" class="touch-cover"></cover-view>
+    <view wx:if="{{!lists.length&&!isLoading}}">
+        <no-data txt="暂无数据" type="common"></no-data>
+    </view>
+    <swiper circular="{{true}}" current="{{swiperCurrent}}" loop="{{true}}" skipHiddenItemLayout="{{true}}" vertical="true">
+        <swiper-item wx:if="{{lists.length>0}}" wx:for="{{lists}}" wx:key="index">
+            <view class="head-holder"></view>
+            <txv-video controls="{{false}}" height="{{windowHeight}}px" playerid="video-{{item.id}}" vid="{{item.vid}}" wx:if="{{item.vid}}"></txv-video>
+        </swiper-item>
+    </swiper>
+    <cover-view class="tools" wx:if="{{lists.length}}">
+        <button class="share-button" openType="share">
+            <cover-image class="share-icon right-icon" src="https://img.kemanyun.com/qianhuituan/2019-09-20/69_1568963641_Fkf2m79fFb.png"></cover-image>
+        </button>
+    </cover-view>
+    <cover-view bindtap="goDeatil" class="video-title" wx:if="{{lists.length>0}}">		
+			{{lists[swiperCurrent].title}}
+	</cover-view>
+</view>

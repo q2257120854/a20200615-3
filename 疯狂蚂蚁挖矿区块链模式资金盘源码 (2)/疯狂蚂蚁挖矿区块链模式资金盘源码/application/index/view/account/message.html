@@ -1,0 +1,122 @@
+{extend name="common/world"}
+{block name="title"}{$Think.config.hello.title}{/block}
+{block name="header"}联系客服{/block}
+{block name="container"}
+<div class="list-block" style="margin:0px;">
+    <ul>
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label" style="width: 60px;">标题</div>
+                    <div class="item-input">
+                        <input class="col-20" name="title" id="title" placeholder="请输入你要咨询的问题" type="text" value=""
+                               maxlength="11"/>
+
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label" style="width: 60px;">内容</div>
+                    <div class="item-input" style="height: 190px;">
+                        <textarea style="border: 1px solid	#F0FFFF;;height: 180px;" rows="3" placeholder="请输入您要咨询的内容"
+                                  id="content" name="content" maxlength="400"></textarea>
+
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-100">
+                        <input id="btnn" type="button" class="button button-big button-fill button-success js-submit"
+                               style="width: 100%;" value="提交"/>
+                        <br/>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <br/>
+    <ul class="list-container" id="list_content">
+        {volist name="list" id="message"}
+        <li>
+            <a href="/message.html?id={$message['id']}" class="item-link item-content">
+                <div class="item-inner">
+                    <div class="item-title" style="padding-left:10px; font-size:16px;">
+
+                        {$message['title']} -{$message['reply']?'已回复':'未回复'}-{$message['create_at']}
+                    </div>
+                </div>
+            </a>
+        </li>
+        {/volist}
+    </ul>
+
+    <div align="right" class="pages" style="background-color: #fff">
+        <br/>
+        {if $page>1}
+        <a class="previous" href="buying.html?page={$page-1}">上一页</a>
+        {/if}
+        <span class="current">{$page}</span>
+        {if ($page+1)<$index}
+        <a class="next" href="buying.html?page={$page+1}">下一页</a>
+        {/if}
+        <span class="rows"> 第<b>{$page}</b>页/共<b>{$index}</b>页</span>
+    </div>
+
+
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#btnn').click(function () {
+            if (!$("#title").val()) {
+                alert("标题不能为空");
+                return false;
+            }
+            if (!$("#content").val()) {
+                alert("内容不能为空");
+                return false;
+            }
+            $('#btnn').attr("disabled", "true");
+
+            $(function () {
+                var params = {
+                    title: $("#title").val(),
+                    content: $("#content").val()
+
+                };
+                $.ajax({
+                    type: 'post',
+                    url: api.account.message,
+                    cache: false,
+                    data: params,
+                    dataType: 'json',
+                    success: function (data) {
+                        alert(data.message);
+                        if (data.code == 200) {
+                            window.setTimeout("window.location='/message.html'", 1000);
+                            //window.location.href="message.html";//需要跳转的地址
+                            return true;
+                        } else {
+                            $("#btnn").removeAttr('disabled');
+                        }
+                    },
+                });
+            });
+
+            return false;
+        });
+    });
+
+</script>
+{/block}

@@ -1,0 +1,65 @@
+{include file="layout/top"/}
+<body class="hold-transition login-page admin-login-body-background">
+<!--    
+<script src="__STATIC__/module/admin/ext/background/login_background.js"></script>-->
+
+<canvas></canvas>
+
+<div class="admin-login-box">
+  <div class="login-logo">
+      <a href="" class="login-logo-a"><b></b>注册</a>
+  </div>
+
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">请输入您的注册信息</p>
+
+    <form action="{:url('regHandle')}" method="post" class="admin-login-form">
+      <div class="form-group has-feedback">
+          <input type="text" name="username" class="form-control" placeholder="请输入注册用户名">
+           <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+           <input type="password" name="password" class="form-control" placeholder="请输入注册密码">
+           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+        <div class="form-group has-feedback">
+            <input type="password" name="repassword" class="form-control" placeholder="请再次输入密码">
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        
+        <div>
+            <img src="{:captcha_src()}" alt="captcha" class="admin-login-captcha-img captcha_change" id="captcha_img"/>
+        </div>
+        <br/>
+      <div class="row">
+        <div class="col-xs-8">
+          <input type="text" name="verify" class="form-control verify" placeholder="请输入您的验证码">
+          <span class="glyphicon glyphicon-open form-control-feedback admin-login-captcha-input-icon"></span>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="button" class="btn btn-primary btn-block btn-flat captcha_change">换一张</button>
+        </div>
+        <!-- /.col -->
+      </div>
+
+        <div class="social-auth-links text-center">
+            
+          <button  type="submit" class="btn btn-block btn-facebook ladda-button login-submit-button" data-style="slide-up">
+              <span class="ladda-label">确定注册</span>
+          </button>
+
+            <a href="{:url('login');}" type="button" class="btn btn-block btn-google btn-flat">开始登陆</a>
+
+        </div>
+    </form>
+
+    <!-- /.social-auth-links -->
+    <!--<a href="#">找回密码</a><br>-->
+
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+{include file="layout/bottom"/}

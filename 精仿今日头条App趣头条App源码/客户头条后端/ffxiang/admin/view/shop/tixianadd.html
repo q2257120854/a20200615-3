@@ -1,0 +1,68 @@
+ {include file="public/header" /}
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content">
+    <div class="row">
+        <form class="form-horizontal" method="post">
+        <div class="form-group">
+                                   
+                                    <div class="col-sm-9">
+                                        <div class="radio i-checks">
+                                               <label>
+                                              审核状态
+                                            </label>
+
+                                            <label>
+                                              <input type="radio" name="state" value="1">已转账
+                                            </label>
+                                            <label>
+                                                <input type="radio"  name="state" value="2">拒绝
+                                            </label>
+                                        </div>
+                                    </div>
+                               
+            <div class="col-sm-12">
+                <div class="ibox-content">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">拒绝原因：</label>
+                        <div class="col-sm-9">
+                            <input name="yuanyin" type="text" class="form-control" value="">
+                          <!--   <input name="state" type="hidden" class="form-control" value="2"> -->
+                        </div>
+                    </div>
+                  
+                     
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{include file="public/footer" /}
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".i-checks").iCheck({
+        checkboxClass: "icheckbox_square-green",
+        radioClass: "iradio_square-green",
+    })
+    // $('#urlid').click(function(){
+    //     if ($(this).is(':checked')) {
+    //         $('#urltext').removeAttr("disabled");
+    //     }else{
+    //         $('#urltext').attr({"disabled":"disabled"});
+    //     }
+    // })
+});
+function msg(){
+    layer.msg("上传成功")
+}
+
+</script>
+{include file="public/bottom" /}
+
+<!-- 加载编辑器的容器 -->
+{:ueditor('content')}
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

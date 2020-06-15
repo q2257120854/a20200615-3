@@ -1,0 +1,7 @@
+<view class="grace-box-banner grace-border-radius-small" style="background:{{background}}; padding-top:{{padding}}; padding-bottom:{{padding}};">
+    <view class="grace-box-items" wx:for="{{items}}" wx:key="index">
+        <view class="line1" style="color:{{color[0]}}; font-size:{{fontSize[0]}};">{{item[0]}}<text style="color:{{color[1]}}; font-size:{{fontSize[1]}};">{{item[1]}}</text>
+        </view>
+        <view class="line2" style="color:{{color[2]}}; font-size:{{fontSize[2]}};">{{item[2]}}</view>
+    </view>
+</view>

@@ -1,0 +1,356 @@
+/* Reset styles *******************************************************************************************************/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-spacing:0}
+/* /Reset styles ******************************************************************************************************/
+
+/* Basic framework ****************************************************************************************************/
+/* Positioning */
+
+.relative { position: relative; }
+.absolute { position: absolute; }
+
+/* Text alignment */
+
+.text-left   { text-align: left;   }
+.text-center { text-align: center; }
+.text-right  { text-align: right;  }
+
+/* Block alignment */
+
+.block-center { display: block; margin-left: auto; margin-right: auto; }
+.block-left   { display: block; margin-left: 0;    margin-right: auto; }
+.block-right  { display: block; margin-left: auto; margin-right: 0;    }
+
+.valign
+{
+    display: table;
+}
+
+.valign > *
+{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* Links */
+
+a:link, a:hover, a:active, a:visited
+{
+    text-decoration: none;
+}
+
+/* Visibility */
+
+.show
+{
+    display: block !important;
+}
+
+.hidden
+{
+    display: none !important;
+    visibility: hidden !important;
+}
+
+.invisible
+{
+  visibility: hidden;
+}
+
+/* Layout */
+
+html, body
+{
+    height: 100%;
+    width: 100%;
+}
+
+.clear   { clear: both;  }
+.clear-l { clear: left;  }
+.clear-r { clear: right; }
+
+.border-box, *
+{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.pull-left  { float: left  !important; }
+.pull-right { float: right !important; }
+
+ul.horizontal
+{
+    list-style: none;
+}
+
+ul.horizontal li
+{
+    display: inline-block;
+}
+
+/* Grid */
+
+.row
+{
+    display: block;
+    clear: both;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.row:after, .row:before
+{
+    content: " ";
+    clear: both;
+    display: table;
+}
+
+.col, .col1, .col2, .col3, .col4, .col5, .col6, .col7, .col8, .col9, .col10, .col11, .col12,
+.col1p,.col2p,.col3p,.col4p,.col5p,.col6p,.col7p,.col8p,.col9p,.col10p,.col11p,.col12p,.col13p,.col14p,.col15p,.col16p,.col17p,.col18p,.col19p,.col20p,.col21p,.col22p,.col23p,.col24p,.col25p,.col26p,.col27p,.col28p,.col29p,.col30p,.col31p,.col32p,.col33p,.col34p,.col35p,.col36p,.col37p,.col38p,.col39p,.col40p,.col41p,.col42p,.col43p,.col44p,.col45p,.col46p,.col47p,.col48p,.col49p,.col50p,.col51p,.col52p,.col53p,.col54p,.col55p,.col56p,.col57p,.col58p,.col59p,.col60p,.col61p,.col62p,.col63p,.col64p,.col65p,.col66p,.col67p,.col68p,.col69p,.col70p,.col71p,.col72p,.col73p,.col74p,.col75p,.col76p,.col77p,.col78p,.col79p,.col80p,.col81p,.col82p,.col83p,.col84p,.col85p,.col86p,.col87p,.col88p,.col89p,.col90p,.col91p,.col92p,.col93p,.col94p,.col95p,.col96p,.col97p,.col98p,.col99p,.col100p
+{
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* 12 grid columns */
+
+.col1  { width:  8.333333333333333%; }
+.col2  { width: 16.66666666666667%;  }
+.col3  { width: 25%;                 }
+.col4  { width: 33.33333333333333%;  }
+.col5  { width: 41.66666666666667%;  }
+.col6  { width: 50%;                 }
+.col7  { width: 58.33333333333333%;  }
+.col8  { width: 66.66666666666667%;  }
+.col9  { width: 75%;                 }
+.col10 { width: 83.33333333333333%;  }
+.col11 { width: 91.66666666666667%;  }
+.col12 { width: 100%;                }
+
+/* Percentage columns */
+
+.col1p{width:1%}.col2p{width:2%}.col3p{width:3%}.col4p{width:4%}.col5p{width:5%}.col6p{width:6%}.col7p{width:7%}.col8p{width:8%}.col9p{width:9%}.col10p{width:10%}.col11p{width:11%}.col12p{width:12%}.col13p{width:13%}.col14p{width:14%}.col15p{width:15%}.col16p{width:16%}.col17p{width:17%}.col18p{width:18%}.col19p{width:19%}.col20p{width:20%}.col21p{width:21%}.col22p{width:22%}.col23p{width:23%}.col24p{width:24%}.col25p{width:25%}.col26p{width:26%}.col27p{width:27%}.col28p{width:28%}.col29p{width:29%}.col30p{width:30%}.col31p{width:31%}.col32p{width:32%}.col33p{width:33%}.col34p{width:34%}.col35p{width:35%}.col36p{width:36%}.col37p{width:37%}.col38p{width:38%}.col39p{width:39%}.col40p{width:40%}.col41p{width:41%}.col42p{width:42%}.col43p{width:43%}.col44p{width:44%}.col45p{width:45%}.col46p{width:46%}.col47p{width:47%}.col48p{width:48%}.col49p{width:49%}.col50p{width:50%}.col51p{width:51%}.col52p{width:52%}.col53p{width:53%}.col54p{width:54%}.col55p{width:55%}.col56p{width:56%}.col57p{width:57%}.col58p{width:58%}.col59p{width:59%}.col60p{width:60%}.col61p{width:61%}.col62p{width:62%}.col63p{width:63%}.col64p{width:64%}.col65p{width:65%}.col66p{width:66%}.col67p{width:67%}.col68p{width:68%}.col69p{width:69%}.col70p{width:70%}.col71p{width:71%}.col72p{width:72%}.col73p{width:73%}.col74p{width:74%}.col75p{width:75%}.col76p{width:76%}.col77p{width:77%}.col78p{width:78%}.col79p{width:79%}.col80p{width:80%}.col81p{width:81%}.col82p{width:82%}.col83p{width:83%}.col84p{width:84%}.col85p{width:85%}.col86p{width:86%}.col87p{width:87%}.col88p{width:88%}.col89p{width:89%}.col90p{width:90%}.col91p{width:91%}.col92p{width:92%}.col93p{width:93%}.col94p{width:94%}.col95p{width:95%}.col96p{width:96%}.col97p{width:97%}.col98p{width:98%}.col99p{width:99%}.col100p{width:100%}
+
+/* Typography */
+
+b, strong
+{
+    font-weight: bold !important;
+}
+
+.error
+{
+    color: #f00;
+}
+
+/* Inputs */
+
+input, select, textarea, button
+{
+    outline: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active
+{
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+}
+
+textarea
+{
+    resize: none;
+}
+
+input[type="text"], select, textarea
+{
+    width: 100%;
+}
+
+/* Transitions */
+
+*
+{
+    -webkit-transition: background-color 200ms ease, border-color 200ms ease;
+    -moz-transition: background-color 200ms ease, border-color 200ms ease;
+    -ms-transition: background-color 200ms ease, border-color 200ms ease;
+    -o-transition: background-color 200ms ease, border-color 200ms ease;
+    transition: background-color 200ms ease, border-color 200ms ease;
+}
+
+.pick-color, .color
+{
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+/* /Basic framework ***************************************************************************************************/
+
+/* Basic UI set *******************************************************************************************************/
+html, body
+{
+    font-size: 13px;
+}
+
+i         { font-style: italic; }
+b, strong { font-weight: bold;  }
+
+.success
+{
+    color: #76B447;
+}
+
+/* Form elements */
+.btn
+{
+    display: block;
+    width: 100%;
+    height: 35px;
+    font-family: 'Open Sans', Arial, sans-serif;
+    text-align: center;
+    position: relative;
+    padding: 8px 22px;
+    background: #86C953;
+    color: #FFF;
+    border: none;
+    border-bottom: 2px solid #76B447;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 200ms ease;
+    outline: none;
+    cursor: pointer;
+}
+
+.btn:hover, .btn:focus
+{
+    background: #94D662;
+}
+
+.btn:active
+{
+    border-bottom: 1px solid #76B447;
+    margin-top: 1px;
+    height: 34px;
+}
+
+.btn.danger
+{
+    background: #e70000;
+    border-bottom: 2px solid #A70000;
+}
+
+.btn.danger:hover
+{
+    background: #f00;
+}
+
+.btn.danger:active
+{
+    border-bottom: 1px solid #A70000;
+}
+
+.btn.secondary
+{
+    background: #37B1EC;
+    border-bottom: 2px solid #36A1D5;
+}
+
+.btn.secondary:hover
+{
+    background: #39BBFA;
+}
+
+.btn.secondary:active
+{
+    border-bottom: 1px solid #36A1D5;
+}
+
+.btn.disabled
+{
+    opacity: 0.5;
+}
+
+.btn i
+{
+    margin: 0 3px;
+    position: relative;
+    top: 2px;
+}
+
+label
+{
+    line-height: 39px;
+    vertical-align: middle;
+}
+
+input[type="text"], input[type="password"], textarea
+{
+    font-family: 'Open Sans', sans-serif;
+    background: #FFF;
+    margin: 0;
+    width: 100%;
+    height: 39px;
+    font-size: 13px;
+    padding: 0 16px;
+    border: 1px solid #EEE;
+    border-left: 2px solid #36A9E1;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    transition: box-shadow 200ms ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus
+{
+    box-shadow: 0 0 15px #e0e0e0 inset;
+}
+
+/* Panel */
+
+.panel
+{
+    border-bottom: 3px solid #36A9E1;
+    -webkit-border-top-left-radius: 3px;
+    -moz-border-top-left-radius: 3px;
+    -ms-border-top-left-radius: 3px;
+    -o-border-top-left-radius: 3px;
+    border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -moz-border-top-right-radius: 3px;
+    -ms-border-top-right-radius: 3px;
+    -o-border-top-right-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.panel .header
+{
+    background: #36A9E1;
+    height: 55px;
+    line-height: 55px;
+    color: #FFF;
+    font-size: 16px;
+    padding-left: 22px;
+}
+
+.panel .content
+{
+    padding: 20px 0;
+    border-left: 1px solid  #ddd;
+    border-right: 1px solid  #ddd;
+}
+/* /Basic UI set ******************************************************************************************************/

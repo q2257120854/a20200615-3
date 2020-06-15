@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/ffxiang.css" />
+		<link rel="stylesheet" type="text/css" href="../css/view.css" />
+	</head>
+	<body>
+		<header class="aui-bar aui-bar-nav fx-view-header " id="fx-header">
+			<a class="aui-pull-left aui-btn" tapmode onclick="c()"> <span class="aui-iconfont aui-icon-left"></span> </a>
+			<div class="aui-title"></div>
+		</header>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var fan
+		apiready = function() {
+			api.addEventListener({
+			    name:'viewappear'
+			}, function(ret, err){      
+				_heibai(1)  
+			});
+			_heibai(1);
+			fan=api.pageParam['fan'];
+			$api.html($api.dom('.aui-title'), api.pageParam['title'])
+			_openFrame(api.pageParam['url'], '', '1', api.pageParam, api.pageParam['useHi'])
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+		}
+		function c(){
+			_close(fan)
+			 
+		}
+	</script>
+</html>

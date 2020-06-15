@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/fx-weitoutiao.css" />
+		<link rel="stylesheet" type="text/css" href="../css/footer.css" />
+ 
+		<style>
+			.fx-view-header {
+				background-color: #fff !important;
+				color: #000;
+				margin-bottom: 0px !important;
+				border-bottom: 1px solid #E8E8E8;
+			}
+			#fx-header .aui-btn img{
+				width: 1rem;
+				height: 1rem;
+				text-align: center;
+				margin: 0 auto;
+			}
+			.aui-bar-nav .aui-pull-left{
+				padding-left: 0.75rem;
+			}
+			.aui-bar-nav .aui-pull-right{
+				padding-right: 0.75rem;
+			}
+			#fx-header .aui-pull-right img{
+				width: 1.3rem;
+				height: 1.3rem;
+			}
+			@-webkit-keyframes rotation{
+				from {-webkit-transform: rotate(0deg);}
+				to {-webkit-transform: rotate(360deg);}
+			}
+			.Rotation{
+				-webkit-transform: rotate(360deg);
+				animation: rotation 1s linear infinite;
+				-moz-animation: rotation 1s linear infinite;
+				-webkit-animation: rotation 1s linear infinite;
+				-o-animation: rotation 1s linear infinite;
+			}
+			.aui-bar-tab .aui-active{
+	color: #34B05C;
+}
+		</style>
+	</head>
+	<body>
+		<header class="aui-bar aui-bar-nav fx-view-header " id="fx-header">
+			<a class="aui-pull-left aui-btn" tapmode onclick="_url({url:'member/py',title:'添加好友'},'',true)">
+	            <div class="user2"><img src="../image/sx-index-left-3.png" />
+	            <p>找人</p></div>
+	        </a>
+			<div class="aui-title">
+				微头条
+			</div>
+			<a class="aui-pull-right aui-btn" tapmode onclick="right()">
+	            <img src="../image/sx-index-right2.png" />
+	            <p>发布</p>
+	        </a>
+		<!--	<section class="aui-grid fx-weitoutiao-top aui-border-t">
+				<div class="aui-row">
+					<div class="aui-col-xs-4 aui-border-r" tapmode onclick="_url({type:'text'},'member/weitoutiaoAdd_win',true)">
+						<i class="aui-iconfont aui-icon-pencil"></i>文字
+					</div>
+					<div class="aui-col-xs-4" tapmode onclick="_url({type:'image'},'member/weitoutiaoAdd_win',true)">
+						<i class="aui-iconfont aui-icon-image"></i><span>图片</span>
+					</div>
+					<div class="aui-col-xs-4 aui-border-l" tapmode onclick="_url({type:'video'},'member/weitoutiaoAdd_win',true)">
+						<i class="aui-iconfont aui-icon-video"></i>视频
+					</div>
+				</div>
+			</section>-->
+		</header>
+		<footer class="aui-bar aui-bar-tab" id="fx-footer">
+			<div class="aui-bar-tab-item" tapmode onclick="_hone()">
+				<img class="aui-img-object" src="../image/w1.png" />
+				<div class="aui-bar-tab-label">
+					主页
+				</div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode onclick="_index_win('video_win')" >
+				<img class="aui-img-object" src="../image/w2.png" />
+				<div class="aui-bar-tab-label">
+					视频
+				</div>
+			</div>
+			<div class="aui-bar-tab-item aui-active" tapmode onclick="shuaxin()">
+				<img class="aui-img-object Rotation" src="../image/shuaxin_2.png" />
+				<div class="aui-bar-tab-label">
+					刷新
+				</div>
+			</div>
+			<!--<div class="aui-bar-tab-item" tapmode onclick="_index_win('xiaoshipin_win')">
+				<img class="aui-img-object" src="../image/w5.png" />
+				<div class="aui-bar-tab-label">
+					小视频
+				</div>
+			</div>-->
+			<div class="aui-bar-tab-item" tapmode onclick="_index_win('member_wins')">
+				<img class="aui-img-object" src="../image/w4.png" />
+				<div class="aui-bar-tab-label">
+					我的
+				</div>
+			</div>
+		</footer>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var mnPopups
+		apiready = function() {
+			mnPopups = api.require('MNPopups');
+			// 回到屏幕
+			api.addEventListener({
+			    name:'viewappear'
+			}, function(ret, err){        
+			   _heibai(1)
+			   // 每日登录奖励
+				_daily({name:'money_weitoutiao'})
+			});
+			_heibai(1)
+			_openFrame('weitoutiao', '', '', '', true)
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+		}
+		// 打开菜单
+		function right(){
+			var y=$api.offset($api.byId('fx-header')).h;
+			mnPopups.open({
+			    rect: {
+			        w: 130,
+			        h: 135
+			    },
+			    position: {
+			        x: api.winWidth - 25,
+			        y: y
+			    },
+			    styles: {
+			        mask: 'rgba(0,0,0,0)',
+			        bg: '#565656',
+			        corner:5,
+			        cell: {
+			            bg: {
+			                normal: '#565656',
+			                highlight: '#404040'
+			            },
+			            h: 45,
+			            title: {
+			                marginL: 45,
+			                color: '#fff',
+			                size: 14,
+			            },
+			            icon: {
+			                marginL: 10,
+			                w: 20,
+			                h: 20,
+			                corner: 2
+			            },
+			            separateLine: {              //（可选项）JSON 类型；分割线的样式设置
+				            width: 1,                //（可选项）数字类型；分割线的粗细，默认为1
+				            marginLR: 10,              //（可选项）数字类型；分割线距离左右的间距，默认为0
+				            bg: '#838383',            //（可选项）字符类型；分割线的背景颜色，支持rgb、rgba、#；默认：#C0C0C0 
+				            hideLastSeparateLine: true //(可选项)布尔类型；是否隐藏最后一条分割线，默认false                    
+				        },
+			        },
+			        pointer: {
+			            size: 7,
+			            xPercent: 90,
+			            yPercent: 0,
+			            orientation: 'downward'
+			        }
+			    },
+			    datas: [{
+			        title: '发图文',
+			        icon: _image+'sx-index-right-1.png'
+			    }, {
+			        title: '拍小视频',
+			        icon: _image+'sx-index-right-2.png'
+			    }, {
+			        title: '上传视频',
+			        icon: _image+'sx-index-right-3.png'
+			    } ],
+//			    , {
+//			        title: '提问',
+//			        icon: '../image/sx-index-right-4.png'
+//			    }
+			    animation: true
+			}, function(ret) {
+			    if(ret.eventType=="click"){
+			    	var index=ret.index;
+			    	if(index==0){
+			    		_url({type:'text'},'member/weitoutiaoAdd_win',true)
+			    	}else if(index==1){
+			    		_svideo()
+			    	}else if(index==2){
+			    		_url({type:'video'},'member/weitoutiaoAdd_win',true)
+			    	}
+			    }
+			});
+		}
+		// 刷新
+		function shuaxin(){
+			$api.addCls($api.dom('.aui-active img'),'Rotation')
+			api.execScript({
+				frameName:'weitoutiao',
+				script: 'shuaxin()'
+			});
+		}
+	</script>
+</html>

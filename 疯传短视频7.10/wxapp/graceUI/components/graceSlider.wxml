@@ -1,0 +1,6 @@
+<view class="grace-slider" style="height:{{blockSize+'px'}}; width:{{realWidth+'px'}};">
+    <view class="grace-slider-bar" style="background:{{bgColor}}; width:{{realWidth+'px'}}; height:{{height+'px'}};"></view>
+    <view class="grace-slider-active-bar" style="background:{{activeColor}}; width:{{activeWidth+'px'}}; height:{{height+'px'}}; margin-left:{{activeLeft+'px'}};"></view>
+    <view catchtouchmove="touchmove" catchtouchstart="touchstart" class="grace-slider-block" data-tag="min" style="background:{{blockBgColor}}; height:{{blockSize+'px'}}; width:{{blockSize+'px'}}; margin-left:{{xMin+'px'}};"></view>
+    <view catchtouchmove="touchmove" catchtouchstart="touchstart" class="grace-slider-block" data-tag="max" style="background:{{blockBgColor}}; height:{{blockSize+'px'}}; width:{{blockSize+'px'}}; margin-left:{{xMax+'px'}}"></view>
+</view>

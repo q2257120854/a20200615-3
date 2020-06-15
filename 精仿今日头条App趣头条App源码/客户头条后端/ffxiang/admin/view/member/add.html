@@ -1,0 +1,122 @@
+ {include file="public/header" /}
+ <style type="text/css">.gray-bg{ background: #fff; }.wrapper{ padding:0px;}.asdh5 h5{border-top: 1px dotted #ccc; padding-top: 20px;margin-top: 20px;}#hidetent{ display: none; }</style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content">
+    <div class="row">
+        <form class="form-horizontal" method="post">
+            <div class="col-sm-12">
+                <div class="ibox-content">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">状态：</label>
+                        <div class="col-sm-9">
+                            <div class="radio i-checks">
+                                <label>
+                                    <input type="radio" value="1" name="hide" {present name="name"}{eq name="name.hide" value="1"}checked{/eq}{else /}checked{/present}>正常
+                                </label>
+                                <label>
+                                    <input type="radio" value="2" name="hide" {present name="name"}{eq name="name.hide" value="2"}checked{/eq}{/present}>审核
+                                </label>
+                                <label>
+                                    <input type="radio" value="3" name="hide" {present name="name"}{eq name="name.hide" value="3"}checked{/eq}{/present}>拒绝
+                                </label>
+                                <label>
+                                    <input type="radio" value="0" name="hide" {present name="name"}{eq name="name.hide" value="0"}checked{/eq}{/present}>禁止
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="display:none">
+                        <label class="col-sm-2 control-label">账户：</label>
+                        <div class="col-sm-9">
+                            <input name="user" type="text"  class="form-control" value="{present name="name"}{$name.user}{/present}">
+                            <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 账户格式为字母和数字，下划线_及破折号-</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">密码：</label>
+                        <div class="col-sm-9">
+                            <input name="password" type="text"  class="form-control" value="">
+                            {present name="name"}<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 不填写默认为原密码</span>{/present}
+                             
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">昵称：</label>
+                        <div class="col-sm-9">
+                            <input name="nickname" type="text"  class="form-control" value="{present name="name"}{$name.nickname}{/present}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">手机：</label>
+                        <div class="col-sm-9">
+                            <input onkeyup="value=value.replace(/\D/g,'')" name="mobile" type="text"  class="form-control" value="{present name="name"}{$name.mobile}{/present}">
+                        </div>
+                    </div>
+                    <div class="form-group" style="display:none">
+                        <label class="col-sm-2 control-label">邮箱：</label>
+                        <div class="col-sm-9">
+                            <input name="email" type="text"  class="form-control" value="{present name="name"}{$name.email}{/present}">
+                        </div>
+                    </div>
+                  <!--   <div class="form-group" style="display:none">
+                        <label class="col-sm-2 control-label">余额：</label>
+                        <div class="col-sm-9">
+                            <input onkeyup="value=value.replace(/\D/g,'')" name="money" type="text"  class="form-control" value="">
+                        </div>
+                    </div>
+                    <div class="form-group" style="display:none">
+                        <label class="col-sm-2 control-label">积分：</label>
+                        <div class="col-sm-9">
+                            <input onkeyup="value=value.replace(/\D/g,'')" name="score" type="text"  class="form-control" value="">
+                        </div>
+                    </div> -->
+                   <!--  <div class="form-group" style="display:none">
+                        <label class="col-sm-2 control-label">经验值：</label>
+                        <div class="col-sm-9">
+                            <input onkeyup="value=value.replace(/\D/g,'')" name="jingyan" type="text"  class="form-control" value="">
+                        </div>
+                    </div> -->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">头像：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input name="img" type="text"  id="image" class="form-control" value="{present name="name"}{$name.img}{/present}">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary" id="tubiao">上传头像</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">个人签名：</label>
+                        <div class="col-sm-9">
+                            <textarea name="qianming" class="form-control">{present name="name"}{$name.qianming}{/present}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">拒绝理由：</label>
+                        <div class="col-sm-9">
+                            <textarea name="hidetent" class="form-control">{present name="name"}{$name.hidetent}{/present}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{include file="public/footer" /}
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+<script type="text/javascript">
+$(document).ready(function(){
+     $(".i-checks").iCheck({
+        checkboxClass: "icheckbox_square-green",
+        radioClass: "iradio_square-green",
+    })
+})
+</script>
+{include file="public/bottom" /}
+ 
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

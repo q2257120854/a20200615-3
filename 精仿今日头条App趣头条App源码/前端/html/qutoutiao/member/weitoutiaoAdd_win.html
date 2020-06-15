@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/member.css" />
+		<style>
+		.aui-bar-nav .aui-btn{
+			color: #212121
+		}
+		.aui-bar-nav a.aui-pull-right{
+			color: #2A90D7;
+			font-weight: 500
+		}
+		</style>
+	</head>
+	<body>
+		<header class="aui-bar aui-bar-nav fx-view-header" id="fx-header">
+			<div class="asdlkhjasd">
+				<a class="aui-pull-left aui-btn" tapmode onclick="_close(1)"> 取消 </a>
+				<div class="aui-title">
+					
+				</div>
+				<a class="aui-pull-right aui-btn" tapmode onclick="fabu()"> 发布 </a>
+			</div>
+		</header>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			api.addEventListener({
+			    name:'viewappear'
+			}, function(ret, err){      
+				_heibai(1)  
+			});
+			_heibai(1)
+			_openFrame('member/weitoutiaoAdd', '', '1',api.pageParam, true)
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+		}
+		function fabu(){
+			var fabu = 'fabu();';
+			api.execScript({
+			    frameName: 'member/weitoutiaoAdd',
+			    script: fabu
+			});
+		}
+	</script>
+</html>
+

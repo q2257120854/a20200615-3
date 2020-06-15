@@ -1,0 +1,49 @@
+ {include file="public/header" /}
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content">
+    <div class="row">
+        <form class="form-horizontal" method="post">
+            <div class="col-md-12">
+                {include file="public/tophead"}
+                {include file="public/top" /}
+                <div class="ibox-content">
+                {include file="public/topsection"}
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">模型标题：</label>
+                        <div class="col-sm-9">
+                            <input name="title" type="text" class="form-control" value="{present name="name"}{$name.title}{/present}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">名字标识：</label>
+                        <div class="col-sm-9">
+                            <input name="templest" type="text" class="form-control" value="{present name="name"}{$name.templest}{/present}" > 
+                            <p>与文档的模板相关连，建议由英文、数字或下划线组成，因为部份Unix系统无法识别中文文件，频道默认文档模板是 article_名字标识.htm”，列表模板、封面模板类推。</p>
+                        </div>
+
+                    </div>
+                   
+                </div>
+            </div> 
+        </form>
+    </div>
+</div>
+{include file="public/footer" /}
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+<script type="text/javascript">
+$(document).ready(function(){
+     $(".i-checks").iCheck({
+        checkboxClass: "icheckbox_square-green",
+        radioClass: "iradio_square-green",
+    })
+});
+function msg(){
+    layer.msg("上传成功")
+}
+</script>
+{include file="public/bottom" /}
+ 
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

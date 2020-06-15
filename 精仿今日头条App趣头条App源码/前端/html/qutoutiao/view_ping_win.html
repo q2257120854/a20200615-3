@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/ffxiang.css" />
+		<link rel="stylesheet" type="text/css" href="../css/view_ping.css" />
+	</head>
+	<body>
+		<header class="aui-bar aui-bar-nav fx-view-header " id="fx-header">
+			<a class="aui-pull-left aui-btn" tapmode onclick="c()"> <span class="aui-iconfont aui-icon-left"></span> </a>
+			<div class="aui-title">
+				正在加载
+			</div>
+ 		</header>
+		<footer class="aui-bar aui-bar-tab fx-view-footer" id="fx-footer">
+			<div class="aui-bar-tab-item aui-padded-l-15 aui-padded-r-15" tapmode style="width: auto;">
+				<div class="search-input aui-font-size-14" tapmode onclick="pingAdd()">
+					回复
+				</div>
+			</div>
+			<!--<div class="aui-bar-tab-item pingZan" tapmode style="width: 2.2rem;" tapmode  onclick="pingZan(1)">
+				<i class="aui-iconfont aui-icon-laud"></i>
+			</div>
+		 
+			<div class="aui-bar-tab-item" tapmode style="width: 2.2rem;margin-right: 0.5rem;" tapmode  onclick="fenxiang()">
+				<i class="aui-iconfont aui-icon-share"></i>
+			</div>-->
+		</footer>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var pingNum=0,fan;
+		apiready = function() {
+		 
+			api.addEventListener({
+			    name:'viewappear'
+			}, function(ret, err){        
+			   _heibai(1)
+			});
+			api.setFullScreen({
+				fullScreen: false
+			}); 
+			if(api.pageParam['aid']){
+				if(api.pageParam['pingNum']){
+					title(api.pageParam['pingNum']+'条回复')
+				}
+			 
+			}
+			_openFrame('view_ping', '', '', api.pageParam)
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+		}
+		function title(title){
+			$api.text($api.dom('.aui-title'),title)
+		}
+		// 滚动到评论界面
+		function gundong() {
+			var gundong = 'gundong();';
+			api.execScript({
+				frameName : 'view_ping',
+				script : gundong
+			});
+		}
+		// 评论 
+		function pingAdd(){
+			var pingAdd='pingAdd();';
+			api.execScript({
+				frameName : 'view_ping',
+				script : pingAdd
+			});
+		}
+		// 评论赞按钮
+		function pingZan(type) {
+			return;
+			if(!_user){
+				_login();
+				return;
+			}
+			$api.addCls($api.dom('.pingZan'),'pingZanColor')
+			if(type){
+				var pingZan = 'pingZan();';
+				api.execScript({
+					frameName : 'view_ping',
+					script : pingZan
+				});
+			}
+		}
+		// 右下角分享
+		function fenxiang(){
+			return;
+			var fenxiang = 'fenxiang();';
+			api.execScript({
+				frameName : 'view_ping',
+				script : fenxiang
+			});
+		}
+		function c(){
+			_close(fan)
+			 
+		}
+
+	</script>
+</html>
+

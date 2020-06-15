@@ -1,0 +1,14 @@
+                    <ul class="nav nav-tabs">
+					    	<li {eq name='categorytidactives' value='$active'} class="active"{/eq}><a href="{:url($categorytid['controller'].'/'.$categorytid['function'])}">
+                                {$categorytid.title}
+                            </a></li>
+
+					    	{volist name='categorys' id='v'}
+                        	{php}$actives=$v['controller'].$v['function']{/php}
+                            <li {eq name='actives' value='$active'} class="active"{/eq}><a href="{:url($v['controller'].'/'.$v['function'])}">
+                                {$v.title}
+                            </a></li>
+                            {/volist}
+					    </ul><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

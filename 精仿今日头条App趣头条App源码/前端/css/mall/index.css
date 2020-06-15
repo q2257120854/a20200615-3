@@ -1,0 +1,100 @@
+body {
+	background: #f0f0f0 !important;
+}
+.fx-cuijian{
+	padding: 1rem 0; 
+	font-size: 0.85rem; 
+	color: #333333;
+	background: #fff;
+}
+.fx-list{
+	background: none;
+}
+.fx-list .aui-row{
+	
+}
+.fx-list .aui-col-xs-6{
+	background: #fff;
+}
+.fx-list .aui-col-xs-6 img{
+	width: 5rem;
+	margin: 0 auto;
+	height: 5rem;
+}
+.fx-list .fx-border-r{
+	border-right: 0.05rem solid #f0f0f0;
+}
+.fx-list .fx-border-l{
+	border-right: 3px solid #f0f0f0;
+}
+.fx-list .aui-grid-label{
+	padding: 0.5rem 0.3rem;
+	background: #fff;
+}
+.fx-list [class*=aui-col-]{
+	padding-bottom: 0px;
+	border-top: 0.05rem solid #f0f0f0;
+}
+/*详细内容页*/
+.fx-title{
+	 
+}
+.fx-money{
+	font-size: 0.65rem;
+	color: #db3652;
+	margin: 0 0.75rem;
+	border-bottom: 1px solid #f0f0f0;
+	padding-bottom: 0.5rem;
+}
+.fx-money b{
+	font-size: 1.2rem;
+}
+.m-detail-mall-service{
+	padding:15px 0 15px;
+	padding-left: 0.75rem;
+}
+.m-detail-mall-service-item{padding-right:18px;line-height:16px;font-size:0.65rem;color:#999999;}
+.m-detail-mall-service-item img{
+	display:inline-block;width:14px;height:14px;margin-right:5px;vertical-align:middle;
+}
+
+.fx-pay{
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	background:#db3652;
+	border-radius: 0px;
+	color: #fff;
+	font-weight: bold;
+	border: 0px;
+}
+.asdasd{
+	width: 15rem;
+	margin: 0 auto
+}
+.wuxians{
+	background: #db3652;
+	color: #fff;
+}
+.aui-grid [class*=aui-col-]{
+	padding: 0.5rem 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,266 @@
+---------------------------------------------------------------
+[ 2019-09-02T07:00:47+08:00 ] 106.14.126.121 GET /
+[ info ] 47.100.102.83:4900/ [运行时间：0.076906s][吞吐率：13.00req/s] [内存消耗：1,597.26kb] [文件加载：63]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => '',
+  'route' => 'index/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-02T07:00:47+08:00 ] 106.14.126.121 GET /account.html
+[ info ] 47.100.102.83:4900/account.html [运行时间：0.034709s][吞吐率：28.81req/s] [内存消耗：1,841.13kb] [文件加载：60]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'account',
+  'route' => 'account/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-02T07:00:47+08:00 ] 106.14.126.121 GET /signin.html?from=http%3A%2F%2F47.100.102.83%3A4900%2Faccount.html
+[ info ] 47.100.102.83:4900/signin.html?from=http%3A%2F%2F47.100.102.83%3A4900%2Faccount.html [运行时间：0.037783s][吞吐率：26.47req/s] [内存消耗：1,904.64kb] [文件加载：63]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'signin',
+  'route' => 'account/signin',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'method' => 'get|post',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+)
+[ info ] [ PARAM ] array (
+  'from' => 'http://47.100.102.83:4900/account.html',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ VIEW ] C:\wwwroot\gec.com\application\index\view\account\signin.html [ array (
+  0 => 'platform',
+  1 => 'appurl',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-02T07:00:48+08:00 ] 106.14.126.121 GET /account.html
+[ info ] 47.100.102.83:4900/account.html [运行时间：0.030211s][吞吐率：33.10req/s] [内存消耗：1,841.13kb] [文件加载：60]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'account',
+  'route' => 'account/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-02T07:00:48+08:00 ] 106.14.126.121 GET /signin.html?from=http%3A%2F%2F47.100.102.83%3A4900%2Faccount.html
+[ info ] 47.100.102.83:4900/signin.html?from=http%3A%2F%2F47.100.102.83%3A4900%2Faccount.html [运行时间：0.029145s][吞吐率：34.31req/s] [内存消耗：1,904.64kb] [文件加载：63]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'signin',
+  'route' => 'account/signin',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'method' => 'get|post',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+)
+[ info ] [ PARAM ] array (
+  'from' => 'http://47.100.102.83:4900/account.html',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ VIEW ] C:\wwwroot\gec.com\application\index\view\account\signin.html [ array (
+  0 => 'platform',
+  1 => 'appurl',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-02T07:00:48+08:00 ] 106.14.126.121 GET /signup.html
+[ info ] 47.100.102.83:4900/signup.html [运行时间：0.032838s][吞吐率：30.45req/s] [内存消耗：1,984.36kb] [文件加载：65]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'signup',
+  'route' => 'account/signup',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'method' => 'get|post',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ VIEW ] C:\wwwroot\gec.com\application\index\view\account\signup.html [ array (
+  0 => 'platform',
+  1 => 'inviter',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-02T07:00:48+08:00 ] 106.14.126.121 GET /forgot.html
+[ info ] 47.100.102.83:4900/forgot.html [运行时间：0.036056s][吞吐率：27.73req/s] [内存消耗：1,903.69kb] [文件加载：63]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'forgot',
+  'route' => 'account/forgot',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'method' => 'get|post',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ VIEW ] C:\wwwroot\gec.com\application\index\view\account\forgot.html [ array (
+  0 => 'platform',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-02T07:00:48+08:00 ] 106.14.126.121 GET /main.html
+[ info ] 47.100.102.83:4900/main.html [运行时间：0.030791s][吞吐率：32.48req/s] [内存消耗：1,231.63kb] [文件加载：56]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File

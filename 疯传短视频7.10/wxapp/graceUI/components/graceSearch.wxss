@@ -1,0 +1,24 @@
+@import "../../wuBaseWxss/0.wxss";
+
+.gui-search {
+    background: #FFFFFF;
+    border-radius: 66rpx;
+    box-sizing: border-box;
+    padding: 0 10rpx;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    overflow: hidden;
+}
+
+.gui-search-icon {
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.gui-search-input {
+    width: 600rpx;
+    margin: 0 10rpx;
+    border: none;
+    padding: 0;
+}

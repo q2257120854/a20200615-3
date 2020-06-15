@@ -1,0 +1,6 @@
+<view class="grace-sup">
+    <view class="text" style="font-size:{{textSize}}; color:{{textColor}}; font-weight:{{isBold?'700':'400'}};">
+    {{text}}
+  </view>
+    <view class="sup" style="font-size:{{supSize}}; line-height:{{supSize}}; color:{{supColor}};">{{sup}}</view>
+</view>

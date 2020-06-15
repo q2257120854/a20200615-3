@@ -1,0 +1,24 @@
+
+公众号一般都是通过点击文字或是图片来实现与客服人员沟通的
+
+
+通过点击文字或是图片直接聊天的方法：
+
+http://jbest.vip/livechat/php/app.php?widget-mobile
+
+请将http://jbest.vip/livechat/ 换成：
+
+自己的域名/在线客服安装目录/php/app.php?widget-mobile
+
+
+之后使用HTML超链接方法
+
+<a href="自己的域名/在线客服安装目录/php/app.php?widget-mobile">点击与客服联系</a>
+
+具体请百度一下超简单
+
+
+
+5G云源码分享网
+
+www.yunziyuan.com.cn

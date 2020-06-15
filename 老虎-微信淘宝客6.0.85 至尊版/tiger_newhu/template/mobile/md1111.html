@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>双十一秒杀免单清单专题</title>
+    <!-- 自适应 -->
+    <script>
+        document.documentElement.style.fontSize = 100 * (document.documentElement.clientWidth / 750) * 2 + 'px'
+    </script>
+    <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style88/css/layer.css" />
+	    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style88/js/layer.js"></script>
+    <!-- list.css -->
+    <style>
+        html {
+            margin: auto;
+            background: #F5F5F5;
+            color: #999999;
+            -webkit-overflow-scrolling: touch;
+            -webkit-tap-highlight-color: none;
+        }
+
+        body,
+        html,
+        div,
+        img,
+        p {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        ul {
+            padding: 0px;
+        }
+
+        input {
+            border: 0;
+            outline: 0;
+            box-shadow: 0;
+        }
+
+
+        /* 弹性 */
+        .flex {
+            display: flex;
+            display: -webkit-flex;
+        }
+
+        .col {
+            flex-direction: column;
+            -webkit-flex-direction: column;
+        }
+
+        .fl-w {
+            flex-wrap: wrap;
+            -webkit-flex-wrap: wrap;
+        }
+
+        .fl-align {
+            align-items: center;
+            -webkit-align-items: center;
+        }
+
+        .fl-jc {
+            justify-content: center;
+            -webkit-justify-content: center;
+        }
+
+        .fl-jsb {
+            justify-content: space-between;
+            -webkit-justify-content: space-between;
+        }
+
+        .fl-jsa {
+            justify-content: space-around;
+            -webkit-justify-content: space-around;
+        }
+
+        .fl-jse {
+            justify-content: space-evenly;
+            -webkit-justify-content: space-evenly;
+        }
+
+
+        /* 文字大小 */
+        .fz-10 {
+            font-size: 0.1rem;
+        }
+
+        .fz-11 {
+            font-size: 0.11rem;
+        }
+
+        .fz-12 {
+            font-size: 0.12rem;
+        }
+
+        .fz-14 {
+            font-size: 0.14rem;
+        }
+
+        .fz-15 {
+            font-size: 0.15rem;
+        }
+
+        .fz-17 {
+            font-size: 0.17rem;
+        }
+
+        .fz-20 {
+            font-size: 0.2rem;
+        }
+
+        /* 文字颜色 */
+        .c-33 {
+            color: #333;
+        }
+
+        .c-ff {
+            color: #fff;
+        }
+
+        .c-02 {
+            color: #FF0F02;
+        }
+
+        .c-9D {
+            color: #FF029D;
+        }
+
+
+        /* 文字粗细 */
+
+        /* 背景颜色 */
+        .b-ff {
+            background: #fff;
+        }
+
+
+        /* 俩行 */
+        .clamp2 {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            display: -webkit-box;
+        }
+
+        /* 公共 */
+        #app {
+            width: 100%;
+            min-height: 100vh;
+            background: #FF0265;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        /*底部线条*/
+        .nav-active {
+            position: relative;
+            color: #FF0F02;
+            font-weight: bold;
+        }
+
+        .nav-active::after {
+            content: "";
+            position: absolute;
+            left: calc((100% - 25px) / 2);
+            bottom: 0.04rem;
+            width: 0.25rem;
+            height: 0.02rem;
+            border-radius: 1000px;
+            background: #FF0F02;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+
+        /* alerts */
+        .alerts {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0rem;
+            z-index: 200;
+        }
+
+        .alert-box {
+            margin: auto
+        }
+
+        .alert-info {
+            font-size: 0.14rem;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 4px;
+        }
+    </style>
+    <style>
+        .top-img,
+        .list-content {
+            width: 100%;
+        }
+
+        .list-content {
+            margin-bottom: 0.5rem;
+        }
+
+        .list-content>div:last-child {
+            margin-bottom: 0.7rem;
+        }
+
+        .nav-line {
+            position: relative;
+            width: 3.51rem;
+            height: 0.38rem;
+            border-radius: 0.05rem;
+            margin-bottom: 0.09rem;
+            z-index: 99;
+            display: -moz-box;
+            display: -webkit-box;
+            display: box;
+        }
+
+        .nav-list {
+            width: 3.06rem;
+            height: 100%;
+            position: relative;
+            overflow-x: scroll;
+        }
+
+        .class-nav-list {
+            position: absolute;
+            left: 0;
+            height: 100%;
+            word-break: keep-all;
+            touch-action: none;
+        }
+
+        .class-nav-list>span {
+            padding: 0.07rem 0.16rem;
+        }
+
+        .line {
+            width: 0.07rem;
+            height: 100%;
+            background: url(http://img.fqapps.com/a10e3ab7ebfbf84fdc9db07114fec6e5) no-repeat center;
+            background-size: 100%;
+        }
+
+        .icon-btn {
+            width: 0.39rem;
+            height: 100%;
+        }
+
+        .down {
+            display: block;
+            width: 0.14rem;
+            height: 0.08rem;
+            background: url(http://img.fqapps.com/8ccf30bb28ef06400d7a82fa3ce9a107) no-repeat center;
+            background-size: 100%;
+            margin: auto;
+        }
+
+        .down-list {
+            position: absolute;
+            left: 0;
+            padding-top: 0.14rem;
+            width: 3.51rem;
+            top: 0.35rem;
+        }
+
+        .down-list>span {
+            border-radius: 0.05rem;
+            padding: 0.07rem 0.1rem;
+            margin-left: 0.05rem;
+            margin-bottom: 0.07rem;
+        }
+
+        .nav-choice {
+            color: #fff;
+            background: #FF0F02;
+        }
+
+        .list-item {
+            width: 3.51rem;
+            height: 1.24rem;
+            border-radius: 0.05rem;
+            margin-bottom: 0.08rem;
+            position: relative;
+        }
+
+        .list-item .left {
+            width: 1.1rem;
+            height: 1.1rem;
+            border-radius: 0.05rem;
+            margin: 0.07rem;
+        }
+
+        .list-item .left>img {
+            width: 100%;
+            height: 100%;
+            border-radius: 0.05rem;
+        }
+
+        .list-item .right {
+            width: 2.2rem;
+            height: 1.1rem;
+        }
+
+        .title-line {
+            position: relative;
+            margin-bottom: 0.1rem;
+        }
+
+        .d_icon {
+            display: block;
+            width: 0.28rem;
+            height: 0.13rem;
+            background: url(http://img.fqapps.com/33b4274d708f0669420430f78edfec76) no-repeat center;
+            background-size: 100%;
+            position: absolute;
+            top: 0.02rem;
+        }
+
+        .title-line>span {
+            text-indent: 0.3rem;
+        }
+
+        .lable-line {
+            width: 100%;
+            margin-bottom: 0.2rem;
+        }
+
+
+        .quan {
+            border: 0.01rem solid #FF0F02;
+            border-radius: 0.02rem;
+            margin-right: 0.04rem;
+        }
+
+        .quan>span:first-child {
+            padding: 0.04rem 0.04rem 0.04rem 0.05rem;
+            border-right: 0.01rem dashed #FF0F02;
+        }
+
+        .quan>span:last-child {
+            padding: 0.04rem 0.05rem 0.04rem 0.04rem;
+        }
+
+        .hint {
+            padding: 0.06rem 0.06rem 0.06rem 0.05rem;
+            border: 0.01rem solid #FF029D;
+            border-radius: 0.02rem;
+            max-width: 1.5rem;
+            word-wrap: normal;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            line-height: 1;
+        }
+
+        .buy-btn {
+            width: 0.95rem;
+            height: 0.27rem;
+            line-height: 0.27rem;
+            text-align: center;
+            background: linear-gradient(90deg, #FF0202, #FF5502);
+            border-radius: 0.13rem 0rem 0rem 0.13rem;
+            position: absolute;
+            right: 0;
+            bottom: 0.07rem;
+        }
+
+        .share-Btn {
+            width: 2.31rem;
+            height: 0.53rem;
+            background: url(http://img.fqapps.com/321c8eb22929547d08cb735e5ece47df) no-repeat center;
+            background-size: 100%;
+            position: fixed;
+            bottom: 0.1rem;
+        }
+
+        .cover {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0rem;
+            z-index: 2000;
+        }
+
+        .haibao {
+            width: 2.72rem;
+            height: 3.65rem;
+            border-radius: 0.1rem;
+            margin-bottom: 0.23rem;
+        }
+
+        .haibao>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .share-btn {
+            width: 2.31rem;
+            height: 0.42rem;
+            line-height: 0.42rem;
+            text-align: center;
+            background: linear-gradient(0deg, #FF7500, #FF9943);
+            border-radius: 0.21rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .close-icon {
+            width: 0.36rem;
+            height: 0.36rem;
+            background: url(http://img.fqapps.com/60b5d0116e55fca1701ddd69d050be97) no-repeat;
+            background-size: cover;
+        }
+
+        .activityClass-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            border-radius: 0;
+            z-index: 199;
+        }
+
+        .activityClass-fixed .nav-list {
+            width: 100%;
+        }
+
+        .activityClass-fixed .nav-list .class-nav-list>span {
+            padding: 0.07rem 0.08rem;
+        }
+
+        .activityClass-fixed .line,
+        .activityClass-fixed .icon-btn {
+            display: none !important;
+        }
+
+        .activitys {
+            margin-top: 0.55rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <img src="http://img.fqapps.com/1a01e9109b99e59c21ded51d990b03f7" class="top-img">
+
+        <!-- 分类 -->
+        <div class="nav-line b-ff flex" ref="classElement" :class="{'activityClass-fixed': activityClassFixed}">
+            <div class="nav-list" ref="classNavElement">
+                <div class="class-nav-list fz-15 c-33 flex" ref="classNavListElement" @touchstart.stop='toushStart'
+                    @touchmove.stop='touMove'>
+                    <span v-for="(item,index) in navlist" :class="navchoice==item.cat_id?'nav-active':''"
+                        @click="toChoiceone(item,index)" ref="slideElement">{{item.name}}</span>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="icon-btn flex col fl-align" @click="sdown">
+                <i class="down"></i>
+            </div>
+            <!-- 下拉 -->
+            <div class="down-list b-ff flex fl-w fz-15 c-33" v-if="nav">
+                <span v-for="(item,index) in navlist" :class="navchoice==item.cat_id?'nav-choice':''"
+                    @click="toChoicetwo(item,index)">{{item.name}}</span>
+            </div>
+        </div>
+
+
+        <div class="list-content flex col fl-align" :class="{'activitys': activityClassFixed}">
+            <div class="list-item b-ff flex fl-align" v-for="item in goodlist" @click="toUrl(item.itemid,item.itemtitle)">
+                <div class="left">
+                    <img :src="item.image">
+                </div>
+                <div class="right flex col fl-jse">
+                    <div class="title-line fz-12 c-33">
+                        <i class="d_icon"></i>
+                        <span class="clamp2">{{item.itemtitle}}</span>
+                    </div>
+                    <div class="lable-line flex fl-align">
+                        <div class="quan flex fl-align fz-10 c-02" v-if="item.couponmoney!=0.00">
+                            <span>券</span>
+                            <span>￥{{keep(item.couponmoney)}}</span>
+                        </div>
+                        <div class="hint fz-10 c-9D" v-if="item.remark">{{item.remark}}</div>
+                    </div>
+                    <span class="price fz-14 c-02">
+                        活动价<span class="fz-17">￥{{item.seckill_price}}</span>
+                    </span>
+                </div>
+                <div class="buy-btn fz-15 c-ff" v-if="item.start_time==0">立即抢购</div>
+                <div class="buy-btn fz-15 c-ff" v-if="item.start_time!=0">11.11开抢</div>
+            </div>
+        </div>
+        <div class="share-Btn" @click="toshare"></div>
+		<canvas class="free-canvas" id="freeCanvas" width="750" height="1000" style="display: none;"></canvas>
+
+        <div class="cover flex col fl-align" v-if="shows">
+            <div class="flex col fl-align" style="margin: auto;">
+                <div class="haibao" id="haibao" >
+                    <img src="http://img.haodanku.com/FndEFfH5XJd_ibr3Z3jUAA6N36fo">
+                </div>
+                <!-- <div class="share-btn fz-20 c-ff" @click="toshare">立即分享</div> -->
+                <i class="close-icon" @click="close"></i>
+                
+            </div>
+        </div>
+
+    </div>
+	
+	<style>
+
+		/* 弹窗 */
+	.mbboxa{width: 100%;position:fixed;box-sizing:border-box;top:0;background: rgba(0,0,0,.3);z-index: 888;height:1280px;text-align: center}
+	.tcbox{margin: 0 auto;width:80%;height:210px;background: #ffffff;position:fixed;left:10%;z-index: 99999;top:20%;border-radius: 5px}
+	.tcbox .tchead{border-top-left-radius: 5px;border-top-right-radius: 5px;background: linear-gradient(90deg, #ed6e6e , #78e3f1);height:60px;font-size:20px;line-height: 60px;color: #ffffff}
+	.tcbt{height:40px;line-height:40px;text-align: center;font-weight: bold;color: #ff0000;font-size:16px}
+	.tcinfo{margin:0 auto;width: 80%}
+	.tcinfo input{border:1px #ff0000 dashed;height:40px;line-height:40px;font-size: 16px;width: 100%;text-align:center}
+	.txpric{height:90px;line-height:90px;font-size:24px;}
+	.tjhj{margin-right: 10px;font-size: 30px;color: #ff0000}
+	.tyj{margin-left: 10px;font-size: 30px;background: #ff0000;color: #ffffff;padding-left: 10px;padding-right: 10px;border-radius: 2px;}
+	.txbot{font-size:26px;}
+	.sctzbj{width:100%; height:80px;margin-top:70px;text-align: center}
+	.scimg{width: 80px;height: 80px;}
+	.yjbtn{width: 150px;height: 30px;height: 30px;text-align: center;margin: 0 auto;background: linear-gradient(to right, #ff4719 0%,#ff1c8f 100%);color: #ffffff;font-size: 16px;    margin-top: 15px; line-height: 30px;border-radius: 3px; display: inline-block;}
+	.closebtn{position: absolute;right:-18px;top: -18px;}
+	.closebtn img{width: 35px;height:35px;}
+	</style>
+	
+	<link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/md/css/style.css" />
+<!-- 口令弹窗 -->
+		<script type="text/javascript" src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/js/clipboard.min.js"></script>
+		<div class='mbboxa' id="closkl"  style="display: none;" >
+			<div class='tcbox'>
+				<div class='tchead' id="tchead">口令购买</div>
+				<div class='tcxbox'>
+							<div class='tcbt'>一键复制->全选->打开淘APP购买</div>
+							<div class='tcinfo'><input  value='' type="text" id="bar"/></div>
+							<div class='txbot'><div class="yjbtn" id="copy-code" data-clipboard-action="copy" data-clipboard-target="#bar">一键复制</div></div>
+				</div>  
+					<div class="closebtn"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/qtz/images/close.png"></div>
+			</div> 
+			
+		</div>
+</body>
+<!-- <script src="//cdn.bootcss.com/eruda/1.5.2/eruda.min.js"></script>
+<script>eruda.init();</script> -->
+<script>
+				jQuery(function($) {
+					$('.closebtn').on('click', function(){
+							$('#closkl').css('display', 'none');						
+					});
+					$('.bottomnav').on('click', function(){
+							$('#closkl').css('display', 'block');						
+					});
+					
+					$('.yjbtn').on('click', function(){
+						//alert(1111);			
+					});
+					
+					if (Clipboard.isSupported()) {
+							var clipboard = new Clipboard(".yjbtn");
+							clipboard.on("success", function(e) {
+									$(".yjbtn").css("background", "#44b549").html("复制成功");
+							});
+							clipboard.on("error", function(e) {
+									$(".yjbtn").css("background", "red").html("复制失败");
+							});
+					} else {
+							//$(".yjbtn").hide();
+							$(".yjbtn").css("background", "red").html("手动长按复制");
+					}
+				});
+			</script>
+<script>
+
+    new Vue({
+        el: "#app",
+        data: {
+            nav: false,
+            shows: false,
+            navlist: [],
+            navchoice: '',
+            page: 1,
+            goodlist: [],
+            tpage: '',
+            activityClassFixed: false,
+            lunbo: true
+        },
+        mounted: function () {
+            var that = this
+
+            var distanceTop = that.$refs.classElement.getBoundingClientRect().top;
+            var classHeight = that.$refs.classElement.getBoundingClientRect().height;
+
+
+            window.addEventListener('scroll', function () {
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+                // 当滑动距离大于等于分类距离顶部位置时，则固定定位
+                if (scrollTop >= distanceTop) {
+                    that.activityClassFixed = true;
+                    that.activityBoxTop = classHeight;
+                } else {
+                    that.activityClassFixed = false;
+                    that.activityBoxTop = 0;
+                }
+            })
+
+            that.getNav()
+            that.lundong()
+        },
+        methods: {
+            // 获取分类
+            getNav: function () {
+                var that = this
+                $.ajax({
+                    url: 'https://www.haodanku.com/activity/activity_inventory_category',
+                    type: 'get',
+                    data: '',
+                    dataType: 'json'
+                }).done(function (res) {
+                    if (res.code == 200) {
+                        that.navlist = res.data
+                        that.navchoice = res.data[0].cat_id
+                        that.getkind(that.navchoice)
+                    }
+                })
+            },
+
+            // 显示隐藏下拉
+            sdown: function () {
+                var type = this.nav
+                if (type) {
+                    this.nav = false
+                } else {
+                    this.nav = true
+                }
+            },
+
+            toChoiceone: function (e, index) {
+                var that = this
+                that.navchoice = e.cat_id
+                that.page = 1
+                that.getkind(e.cat_id)
+            },
+
+            toChoicetwo: function (e, index) {
+                var that = this
+                that.nav = false
+                that.navchoice = e.cat_id
+                that.page = 1
+                // 整条分类的宽度
+                var class_w = this.$refs.classElement.offsetWidth;
+
+                // 获取单个元素宽度
+                var nav_w = this.$refs.slideElement[index].offsetWidth;
+
+                // 居中的元素距离左右两边的宽度
+                var nav_distance = (class_w - nav_w) / 2;
+
+
+                // 被点击元素距离左边的距离
+                var nav_left = parseInt(this.$refs.slideElement[index].offsetLeft);
+
+                var class_nav_width = this.$refs.classNavElement.offsetWidth;
+
+                var class_nav_list_width = this.$refs.classNavListElement.offsetWidth;
+
+                var nav_offsetLeft = '';
+
+                if (nav_left <= nav_distance) {
+                    nav_offsetLeft = 0
+                } else if (nav_distance - nav_left <= class_nav_width - class_nav_list_width) {
+                    nav_offsetLeft = class_nav_width - class_nav_list_width
+
+                } else {
+                    nav_offsetLeft = nav_distance - nav_left
+                }
+
+                $('.class-nav-list').animate({
+                    'left': nav_offsetLeft
+                }, 300)
+
+                that.getkind(e.cat_id)
+            },
+
+
+            toushStart: function (e) {
+                x1 = e.targetTouches[0].pageX;
+                y1 = e.targetTouches[0].pageY;
+                class_nav_list_left = this.$refs.classNavListElement.offsetLeft;
+            },
+
+            touMove: function (e) {
+                var x2 = e.targetTouches[0].pageX;
+                var y2 = e.targetTouches[0].pageY;
+
+                var class_nav_width = this.$refs.classNavElement.offsetWidth;
+                var class_nav_list_width = this.$refs.classNavListElement.offsetWidth;
+
+                if (class_nav_list_left + x2 - x1 >= 0) {
+                    $('.class-nav-list').css('left', 0);
+                } else if (class_nav_list_left + x2 - x1 <= class_nav_width - class_nav_list_width) {
+                    $('.class-nav-list').css('left', class_nav_width - class_nav_list_width);
+                } else {
+                    $('.class-nav-list').css('left', class_nav_list_left + x2 - x1);
+                }
+
+                if (Math.abs(y2 - y1) > 0) {
+                    e.preventDefault();
+                }
+            },
+
+
+            // 获取数据列表
+            getkind: function (e) {
+                var that = this
+                var param = {
+                    p: that.page,
+                    cat_id: e
+                }
+                $.ajax({
+                    url: 'https://www.haodanku.com/activity/activity_inventory_data',
+                    type: 'get',
+                    data: param,
+                    dataType: 'json'
+                }).done(function (res) {
+                    if (res.code == 200) {
+                        that.goodlist = res.data
+                        that.tpage = res.page_all
+                    }
+                })
+            },
+
+
+            lundong: function () {
+                var that = this
+                $(window).scroll(function () {
+                    var aa = $(window).scrollTop(); //当前滚动条滚动的距离
+                    var bb = $(window).height(); //浏览器当前窗口可视区域高度
+                    var cc = $(document).height(); //浏览器当前窗口文档的高度 
+                    if (cc <= aa + bb) {
+                        if (that.lunbo) {
+                            // console.log(1111)
+                            that.adddata()
+                        }
+                    }
+                })
+            },
+
+            adddata: function () {
+                var that = this
+                that.lunbo = false
+                var p = that.page
+                var tp = that.tpage
+                if (p < tp) {
+                    var param = {
+                        p: that.page + 1,
+                        cat_id: that.navchoice
+                    }
+                    $.ajax({
+                        url: 'https://www.haodanku.com/activity/activity_inventory_data',
+                        type: 'get',
+                        data: param,
+                        dataType: 'json'
+                    }).done(function (res) {
+                        if (res.code == 200) {
+                            var old = that.goodlist
+                            var list = res.data
+                            var news = old.concat(list)
+                            that.goodlist = news
+                            that.page = p + 1
+                            that.lunbo = true
+                        } else {
+                            that.lunbo = true
+                        }
+                    })
+                }
+            },
+
+
+            toUrl: function (e,title) {
+                var that = this
+				var pid="{$pid}";
+				var qdid="{&qdid}";
+                var param = {
+                    itemid: e,
+                    itemtitle: title,
+                    pid:pid,
+					qdid:qdid,
+					op:1
+                }
+                $.ajax({
+                    url: "{php echo $this->createMobileUrl('md1111',array('op'=>1))}",   ///转淘口令接口地址
+                    type: 'post',
+                    data: param,
+                    dataType: 'json'
+                }).done(function (res) {
+					//alert(JSON.stringify(res))
+					// alert(res.code);
+                    if (res.code == 200) {
+                        var url = res.itemurl
+						
+						$('#closkl').css('display', 'block');
+						$("#tchead").html(1111);
+						$("#bar").val(url);
+                        // functionclick('B12001', 'rouse_tb_url', JSON.stringify({
+                        //     'keyword': url
+                        // }));
+                    } else {
+						alert(1111);
+                        that.mst(res.msg)
+                    }
+                })
+            },
+
+            tokind: function () {
+                this.nav = false
+            },
+
+            share: function () {
+                this.shows = true
+            },
+
+            toshare: function () {  /////////生成二维码方法
+			this.shows = true
+			layer.open({
+			    type: 2
+			    ,content: '正在为您生成图片,请稍后！'
+			    ,time: 1000
+			 });
+			var code = '';
+			var free_poster = '';
+			var url="{$url}";
+			var zdyurl="{$cfg['tknewurl']}";
+			//alert(111);
+			    $.ajax({
+			        url:"{php echo $this->createMobileUrl('getewm')}",
+			          type:'post',
+			          data:{
+			          	url:encodeURIComponent(url),
+			          },
+			        dataType:"json", 
+			        success: function (data) {
+						//alert(zdyurl+data);
+			            code=zdyurl+data;
+						
+						var canvas = document.getElementById('freeCanvas');
+						var ctx = canvas.getContext('2d');
+						var free_img = new Image();
+						free_img.setAttribute('crossOrigin', 'anonymous');
+						free_img.src = 'http://img.haodanku.com/FndEFfH5XJd_ibr3Z3jUAA6N36fo';
+						free_img.onload = function () {
+						    ctx.drawImage(free_img, 0, 0, 750, 1000);
+						    // 二维码
+						    var code_img = new Image();
+						    code_img.setAttribute('crossOrigin', 'anonymous');
+						    code_img.src = code;
+						    code_img.onload = function () {
+						        ctx.drawImage(code_img, 276, 725, 196, 196);
+						        var code_image = new Image();
+						        code_image.setAttribute('crossOrigin', 'anonymous');
+						        code_image.src = canvas.toDataURL('img/png');
+						        free_poster = code_image.src;
+								//alert(code_image.src);
+								$(".haibao").html("<img src='"+free_poster+"'>");
+								$("haibao").css("display:block");
+								$("#layui-m-layer0").css("display","none");
+								
+						        // functionclick('B13002', 'image_base64', JSON.stringify({
+						        //     keyword: free_poster
+						        // }));
+						    }
+						}
+			        }
+			    });
+              
+                
+
+            },
+
+            close: function () {
+                this.shows = false
+            },
+
+            keep: function (e) {
+                var num = parseInt(e)
+                var mums = num.toFixed(0)
+                return mums;
+            },
+            mst: function (text, id) {
+                var msgHtml = '<div class="alerts flex col fl-align">' +
+                    '<div class="alert-box flex col fl-align">' +
+                    '<p class="alert-info">' + text + '</p>' +
+                    '</div>' +
+                    '</div>';
+                $('#app').append(msgHtml);
+                setTimeout(function () {
+                    $('.alerts').remove();
+                    if (id == 0) {
+                        window.location.reload()
+                    }
+                }, 1000);
+            },
+        }
+    })
+</script>
+
+</html>

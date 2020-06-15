@@ -1,0 +1,213 @@
+{extend name="common/world"}
+{block name="title"}imToken{/block}
+{block name="style"}{/block}
+{block name="container"}
+<form method="get" class="">
+	<div class="row">
+		<div class="col-md-8 col-lg-3 mb-3">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">用户账号</span>
+				</div>
+				<input type="text" class="form-control" name="username" value="{$Think.get.username}" />
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-3 mb-3">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">订单类型</span>
+				</div>
+				<select class="custom-select" name="type">
+					<option value="-1">全部类型</option>
+					{volist name="types" id="item"}
+						{if is_null($Think.get.type)}
+							<option value="{$key}">{$item}</option>
+						{else /}
+							{eq name="Think.get.type" value="$key"}
+								<option value="{$key}" selected="true">{$item}</option>
+							{else /}
+								<option value="{$key}">{$item}</option>
+							{/eq}
+						{/if}
+					{/volist}
+				</select>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-3 mb-3">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">订单状态</span>
+				</div>
+				<select class="custom-select" name="status">
+					<option value="-1">全部状态</option>
+					{volist name="statuses" id="item"}
+						{if is_null($Think.get.status)}
+							<option value="{$key}">{$item}</option>
+						{else /}
+							{eq name="Think.get.status" value="$key"}
+								<option value="{$key}" selected="true">{$item}</option>
+							{else /}
+								<option value="{$key}">{$item}</option>
+							{/eq}
+						{/if}
+					{/volist}
+				</select>
+			</div>
+		</div>
+		<div class="col-md-4 col-lg-1 mb-3">
+			<button class="btn btn-primary w-100" type="submit">立即查询</button>
+		</div>
+		<div class="col-md-4 col-lg-2 mb-3 text-right">
+			<button class="btn btn-info w-100" type="button" data-toggle="modal" data-target="#exampleModalCenter">imToken配置</button>
+		</div>
+	</div>
+</form>
+<div class="card">
+	<div class="table-responsive">
+	    <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+	        <thead>
+	            <tr>
+	                <th class="text-left w-1">#</th>
+	                <th>用户</th>
+	                <th>类型</th>
+	                <th>状态</th>
+	                <th>货币</th>
+	                <th>服务费</th>
+	                <th>钱包地址</th>
+	                <th>支付凭证</th>
+	                <th>时间</th>
+	                <th>操作</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	        	{volist name="logs" id="log"}
+	            <tr>
+	                <td class="text-left">{$log.tid}</td>
+	                <td>{$log.username}</td>
+	                <td>
+	                	{eq name="log.type" value="1"}
+	                	充值
+	                	{else /}
+	                	提现
+	                	{/eq}
+	               	</td>
+	                <td>
+	                	{switch log.status}
+	                		{case 1}
+	                			<span class="status-icon bg-success"></span> 成功
+	                		{/case}
+	                		{case 2}
+	                			<span class="status-icon bg-warning"></span> 审核中
+	                		{/case}
+	                		{case 0}
+	                			<span class="status-icon bg-red"></span> 失败
+	                		{/case}
+	                	{/switch}
+	                </td>
+	                <td>{$log.number|money}</td>
+	                <td>{$log.charge|money}</td>
+	                <td><button class="btn btn-secondary btn-sm btn-wallet" data-address="{$log.address}" data-qrcode="{$log.qrcode}">查看</button></td>
+	                <td><button class="btn btn-secondary btn-sm btn-certificate" data-certificate="{$log.certificate}">查看</button></td>
+	                <td>{$log.update_at}</td>
+	                <td>
+	                	{eq name="log.status" value="2"}
+	                	<a href="/admin/wallet/imtoken_ok.html?id={$log.tid}" class="btn btn-green btn-sm">通过</a>
+	                	<a href="/admin/wallet/imtoken_no.html?id={$log.tid}" class="btn btn-danger btn-sm ml-2">拒绝</a>
+	                	{/eq}
+	                </td>
+	            </tr>
+	            {/volist}
+	        </tbody>
+	    </table>
+	</div>
+	<div class="card-footer">{$logs|raw}</div>
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content" style="margin-top: -200px;">
+			<form action="/admin/wallet/imtoken.html" method="post" enctype="multipart/form-data">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">imToken配置</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					</button>
+				</div>
+				<div class="modal-body p-6">
+					<div class="form-group">
+						<label class="form-label">是否开启该功能</label>
+						<div class="selectgroup w-50">
+							<label class="selectgroup-item">
+	                            <input type="radio" name="enable" value="1" class="selectgroup-input" {$config.enable?'checked':''}/>
+	                            <span class="selectgroup-button">开启</span>
+	                        </label>
+	                        <label class="selectgroup-item">
+	                            <input type="radio" name="enable" value="0" class="selectgroup-input" {$config.enable?'':'checked'}/>
+	                            <span class="selectgroup-button">关闭</span>
+	                        </label>
+						</div>
+					</div>
+					<div class="form-group">
+		                <label class="form-label">提现手续费</label>
+		                <input type="text" class="form-control" name="charge" placeholder="例如0.02这种，小于等于0不收费，大于1为固定费用" value="{$config.charge}" />
+	                </div>
+					<div class="form-group">
+		                <label class="form-label">公司钱包地址</label>
+		                <input type="text" class="form-control" name="code" placeholder="请在这里输入..." value="{$config.code}" />
+	                </div>
+	                <div class="form-group">
+		                <label class="form-label">公司钱包二维码</label>
+		                <div class="custom-file">
+	                      	<input type="file" class="custom-file-input" name="qrcode" accept="image/*" />
+	                      	<label class="custom-file-label">选择二维码图片，不修改就不选</label>
+	                    </div>
+	                    {notempty name="config.qrcode"}
+	                    <div class="form-text"><img src="/upload/{$config.qrcode}" style="max-height: 10rem;" /></div>
+	                    {/notempty}
+	                </div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+					<button type="submit" class="btn btn-primary">保存更改</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="look" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content" style="margin-top: -200px;">
+			<form action="/admin/wallet/imtoken.html" method="post" enctype="multipart/form-data">
+				<div class="modal-header">
+					<h5 class="modal-title" id="lookTitle"></h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					</button>
+				</div>
+				<div class="modal-body p-6">
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+require(['jquery'], function($){
+	$(function(){
+		// 查看钱包
+		$('.btn-wallet').on('click', function(){
+			$('#lookTitle').text('钱包地址');
+			var html = '<p>钱包地址：' + $(this).data('address') + '</p>';
+			html == '<p>二维码：<img src="/upload/' + $(this).data('qrcode') + '" /></p>';
+			$('#look .modal-body').html(html);
+			$('#look').modal();
+		});
+		// 支付凭证
+		$('.btn-certificate').on('click', function(){
+			$('#lookTitle').text('支付凭证');
+			$('#look .modal-body').html('<img src="/upload/' + $(this).data('certificate') + '"/>');
+			$('#look').modal();
+		});
+	});
+});
+</script>
+{/block}

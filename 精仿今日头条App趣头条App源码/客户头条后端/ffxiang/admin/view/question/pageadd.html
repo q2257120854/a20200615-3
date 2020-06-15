@@ -1,0 +1,48 @@
+ {include file="public/header" /}
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content">
+    <div class="row">
+        <form class="form-horizontal" method="post">
+            <div class="col-sm-12">
+                <div class="tabs-container">
+                   <div class="ibox-content">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">标题：</label>
+                            <div class="col-sm-9">
+                                <input name="title" type="text" class="form-control" value="{present name="name"}{$name.title}{/present}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">内容：</label>
+                            <div class="col-sm-9">
+                                <script type="text/plain" id="content" name="body" style="width:100%;height:240px;">
+{present name="name"}
+<?php
+$contet=$name['body'];
+$contet=str_replace('src="','src="'._imgUrl().'/',$contet);
+echo $contet;
+?>
+{/present}
+
+</script>
+                            </div>
+                       </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">排序：</label>
+                            <div class="col-sm-2">
+                                <input name="des" type="text" class="form-control" value="{present name="name"}{$name.des}{else /}50{/present}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{include file="public/footer" /}
+{include file="public/bottom" /}
+<!-- 加载编辑器的容器 -->
+{:ueditor('content')}
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

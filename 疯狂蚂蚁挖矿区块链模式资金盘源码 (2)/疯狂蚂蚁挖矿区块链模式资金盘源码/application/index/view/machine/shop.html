@@ -1,0 +1,127 @@
+﻿{extend name="common/world"}
+{block name="title"}{$Think.config.hello.title}{/block}
+{block name="header"}蚁后购买{/block}
+{block name="style"}
+<style type="text/css">
+    body{ background: #FFF;}
+    .li_touxiang img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
+</style>
+{/block}
+{block name="container"}
+<div class="list-block">
+
+    <ul>
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label">名称</div>
+                    <div class="item-input">{$machine.title}</div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label">价格</div>
+                    <div class="item-input">{$machine.price|money}</div>
+                </div>
+            </div>
+        </li>
+
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label">产量</div>
+                    <div class="item-input">{$machine.chanliang|money}</div>
+                </div>
+            </div>
+        </li>
+
+        <li>
+        </li><li>
+        <div class="item-content">
+            <div class="item-media"><i class="icon icon-form-name"></i></div>
+            <div class="item-inner">
+                <div class="item-title label">周期</div>
+                <div class="item-input">{$machine['cycle']}小时
+                </div>
+            </div>
+        </div>
+    </li>
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label">预计收入</div>
+                    <div class="item-input">{$machine['income']|money}</div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label">账户</div>
+                    <div class="item-input">
+                        <input type="radio" name="type" checked="checked" value="1"/>钱包 {$user['wallet']['mpocket']|money_four}
+                        <input type="radio" name="type" value="2"/>可售YCB {$user['wallet']['money']|money_four}
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-100">
+                        <input id="btnn" type="button" class="button button-big button-fill button-success js-submit" style="width: 100%;" value="购买"/>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+{/block}
+{block name="script"}
+<script>
+
+    $(document).ready(function(){
+        $('#btnn').click(function(){
+            $('#btnn').attr("disabled","true");
+            $(function() {
+                var params = {
+                    id : {$id},
+                    type : $("input[name='type']:checked").val()
+                };
+                $.ajax({
+                    type: 'post',
+                    url: api.machine.buy,
+                    cache: false,
+                    data: params,
+                    dataType: 'json',
+                    success: function(data){
+
+                        alert(data.message);
+                        if (data.code == 200) {
+                            window.setTimeout("window.location='/account.html'",1000);
+                            //window.location.href="/myshop.html";//需要跳转的地址
+                            return true;
+                        }else{
+                            $("#btnn").removeAttr('disabled');
+                        }
+                    },
+                });
+            });
+
+            return false;
+        });
+    });
+
+</script>
+{/block}

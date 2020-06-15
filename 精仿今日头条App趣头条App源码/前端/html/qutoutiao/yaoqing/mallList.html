@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<style>
+ 			body{
+ 				background: #fff !important;
+ 			}
+ 			.sx-footer,.sx-footer2{
+ 				background: #fff;
+ 			}
+ 			.sx-footer{
+ 				padding-left: 1rem;
+ 				padding-right: 1rem;
+ 				border-top: 1px solid #e8e8e8;
+ 			}
+			.sx-footer div img{
+				width: 2.3rem;
+				height: 2.3rem;
+				margin: 0 auto;
+			}
+			.sx-footer div p{
+				font-size: 0.65rem;
+				text-align: center;
+				padding-top:0.3rem;
+			}
+			.sx-footer2{
+				text-align: center;
+			}
+			.sx-footer2 div{
+				width: 50%;
+				color: #000;
+			}
+			
+			.sx-main{
+				 
+			}
+			.sx-li{
+				overflow: hidden;
+				margin-bottom: 0.75rem;
+				background: #fff;
+			}
+			.sx-h2{
+				padding: 0.35rem 0.75rem;
+				border-bottom: 1px solid #e8e8e8;
+				display: flex;
+			}
+			.sx-h2 span:nth-child(1){
+				border-left:0.2rem solid #D43D3D; 
+				padding-left:0.5rem;
+				color: #333;
+			}
+			.sx-h2 span:nth-child(2){
+				font-size: 0.6rem;
+				color: #9B9B9B
+			}
+			.sx-p{
+				border-bottom: 1px solid #e8e8e8;
+				padding-top: 0.55rem;
+			}
+			.sx-p img{
+				width: 88%;
+				margin: 0 auto;
+				height: 8.8rem;
+			}
+			.sx-p p{
+				width: 70%;
+				margin: 0 auto;
+				font-weight: bold;
+			}
+			.sx-border{
+				border-right: 1px solid #e8e8e8;
+			}
+			.sx-g{
+				text-align: center;
+				padding: 0.25rem;
+				background: #EEEEEE;
+				border-radius: 0.8rem;
+				width: 40%;
+				margin: 0.5rem auto;
+				color: #5B5B5B;
+				font-size: 0.6rem;
+			}
+			.aui-ellipsis-2 {
+				-webkit-line-clamp: 1;
+				font-size: 0.75rem;
+				padding: 0 0.75rem;
+				padding-top: 0.35rem;
+			}
+			.sx-text{
+				overflow: hidden;
+				display: block;
+				clear: both;
+			}
+			.sx-text .sx-p{
+				height: 12.8rem;
+				overflow: hidden;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="aui-card-list-footer sx-footer2 aui-padded-l-15 aui-padded-r-15" style="padding: 1rem;">
+			<div class="aui-border-r">
+				零钱：<b id="money">0.00</b> 元
+			</div>
+			<div>
+				金币：<b id="jinbi">0</b> 个
+			</div> 
+		</div>
+		<div class="sx-main">
+			<div class="sx-ul"  >
+				<div class="sx-li" style="border-top: 1px solid #e8e8e8;">
+					<script id="fx-list" type="text/x-dot-template">
+						{{ for(var i=0,len=it.data.length; i < len; i++) { }}
+						<div class="sx-p aui-col-xs-6 sx-border" Tapmode onclick="_url({url:'yaoqing/mallView',id:{{= it.data[i].id}},title:'商品详细'},'',true)">
+							<img  id="ffxiangImgCache" ffxiang-src="{{= it.data[i].image}}" src="../../image/loadingImage.png" />
+							<span class="aui-ellipsis-2">{{= it.data[i].title}}</span>
+							<p class="aui-card-list-footer"><span>{{= it.data[i].jinbi}}</span><span>{{= it.data[i].money}}</span></p>
+						</div>
+						{{ } }}
+					</script>
+					<div class="sx-text aui-row" id="fx-view"><div id="jiazai"><img src="../../image/loading_more.gif" /></div></div>
+ 				</div>
+			 </div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../../script/doT.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var typeid=0
+		apiready = function() {
+			typeid=api.pageParam['id'] ? api.pageParam['id'] : 0;
+			user()
+			// 回到屏幕
+			api.addEventListener({
+				name : 'viewappear'
+			}, function(ret, err) {
+				user()
+			});
+			_lists('api/yaoqing/mallList/typeid/'+typeid,1, 1);
+			_shangla(function(){
+				_lists('api/yaoqing/mallList/typeid/'+typeid,1, 1);
+			},1)
+			// 监听滚动
+			api.addEventListener({
+				name : 'scrolltobottom',
+				extra : {
+					threshold : threshold //设置距离底部多少距离时触发，默认值为0，数字类型
+				}
+			}, function(ret, err) {
+				if (heigutgao == 1) {// heigutgao=1开启执行 0停止执行   防止连续滚动，等加载数据之后在进行滚动。
+					pagenum += 1
+					_lists('api/yaoqing/mallList/typeid/'+typeid,pagenum);
+				}
+			});
+	 
+		}
+	 
+		function user(){
+			_user=$api.getStorage('user')
+			$('#jinbi').text(_user.yaoqing.jinbi);
+			$('#money').text((_user.yaoqing.money/100).toFixed(2));
+		}
+		 
+	</script>
+</html>

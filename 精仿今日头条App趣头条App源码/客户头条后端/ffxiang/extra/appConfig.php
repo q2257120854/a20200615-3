@@ -1,0 +1,21 @@
+<?php
+return [
+  'url' => 'http://tt.gyn5.cn/',
+  'title' => '看新闻赚零花,让阅读成为习惯',
+  'dtitle' => '每日头条',
+  'logo' => '/public/uploads/20170127/49a890dd7936d393476883091014dbb4.png',
+  'keywords' => '趣赚头条，新闻资讯应用，头条，热点，科技，娱乐，健康，时尚，家居，教育，旅行，两性，美食，星座，阅读，个性化新闻',
+  'description' => '趣赚头条是一款高度智能的新闻资讯应用，通过它你可以搜索并订阅任意关键词，它会自动帮你聚合整理并实时更新相关资讯，同时会智能分析你的兴趣爱好，为你推荐感兴趣的内容。看新闻资讯，趣赚头条就够了！',
+  'phone' => '',
+  'qq' => '1013175107',
+  'switch' => '1',
+  'tieba_switch' => '0',
+  'tieba_zhiding_switch' => '1',
+  'tiezi_switch' => '1',
+  'tieba_limit' => '999',
+  'weitoutiao_switch' => '1',
+  'tuijian_tieba_limit' => '1',
+  'guanzhu_tieba_limit' => '4',
+  'zuixin_tieba_limit' => '1',
+  'copyright' => '<p>Copyright &amp;copy; 2016-2018&nbsp; 版权所有</p>',
+];

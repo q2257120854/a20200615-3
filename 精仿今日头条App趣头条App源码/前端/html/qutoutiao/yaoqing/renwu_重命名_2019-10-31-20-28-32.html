@@ -1,0 +1,980 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<style>
+	 		.aui-timeline .sx-yuan{
+	 			width: 1rem;
+	 			height: 1rem;
+	 			border:1px solid #e8e8e8;
+	 			background: #fff;
+	 			left: 0.6rem;
+	 			border-radius: 50%;
+	 		}
+	 		.aui-timeline .aui-timeline-item-inner{
+	 			margin: 0;
+	 			margin-top: 0.75rem;
+	 		}
+	 		.aui-timeline .aui-timeline-item-inner .aui-card-list-header,.aui-timeline .aui-timeline-item-inner .aui-card-list-content-padded{
+	 			padding-left: 2rem;
+	 			padding-right: 0.75rem;
+	 			font-size: 0.75rem;
+	 		}
+	 		.aui-timeline .aui-timeline-item-inner .aui-card-list-content-padded{
+	 			background: #F5F5F5;
+	 			font-size: 0.7rem;
+	 			color: #555;
+	 			position: relative;
+	 			padding-top: 1.2rem;
+	 			padding-bottom: 1.2rem;
+	 			display: none;
+
+	 		}
+	 		.aui-timeline .aui-timeline-item-inner .aui-card-list-content-padded div:nth-child(1){
+	 			width: 100%;
+	 			padding-right: 5rem;
+	 			font-size: 0.65rem
+	 		}
+	 		.aui-timeline .aui-timeline-item-inner .aui-card-list-content-padded div:nth-child(2){
+	 			background: #FF9900;
+	 			color: #fff;
+	 			display: inline-block;
+	 			padding:0.35rem 1rem;
+	 			font-size: 0.7rem;
+	 			border-radius: 1rem;
+	 			position: absolute;
+	 			right: 0.75rem;
+	 			top: 25%;
+	 		}
+	 		.aui-timeline:before{
+	 			z-index: 99999;
+	 			left: 1rem;
+	 		}
+
+	 		.aui-timeline .sx-yuan{
+	 			z-index: 999999;
+	 			top:0.55rem;
+	 		}
+	 		.aui-timeline .sx-header{
+	 			background: #fff;
+	 			z-index: 9999999;
+	 			margin: 0;
+	 			padding: 0.75rem 1rem;
+	 			display: inline-block;
+	 			width: 100%;
+	 			text-align: left;
+	 			line-height: 1.1rem;
+	 			color: #FF9900;
+	 			font-weight: bold;
+	 			border-bottom: 1px solid #e8e8e8;
+	 			padding-left: 0.6rem;
+	 			font-size: 0.8rem;
+	 		}
+	 		.aui-timeline .sx-header img{
+	 			width: 1rem;
+	 			height: 1rem;
+	 			float: left;
+	 			margin-right: 0.3rem;
+	 			line-height: 1rem;
+	 		}
+
+	 		.jiangli img{
+	 			width: 1rem;
+	 			float: right;
+	 			margin-left: 0.2rem;
+	 		}
+	 		.sx-asdasd span{
+	 			display: inline-block;
+	 			width: 70%;
+	 			font-size: 0.8rem;
+	 		}
+	 		.sx-asdasd span.jiangli{
+	 			float: right;
+	 			width: 22%;
+	 			color: #FF9900;
+	 			font-weight: bold;
+	 			text-align: right;
+	 			margin-right: 0.5rem;
+	 			font-size: 0.9rem;
+	 		}
+	 		.xiahuaxian{
+	 			border-bottom: 1px solid #e8e8e8;
+	 			overflow: hidden;
+	 		}
+	 		.yiwancheng{
+	 			background: #BDC3C7 !important;
+	 		}
+	 		/* 宝箱 */
+	 		.baoxiang{
+	 			 width: 100%;
+	 			 text-align: center;
+	 			 margin:0.75rem 0;
+	 		}
+	 		.baoxiang_1{
+	 			border-radius: 1.3rem;
+	 			background: #DDDDDD;
+	 			padding: 0.3rem;
+	 			padding-right: 0.5rem;
+
+	 		}
+	 		.baoxiang_1{
+	 			padding-left: 3rem;
+	 		}
+	 		.baoxiang_1 p{
+	 			font-size: 0.6rem;
+	 			padding-bottom: 0.1rem;
+	 			text-align: center;
+	 		}
+	 		.baoxiang_time{
+	 			vertical-align:middle;
+	 		}
+	 		.baoxiang_time i{
+	 			font-size: 0.75rem;
+	 		 	vertical-align:middle;
+	 		}
+	 		.baoxiang_time span{
+	 			font-size: 1rem;
+	 			vertical-align:middle;
+	 		}
+	 		.baoxiang_1s,.baoxiang_1{
+	 			width: 11rem;
+	 			margin: 0 auto;
+	 			background: url("../../image/yaoqing/task_hall_5.png") no-repeat;
+	 			background-size: 100% 100%;
+	 			height: 3.2rem;
+	 			line-height:2.8rem;
+	 			position:relative;
+	 			overflow: hidden;
+	 			text-align: center;
+	 		}
+	 		.baoxiang_1s img{
+	 			width: 2rem;
+	 			display: inline-block;
+	 	 		vertical-align:middle;
+	 			text-align: center;
+	 		}
+	 		.baoxiang_1s span{
+	 			font-family: PingFangSC-Medium;
+	 			font-size: 0.8rem;
+	 			color: #FF4E40;
+	 			font-weight:900;
+	 	 		padding-left: 1.2rem;
+	 	 		vertical-align:middle;
+	 		}
+	 		.baoxiang_2{
+	 			color: #999999;
+	 			z-index: 999
+	 		}
+	 		.fenxiang,.qiandao_chuang{
+	 			 background-color:rgba(0, 0, 0, .5);
+	 			 z-index:99999998;
+	 			 position:fixed;
+	 			 top:0;
+	 			 left:0;
+	 			 width: 100%;
+	 			 height: 100%;
+	 			 display: none;
+	 		}
+	 		.fenxiang_2,.qiandao_chuang_1{
+	 			position: relative;
+	 			box-sizing:border-box;
+	 			background: #fff;
+	 	 		-webkit-transform:translateY(-50%);
+	 	 		transform:translateY(-50%);
+	 	 		margin:auto;
+	 			height:auto;
+	 			overflow: hidden;
+	 			top: 50%;
+	 	 		width:90%;
+	 			border-radius:12px;
+	 			text-align: center;
+	 			font-size: 0.7rem;
+	 			z-index: 99999999
+	 		}
+	 		.fenxiang_2 img.close{
+	 			position: absolute;
+	 			right: 0.75rem;
+	 			top: 0.75rem;
+	 			width: 1.2rem;
+	 		}
+	 		.fenxiang_2 img.task_hall_18{
+	 			width: 6rem;
+	 			margin: 0 auto;
+	 			padding-top: 1rem;
+	 		}
+	 		.fenxiang_2 .huode{
+	 			padding-top:0.5rem;
+	 			color: #666666;
+	 		}
+	 		.fenxiang_2 .jinbi{
+	 			color: #ffaf2b;
+	 			font-size: 1.3rem;
+	 			padding-top: 0rem;
+	 		}
+	 		.fenxiang_2 .yueduo{
+	 			padding-top:0.25rem;
+	 			color:#FF5645;
+	 		}
+
+	 		.fenxiang_2 .fenxiang_text{
+	 			background: #FFF6D0;
+	 			border-radius: 12px;
+	 			box-sizing:border-box;
+	 			width: 90%;
+	 			margin: 0 auto;
+	 			padding: 0.75rem;
+	 			margin-top: 0.5rem;
+	 		}
+	 		.fenxiang_2 h4{
+	 			color: #FF5645;
+	 			padding-bottom: 0.5rem;
+	 			font-family: PingFangSC-Semibold;
+	 			font-size: 0.8rem;
+	 			font-weight: bold;
+	 		}
+	 		.fenxiang_2 .fenxiang_text p{
+	 			text-align: justify;
+	 			color: #333333;
+	 			line-height: 1.2rem;
+	 		}
+	 		.fenxiang_2 .fenxiang_text p span{
+	 			color: #ff5645;
+	 			font-size: 0.65rem;
+	 		}
+	 		.fenxiang_2 .btn{
+	 			width: 90%;
+	 			text-align: center;
+	 			background: #FF5645;
+	 			color: #fff;
+	 			height: 2rem;
+	 			line-height:2rem;
+	 			margin: 1rem auto;
+	 			border-radius: 2rem;
+	 			font-size: 0.75rem;
+	 		}
+	 		.baoxiang_1{
+	 			background: url("../../image/yaoqing/task_hall_15.png") no-repeat;
+	 			background-size: 100% 100%;
+	 			line-height: 0.9rem;
+	 			padding-top: 0.5rem;
+	 		}
+	 		.baoxiang_1 b{
+	 			font-size: 0.8rem;
+	 			color: #666666;
+	 		}
+	 		.baoxiang_1 b i{
+	 			padding-right: 0.5rem;
+	 			color: #333;
+	 			font-weight: bold;
+	 		}
+	 		.baoxiang_3{
+	 			color: #ff5645;
+	 			font-size: 0.75rem;
+	 			padding-top: 0.3rem;
+	 		}
+	 		/*签到样式*/
+	 		.qiandao{
+	 			background: url('../../image/yaoqing/task_hall_1.png') no-repeat;
+	 			background-size: 100% 100%;
+	 			width: 100%;
+
+	 			position: relative;
+	 		}
+	 		.qiandao .qiandao_1{
+	 			padding-top: 3.8rem;
+	 		}
+	 		.qiandao .qiandao_1 div:nth-child(1),.qiandao .qiandao_1 div:nth-child(3){
+	 			background: rgba(216, 67, 54, .85);
+	 			position: relative;
+	 			color: #fff;
+	 			text-align: center;
+	 			padding: 0.25rem 0.7rem;
+	 			font-size: 0.75rem;
+	 		}
+	 		.qiandao .qiandao_1 div:nth-child(1){
+	 			border-top-right-radius:1rem;
+	 			border-bottom-right-radius:1rem;
+	 		}
+	 		.qiandao .qiandao_1 div:nth-child(3){
+	 			border-top-left-radius:1rem;
+	 			border-bottom-left-radius:1rem;
+	 		}
+	 		.qiandao .qiandao_1 div:nth-child(2){
+	 			background: url('../../image/yaoqing/task_hall_3.png') no-repeat;
+	 			background-size: 100% 100%;
+	 			width: 7rem;
+	 			height: 7rem;
+	 			text-align: center;
+	 			color: #fff;
+	 			line-height: 6.5rem;
+	 			color: rgba(216, 67, 54, .85);
+	 			font-size: 0.8rem;
+	 			font-weight: bold;
+	 		}
+	 		.qiandao_2{
+	 			overflow: hidden;
+	 			position: relative;
+	 			padding: 0.5rem;
+	 			padding-bottom: 0.5rem;
+	 			text-align: center;
+	 		}
+	 		.qiandao_2 .qiandao_2_1{
+	 			background: #F6603F;
+	 			border:1px solid #FF965D;
+	 			border-radius: 50%;
+	 			color: #fff;
+	 			text-align: center;
+	 			box-sizing:border-box;
+	 			width: 2.2rem;
+	 			height: 2.2rem;
+	 			line-height: 2.2rem;
+
+	 		}
+	 		.qiandao_2 .qiandao_2_1 img{
+	 			display: inline-block;
+	 			width: 0.65rem;
+	 		}
+	 		.qiandao_2 p{
+	 			color: #D0021B;
+	 			font-size: 0.8rem;
+	 			padding-top: 0.2rem;
+	 		}
+	 		.qiandao_2_0 .qiandao_2_1{
+	 			background: #DCDCDC;
+	 			border: 1px solid #FF965D;
+	 			line-height: 0.8rem;
+	 			padding-top:0.3rem;
+	 			color: #999999;
+	 			font-size: 0.65rem;
+	 		}
+	 		.qiandao_2_0 p{
+	 			font-size: 0.65rem;
+	 			color: #DCDCDC;
+	 			font-weight: bold;
+	 		}
+	 		.qiandao .qiandao_1 div.yiqiandao{
+	 			background: url('../../image/yaoqing/task_hall_16.png') no-repeat;
+	 			background-size: 100% 100%;
+	 			color: #DCDCDC;
+	 			padding: 1.2rem;
+	 			line-height: 1.2rem;
+	 			padding-top: 2.2rem;
+	 			font-size: 0.7rem;
+	 		}
+	 		/*签到弹出窗口*/
+	 		.qiandao_chuang{
+
+	 		}
+	 		.qiandao_chuang_1{
+	 			background: none;
+	 			height: a;
+	 			width: 15rem;
+	 		}
+	 		.qiandao_chuang_btn{
+	 			border-radius: 2rem;
+	 			color: #fff;
+	 			background: #FF5645;
+	 			font-size: 0.65rem;
+	 			padding: 0.2rem 0.7rem;
+	 			position: absolute;
+	 			top: 0.85rem;
+	 			right:0.75rem;
+	 		}
+	 		.aui-media-list,.aui-list-item{
+	 			position: relative;
+	 			background: none !important;
+	 			border: 0 !important;
+	 		}
+	 		.qiandao_chuang_img{
+	 			position: relative;
+	 		}
+	 		.qiandao_chuang_list{
+	 			position: absolute;
+	 			top: 0;
+	 			left: 0;
+	 			width: 100%;
+	 		}
+	 		.qiandao_chuang_list h4{
+	 			padding-top: 3.38rem;
+	 			color: #fff;
+	 			font-weight: bold;
+	 			text-align: center;
+	 		}
+	 		.qiandao_chuang_list .aui-list{
+	 			padding-top: 3.8rem;
+	 			padding-bottom: 0.75rem;
+	 		}
+	 		.qiandao_chuang_list .aui-list .aui-list-item{
+	 			margin-top: 0.3rem;
+	 		}
+	 		.qiandao_chuang_list .aui-list .aui-list-item:nth-child(1){
+	 			border-bottom: 1px dashed #E8E8E8 !important;
+	 		}
+	 		.qiandao_chuang_huan{
+	 			width: 6rem;
+	 			margin: 0 auto;
+	 		}
+	 		.qiandao_chuang_list em{
+	 			position: absolute;
+	 			top: 1.9rem;
+	 			right: 0.35rem;
+	 			width: 2rem;
+	 			height: 2rem;
+	 			display: inline-block;
+	 			z-index: 9999;
+	 		}
+	 		.aui-list .aui-list-item-text:nth-child(2){
+	 			color: #FF5645;
+	 			font-size: 0.8rem;
+	 		}
+		</style>
+	</head>
+	<body>
+		<div class="qiandao_chuang" >
+			<div class="qiandao_chuang_1">
+				<img class="qiandao_chuang_img" src="../../image/yaoqing/popup_bg.png" />
+				<div class="qiandao_chuang_list">
+					<em Tapmode onclick="qiandao_chuang_close()"></em>
+					<h4>+0金币</h4>
+				    <ul class="aui-list aui-media-list"></ul>
+			        <div class="qiandao_chuang_huan" Tapmode onclick="qiandaoList(1)"><img src="../../image/yaoqing/change_btn.png" /></div>
+				</div>
+			</div>
+		</div>
+		<div class="fenxiang" >
+			<div class="fenxiang_2">
+				<img class="close" Tapmode onclick="fenxiang_close()" src="../../image/yaoqing/close.png" />
+				<img class="task_hall_18" src="../../image/yaoqing/task_hall_18.png" />
+				<div class="huode">恭喜获得</div>
+				<div class="jinbi">+0金币</div>
+				<div class="yueduo">收徒越多，宝箱奖励就越多</div>
+				<div class="fenxiang_text">
+					<h4>额外福利</h4>
+					<p></p>
+				</div>
+				<div class="btn" Tapmode onclick="fenxiang()">分享到朋友圈再赚4元</div>
+			</div>
+		</div>
+		<script id="fx-list" type="text/x-dot-template">
+		<div class="qiandao">
+			<div class="aui-card-list-footer qiandao_1">
+				<div tapmode onclick="_url({url:'yaoqing/shouru',title:'我的收入'},'',true)">金币 :{{= _user.yaoqing.jinbi}}</div>
+				{{? it.qiandao.code==1}}
+				<div class="yiqiandao">{{= it.qiandao.lingqu}}</div>
+				{{??}}
+				<div Tapmode onclick="qiandaoAjax()" id="qiandao" class="">立即签到</div>
+				{{?}}
+				<div tapmode onclick="_url({url:'about',id:'5',title:'如何赚钱'})">如何赚钱</div>
+			</div>
+			<div class="aui-card-list-footer qiandao_2">
+				{{ for(var i=0;i < it.config.qiandao.length; i++) { }}
+				{{? i >= it.qiandao.tianshu}}
+				<div id="{{= it.config.qiandao[i]}}">
+					<div class="qiandao_2_1">
+						<span>{{= it.config[it.config.qiandao[i]]}}</span>
+						<img src="../../image/yaoqing/task_hall_4.png" />
+					</div>
+					<p>{{= i+1}}天</p>
+				</div>
+				{{??}}
+				<div class="qiandao_2_0" id="{{= it.config.qiandao[i]}}">
+					<div class="qiandao_2_1">
+						已领<br>+{{= it.config[it.config.qiandao[i]]}}
+					</div>
+					<p>已领取</p>
+				</div>
+				{{?}}
+				{{ } }}
+			</div>
+		</div>
+
+			<div class="baoxiang">
+				<div class="baoxiangTime">
+					{{? it.baoxiang}}
+					<div class="baoxiang_1">
+						<p>距离打开宝箱还有</p>
+						<b><i class="aui-iconfont aui-icon-date"></i><span id="time">{{= miaotime(it.baoxiang)}}</span></b>
+					</div>
+					{{??}}
+					<div class="baoxiang_1s" Tapmode onclick="baoxiangAjax()">
+						<span>开启宝箱</span>
+					</div>
+					{{?}}
+				</div>
+				<div class="baoxiang_2">
+					宝箱每{{= it.timeText}}开启1次
+				</div>
+				<div class="baoxiang_3">
+					近期收徒越多，宝箱奖励金币就越多
+				</div>
+			</div>
+
+        	<div class="aui-timeline">
+			{{ for(var i=0,len=it.data.length; i < len; i++) { }}
+			<div class="xiahuaxian">
+            <div class="aui-timeline-item-header sx-header">
+           		<img src="{{= it.data[i].img}}" />
+           		{{= it.data[i].title}}
+            </div>
+			{{ for(var is=0,lens=it.data[i].data.length; is < lens; is++) { }}
+            <div class="aui-timeline-item">
+                <div class="aui-timeline-item-label sx-yuan"></div>
+                <div class="aui-timeline-item-inner">
+                    <div class="aui-card-list">
+                        <div class="aui-card-list-header sx-asdasd" data-id="0">
+                        	<span>{{= it.data[i].data[is].name}}</span>
+                        	<span class="jiangli">
+                        		{{= it.data[i].data[is].money}}
+                        		<img src="../../image/yaoqing/renwu_jinbi.png" />
+                        	</span>
+                        	<i class="aui-iconfont aui-icon-down"></i>
+                        </div>
+                        <div class="aui-card-list-content-padded">
+                        	{{? it.data[i].data[is].btn}}
+                        	<div>{{= it.data[i].data[is].text}}</div>
+                        	<div {{? it.data[i].data[is].btn=='已完成'}}class="yiwancheng"{{?}} onclick="{{= it.data[i].data[is].url}}">{{= it.data[i].data[is].btn}}</div>
+                        	{{??}}
+                        	{{= it.data[i].data[is].text}}
+                        	{{?}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ } }}
+            </div>
+         	{{ } }}
+         	</div>
+		</script>
+    	<section class="aui-content" id="fx-view"><div id="jiazai"><img src="../../image/loading_more.gif" /></div></section>
+	</body>
+	<script type="text/javascript" src="../../script/fastclick.js"></script>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../../script/doT.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var times=0,sx,fx_data
+		apiready = function() {
+			_shangla(function(){
+				//view()
+				api.refreshHeaderLoadDone();
+				////刷新功能原先是注释的这个页面不知道干啥的。
+			})
+			api.addEventListener({
+				name : 'viewappear'
+			}, function(ret, err) {
+				view()
+			});
+		}
+		function view(){
+			_ajax('api/yaoqing/renwu',function(ret,err){
+				api.refreshHeaderLoadDone();
+				////刷新功能原先是注释的这个页面不知道干啥的。
+			//	console.log(JSON.stringify(ret)+JSON.stringify(err))
+				if(ret){
+					var evalData = doT.template($api.html($api.byId('fx-list')));
+					$api.html($api.byId('fx-view'), evalData(ret));
+					$('.fenxiang_text p').html(ret.config.baoxiang_fenxiang);
+					//$('.qiandao_chuang_list h4').text(ret.);
+					sx=ret
+					//console.log(JSON.stringify(sx.qiandao))
+					qiandaoList()
+					if(ret.baoxiang){
+						times=ret.baoxiang
+						countDown();
+					}
+					api.parseTapmode();
+					data();
+				}else{
+					alert(JSON.stringify(err))
+				}
+			})
+		}
+		function data(){
+			FastClick.attach(document.body);
+			$('.aui-card-list .sx-asdasd').click(function(){
+				var _this=$(this)
+				var data=_this.data('id');
+				if(data==0){
+					_this.data('id',1);
+					_this.children('i').removeClass('aui-icon-down');
+					_this.children('i').addClass('aui-icon-top');
+				}else{
+					_this.data('id',0);
+					_this.children('i').removeClass('aui-icon-top');
+					_this.children('i').addClass('aui-icon-down');
+				}
+				_this.next().toggle();
+			})
+		}
+		//带天数的倒计时
+		function countDown(){
+
+		  var timer=null;
+		  timer=setInterval(function(){
+		  	 times--;
+		    var day=0,
+		      hour=0,
+		      minute=0,
+		      second=0;//时间默认值
+		    if(times > 0){
+		      day = Math.floor(times / (60 * 60 * 24));
+		      hour = Math.floor(times / (60 * 60)) - (day * 24);
+		      minute = Math.floor(times / 60) - (day * 24 * 60) - (hour * 60);
+		      second = Math.floor(times) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+		    }
+		    if (day <= 9) day = '0' + day;
+		    if (hour <= 9) hour = '0' + hour;
+		    if (minute <= 9) minute = '0' + minute;
+		    if (second <= 9) second = '0' + second;
+		    //
+		 //   console.log(times);
+		    $api.text($api.dom('#time'),hour+":"+minute+":"+second)
+
+		    if(times<0){
+		      clearInterval(timer);
+		      baoxiangBtn(1)
+		    }
+		  },1000);
+		}
+		function addTiem(te){
+			times=te;
+			countDown()
+		}
+		// 切换宝箱按钮
+		// id 0倒计时 1开启宝箱
+		function baoxiangBtn(id){
+			var html=''
+			if(id==1){
+				html += '<div class="baoxiang_1s" onclick="baoxiangAjax()">'
+				html += '<span>开启宝箱</span></div>'
+			}else{
+				times=sx.config.baoxiang*60;
+				countDown()
+				html += '<div class="baoxiang_1">';
+				html += '<p>距离打开宝箱还有</p>';
+				html += '<b><i class="aui-iconfont aui-icon-date"></i><span id="time">'+miaotime(times)+'</span></b>';
+				html += '</div>';
+			}
+			$('.baoxiangTime').html(html);
+		}
+		// 打开宝箱奖励
+		function baoxiangAjax(){
+			if(times>0){
+		      return
+		    }
+			_loading('领取中。。。')
+//			baoxiangBtn(0)
+//			return;
+			_ajax('api/yaoqing/baoxiangAjax',function(ret,err){
+		//	 	console.log(JSON.stringify(ret)+JSON.stringify(err))
+			 //	alert(JSON.stringify(ret)+JSON.stringify(err))
+				_loadingCloes();
+				if(ret){
+					if(ret.ret){
+						baoxiangBtn(0);
+						fenxiang_text(ret.ret)
+					}else{
+						_msg(ret.err)
+					}
+				}
+			})
+		}
+		// 根据毫秒时间转换时间格式
+		function miaotime(t){
+			day = Math.floor(t / (60 * 60 * 24));
+		      hour = Math.floor(t / (60 * 60)) - (day * 24);
+		      minute = Math.floor(t / 60) - (day * 24 * 60) - (hour * 60);
+		      second = Math.floor(t) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+		      if (day <= 9) day = '0' + day;
+		    if (hour <= 9) hour = '0' + hour;
+		    if (minute <= 9) minute = '0' + minute;
+		    if (second <= 9) second = '0' + second;
+			return hour+":"+minute+":"+second
+		}
+		function fenxiang_text(text){
+			$('.fenxiang .jinbi').text(text);
+			$('.fenxiang').show();
+		}
+		function fenxiang_close(){
+			$('.fenxiang').hide();
+		}
+		// 签到
+		function qiandaoAjax(){
+			var _this=$('#qiandao');
+			if(_this.hasClass('yiqiandao')){
+				return;
+			}
+			_this.addClass('yiqiandao');
+			_this.text('明日签到可领'+sx.qiandao.lingqu);
+			$('.qiandao_chuang').show();
+			$('.qiandao_chuang_list h4').text(sx.qiandao.lingqu);
+			// 设置已领取
+			if((sx.qiandao.tianshu+1) <= 7){
+				var qiandao=$('#qiandao_'+(sx.qiandao.tianshu+1));
+				qiandao.addClass('qiandao_2_0');
+				qiandao.children('.qiandao_2_1').html('已领<br>'+sx.config[sx.config.qiandao[sx.qiandao.tianshu]]);
+				qiandao.children('p').text('已领取');
+			}
+			_ajax('api/yaoqing/qiandaoAjax',function(ret,err){
+				console.log(JSON.stringify(ret)+JSON.stringify(err))
+			})
+		}
+		// 分享
+		function fenxiang() {
+			if(!$api.getStorage('user')){
+				_login();
+				return;
+			}
+
+			fx_data={
+				title:_config.yaoqing.title,
+				description:_config.yaoqing.content,
+				img:_image+'logo.png',
+				url:fx_url+'m/yaoqing/uid/'+$api.getStorage('user').id
+			}
+
+			if($api.getStorage('app')){
+				// 上架显示
+				var sharedModule = api.require('shareAction');
+				sharedModule.share({
+					text : fx_data.title + fx_data.content,
+					type : 'text'
+				});
+				return;
+			}
+			var row=2;
+			var items=[{icon: _image+'share/1.png',title: '朋友圈'},{icon: _image+'share/2.png',title: '好友'},{icon: _image+'share/3.png',title: 'QQ'},{icon: _image+'share/4.png',title: '空间'},{icon: _image+'share/5.png',title:'微博'},{icon: _image+'share/101.png',title: '系统'},{icon: _image+'share/102.png',title: '短信'},{icon: _image+'share/103.png',title:'邮件'},{icon: _image+'share/104.png',title: '复制链接'}];
+			// alert(1)
+		//	console.log(JSON.stringify(fx_data))
+ 			var MNActionButton = api.require('MNActionButton');
+			MNActionButton.open({
+			    layout: {
+			        row: row,
+			        col: 5,
+			        offset: 0
+			    },
+			    animation: false,
+			    autoHide: true,
+			    styles: {
+			        maskBg: 'rgba(0,0,0,0.3)',
+			        bg: '#F8F8F8',
+			        indicator: {
+			            color: '#c4c4c4',
+			            highlight: '#9e9e9e'
+			        },
+			    },
+			    items:  items
+			}, function(ret) {
+				if(ret.eventType=="click"){
+					var index=ret.index;
+					if(index==0){
+						_weixin('timeline',fx_data)
+					}else if(index==1){
+						_weixin('session',fx_data)
+					}else if(index==2){
+						_qq('shareNews',fx_data)
+					}else if(index==3){
+						_qq('QFriend',fx_data)
+					}else if(index==4){
+						_weibo(fx_data)
+					}else if(index==5){	// 系统
+						var sharedModule = api.require('shareAction');
+						sharedModule.share({
+							text : fx_data.title + fx_data.content,
+							type : 'text'
+						});
+					}else if(index==6){	// 短信
+						api.sms({
+							numbers : [],
+							text : fx_data.title+fx_data.url
+						}, function(ret, err) {
+							if (ret && ret.status) {
+								_msg('已发送')
+							}
+						});
+					}else if(index==7){	// 邮件
+						api.mail({
+							recipients : [],
+							subject : fx_data.title,
+							body : fx_data.content+fx_data.url,
+						}, function(ret, err) {
+							if (ret && ret.status) {
+								_msg('已发送')
+							}
+						});
+					}else if(index==8){	// 复制
+						var clipBoard = api.require('clipBoard');
+						clipBoard.set({
+							value : fx_data.url
+						}, function(ret, err) {
+							if (ret) {
+								_msg('复制成功，把链接分享给朋友吧！')
+							}
+						});
+					}else if(index==9){	//举报
+						if(!_user){
+							_alert('请先登陆',function(ret,err){
+								_login();
+							})
+							return;
+						}
+						buttons = ['广告', '重复、旧闻', '低俗', '标题夸张', '与事实不符', '内容质量差', '疑似抄袭', '其他问题，我要吐槽 > '];
+						api.actionSheet({
+							title : '举报内容问题',
+							cancelTitle : '取消举报',
+							buttons : buttons
+						}, function(ret, err) {
+							var index = ret.buttonIndex;
+							if(index==8){
+								_url({aid:id,url:'member/jubaoAdd',title:'举报内容'})
+								return;
+							}
+							if(index!=9){
+								_ajax('api/member/jubao',function(ret,err){
+									if(ret){
+										if(ret.ret){
+											_msg(ret.ret)
+										}else{
+											_msg(ret.err)
+										}
+									}else{
+										_alert(JSON.stringify(err));
+									}
+								},{content:buttons[index - 1],aid:id})
+							}
+						});
+					}else{
+						_msg(index)
+						return;
+					}
+				}
+			});
+		}
+		// 微信分享
+		// type session（会话） timeline（朋友圈） favorite（收藏）
+		function _weixin(type) {
+			if(!$api.getStorage('user')){
+				_login();
+				return;
+			}
+			data=fx_data;
+			var wx = api.require('wx');
+			wx.shareWebpage({
+				scene : type,
+				title : data.title,
+				description : data.description,
+				thumb : data.img,
+				contentUrl : data.url
+			}, function(ret, err) {
+				if (ret.status) {
+					_msg('分享成功');
+					_daily({name:'money_fenxiang_1'});
+				}
+			});
+		}
+		// QQ分享
+		// type 分享内容到好友或空间，取值范围：QZone、QFriend
+		function _qq(type){
+			if(!$api.getStorage('user')){
+				_login();
+				return;
+			}
+			data=fx_data;
+			var obj = api.require('qq');
+			obj.shareNews({
+				url : data.url,
+				title : data.title,
+				description : data.description,
+				imgUrl : data.img,
+				type : type,
+			}, function(ret, err) {
+				if (ret.status) {
+					_msg('分享成功');
+					_daily({name:'money_fenxiang_1'});
+				}
+			});
+		}
+		// 微博分享
+		function _weibo() {
+			if(!$api.getStorage('user')){
+				_login();
+				return;
+			}
+			data=fx_data;
+			var weibo = api.require('weibo');
+			weibo.shareWebPage({
+				text : data.title,
+				title : data.title,
+				description : data.description,
+				thumb : data.img,
+				contentUrl : data.url
+			}, function(ret, err) {
+				if (ret.status) {
+					_msg('分享成功');
+					_daily({name:'money_fenxiang_1'});
+				}
+			});
+		}
+		// 关闭签到窗口
+		function qiandao_chuang_close(){
+			$('.qiandao_chuang').hide();
+		}
+		// 签到成功后加任务列表
+		function qiandaoList(a){
+			var ret=sx.data;
+			 a=''
+			if(!a){
+				var html='';
+				for(var i=0;i < ret.length; i++){
+					html += '<li class="aui-list-item aui-list-item-middle" id="li'+i+'">';
+					html += '	<div class="aui-media-list-item-inner">';
+					html +=	'		<div class="aui-list-item-media" style="width: 2.5rem;">';
+					html +=	'			<img src="'+ret[i].img+'" class="aui-img-round aui-list-img-sm">';
+					html += '		</div>';
+					html +=	'		<div id="suijirenwu">';
+					html += 			qiandaoListRand(ret[i].data);
+					html += '		</div>';
+					html +=	'	</div>';
+					html +=	'</li>';
+				}
+				$('.qiandao_chuang_list .aui-list').html(html);
+				console.log(html)
+			}else{
+			// 下面代码报废
+				for(var i=0;i < ret.length; i++){
+					var html = qiandaoListRand(ret[i].data);
+					console.log(html)
+					$('#li1 .div2').html(html)
+				}
+			}
+
+		}
+		// 任务列表，随机打包
+		function qiandaoListRand(ret){
+			var html = '';
+			var b=Math.floor(Math.random()*(ret.length-1));
+			a = ret[b];
+			if(!a){
+				return;
+			}
+			html += '<div class="aui-list-item-inner div2">';
+			html += '<div class="aui-list-item-text">'+a.name+'</div>';
+			html +=	'<div class="aui-list-item-text">'+a.money+'</div>';
+			html += '</div>';
+			html +=	'<div class="qiandao_chuang_btn" onclick="'+a.url+'">'+a.btn+'</div>';
+			return html;
+		}
+		// 随机任务插入
+		function qiandaoRand(){
+			html = qiandaoListRand();
+			$('.qiandao_chuang_list .aui-list').html(html)
+		}
+	</script>
+</html>
+
+

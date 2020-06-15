@@ -1,0 +1,120 @@
+
+		{template 'public_head'}
+		<!--中间内容开始-->
+		<section>
+		    <section class="hbox stretch">
+		    {template 'public_left'}
+		    <!--右边框架-->
+			  <section id="content">
+			    <section class="vbox">
+			       <section class="scrollable padder">
+                        <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                          <li><a href="{php echo $this->createWebUrl('index')}"><i class="fa fa-home"></i> 首页  </a></li>
+                          <li class="active">基本设置</li>
+                        </ul>
+			            <!--编辑内容-->
+                        <div class="main">
+                            <form action="" method="post" class="form-horizontal form" id="setting-form">
+                            <input type="hidden" name="id" value="{$set['id']}">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">参数设置</div>
+                                    <div class="panel-body">
+                                        <ul class="nav nav-tabs" id="myTab">
+                                            <li class="active" ><a href="#tab_basic">授权设置</a></li>
+                                            <!--<li><a href="#tab_share">其它设置</a></li>-->
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane  active" id="tab_basic">
+                                              
+                                                
+                                              <div class="form-group">
+                                                              <label class="col-xs-12 col-sm-3 col-md-2 control-label">App Key</label>
+                                                              <div class="col-xs-12 col-sm-9">
+                                                                  <input type="text" name="appkey" value="{$set['appkey']}" class="form-control" placeholder="appkey" >
+                                                                  <span class="help-block">appkey</span>
+                                                              </div>
+                                                 </div> 
+                                                 <div class="form-group">
+                                                              <label class="col-xs-12 col-sm-3 col-md-2 control-label">App Secret</label>
+                                                              <div class="col-xs-12 col-sm-9">
+                                                                  <input type="text" name="appsecret" value="{$set['appsecret']}" class="form-control" placeholder="appsecret" >
+                                                                  <span class="help-block"></span>
+                                                              </div>
+                                                 </div>   
+											  <div class="form-group">
+														   <label class="col-xs-12 col-sm-3 col-md-2 control-label">默认推广位</label>
+														   <div class="col-xs-12 col-sm-9">
+															   <input type="text" name="snpid" value="{$set['snpid']}" class="form-control" placeholder="" >
+															   <span class="help-block">默认推广位--选择聊天工具微信</span>
+														   </div>
+											  </div>   
+                                              <div class="form-group col-sm-12">
+                                                  <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" />
+                                                  <input type="hidden" name="token" value="{$_W['token']}" />
+                                              </div>
+											   <div class="form-group">
+												   <div class="col-xs-12 col-sm-9">
+												   苏宁联盟注册：http://sums.suning.com/union/home.htm<br>
+												   苏宁开放平台：https://open.suning.com/<br>
+												   先注册苏宁联盟帐号，注册好后，登录苏宁开放平台，创建一个应用（类型：买家应用/网站应用）把对应的App Key和App Secret填上去就可以了
+												   </div>
+											   </div>
+                                                <div style="clear: both;"></div>
+											
+												
+												
+                                            </div>   
+                                                  
+                                                <!---->
+                                            </div>
+              
+
+                                            <div class="tab-pane" id="tab_share">
+                                                <!--积分商城设置-->
+                                                <!---->
+                                                <!--<div class="form-group col-sm-12">
+				                                    <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" />
+				                                    <input type="hidden" name="token" value="{$_W['token']}" />
+				                                </div>-->
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </form>
+                        </div>
+                        <script>
+                        require(['jquery', 'util'], function($, u){
+                            $(function(){
+                                u.editor($('.richtext')[0]);
+                            });
+                        });
+                        $(function () {
+                                window.optionchanged = false;
+                                $('#myTab a').click(function (e) {
+                                    e.preventDefault();//阻止a链接的跳转行为
+                                    $(this).tab('show');//显示当前选中的链接及关联的content
+                                })
+                            });
+                        </script>
+                        
+                        <!--编辑内容结束-->
+			        </section>
+			        {template 'public_bottom'}
+			    </section>
+			    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+			  </section>
+			  <aside class="bg-light lter b-l aside-md hide" id="notes">
+			       <div class="wrapper"></div>
+			  </aside>
+			<!--右边框架结束-->
+			</section>
+		  </section>
+		<!--中间内容结束-->
+	</section>
+
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>vaeThink</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="__ADMIN__/lib/layui/css/layui.css"  media="all">
+</head>
+<body class="vae-body">
+
+<div class="vae-content">
+    <form class="layui-form" style="display: inline;">
+        <input type="text" name="keywords" placeholder="ID/会员" class="layui-input" autocomplete="off" style="max-width: 400px;display: inline;margin: -10px 10px 0 0;height: 30px;" />
+        <button class="layui-btn layui-btn-sm layui-btn-danger" lay-submit="" lay-filter="vaeform">提交搜索</button>
+    </form> 
+    <table class="layui-hide" id="test" lay-filter="test"></table>
+</div>
+
+<script type="text/html" id="payment_voucher">
+  {{#  if(d.payment_voucher){ }}
+    <img src='{{d.payment_voucher}}' lay-event="payment_voucher" height="30"/>
+  {{#  } }}
+</script>
+<script type="text/html" id="status_text">
+{{#  if(d.status == 1){ }}
+<span style="color: #009688">充值成功</span>
+{{#  }else if(d.status == -1){ }}
+<span style="color: #FF5722">充值失败</span>
+{{#  }else{ }}
+未审核
+{{#  } }}
+</script>
+<script type="text/html" id="status">
+    <input type="checkbox" name="status" value="{{d.id}}" disabled="" lay-skin="switch" lay-text="已审核|未审核"  {{ d.status != 0 ? 'checked' : '' }} >
+</script>
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <a style="font-size: 12px;margin-right: 5px;color: #ef0909">今天充值金额：￥{$recharge_amount}</a>
+    </div>
+</script>
+<script type="text/html" id="barDemo">
+    {{#  if(d.status == 0){ }}
+    <a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="passrecharge">通过</a>
+    <a class="layui-btn layui-btn-xs " lay-event="rejectcharge">驳回</a>
+    {{#  } }}
+</script>
+              
+<script src="__ADMIN__/lib/layui/layui.js" charset="utf-8"></script>
+ 
+<script>
+layui.config({
+    base: '/themes/admin_themes/module/'
+}).use(['table','vaeyo','form'], function(){
+    var table = layui.table
+    ,vae = layui.vaeyo
+    ,$ = layui.$
+    ,vae = layui.vaeyo
+    ,form = layui.form;
+
+      var tableIns = table.render({
+        elem: '#test'
+        ,toolbar: '#toolbarDemo'
+        ,url: '/admin/statistics/getRechargelogList' //数据接口
+        ,page: true //开启分页
+        ,limit: 15
+        ,cols: [[ //表头
+          {field: 'id', title: 'ID', sort: true, fixed: 'left', align:'center', width:80}
+          ,{field: 'account', title:'会员', align:'center'}
+          ,{field: 'realname', title:'真实姓名', align:'center'}
+          ,{field: 'discount', title:'折扣', align:'center'}
+          ,{field: 'integral', title:'充值', align:'center'}
+          ,{field: 'realintegral', title: '实际付款', align:'center'}
+          ,{field: 'payment_voucher', title: '付款凭证',  toolbar: '#payment_voucher', align:'center'}
+          ,{field: 'createtime', title: '提交时间', sort: true, align:'center'}
+          ,{field: 'status', title:'状态', toolbar: '#status_text', align:'center', width:120}
+          ,{field: 'status', title:'审核状态', toolbar: '#status', align:'center', width:120}
+          ,{field: 'right', title:'操作', toolbar: '#barDemo', width:150, align:'center'}
+        ]]
+      });
+
+  
+  //监听行工具事件
+  table.on('tool(test)', function(obj){
+    var data = obj.data;
+
+    if(obj.event === 'payment_voucher'){
+        var img = new Image();  
+        img.src = $(this).attr('src');
+        var areaheight = 500;
+        var areawidth = img.width / (img.height/500); //获取图片宽度
+        var imgHtml = "<img src='" + img.src + "' style='height:100%' />";  
+        //弹出层
+        layer.open({  
+            type: 1,  
+            shade: 0.8,
+            offset: 'auto',
+            area: [ areawidth+ 'px', areaheight + 50 +'px'],
+            shadeClose:true,//点击外围关闭弹窗
+            //scrollbar: false,//不现实滚动条
+            maxmin: true,
+            title: "图片预览", //不显示标题  
+            content: imgHtml, //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响  
+            cancel: function () {  
+                //layer.msg('捕获就是从页面已经存在的元素上，包裹layer的结构', { time: 5000, icon: 6 });  
+            }  
+        });
+    }
+
+    //允许充值
+    if(obj.event === 'passrecharge'){
+        $.ajax({
+          url:"/admin/statistics/passrecharge",
+          data:{id:data.id},
+          success:function(res){
+            layer.msg(res.msg);
+            if(res.code==1){
+              setInterval(function(){
+                  window.location.reload(); 
+              }, 2000)
+                
+            }
+          }
+        })
+    }
+    //驳回充值
+    if(obj.event === 'rejectcharge'){
+        $.ajax({
+          url:"/admin/statistics/rejectcharge",
+          data:{id:data.id},
+          success:function(res){
+            layer.msg(res.msg);
+            if(res.code==1){
+              setInterval(function(){
+                  window.location.reload(); 
+              }, 2000)
+                
+            }
+          }
+        })
+    }
+
+  });
+
+  //监听搜索提交
+  form.on('submit(vaeform)', function(data){
+    console.log(data.field.keywords)
+    tableIns.reload({where:{keywords:data.field.keywords}});
+    vae.bundledTab();
+    return false;
+  });
+});
+</script>
+
+</body>
+</html>

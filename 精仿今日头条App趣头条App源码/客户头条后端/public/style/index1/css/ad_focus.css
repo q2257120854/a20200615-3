@@ -1,0 +1,8 @@
+@charset "utf-8";
+* {margin:0px; padding:0px; list-style: none;}
+#ad_box {width:1000px; height:100px; background:#fff; margin:0 auto; position: relative; overflow: hidden;z-index:5000;}
+#ad_list {position:absolute; left:0; top:0;}
+#ad_list li {width:1000px; height:100px; cursor: pointer;}
+#ad_num {position: absolute; right:10px; bottom:10px;}
+#ad_num li {width:16px; height:16px; float:left; margin-right:2px; color:#fff; cursor: pointer; font-size: 12px; font-family:'Arial'; line-height:16px; text-align: center; border:1px solid #fff;}
+.ad_active {background:#ff6600;}

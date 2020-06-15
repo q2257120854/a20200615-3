@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "gracePage": "../../graceUI/components/gracePage",
+        "graceToTop": "../../graceUI/components/graceToTop",
+        "graceFlex": "../../graceUI/components/graceFlex",
+        "graceCoupons": "../../graceUI/components/graceCoupons",
+        "txv-video": "plugin://wxa75efa648b60994b/video"
+    },
+    "navigationBarTitleText": "宝贝详情"
+}

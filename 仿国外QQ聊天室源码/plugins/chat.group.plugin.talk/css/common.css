@@ -1,0 +1,79 @@
+.modal-backdrop{
+  display:none!important;
+}
+.modal-dialog-user .modal-header {
+  padding: 5px;
+}
+.modal-dialog-user button.close{
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-size: auto 40%;
+  background-position: center center;
+  text-indent: -999em;
+  position: relative;
+  top: -3px;
+  opacity:0.8!important;
+}
+.modal-dialog-user button.close:hover{
+  background-color: #eee;
+}
+.modal-dialog-user button.btn-close{
+  background-image: url(../images/ico-close-black.png);
+  margin-right: -5px;
+}
+.modal-dialog-user button.btn-close:hover{
+  background-image: url(../images/ico-close-white.png);
+  background-color: #f00;
+}
+.modal-dialog-user button.btn-max{
+  display: inline-block;
+  background-image: url(../images/ico-max.png);
+}
+.modal-dialog-user button.btn-small{
+  background-image: url(../images/ico-small.png);
+}
+.modal-dialog-user button.btn-min{
+  background-image: url(../images/ico-min.png);
+}
+.modal-dialog button.btn-min{
+  background-image: url(../images/ico-min.png);
+}
+.modal-dialog-user.modal-full button.btn-max{
+  display: none;
+}
+.modal-dialog-user.modal-full button.btn-small{
+  display: inline-block;
+}
+.apps{
+  position: fixed;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  text-align: right;
+  z-index: 6200103;
+}
+.apps .app-item{
+  display: inline-block;
+  margin: 10px 10px 10px 0;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+.apps .app-item:hover{
+  background: #ccc;
+}
+.apps .app-item-icon{
+  display: inline-block;
+}
+.apps h3{
+  display: inline-block;
+  margin: 0 0 0 2px;
+  line-height: 32px;
+  height: 32px;
+  font-size: 14px;
+}
+.apps .app-item-icon img{
+  width: 32px;
+  height: 32px;
+}

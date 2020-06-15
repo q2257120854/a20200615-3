@@ -1,0 +1,120 @@
+.grace-pop-menu {
+    width: 100%;
+    font-size: 0;
+}
+
+.grace-pop-item {
+    width: 88rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    text-align: center;
+    font-size: 40rpx;
+    color: #FFFFFF;
+    border-radius: 50%;
+    margin: 20rpx 0;
+    overflow: hidden;
+    display: block;
+}
+
+.grace-news-item {
+    margin: 20rpx;
+    padding: 20rpx;
+    box-shadow: 5rpx 10rpx 10rpx rgba(0,0,0,0.1);
+    border-radius: 20rpx;
+    color: #555555;
+}
+
+.grace-news-title {
+    font-size: 30rpx;
+    height: 80rpx;
+    line-height: 40rpx;
+    overflow: hidden;
+    margin-bottom: 10rpx;
+    font-weight: 600;
+    letter-spacing: 1rpx;
+    word-break: break-all;
+}
+
+.grace-news-price {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 40rpx;
+}
+
+.grace-news-price1 {
+    display: inline-block;
+    font-size: 20rpx;
+    margin-right: 20rpx;
+    line-height: 40rpx;
+}
+
+.grace-news-price1 .em {
+    font-size: 32rpx;
+    font-style: normal;
+    font-family: font-price;
+    color: rgb(231,107,97);
+}
+
+.grace-news-price1 .small {
+    font-family: font-price;
+    color: rgb(231,107,97);
+}
+
+.grace-news-price2 {
+    display: inline-block;
+    font-size: 24rpx;
+    font-family: font-price;
+    color: #888;
+    line-height: 40rpx;
+}
+
+.grace-news-img {
+    width: 280rpx;
+    height: 280rpx;
+    border-radius: 10rpx;
+}
+
+.empty-view {
+    width: 280rpx;
+    height: 280rpx;
+    border-radius: 280rpx;
+    background-color: #F6F7F8;
+    margin-top: 300rpx;
+}
+
+.empty-img {
+    width: 220rpx;
+    height: 200rpx;
+    margin: 40rpx;
+    border-radius: 200rpx;
+}
+
+.grace-load-text {
+    font-size: 30rpx;
+    margin-top: 30rpx;
+}
+
+.grace-loading {
+    font-size: 34rpx;
+}
+
+.grace-reload {
+    font-size: 34rpx;
+}
+
+.grace-header-body {
+    position: absolute;
+    width: 100%;
+    text-align: center!important;
+    height: 88rpx;
+    line-height: 88rpx;
+    color: #ffffff;
+    font-size: 36rpx;
+    display: block;
+}
+
+.grace-nav-bar {
+    position: absolute;
+    width: 100%;
+    bottom: 2rpx;
+}

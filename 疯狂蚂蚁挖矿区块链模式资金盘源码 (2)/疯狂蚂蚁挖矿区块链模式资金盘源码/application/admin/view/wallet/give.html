@@ -1,0 +1,73 @@
+{extend name="common/world"} {block name="title"}赠送资金{/block} {block name="style"}
+<style type="text/css">
+</style>
+{/block} {block name="container"}
+<div class="page">
+	<div class="page-single">
+		<form class="card" method="post" style="max-width: 50rem;" enctype="multipart/form-data">
+			<div class="card-body">
+				<div class="card-title">一键批量赠送资金</div>
+				<div class="card-subtitle">如赠送失败，只需要再次尝试即可。</div>
+				<div class="card-subtitle">数值是正数，则会加钱，如果是负数，则会扣钱</div>
+				<div class="card-subtitle">已冻结的账号也会进行赠送。</div>
+				<div class="card-subtitle">在这里调整的资金在用户那边是看不到记录的</div>
+				<div class="row">
+					<div class="col-sm-4">
+                    	<div class="form-group">
+                            <label class="form-label">货币类型</label>
+                            <select class="form-control custom-select" name="currency">
+                            	{volist name="Think.config.hello.currencys" id="currency"}
+                            		<option value="{$key}">{$currency.name}</option>
+                            	{/volist}
+                            </select>
+                        </div>
+                    </div>
+					<div class="col-sm-4">
+                    	<div class="form-group">
+                            <label class="form-label">赠送名义</label>
+                            <select class="form-control custom-select" name="business"></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                    	<div class="form-group">
+                            <label class="form-label">货币数量</label>
+                            <input class="form-control" type="text" name="number" placeholder="正数加，负数减" />
+                        </div>
+                    </div>
+				    <div class="col-sm-12">
+				        <div class="form-group">
+				            <label class="form-label">用户账号</label>
+				            <textarea class="form-control" name="users" cols="30" rows="10" placeholder="一行一个用户账号，允许有空行，重复账号将会多次赠送，错误的账号将会导致全部失败！"></textarea>
+				        </div>
+				    </div>
+				</div>
+			</div>
+			<div class="card-footer text-right">
+				<button class="btn btn-primary">一键赠送</button>
+			</div>
+		</form>
+	</div>
+</div>
+{/block}
+{block name="script"}
+<script>
+var businesses = JSON.parse('{$businesses|raw}');
+var business = function(){
+	var c = $('select[name=currency]').val();
+	var b = businesses[c];
+	var html = '';
+	for (var key in b) {
+		html += '<option value="' + key + '">' + b[key] + '</option>';
+	}
+	$('select[name=business]').html(html);
+}
+require(['jquery'], function($){
+	$(function(){
+		business();
+		$('select[name=currency]').on('change', function(){
+			business();
+		});
+	});
+});
+</script>
+{/block}

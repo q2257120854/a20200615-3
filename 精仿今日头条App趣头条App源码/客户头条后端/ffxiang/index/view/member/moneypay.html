@@ -1,0 +1,110 @@
+{include file="member/left" /}
+                <div class="right-container col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                	<div class="account-wrapper">
+					     {include file="member/nav"}
+					    <div class="panel panel-default">	
+<style type="text/css">
+#fx_view{
+	border:1px solid #e4e4e4;
+	cursor: pointer;
+	padding: 20px;
+	margin:10px;
+}
+#fx_view div{
+	text-align: center;
+	line-height: 58px;
+	height: 58px;
+	float: left;
+	width: 20%;
+	color:#333;
+	font-size: 18px;
+	border:2px solid #fff;
+}
+#fx_view .asdad{
+	border:2px solid #4285f4;
+	background: #f5f5f5;
+}
+</style>					 
+					    	<div class="account-form-modal" style="padding-top:40px">
+								<div  class="form pop-form">
+							        <div class="form-group">
+							            <label class="col-sm-2 control-label" style="font-size: 16px;  ">输入充值金额：</label>
+							            <div class="col-sm-3">
+							                <div class="input-group m-b">
+		                                        <input style="text-align: center;" type="text" class="form-control" id="money"   value="100"  /> <span class="input-group-addon">元</span>
+		                                        <!-- onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')" -->
+		                                    </div>
+							            </div>
+							        </div><hr>
+							        <div class="form-group" style="margin-bottom: 10px">
+							        	<div class="moneypay-1" style="font-size: 18px; padding-left: 10px">选择支付</div>
+							        </div>
+							        <div class="form-group">
+								        <script id="fx_list" type="text/html">
+										{{# for(var i = 0, len = d.ret.length; i < len; i++){ }}
+			                            <div id="asdad{{i}}" onclick="asdasdsasd(this)" data-id='{{d.ret[i].id}}'>{{ d.ret[i].title }}</div>
+			                            {{# } }}
+			                            </script>
+								        <div class="row show-grid" id="fx_view">
+				                        </div>
+				                    </div>
+							        <div class="form-group">
+							            <div class="col-sm-3 col-sm-offset-3">
+							                <button type="botton" class="btn btn-primary btn-lg ladda-button">支付</button>
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</div>
+					</div>
+				</div>
+{load href="__P__laytpl/laytpl.js"}
+<script type="text/javascript">
+$(function(){
+	_ajax('{:url('api/pay/payList')}','post',{type:'pc',type1:'qt'},function(res){
+		if(res){
+			if(res.ret){
+				// 模板赋值
+				var gettpl = document.getElementById('fx_list').innerHTML;
+				laytpl(gettpl).render(res, function(html){
+				  document.getElementById('fx_view').innerHTML = html;
+				});
+				// 赋值结束
+				$('#asdad0').addClass('asdad') 
+			}else{
+				layer.alert(res.err)
+			}
+		}
+	})
+})
+function asdasdsasd(asdsd){
+		$('#fx_view div').removeClass('asdad')
+		$(asdsd).addClass('asdad')
+	}
+$(window).load(function() {
+	$('.ladda-button').on('click',function(){
+		var type = $('#fx_view div').data('id');
+        if(!type){
+            layer.alert('请选择支付方式');return;
+        }
+        var money=$('#money').val();
+        if(!money){
+        	layer.alert('请填写充值金额');return;
+        }
+        money=Math.round(money*100);
+        var index = layer.load(1, {shade: [0.5,'#000']});
+		_ajax('{:url('api/pay/pay')}','post',{token:"{$token}",type:type,money:money,titleid:1},function(ret){
+			if(ret.ret){
+				window.open(ret.ret)
+			}else{
+				layer.msg(ret.err)
+			}
+			layer.close(index);
+		})
+		return false;
+	})
+});
+</script>
+{include file="member/footer" /}<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

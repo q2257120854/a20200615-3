@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<style>
+	 		.aui-timeline .sx-yuan{
+	 			width: 1.2rem;
+	 			height: 1.2rem;
+	 			border:1px solid #e8e8e8;
+	 			background: #fff;
+	 			left: 0.48rem;
+	 			border-radius: 50%;
+	 			line-height: 1.1rem;
+	 			font-size: 0.8rem;
+	 			font-weight: bold;
+	 		}
+	 		.aui-timeline .aui-timeline-item-inner{
+	 			margin: 0;
+	 	 
+	 		}
+	 		.aui-timeline .aui-timeline-item{
+	 			margin-bottom: 0;
+	 		}
+	 		.aui-timeline .aui-timeline-item-inner .aui-card-list-header,.aui-timeline .aui-timeline-item-inner .aui-card-list-content-padded{
+	 			padding-left: 2rem;
+	 			padding-right: 0.75rem;
+	 			font-size: 0.9rem;
+	 			color: #4a4a4a;
+	 		}
+	 		.aui-timeline .aui-timeline-item-inner .aui-card-list-header{
+	 			padding-top:0;
+	 			min-height:0;
+	 		}
+	 		.aui-timeline .aui-timeline-item-inner .aui-card-list-content-padded{
+	 			font-size: 0.7rem;
+	 			color: #555;
+	 			position: relative;
+	 			padding-top: 0.5rem;
+	 		 	color: #9f9f9f;
+	 		}
+	 	 
+	 		.aui-timeline:before{
+	 			z-index: 99999;
+	 			left: 1rem;
+	 		}
+	 		 
+	 		.aui-timeline .sx-yuan{
+	 			z-index: 999999;
+	 			top:0rem;
+	 			color: #fff;
+	 			background: #45c018;
+	 		}
+	 	 	.xuan label{
+	 	 		margin-right: 0.2rem;
+	 	 		font-size: 0.75rem;
+	 	 	}
+	 	 	.xuan .aui-radio{
+	 	 		margin-right: 0.3rem;
+	 	 		width: 0.9rem;
+	 	 		height: 0.9rem;
+	 	 		line-height: 0.9rem;
+	 	 		margin-top: 0.1rem;
+	 	 	}
+	 	 	.xuan .aui-radio:checked{
+	 	 		background: #45c018
+	 	 	}
+	 	 	.aui-card-list-footer{
+	 	 		padding-left: 2rem;
+	 	 		padding-right: 0.75rem;
+	 	 		background: #fff;
+	 	 	}
+	 	 	.aui-timeline .aui-timeline-item-label.sx-yuans{
+	 	 		position: absolute;
+	 	 		top: 0;
+	 	 		left: 0.6rem;
+	 	 		height: 100px;
+	 	 		width: 20px;
+	 	 		background: #fff;
+	 	 		z-index: 99999;
+	 	  
+	 	 	}
+	 	 	.btn img{
+	 	 		width: 80%;
+	 	 		margin: 1rem auto;
+	 	 	}
+	 	 	.btn img:active{
+	 	 		width: 78%;
+	 	 	}
+		</style>
+	</head>
+	<body>
+    <section class="aui-content aui-margin-t-15">
+    	<div class="aui-timeline">
+			<script id="fx-list" type="text/x-dot-template">
+				{{ for(var i=0,len=it.length; i < len; i++) { }}
+	            <div class="aui-timeline-item">
+	                <div class="aui-timeline-item-label sx-yuan">{{= i+1}}</div>
+	                {{? i==(len-1)}} 
+					<div class="aui-timeline-item-label sx-yuans"></div>
+					{{?}}
+	                <div class="aui-timeline-item-inner">
+	                    <div class="aui-card-list">
+	                        <div class="aui-card-list-header">
+	                        	{{= it[i].title}}
+	                        </div>
+	                        <div class="aui-card-list-footer xuan">
+	                        	{{ for(var prop in it[i].data) { }}
+								<label class="a{{= i}}" data-id="{{= i}}"><input class="aui-radio" type="radio" value="{{= it[i].data[prop] }}" name="{{= it[i].id}}">{{= it[i].data[prop] }}</label>
+								{{ } }}
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            {{ } }}
+			</script>
+            <div class="xiahuaxian" id="fx-view"></div>
+    	</div>
+    	<div class="btn"><img src="../../image/yaoqing/bg_btn.png" /></div>
+	</section>
+	</body>
+	<script type="text/javascript" src="../../script/fastclick.js"></script>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../../script/doT.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var sx
+		apiready = function() {
+			data()
+		}
+		function data(){
+			_ajax('api/yaoqing/datiInfo',function(ret,err){
+				if(ret){
+					var evalData = doT.template($api.html($api.byId('fx-list')));
+					$api.append($api.byId('fx-view'), evalData(ret));
+				//	console.log(evalData(ret))
+					FastClick.attach(document.body);
+					$(function(){
+						$('label').click(function(){
+							var id=$(this).data('id');
+							$('label.a'+id).removeClass('active');
+							$(this).addClass('active');
+						});
+						var mycars=new Array()
+						$('.btn').click(function(){
+							 
+//								var checkbox=$(".a0 input:checked").val()
+//								console.log(checkbox)
+								for(var i=0;i < ret.length;i++){
+									var text=$(".a"+i+" input:checked").val()
+									if(!text || text=='undefined'){
+							            _msg('请选'+ret[i].title)
+										return;
+									}
+									console.log(text)
+									mycars[i]=text;
+								}
+								return;
+								 
+								_ajax('api/yaoqing/diaochaAdd',function(ret,err){
+									if(ret){
+										if(ret.ret){
+											_alert(ret.ret,function(ret,err){
+												_index_win('user_win');
+											});
+										}else{
+											_msg(ret.err)
+										}
+									}
+								},{data:mycars})
+							 
+						})
+					})
+				}
+			})
+		}
+	</script>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8" />
+        <title>vaeThink</title>
+        <meta name="renderer" content="webkit" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="__ADMIN__/lib/layui/css/layui.css" media="all" /></head>
+    <body class="vae-body">
+        <form class="layui-form vae-content">
+
+            <fieldset class="layui-elem-field layui-field-title" style="">
+                <legend>数据清理</legend>
+            </fieldset>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">会员</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="member[]" title="会员数据" value="member">
+                    <input type="checkbox" name="member[]" title="会员等级" value="level">
+                    <input type="checkbox" name="member[]" title="支付方式" value="method">
+                    <input type="checkbox" name="member[]" title="鱼饵记录" value="integrallog">
+                    <input type="checkbox" name="member[]" title="充值记录" value="rechargelog">
+                    <input type="checkbox" name="member[]" title="捕捞记录" value="adopt">
+                    <input type="checkbox" name="member[]" title="预约记录" value="appointment">
+                    <input type="checkbox" name="member[]" title="收益记录" value="incomelog">
+                    <input type="checkbox" name="member[]" title="出售记录" value="assetsalelog">
+                    <input type="checkbox" name="member[]" title="订单数据" value="order">
+                    <input type="checkbox" name="member[]" title="订单申诉" value="complaint">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">区块鱼</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="product[]" title="区块鱼数据" value="product">
+                    <input type="checkbox" name="product[]" title="区块鱼品种" value="cate">
+                    <input type="checkbox" name="product[]" title="区块鱼等级" value="level">
+                    <input type="checkbox" name="product[]" title="区块鱼归属" value="owner">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">工单</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="workorder[]" title="工单数据" value="workorder">
+                    <input type="checkbox" name="workorder[]" title="工单类型" value="type">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" lay-filter="vaeform">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+        <script src="__ADMIN__/lib/layui/layui.js" charset="utf-8"></script>
+        <script>layui.config({
+                base: '/themes/admin_themes/module/'
+            }).use(['upload', 'form', 'vaeyo', 'laydate'],
+            function() {
+                var form = layui.form,
+                layer = layui.layer,
+                $ = layui.$,
+                upload = layui.upload,
+                vae = layui.vaeyo,
+                laydate = layui.laydate;
+
+                //监听提交
+                form.on('submit(vaeform)',
+                function(data) {
+                    $.ajax({
+                        url: "/admin/data/index",
+                        type: 'post',
+                        data: data.field,
+                        success: function(e) {
+                            if (e.code == 1) {
+                                layer.confirm('数据清理成功,关闭本页面吗?', {
+                                    icon: 3,
+                                    title: '提示'
+                                },
+                                function(index) {
+                                    vae.closeThisTab();
+                                    layer.close(layer.index);
+                                });
+                            } else {
+                                layer.msg(e.msg);
+                            }
+                        }
+                    }) 
+                    return false;
+                });
+
+            });</script>
+    </body>
+
+</html>

@@ -1,0 +1,600 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>达人说</title>
+	<script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style88/js/jquery.js"></script>
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style88/js/swiper.min.js"></script>
+    <link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style88/css/swiper.min.css">
+   <script type="text/javascript" src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/amazeui/2.7.2/amazeui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/amazeui/2.7.2/amazeui.min.css"/>
+
+    <style>
+        html {
+            overflow-y: auto;
+        }
+        
+        html, body {
+            max-width: 640px;
+            
+            margin: auto;
+            padding: 0;
+            overflow-x: hidden;
+            background: #ffffff;
+        }
+
+/*     html::-webkit-scrollbar {
+      width: 50px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+    }
+    html::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 1);
+      background-clip: padding-box;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+    } */
+    	.wandering-content{
+        	margin-bottom: 50px;
+        }
+
+        .talentsub-banner {
+            padding-top: 1.25rem;
+            overflow: visible;
+        }
+
+        .talentsub-background {
+            position: absolute;
+            top: 0;
+            width: 100%;
+			height: 140px;
+			background-image:url('http://img.fqapps.com/FqkeWFSpNCpKEiM6Qgm_sabSD5Ag')
+		}
+
+        .talentsub-content {
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 20px -2px;
+            box-sizing: border-box;
+        }
+
+        .talentsub-content > a {
+            display: block;
+            text-decoration: none;
+            outline:none;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+
+        .talentsub-img {
+            width: 100%;
+            display: block;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        .talentsub-text {
+            display: block;
+            background: #ffffff;
+            color: #333333;
+            padding: 1rem;
+            font-size: 1.4rem;
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+        }
+
+        .talentsub-div {
+        position: absolute;
+        bottom: .625rem;
+        right: .8rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        flex-direction: column;
+        padding: .5rem;
+        padding-top: 0;
+        background: rgba(250, 250, 250, .9);
+        border-top-left-radius: 6px;
+        border-top-right-radius: 24px;
+        }
+
+        .talentsub-num {
+            color: #809def;
+            padding: .6rem 0;
+            line-height: 1.6rem;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .talentsub-num span:first-child {
+            font-size: 1.6rem;
+            display: block;
+            text-align: center;
+        }
+
+        .talentsub-div img {
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+        }
+
+        .week-title, .wandering-title {
+            font-size: 1.4rem;
+            padding: 1.875rem 0 0 .625rem;
+            color: #484848;
+        }
+
+        .week-container, .wandering-container {
+            padding: .625rem .625rem 0; 
+        }
+
+        .new-article {
+            background: #f5f5f7;
+            border-radius: .625rem;
+        }
+
+        .new-article > a {
+            display: block;
+            text-decoration: none;
+            padding: 0.6rem;
+            outline:none;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+
+        .article-img {
+            width: 100%;
+            display: block;
+        }
+
+        .article-title {
+            font-size: 1.4rem;
+            color: #484848;
+            display: block;
+            padding-top: .6rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .article-info {
+            display: flex;
+            align-items: center;
+            padding-top: .6rem;
+        }
+
+        .info-img {
+            width: 20px;
+            height: 20px;
+            border-radius: 62.5rem;
+            margin-right: .4rem;
+        }
+
+        .info-name {
+            font-size: 1.2rem;
+            color: #999999;
+        }
+
+        .wandering-header {
+            margin-bottom: .625rem;
+            padding: .375rem 0px;
+        }
+
+        .wandering-class a {
+            width: 3.75rem;
+            height: 1.8rem;
+            line-height: 1.8rem;
+            color: #484848;
+            text-align: center;
+            text-decoration: none;
+            outline:none;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+
+        a.wandering-active {
+            color: #ffffff !important;
+            background: #8faaff;
+            border-radius: 4px;
+        }
+
+        a.fixed-wandering-active {
+            color: #8faaff !important;
+            background: #ffffff;
+            border-radius: 4px;
+        }
+
+        .wandering-content > a {
+            display: block;
+            text-decoration: none;
+            outline:none;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+
+        .wandering-div {
+            padding: 1rem;
+            margin-bottom: .625rem;
+            border-radius: 6px;
+            background: #f5f5f7;
+        }
+
+        .wandering-top {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .wandering-top img {
+            width: 100%;
+            /* height: 136px; */
+            display: block;
+            border-radius: 6px;
+        }
+
+        .wandering-label {
+            position: absolute;
+            bottom: -10px;
+            left: 10px;
+            padding: 4px 10px;
+            background: #fc9090;
+            color: #ffffff;
+            border-radius: 4px;
+        }
+
+        .label-num {
+            font-size: .875rem;
+        }
+
+        .wandering-div-title {
+            display: block;
+            color: #484848;
+            padding-bottom: .25rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .wandering-div-subtitle {
+            display: block;
+            font-size: .875rem;
+            color: #999999;
+            display: -webkit-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical
+        }
+		.more{
+			text-decoration: none;
+			display: block;
+			color: #999999;
+			text-align: right;
+			padding-right: 20px;
+		}		
+		
+		ul,li{
+			-webkit-padding-start: 0px;
+            list-style: none;
+        }
+        .slide-box{
+            display: -webkit-box;
+            overflow-x: auto;
+            /*适应苹果*/
+            -webkit-overflow-scrolling:touch;
+        }
+		.slide-box-fixed{
+			position: fixed!important;
+			width: 100%;
+			top: 0px;
+			left: 0px;
+			background: #8faaff!important;
+			padding-left: 10px!important;
+			box-shadow: rgba(0, 0, 0, 0.1) 0px 6px 10px -2px;
+			margin:0 0 0 0;
+			z-index:9999;
+			padding:4px 0;
+            box-sizing: border-box;
+		}
+
+        @media screen and (min-width: 640px) {
+            .slide-box-fixed {
+                max-width: 640px;
+                margin: 0 calc((100% - 640px) / 2);
+            }
+        }
+
+        .slide-box-fixed .slide-item:last-child {
+            padding-right: 10px;
+        }
+        .slide-item{
+            padding:4px 0;
+        }
+		.slide-item a{
+			display:block;
+			width: 50px;
+			height: 26px;
+			color: #484848;
+			text-align: center;
+			text-decoration: none;
+			outline: none;
+			-webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+        /*隐藏掉滚动条*/
+        /* .slide-box::-webkit-scrollbar {
+            display: none;
+        } */
+    </style>
+	<style>
+	        header{width:100%;height:44px;border-bottom: 1px solid #8ba6ff;background: #8ba6ff;position: relative;}
+	        #close{width:20px;height:20px;background: url({$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/back2.png) no-repeat; background-size:10px;position: absolute;left:15px;bottom:11px;}
+	        .headerTitle{width: 70px;margin: 0 auto;height: 44px; line-height:44px;text-align: center;font-size: 16px;color:#ffffff;}
+	    </style>
+</head>
+<body  >
+	<header>
+	    <div onclick="history.go(-1);" id="close"></div>
+	    <div class="headerTitle">达人说</div>
+	    <!-- <div id="set"></div> -->
+	  </header>
+    <div id="app">
+	
+    <!-- TODO 1：顶部轮播 -->
+    <div class="talentsub-banner swiper-container" style="display: none;">
+        <div class="talentsub-background"></div>
+        <div class="swiper-wrapper">
+            <div class="talentsub-content swiper-slide" v-for="v in tjlist">
+                    <a :href="'{php echo $this->createMobileUrl('drs_view')}&id='+v.id">
+                        <img :src="v.app_image" alt="" class="talentsub-img">
+                        <span class="talentsub-text">{{v.name}}</span>
+                        <div class="talentsub-div">
+                            <span class="talentsub-num">
+                                <span>{{v.itemnum}}</span>
+                                <span>单品</span>
+                            </span>
+                            <img :src="v.image" alt="">
+                        </div>
+                    </a>
+                </div>
+			</div>
+    </div>
+
+    <!-- TODO 2：本周新作 -->
+    <div class="week-new">
+        <div class="week-title">本周新作</div>
+        <div class="week-container swiper-container">
+            <div class="swiper-wrapper">
+				
+					<div class="new-article swiper-slide"  v-for="v in newlist">
+                         <a :href="'{php echo $this->createMobileUrl('drs_view')}&id='+v.id">
+                            <img :src="v.article_banner" alt="" class="article-img">
+                            <span class="article-title">{{v.name}}</span>
+                            <div class="article-info">
+                                <img class="info-img" :src="v.image" alt="">
+                                <span class="info-name">{{v.talent_name}}</span>
+                            </div>
+                        </a>
+                    </div>
+					
+				</div>
+        </div>
+    </div>
+
+    <!-- TODO 3：大家正在逛 -->
+    <div class="wandering">
+        <div class="wandering-title">大家都在逛</div>
+        <div style="padding: .625rem; padding-top: 0" >
+			<ul class="slide-box"  data="">
+				<li class="slide-item"><a href="javascript:void(0)"  onclick='b(this);return false;' class="wandering-active" data-talentcat="0"  data="">全部</a></li>
+				<li class="slide-item"><a href="javascript:void(0)" onclick='b(this);return false;' class="" data-talentcat="1">好物</a></li><li class="slide-item"><a href="javascript:void(0)" onclick='b(this);return false;' class="" data-talentcat="2">潮流</a></li><li class="slide-item"><a href="javascript:void(0)" onclick='b(this);return false;' class="" data-talentcat="3">美食</a></li><li class="slide-item"><a href="javascript:void(0)" onclick='b(this);return false;' class="" data-talentcat="4">生活</a></li>	
+			</ul>
+           
+			<div class="blockbottom" id = "maodian" style="width:100%;height:1px;"></div>
+            <div class="wandering-content" data="">
+				    
+					<template v-for="vo in alllist">
+					<a :href="'{php echo $this->createMobileUrl('drs_view')}&id='+vo.id" class="clickart " :data-talentcat="vo.talentcat"  > 
+						<div class="wandering-div">
+							<div class="wandering-top">
+								<img :src="vo.article_banner" alt="">
+								<div class="wandering-label">
+									<span class="label-text" v-if="vo.talentcat==1">好物</span><span class="label-text" v-if="vo.talentcat==2">潮流</span><span class="label-text" v-if="vo.talentcat==3">美食</span><span class="label-text" v-if="vo.talentcat==4">生活</span>/<span class="label-num">{{vo.itemnum}}单品</span>
+								</div>
+							</div>
+							<div>
+								<span class="wandering-div-title">{{vo.name}}</span>
+								<span class="wandering-div-subtitle">{{vo.article}}</span>
+							</div>
+						</div>
+					</a>
+					</template>		
+					<div class="block" style="width:100%;display:none;">
+						<img src="" style="margin:0 auto;display:block;padding-top: 50px;"> 
+					</div>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style88/css/layer.css" />
+	<script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/js/layer_mobile/layer.js"></script>
+<script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/vue.min.js"></script>
+    <script>
+		var vm=new Vue({
+			el: '#app',
+			data:{
+				'tjlist':'',//推荐
+				'newlist':'',//本最最新
+				'alllist':'',//全部
+				'page':1
+			},
+			methods:{
+				init:function(){
+					layer.open({
+					    type: 2
+					    ,content: '数据加载中，请稍后！'
+					    ,time: 1000
+					 });
+					$.get("{php echo $this->createMobileUrl('drs')}&op=1&page="+vm.page, function(res){
+						res=JSON.parse(res);
+						vm.tjlist=res.data.topdata;
+						vm.newlist=res.data.newdata;
+						vm.alllist=res.data.clickdata;		
+						
+										console.log(vm.tjlist);
+								$(".talentsub-banner").css("display","block");		
+										
+						setTimeout(function (){
+							 var swiper1 = new Swiper('.talentsub-banner', {
+								 slidesPerView: 1.2,
+								 spaceBetween: 20,
+								 centeredSlides: true,
+								 freeMode: false,
+								 resistanceRatio: 0
+							 });
+							 
+							 var swiper2 = new Swiper('.week-container', {
+							     slidesPerView: 2.1,
+							     spaceBetween: 10,
+							     freeMode: true,
+							     resistanceRatio: 0
+							 });
+							 
+							 var swiper3 = new Swiper('.wandering-header', {
+							     slidesPerView: 'auto',
+							     freeMode: true,
+							     resistanceRatio: 0
+							 });
+							 
+							 
+						}, 300);
+						layer.closeAll();
+						
+					})
+				}
+			}
+		});
+		
+		vm.init();
+		
+		
+		
+        
+
+        
+
+        $(function(){
+			var ua = navigator.userAgent.toLowerCase();
+            if( /iphone|ipad|ipod/.test(ua) ){
+				var wanderingHeader_offset = $('.slide-box').offset().top - 30;
+			}else{
+				var wanderingHeader_offset = $('.slide-box').offset().top - 50;
+			}
+
+        });
+		
+		
+		$(function(){   
+					$('.slide-item a').click(function(){
+						//点击样式
+		                if( $('.slide-box').css('position') == 'fixed' ){
+							$('.fixed-wandering-active').removeClass('fixed-wandering-active');
+		                    $(this).addClass('fixed-wandering-active')
+							$('.blockbottom').css('height','50px');
+		                } else {
+							$('.wandering-active').removeClass('wandering-active');
+		                    $(this).addClass('wandering-active').siblings().removeClass('wandering-active');
+							$('.blockbottom').css('height','0px');
+		                }
+						
+						var cats = $(this).attr('data-talentcat');
+						//显示选中的分类项目
+						var i = 0;
+						$('.clickart').each(function(){
+							var talentcat = $(this).attr('data-talentcat');
+							if(cats ==0){
+								$(this).show();
+								i++;
+							}else{
+								if(cats == talentcat){
+									$(this).show();
+									i++;
+								}else{
+									$(this).hide();
+								}
+							}
+						});
+						
+						$('.block').html('');
+						if(i < 3){
+							var height = window.screen.height ;
+							if(i == 0){
+								$('.block').css('height',height);
+								var str = '<img src="http://img.fqapps.com/FltfRuO6g1XnUzrt-c6XcuXUnt-L" style="margin:0 auto;display:block;padding-top: 50px;border:0px;">'
+								$('.block').append(str);
+							}else if(i == 1){
+								$('.block').css('height',height/2+100);
+							}else if(i == 2){
+								$('.block').css('height',170);
+							}
+							$('.block').show();
+						}else{
+							$('.block').hide();
+						}				
+					});
+				});
+				
+				//防止记录锚点位置
+				function b(obj){
+					location.replace(obj.href); //用当前url替换上一个history记录
+				}
+
+
+    </script>
+	
+	<script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style9/js/jweixin-1.0.0.js"></script>
+	<script>
+		var fxtitle="达人说";
+		var desc="{$cfg['fxcontent']}";
+		var imgUrl="{php echo tomedia($cfg['fxpicurl'])}";
+		var fxlink=window.location.href;
+		var fxdata={"title":fxtitle,"imgUrl":imgUrl,"desc":desc,"link":fxlink};
+	        var appid = "{$_W['account']['jssdkconfig']['appId']}";
+	        var timestamp = "{$_W['account']['jssdkconfig']['timestamp']}";
+	        var nonceStr = "{$_W['account']['jssdkconfig']['nonceStr']}";
+	        var signature = "{$_W['account']['jssdkconfig']['signature']}";
+	        wx.config({
+	            debug: false,
+	            appId: appid,
+	            timestamp: timestamp,
+	            nonceStr: nonceStr,
+	            signature: signature,
+	            jsApiList: [
+	                "onMenuShareAppMessage",
+	                "onMenuShareTimeline",
+	                "chooseImage",
+	                "uploadImage",
+	                "downloadImage"
+	            ]
+	        });
+	
+		wx.ready(function(){
+			wx.onMenuShareAppMessage({
+				title: fxdata['title'],
+				desc: fxdata['desc'],
+				link: fxdata['fxlink'],
+				imgUrl: fxdata['imgUrl']
+			}); 
+			wx.onMenuShareTimeline({
+				title: fxdata['title'],
+				desc: fxdata['desc'],
+				link: fxdata['fxlink'],
+				imgUrl: fxdata['imgUrl']
+			});
+		});
+		
+	
+	  	
+	  	
+	
+	    </script>
+</body>
+</html>

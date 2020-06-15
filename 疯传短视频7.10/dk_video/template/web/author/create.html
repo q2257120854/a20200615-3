@@ -1,0 +1,37 @@
+{template 'common/header'}
+<ol class="breadcrumb">
+	<li>
+		<a href="{php echo $this->createWebUrl('system');}">管理首页</a>
+	</li>
+	<li>
+		<a href="{php echo $this->createWebUrl('author',array('op' => 'index'));}">分类管理</a>
+	</li>
+	<li class="active">添加分类</li>
+</ol>
+<form action="{php echo $this->createWebUrl('author', array('op' => 'create'))}" method="post" class="form-horizontal form">
+	<div class="panel panel-default we7-panel">
+		<div class="panel-heading">添加作者</div>
+        <div class="panel-body we7-padding">
+          	<div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">作者昵称</label>
+                <div class="col-sm-9">
+                    <input type="text" name="data[nickname]" class="form-control" placeholder="请填写作者昵称"/>
+                </div>
+          	</div>
+            <div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">分享图标</label>
+                <div class="col-sm-9">
+               		{php echo tpl_form_field_image('data[avatar]','', '../addons/dk_video/static/images/nopic.jpg', array('width' => 100, 'height' => 100))}
+                    <span class="help-block" style="color:#f00">请上传作者头像，建议尺寸100X100像素</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6 col-sm-offset-3 col-md-offset-2">
+			       	<input name="submit" type="submit" value="提交保存" class="btn btn-primary" />
+		            <input type="hidden" name="token" value="{$_W['token']}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{template 'common/footer'}

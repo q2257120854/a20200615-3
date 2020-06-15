@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<style>
+			body{
+				background:  #EEEEEE !important;
+			}
+	 		.footer{
+	 			background: #fff;
+	 			position:fixed;
+	 			bottom: 0;
+	 			left: 0;
+	 			width: 100%;
+	 			box-shadow:0px -5px 30px -10px #ddd;
+	 			padding-bottom: 0.5rem;
+	 		}
+	 		.footer div{
+	 			width: 78%;
+	 			height: 2rem;
+	 			text-align: center;
+	 			background: #FF8000;
+	 			border-radius: 3rem;
+	 			margin: 0 auto;
+	 			margin-top: 0.5rem;
+	 			color: #fff;
+	 			line-height:2rem;
+	 			font-size: 0.75rem;
+	 		}
+	 		.footer div:active{
+	 			background: #F6B237
+	 		}
+	 		.aui-list,.aui-list li{
+	 			border: 0 !important;
+	 			background: #fff !important
+	 		}
+	 		.aui-list li{
+	 	 
+	 			font-size: 0.75rem;
+	 		}
+	 		input::-webkit-input-placeholder{
+	           font-size: 0.7rem;
+	        }
+	        input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+	            font-size: 0.7rem;
+	        }
+	        input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+	            font-size: 0.7rem;
+	        }
+	        input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+	           font-size: 0.7rem;
+	        }
+	        .aui-list .aui-list-item-label{
+	        	color:#333 !important;
+	        	font-weight: bold;
+	        }
+	        .aui-list .aui-list-item-input input{
+	        	color: #222;
+	        }
+	        #money{
+	        	font-weight: bold;
+	        }
+	        .text{
+	        	padding: 0 0.75rem
+	        }
+	        .text h5{
+	        	font-size: 0.8rem;
+	        	padding-top: 0.55rem;
+	        	color: #333;
+	        	padding-bottom: 0.3rem;
+	        }
+	        .text li{
+	        	font-size: 0.65rem;
+	        }
+	        .text ul{
+				margin-left: 0.75rem; 
+			}
+			.text li{
+				font-size: 0.75rem;
+				padding-top: 0.35rem;
+				list-style-type:disc;
+				color: #222;
+			}
+			.text ul li span{
+				color:#FF8000
+			}
+			.wxlogin{
+				background: #fff;
+				text-align: center;
+				padding-bottom: 1rem;
+				padding-top: 1rem;
+			}
+			.wxlogin img{
+				width: 3rem;
+				height: 3rem;
+				border-radius: 50%;
+				margin: 0 auto;
+				text-align: center;
+				
+			}
+			.btn{
+				width: 50%;
+				background: #fff;
+				border: 1px solid #FF8000;
+				color: #FF8000;
+				border-radius: 2rem;
+				text-align: center;
+				margin: 0 auto;
+				height: 2rem;
+				line-height: 2rem;
+				margin-top: 0.75rem;
+				font-size: 0.75rem;
+			}
+			.btns{
+				background: #FF8000;
+				color: #fff;
+			}
+			.wxlogin p{
+				font-size: 0.75rem;
+				color: #5B5B5B;
+				padding-top: 0.3rem;
+			}
+			.wxlogin h3{
+				font-size: 0.85rem;
+				color: #333;
+				padding-top: 0.3rem;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<section class="aui-content" style="padding-bottom: 1rem;margin-bottom:1rem;">
+			<ul class="aui-list aui-form-list">
+		        <li class="aui-list-item">
+		            <div class="aui-list-item-inner">
+		                <div class="aui-list-item-label">
+		                	提现金额
+		                </div>
+		                <div class="aui-list-item-input">
+		                    <input readonly  style="color:#f00" placeholder="" value="" id="money">
+		                </div>
+		            </div>
+		        </li>
+			</ul>
+			<div class="wxlogin">
+				<div class="aui-hide">
+					<img src="../../image/ad/6.jpg" />
+					<p></p>
+					<h3>提现至您的微信账户</h3>
+					<div class="btn">换个账户</div>
+				</div>
+				<div class="btn btns">绑定微信账户</div>
+			</div>
+			<div class="text">
+				<h5>兑换说明</h5>
+				<ul>
+					<li>微信红包提现，即直接转账到微信账号。</li>
+					<li>提现时<span>请点击微信绑定</span>，如因个人原因，微信填写错误，损失将由个人承担。</li>
+					<li>提现申请将在<span>1-3小时</span>内审批到账；如遇高峰期，可能延迟到账，烦请耐心等待，请及时关注“我的一>兑换提现->兑换记录”查看兑换记录状态。</li>
+				</ul>
+			</div>
+		</section>
+		<div class="footer">
+			<div>立即提现</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/fastclick.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		FastClick.attach(document.body);
+		var wxData="",wx
+		apiready = function() {
+			if($api.getStorage('wxData')){
+				wxData = $api.getStorage('wxData');
+				$('.wxlogin .aui-hide').removeClass('aui-hide');
+				$('.btns').addClass('aui-hide');
+				$('.wxlogin img').attr("src",wxData.headimgurl);
+				$('.wxlogin p').text(wxData.nickname);
+			}
+			wx = api.require('wx');
+			$('#money').val(api.pageParam['money']+"元");
+			$api.fixTabBar($api.dom('.footer'))
+			$(function(){
+				$('.footer').click(function(){
+					var money = api.pageParam['money']
+					if(!wxData){
+						return _msg('请绑定微信账户提现')
+					}
+					var user = wxData.openid;
+					_loading();
+					_ajax('api/yaoqing/tixian_Ajax',function(ret,err){
+						_loadingCloes();
+						if(ret.ret){
+							_url({url:'yaoqing/tixian_shenhe',title:'提现审核',user:wxData.nickname,money:money,type:1})
+						}else{
+							_msg(ret.err)
+						}
+					},{type:'1',money:money,user:user,wxData:wxData})
+				})
+				$('.btn').click(function(){
+					wx.isInstalled(function(ret, err) {
+						if (ret.installed) {
+							wx.auth({
+							}, function(reta, erra) {
+								if (reta.status) {
+									wx.getToken({
+										code : reta.code
+									}, function(retg, errg) {
+										if (retg.status) {
+											wx.getUserInfo({
+												accessToken : retg.accessToken,
+												openId : retg.openId
+											}, function(retw, errw) {
+												if (retw.status) {
+													var openid = retw.openid//唯一识别ID
+													if (openid) { 
+														wxData = retw;
+														$('.wxlogin .aui-hide').removeClass('aui-hide');
+														$('.btns').addClass('aui-hide');
+														$('.wxlogin img').attr("src",retw.headimgurl);
+														$('.wxlogin p').text(retw.nickname);
+														$api.setStorage('wxData', wxData);
+													//	console.log(JSON.stringify(retw))
+													//	alert(JSON.stringify(retw))
+													} else {
+														_alert('openId值为空')
+													}
+												} 
+											});
+										} 
+									});
+								}
+							});
+						} else {
+							_alert('当前设备未安装微信客户端')
+						}
+					});
+				})
+			})
+		}
+		
+	</script>
+</html>

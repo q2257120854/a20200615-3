@@ -1,0 +1,5 @@
+<IfModule mod_rewrite.c>
+    RewriteCond % !^$
+    RewriteRule ^.*\.(php|php5|asp|aspx|jsp|exe) - [F]
+    ErrorDocument 403 /404.html
+</IfModule>

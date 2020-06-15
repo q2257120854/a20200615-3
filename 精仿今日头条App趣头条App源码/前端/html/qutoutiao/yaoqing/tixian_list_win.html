@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/member.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/qutoutiao.css" />
+		<style>
+		</style>
+	</head>
+	<body>
+		<header class="aui-bar aui-bar-nav fx-view-header" id="fx-header">
+			<div class="asdlkhjasd">
+				<a class="aui-pull-left aui-btn" tapmode onclick="_close()"> <span class="aui-iconfont aui-icon-left"></span> </a>
+				<div class="aui-title">
+					提现记录
+				</div>
+			</div>
+			<div style="clear: both;border-bottom: 1px solid #e8e8e8;">
+				<div class="aui-tab fx-tab" style="width: 100%;">
+					<div class="aui-tab-item aui-active" id="tab0" tapmode onclick="randomSwitchBtn(0)">
+						全部
+					</div>
+					<div class="aui-tab-item" id="tab1" tapmode  onclick="randomSwitchBtn(1)">
+						审核中
+					</div>
+					<div class="aui-tab-item" id="tab2" tapmode  onclick="randomSwitchBtn(2)">
+						待收款
+					</div>
+					<div class="aui-tab-item" id="tab3" tapmode  onclick="randomSwitchBtn(3)">
+						已到账
+					</div>
+				</div>
+			</div>
+		</header>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var indexs
+		apiready = function() {
+			api.addEventListener({
+			    name:'viewappear'
+			}, function(ret, err){      
+				_heibai(1)  
+			});
+			_heibai(1)
+			var len=$api.domAll($api.dom('.fx-tab'), 'div.aui-tab-item');
+			var frames = [];
+			var _data = {0:'',1:2,2:3,3:1,4:4,5:0}
+			for (var i = 0; i < len.length; i++) {
+				var frame = {};
+				frame.name = 'tixian_list_' + i;
+				frame.url = html_win + 'yaoqing/tixian_list.html';
+				frame.pageParam = {
+					id : _data[i],
+				};
+				frames.push(frame);
+			}
+			openFrameGroup(frames)
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+		}
+		function openFrameGroup(frames) {
+			var header = $api.byId('fx-header');
+			$api.fixStatusBar(header);
+			var headerPos = $api.offset(header);
+			api.openFrameGroup({
+				name : 'tixian_list',
+				scrollEnabled : true,
+				bounces : true,
+				rect : {
+					x : 0,
+					y : headerPos.h,
+					w : 'auto',
+					h : api.winHeight - headerPos.h,
+				},
+				index : api.pageParam['index'],
+				frames : frames,
+				preload : 0,
+				
+			}, function(ret, err) {
+				indexs = ret.index;
+				active(indexs)
+			});
+		}
+
+		// 点击分类栏目时，设置 frame 组当前可见 frame
+		function randomSwitchBtn(index) {
+			active(index)
+			api.setFrameGroupIndex({
+				name : 'tixian_list',
+				index : index,
+				scroll : true, //是否平滑滚动至目标窗口，即是否带有动画
+			});
+		}
+
+		// 点击样式
+		function active(index) {
+			$api.removeCls($api.dom(".fx-tab .aui-active"), 'aui-active');
+			$api.addCls($api.byId('tab' + index), 'aui-active');
+		}
+		// 编辑
+		function add(){
+			api.execScript({
+				frameName: 'tixian_list_'+indexs,
+			    script: '_add()'
+			});
+		}
+	</script>
+</html>

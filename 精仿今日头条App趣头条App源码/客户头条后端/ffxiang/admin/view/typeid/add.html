@@ -1,0 +1,178 @@
+ {include file="public/header" /}
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content">
+    <div class="row">
+        <form class="form-horizontal" method="post">
+            <div class="col-sm-12">
+                <div class="tabs-container">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true">栏目设置</a>
+                        </li>
+                        <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">其他设置</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane active">
+                            <div class="ibox-content">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">位置：</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" name="tid">
+                                            <option value="0">顶级栏目</option>
+                                            {php}
+                                            if(isset($name)){
+                                                $typeidname=$name['tid'];
+                                            }else{
+                                                $typeidname='';
+                                            }
+                                            {/php}
+                                            {volist name='typeid' id='v'} 
+                                                <option value="{$v.id}" {eq name="v.id" value="$typeidname" }selected{/eq}>{:str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $v['depth'])}{gt name="$v['depth']" value="0"}┠&nbsp;&nbsp;{/gt}{$v.title}</option>
+                                            {/volist}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">栏目名称：</label>
+                                    <div class="col-sm-9">
+                                        <input name="title" type="text" class="form-control" value="{present name="name"}{$name.title}{/present}">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">关键词：</label>
+                                    <div class="col-sm-9">
+                                        <input name="keywords" type="text" class="form-control" value="{present name="name"}{$name.keywords}{/present}">
+                                 
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">栏目描述：</label>
+                                    <div class="col-sm-9">
+                                        <textarea name="description" class="form-control">{present name="name"}{$name.description}{/present}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">内容简介(单页)：</label>
+                                    <div class="col-sm-9">
+                                        <script type="text/plain" id="content" name="content" style="width:100%;height:240px;">{present name="name"}{$name.content}{/present}</script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+             
+                        <div id="tab-2" class="tab-pane">
+                            <div class="ibox-content">
+                                <div class="form-group" style="display: none;">
+                                    <label class="col-sm-2 control-label">封面模板：</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" name="template_index">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group" style="display: none;">
+                                    <label class="col-sm-2 control-label">列表模板：</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" name="template_list">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group" style="display: none;">
+                                    <label class="col-sm-2 control-label">内容模板：</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" name="template_view">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group" style="display: none;">
+                                    <label class="col-sm-2 control-label">频道设置：</label>
+                                    <div class="col-sm-9">
+                                        <div class="radio i-checks">
+                                            <label>
+                                                <input type="radio" value="1" name="isdefault" {present name="name"}{eq name="name.isdefault" value="1"}checked{/eq}{/present}>
+                                                封面频道
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="2" name="isdefault" {present name="name"}{eq name="name.isdefault" value="2"}checked{/eq}{else /}checked{/present}>列表页
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="3" name="isdefault" {present name="name"}{eq name="name.isdefault" value="3"}checked{/eq}{/present}>单页
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" >
+                                    <label class="col-sm-2 control-label">隐藏显示：</label>
+                                    <div class="col-sm-9">
+                                        <div class="radio i-checks">
+                                            <label>
+                                                <input type="radio" value="1" name="hide" {present name="name"}{eq name="name.hide" value="1"}checked{/eq}{else /}checked{/present}>显示栏目
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="0" name="hide" {present name="name"}{eq name="name.hide" value="0"}checked{/eq}{/present}>隐藏栏目
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">排序：</label>
+                                    <div class="col-sm-9">
+                                        <input name="des" type="text" class="form-control" value="{present name="name"}{$name.des}{else }50{/present}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">图片图标：</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input name="image" type="text"  id="image" class="form-control" value="{present name="name"}{$name.image}{/present}">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-primary" id="tubiao">上传图片</button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">跳转网址：</label>
+                                    <div class="col-sm-9">
+                                        <input name="url" type="text" class="form-control" value="{present name="name"}{$name.url}{/present}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{include file="public/footer" /}
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".i-checks").iCheck({
+        checkboxClass: "icheckbox_square-green",
+        radioClass: "iradio_square-green",
+    })
+    // $('#urlid').click(function(){
+    //     if ($(this).is(':checked')) {
+    //         $('#urltext').removeAttr("disabled");
+    //     }else{
+    //         $('#urltext').attr({"disabled":"disabled"});
+    //     }
+    // })
+});
+function msg(){
+    layer.msg("上传成功")
+}
+</script>
+{include file="public/bottom" /}
+
+<!-- 加载编辑器的容器 -->
+{:ueditor('content')}
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

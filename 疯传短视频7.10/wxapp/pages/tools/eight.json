@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "gracePage": "../../graceUI/components/gracePage",
+        "graceFlex": "../../graceUI/components/graceFlex",
+        "txv-video": "plugin://wxa75efa648b60994b/video"
+    },
+    "navigationBarTitleText": "八字精批"
+}

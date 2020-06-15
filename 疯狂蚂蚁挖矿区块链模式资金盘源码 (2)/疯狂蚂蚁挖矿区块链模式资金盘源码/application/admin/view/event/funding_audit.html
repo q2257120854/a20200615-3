@@ -1,0 +1,70 @@
+{extend name="common/world"} {block name="title"}创业众筹{/block} {block name="style"}
+<style type="text/css">
+</style>
+{/block} {block name="container"}
+<div class="d-flex">
+    <div class="btn-list">
+        <a href="/admin/event/funding.html" class="btn btn-secondary">内排中心</a>
+        <a href="/admin/event/funding_audit.html" class="btn btn-primary">内排审核</a>
+        <a href="/admin/event/funding_log.html" class="btn btn-secondary">内排记录</a>
+    </div>
+</div>
+<form method="get" class="mt-3">
+    <div class="row">
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">用户账号</span>
+                </div>
+                <input type="text" class="form-control" name="username" value="{$Think.get.username}" />
+            </div>
+        </div>
+
+        <div class="col-lg-2 mb-3">
+            <button class="btn btn-primary w-100" type="submit">立即查询</button>
+        </div>
+    </div>
+</form>
+<div class="card mt-3">
+    <div class="card-body p-0">
+        <table class="table table-hover table-outline table-vcenter card-table">
+            <thead>
+                <tr>
+                    <th>用户</th>
+                    <th>支付金额</th>
+                    <th>支付记录</th>
+                    <th>当前币价</th>
+                    <th>支付时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {volist name="logs" id="log"}
+                    <tr>
+                        <td>{$log.username}</td>
+                        <td>{$log.money|money}</td>
+                        <td><img src="{$log.image}" width="120px"></td>
+                        <td>{$log.price|money}</td>
+                        <td>{$log.create_at}</td>
+                        <td>
+                            {switch name="$log.status"}
+                            {case 1}
+                            <span style="color:#467fcf">已通过</span>
+                            {/case}
+                            {case 2}
+                            <span style="color:red">已拒绝</span>
+                            {/case}
+                            {default /}
+                            <a href="/admin/event/successfa.html?id={$log.id}" class="btn btn-secondary btn-sm">通过</a>
+                            <a href="/admin/event/refusefa.html?id={$log.id}" class="btn btn-secondary btn-sm">拒绝</a>
+                            {/switch}
+                        </td>
+                    </tr>
+                {/volist}
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">{$logs|raw}</div>
+</div>
+{/block}
+{block name="script"}{/block}

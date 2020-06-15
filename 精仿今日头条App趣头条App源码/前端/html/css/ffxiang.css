@@ -1,0 +1,215 @@
+/*
+// +----------------------------------------------------------------------
+// | 源码来自锦尚中国源码论坛，仅供学习研究
+// +----------------------------------------------------------------------
+// | 新闻资讯APP系统 V1.0版
+// +----------------------------------------------------------------------
+// | 锦尚中国
+// +----------------------------------------------------------------------
+// | 请务必尊重知识产权 严格保证不恶意传播产品源码、不得直接对产品本身
+// | 进行二次转售或倒卖、不得对产品进行简单包装后声称为自己的产品等。
+// | 否则我们有权利收回产品，并根据事态轻重追究相应法律责任。
+// +----------------------------------------------------------------------
+// | Copyright (c) 2018-2019 http://www.baidu.com/ All rights reserved.
+// +----------------------------------------------------------------------
+*/
+
+html,body{
+	 -webkit-touch-callout:none;
+	-webkit-text-size-adjust:none;
+	-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+	-webkit-user-select:none;
+	width: 100%;
+	height: 100%;
+	background: #fff important;
+}
+ 
+#fx-header{
+	margin-bottom: 38px;
+}
+.fx-right-jia{
+	position: absolute;
+	height: 35px;
+	width: 45px;
+	background: #F6F5F4;
+	right: 0px;
+	line-height: 1.25rem;
+}
+.fx-right-jia i{
+	color:#222222 !important;
+	line-height: 35px !important;
+	padding-right:10px;
+}
+#fx-header,.aui-searchbar{
+	background-color: #D43D3D;
+	height: 47px;
+}
+.fx-header-logo .aui-icon-left{
+	color: #D43D3D;
+}
+.fx-header-logo{
+	background: #D43D3D url("../image/aat.9.png") left no-repeat;
+	background-size:auto 100%;
+ 	height: 47px;
+	overflow: hidden;
+}
+.aui-bar-nav .aui-iconfont{
+	font-size:0.7rem;
+	font-size: #999999;
+}
+
+/*.fx-footer div img{
+	display: block;
+	text-align: center;
+	margin:0 auto ;
+	padding-bottom:2px;
+	padding-top:2px;
+}
+.fx-footer div.w1 img{
+	width: 25px;
+}
+.fx-footer div.w2 img{
+	width: 20px;
+}
+.fx-footer div.w3 img{
+	width: 20px;
+}
+.fx-footer div.w4 img{
+	width: 20px;
+}
+.aui-bar-tab .aui-active{
+	color: #D43D3D;
+}*/
+.fx-icon-plus{
+	border:1px solid #C3C3C3;
+	border-radius: 5px;
+	height: 12px;
+	text-align: center;
+	font-size: 0.4rem;
+	padding:3px 3px 0px 3px;
+	color: #999;
+	font-weight: bold;
+	margin-right: 10px;
+}
+.aui-list .aui-list-item-media{
+	width: 6.1rem;
+	height: 5.0rem;
+}
+.aui-list .aui-list-item-media img{
+	height: 4.0rem;
+}
+.aui-list .aui-list-item-text{
+	padding-top: 5px;
+}
+.fx-article-list{
+	margin-left: 15px;
+	margin-right: 15px;
+	border-top: 0px !important;
+}
+.aui-list .aui-list-item{
+	padding-left: 0px;
+}
+
+.aui-media-list .aui-list-item-inner{
+	padding-bottom:0px;
+
+}
+.fx-article-images{
+	padding-top:8px;
+	padding-bottom:8px;
+}
+.aui-list .aui-list-item-media,.fx-item-inner{
+	padding-right:0px !important;
+	margin-right: 0px !important;
+}
+.fx-article-images div,.fx-article-images div img{
+	height: 4.0rem;
+}
+.fx-video-em{
+	position: absolute;	
+	bottom: 15px;
+	right: 5px;
+	padding:0px 10px 2px 7px;
+	display: block;
+	background: url('../image/article-video.png');
+	background-size: 100% 100%;
+}
+.fx-video-em em{
+	color:#fff;
+	font-size: 0.5rem;
+	padding-left: 10px;
+}
+.aui-list:first-child{
+	background:none  !important;
+}
+.fx-title{
+	font-size: 0.85rem !important;
+	font-weight: 400
+}
+.fx-article-images{
+	position: relative;
+}
+.fx-article-images em{
+	position:absolute;
+	right: 0.3rem; 
+	bottom: 0.4rem;
+	color: #FFFFFF;
+	font-size: 0.5rem;
+	background:rgba(0, 0, 0, 0.55);
+	border-radius: 0.4rem;
+	padding: 0.1rem 0.3rem
+}
+.fx-video-content{
+	position: relative;
+}
+.fx-video-img{
+	width: 100%;
+	height: 11.5rem;
+}
+i.fx-video-bofang{
+	position: absolute;
+	background:url("../image/video-bofang.png");
+	background-size:100%;
+	height: 40px;
+	width: 40px;
+	top:50%;          
+    left:50%;
+    margin-left: -20px;
+    margin-top: -20px;
+}
+em.fx-video-em{
+	position:absolute;
+	bottom:0.5rem;
+	right:0.5rem;;
+	color: #fff;
+	background: rgba(0,0,0,.3);
+	pointer-events:auto;
+	border-radius: 1rem;
+	padding: 2px 7px;
+	font-size: 0.5rem;
+}
+.fx-ad{
+	border: 1px solid #2A90D7;
+	color: #2A90D7;
+	border-radius: 0.2rem;
+	font-size: 0.55rem;
+	padding: 0 0.2rem;
+}
+.sx-bendichengshi{
+	text-align: center;
+	border-bottom: 0.05rem solid #e8e8e8;
+	padding: 0.25rem 0;
+	font-size: 0.65rem;
+	display: none;
+}
+.sx-bendichengshi i{
+	color: #D43D3D;
+	font-weight: bold;
+}
+#sx-shoudongdingwei{
+	text-align: center;
+	font-size: 0.7rem;
+	color: #f00;
+	margin-top: 50%;
+	display: none
+}

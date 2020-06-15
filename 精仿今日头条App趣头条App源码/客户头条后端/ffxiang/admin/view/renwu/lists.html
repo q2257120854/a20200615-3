@@ -1,0 +1,76 @@
+ {include file="public/header" /}
+ <style type="text/css">
+     #title span{ float: right; }
+ </style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        {include file="public/tophead" /}
+        {include file="public/top" /}
+        <div class="ibox-content">
+        {include file="public/topsection"}
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <div class="example">
+                        <table data-toggle="table" data-striped="false">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>排序</th>
+                                    <th>分组</th>
+                                    <th>标题</th>
+                                    <th>奖励</th>
+                                    <th>描述</th>
+                                    <th>链接</th>
+                                    <th>状态</th>
+                                    <th>管理</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {php}$hide=array('0'=>'隐藏','1'=>'显示');{/php}
+                                {volist name="data" id="v"}
+                                <tr id="id{$v.id}" class="class">
+                                    <td>{$v.id}</td>
+                                    <td>{$v.des}</td>
+                                    <td>{$v.title}</td>
+                                    <td id="title">{$v.name}</td>
+                                    <td>{$v.money}</td>
+                                    <td>{$v.text}</td>
+                                    <td>{$v.url}</td>
+
+                                    <td id="hide">{$hide[$v['hide']]}</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a onclick="add('{:url('add',['id'=>$v['id'],'typeid'=>$v['typeid'],'url'=>-1])}')">修改</a>
+                                                </li>
+                                                {gt name="v.id" value="6"}
+                                                <li class="divider"></li>
+                                                <li><a onclick="del({$v.id})">删除</a>
+                                                </li>
+                                                {/gt}
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<script type="text/javascript">
+$(document).ready(function(){
+});
+function del(id){
+        swal_del(id,"{:url('del')}")
+}
+</script>

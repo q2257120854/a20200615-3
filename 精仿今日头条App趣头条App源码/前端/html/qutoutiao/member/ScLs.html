@@ -1,0 +1,451 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/ffxiang.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/fx-weitoutiao.css" />
+		<style>
+			.aui-list-item-inner{
+				position: relative;
+			}
+			.aui-radio{
+				position: absolute;
+				top:38%;
+				left: 0px;
+				display: none;
+			}
+			#del{
+				position: fixed;
+				bottom: 0px;
+				width: 100%;
+				background: #fff;
+				padding: 0.65rem 0.75rem;
+				color: #999;
+				display: none;
+				z-index: 99999;
+				border-top: 1px solid #e8e8e8;
+			}
+			#del .aui-pull-left{
+				color: #333;
+			}
+			#del span{
+				color: #D43D3D
+			}
+			.sx-radio{
+				z-index: 999;
+			}
+			.sx-radio .aui-radio{
+				z-index: 9999
+			}
+		</style>
+	</head>
+	<body>
+		<script id="fx-list" type="text/x-dot-template">
+			{{ for(var i=0,len=it.data.length; i < len; i++) { }}
+			{{? it.data[i].weitoutiao==2 || it.data[i].weitoutiao==1}}
+			<div class="aui-card-list aui-border-b sx-radio" id="id{{= it.data[i].id }}" data-images="{{= it.data[i].imagesPro }}">
+				<input class="aui-radio" type="checkbox" id="add{{= it.data[i].id }}" value="{{= it.data[i].id }}">
+				<div id="sx-radio-right" onclick="radio({{= it.data[i].id }})"> 
+					<div class="aui-card-list-header aui-card-list-user">
+						<div class="aui-card-list-user-avatar">
+							<img id="ffxiangImgCache" ffxiang-src="{{= it.data[i].user.img }}" src="../image/touxiang.png">
+						</div>
+						<div class="aui-card-list-user-name">
+							<div>
+								{{= it.data[i].user.username }}
+							</div>
+							{{? $api.getStorage('user') && it.data[i].uid==$api.getStorage('user').id}} 
+							<span  class="aui-iconfont aui-icon-more" Tapmode onclick="del({{= it.data[i].id }})" style="font-size: 1rem"></span>
+							{{?}}
+						</div>
+						<div class="aui-card-list-user-info">
+							{{= it.data[i].create_time }}
+						</div>
+					</div>
+					<ul class="aui-list aui-media-list fx-weitoutiao-images">
+						<li class="aui-list-item">
+							{{? it.data[i].mychannel == 3}}
+							<div class="aui-list-item-inner">
+								<div class="aui-list-item-title fx-weitoutiao-content" tapmode onclick="urlsaweix({id:{{= it.data[i].id }},videoUrl:'{{= it.data[i].video }}',title:'{{= it.data[i].title }}'},'videoView_win')">
+									{{= it.data[i].title }}
+								</div>
+								<div class="aui-row aui-row-padded">
+									<div class="aui-col-xs-12" tapmode onclick="urlsaweix({id:{{= it.data[i].id}},videoUrl:'{{= it.data[i].video }}',title:'{{= it.data[i].title }}'},'videoView_win')">
+										<img id="ffxiangImgCache" ffxiang-src="{{= it.data[i].image }}" src="../image/loadingImage.png" class="fx-video-img">
+		 								<i class="fx-video-bofang"></i>
+									</div>
+								</div>
+							</div>
+							{{??}}
+							<div class="aui-list-item-inners">
+								{{? it.data[i].description }}
+								<div class="aui-list-item-title fx-weitoutiao-content" tapmode onclick="urlsa({id:{{= it.data[i].id }},qian:1,fan:1},'view_win')">
+									{{= it.data[i].description }}
+								</div>
+								{{?}}
+								{{? it.data[i].images }}
+								<div class="aui-row aui-row-padded">
+									{{= it.data[i].images }}
+								</div>
+								{{?}}
+							</div>
+							{{?}}
+						</li>
+					</ul>
+					<div class="aui-card-list-footer aui-margin-t-10">
+						<div class="{{? it.data[i].zanUser}} pingZanColor{{?}}" {{? it.data[i].zanUser}} data-id='1'{{?}} Tapmode onclick="pingZan_xias(this,{{= it.data[i].id}} ,{{= it.data[i].zan}})">
+							<i class="aui-iconfont aui-icon-laud aui-margin-r-5"></i> {{= it.data[i].zan }}
+						</div>
+						<div tapmode onclick="urlsa({aid:{{= it.data[i].id }},pingNum:{{= it.data[i].pingNum }}},'view_ping_win')">
+							<i class="aui-iconfont aui-icon-comment aui-margin-r-5"></i> {{= it.data[i].pingNum }}
+						</div>
+						{{? it.data[i].mychannel == 3}}
+						<div tapmode onclick="urlsaweix({id:{{= it.data[i].id }},videoUrl:'{{= it.data[i].video }}',title:'{{= it.data[i].title }}'},'videoView_win')">
+							<i class="aui-iconfont aui-icon-display aui-margin-r-5"></i> {{= it.data[i].click }}
+						</div>
+						{{??}}
+						<div tapmode onclick="urlsa({id:{{= it.data[i].id }},qian:1,fan:1},'view_win')">
+							<i class="aui-iconfont aui-icon-display aui-margin-r-5"></i> {{= it.data[i].click }}
+						</div>
+						{{?}}
+					</div>
+				</div>
+			</div>
+			{{??}}
+				{{? it.data[i].mychannel == 1}}
+				{{? it.data[i].imagesArticleList.length >= 3}}
+				<li class="aui-list-item sx-radio">
+					<input class="aui-radio" type="checkbox" id="add{{= it.data[i].id }}" value="{{= it.data[i].id }}" tapmode onclick="urlsa_this({id:{{= it.data[i].id }},qian:1,fan:0},'view_win')">
+					<div class="aui-list-item-inner fx-item-inner" tapmode onclick="urlsa({id:{{= it.data[i].id }},qian:1,fan:0},'view_win')">
+						<div class="aui-list-item-title fx-title aui-ellipsis-2">{{= it.data[i].title }}</div>
+							<div class="aui-row aui-row-padded aui-margin-t-5 fx-article-images">
+								{{ for(var is=0; is < 3; is++) { }}
+								<div class="aui-col-xs-4"><img id="ffxiangImgCache" ffxiang-src="{{= it.data[i].imagesArticleList[is]}}?imageView2/1/w/192/h/124" src="../image/loadingImage.png"></div>
+								{{}}}
+							</div>
+						</div>
+						<div class="aui-info  aui-padded-t-5 aui-padded-r-15  fx-item-inner">
+							<div class="aui-info-item aui-font-size-12">
+							<span class="">{{= it.data[i].source}}</span>
+							<span class="aui-margin-l-10">{{= it.data[i].pingNum}}评价</span>
+							<span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+						</div>
+					</div>
+				</li>
+				{{?? it.data[i].image}}
+				<li class="aui-list-item sx-radio">
+					<input class="aui-radio" type="checkbox" id="add{{= it.data[i].id }}" value="{{= it.data[i].id }}" tapmode onclick="urlsa_this({id:{{= it.data[i].id }},qian:1,fan:0},'view_win')">
+					<div class="aui-media-list-item-inner" tapmode onclick="urlsa({id:{{= it.data[i].id }},qian:1,fan:0},'view_win')">
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title aui-ellipsis-2 fx-title">{{= it.data[i].title }}</div>
+							</div>
+							<div class="aui-info aui-padded-t-5 aui-padded-b-0" style="padding-top: 5px">
+								<div class="aui-info-item aui-font-size-12 fx-index-infp-span">
+									<span class="">{{= it.data[i].source}}</span>
+									<span class="aui-margin-l-10">{{= it.data[i].pingNum}}评价</span>
+									<span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+								</div>
+							</div>
+						</div>
+						<div class="aui-list-item-media">
+							<img id="ffxiangImgCache" ffxiang-src="{{= it.data[i].image }}" src="../image/loadingImage.png">
+						</div>
+					</div>
+				</li>
+				{{??}}
+				<li class="aui-list-item sx-radio">
+					<input class="aui-radio" type="checkbox" id="add{{= it.data[i].id }}" value="{{= it.data[i].id }}" tapmode onclick="urlsa_this({id:{{= it.data[i].id }},qian:1,fan:0},'view_win')">
+	                <div class="aui-media-list-item-inner" tapmode onclick="urlsa({id:{{= it.data[i].id }},qian:1,fan:0},'view_win')">
+	                    <div class="aui-list-item-inner">
+	                        <div class="aui-list-item-title aui-ellipsis-2 fx-title">{{= it.data[i].title }}</div>
+	                        <div class="aui-list-item-text">
+	                            <p class="aui-ellipsis-2 aui-font-size-14">{{= it.data[i].description }}</p>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="aui-info  fx-item-inner" tapmode onclick="urlsa({id:{{= it.data[i].id }},qian:1,fan:0},'view_win')">
+	                    <div class="aui-info-item aui-font-size-12">
+	                        <span class="">{{= it.data[i].source}}</span>
+							<span class="aui-margin-l-10">{{= it.data[i].pingNum}}评价</span>
+							<span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+	                    </div>
+	                </div>
+	            </li>
+				{{?}}
+				{{?? it.data[i].mychannel == 2}}
+				<!--  图片集-->
+				<li class="aui-list-item sx-radio">
+					<input class="aui-radio" type="checkbox" id="add{{= it.data[i].id }}" value="{{= it.data[i].id }}" tapmode onclick="urlsa_this({id:{{= it.data[i].id }},qian:1,fan:0},'photo_browser')">
+					<div class="aui-list-item-inner fx-item-inner" tapmode onclick="urlsa({id:{{= it.data[i].id }},qian:1,fan:0},'photo_browser')">
+						<div class="aui-list-item-title fx-title aui-ellipsis-2">{{= it.data[i].title }}</div>
+							<div class="aui-row aui-row-padded aui-margin-t-5 fx-article-images">
+								{{= it.data[i].images }}
+							</div>
+						</div>
+						<div class="aui-info  aui-padded-t-5 aui-padded-r-15  fx-item-inner">
+							<div class="aui-info-item aui-font-size-12">
+							<span class="">{{= it.data[i].source}}</span>
+							<span class="aui-margin-l-10">{{= it.data[i].pingNum}}评价</span>
+							<span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+						</div>
+					</div>
+				</li>
+				{{?? it.data[i].mychannel == 3}}
+				<!--视频-->
+				<li class="aui-list-item sx-radio">
+					<input class="aui-radio" type="checkbox" id="add{{= it.data[i].id }}" value="{{= it.data[i].id }}" tapmode onclick="urlsa_this({id:{{= it.data[i].id }},videoUrl:'{{= it.data[i].video }}',title:'{{= it.data[i].title }}'},'videoView_win')">
+					<div class="aui-list-item-inner fx-item-inner">
+						<div class="aui-list-item-title fx-title aui-ellipsis-2">{{= it.data[i].title }}</div>
+					</div>
+					<div class="aui-card-list-content fx-video-content aui-padded-b-10" tapmode onclick="urlsa({id:{{= it.data[i].id }},videoUrl:'{{= it.data[i].video }}',title:'{{= it.data[i].title }}'},'videoView_win')">
+						<img id="ffxiangImgCache" ffxiang-src="{{= it.data[i].image }}" src="../image/load-video.png" class="fx-video-img">
+						<i class="fx-video-bofang"></i>
+						<em class="fx-video-em aui-margin-b-5">{{? it.data[i].videodate}}{{= it.data[i].videodate }}{{?}}</em>
+					</div>
+					<div class="aui-info  aui-padded-t-0 aui-padded-r-15  fx-item-inner">
+						<div class="aui-info-item aui-font-size-12">
+							{{? it.data[i].source}}<span class="">{{= it.data[i].source}}</span>{{?}}
+							<span {{? it.data[i].source}}class="aui-margin-l-10"{{?}}>{{= it.data[i].pingNum}}评价</span>
+							<span class="aui-margin-l-10">{{= it.data[i].create_time}}</span>
+						</div>
+					</div>
+				</li>
+				{{?}}
+			{{?}}
+			{{ } }}
+			 
+		</script>
+		<div class="aui-content" style="margin-bottom: 45px; background: #fff;">
+			 
+			<ul class="aui-list aui-media-list fx-article-list fx-weitoutiao-list" id="fx-view" style="border-top: 0px"></ul>
+		</div>
+		<div id="del">
+			<div class="aui-pull-left" tapmode onclick="_addDel()">关闭</div>
+			<div class="aui-pull-right" tapmode onclick="ajaxdel()"><span>删除</span></div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/fastclick.js"></script>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../../script/doT.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var add=0; // 0 未打开    1打开
+		apiready = function() {
+			FastClick.attach(document.body);
+			// 下拉刷新
+			_shangla(function(ret,err){
+				_lists('api/member/shoucangList/type/'+api.pageParam['id'], 1, 1);			
+			})
+			// 监听滚动
+			api.addEventListener({
+				name : 'scrolltobottom',
+				extra : {
+					threshold : threshold
+					 //设置距离底部多少距离时触发，默认值为0，数字类型
+				}
+			}, function(ret, err) {
+				if (heigutgao == 1) {// heigutgao=1开启执行 0停止执行   防止连续滚动，等加载数据之后在进行滚动。
+					pagenum += 1
+					_lists('api/member/shoucangList/type/'+api.pageParam['id'], pagenum);
+				}
+			});
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+		};
+		// 关注
+		function guanzhu(jgo, uid) {
+			if(!_user){
+				_login();
+				return;
+			}
+			_loading()
+			var text=$(jgo).text();
+			// 1关注 2取消关注
+			var type = $(jgo).data('id')
+			if (type == 1) {
+				$(jgo).text('关注中');
+				_ajax('api/member/guanzhu/',function(ret,err){
+					_loadingCloes()
+					if(ret.ret){
+						$(jgo).text('已关注')
+						$(jgo).data('id', 2)
+						$(jgo).addClass('fx-weitoutiao-guanzhuHivdeo')
+					}else{
+						$(jgo).text(text);
+						_msg(ret.err)
+					}
+				},{gz_uid:uid})
+			} else if (type == 2) {
+				$(jgo).text('取消中');
+				_ajax('api/member/guanzhuDel/',function(ret,err){
+					_loadingCloes()
+					if(ret.ret){
+						$(jgo).text('关注')
+						$(jgo).data('id', 1)
+						$(jgo).removeClass('fx-weitoutiao-guanzhuHivdeo');
+					}else{
+						$(jgo).text(text);
+						_msg(ret.err)
+					}
+				},{gz_uid:uid})
+			} 
+		}
+		// 赞
+		function pingZan_xia(obj, aid,num) {
+			if(!_user){
+				_login();
+				return;
+			}
+			var type = $(obj).data('id');
+			if (!type) {
+				$(obj).addClass('pingZanColor');
+				$(obj).data('id', '1');
+				$(obj).html('<i class="aui-iconfont aui-icon-laud aui-margin-r-5"></i> ' + (num + 1))
+				_ajax('api/member/zancai/',function(ret,err){
+					if(ret){
+						if(ret.err){
+							_msg(ret.err)
+						}
+					}
+				},{aid:aid,type:1})
+			} else {
+				_msg('您已经赞过')
+			}
+		}
+		// 打开图片
+		function img(id){
+			if(add==0){
+				_url({id:id},'view_win')
+			}else{
+// 
+//				var adds=$('#add'+id)
+//				if (adds.prop('checked')) {
+//					adds.prop("checked", false);
+//				}else{
+//					adds.prop("checked", true);
+//				}
+//				deltongji()
+				//console.log(deltongji())
+			}
+		}
+		function urlsa(data,asdasd){
+			if(add==0){
+				_url(data,asdasd)
+			}else{
+				var adds=$('#add'+data.id)
+				if (adds.prop('checked')) {
+					adds.prop("checked", false);
+				}else{
+					adds.prop("checked", true);
+				}
+				deltongji()
+			}
+		}
+		function urlsa_this(data,asdasd,_this){
+			if(add==0){
+				_url(data,asdasd)
+			}else{
+				var adds=$('#add'+data.id)
+				if (adds.prop('checked')) {
+					adds.prop("checked", true); 
+				}else{ 
+					adds.prop("checked", false);
+				}
+				deltongji()
+			}
+		}
+		// 统计删除
+		function deltongji(){
+			var result = new Array();
+			$(".sx-radio .aui-radio").each(function(){
+				if($(this).prop('checked')){
+					result.push($(this).attr("value"));
+				}
+			});
+			if(result.length){
+				$('#del .aui-pull-right').html('<span>删除('+result.length+')</span>');
+			}else{
+				$('#del .aui-pull-right').text('删除');
+			}
+			return result.join(",");
+		}
+		// 编辑
+		function _add(){
+	 
+			add=1
+			$('.sx-radio .aui-radio').show();
+			$('.sx-radio .aui-list-item-inner').css("margin-left","80px")
+			$('.sx-radio .fx-video-content').css("margin-left","80px")
+			$('.sx-radio #sx-radio-right').css("margin-left","80px")
+			$('#del').show()
+		}
+		// 关闭编辑
+		function _addDel(){
+			add=0
+			$('.sx-radio .aui-radio').hide();
+			$('.sx-radio .aui-list-item-inner').removeAttr('style')
+			$('.sx-radio .fx-video-content').removeAttr('style');
+			$('.sx-radio #sx-radio-right').removeAttr("style")
+			$('#del').hide()
+		}
+		// 删除
+		function ajaxdel(){
+			_ajax('api/member/sclsDel',function(ret,err){
+			//	console.log(JSON.stringify(ret)+JSON.stringify(err))
+				_msg('删除成功')
+				_addDel()
+				api.refreshHeaderLoading();
+			},{id:deltongji(),type:api.pageParam['id']})
+		}
+		function urlsaweix(a,b,c){
+		 
+			if(add==0){
+				_url({id:a,videoUrl:b,title:c},'videoView_win')
+			}else{
+//				var adds=$('#add'+a)
+//				if (adds.prop('checked')) {
+//					adds.prop("checked", false);
+//				}else{
+//					adds.prop("checked", true);
+//				}
+//				deltongji()
+			}
+		}
+		function pingZan_xias(_this,a,b){
+			if(add==0){
+				pingZan_xia(_this,a,b)
+			}else{
+//				var adds=$('#add'+a)
+//				if (adds.prop('checked')) {
+//					adds.prop("checked", false);
+//				}else{
+//					adds.prop("checked", true);
+//				}
+//				deltongji()
+			}
+		}
+		function radio(id){
+			if(add!=0){
+				var adds=$('#add'+id)
+				if (adds.prop('checked')) {
+					adds.prop("checked", false);
+				}else{
+					adds.prop("checked", true);
+				}
+				deltongji()
+			}
+		}
+	</script>
+</html>
+

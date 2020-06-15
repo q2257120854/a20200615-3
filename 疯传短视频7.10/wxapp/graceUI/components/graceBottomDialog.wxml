@@ -1,0 +1,10 @@
+<view catchtap="closeDialog" catchtouchmove="" class="grace-btdialog-shade" style="background:{{background}};" wx:if="{{show}}">
+    <view catchtap="stopFun" class="dialog gdIn" style="padding-bottom:{{isIpx?'68rpx':'0'}}; border-top-left-radius:{{borderRadius}}; border-top-right-radius:{{borderRadius}};">
+        <view class="title">
+            <slot name="btns"></slot>
+        </view>
+        <view catchtap="stopFun" class="content">
+            <slot name="content"></slot>
+        </view>
+    </view>
+</view>

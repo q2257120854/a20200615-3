@@ -1,0 +1,85 @@
+{include file="public/header" /}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<style type="text/css">
+#des,#des input{ width: 40px;text-align:center;}
+#id{ width: 78px; }
+.bs-checkbox{ width: 36px; height: 40px }
+.fixed-table-toolbar .columns,.fixed-table-toolbar .search{margin-left:0px; margin-top: 0px }
+#title span{ float: right; }
+.asdlkjasd{ background: #1ab394; color: #fff}
+</style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        {include file="public/tophead"}
+        {include file="public/top" /}
+        <div class="ibox-content">
+        {include file="public/topsection"}
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <div class="fixed-table-toolbar">
+                        <a class="btn btn-default btn-outline {eq name='type' value=''}asdlkjasd{/eq}" href="{:url('member/records')}">全部记录</a>
+                        <a class="btn btn-default btn-outline {eq name='type' value='-1'}asdlkjasd{/eq}" href="{:url('member/records',['type'=>'-1'])}">操作记录</a>
+                        <a class="btn btn-default btn-outline {eq name='type' value='money'}asdlkjasd{/eq}" href="{:url('member/records',['type'=>'money'])}">余额记录</a>
+                        <a class="btn btn-default btn-outline {eq name='type' value='score'}asdlkjasd{/eq}" href="{:url('member/records',['type'=>'score'])}">积分记录</a>
+                        <a class="btn btn-default btn-outline {eq name='type' value='jingyan'}asdlkjasd{/eq}" href="{:url('member/records',['type'=>'jingyan'])}" >经验记录</a>
+                    </div>
+                    <div class="example">
+                        <form class="form-horizontal" method="post">
+                        <table data-toggle="table">
+                            <thead>
+                                <tr>
+                                    <th data-align="center">uid</th>
+                                     <th>昵称</th>
+                                    <th>说明</th>
+                                    <th>时间</th>
+                                    <th>ip</th>
+                                  <!--   <th>系统</th> -->
+                                   <!--  <th>管理</th> -->
+                                </tr>
+                            </thead> 
+                            <tbody id="form">
+                                {volist name="data" id="v"}
+                                <tr id="id{$v.id}" class="class">
+                                    <td>{$v.uid}</td>
+                                    <td><?php echo _user($v['uid'])['username']?></td>
+                                    <td>{$v.text}</td>
+                                    <td>{$v.time|date='Y-m-d H:i:s',###}</td>
+                                    <td>{$v.ip}</td>
+ <!--                                    <td>{$v.system}</td> -->
+                                    <!-- <td>
+                                        <div class="btn-group">
+                                            <div data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span>
+                                            </div>
+                                            <ul class="dropdown-menu">
+                                                <li><a onClick="del({$v.id})">删除</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td> -->
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                        </form>
+                    </div>
+                </div>  
+            </div>
+            <hr>
+            <div class="row row-lg">
+                <div class="col-sm-12 pages">{$page}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+function del(id){
+    swal_del(id,"{:url('recordsDel')}")
+}
+ 
+</script>
+ <SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

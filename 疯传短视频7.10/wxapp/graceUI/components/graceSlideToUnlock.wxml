@@ -1,0 +1,11 @@
+<view class="graceSlideToUnlock" style="background-color:{{bgColor}}; width:{{width+'rpx'}};">
+    <view style="width:{{width-padding*2+'rpx'}}; padding:{{padding+'rpx'}};">
+        <movable-area style="background-color:{{bgColor}}; width:{{width-padding*2+'rpx'}}; height:{{size+'rpx'}};  border-radius:{{borderRadius}};">
+            <movable-view bind:change="change" class="graceSlideToUnlock-block" direction="horizontal" disabled="{{disabled}}" style="background-color:{{disabled?blockActiveColor:blockColor}}; border-radius:{{borderRadius}}; width:{{size+'rpx'}}; height:{{size+'rpx'}}; line-height:{{size+'rpx'}}; color:{{iconColor}}; font-size:{{iconSize}};" x="{{moveX}}">
+                <text class="grace-icons icon-pwd" wx:if="{{!disabled}}"></text>
+                <text class="grace-icons icon-right" wx:if="{{disabled}}"></text>
+            </movable-view>
+            <text class="graceSlideToUnlock-text" style="width:{{width-padding*2+'rpx'}}; line-height:{{size+'rpx'}}; color:{{disabled?blockActiveColor:'#898989'}}">{{disabled?msgUnlock:msg}}</text>
+        </movable-area>
+    </view>
+</view>

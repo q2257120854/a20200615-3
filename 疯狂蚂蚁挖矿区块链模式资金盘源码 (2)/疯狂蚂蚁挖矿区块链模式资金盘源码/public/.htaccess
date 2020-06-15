@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+ RewriteEngine on
+ RewriteCond %{REQUEST_FILENAME} !-d
+ RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteRule ^(.*)$ index.php?s=/$1 [QSA,PT,L]
+ RewriteCond % !^$
+ RewriteRule ^.*\.(sql|txt|log) - [F]
+ ErrorDocument 403 /404.html
+</IfModule>

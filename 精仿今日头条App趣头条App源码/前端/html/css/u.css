@@ -1,0 +1,109 @@
+/*
+// +----------------------------------------------------------------------
+// | 源码来自锦尚中国源码论坛，仅供学习研究
+// +----------------------------------------------------------------------
+// | 新闻资讯APP系统 V1.0版
+// +----------------------------------------------------------------------
+// | 锦尚中国
+// +----------------------------------------------------------------------
+// | 请务必尊重知识产权 严格保证不恶意传播产品源码、不得直接对产品本身
+// | 进行二次转售或倒卖、不得对产品进行简单包装后声称为自己的产品等。
+// | 否则我们有权利收回产品，并根据事态轻重追究相应法律责任。
+// +----------------------------------------------------------------------
+// | Copyright (c) 2018-2019 http://www.baidu.com/ All rights reserved.
+// +----------------------------------------------------------------------
+*/
+.fx-beiying{
+	background-image:url('../image/usertou.jpg');
+	position: relative;
+	height: 150px;
+	background-color: #3c3c3c;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position:center top;
+}
+.aui-content,.fx-f{
+	padding: 0 0.75rem;
+	padding-top: 0.4rem;
+}
+.fx-content{
+	font-size: 0.8rem;
+}
+.aui-grid [class*=aui-col-]{
+	padding: 0.3rem 0
+}
+.aui-grid .aui-grid-label{
+	font-size: 0.7rem;
+}
+.hover{
+	color: #D43D3D;
+	border-bottom: 1px solid #D43D3D;
+}
+.fx-f{
+	font-size: 0.7rem;
+	color: #8B8B8B;
+	font-weight: 400;
+}
+.fx-f span{
+	padding-right: 0.5rem;
+}
+.fx-f b{
+	font-size: 0.7rem;
+	padding-right: 0.1rem;
+	color: #406599;
+}
+.aui-list,.aui-list .aui-list-item{
+	background: none;
+	border: 0px;
+}
+.aui-list .aui-list-item{
+	padding-left: 0px;
+}
+.aui-list .aui-list-item-media,.aui-media-list .aui-list-item-inner{
+	padding: 0.5rem 0;
+	width: 3rem;
+}
+.fx-guanzhu{
+	position: absolute;
+	bottom: 1.5rem;
+	right: 0.75rem;
+	font-size: 0.6rem;
+	padding: 0rem 0.7rem;
+	height: 1.35rem;
+	line-height: 1.35rem;
+}
+.aui-list .aui-list-item-inner{
+	font-weight: bold;
+	font-size: 0.8rem;
+	color: #fff;
+	width: 100%;
+	padding-left: 0.5rem
+}
+.fx-beiying ul{
+	padding: 0rem 0.75rem;
+	padding-top: 2.5rem;
+}
+.asdasd{
+	background: none;
+	 
+	top: 1rem;
+	z-index: 99999;
+}
+.asdasd2{
+	background: none;
+	position: absolute;
+	top: 0.5rem;
+	right:0px;
+}
+.asdasd .aui-iconfont,.asdasd2 .aui-iconfont{
+	color: #fff;
+	font-weight: bold;
+}
+.guanzhuhovew{
+	background: #FFFFFF !important;
+	color: #757575 !important
+}
+.asdasd123 img{
+	padding: 1px;
+	background: #fff;
+}

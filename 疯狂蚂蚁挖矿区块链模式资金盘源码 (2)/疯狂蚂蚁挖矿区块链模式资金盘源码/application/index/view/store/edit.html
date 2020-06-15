@@ -1,0 +1,79 @@
+{extend name="common/world"}
+{block name="title"}编辑商品{/block}
+{block name="style"}
+<style>
+</style>
+{/block}
+{block name="container"}
+<div class="card edit">
+    <div class="card-header">
+        <div class="card-title f1">编辑宝贝</div>
+    </div>
+    <div class="card-body p-3">
+        <input type="hidden" name="id" value="{$goods.id}" />
+        <div class="form-group">
+            <label class="form-label">宝贝名称</label>
+            <input type="text" class="form-control" name="title" maxlength="30" placeholder="名称：简单明了" value="{$goods.title}" />
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label class="form-label">所属类目</label>
+                    <select name="catalog" class="form-control custom-select">
+                    {volist name="Think.config.hello.store.catalog" id="name"}
+                        {in name="key" value="$Think.config.hello.store.seller.catalog"}
+                            {eq name="goods.catalog" value="$key"}
+                                <option selected="true" value="{$key}">{$name}</option>
+                            {else /}
+                                <option value="{$key}">{$name}</option>
+                            {/eq}
+                        {/in}
+                    {/volist}
+                    </select>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label class="form-label">库存数量</label>
+                    <input type="number" class="form-control" name="stock" maxlength="5" value="{$goods.stock}" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">销售价格</label>
+            <div class="input-group">
+                <input type="text" name="price" class="form-control" placeholder="0.00" value="{$goods.price|money}" />
+                <span class="input-group-append">
+                    <span class="input-group-text">{$Think.config.hello.unit}</span>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-label">宝贝主图</div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" name="image" />
+                <label class="custom-file-label">不想换图这里就不选</label>
+            </div>
+            <div class="preview dimmer mt-3">
+                <div class="loader"></div>
+                <div class="dimmer-content">
+                    <img src="{$goods.image}" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">宝贝详情</label>
+            <script id="editor" name="content" type="text/plain" style="height: 20rem;">{$goods.content|raw}</script>
+        </div>
+    </div>
+    <div class="card-footer text-right">
+        <button type="button" class="btn btn-primary btn-edit">提交更改</button>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" src="/static/js/store.js"></script>
+{/block}

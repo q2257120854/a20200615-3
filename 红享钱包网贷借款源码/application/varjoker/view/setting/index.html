@@ -1,0 +1,131 @@
+{include file="public/header" /}
+<div class="outter-wp">
+    <!--/sub-heard-part-->
+    <!--/set-2-->
+    <div class="set-1">
+        <div class="graph-2 general">
+            <div class="sub-heard-part">
+                <ol class="breadcrumb m-b-0">
+                    <li><a>系统</a></li>
+                    <li class="active">站点设置</li>
+                </ol>
+            </div>
+            <div class="grid-1">
+                <div class="form-body">
+                    <form class="form-horizontal" action="{:url('setting/savesys')}" method="post">
+                        <div class="form-group">
+                            <label for="focusedinput" class="col-sm-2 control-label">站点标题</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control1" name="title" value="{$Think.config.config.title}">
+                            </div>
+                            <div class="col-sm-2">
+                                <!--<p class="help-block">Your help text!</p>-->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="focusedinput" class="col-sm-2 control-label">站点描述</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control1" name="description" value="{$Think.config.config.description}">
+                            </div>
+                            <div class="col-sm-2">
+                                <!--<p class="help-block">Your help text!</p>-->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="focusedinput" class="col-sm-2 control-label">站点域名</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control1" name="domain" value="{$Think.config.config.domain}">
+                            </div>
+                            <div class="col-sm-2">
+                                <!--<p class="help-block">Your help text!</p>-->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="focusedinput" class="col-sm-2 control-label">客服连接</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control1" name="kfurl" value="{$Think.config.config.kfurl}">
+                            </div>
+                            <div class="col-sm-2">
+                                <!--<p class="help-block">Your help text!</p>-->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="focusedinput" class="col-sm-2 control-label">提现最低积分</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control1" name="txjifen" value="{$Think.config.config.txjifen}">
+                            </div>
+                            <div class="col-sm-2">
+                                <!--<p class="help-block">Your help text!</p>-->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="focusedinput" class="col-sm-2 control-label">提现最低金额</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control1" name="txmoney" value="{$Think.config.config.txmoney}">
+                            </div>
+                            <div class="col-sm-2">
+                                <!--<p class="help-block">Your help text!</p>-->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="focusedinput" class="col-sm-2 control-label">ICP备案号</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control1" name="icp" value="{$Think.config.config.icp}">
+                            </div>
+                            <div class="col-sm-2">
+                                <!--<p class="help-block">Your help text!</p>-->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="focusedinput" class="col-sm-2 control-label">网站版权</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control1" name="copyright" value="{$Think.config.config.copyright}">
+                            </div>
+                            <div class="col-sm-2">
+                                <!--<p class="help-block">Your help text!</p>-->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="focusedinput" class="col-sm-2 control-label">是否关闭站点</label>
+                            <div class="col-sm-8">
+
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="switch" class="onoffswitch-checkbox" id="myonoffswitch" onchange="checkField()" {eq name="$Think.config.config.switch" value="2"}checked{/eq}>
+                                        <label class="onoffswitch-label" for="myonoffswitch">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+
+                            </div>
+                            <div class="col-sm-2">
+                                <!--<p class="help-block">Your help text!</p>-->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="focusedinput" class="col-sm-2 control-label">关闭站点说明</label>
+                            <div class="col-sm-8">
+                                <textarea name="switchcontent" data-provide="markdown" rows="15" style="width: 100%;">{$Think.config.config.switchcontent}</textarea>
+                            </div>
+                            <div class="col-sm-2">
+                                <!--<p class="help-block">Your help text!</p>-->
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-default">提交</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    check = document.getElementById('myonoffswitch');
+    function checkField() {
+        if(check.checked){
+            $('#myonoffswitch').val('2');
+        }else{
+            $('#myonoffswitch').val('1');
+        }
+    }
+</script>
+{include file="public/footer" /}

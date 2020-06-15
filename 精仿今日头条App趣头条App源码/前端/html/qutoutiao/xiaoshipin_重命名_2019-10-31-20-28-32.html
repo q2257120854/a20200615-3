@@ -1,0 +1,490 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/xiaoshipin.css" />
+		<style>
+			#sx-img {
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				z-index: 999999999;
+				left: 0;
+				top: 0;
+			}
+			.aui-col-xs-6 em.aui-icon-close{
+				position: absolute;
+				right: 0.5rem;
+				top: 0.5rem;
+				color: #fff;
+				font-weight: bold;
+				font-size: 0.75rem;
+				background: #f00;
+				border-radius: 50%;
+				height: 1.5rem;
+				line-height:1.5rem;
+				width:1.5rem;
+			}
+		</style>
+	</head>
+	<body>
+		<script id="fx-list" type="text/x-dot-template">
+		{{ for(var i=0,len=it.data.length; i < len; i++) { }}
+		{{? it.data[i].mychannel != 99}}
+		<div class="aui-col-xs-6" id="id{{= it.data[i].id }}" data-data='{{= JSON.stringify(it.data[i]) }}' id="id{{= it.data[i].id }}">
+			<img id="ffxiangImgCache" ffxiang-src="{{= it.data[i].image }}" src="../image/kongbai.png" class="sx-imasdasd" tapmode onclick="videodata({{= it.data[i].id }})">
+			<div class="sx-imgtext" tapmode onclick="videodata({{= it.data[i].id }})">
+				<div class="aui-grid-label aui-ellipsis-1">
+					{{= it.data[i].title }}
+				</div>
+				<div class="aui-card-list-footer">
+					<div>
+						<img src="../image/xiaoshipin.png" />
+						{{= it.data[i].click }}次播放
+					</div>
+					<div>
+						{{= it.data[i].zan }}赞
+					</div>
+				</div>
+			</div>
+			{{? uid}}
+				{{? it.data[i].uid}}
+					{{? it.data[i].uid==uid}}
+						<em class="aui-iconfont aui-icon-close" tapmode onclick="video_del({{= it.data[i].id }})"></em>
+					{{?}}
+				{{?}}
+			{{?}}
+		</div>
+		{{?}}
+		{{ } }}
+		</script>
+		<section class="aui-grid fx-list">
+			<div class="aui-row" id="fx-view"></div>
+		</section>
+	</body>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/doT.js"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var playModule, data , typeid=0 , timestamp,MNActionButton,uid,loginis=0;
+		apiready = function() {
+			wodeshipping();
+			timestamp = Date.parse(new Date());
+			timestamp=timestamp/1000
+			playModule = api.require('playModule');
+			playModule.init({
+				background : _image+"xiaoshipinAd.png"
+			});
+			// 下拉刷新
+			_shangla(function(ret, err) {
+				_lists('api/article/lists/mychannel/4/uid/'+uid+'date/'+timestamp, 1, 1);
+			},api.pageParam['id'] ? 0 : 1)
+		 	// 监听滚动
+	    	api.addEventListener({
+				name : 'scrolltobottom',
+				extra : {
+					threshold : threshold //设置距离底部多少距离时触发，默认值为0，数字类型
+				}
+			}, function(ret, err) {
+				if(heigutgao==1){	// heigutgao=1开启执行 0停止执行   防止连续滚动，等加载数据之后在进行滚动。
+					pagenum+=1
+					_lists('api/article/lists/mychannel/4/date/'+timestamp,pagenum);	// 当数据写入成功  把 heigutgao 设置1
+				}
+			});
+			// 监听播放
+			// playEnd(播放结束)，qingxidu(清晰度),xuanji(选集)，download(下载),
+			// collection(收藏),pause(暂停),play(播放),backBtn(小窗口返回按钮),
+			// full(进入全屏按钮),unfull(退出全屏按钮),click(视频区域点击监听)
+			// 播放结束
+			playModule.addEventListener({
+				name : 'playEnd'
+			}, function(ret, err) {
+				if (ret.status) {
+					videoUrl()
+				}
+			});
+			MNActionButton = api.require('MNActionButton');
+			// 监听夜间
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+			api.addEventListener({
+				name : 'viewappear'
+			}, function(ret, err) {
+				wodeshipping()
+			});
+			//应用进入后台事件
+			api.addEventListener({
+				name : 'pause'
+			}, function(ret, err) {
+				playModule.pause();
+				// 关闭全屏
+				api.setFullScreen({
+				    fullScreen: false
+				});
+			});
+			// 应用从后台回到前台事件
+			api.addEventListener({
+				name : 'resume'
+			}, function(ret, err) {
+				playModule.start();
+			});
+		}
+		function videodata(id){
+			var a = $('#id'+id);
+			data=a.data('data')
+			video(data);
+		}
+		var xiaoshipin_img = 0;
+		// 1已打开视频  0未打开视频
+		//　打开视频播放
+		function video(data) {
+			var json = {};
+			var json1 = data;
+			var json2 = {
+				win_index : api.pageParam['id']
+			};
+			json = eval('(' + (JSON.stringify(json1) + JSON.stringify(json2)).replace(/}{/, ',') + ')');
+			data = json;
+			_ajax('api/article/clickAjax/id/'+data.id);
+			xiaoshipin_img = 1
+	 		//console.log(data.video)
+	 		var scalingMode=api.systemType == 'android' ? 4 : 3;
+	 	//	console.log(scalingMode)
+			playModule.play({
+				rect : {
+					x : 0,
+					y : 0,
+					w : api.winWidth,
+					h : api.winHeight
+				},
+				url : data.video,
+				defaultBtn : false, //	设置本次播放是否显示默认自带的播放控制按钮
+				isTopView : false, //	是否显示顶部标题栏
+				title : '', //	不填时标题默认显示url地址
+				enableFull : false, //	本次播放视频是否全屏播放，当为true时将直接全屏播放视频，x,y,w,h,fixedOn,fixed值不会生效。
+				isFullBtn : false, // 	小窗口是否显示进入全屏按钮
+				isBackBtn : false, // 	小窗口是否显示返回按钮
+				scalingMode : scalingMode, // 	1:无缩放, 2:适应大小模式, 3:充满可视范围，可能会被裁剪, 4:缩放到充满视图
+				fullscreenMode : 'PORTRAIT', //	设置全屏按钮控制全屏显示模式是横屏还是竖屏 竖屏:PORTRAIT ; 横屏:LANDSCAPE
+				isShowProcessView : false, //	是否显示进度条 (显示:true ; 不显示:false)【备注:直播流自动默认为false】
+				isShowTimeLable : false, //	是否显示播放时间 (显示:true ; 不显示:false)
+				isOpenGesture : false, //	全屏时是否开启手势控制音量，亮度和进度 （开启：true；不开启：false）
+				isSmallOpenGesture : false,	//	窗口播放时是否开启手势控制音量，亮度和进度 （开启：true；不开启：false）
+			//	isLoop:true,
+			}, function(ret, err) {
+				if (ret.status) {
+					win(data)
+				}
+			});
+			api.setFullScreen({
+				fullScreen : true
+			});
+		}
+
+//		// 更新视频播放地址
+		function videoUrl() {
+			playModule.playUrl({
+				title : '',
+				defaultBtn : false,
+				isOpenGesture : false,
+				url : data.video,
+			}, function(ret, err) {
+				if (ret.status) {
+					win(data)
+				}
+			});
+		}
+
+		// 打开新窗口
+		function win(data) {
+			api.openFrame({
+				name : 'xiaoshipin_img',
+				url : html_win + 'xiaoshipin_img.html',
+				bounces : false,
+				rect : {
+					x : 0,
+					y : 0,
+					w : 'auto',
+					h : 'auto',
+				},
+				pageParam : data,
+				bgColor : 'rgba(0,0,0,0)',
+				animation:{
+					type:"push",                //动画类型（详见动画类型常量）
+				    subType:"from_bottom",       //动画子类型（详见动画子类型常量）
+				    duration:300
+				},
+			})
+		}
+
+		// 关闭窗口
+		function winclose() {
+			api.closeFrame({
+				name : 'xiaoshipin_img'
+			});
+			api.closeFrame({
+				name : 'xiaoshipin_ping_win'
+			});
+			api.closeFrame({
+				name : 'xiaoshipin_ping'
+			});
+			playModule.stop();
+			api.setFullScreen({
+				fullScreen : false
+			});
+			xiaoshipin_img = 0;
+			// 关闭分享
+			MNActionButton.close();
+		}
+
+		// 判断是否已打开视频
+		function winfrem() {
+			if (xiaoshipin_img == 1) {
+				api.execScript({
+					name:'xiaoshipin_win',
+					frameName : 'xiaoshipin_img',
+					script : 'guanbi()'
+				});
+				return;
+			}
+			_hone()
+		}
+		// 暂停播放
+		function pause(){
+			playModule.pause();
+		}
+		// 暂停后开始播放
+		function start(){
+			playModule.start();
+		}
+		var fx_data
+		// 分享按钮
+		function fenxiang() {
+			fx_data=data
+			fx_data={title:data.title,description:data.description,url:fx_url+"m/a/"+data.id+'.html',img:data.image+"?imageView2/1/w/100/h/100"}
+			var items=[{icon: _image+'share/1.png',title: '朋友圈'},{icon: _image+'share/2.png',title: '好友'},{icon: _image+'share/3.png',title: 'QQ'},{icon: _image+'share/4.png',title: '空间'},{icon: _image+'share/5.png',title:'微博'},{icon: _image+'share/101.png',title: '系统'},{icon: _image+'share/102.png',title: '短信'},{icon: _image+'share/103.png',title:'邮件'},{icon: _image+'share/104.png',title: '复制'},{icon: _image+'share/105.png',title: '举报'}];
+
+			MNActionButton.open({
+			    layout: {
+			        row: 2,
+			        col: 5,
+			        offset: 0
+			    },
+			    animation: false,
+			    autoHide: true,
+			    styles: {
+			        maskBg: 'rgba(0,0,0,0.3)',
+			        bg: '#F8F8F8',
+			        indicator: {
+			            color: '#c4c4c4',
+			            highlight: '#9e9e9e'
+			        },
+			    },
+			    items:  items
+			}, function(ret) {
+				if(ret.eventType=="click"){
+					var index=ret.index;
+					if(index==0){
+						_weixin('timeline',fx_data)
+					}else if(index==1){
+						_weixin('session',fx_data)
+					}else if(index==2){
+						_qq('shareNews',fx_data)
+					}else if(index==3){
+						_qq('QFriend',fx_data)
+					}else if(index==4){
+						_weibo(fx_data)
+					}else if(index==5){	// 系统
+						var sharedModule = api.require('shareAction');
+						sharedModule.share({
+							text : fx_data.title + fx_data.content,
+							type : 'text'
+						});
+					}else if(index==6){	// 短信
+						api.sms({
+							numbers : [],
+							text : fx_data.title
+						}, function(ret, err) {
+							if (ret && ret.status) {
+								_msg('已发送')
+							}
+						});
+					}else if(index==7){	// 邮件
+						api.mail({
+							recipients : [],
+							subject : fx_data.title,
+							body : fx_data.content,
+						}, function(ret, err) {
+							if (ret && ret.status) {
+								_msg('已发送')
+							}
+						});
+					}else if(index==8){	// 复制
+						var clipBoard = api.require('clipBoard');
+						clipBoard.set({
+							value : fx_data.url
+						}, function(ret, err) {
+							if (ret) {
+								_msg('复制成功，把链接分享给朋友吧！')
+							}
+						});
+					}else if(index==9){	//举报
+						if(!_user){
+							_alert('请先登陆',function(ret,err){
+								_login();
+							})
+							return;
+						}
+						buttons = ['广告', '重复、旧闻', '低俗', '标题夸张', '与事实不符', '内容质量差', '疑似抄袭', '其他问题，我要吐槽 > '];
+						api.actionSheet({
+							title : '举报内容问题',
+							cancelTitle : '取消举报',
+							buttons : buttons
+						}, function(ret, err) {
+							var index = ret.buttonIndex;
+							if(index==8){
+								_url({aid:id,url:'member/jubaoAdd',title:'举报内容'})
+								return;
+							}
+							if(index!=9){
+								_ajax('api/member/jubao',function(ret,err){
+									if(ret){
+										if(ret.ret){
+											_msg(ret.ret)
+										}else{
+											_msg(ret.err)
+										}
+									}else{
+										_alert(JSON.stringify(err));
+									}
+								},{content:buttons[index - 1],aid:id})
+							}
+						});
+					}else{
+						return;
+					}
+				}
+			});
+		}
+		// 微信分享
+		// type session（会话） timeline（朋友圈） favorite（收藏）
+		function _weixin(type,data) {
+			var wx = api.require('wx');
+			wx.shareWebpage({
+				scene : type,
+				title : data.title,
+				description : data.content,
+				thumb : data.img,
+				contentUrl : data.url
+			}, function(ret, err) {
+				if (ret.status) {
+					_msg('分享成功')
+				}
+			});
+		}
+		// QQ分享
+		// type 分享内容到好友或空间，取值范围：QZone、QFriend
+		function _qq(type,data){
+			var obj = api.require('qq');
+			obj.shareNews({
+				url : data.url,
+				title : data.title,
+				description : data.content,
+				imgUrl : data.img,
+				type : type,
+			}, function(ret, err) {
+				if (ret.status) {
+					_msg('分享成功')
+				}
+			});
+		}
+		// 微博分享
+		function _weibo(data) {
+			var weibo = api.require('weibo');
+			weibo.shareWebPage({
+				text : data.title,
+				title : data.title,
+				description : data.content,
+				thumb : data.img,
+				contentUrl : data.url
+			}, function(ret, err) {
+				if (ret.status) {
+					_msg('分享成功')
+				}
+			});
+		}
+		// 我的视频
+		function wodeshipping(){
+			console.log(api.pageParam['id'])
+			if(api.pageParam['id']){
+				return;
+			}
+			uid=$api.getStorage('user') ? $api.getStorage('user').id : '';
+			if(!uid){
+				loginis=0;
+				var h=api.winHeight/2-100;
+				$('#fx-view').html('<a tapmode onclick="_url({url:\'login\',title:\'登录\',exe:\'1\'})" class="aui-btn aui-btn-danger qingdengli" style="position: fixed;margin:auto;left:0; right:0; top:0; bottom:0;width: 120px; height:38px; line-height:38px;text-align: center;margin-top:'+h+'px">请先登录</a>');
+				api.parseTapmode();
+				return;
+			}else{
+				if(loginis==1){
+					return;
+				}
+			}
+			
+			loginis=1;
+		}
+		// 删除我的视频
+		function video_del(id){
+			if(!id){ return _msg('删除失败') }
+			api.actionSheet({
+			    title: '您确认要删除视频吗？',
+			    cancelTitle: '取消',
+			    destructiveTitle: '确认删除',
+			}, function(ret, err) {
+			    var index = ret.buttonIndex;
+			    if(index==1){
+			    	api.confirm({
+					    title: '您确认要删除视频吗？',
+					    msg: '删除后不能恢复，请谨慎操作！',
+					    buttons: ['取消', '确认删除']
+					}, function(ret, err) {
+					    var index = ret.buttonIndex;
+					    if(index==2){
+					    	$('#id'+id).remove();
+							_msg('删除成功');
+					    	ajaxdel(id)
+					    }
+					});
+			    }
+			});
+		}
+		// 执行删除
+		function ajaxdel(id){
+	 		_ajax('api/member/weitoutiaoDel/',function(ret,err){
+				if(ret){
+					if(ret.ret){
+
+					}else{
+						_msg(ret.err)
+					}
+				}
+			},{aid:id})
+		}
+		// 刷新
+
+
+	</script>
+</html>
+
+

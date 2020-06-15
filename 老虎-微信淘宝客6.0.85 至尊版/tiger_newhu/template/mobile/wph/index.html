@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>唯品会</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/css/slick.min.css" />
+    <link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/css/style.css" />
+    <link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/css/hsy.css" />
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/jquery.min.js"></script>
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/slick.min.js"></script>
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/lib.js"></script>
+	<style>
+		.indexHeader {
+			padding: .14rem .1rem;
+			
+		    background-color: #E21286;
+		}
+		.indexHeader .inp input{
+			padding-left: .3rem;
+		}
+		.indexHeader .inp i{
+			right: .36rem;
+			    left: auto;
+		}
+		.indexHeader .fav{
+			    margin-right: 5px;
+		}
+		.titleMod {
+		    background-color: #E21286;
+			    padding: .0rem .3rem 0;
+		}
+		.mallList li .txt .btn-buy{
+			    background: #E21286 url({$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/r-b.png) no-repeat right .15rem center/.2rem auto;
+		}
+		.van-cell{
+			    line-height: inherit;
+				    padding: 0;
+					background-color:transparent
+		}
+	</style>
+</head>
+<body >
+
+    <div class="bodyW">
+        <!--首页头部-->
+        <div class="indexHeader fix">
+            <div class="fav">
+                <img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/wphlogo2.png" style="height: 0.6rem;">
+            </div>
+            <!-- <div class="msg">
+                <i></i>
+                <span>消息</span>
+            </div> -->
+            <div class="inp">
+                <i id="searchan"></i>
+                <input type="text" id="searchkey" placeholder="粘贴宝贝标题">
+            </div>
+        </div>
+        <!--栏目选择-->
+        <div class="titleMod">
+            <!--    栏目-->
+            <div class="titleList" style="margin-bottom: -0.3rem;">
+				<div class="item on"><a href='{php echo $this->createMobileUrl("wphindex")}'>首页</a></div>
+                <div class="item "><a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>0,"pdtype"=>0))}'>超高佣</a></div>
+                <!-- <div class="item"><a href="">猜你喜欢</a></div> -->
+                <div class="item"><a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"7hfpy0m4"))}'>女装</a></div>
+                <div class="item"><a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"wj7evz2j"))}'>男装</a></div>
+                <div class="item"><a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"vd0wbfdx"))}'>美妆</a></div>
+                <div class="item"><a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"dpot8m5u"))}'>数码</a></div>
+                <div class="item"><a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"szkl4kj7"))}'>首饰</a></div>
+                <div class="item"><a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"byh9331t"))}'>鞋包</a></div>
+                <div class="item"><a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"gkf52p8p"))}'>母婴</a></div>
+                <div class="item"><a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"cnrzcs22"))}'>居家</a></div>
+				<div class="item"><a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"indvf44e"))}'>户外</a></div>
+				<div class="item"><a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"uggxpyh5"))}'>家电</a></div>
+            </div>
+            <!--    banner-->
+            <div class="indexBanner">
+                <div class="slick-ban">
+					{loop $lbad $v}
+                    <div class="item">
+                        <a href=""><img src="{php echo tomedia($v['pic'])}" alt=""></a>
+                    </div>
+					{/loop}
+                </div>
+            </div>
+        </div>
+    
+        <!--分类-->
+        <div class="sort">
+            <div class="slick-sort">
+                <div class="item">
+                    <div class="con">
+                        <div class="sub-item">
+                            <a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"7hfpy0m4"))}'>
+                                <div class="icon"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/wph/fl/i1.png" alt=""></div>
+                                <span>女装精选</span>
+                            </a>
+                        </div>
+                        <div class="sub-item">
+                            <a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"wj7evz2j"))}'>
+                                <div class="icon"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/wph/fl/i2.png" alt=""></div>
+                                <span>男装精选</span>
+                            </a>
+                        </div>
+                        <div class="sub-item">
+                            <a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"vd0wbfdx"))}'>
+                                <div class="icon"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/wph/fl/i3.png" alt=""></div>
+                                <span>美妆精选</span>
+                            </a>
+                        </div>
+                        <div class="sub-item">
+                            <a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"dpot8m5u"))}'>
+                                <div class="icon"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/wph/fl/i4.png" alt=""></div>
+                                <span>数码电子</span>
+                            </a>
+                        </div>
+                        <div class="sub-item">
+                            <a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"szkl4kj7"))}'>
+                                <div class="icon"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/wph/fl/i5.png" alt=""></div>
+                                <span>精选首饰</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="con">
+                        <div class="sub-item">
+                            <a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"byh9331t"))}'>
+                                <div class="icon"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/wph/fl/i6.png" alt=""></div>
+                                <span>鞋包精选</span>
+                            </a>
+                        </div>
+                        <div class="sub-item">
+                            <a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"gkf52p8p"))}'>
+                                <div class="icon"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/wph/fl/i7.png" alt=""></div>
+                                <span>母婴精选</span>
+                            </a>
+                        </div>
+                        <div class="sub-item">
+                            <a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"cnrzcs22"))}'>
+                                <div class="icon"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/wph/fl/i8.png" alt=""></div>
+                                <span>居家精选</span>
+                            </a>
+                        </div>
+                        <div class="sub-item">
+                            <a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"cnrzcs22"))}'>
+                                <div class="icon"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/wph/fl/i9.png" alt=""></div>
+                                <span>户外精选</span>
+                            </a>
+                        </div>
+                        <div class="sub-item">
+                            <a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"uggxpyh5"))}'>
+                                <div class="icon"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/wph/fl/i10.png" alt=""></div>
+                                <span>家用电器</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+
+
+        <!--广告-->
+       <!-- <div class="adMod">
+            <a href=""><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/ad1.jpg" alt=""></a>
+        </div> -->
+     
+        <!--mod2-->
+        <div class="mod2">
+            <div class="row">
+                <div class="pic"><a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"w4yq5jn6"))}'><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/wph/fl/p1.jpg" alt=""></a></div>
+                <div class="pic"><a href='{php echo $this->createMobileUrl("wphlist",array("gettype"=>1,"zhcode"=>"t6fv39e6"))}'><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/wph/fl/p2.jpg" alt=""></a></div>
+            </div>
+           
+        </div>
+        <!--超级爆款-->
+        <div class="superListMod">
+            <div class="title">
+                <!-- <a href="" class="r">更多爆款</a> -->
+                <div class="ovh">
+                    <i style="background-image: url({$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/ic_super_hot.png);"></i>
+                    <h3>超级爆款</h3>
+                    <div class="num"><span>{php echo rand(55555,99999)}</span><em>人正在购买</em></div>
+                </div>
+            </div>           
+        </div>
+        <!--6个电商平台-->
+        <div class="sixMall" id="table"   style="padding-bottom: 0.8rem;">
+           
+            <div class="tab-mallList">
+                <ul class="mallList" id="goods_box">
+						
+                </ul>
+            </div>
+		
+        </div>
+
+
+        <!--返回顶部-->
+        <div class="toTop">
+            <img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/icon_list_to_top.png" alt="">
+        </div>
+
+        <div class="footer">
+			{loop $dblist $v}
+            <div class="item on">
+				<a href="{$v['wlurl']}&pid={$pid}&dluid={$dluid}">
+                <!-- <div class="icon"><a href="{$v['wlurl']}&pid={$pid}&dluid={$dluid}"><img src="{php echo tomedia($v['picurl'])}" alt=""></a></div> -->
+                <div class="icon-on"><img src="{php echo tomedia($v['picurl'])}" alt=""></div>
+                <span style="color: #000;">{$v['title']}</span>
+				</a>
+            </div>
+			{/loop}
+        </div>
+    </div>
+	<!-- 加载数据、 -->
+	<link href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/js/layui/css/layui.css" rel="stylesheet">
+	<script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/js/layui/layui.js" charset="utf-8"></script>
+	
+	
+	<script type="text/javascript">
+	    var  limit=1;
+		var uid="{$share['id']}";
+		
+		
+		$("#searchan").click(function(){
+		  var key=$("#searchkey").val();
+		   window.location.href = "{php echo $this->createMobileUrl('wphsearchlist')}&key="+key;
+		});
+	  
+		
+	   $(document).delegate("a", "click", function (e) {
+	
+	        var url = $(this).attr("href");
+	        if($("#goods_box li").length == 0) return;
+	
+	        window.localStorage.setItem("top", document.body.scrollTop);
+	        window.localStorage.setItem("html", $("#goods_box").html());
+	        window.localStorage.setItem("url", window.location.href);
+				 
+			
+	    });
+		if(window.localStorage.getItem("url") == window.location.href && window.localStorage.getItem("top") != "null") {
+			
+	      $("#goods_box").html(window.localStorage.getItem("html"));
+	        document.body.scrollTop = window.localStorage.getItem("top");
+	        window.localStorage.setItem("top", "null");
+	        window.localStorage.setItem("html", "null");
+	        window.localStorage.setItem("url", "null");		
+			 	//alert(limit);
+			var le=$("#goods_box li").length;
+			limit=1+Math.ceil(le/20);
+			
+			 window.localStorage.setItem("limit", limit);
+			 
+			  window.localStorage.getItem("limit")
+				//alert(limit);
+			//alert( $("#list_box li").length);
+	    }	
+			;!function(){
+					layui.use('flow', function(){
+						var $ = layui.jquery;
+						var flow = layui.flow;
+							            
+			            flow.load({
+			                elem: '#table'
+	                        ,end: '本场次商品已经加载完毕啦 ￣O￣)ノ！'
+			                ,done: function(page, next){
+			                    var lis =[];
+			                    page=limit;
+								limit++;
+	                            var content='';
+			                    $.get("{php echo $this->createMobileUrl('wphlistpost',array('gettype'=>0,'pdtype'=>1))}&page="+page+"&uid="+uid, function(res){
+			                    	res=JSON.parse(res);
+			                    	//alert(res);
+			                    	console.log(res);
+			                        layui.each(res.data, function(index, item){
+										
+										content +='<li >';
+											content +='<div class="listPic">';
+														content +='<a href="{php echo $this->createMobileUrl("wphview")}&itemid='+item.itemid+'">';
+															content +='<img src="'+item.itempic+'" alt="">';
+														content +='</a>';
+													content +='</div>';
+													content +='<div class="txt">';
+														content +='<div class="listTit">';
+															content +='<a href="{php echo $this->createMobileUrl("wphview")}&itemid='+item.itemid+'">';
+																content +='<i class="mallIcon wph"></i>';
+																content +='<span>'+item.itemtitle+'</span>';
+															content +='</a>';
+														content +='</div>';
+														content +='<div class="listDesc"><i class="shopIcon" style="background-image: url({$_W["siteroot"]}addons/tiger_newhu/template/mobile/public/images/shopicon.png);"></i>'+item.sellernick;
+														content +='</div>';
+														content +='<div class="listInfo">';
+															content +='<div class="quan">'+item.zk+'折</div>';
+															content +='<div class="fuli">奖￥'+item.rate+'</div>';
+														content +='</div>';
+														content +='<div class="listPrice">';
+															content +='<div class="price">';
+																content +='<div class="old">￥'+item.itemprice+'</div>';
+																content +='<div class="new"><em>￥</em>'+item.itemendprice+'</div>';
+															content +='</div>';
+															content +='<a href="{php echo $this->createMobileUrl("wphview")}&itemid='+item.itemid+'" class="btn-buy">马上抢</a>';
+														content +='</div>';
+													content +='</div>';											
+										content +='</li>';
+			                        	
+			                        });
+	                                 $("#goods_box").append(content);
+	
+	                                //console.log(content);
+			                        next(lis.join(''), page < res.pages);
+			                    });
+			                }
+			            });
+			        });
+			    }();
+			</script>
+	<!-- 结束 -->
+	    
+    <script>		
+        $(function() {
+            hr.regPage('index', {
+                init: function() {
+                    this.banner();
+                    this.sortSlick();
+                    this.newsSlick();
+                    this.mod1Slick();
+                    this.mallTab();
+                    this.toTop();
+                    this.smTab()
+                },
+                banner: function() {
+                    $('.slick-ban').slick({
+                        infinite: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        dots: true,
+                        autoplay: true,
+                        autoplaySpeed: 2000
+                    });
+                },
+                sortSlick: function() {
+                    $('.slick-sort').slick({
+                        infinite: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        dots: true
+                    });
+                    $('.slick-sort').on('afterChange', function() {
+                        if ($('.slick-current .con').length === 1) {
+                            $('.slick-track').css('height', $('.slick-current .con').height() + 10 + 'px')
+                        } else {
+                            $('.slick-track').css('height', 'auto')
+                        }
+                    })
+
+                },
+                newsSlick: function() {
+
+                    $('.slick-news').slick({
+                        infinite: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        dots: false,
+                        autoplay: true,
+                        autoplaySpeed: 2000,
+                        vertical: true
+                    });
+
+                },
+                mod1Slick: function() {
+                    $('.slick-mod1').slick({
+                        infinite: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        dots: true,
+                        autoplay: true,
+                        autoplaySpeed: 2000
+                    });
+
+                },
+                mallTab: function() {
+                    $('body').on('click', '.TAB_CLICK .item', function() {
+                        var tab = $(this).parent(".TAB_CLICK");
+                        var con = tab.attr("id");
+                        var on = tab.find(".item").index(this);
+                        $(this).addClass('on').siblings(tab.find(".item")).removeClass('on');
+                        $(con).eq(on).show().siblings(con).hide();
+                    })
+                },
+                toTop: function() {
+                    $('body').on('click', '.toTop', function() {
+                        $("html,body").animate({
+                            scrollTop: 0
+                        }, 500);
+                    })
+                },
+                smTab: function() {
+                    $(window).scroll(function() {
+                        var sTop = $(window).scrollTop(),
+                            offsetTop = $('.sixMall').offset().top
+                        if (sTop > offsetTop) {
+                            $('.sm-tab').addClass('fixTop')
+                            $('.sixMall').addClass('pt')
+                        } else {
+                            $('.sm-tab').removeClass('fixTop')
+                            $('.sixMall').removeClass('pt')
+                        }
+                    })
+                }
+            });
+        });
+    </script>
+	<script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style9/js/jweixin-1.0.0.js"></script>
+	<script>
+		var fxtitle="{$cfg['fxtitle']}";
+		var desc="{$cfg['fxcontent']}";
+		var imgUrl="{php echo tomedia($cfg['fxpicurl'])}";
+		var fxlink=window.location.href;
+		var fxdata={"title":fxtitle,"imgUrl":imgUrl,"desc":desc,"link":fxlink};
+	        var appid = "{$_W['account']['jssdkconfig']['appId']}";
+	        var timestamp = "{$_W['account']['jssdkconfig']['timestamp']}";
+	        var nonceStr = "{$_W['account']['jssdkconfig']['nonceStr']}";
+	        var signature = "{$_W['account']['jssdkconfig']['signature']}";
+	        wx.config({
+	            debug: false,
+	            appId: appid,
+	            timestamp: timestamp,
+	            nonceStr: nonceStr,
+	            signature: signature,
+	            jsApiList: [
+	                "onMenuShareAppMessage",
+	                "onMenuShareTimeline",
+	                "chooseImage",
+	                "uploadImage",
+	                "downloadImage"
+	            ]
+	        });
+	
+		wx.ready(function(){
+			wx.onMenuShareAppMessage({
+				title: fxdata['title'],
+				desc: fxdata['desc'],
+				link: fxdata['fxlink'],
+				imgUrl: fxdata['imgUrl']
+			}); 
+			wx.onMenuShareTimeline({
+				title: fxdata['title'],
+				desc: fxdata['desc'],
+				link: fxdata['fxlink'],
+				imgUrl: fxdata['imgUrl']
+			});
+		});
+		
+	
+	  	
+	  	
+	
+	    </script>
+</body>
+
+</html>

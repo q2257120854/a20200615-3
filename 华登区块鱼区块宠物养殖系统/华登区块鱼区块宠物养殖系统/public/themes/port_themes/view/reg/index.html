@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>{$webtitle}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+	  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="__PORT__/lib/style.css">
+</head>
+<body class="uni-body pages-reg-reg">
+    <div class="uni-page-head">用户注册</div>
+    <div class="uni-placeholder"></div>
+    <div class="popup">
+        <div class="text"></div>
+    </div>
+
+    <div class="success"></div>
+        <div class="window">
+          <div class='title'>
+              <div class="shut" onclick="shut()">X</div>
+          </div>
+          <div class='body'></div>
+          <div class='bottom'></div>
+        </div>
+
+    <div class="content"><div class="div">
+       <input type="hidden" id="verifycodeurl" value="{:url('/port/login/verifycode')}">
+       <input type="hidden" id="submiturl" value="{:url('/port/login/register')}">
+       <input type="hidden" id="downloadurl" value="{:url('/port/reg/download')}">
+       <input type="hidden" id="mid" value="{$mid}">
+      	<div class="log-input">
+      		<span>手机号码</span>
+      		<div class='input'>
+      			<input maxlength="11" id='account' type="text" placeholder="请输入手机号码">
+      		</div>
+      	</div>
+
+      	<div class="code">
+      		<div class="input1">
+      			<input maxlength="6" id="verifycode" type="number" placeholder="请输入六位验证码">
+      		</div>
+      		<span class='verify'>
+      			<button class="check" onclick="code()">获取验证码</button>
+      		</span>
+      	</div>
+
+      	<div class="log-input">
+      		<span>用户名</span>
+      		<div class='input'>
+      			<input maxlength="20" id="nickname" type="text" placeholder="请输入您的用户名">
+      		</div>
+      	</div>
+
+      	<div class="log-input">
+      		<span>设定密码</span>
+      		<div class='input'>
+      			<input maxlength="20" id="pwd" type="password" placeholder="密码至少六位数字加字母">
+      		</div>
+      	</div>
+
+      	<div class="log-input">
+      		<span>确认密码</span>
+      		<div class='input'>
+      			<input maxlength="20" id="repwd" type="password" placeholder="请确认您的密码">
+      		</div>
+      	</div>
+
+      	<div class="log-input">
+      		<span>设置二级密码</span>
+      		<div class='input'>
+      			<input maxlength="20" id="pwd2" type="password" placeholder="必须填六位数字的密码">
+      		</div>
+      	</div>
+
+      	<div class="log-input">
+      		<span>确认二级密码</span>
+      		<div class='input'>
+      			<input maxlength="20" id="repwd2" type="password" placeholder="确认您的二级密码">
+      		</div>
+      	</div>
+
+      	<div class="agreement">
+      		注册即视为同意
+      		<a href="{:url('/port/reg/agreement')}" class="agr_text">《用户注册协定》</a>
+      	</div>
+
+      	<button class="btn-area" onclick="register()">注册</button>
+    </div></div>
+    <script type="text/javascript" src="__PORT__/lib/jquery.js"></script>
+    <script type="text/javascript" src="__PORT__/lib/register.js"></script>
+</body>
+</html>

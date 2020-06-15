@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>电脑和手机适配下载页面模板开发</title>
+<meta content="电脑和手机适配下载页面模板开发" name="description">
+<meta content="电脑和手机适配下载页面模板开发" name="keywords">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="http://app-img.2ya.com.cn/pic/20171222/oss_1513914067488_357_588_841.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/download.css">
+<script src="js/jquery-1.8.0.min.js"></script>
+<script>
+if($(window).width() < 640){
+    $('html').addClass('appdownload-body');
+}
+</script>
+</head>
+<body>
+    <!-- <div class="mod">
+        <img src="picture/pc_download_note.png" class="img" alt="">
+        <p class="title">友情提示</p>
+        <p class="desc">新版客户端正在紧张施工中,请稍等几日...</p>
+    </div> -->
+
+    <div class="pc-container">
+        <div class="pc-wrap"></div>
+        <div class="pc-bg pc-bg1 current"></div>
+        <div class="pc-bg pc-bg2"></div>
+        <div class="pc-bg pc-bg3"></div>
+        <!-- <div class="pc-bg pc-bg4" style="display:none;"></div> -->
+        <div class="page-bg-btm"></div>
+        <div id="particles-js">
+           <canvas style="width: 100%; height: 100%;"></canvas>
+        </div>
+        <div class="pc-body">
+            <div class="clearfix">
+                <div class="pc-body-item">
+                    <div class="pc-pics-box img-box">
+                                                                                <img src="picture/oss_1514690982067_496_11_937.png" alt="0" width="520" height="580" class="item current"/>
+                                                                                                            <img src="picture/oss_1514690998254_501_37_890.png" alt="1" width="520" height="580" class="item "/>
+                                                                                                            <img src="picture/oss_1514690991712_632_315_482.png" alt="2" width="520" height="580" class="item "/>
+                                                                        </div>
+                </div>
+                <div class="pc-body-item">
+                    <div class="pc-main">
+                        <div class="pc-logo ico">
+                            <img class="logo" src="picture/oss_1513914051851_830_820_247.png" />
+                            <span class="appname">二丫网</span>
+                            <span class="version">V4.1.0</span>
+                        </div>
+                        <div class="pc-btns">
+                            <a href="https://itunes.apple.com/cn/app/er-ya-wang/id1009079297?l=zh&ls=1&mt=8" class="btn">
+                                <span class="ico ico-ios"></span>
+                                <span class="txt">iPhone版</span>
+                            </a>
+                            <a href="http://sj.qq.com/myapp/detail.htm?apkName=net.duohuo.magapp.erya" class="btn">
+                                <span class="ico ico-android"></span>
+                                <span class="txt">安卓版</span>
+                            </a>
+                        </div>
+                        <div class="pc-erwei">
+                            <p>手机扫描二维码直接下载</p>
+                            <div class="img-box">
+                                <img src="picture/oss_1514532549333_345_216_920.png" width="112"  alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- pc-body  end -->
+        <div class="pc-bg-flag slider-flags"></div><!-- pc-bg-flag  end -->
+        <div class="pc-copyright">二丫网APP</div><!-- pc-bg-flag  end -->
+        <a href="javascript:void(0);" class="slider-prev"></a>
+        <a href="javascript:void(0);" class="slider-next"></a>
+    </div><!-- pc-container  end -->
+
+    <div class="mobile-container appdownload-wrap">
+        <div class="appdownload-logo">
+            <img class="img" src="picture/oss_1513914051851_830_820_247.png" width="80" height="80">
+            <p class="appname">二丫网</p>
+        </div>
+        <!--提示：页面不存在-->
+        <p class="appdownload-note" style="display:none;">点击下面链接下载客户端，查看更多精彩内容!!!</p>
+        <!--提示：暂不支持的机型-->
+        <div class="appdownload-btns">
+            <a class="btn item-ios" href="https://itunes.apple.com/cn/app/er-ya-wang/id1009079297?l=zh&ls=1&mt=8" target="_blank">
+                <span class="ico ico-ios"></span>
+                <span class="txt">iPhone版</span>
+            </a>
+            <a class="btn item-android" href="http://sj.qq.com/myapp/detail.htm?apkName=net.duohuo.magapp.erya">
+                <span class="ico ico-android"></span>
+                <span class="txt">安卓版</span>
+            </a>
+        </div>
+
+        <span class="appdownload-check-erwei">查看二维码</span>
+        <p class="appdownload-copyright">二丫网APP</p>
+
+        <div class="appdownload-erwei-overlay">
+            <div class="container">
+                <p>扫描二维码下载</p>
+                <img src="picture/oss_1514532549333_345_216_920.png" width="112" alt="" />
+            </div>
+        </div>
+
+        <div class="android-guider">
+            <img class="android-guider-arrow" src="picture/arrow_pagejump.png" width="44" height="47">
+            <div class="android-guider-box">
+                <img class="android-guider-text" src="picture/guider_text.png">
+            </div>
+        </div>
+
+    </div><!-- mobile-container  end -->
+
+<script src="js/lyutils.js"></script>
+<script>
+    //console.log({"app_logo":"http:\/\/app-img.2ya.com.cn\/pic\/20171222\/oss_1513914051851_830_820_247.png","app_name":"\u4e8c\u4e2b\u7f51","ios_downloadurl":"https:\/\/itunes.apple.com\/cn\/app\/er-ya-wang\/id1009079297?l=zh&ls=1&mt=8","android_downloadurl":"http:\/\/sj.qq.com\/myapp\/detail.htm?apkName=net.duohuo.magapp.erya","qrcode_download":"http:\/\/app-img.2ya.com.cn\/pic\/20171229\/oss_1514532549333_345_216_920.png","download_slider":["http:\/\/app-img.2ya.com.cn\/pic\/20171231\/oss_1514690982067_496_11_937.png","http:\/\/app-img.2ya.com.cn\/pic\/20171231\/oss_1514690998254_501_37_890.png","http:\/\/app-img.2ya.com.cn\/pic\/20171231\/oss_1514690991712_632_315_482.png"],"copyright":"\u4e8c\u4e2b\u7f51APP","app_version":"4.1.0","global_download_title":"\u516c\u4e3b\u5cad\u4e8c\u4e2b\u7f51APP\u4e0b\u8f7d","global_download_Keyword":"\u4e8c\u4e2b\u7f51APP","global_download_des":"\u516c\u4e3b\u5cad\u4eba\u624b\u673a\u5fc5\u88c5APP\uff01"});
+    $(function(){
+        var mainContent = $(".pc-body"),
+            pcBgs = $(".pc-bg"),
+            mainImgs = $(".pc-pics-box").find(".item"),
+            btnPrev = $(".slider-prev"),
+            btnNext = $(".slider-next"),
+            actionIndex = 0,
+            interval = 3000,
+            timer = 0,
+            windowWidth = $(window).width();
+
+        if(ModsUtil.clientSystemType.isAndroid){
+            $('.appdownload-btns').find('.item-android').addClass('show');
+        }
+        if(ModsUtil.clientSystemType.isIOS){
+            $('.appdownload-btns').find('.item-ios').addClass('show');
+        }
+        if(ModsUtil.pageIsInThirdPlatform()){
+            $('.android-guider').fadeIn('fast');
+        }
+
+        $.each(mainImgs, function(){
+            $('.pc-bg-flag').append('<span class="item"></span>');
+        });
+        var controlItems = $('.pc-bg-flag').find('.item');
+        controlItems.eq(0).addClass('current');
+
+        var fadeAction = function(index){
+            controlItems.eq(index).addClass("current").siblings().removeClass("current");
+            mainImgs.eq(index).fadeIn("slow").siblings(".item").fadeOut("slow");
+            pcBgs.eq(index).fadeIn("slow").siblings(".pc-bg").fadeOut("slow");
+        };
+
+        var autoPlay = function(){
+            if (actionIndex < pcBgs.length) {
+                actionIndex = (actionIndex+1) % pcBgs.length;
+                fadeAction(actionIndex);
+            }
+        };
+        if(windowWidth > 640){
+            timer = setInterval(autoPlay, interval);
+        }else{
+            var checkErweiBtn = $(".appdownload-check-erwei"),
+                erweiOverlay = $(".appdownload-erwei-overlay"),
+                erweiOverlayContainer = erweiOverlay.find(".container");
+            checkErweiBtn.click(function(){
+                erweiOverlay.fadeIn();
+            });
+            erweiOverlay.click(function(evt){
+                evt.stopPropagation();
+                if( !$(evt.target).hasClass("container") && !$(evt.target).parents().hasClass("container") ){
+                    $(this).fadeOut();
+                }
+            });
+        }
+
+        controlItems.click(function(){
+            actionIndex = $(this).index();
+            fadeAction(actionIndex);
+        });
+
+        btnPrev.click(function(){
+            if (actionIndex >= 0 ) {
+                if (actionIndex == 0) actionIndex = pcBgs.length;
+                actionIndex = (actionIndex-1) % pcBgs.length;
+                fadeAction(actionIndex);
+            }
+        }).hover(function(evt){
+            clearInterval(timer);
+        },function(evt){
+            timer = setInterval(autoPlay,interval);
+        });
+
+        btnNext.click(function(){
+            autoPlay();
+        }).hover(function(evt){
+            clearInterval(timer);
+        },function(evt){
+            timer = setInterval(autoPlay,interval);
+        });
+
+        mainContent.hover(function(evt){
+            clearInterval(timer);
+        },function(evt){
+            timer = setInterval(autoPlay,interval);
+        });
+    });
+</script>
+<script src="js/analytics.js"></script>
+<script src="js/download-particles1.js"></script>
+<script src="js/download-particles2.js"></script>
+</body>
+</html>
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

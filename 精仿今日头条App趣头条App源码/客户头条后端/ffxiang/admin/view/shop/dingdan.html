@@ -1,0 +1,145 @@
+ {include file="public/header" /}
+ {load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<style type="text/css">
+#des,#des input{ width: 40px;text-align:center;}
+#id{ width: 78px; }
+.bs-checkbox{ width: 36px; height: 40px }
+.fixed-table-toolbar .columns,.fixed-table-toolbar .search{margin-left:0px; margin-top: 0px }
+#title span{ float: right; margin-left: 3.333px;}
+.search{ margin-bottom: 0px !important; }
+.asdlkjasd{ background: #1ab394; color: #fff}
+#title{ position: relative;padding-right: 50px;}
+#title span{position: absolute;top: 12px;right: 10px;}
+</style> 
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        {include file="public/tophead"}
+        {include file="public/top" /}
+        <div class="ibox-content">
+        {include file="public/topsection"}
+            <div class="row row-lg">
+                <div class="col-sm-12">
+            
+                    <div class="fixed-table-toolbar">
+                        <form  method="get" action="">
+                            <div class="pull-left search">
+                                <div class="columns columns-right btn-group pull-left" >
+                                    <select class="form-control" name="type">
+                                        <option value="id">订单号</option>
+                                        <option value="shopid">商品id</option>
+                                        <option value="title">商品标题</option>
+                                        <option value="uid">用户id</option>
+                                        <option value="kuaidi">快递公司</option>
+                                        <option value="danhao">快递单号</option>
+                                        <option value="ip">用户ip</option>
+                                    </select>
+                                </div>
+                                <div class="pull-right search">
+                                    <button style="border-radius:0px; border:1px solid #e5e6e7; border-left:0px" class="btn btn-default btn-outline" type="submit">搜索</button>
+                                </div>
+                                <div class="pull-right search">
+                                    <input class="form-control input-outline" id="filter" type="text"
+{php}
+if(input('?param.name')){
+            if(input('param.name')){
+               echo "value='".input('name')."'";
+            } 
+
+        }
+{/php}
+                                     name="name" placeholder="">
+                                </div>
+                                
+
+                            </div>
+                        </form>
+                    </div>
+                   
+
+                    <div style="display:block;clear: both;"></div>
+                 
+
+
+
+                    <div class="example">
+                        <form class="form-horizontal" method="post">
+                        <table data-toggle="table">
+                            <thead>
+                                <tr>
+                                    <th data-align="center" data-width="2%">id</th>
+                                    <th data-align="center" data-width="5%">订单号</th>
+                                    <th data-align="center" data-width="10%">用户</th>
+                                    <th data-width="20%">商品标题</th>
+                                    <th data-align="center" data-width="2%">兑换金额</th>
+                                    <th data-align="center" data-width="10%">兑换时间</th>
+                                    <th data-align="center" data-width="3%">快递公司</th>
+                                    <th data-align="center" data-width="5%">快递单号</th>
+                                    <th data-align="center" data-width="2%">发货状态</th>
+                                    <th data-align="center" data-width="2%">管理</th>
+                                </tr>
+                            </thead> 
+                            <tbody id="form">
+                                {volist name="data" id="v"}
+                                <tr id="id{$v.id}" class="class">
+                                    <td>{$v.id}</td>
+                                    <td>{$v.code}</td>
+                                    <td>
+<?php
+$user=_user($v['uid']);
+echo '('.$v['uid'].')'.$user['username'];
+?>
+                                    </td>
+                                    <td><a onclick="add('{:url('add',['id'=>$v['shopid'],'url'=>-1])}')">
+                                        {$v.title}
+                                    </a></td>
+                                    <td>{$v.type==1 ? $v['money'].'金币' : _money($v['money']).'元'}</td>
+                                    <td><span {php}if(date('Ymd')==date('Ymd',$v['time']))echo 'style="color: #ed5565"';{/php}>{$v.time|date='Y-m-d H:i:s',###}</span></td>
+                                    <td>{$v.kuaidi}</td>
+                                    <td>{$v.danhao}</td>
+                                    <td><?php 
+                                        if($v['data']==1){
+                                            echo "<span class='btn btn-primary btn-xs'>已发货</span>"; 
+                                        }else if($v['data']==2){
+                                            echo "<span class='btn btn-default btn-xs'>已完成</span>";
+                                        }else{
+                                            echo "<span class='btn btn-primary btn-xs'>已付款</span>"; 
+                                        }
+                                    ?></td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <div data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span>
+                                            </div>
+                                            <ul class="dropdown-menu">
+                                                <li><a onclick="add('{:url('dingdanCode',['id'=>$v['id'],'url'=>-1])}')">详细</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                        </form>
+                    </div>
+                </div>  
+            </div>
+            <hr>
+            <div class="row row-lg">
+                <div class="col-sm-12 pages">{$page}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+$(document).ready(function(){
+    
+});
+ 
+ 
+</script>
+ <SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

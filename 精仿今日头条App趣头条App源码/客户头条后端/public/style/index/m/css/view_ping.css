@@ -1,0 +1,136 @@
+.fx-view-header{
+	background-color: #fff !important;
+	color: #000;
+	margin-bottom: 0px !important;
+	border-bottom: 1px solid #E8E8E8;
+}
+.fx-view-header .aui-pull-left span{
+	color: #000 !important;
+	 
+}
+.fx-view-header .aui-pull-right img{
+	width: 1.2rem;
+}
+.aui-list .aui-list-item i.aui-iconfont{
+	font-size: 0.5rem;
+	font-weight: bold;
+	padding-right: 0.1rem;
+}
+.pingZanColor{
+	color: #FCACAC !important
+}
+.pingList{
+}
+.pingList ul {
+	background: none;
+	border: 0px !important;
+}
+.pingList .aui-list .aui-list-item,section .aui-list .aui-list-item{
+	border-bottom: 0px !important;
+}
+.pingList .aui-list-item-media img{
+	width: 2rem !important;
+	height: 2rem !important;
+	border-radius: 50%;
+	background: #fff;
+}
+.pingList .aui-list .aui-list-item-media{
+	width: 2.5rem
+}
+.pingList ul li .aui-list-item-title{
+	color: #406599;
+	font-size: 0.7rem;
+}
+.pingList .aui-list .aui-list-item-text{
+	padding: 0rem 0px;
+}
+.pingList .fx-view-huifu{
+	background: #F4F5F6;
+ 	padding: 0rem 0.5rem;
+ 	border-radius: 1rem;
+ 	margin-left: 0.1rem;
+}
+.pingList .aui-list-item-text i.aui-icon-laud{
+	font-size: 0.8rem;
+	padding-right: 0.1rem;
+}
+.fx-view-footer .aui-badge{
+	top: 0.3rem;
+}
+.fx-view-footer .search-input {
+	height: 1.6rem;
+	line-height: 1.6rem;
+	background: #f5f5f5;
+	border-radius: 30px;
+	position: relative;
+	font-family:"aui_iconfont" !important;
+	text-align: left;
+	padding-left: 1.5rem;
+	color: #999999;
+}
+.fx-view-footer .search-input:after {
+	position: absolute;
+	left: 0;
+	padding-left: 0.5rem;
+	content: "\e615";
+}
+.pingList .aui-list .aui-list-item-inner{
+	padding-right: 0px;
+}
+.fx-view-anniu2 img{
+	width: 0.8rem;
+	height: 0.8rem;
+	float: left;
+	margin-top: 0.3rem;
+	margin-right: 0.3rem;
+}
+.pingList ul .aui-list-item:active {
+    background-color:#fff;
+}
+ 
+.zan_img{
+	margin-right: 0.2rem;
+}
+.zan_img img{
+	width: 1rem;
+	height: 1rem;
+	margin-right: 0.1rem;
+	border-radius: 50%;
+	background: #fff;
+}
+@media screen and (-webkit-min-device-pixel-ratio:1.5) {
+	section .aui-list .aui-list-item,.pingList .aui-list .aui-list-item {
+		background-image:none !important;
+	} 
+}
+.fx-contentuser{
+	font-size: 0.75rem !important;
+	display: block !important;
+}
+.qiangshafa{
+	text-align: center;
+	width: 200px;
+	margin:0 auto;
+	padding: 5rem 0;
+	font-size: 0.7rem;
+	color: #696969;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

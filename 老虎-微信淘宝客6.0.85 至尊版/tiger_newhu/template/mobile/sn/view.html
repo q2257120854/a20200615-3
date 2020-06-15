@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$views['itemtitle']}</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+	  <link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style88/css/layer.css" />
+    <link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/css/slick.min.css" />
+    <link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/css/style.css" />
+    <link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/css/hsy.css" />
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/jquery.min.js"></script>
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/slick.min.js"></script>
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/clipboard.min.js"></script>
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/lib.js"></script>
+	<script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style88/js/layer.js"></script>
+</head>
+
+<body>
+    <div class="bodyW">
+        <div class="header3">
+            <div class="back" onclick="history.go(-1);"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/back3.png" alt=""></div>
+            <div class="lan">
+                <div class="item on" id="good-s"><a href="#good">宝贝</a></div>
+                <!-- <div class="item" id="det-s"><a href="#det">详情</a></div> -->
+                <div class="item" id="tui-s"><a href="#tui">推荐</a></div>
+            </div>
+            <!-- <div class="dian"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/dian.jpg" alt=""></div> -->
+        </div>
+
+        <div class="det-ban" id="good">
+            <div class="back icon" onclick="history.go(-1);"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/back.png" alt=""></div>
+            <div class="right">
+                <div class="home icon"><a href="{php echo $this->createMobileUrl('snindex')}"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/home.png" alt=""></a></div>
+                <!-- <div class="camera icon"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/camera.png" alt=""></div> -->
+                <div class="same icon"><a href="{php echo $this->createMobileUrl('snlist',array('key'=>$views['itemtitle']))}"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/same.png" alt=""></a></div>
+            </div>
+         <!--   <div class="bot">
+                <div class="item js-video"><i></i><span>视频</span></div>
+                <div class="item on js-pic"><span>图片</span></div>
+            </div> -->
+            <div class="page">
+                <em>1</em> / <span></span>
+            </div>
+            <div class="slick-det-ban" id="pic">
+				{loop $views['itempic5'] $v}
+                <div class="item">
+                    <img src="{$v}" alt="">
+                </div>
+				{/loop}
+            </div>
+        </div>
+        <div class="det-info">
+            <div class="row1">
+                <div class="ll">
+                    <div class="s1">
+                        <em>￥</em>
+                        <span>{$views['itemendprice']}</span>
+                    </div>
+                    <div class="s2 red">券后</div>
+                    <!-- <div class="s2 yellow">{$views['zk']}折</div> -->
+                </div>
+                <div class="s3">原价￥{$views['itemprice']}</div>
+            </div>
+            <!-- <div class="row2">
+                <div class="ll">
+                    <div class="s1">下单奖</div>
+                    <div class="s2">￥1.36特权奖 <em>￥2.07</em></div>
+                </div>
+                <a href="" class="s3">立即晋升</a>
+            </div> -->
+            <div class="row3">
+                <div class="listTit">
+                    <i class="mallIcon sn"></i>
+                    <!-- <span class="heart js-fav"></span> -->
+                    <span>{$views['itemtitle']}</span>
+                </div>
+                <div class="num">{$views['itemsale']}人已抢购</div>
+            </div>
+			<div class="row4" style="background: url({$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/quan_sn.png) no-repeat center center/contain;">
+			    <a href="{$views['rhyurl']}">
+					{if $views['couponmoney']}
+						<div class="s1"><em>￥</em>{$views['couponmoney']}</div>
+						<div class="s2">
+						    <p>优惠券使用期限</p>
+						    <p class="p2">{$views['couponendtime']}</p>
+						</div>
+						<div class="s3">立即领券</div>
+					{else}
+						<div class="s1"></div>
+						<div class="s2">
+						    <p>暂无优惠券</p>
+						    <p class="p2"></p>
+						</div>
+						<div class="s3">立即购买</div>
+					{/if}
+			        
+			    </a>
+			</div>
+            
+        </div>
+        <!--推荐语-->
+        <div class="det-row1 det-row"  id="det">
+            <div class="det-title">
+                <div class="r">
+                    <div class="copy js-copy1" data-clipboard-target="#copyBox1">一键复制</div>
+                    <input type="text" class="copyBox" id="copyBox1" value="{$views['itemdesc']}">
+                </div>
+                <h3>推荐语</h3>
+            </div>
+            <div class="desc">{$views['itemdesc']}</div>
+        </div>
+
+       
+        <!--详情-->
+        <!-- <div class="det-row3 det-row" id="det">
+            <div class="det-title">
+                <h3>商品详情</h3>
+            </div>
+            <div class="det" style="display: block;padding-top: 0;">
+				
+					<img src="" alt="">
+            
+            </div>
+            <div class="more js-det-more" style="display:none;">点击查看 <i></i></div>
+        </div> -->
+        <!--推荐列表-->
+        <div class="det-row4 det-row" id="tui">
+           <div class="det-title" >
+                <h3>为您推荐</h3>
+            </div>
+            <ul class="list1"  id="goods_box">
+             
+            </ul>
+        </div>
+        <!--海报-->
+        <canvas id="sharecanvas" style="background-color:white; width:80%;display: none;" class="am-text-center am-center"></canvas>
+        <div class="m-pop2" id="win2">
+            <div class="pop-bg"></div>
+            <div class="con">
+                <div class="m-pic1">
+                    <a class="g-close" href="javascript:;"></a>
+                    <div class="pic" id="scpic"></div>
+                    <div id="js-text2">商品名称：<br>
+                        推荐理由：<br>
+                        商品原价：<br>
+                        券后价：<br>
+                        优惠券：<br>
+                        淘口令：<br></div>
+                    <div class="a-grop">
+                        <a href="javascript:;" class="a-1 copy" data-clipboard-action="copy" data-clipboard-target="#js-text2">复制文案</a>
+                        <!-- <a href="javascript:;" class="a-2">说明</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--分享弹窗-->
+        <div class="m-pop share-pop" style="display: none;" id="pop-share">
+            <div class="pop-bg"></div>
+            <div class="pop-con">
+                <div class="share-box">
+                    <div class="face">
+                        <div class="pic">
+                            <img src="{$views['itempic']}" alt="">
+                        </div>
+                    </div>
+                    <div class="txt">
+                        <div class="con tab-share">
+                            <p>商品名称：{$views['itemtitle']}</p>
+                            <p>商品原价：{$views['itemprice']}元</p>
+                            <p>折扣价：{$views['itemendprice']}元</p>
+                            <p>优惠券：{$views['couponmoney']}元</p>
+							<p class="js-url-con">购买链接：{$views['rhyurl']}</p>
+                        </div>
+                        <div class="conForCopy">
+                            商品名称：{$views['itemtitle']}
+                            商品原价：{$views['itemprice']}元
+                            券后价：{$views['itemendprice']}元
+                            优惠券：{$views['couponmoney']}元
+                        </div>
+						
+                    </div>
+                    <!-- <div class="choice">
+                        <div class="item js-url">
+                            <i></i>
+                            <span>下单链接</span>
+                        </div>
+                        <div class="item on js-tb">
+                            <i></i>
+                            <span>淘口令</span>
+                        </div>
+                    </div> -->
+                    <div class="btn">
+                        <div class="s1 s js-closePop">关闭窗口</div>
+                        <div class="s2 s js-shareCopy" aria-label="">一键复制</div>
+                        <textarea name="" id="bigCopyBox" class="copyBox"></textarea>
+                    </div>
+                    <div class="tips">
+                        复制后苏宁易购购买!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="det-footer">
+            <div class="icon">
+                <div class="item">
+                    <a href="{php echo $this->createMobileUrl('snindex')}">
+                        <img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/ic_zy_home_page.png" alt="">
+                        <span>首页</span>
+                    </a>
+                </div>
+                <!-- <div class="item">
+                    <img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/ic_item_fx.png" alt="">
+                    <span>乐享</span>
+                </div>
+                <div class="item js-fav">
+                    <img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/heart.png" alt="">
+                    <img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/heart-on.png" alt="" class="on-img">
+                    <span>收藏</span>
+                </div> -->
+            </div>
+            <div class="btn" style="width: 6rem;">
+                <div class="b1 js-share" style="background-color:#fc0" >复制链接</div>
+                <div class="b2  " style="background-color:#f60"><a href="{$views['rhyurl']}" style="color: #fff;">点击购买</a></div>
+                <input type="text" class="copyBox" id="copyUrlBox" value="2222">
+            </div>
+        </div>
+		<link href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/js/layui/css/layui.css" rel="stylesheet">
+		<script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/js/layui/layui.js" charset="utf-8"></script>
+        <script>
+            $(function() {
+				
+				getlist();
+				function getlist(){
+					;!function(){
+							layui.use('flow', function(){
+								var $ = layui.jquery;
+								var flow = layui.flow;
+									            
+					            flow.load({
+					                elem: '#tui'
+					                ,end: '本场次商品已经加载完毕啦 ￣O￣)ノ！'
+					                ,done: function(page, next){
+					                    var lis =[];
+					                    // vm.page=limit;
+					                    var content='';
+										// console.log(vm.pxname,vm.pxid,vm.page);
+										 // console.log("{php echo $this->createMobileUrl('snlistpost')}&uid={$share['id']}&key={$views['thirdSaleCategoryName']}");
+					                    $.get("{php echo $this->createMobileUrl('snlistpost')}&uid={$share['id']}&key={$views['thirdSaleCategoryName']}", function(res){
+					                    	res=JSON.parse(res);
+					                    	//alert(res);
+					                    	console.log(res);
+					                        layui.each(res.data, function(index, item){
+												
+												
+												content +='<li>';
+												content +='<div class="pic">';
+												content +='<a href="{php echo $this->createMobileUrl("snview")}&itemid='+item.itemid+'&supplierCode='+item.supplierCode+'"><img src="'+item.itempic+'" alt=""></a>';
+												content +='</div>';
+												content +='<div class="txt">';
+												content +='<div class="price"><em>￥</em>'+item.itemendprice+'</div>';
+												content +='<div class="listTit">';
+												content +='<a href="{php echo $this->createMobileUrl("snview")}&itemid='+item.itemid+'&supplierCode='+item.supplierCode+'">';
+												content +='<i class="mallIcon sn"></i>';
+												content +='<span>'+item.itemtitle+'</span>';
+												content +='</a>';
+												content +='</div>';
+												content +='<div class="listDesc">'+item.sellernick+'</div>';
+												content +='<div class="listInfo2">';
+												content +='<span>原价￥'+item.itemprice+'</span>';
+												content +='<span>'+item.itemsale+'人已购</span>';
+												content +='</div>';
+												content +='<div class="listInfo">';
+												if(item.couponmoney){
+													content +='<div class="quan">券'+item.couponmoney+'元</div>';
+												}
+												if(item.rate){
+													content +='<div class="fuli">奖￥'+item.rate+'</div>';
+												}												
+												content +='</div>';
+												content +='</div>';
+												content +='</li>';
+						
+					                        	
+					                        });
+					                         $("#goods_box").append(content);
+							
+					                        //console.log(content);
+					                        next(lis.join(''), 1 < res.pages);
+					                    });
+					                }
+					            });
+					        });
+					    }();
+				}
+				
+				
+				
+				
+				
+                hr.regPage('detPage', {
+                    init: function() {
+                        this.banSlick();
+                        this.video();
+                        this.fav();
+                        this.more();
+                        // this.choice();
+                        this.pop();
+                        this.header3();
+                        this.shortcut();
+                        this.copy();
+                        this.poster()
+                    },
+                    banSlick: function() {
+                        $('.det-ban .page span').html($('.slick-det-ban .item').length);
+                        $('.slick-det-ban').slick({
+                            infinite: true,
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            arrows: false,
+                            dots: false,
+                        }).on('afterChange', function(a, b) {
+                            $('.det-ban .page em').html(b.currentSlide + 1)
+                        });
+                    },
+                    video: function() {
+                        $('body').on('click', '.js-video', function() {
+                            $('#video').show();
+                            $(this).addClass('on');
+                            $('.js-pic').removeClass('on');
+                        }).on('click', '.js-pic', function() {
+                            $('#video').hide();
+                            $('#video video')[0].pause();
+                            $(this).addClass('on');
+                            $('.js-video').removeClass('on');
+                        })
+                    },
+                    fav: function() {
+                        $('body').on('click', '.js-fav', function() {
+                            $(this).toggleClass('on')
+                        })
+                    },
+                    more: function() {
+                        $('body').on('click', '.js-det-more', function() {
+                            $(this).siblings('.det').stop().slideToggle(200);
+                            $(this).fadeOut()
+                        })
+                    },
+                    choice: function() {
+
+
+                        $('body').on('click', '.choice .item', function() {
+                            $(this).toggleClass('on');
+                            if ($(this).hasClass('js-url')) {
+                                if ($(this).hasClass('on')) {
+                                    $('.js-url-con').show()
+                                } else {
+                                    $('.js-url-con').hide()
+                                }
+                            }
+                            if ($(this).hasClass('js-tb')) {
+                                if ($(this).hasClass('on')) {
+                                    $('.js-tb-con').show()
+                                } else {
+                                    $('.js-tb-con').hide()
+                                }
+                            }
+
+                        })
+                    },
+                    pop: function() {
+                        $('body').on('click', '.js-closePop', function() {
+                            $('#pop-share').fadeOut(200)
+                        }).on('click', '.js-share', function() {
+                            $('#pop-share').fadeIn(200)
+                        })
+                    },
+                    header3: function() {
+                        $(window).scroll(function() {
+
+                            var tuiTop = $('#tui').offset().top,
+                                detTop = $('#det').offset().top,
+                                goodTop = 0;
+
+                            if ($(this).scrollTop() > 3) {
+                                $('.header3').fadeIn(200)
+                            } else {
+                                $('.header3').fadeOut(200)
+                            }
+                            var stand = $(this).scrollTop() + $(window).height() / 2
+                            if (stand > detTop && $(this).scrollTop() < detTop) {
+                                if (stand > tuiTop && $(this).scrollTop() < tuiTop) {
+                                    $('#tui-s').addClass('on').siblings().removeClass('on')
+                                } else {
+                                    $('#det-s').addClass('on').siblings().removeClass('on')
+                                }
+                            }
+                            if (stand < detTop) {
+                                $('#good-s').addClass('on').siblings().removeClass('on')
+                            }
+                        })
+                        $(".header3 .lan .item a").click(function() {
+                            $('html, body').animate({
+                                scrollTop: $($.attr(this, 'href')).offset().top - $(window).height() / 2 + 10
+                            }, 500);
+                            return false;
+                        });
+                    },
+                    shortcut: function() {
+                        $('body').on('click', '.header3 .dian', function() {
+                            $('.shortcut').fadeIn(200);
+                        }).on('click', '.shortcut .close', function() {
+                            $('.shortcut').fadeOut(200);
+                        })
+                    },
+                    copy: function() {
+                        $('#copyUrlBox').val("{$views['rhyurl']}")
+                        var copyUrl = new ClipboardJS('.js-copyUrl');
+                        copyUrl.on('success', function(e) {
+                            layer.open({
+                                content: '复制成功'
+                                ,skin: 'msg'
+                                ,time: 1 //2秒后自动关闭
+                            });
+                        });
+                        var copyTui = new ClipboardJS('.js-copy1');
+                        copyTui.on('success', function(e) {
+                            layer.open({
+                                content: '复制成功'
+                                ,skin: 'msg'
+                                ,time: 1 //2秒后自动关闭
+                            });
+                        });
+
+
+                        var $input = $('#bigCopyBox');
+
+                        var txtCopy = new ClipboardJS('.js-shareCopy', {
+                            text: function() {
+                                // if ($('.js-tb').hasClass('on') && $('.js-url').hasClass('on')) {
+                                //     $input.val($('.conForCopy').html() + $('.js-tb-con').html() + $('.js-url-con').html())
+                                // } else {
+                                //     if ($('.js-url').hasClass('on')) {
+                                //         $input.val($('.conForCopy').html() + $('.js-url-con').html())
+                                //     }
+                                //     if ($('.js-tb').hasClass('on')) {
+                                //         $input.val($('.conForCopy').html() + $('.js-tb-con').html())
+                                //     }
+                                // }
+							     $input.val($('.conForCopy').html()  + $('.js-url-con').html())
+								console.log($input.val());
+                                return $input.val();
+                            }
+                        });
+                        txtCopy.on('success', function(e) {
+                            layer.open({
+                                content: '复制成功'
+                                ,skin: 'msg'
+                                ,time: 1 //2秒后自动关闭
+                            });
+                        });
+
+                        var copyGropl = new ClipboardJS('.a-grop .copy');
+                        copyGropl.on('success', function(e) {
+                            layer.open({
+                                content: '复制成功'
+                                ,skin: 'msg'
+                                ,time: 1 //2秒后自动关闭
+                            });
+                        });
+
+                    },
+                    poster: function() {
+                        var that = this;
+                        //商品海报
+                        $('body').on('click', '.g-close,.pop-bg', function() {
+                            $(this).parents('.m-pop2').fadeOut(200)
+                        });
+                        $(".camera").click(function() { //商品二维码
+                            canvasApp()
+                            if ($('#scpic').html() != "") {
+                                $("#win2").fadeIn();
+                                return false;
+                            }
+                            // layer.open({
+                            //   type: 2
+                            //   ,content: '正在为您生成图片,请稍后！'
+                            //   ,time: 1000
+                            // });
+                            // var code_img_src='';
+                            // $.ajax({
+                            //   url:"./index.php?i=14&c=entry&do=getewm&m=tiger_newhu",
+                            //   type:'post',
+                            //   data:{
+                            //     url:encodeURIComponent("http://cs.queqiaoku.com/app/index.php?i=14&c=entry&itemid=573781392481&itemendprice=49.9&couponmoney=15&itempic=http%253A%252F%252Fimg.alicdn.com%252Fimgextra%252Fi3%252F59991829%252FO1CN01MX6YAk1PNixfQ9X3o_%2521%252159991829.jpg&tkl=%289rQ714MRTff%29&itemprice=64.9&do=tklview&m=tiger_newhu&rhyurl=https://uland.taobao.com/coupon/edetail?e=YkYiFAhdNUMGQASttHIRqWmbix0DQrMCPlGeDvVU%2Bk7YdeFoe73rj7jsjpP1wmtDeTpiPWe7hJcfU8LwVg7E1zEhJpUUrcnYXwddZvDWtbzXaYdbTFCbjHY9x3IctcCWLspxGy3zBjY8IeN8lvhRA2lzrR4%2Bfrcb6wp6i5oufyTr1HkDc3b1LqQBUXUmu4C2340N%2Fz2%2Fovw%3D&traceId=0b17457515820797805288012e&union_lens=lensId:0b015dd6_0c0b_1705b4da6cb_949b&xId=Ca8rnQxpY7IQi9u59UFf2fShyM8JSiwJRf7NRlMv379JtnitOiZONVrjCks7jjEQJOjQwGRGQ7KusBN0dretSb&activityId=1acbdf879f64484ea0a071283e4eb02f&yaoqingma=&yj=2.00&itemtitle=%E6%97%A5%E6%9C%ACRichell%E5%88%A9%E5%85%B6%E5%B0%94%E5%90%B8%E7%AE%A1%E6%9D%AF+%E5%A9%B4%E5%84%BF%E7%AB%A5%E5%AE%9D%E5%AE%9D%E5%AD%A6%E9%A5%AE%E6%9D%AF%E5%96%9D%E7%89%9B%E5%A5%B6%E6%9D%AF%E9%80%8F%E9%80%8F%E6%9D%AF%E5%B8%A6%E6%89%8B%E6%9F%84"),
+                            //   },
+                            //   dataType:"json",
+                            //   success: function (data) {
+                            //     console.log(code_img_src);
+                            //     code_img_src=data;
+                            //     canvasApp(code_img_src);
+                            //
+                            //   }
+                            // });
+
+                        });
+
+                        function canvasApp() {
+                            var is_agent = window.localStorage.getItem('is_agent') || 0;
+                            var p_id = window.localStorage.getItem('adzone_pname') || '';
+
+                            var canvas = document.getElementById('sharecanvas');
+                            var ctx = canvas.getContext('2d');
+                            ctx.fillStyle = "#fff";
+                            canvas.width = 640;
+                            canvas.height = 896;
+                            var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                            for (var i = 0; i < imageData.data.length; i += 4) {
+                                // 当该像素是透明的，则设置成白色
+                                if (imageData.data[i + 3] == 0) {
+                                    imageData.data[i] = 255;
+                                    imageData.data[i + 1] = 255;
+                                    imageData.data[i + 2] = 255;
+                                    imageData.data[i + 3] = 255;
+                                }
+                            }
+                            ctx.putImageData(imageData, 0, 0);
+
+                            /*商品主图*/
+                            var bj_img = new Image();
+                            bj_img.setAttribute('crossOrigin', 'anonymous');
+                            //bj_img.src = "http://cs.queqiaoku.com/addons/tiger_newhu/hb/bj.jpg";
+                            bj_img.src = "images/bj1.jpg";
+                            bj_img.onload = function() {
+                                ctx.drawImage(bj_img, 0, 0, canvas.width, canvas.height);
+                                var item_img = new Image();
+                                item_img.setAttribute('crossOrigin', 'anonymous');
+                                item_img.src = "images/O1CN01MX6YAk1PNixfQ9X3o_!!59991829.jpg";
+                                //'https://img.alicdn.com/bao/uploaded/i2/357274591/TB1anbaeMvD8KJjSsplXXaIEFXa_!!0-item_pic.jpg'
+                                item_img.onload = function() {
+                                    ctx.drawImage(item_img, 0, 0, canvas.width, canvas.width);
+                                    /*二维码*/
+                                    var code_img = new Image();
+                                    code_img.setAttribute('crossOrigin', 'anonymous');
+                                    //code_img.src = "http://cs.queqiaoku.com/app/index.php?i=14&c=entry&do=images&m=tiger_newhu&url="+ encodeURIComponent('http://qr.liantu.com/api.php?m=10&w=200&text='+encodeURIComponent(1111));
+                                    code_img.src = 'images/vip-code.jpg';
+                                    //					console.log(code_img.src);
+                                    //
+                                    code_img.onload = function() {
+                                        ctx.drawImage(code_img, canvas.width - 205, canvas.width + 30, 175, 175);
+
+
+                                        /*图标*/
+                                        var shoptype = "C";
+                                        var tb_img = new Image();
+                                        tb_img.setAttribute('crossOrigin', 'anonymous');
+                                        if (shoptype == 'B') {
+                                            tb_img.src = "images/tm.png";
+                                        } else {
+                                            tb_img.src = "images/tb.png";
+                                        }
+                                        //					alert(shoptype);
+
+                                        //
+                                        tb_img.onload = function() {
+                                            // ctx.drawImage(tb_img, canvas.width - 600,canvas.width -80,50, 50);
+                                            ctx.drawImage(tb_img, canvas.width - 620, canvas.width + 28, 35, 35);
+
+
+                                            /*商品标题*/
+                                            var text = "日本Richell利其尔吸管杯婴儿童宝宝学饮杯喝牛奶杯透透杯带手柄宝学饮杯喝撒旦撒啊实打实日本Richell利其尔吸管杯婴儿童宝宝学饮杯喝牛奶杯透透杯带手柄宝学饮杯喝撒旦撒啊实打实日本Richell利其尔吸管杯婴儿童宝宝学饮杯喝牛奶杯透透杯带手柄宝学饮杯喝撒旦撒啊实打实日本Richell利其尔吸管杯婴儿童宝宝学饮杯喝牛奶杯透透杯带手柄宝学饮杯喝撒旦撒啊实打实";
+                                            var str = that.limit(text);
+                                            ctx.fillStyle = '#605761';
+                                            ctx.lineWidth = 1;
+                                            ctx.textAlign = 'left';
+                                            ctx.textBaseline = "top";
+                                            ctx.font = '24px 微软雅黑';
+                                            var lineWidth = 0;
+                                            var canvasWidth = canvas.width - 60; //计算canvas的宽度
+                                            var initHeight = canvas.width + 30; //绘制字体距离canvas顶部初始的高度
+                                            var lastSubStrIndex = 0; //每次开始截取的字符串的索引
+                                            for (var i = 0; i <= str.length; i++) {
+                                                lineWidth += ctx.measureText(str[i]).width;
+                                                if (lineWidth > canvasWidth - 230) {
+                                                    ctx.fillText(str.substring(lastSubStrIndex, i), 20, initHeight); //绘制截取部分
+                                                    initHeight += 40; //字体的高度
+                                                    lineWidth = 0;
+                                                    lastSubStrIndex = i;
+                                                }
+                                                if (i == str.length - 1) {
+                                                    ctx.fillText(str.substring(lastSubStrIndex, i + 1), 20, initHeight);
+                                                }
+                                            }
+
+                                            /*现价*/
+                                            var price = '现价：';
+                                            ctx.fillStyle = '#aba0ac';
+                                            ctx.textAlign = 'left';
+                                            ctx.font = '20px 微软雅黑';
+                                            ctx.textBaseline = "top";
+                                            ctx.fillText(price, 20, initHeight + 40);
+
+                                            /*现价*/
+                                            var price = "¥ 64.9";
+                                            ctx.fillStyle = '#aba0ac';
+                                            ctx.textAlign = 'left';
+                                            ctx.font = '20px Helvetica';
+                                            ctx.textBaseline = "top";
+                                            ctx.fillText(price, 80, initHeight + 40);
+
+                                            /*删除线*/
+                                            ctx.strokeStyle = '#aba0ac';
+                                            ctx.lineWidth = 1; // 改变线的粗细
+                                            ctx.moveTo(70, initHeight + 50); // 起始点
+                                            ctx.lineTo(140, initHeight + 50); // 第二点(如果是一条直线的话，就是终点)
+                                            ctx.stroke();
+
+                                            /*在售标题*/
+                                            var end_price_title = '券后价:';
+                                            ctx.fillStyle = '#aba0ac';
+                                            ctx.textAlign = 'left';
+                                            ctx.font = '20px 微软雅黑';
+                                            ctx.textBaseline = "top";
+                                            ctx.fillText(end_price_title, 120, initHeight + 87);
+
+                                            /*在售价格*/
+                                            var end_price = "¥ 49.9";
+                                            ctx.fillStyle = '#FF4E12';
+                                            ctx.textAlign = 'left';
+                                            ctx.font = '36px Helvetica';
+                                            ctx.textBaseline = "top";
+                                            ctx.fillText(end_price, 190, initHeight + 75);
+
+                                            /*秘券金额*/
+                                            var coupaa = "15";
+                                            var couponmoney = "15元";
+                                            if (coupaa == "null") {
+                                                couponmoney = "0元";
+                                            }
+                                            //alert(couponmoney);
+                                            ctx.fillStyle = '#FF4E12';
+                                            ctx.textAlign = 'left';
+                                            ctx.font = '20px Helvetica';
+                                            ctx.textBaseline = "top";
+                                            ctx.fillText(couponmoney, 55, initHeight + 87);
+
+
+                                            /*保存为图片*/
+                                            var image = new Image();
+                                            image.setAttribute('crossOrigin', 'anonymous');
+                                            image.src = canvas.toDataURL("img/png");
+
+                                            //$(".imgData").attr("background","white");
+                                            //$(".imgData").attr("src",image.src);
+                                            if (image.src) {
+                                                $("#layui-m-layer0").css("display", "none");
+                                            }
+
+
+                                            $("#scpic").html("<img style='' src='" + image.src + "'>");
+                                            $("#win2").fadeIn();
+
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+
+                        //海报
+                    },
+                    limit: function(text) {
+                        var con = '                 ' + text
+                        console.log(con.length);
+                        if (con.length > 56) {
+                            con = con.substring(0, 53) + ' ...'
+                        }
+                        return con
+                    }
+                });
+            });
+        </script>
+		
+		<script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style9/js/jweixin-1.0.0.js"></script>
+		<script>
+			var fxtitle=$("title").html();
+			var desc="{$views['itemdesc']}";
+			var imgUrl="{$views['itempic']}";
+			var fxlink=window.location.href;
+			var fxdata={"title":fxtitle,"imgUrl":imgUrl,"desc":desc,"link":fxlink};
+		        var appid = "{$_W['account']['jssdkconfig']['appId']}";
+		        var timestamp = "{$_W['account']['jssdkconfig']['timestamp']}";
+		        var nonceStr = "{$_W['account']['jssdkconfig']['nonceStr']}";
+		        var signature = "{$_W['account']['jssdkconfig']['signature']}";
+		        wx.config({
+		            debug: false,
+		            appId: appid,
+		            timestamp: timestamp,
+		            nonceStr: nonceStr,
+		            signature: signature,
+		            jsApiList: [
+		                "onMenuShareAppMessage",
+		                "onMenuShareTimeline",
+		                "chooseImage",
+		                "uploadImage",
+		                "downloadImage"
+		            ]
+		        });
+		
+			wx.ready(function(){
+				wx.onMenuShareAppMessage({
+					title: fxdata['title'],
+					desc: fxdata['desc'],
+					link: fxdata['fxlink'],
+					imgUrl: fxdata['imgUrl']
+				}); 
+				wx.onMenuShareTimeline({
+					title: fxdata['title'],
+					desc: fxdata['desc'],
+					link: fxdata['fxlink'],
+					imgUrl: fxdata['imgUrl']
+				});
+			});
+		
+		    </script>
+</body>
+
+</html>

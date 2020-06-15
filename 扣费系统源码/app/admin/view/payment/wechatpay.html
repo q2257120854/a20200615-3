@@ -1,0 +1,63 @@
+<form id="biaodan"class="form_single">
+    <div class="box">
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>充值金额</label>
+                        <span>（请输入需要充值的金额,单位元）</span>
+                        <input class="form-control" name="price" placeholder="请输入需要充值的金额" value="" type="number">
+                    </div>
+                </div>
+
+                <img src="" id="clown" alt="">
+                <div id="clown1" class="col-md-12">
+
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+        <div class="box-footer">
+            <button id="btnnnn" type="button" class="btn">
+                确 定
+            </button>
+        </div>
+
+    </div>
+</form>
+<div id="tishi">
+
+</div>
+<style>
+    #clown1{display: none;font-size: 17px;font-weight: 600;color:red;}
+    #tishi{background-color: #595959;height:40px;padding: 10px 47px;font-size:17px;color:#ffffff;margin-left: 35%;display: none;position:fixed;z-index: 9999;margin-top: -5%;}
+</style>
+<script type="text/javascript">
+    $("#btnnnn").click(function(){
+        $.ajax({
+            type:"post",
+            url:"{:url('prepay')}",
+            data:$("#biaodan").serialize(),
+            dataType:'json',
+            success:function(data){
+                if(!data['msg'])
+                {
+                   $("#clown").attr('src','/upload/extend/qrcode/' + data['name']);
+                   $("#clown1").css('display','block');
+                   $("#clown1").text('请扫描上方二维码,进行支付,支付完成,刷新页面查看是否到账!');
+                }else{
+                    $("#tishi").css('display','block');
+                    $("#tishi").text(data['msg']);
+                    $("#tishi").delay(3000).hide(0);
+                }
+
+            }
+        });
+
+    })
+</script>

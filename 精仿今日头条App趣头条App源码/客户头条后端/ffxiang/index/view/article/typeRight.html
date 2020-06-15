@@ -1,0 +1,28 @@
+
+<div class="widget-box widget-hot-channel-box">
+      <div class="widget widget-hot-channel">
+        <h5>猜您喜欢头条号</h5>
+          <div class="related-channels-list">
+<?php
+$channel=db('member')->where(['hide'=>1])->limit(9)->order('rand()')->select();
+if(_session()){
+  $uid=_member('id');
+  foreach ($channel as $k => $v) {
+    $channel[$k]['guanzhu']=db('member_guanzhu')->where(['uid'=>$uid,'gz_uid'=>$v['id']])->value('id');
+  }
+}
+?>
+          {volist name="channel" id="v"}
+          <li class="js-channel-subscribe-item">
+            <a href="{:url('user/index',['id'=>$v['id']])}">
+              <img src="{:_imgUrl()}{:_userData($v,'img')}">
+              <p>{:_userData($v)}</p>
+            </a>
+            <a class="related-channels-subscribe subscribe js-subscribe-btn" href="javascript:;" onclick="_guanzhu(this)" data-uid="{$v.id}" data-type="{$v['guanzhu'] ? '1' : '0'}">{$v['guanzhu'] ? '已关注' : '关注'}</a> 
+          </li>
+          {/volist}
+        </div>
+      </div>
+    </div><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

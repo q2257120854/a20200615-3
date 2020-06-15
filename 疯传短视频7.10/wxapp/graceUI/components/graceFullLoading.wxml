@@ -1,0 +1,8 @@
+<view catchtap="" catchtouchmove="" class="grace-full-loading" wx:if="{{graceFullLoading}}">
+    <view class="content">
+        <view class="image">
+            <image mode="widthFix" src="{{logoUrl}}" style="width:{{size}}; height:{{size}};"></image>
+        </view>
+        <view class="text" style="font-size:{{fontSize}}; color:{{textColor}};">{{text}}</view>
+    </view>
+</view>

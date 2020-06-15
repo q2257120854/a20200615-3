@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>注册协议</title>
+    <link href="/static/new/css/mui.min.css" rel="stylesheet" />
+    <link href="/static/new/css/style.css" rel="stylesheet" />
+    <style type="text/css">
+        body{
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a class="mui-icon" onclick="javaScript:history.go(-1)">
+        <img src="/static/new/images/head_back.png">
+    </a>
+    <p class="mui-text-center"></p>
+   
+</header>
+<div class="wrap xiaoxi_cont">
+    <div class="xx_head">
+        <p class="xx_title">{$data.title}</p>
+
+    </div>
+    <div class="xx_cont">
+        <p>	{$data.content}</p>
+    </div>
+</div>
+
+</body>
+<script src="/static/new/js/mui.min.js"></script>
+<script src="/static/new/js/jquery.min.js"></script>
+<script>
+    mui('footer').on('tap','a',function(){document.location.href=this.href;});
+</script>
+</html>

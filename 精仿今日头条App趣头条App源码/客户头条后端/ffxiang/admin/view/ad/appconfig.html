@@ -1,0 +1,132 @@
+ {include file="public/header" /}
+
+ <body class="gray-bg">
+
+    <div class="wrapper wrapper-content {:config('adminClass.main')}">
+
+        <div class="row">
+
+            <div class="col-sm-12">
+
+                {include file="public/tophead"}
+
+                {include file="public/top" /}
+
+                <div class="ibox-content">
+
+                {include file="public/topsection"}
+
+                    <form class="form-horizontal" method="post">
+
+                       
+
+                        <div class="form-group">
+
+                            <label class="col-sm-2 control-label">倒计时：</label>
+
+                            <div class="col-sm-3">
+
+                                <input name="time" type="text" class="form-control" value="{$cfg.time}">
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="col-sm-2 control-label">显示方式：</label>
+
+                            <div class="col-sm-9">
+
+                                <div class="radio i-checks">
+
+                                    <label>
+
+                                        <input type="radio" value="1" name="order" {php}if($cfg['order']==1){echo 'checked';}{/php}>随机
+
+                                    </label>
+
+                                    <label>
+
+                                        <input type="radio" value="0" name="order" {php}if($cfg['order']==0){echo 'checked';}{/php}>顺序
+
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+
+                            <label class="col-sm-2 control-label">是否关闭：</label>
+
+                            <div class="col-sm-9">
+
+                                <div class="radio i-checks">
+
+                                    <label>
+
+                                        <input type="radio" value="1" name="hide" {php}if($cfg['hide']==1){echo 'checked';}{/php}>开始广告
+
+                                    </label>
+
+                                    <label>
+
+                                        <input type="radio" value="0" name="hide" {php}if($cfg['hide']==0){echo 'checked';}{/php}>关闭广告
+
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div> 
+
+    </div>
+
+{include file="public/footer" /}
+
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+
+{load href="__PLUGINS__iCheck/custom.css"}
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+     $(".i-checks").iCheck({
+
+        checkboxClass: "icheckbox_square-green",
+
+        radioClass: "iradio_square-green",
+
+    })
+
+})
+
+function msg(){
+
+    layer.msg("上传成功")
+
+}
+
+
+
+</script>
+
+{include file="public/bottom" /}
+
+<!-- 加载编辑器的容器 -->
+
+{:ueditor()}<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

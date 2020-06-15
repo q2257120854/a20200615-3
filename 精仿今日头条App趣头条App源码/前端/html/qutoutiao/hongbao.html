@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<style>
+			body{
+	 		 background-color:transparent !important;
+	 	}
+			#_daily {
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: 99999999;
+				width: 100%;
+				height: 100%;
+				
+			}
+			#_daily_1 {
+				position: relative;
+				background: rgb(0, 0, 0);
+				width: 100%;
+				height: 100%;
+				opacity: 0.5;
+			}
+			#_daily_2 {
+				position: absolute;
+				border-radius: 0.3rem;
+				 
+				color: #fff;
+				padding: 0rem;
+				left: 0;
+				right: 0;
+				top: 0%;
+				bottom: 0;
+				 
+			}
+			#_daily_2 em {
+				text-align: center;
+				background: #f00;
+				border-radius: 50%;
+				color: #FFFFFF;
+				font-weight: bold;
+				height: 1.5rem;
+				width: 1.5rem;
+				line-height: 1.5rem;
+				font-size: 0.85rem;
+				margin: 0 auto;
+				display: block;
+				z-index: 99;
+				margin-top: 1rem;
+			}
+			#_daily_2 #_daily_2_1 {
+				position: relative;
+				 
+			}
+			 
+			#_daily_2 #_daily_2_1 img {
+				width: 280px;
+				text-align: center;
+				margin: 0 auto;
+				z-index: 999;
+			}
+			#_daily_2 p {
+				text-align: center;
+				padding-top: 2.5rem;
+				color: #FFF700;
+				font-size: 1.5rem;
+			}
+			#_daily_2 h1 {
+				color: #f00;
+				font-size: 1.8rem;
+				font-weight: bold;
+				padding-top: 1.2rem;
+				text-align: center;
+				margin: 0 auto;
+			}
+			#_daily_2_2{
+				position: absolute;
+				z-index: 999;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				text-align: center;
+				width: 200px;
+				margin: 0 auto;
+			}
+			#_daily_2_2 span{
+				padding-top: 1rem;
+				color: #FFFFFF;
+				font-size: 0.65rem;
+				display: block;
+				line-height: 24px;
+			}
+		</style>
+	</head>
+	<body  tapmode onclick="g()">
+		<div id="_daily">
+			<div id="_daily_1"></div>
+			<div id="_daily_2">
+				<div id="_daily_2_1">
+					<img src="../image/yaoqing/hongbao.png" />
+				</div>
+				<div id="_daily_2_2">
+					<h1></h1>
+					<p>
+						恭喜您
+					</p>
+					<span></span>
+				</div>
+				<!--<em class="aui-iconfont aui-icon-close"></em>-->
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			api.parseTapmode();
+			$api.html($api.dom('#_daily_2_2 h1'),api.pageParam['h1'])
+//			$api.text($api.dom('#_daily_2_2 p'),api.pageParam['p'])
+			$api.html($api.dom('#_daily_2_2 span'),api.pageParam['span'])
+			var w=api.winWidth/2;
+			var h=api.winHeight;
+			var div=$api.offset($api.dom('#_daily_2_1')).h;
+			div=(h-div)/2;
+		//	console.log(div)
+			$api.css($api.dom('#_daily_2_1'),'padding-top:'+div+'px');
+			$api.css($api.dom('#_daily_2_2'),'padding-top:'+div+'px');
+		}
+		function g() {
+			api.closeFrame();
+		}
+	</script>
+</html>
+

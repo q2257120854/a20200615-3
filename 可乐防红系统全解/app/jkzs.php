@@ -1,0 +1,1 @@
+<?php include '../fhincludes/common.php'; $ymzs=$DB->count("SELECT count(*) from quan_host WHERE 1"); echo $ymzs?>

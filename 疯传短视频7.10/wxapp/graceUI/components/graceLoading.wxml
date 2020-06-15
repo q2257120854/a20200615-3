@@ -1,0 +1,4 @@
+<view class="grace-loading" wx:if="{{loadingType<4}}">
+    <view class="grace-loading-icon" style="color:{{iconColor}}" wx:if="{{loadingType===1}}"></view>
+    <text style="color:{{textColor}}">{{loadingText[loadingType]}}</text>
+</view>

@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>{$view['name']}</title>
+
+    <link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/drs/commodity.css" />
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style88/js/jquery.js"></script>
+</head>
+
+<style>
+    body,html{height:100%}
+    html{font-size:8px}
+    body{margin:auto;max-width:640px;background:#f8f8f8}
+    body p img{display:block}
+    section p{font-size:1.8rem}
+    .article-page-write{padding:1rem 1.6rem;background:#fff}
+    .article-page-write p{font-size:14px;color:#635959;text-align:justify;line-height:32px;margin:0}
+    .article-container{overflow-y:auto;-webkit-overflow-scrolling:touch;word-break:break-all}
+    .article-page-banner{display:block;width:100%}
+    .article-newpage-write{margin-top: 2.4rem}
+    .article-newpage-write img{width:100%!important;height:auto!important}
+    .single-info img{width:120px!important;height:120px!important}
+    .article-long-title{font-size:2.4rem;color:#3c2b2a;margin:16px 0}
+    .article-message{color:#999;font-size:1.6rem}
+    .article-short-title{color:#635959;letter-spacing:1px;font-size:14px;line-height:22px}
+    .article-short-title span{color:#797171}
+    .article-page-triangle{margin:10px auto 0;width:0;height:0;border-top:6px solid #635959;border-right:6px solid transparent;border-left:6px solid transparent}
+    a{text-decoration:none}
+    .shadow{position:absolute;top:0;left:0;display:flex;overflow:hidden;width:100%;height:100%;align-items:center;justify-content:center}
+    .shadowtext{display:inline-flex;display:none;width:100px;height:100px;border-radius:50%;background:rgba(83,64,64,.6);color:#fff;letter-spacing:1px;font-weight:600;font-size:22px;justify-content:center;align-items:center}
+    .am-g{width:100%!important}
+    .headinfo{display:flex;justify-content:space-between}
+    .headinfo>span{display:flex;align-items:center}
+    .head-image{margin:0 6px 0 0;padding:0;width:36px;height:36px;border:1px solid #eee;border-radius:50%}
+    .head-name{font-size:14px;color:#635959;margin-right:1rem}
+    hr{margin:24px 0 38px 0;width:46px;border:1px solid #857d7d;border-top:0}
+    .footer{position:fixed;right:0;bottom:1rem;z-index:1000;display:flex;box-sizing:border-box;padding:0 1rem;justify-content:space-between;align-items:flex-end;flex-direction:column}
+    .commodity-list-btn{display:flex;width:50px;height:50px;border-radius:1000px;background:rgba(255,95,74,.8);color:#fff;font-size:1.8rem;align-items:center;justify-content:center}
+    .commodity-modal{position:absolute;top:0;left:0;z-index:1002;display:none;width:100%;height:100%;background:rgba(0,0,0,.4)}
+    .commodity-content{position:absolute;bottom:-100%;z-index:1005;display:none;box-sizing:border-box;padding:1.5rem;width:100%;border-top-right-radius:1rem;border-top-left-radius:1rem;background:rgba(255,255,255,.9);max-width:640px;}
+    .commodity-content header{position:relative;padding-bottom:1.5rem}
+    .commodity-content header span{font-size:2rem}
+    .commodity-list{overflow-y:scroll;height:380px}
+    .commodity-item{display:flex;margin-bottom:1rem;border-radius:6px;background:#fff}
+    .commodity-item:last-child{margin-bottom:0}
+    .commodity-img{width:100px;height:100px;border-bottom-left-radius:6px;border-top-left-radius:6px}
+    .commodity-item-info{width:calc(100% - 100px);display:inline-flex;flex-direction:column;justify-content:space-around}
+    .commodity-title{display:-webkit-box;overflow:hidden;width:100%;color:#333;text-align:ellipsis;font-size:16px;-webkit-line-clamp:1;-webkit-box-orient:vertical}
+    .commodity-item-price{font-size:14px;color:#635959}
+    .commodity-item-price>span{font-size:16px;color:#FF3C00;padding:0 3px}
+    .commodity-price{color:#635959;font-size:1.8rem}
+    .commodity-price span{padding:0 4px;color:#ff3c00;font-size:2rem}
+    .commodity-bottom{display:flex;width:100%;font-size:1.5rem;justify-content:space-between;align-items:center}
+    .commodity-couponmoney{padding:0 3px;border:1px solid #ff3c00;color:#ff3c00}
+    .commodity-ticket{padding-right:3px;border-right:1px dashed #ff3c00}
+    .commodity-sale{color:#999}
+    .other-list{display:flex}
+    .other-list>span{position:relative;display:inline-flex;width:50px;height:50px;border-radius:1000px;background:rgba(255,95,74,.8);align-items:center;justify-content:center;flex-direction:column}
+    .other-list{display:flex;margin-bottom:1rem}
+    .like i{color:#fff;font-size:22px}
+    .preview i{font-size:18px;color:#999;margin-right:4px}
+    .like-num{color:#fff;font-size:14px}
+    .end{color:#635959;text-align:center;font-size:2rem;margin:2.4rem 0 1.4rem}
+    @media screen and (min-width: 640px) {
+        .footer {
+            max-width: 640px;
+            margin: 0 calc((100% - 640px) / 2);
+        }
+    }
+</style>
+<style>
+	        header{width:100%;height:44px;border-bottom: 1px solid #fff;background: #fff;position: relative;}
+	        #close{width:20px;height:20px;background: url({$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/back3.png) no-repeat; background-size:10px;position: absolute;left:15px;bottom:11px;}
+	        .headerTitle{width: 70px;margin: 0 auto;height: 44px; line-height:44px;text-align: center;font-size: 16px;color:#333;}
+	    </style>
+<body>
+	<header>
+	    <div onclick="history.go(-1);" id="close"></div>
+	    <div class="headerTitle">达人说</div>
+	    <!-- <div id="set"></div> -->
+	  </header>
+    <div style="position: relative; height: 100%;" class="article-container">
+        <div class="article-content">
+            <img class="article-page-banner" src="{$view['article_banner']}" />
+            <div class="article-page-write">
+                <h3 class="article-long-title">{$view['name']}</h3>
+                <div class="article-message">
+                    <div class="headinfo">
+                        <span>
+                            <img src="{$view['head_img']}" class="head-image">
+                            <span class="head-name">{$view['talent_name']}</span>
+                            <span style="font-size: 12px; color: #999;">{php echo date('Y-m-d',$view['checktime'])}</span>
+                        </span>
+                        <span class="preview">
+                            <i class="iconfont icon-liulan" style="line-height: 17px; margin-right: 6px;"></i>
+                            <span class="preview-num"></span>
+                        </span>
+                    </div>
+                    <hr />
+                </div>
+                <div class="article-short-title">
+                    <span>「</span>&nbsp; {$view['shorttitle']}&nbsp;<span>」</span>
+                </div>
+				<div class="article-newpage-write">
+					{$view['article']}
+				</div>
+                <div class="end">~end~</div>
+            </div>
+        </div>
+        <div class="footer">
+           
+            <div class="commodity-list-btn">达人<br/>清单</div>
+        </div>
+
+        <!--达人清单商品列表-->
+        <div class="commodity-content">
+            <header><span>达人清单</span></header>
+            <div class="commodity-list"></div>
+        </div>
+
+        <!-- 达人清单遮罩层 -->
+        <div class="commodity-modal"></div>
+    </div>
+</body>
+</html>
+
+<script>
+    $(document).ready(function(){
+        // 隐藏部分敏感数据
+        $('.single-message').remove();
+    });
+
+
+
+    // $(function(){
+
+    //     // 单个宝贝一 - 只展示券后价
+    //     $('.single-info-one').each(function(){
+    //         var single_priceStr = '<span class="mobile-coupon">券后 <span class="mobile-price price"></span></span>'
+    //                              +'<span class="mobile-sold">已售 <span class="itemsale"></span></span>';
+    //         var coupon_str = '<div class="coupon-box">'
+    //                             +'<span class="coupon-style"><span>券</span><span class="coupon"></span></span>'
+    //                             +'<span class="commodity-view">查看</span>'
+    //                         +'</div>';
+    //         $(this).find('.single-coupon-one').html(single_priceStr);
+    //         $(this).find('.single-coupon-one').after(coupon_str);
+    //     });
+
+    //     // 单个宝贝二 - 只展示券后价
+    //     $('.single-info').each(function(){
+    //         var single_priceStr = '<span class="mobile-coupon">券后 <span class="mobile-price price"></span></span>'
+    //                               +'<span class="mobile-sold">已售 <span class="itemsale"></span></span>';
+    //         var coupon_str = '<div class="coupon-box">'
+    //                             +'<span class="coupon-style"><span>券</span><span class="coupon"></span></span>'
+    //                             +'<span class="commodity-view">查看</span>'
+    //                         +'</div>';
+    //         $(this).find('.single-coupon-two').html(single_priceStr);
+    //         $(this).find('.single-coupon-two').after(coupon_str);
+    //     });
+
+    //     // 兼容旧版本
+    //     $('.commodity-bottom').each(function(){
+    //         $(this).prev('.coupon-box').css('display', 'none');
+    //         $(this).prevAll('.commodity-message').children('.mobile-sold').remove();
+    //     })
+    // });
+
+	// 更新文章的商品信息
+	$(function(){
+        var list ={$itemlist};
+		console.log(list.data);
+		for( var i = 0; i < list.length; i++ ){
+			$('#itemid'+list[i].itemid+' .price').text('￥'+Math.floor(list[i].itemendprice*10)/10);	
+			$('#itemid'+list[i].itemid+' .coupon').text(list[i].couponmoney);
+			$('#itemid'+list[i].itemid+' .itemsale').text(list[i].itemsale);
+
+            //拼接未失效宝贝
+            var commodityStr = "<div class='commodity-item' onclick='aaa(this)' data-itemid='"+list[i].itemid+"'><img src='"+list[i].itempic+"' alt='' class='commodity-img'>"
+                                    +"<div class='commodity-item-info' style='padding: 0 1rem;'>"
+                                        +"<span class='commodity-title'>"+list[i].itemshorttitle+"</span>"
+                                        +"<span class='commodity-item-price'>券后<span>"+Math.floor(list[i].itemendprice*10)/10+"</span>元</span>"
+                                        +"<div class='commodity-bottom'>"
+                                            +"<span class='commodity-couponmoney'>"
+                                                +"<span class='ommodity-ticket'>券</span><span class='commodity-coupon'>￥"+list[i].couponmoney+"</span>"
+                                            +"</span>"
+                                            +"<span class='commodity-sale'>已售 <span class='itemsale'>"+list[i].itemsale+"</span></span>"
+                                        +"</div>"
+                                    +"</div>"
+                                +"</div>";
+            $('.commodity-list').append( commodityStr );
+        }
+
+
+
+        $('.commodity-list-btn').on('click', function(){
+            $('.commodity-modal').css( 'position', 'fixed' ).fadeIn();
+            $('.commodity-content').css({ 'display': 'block', 'position': 'fixed' }).animate({'bottom': 0});
+            $('.article-container').css( 'overflow', 'hidden' );
+        });
+
+        $('.commodity-modal').on('click', function(){
+            $(this).fadeOut();
+            $('.commodity-content').animate({ 'bottom': '-100%' });
+            $('.article-container').css( 'overflow', 'auto' );
+        });
+		
+
+	});
+
+
+
+    // 购买
+    $('.js_tobuy').click(function(){
+        var tb_itemid = $(this).find('.getitemid').attr('data-itemid');
+        window.location.href = "{php echo $this->createMobileUrl('view')}&lm=1&itemid=" + tb_itemid;
+    });
+	
+	function aaa(obj){
+		var tb_itemid=obj.getAttribute("data-itemid");
+		window.location.href = "{php echo $this->createMobileUrl('view')}&lm=1&itemid=" + tb_itemid;
+	}
+
+</script>
+
+	<script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style9/js/jweixin-1.0.0.js"></script>
+	<script>
+		var fxtitle="{$view['name']}";
+		var desc=" {$view['shorttitle']}";
+		var imgUrl="{$view['article_banner']}";
+		var fxlink=window.location.href;
+		var fxdata={"title":fxtitle,"imgUrl":imgUrl,"desc":desc,"link":fxlink};
+	        var appid = "{$_W['account']['jssdkconfig']['appId']}";
+	        var timestamp = "{$_W['account']['jssdkconfig']['timestamp']}";
+	        var nonceStr = "{$_W['account']['jssdkconfig']['nonceStr']}";
+	        var signature = "{$_W['account']['jssdkconfig']['signature']}";
+	        wx.config({
+	            debug: false,
+	            appId: appid,
+	            timestamp: timestamp,
+	            nonceStr: nonceStr,
+	            signature: signature,
+	            jsApiList: [
+	                "onMenuShareAppMessage",
+	                "onMenuShareTimeline",
+	                "chooseImage",
+	                "uploadImage",
+	                "downloadImage"
+	            ]
+	        });
+	
+		wx.ready(function(){
+			wx.onMenuShareAppMessage({
+				title: fxdata['title'],
+				desc: fxdata['desc'],
+				link: fxdata['fxlink'],
+				imgUrl: fxdata['imgUrl']
+			}); 
+			wx.onMenuShareTimeline({
+				title: fxdata['title'],
+				desc: fxdata['desc'],
+				link: fxdata['fxlink'],
+				imgUrl: fxdata['imgUrl']
+			});
+		});
+		
+	
+	  	
+	  	
+	
+	    </script>

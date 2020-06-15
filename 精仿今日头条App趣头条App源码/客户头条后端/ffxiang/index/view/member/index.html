@@ -1,0 +1,124 @@
+{include file="member/left" /}
+<style type="text/css">
+.Meffxiang{
+	margin:30px;
+	overflow: hidden;
+}
+.f-1-left{
+	float: left;
+	width: 55%;
+	border-right: 1px solid #eee;
+}
+.f-1-right{
+	float: right;
+	width: 38%;
+	overflow: hidden;
+	margin-top: 15px;
+}
+.f-1-left-img{
+	display: block;
+	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+	background-size:contain;
+	cursor:pointer;
+	transition:all .5s;
+	float: left;
+}
+.f-1-left-text{
+	float: left;
+	padding-left: 20px;
+	padding-top: 5px
+}
+.f-1-right ul{overflow: hidden; margin:0px; padding:0px;}
+.f-1-right ul li{
+	list-style: none;
+}
+.f-1-right ul li a{
+	float: left;
+	margin-left: 15px;
+	width: 60px;
+	height: 60px;
+	border:1px solid #eee;
+	border-radius: 50%;
+	position: relative;
+	text-align: center;
+	color:#bbb;
+	line-height: 78px;
+	font-size:0.8em;
+}
+.f-1-right ul li a i{
+	width: 18px;
+	height: 18px;
+	display: block;
+	position:  absolute;
+	left:20px;
+	line-height: 22px;
+	top: 7px;
+}
+.f-1-right ul li a #qq{
+	background: url(__STYLE__/member/img/iconqq.png);
+	background-size: 100% 100%;
+}
+.f-1-right ul li a #wx{
+	background: url(__STYLE__/member/img/iconwx.png);
+	background-size: 100% 100%;
+}
+.f-1-right ul li a #mobile{
+	background: url(__STYLE__/member/img/iconmobile.png);
+	background-size: 100% 100%;
+}
+.f-1-right ul li a #email{
+	background: url(__STYLE__/member/img/iconemail.png);
+	background-size: 100% 100%;
+
+}
+.f-2{}
+.f-2-left p{
+	font-size: 15px;
+}
+.f-2-left p b{
+	color:#325dab;
+	font-size: 18px;
+}
+</style>
+                <div class="right-container col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                	<div class="account-wrapper">
+					     {include file="member/nav"}
+					    <div class="panel panel-default">		  
+							<div class="Meffxiang">
+								<div class="f-1">
+									<div class="f-1-left">
+										<a class="f-1-left-img" style="background-image:url('{:_userimg($member['img'])}')"  href="#"></a>
+										<div class="f-1-left-text">
+											<p style="font-size: 15px;">{$member['username']} ( id:{$member['id']} )</p>
+											<p><img src="{$member['inco']}" style="padding-right: 5px;">{$member['groups']}(经验值:{$member['jingyan']})</p>
+											<p style="color:#999">差{php}echo $member_groups['jingyan']-$member['jingyan'];{/php}经验值升级<img src="{$member_groups['img']}" style="padding-right: 5px;padding-left: 5px;">{$member_groups['title']}</p>
+										</div>
+									</div>
+									<div class="f-1-right">
+										<ul>
+											<li><a href="{:url('mobile')}"><i id="mobile"></i>{present name="member['mobile']"}已绑定{else /}未绑定{/present}</a></li>
+											<li><a href="{:url('email')}"><i id="email"></i>{present name="member['email']"}已绑定{else /}未绑定{/present}</a></li>
+											 
+										
+										</ul>
+									</div>
+								</div>
+								<div style="clear:both;"></div>
+								<hr>
+								<div class="f-2">
+									<div class="f-2-left">
+										<!-- <p>余额：<b>{$member['money']}.00元</b><a href="{:url('member/moneypay')}" style="margin-left: 10px;" class="btn btn-primary ">充值</a></p> -->
+										<p>积分：<b>{$member['score']}</b></p>
+									</div>
+									<div class="f-2-right"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+{include file="member/footer" /}<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

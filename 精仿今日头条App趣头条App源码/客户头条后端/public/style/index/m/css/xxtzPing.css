@@ -1,0 +1,69 @@
+.pingList{
+}
+.pingList ul {
+	background: none;
+	border: 0px !important;
+}
+.pingList .aui-list .aui-list-item,section .aui-list .aui-list-item{
+	border-bottom: 0px !important;
+}
+.pingList .aui-list-item-media img{
+	width: 2.5rem !important;
+}
+.pingList .aui-list .aui-list-item-media{
+	width: 2.5rem;
+	padding-right: 0.5rem;
+}
+.pingList ul li .aui-list-item-title{
+	color: #406599;
+	font-size: 0.5rem;
+}
+.pingList .aui-list .aui-list-item-text{
+ 
+}
+.pingList .fx-view-huifu{
+	background: #F4F5F6;
+ 	padding: 0.1rem 0.5rem;
+ 	border-radius: 1rem;
+ 	margin-left: 0.5rem;
+}
+.pingList .aui-list-item-text i.aui-icon-laud{
+	font-size: 0.8rem;
+	padding-right: 0.1rem;
+}
+.aui-media-list .aui-list-item-inner{
+	margin-right: 3.8rem;
+}
+.fx-ping-content{
+	position: absolute;
+	top: 1rem;
+	right: 0px;
+	width: 4rem;
+	-webkit-line-clamp:3;
+	font-size: 0.6rem;
+	color: #999;
+}
+.aui-list .aui-list-item{
+	padding:0 0.6rem; 
+}
+.aui-media-list-item-inner{
+	position: relative;
+}
+.aui-list .aui-list-item-text{
+	font-size: 0.8rem;
+}
+.pingList ul li .aui-list-item-title{
+	font-size: 0.75rem;
+	padding-top: 0.2rem;
+}
+.pingList .aui-list .aui-list-item-media,.aui-media-list .aui-list-item-inner{
+	padding-bottom: 0.2rem;
+}
+.fx-contentuser img{
+	margin:0.2rem 0;
+	width: 0.9rem;
+}
+.fx-contentuser{
+	font-size: 0.75rem !important;
+	display: block !important;
+}

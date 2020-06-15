@@ -1,0 +1,164 @@
+﻿{extend name="common/world"}
+{block name="title"}{$Think.config.hello.title}{/block}
+{block name="header"}修改资料{/block}
+{block name="container"}
+<div class="buttons-tab">
+    <a href="/account/profile.html" class="active button">个人资料</a>
+    <a href="/account/password.html" class="button">修改登录密码</a>
+    <a href="/account/secpwd.html" class=" button">修改交易密码</a>
+</div>
+<style type="text/css">
+    body {
+        background: #FFF;
+    }
+
+    .li_touxiang img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
+    .btn-proof input[type="file"] {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+</style>
+<div class="list-block">
+    <script type="text/javascript" src="/static/js/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/webuploader.css">
+    <script type="text/javascript" src="/static/js/webuploader.js"></script>
+    <script type="text/javascript" src="/static/js/getting-started.js"></script>
+    <script type="text/javascript" src="/static/js/ajaxfileupload.js"></script>
+    <script type="text/javascript">
+
+        function uplodeFile() {
+            var params = {};
+            $.ajaxFileUpload
+            (
+                {
+                    url: '/ajax_upload.html',//用于文件上传的服务器端请求地址
+                    secureuri: false,//一般设置为false
+                    data: params,
+                    fileElementId: 'file',//文件上传空间的id属性  <input type="file" id="file" name="file" />
+                    dataType: 'json',//返回值类型 一般设置为json
+                    success: function (data)  //服务器成功响应处理函数
+                    {
+                        alert(data.message);
+                        window.setTimeout("window.location='/ziliao.html'", 1000);
+                        //window.location.href="/ziliao.html";//需要跳转的地址
+                        return true;
+
+                    },
+                    error: function (data, status, e)//服务器响应失败处理函数
+                    {
+                        alert(e);
+                    }
+                }
+            )
+            return false;
+        }
+    </script>
+    <ul>
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label">用户名</div>
+                    <div class="item-input">
+                        {$user.account.username}
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label">推荐人</div>
+                    <div class="item-input">{$user['account']['inviter']}</div>
+                </div>
+            </div>
+        </li>
+
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label">真实姓名</div>
+                    <div class="item-input">
+                        {$user.profile.realname}
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label">支付宝</div>
+                    <div class="item-input">
+                        {$user.profile.alipay}
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label">注册时间</div>
+                    <div class="item-input">{$user['account']['create_at']}</div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label">收款码</div>
+                    <div class="item-input">
+                        <img src="{$user['profile']['alipay_image']}" alt="" width="100%" height="100%" id="xmTanImg"/>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label">收款码</div>
+                    <div class="item-input">
+                        <div>
+                            <div class="uploader-list" style=" display:none;"><img src="static/picture/loader.gif">
+                            </div>
+                            <div class="webuploader-container">
+                                <button class="btn btn-secondary btn-proof" data-option="5" data-type="image">上传支付宝二维码<input type="file" accept="image/*" /></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+    $('.webuploader-container').on('change', 'input[type=file]', function(){
+        if ($(this)[0].files.length) {
+            ajax(api.account.profile, {image: $(this)[0].files[0]}, function(res){
+                if (res.code == 200) {
+                    $("#xmTanImg").attr('src',res.image)
+                } else {
+                    alert(res.message);
+                }
+            }, 'file');
+        }
+    });
+</script>
+{/block}

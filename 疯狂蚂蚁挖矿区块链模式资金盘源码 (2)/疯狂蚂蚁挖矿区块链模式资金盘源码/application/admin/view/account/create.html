@@ -1,0 +1,42 @@
+{extend name="common/world"} {block name="title"}创建用户{/block} {block name="style"}{/block} {block name="container"}
+<div class="page">
+    <div class="page-single">
+        <form class="card" method="post" style="max-width: 24rem;">
+            <div class="card-header">
+                <h3 class="card-title">注册一个新的账户</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label class="form-label">用户账号</label>
+                    <input type="text" class="form-control" name="username" placeholder="用户账号" required="true" maxlength="11" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">登录密码</label>
+                    <input type="text" class="form-control" name="password" placeholder="默认：123456" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">安全密码</label>
+                    <input type="text" class="form-control" name="safeword" placeholder="默认：123456" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">用户类型</label>
+                    <select class="form-control custom-select" name="type">
+                        {volist name="level" id="item"}
+                            <option value="{$key}">{$item.name}</option>
+                        {/volist}
+                    </select>
+                </div>
+                <div class="form-group mb-0">
+                    <label class="form-label">推荐人</label>
+                    <input type="text" class="form-control" name="inviter" placeholder="推荐人" maxlength="11" />
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="text-right">
+                    <button class="btn btn-primary">添加用户</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{/block} {block name="script"} {/block}

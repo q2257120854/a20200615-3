@@ -1,0 +1,57 @@
+{template 'common/header'}
+<ol class="breadcrumb">
+	<li>
+		<a href="{php echo $this->createWebUrl('index');}">管理首页</a>
+	</li>
+	<li>
+		<a href="{php echo $this->createWebUrl('cate',array('op' => 'cate'));}">分类管理</a>
+	</li>
+	<li class="active">修改分类</li>
+</ol>
+<form action="{php echo $this->createWebUrl('cate', array('op' => 'edit'))}" method="post" class="form-horizontal form">
+	<div class="panel panel-default we7-panel">
+		<div class="panel-heading">修改分类</div>
+        <div class="panel-body we7-padding">
+          	<input type="hidden" name="data[id]" value="{$detail['id']}">
+          	<div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">分类名称</label>
+                <div class="col-sm-9">
+                    <input type="text" name="data[title]" value="{$detail['title']}" class="form-control" placeholder="请填写分类名称"/>
+                </div>
+          	</div>
+          	<div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">采集分类</label>
+                <div class="col-sm-9">
+                    <select  name="data[bindid]" class="form-control">
+                    	<option {if $detail['bindid'] == 0}selected{/if} value="0">不设置</option>
+                    	{loop $cates $key $val}
+                    	<option {if $detail['bindid'] == $key}selected{/if}  value="{$key}">{$val}</option>
+                    	{/loop}
+                    </select>
+                </div>
+          	</div>
+            <div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">分类顺序</label>
+                <div class="col-sm-9">
+                    <input type="number" name="data[sort]" value="{$detail['sort']}" class="form-control" placeholder="分类顺序越小越靠前"/>
+                </div>
+          	</div>
+          	<div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否隐藏</label>
+                <div class="col-sm-9">
+                    <select  name="data[ishide]" class="form-control">
+                    	<option {if $detail['ishide'] == 0}selected{/if} value="0">不隐藏</option>
+                    	<option {if $detail['ishide'] == 1}selected{/if} value="1">隐藏</option>
+                    </select>
+                </div>
+          	</div>
+            <div class="form-group">
+                <div class="col-md-6 col-sm-offset-3 col-md-offset-2">
+			       	<input name="submit" type="submit" value="提交保存" class="btn btn-primary" />
+		            <input type="hidden" name="token" value="{$_W['token']}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{template 'common/footer'}

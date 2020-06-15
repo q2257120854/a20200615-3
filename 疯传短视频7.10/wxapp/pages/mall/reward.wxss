@@ -1,0 +1,85 @@
+.reward-list {
+    overflow: hidden;
+    width: 660rpx;
+    margin: 100rpx auto 0 auto;
+}
+
+.reward-list .item {
+    float: left;
+    width: 50%;
+    padding: 25rpx;
+    box-sizing: border-box;
+}
+
+.reward-list .item-inner {
+    width: 280rpx;
+    height: 150rpx;
+    border-radius: 10rpx;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    padding: 0;
+    border: none;
+    display: block;
+    line-height: 55rpx;
+}
+
+.reward-list .item-inner:after {
+    display: none;
+}
+
+.reward-list .item-bg {
+    width: 280rpx;
+    height: 150rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.reward-list .item-bd {
+    width: 280rpx;
+    position: absolute;
+    text-align: center;
+    top: 20rpx;
+    z-index: 1;
+}
+
+.reward-list .item-price {
+    font-size: 60rpx;
+    font-family: font-price;
+    color: #c0494f;
+}
+
+.reward-list .item-small {
+    font-size: 36rpx;
+    margin-left: 6rpx;
+}
+
+.reward-list .item-ft {
+    width: 280rpx;
+    position: absolute;
+    text-align: center;
+    color: #666;
+    bottom: 15rpx;
+    font-size: 32rpx;
+    letter-spacing: 2rpx;
+    z-index: 1;
+}
+
+.reward-head {
+    width: 750rpx;
+    height: 300rpx;
+}
+
+.reward-head image {
+    width: 750rpx;
+    height: 300rpx;
+}
+
+.reward-foot {
+    text-align: center;
+    color: #e9d193;
+    margin-top: 100rpx;
+    font-size: 30rpx;
+}

@@ -1,0 +1,66 @@
+<div class="header-top">
+  <div class="content">
+    <div class="widget widget-weather"></div>
+    <div class="header-links float-right"><a href="{:url('article/page',['id'=>1])}" class="brand">关于我们</a><!-- <span class="split-icon"></span> --></div>
+  </div>
+</div>
+<div class="header-search login">
+  <div class="content"><a href="{:_webfig('url')}" class="logo" style="line-height: 0px;"><img src="__IMG__logo.png" /></a>
+    <div class="suggestion-search-box">
+      <input placeholder="输入关键词搜索" value="" class="input input-search sx-search-text">
+      <script id="fx-list-suggestion" type="text/x-dot-template">
+      <div class="suggestion hot-search-suggestion">
+        <div class="inner-block-box">
+          {{ for(var i=0,len=8; i < len; i++) { }}
+            <a class="item item-{{= i+1}}" href="">
+              <div class="float-left index icon iconfont icon-{{= i+1}}"></div>
+              <div class="item-content">
+                <div class="hot-search-word">{{= it[i].title}}</div>
+              </div>
+            </a>
+          {{ } }}
+        </div>
+      </div>
+      </script> 
+      <div id="fx-view-suggestion"></div>
+    </div>
+    <button class="btn btn-search" onclick="search()">搜 索</button>
+    <div class="float-right header-links"><a href="http://qz.yysy168.cn/xz" class="link link-download">下载APP</a><span class="split-icon"></span><span class="split-icon"></span>
+    <?php if(_session()){?>
+      <div class="user-info-box"><a href="{:url('member/index')}" class="user-info"><img src="{:_member('img')}?imageView2/1/w/40/h/40" class="profile"><span class="nickname">{:_member('username')}</span></a>
+      </div>
+    <?php }else{?>
+       <button class="btn btn-login js-to-login" onclick="_url('{:url('user/login')}')">登录</button>
+    <?php }?>
+    </div>
+  </div>
+</div>
+<div class="header-channel-nav  login">
+  <div class="content"><a href="/" class="logo float-left anim iconfont icon-logo"></a>
+    <div class="channel-nav">
+      <div class="down iconfont icon-arrow-down" onclick="downchannel()"></div>
+      <div class="list">
+        <a  href="/" data-channelid="best" class="item {notpresent name="typeidActive"}active{/notpresent}">首页</a>
+        {volist name="typeid" id="v"}<a href="{:url('article/typeid',['id'=>$v['id']])}" class="item {present name="typeidActive"}{eq name='v["id"]' value='$typeidActive'}active{/eq}{/present}">{$v.title}</a>{/volist}
+       </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+function downchannel(){
+  var sxw=$('.header-channel-nav').width();
+  var sxcontent=$('.content').width();
+  var sxnva=(sxw-sxcontent)/2;
+  $('.channel-edit-panel').css('left',sxnva)
+  var a=$('.channel-edit-panel');
+  a.slideToggle(300)
+}
+function search(){
+  var text=$('.sx-search-text').val();
+  if(!text){ $('.sx-search-text').focus(); return _msg('请输入搜索关键词');}
+  _url('{:url('article/search')}'+'?search='+text)
+}
+</script>
+<div class="channel-edit-panel active" style="position: absolute; top: 188px; left: 251.5px; width: 1080px;display: none;;">{volist name="typeid" id="v"}<a class="item channel-item cant-edit {present name="typeidActive"}{eq name='v["id"]' value='$typeidActive'}active{/eq}{/present}" href="{:url('article/typeid',['id'=>$v['id']])}"> <button>{$v.title}</button><span class="delete iconfont icon-delete"></span></a>{/volist}</div><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

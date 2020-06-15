@@ -1,0 +1,251 @@
+ {include file="public/header" /}
+ {load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<style type="text/css">
+#des,#des input{ width: 40px;text-align:center;}
+#id{ width: 78px; }
+.bs-checkbox{ width: 36px; height: 40px }
+.fixed-table-toolbar .columns,.fixed-table-toolbar .search{margin-left:0px; margin-top: 0px }
+#title span{ float: right; margin-left: 3.333px;}
+.search{ margin-bottom: 0px !important; }
+.asdlkjasd{ background: #1ab394; color: #fff}
+</style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        {include file="public/tophead"}
+        {include file="public/top" /}
+        <div class="ibox-content">
+        {include file="public/topsection"}
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <div class="fixed-table-toolbar">
+                        <a class="btn btn-default btn-outline {present name="mychannel"}{else /}asdlkjasd{/present}" href="{:url('index')}">所有内容</a>
+                        <a class="btn btn-default btn-outline {eq name='mychannel' value='1'}asdlkjasd{/eq}" href="{:url('article/index',['mychannel'=>'1'])}">文章列表</a>
+                        <a class="btn btn-default btn-outline {eq name='mychannel' value='2'}asdlkjasd{/eq}" href="{:url('article/index',['mychannel'=>'2'])}">图片列表</a>
+                        <a class="btn btn-default btn-outline {eq name='mychannel' value='3'}asdlkjasd{/eq}" href="{:url('article/index',['mychannel'=>'3'])}">视频列表</a>
+                        <a class="btn btn-default btn-outline {eq name='mychannel' value='4'}asdlkjasd{/eq}" href="{:url('article/index',['mychannel'=>'4'])}">小视频</a>
+						<a class="btn btn-default btn-outline {eq name='weitoutiao' value='4'}asdlkjasd{/eq}" href="{:url('article/index',['weitoutiao'=>'4'])}">小视频广告</a>
+                        <a class="btn btn-default btn-outline {eq name='weitoutiao' value='1'}asdlkjasd{/eq}" href="{:url('article/index',['weitoutiao'=>'1'])}">微头条</a>
+						<a class="btn btn-default btn-outline {eq name='weitoutiao' value='3'}asdlkjasd{/eq}" href="{:url('article/index',['weitoutiao'=>'3'])}">贴子</a>
+                         <a class="btn btn-default btn-outline {eq name='zhiding' value='1'}asdlkjasd{/eq}" href="{:url('article/index',['zhiding'=>'1'])}">置顶</a>
+                        <a class="btn btn-default btn-outline {eq name='zhiding' value='2'}asdlkjasd{/eq}" href="{:url('article/index',['zhiding'=>'2'])}">置顶审核</a>
+                         <a class="btn btn-default btn-outline {eq name='tuijian' value='1'}asdlkjasd{/eq}" href="{:url('article/index',['tuijian'=>'1'])}">推荐</a>
+
+                         <a class="btn btn-default btn-outline {eq name='stuijian' value='1'}asdlkjasd{/eq}" href="{:url('article/index',['stuijian'=>'1'])}">搜索推荐</a>
+
+
+
+                    </div>  <div style="display:block;clear: both;"></div>
+                    <div class="fixed-table-toolbar">
+                        <form  method="get" action="">
+                            <div class="pull-left search">
+                             <!--    <div class="columns columns-right btn-group pull-left" >
+                                    <select class="form-control" name="where">
+                                        <option value="">全部</option>
+                                        <option value="id">文章ID</option>
+                                    </select>
+                                </div> -->
+                                <div class="columns columns-right btn-group pull-left" >
+                                    <select class="form-control" name="search_typeid">
+                                        <option value="">所有栏目</option>
+                                        {php}
+                                        if(input('?param.search_typeid')){
+                                            $typeidname=input('param.search_typeid');
+                                        }else{
+                                            $typeidname='';
+                                        }
+                                        {/php}
+                                        {$typeidname}
+                                        {volist name='typeid' id='v'} 
+                                            <option value="{$v.id}" {eq name="v.id" value="$typeidname" }selected{/eq}>{:str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $v['depth'])}{gt name="$v['depth']" value="0"}┠&nbsp;&nbsp;{/gt}{$v.title}</option>
+                                        {/volist}
+                                    </select>
+                                </div>
+                                <div class="pull-right search">
+                                    <button style="border-radius:0px; border:1px solid #e5e6e7; border-left:0px" class="btn btn-default btn-outline" type="submit">搜索</button>
+                                </div>
+                                <div class="pull-right search">
+                                    <input class="form-control input-outline" id="filter" type="text"
+{php}
+if(input('?param.search_name')){
+            if(input('param.search_name')){
+               echo "value='".input('search_name')."'";
+            } 
+        }
+{/php}
+                                     name="search_name" placeholder="输入文章标题搜索">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="example">
+                        <form class="form-horizontal" method="post">
+                        <table data-toggle="table">
+                            <thead>
+                                <tr>
+                                  <th class="bs-checkbox"><input type="checkbox" id="delidAll"></th>
+                                    <th data-align="center">排序</th>
+                                    <th data-align="center">id</th>
+                                    <th>文章标题</th>
+                                    <th>访问次数</th>
+                                    <th>模型</th>
+                                    <th>更新时间</th>
+                                    <th>管理</th>
+                                </tr>
+                            </thead> 
+                            <tbody id="form">
+                                {volist name="data" id="v"}
+                                <tr id="id{$v.id}" class="class">
+                                    <td id="delid" ><input name="delAll[]" type="checkbox" value="{$v.id}"></td>
+                                    <td id="des"><input type="text" style="border:1px solid #e5e6e7" name="des[{$v.id}]" value="{$v.des}"></td>
+                                    <td id="id">{$v.id}</td>
+                                    <td id="title">
+                                    <?php if($v['weitoutiao']){
+                                        echo _substr($v['description']);
+                                    }else{
+                                        echo _substr($v['title']);
+                                    }
+                                    ?>
+                                    {notempty name="v.url"} 
+                                        <span class="label label-danger">跳</span>
+                                    {/notempty}
+                                    {notempty name="v.flags"}
+                                        <span class="label label-primary">{:_flags($v['flags'])}</span>
+                                    {/notempty}
+                                    {notempty name="v.image"}
+                                        <span class="label label-primary">图</span>
+                                    {/notempty}
+                                    {notempty name="v.uid"}
+                                        <span class="label label-primary">稿</span>
+                                    {/notempty}
+                                    {notempty name="v.weitoutiao"}
+                                        <span class="label label-primary">微</span>
+                                    {/notempty}
+                                    </td>
+                                    <td>{$v.click}</td>
+                                    <td>{:_mychannelName($v['mychannel'])}</td>
+                                    <td> 
+                                        <span {php}if(date('Ymd')==date('Ymd',$v['update_time']))echo 'style="color: #ed5565"';{/php}>{$v.update_time|date='Y-m-d H:i:s',###}</span>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <div data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span>
+                                            </div>
+                                            <ul class="dropdown-menu">
+                                                <li><a onclick="add('{:url('add',['id'=>$v['id'],'mychannel'=>$v['mychannel'],'url'=>-1])}')">修改</a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li><a onclick="del({$v.id})">删除</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                        </form>
+                    </div>
+                </div>  
+            </div>
+            <hr>
+            <div class="row row-lg">
+               <div class="col-sm-6">
+                      <button type="button" class="btn btn-outline btn-default" id="desAll">
+                        更新排序
+                    </button>
+                    <div  class="btn btn-outline btn-default" onclick="alla(1)">
+                        批量通过
+                    </div>
+                    <div  class="btn btn-outline btn-default" onclick="alla(3)">
+                        批量拒绝
+                    </div>
+                    <div  class="btn btn-outline btn-default" onclick="alla(2)">
+                        批量审核
+                    </div>
+                    <div  class="btn btn-outline btn-default" onclick="alla(0)">
+                        批量隐藏
+                    </div>
+                    <div  class="btn btn-outline btn-default" onclick="alla('del')">
+                        批量删除
+                    </div>
+                    
+                </div> 
+                <div class="col-sm-6 pages">{$page}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#desAll').click(function(){
+        var des=$(".form-horizontal").serialize();
+        ajaxFun("post",'{:url('article/desAll')}',des,'json',function(ret){
+            if(ret){
+                if(ret.ret){
+                    self.location.reload();
+                }else{
+                    layer.msg(ret.err)
+                }
+            }else{
+                swal_msg("错误",ret,"error");
+            }
+        })
+    })
+     
+    $('#delidAll').click(function(){
+        $('input[type=checkbox]').each(function(){
+            var self=$(this);
+            if(!self.prop('checked')){
+                self.prop('checked',true);
+            }else{
+                self.prop('checked',false);
+            }
+        });
+    })
+});
+function del(id){
+    swal_del(id,"{:url('del')}")
+}
+function alla(types){
+    var all=$(".form-horizontal").serialize();
+    var alls=$(".form-horizontal").serializeArray();
+   //console.log(JSON.stringify(alls))
+
+    ajaxFun("post",'{:url('article/all')}?type='+types,all,'json',function(ret){
+        
+        if(ret){
+            var text
+            switch(types)
+            {
+            case 0:
+              text='<font color="#f00">隐藏</font>';
+              break;
+            case 1:
+              text='<font color="#1ab394">通过</font>'
+              break;
+            case 2:
+              text ='审核';
+              break;
+            case 3:
+              text ='<font color="#f00">拒绝</font>';
+              break;
+            }
+            for(var i=0;i<alls.length;i++){
+                if(types=='del'){
+                    $('#id'+alls[i]['value']).remove();
+                }else{
+                    $('#hide'+alls[i]['value']).html(text);
+                }
+            }
+             
+            swal_msg('操作成功')
+        }
+    })
+}
+</script>
+ <SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

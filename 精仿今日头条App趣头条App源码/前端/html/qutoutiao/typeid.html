@@ -1,0 +1,291 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>频道</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/ffxiang.css" />
+		<style> 
+			body{
+				background-color: transparent !important; 
+			}
+			body, .aui-bar-light, .aui-bar-tab {
+				/*background: #F4F5F6*/
+			}
+			.fx-jiatypeid {
+				/*background: #F4F5F6;*/
+			}
+			.fx-jiatypeid .aui-col-xs-3 {
+				padding: 0px;
+				-webkit-animation:zoomIn .3s ease;
+				animation:zoomIn .3s ease;
+				position: relative;
+			}
+ 
+			.aui-grid .aui-grid-label {
+				background: #fff;
+				margin: 0.25rem;
+				padding: 0.5rem 0;
+				border-radius: 0.2rem;
+				background: #F6F5F7;
+				color: #333;
+				font-size: 0.8rem;
+			}
+			.fx-jiatypeid-em{
+				float: right;
+				display: block;
+				border-radius: 20px;
+				color: #F95B5B;
+				padding:0.05rem 0.5rem;
+				font-size: 0.5rem;
+				border:0.05rem solid #FCA7A7;
+				font-weight: 200;
+			}
+			#close{
+				font-weight: bold;
+				color: #000;
+				font-size: 1rem;
+				padding: 0.45rem;
+				margin-bottom: 0;
+			}
+			.aui-content-padded{
+				margin: 0.35rem;
+			}
+			.aui-grid .pindaoh5{
+				background: none;
+				border: 0px; 
+				margin-top: 0px; 
+				padding-top: 0px; 
+				font-size: 0.75rem; 
+				color: #000
+			}
+			#no .aui-grid-label{
+				box-shadow:0px 0px 5px 1px #e8e8e8;
+				background: #fff;
+			}
+			.aui-grid em.aui-icon-close{
+				position: absolute;
+				right:0;
+				top:0;
+				background: #CACACA;
+				color: #fff;
+				font-weight: bold;
+				font-size: 0.6rem;
+				height: 1rem;
+				width: 1rem;
+				line-height: 1rem;
+				border-radius: 50%;
+			}
+			#header{
+				border-top-left-radius: 0.5rem;
+				border-top-right-radius: 0.5rem;
+				background: #fff;
+				height: 100%;
+				width: 100%;
+			}
+			#no{
+				padding-bottom: 10rem;
+			}
+			.aui-grid [class*=aui-col-xs-]:active {
+				background-color: #fff !important;
+			}
+			.aui-grid [class*=aui-col-xs-] .aui-grid-label:active{
+				background-color: #ccc !important;
+			}
+			.duozhu .aui-grid-label{
+				color: #ccc !important;
+			}
+		</style>
+	</head>
+	<body>
+		 <div id="header">
+		 	<div class="aui-iconfont aui-icon-close" id="close" Tapmode onclick="c()"></div>
+			<section class="aui-grid fx-jiatypeid">
+				<div class="aui-content-padded">
+					<div class="aui-row ui-list-header">
+						<div class="aui-grid-label pindaoh5">
+							点击删除以下频道
+							<!--<em class="fx-jiatypeid-em" onclick="yes()">完成</em>-->
+						</div>
+					</div>
+					<script id="list" type="text/x-dot-template">
+						{{ for(var i=0,len=it.length; i < len; i++) { }}
+						<div {{? it[i].id != '0' & it[i].id != '999999999' & it[i].id != '888888888' }} tapmode onclick="data(this,1)"  class="aui-col-xs-3" {{??}}  class="aui-col-xs-3 duozhu" {{?}} data-size='{{= it[i].size.w}}' data-id='{{= it[i].id}}' data-title='{{= it[i].title}}' data-bg='{{= it[i].bg}}' data-bgs='{{= it[i].bgSelected}}'  class="aui-col-xs-3">
+							<div class="aui-grid-label aui-ellipsis-1">
+								{{= it[i].title}}
+							</div>
+							<!--<em class="aui-iconfont aui-icon-close"></em>-->
+						</div>
+						{{ } }}
+					</script>
+					<div class="aui-row" id="yes"></div>
+					<div class="aui-row ui-list-header" style="margin-top: 20px;">
+						<div class="aui-grid-label pindaoh5">
+							点击添加以下频道
+						</div>
+					</div>
+					<script id="list-no" type="text/x-dot-template">
+						{{ for(var i=0,len=it.length; i < len; i++) { }}
+						<div {{? it[i].id != '0' & it[i].id != '999999999' & it[i].id != '888888888' }} tapmode onclick="data(this,0)" data-size='{{= it[i].size.w}}' data-id='{{= it[i].id}}' data-title='{{= it[i].title}}' data-bg='{{= it[i].bg}}' data-bgs='{{= it[i].bgSelected}}'  class="aui-col-xs-3" {{??}}  class="aui-col-xs-3 duozhu" {{?}} >
+							<div class="aui-grid-label aui-ellipsis-1">
+								{{= it[i].title}}
+							</div>
+							<!--<em class="aui-iconfont aui-icon-close"></em>-->
+						</div>
+						{{ } }}
+					</script>
+					<div class="aui-row" id="no"></div>
+				</div>
+			</section>
+		 </div>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/doT.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var shuaxin=false;
+		apiready = function() { 
+			ajax();
+			api.parseTapmode();
+			// 监听夜间
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+		};
+		function ajax(){
+			var typeid = _typeid_data_get()	// 获取分类json
+//			console.log(JSON.stringify(typeid.data));
+//			console.log(JSON.stringify(typeid.no));
+//		 
+			// 选中
+			var evalData = doT.template($api.html($api.byId('list')));
+			$api.html($api.byId('yes'), evalData(typeid.data));
+			// 未选中
+			if(typeid.no){
+				var evalData = doT.template($api.html($api.byId('list-no')));
+				$api.html($api.byId('no'), evalData(typeid.no));
+			}
+		//	console.log(JSON.stringify(typeid))
+		}
+		function data(jos, yesno) {
+			shuaxin=true;
+			var id = $(jos).data('id');
+			var size = $(jos).data('size');
+			var name = $(jos).data('title');
+			var bg = $(jos).data('bg');
+			var bgs = $(jos).data('bgs');
+			
+			var html = '<div class="aui-col-xs-3" tapmode onclick="data(this,'+(yesno==1 ? 0 : 1)+')" data-size="'+ size +'" data-id="'+ id +'" data-title="'+ name +'" data-bg="'+bg+'" data-bgs="'+ bgs +'" >';
+			if (yesno == 1) {
+				// 先判断当前分类是否低于1个
+				var num = $api.domAll('#yes .aui-grid-label');
+				if(num.length < 2) {
+					api.toast({
+						msg : '至少要保留一个',
+						duration : 2000,
+						location : 'bottom'
+					});
+					return false;
+				}
+				// 移除当前分类
+				$api.remove(jos);
+				// 插入分类
+				html += '<div class="aui-grid-label aui-ellipsis-1">+ ' + name ;
+				var _this = $api.byId('no');
+			 
+			} else if(yesno == 0) {
+				// 移除当前分类
+				$api.remove(jos);
+				html += '<div class="aui-grid-label aui-ellipsis-1" >' + name ;
+				var _this = $api.byId('yes');
+ 
+			}
+			 
+			html += '</div></div>';
+ 
+			$api.append(_this, html)
+			api.parseTapmode();
+		}
+		function c(){
+			if(shuaxin){
+				var _yes = yes();
+				var _no = no();
+				var _typeid = typeidsss();
+				var _md5 = $api.getStorage('typeid').md5
+				var json = {'data':_yes,'typeid':_typeid,'no':_no,'md5':_md5};
+				$api.setStorage('typeid_get', json);
+				api.execScript({
+					name:'root',
+					frameName : 'ffxiang_win',
+					script :  'typeDataAdd()'
+				});
+			}
+			api.execScript({
+				name:'root',
+				frameName : 'ffxiang_win',
+				script : 'typeid_keyback_false()'
+			});
+			api.closeFrame();
+		}
+		// 获取添加分类
+		function yes(){
+			// 选中分类
+			var typeData_no = [];
+			$("#yes .aui-col-xs-3").each(function(){
+				var size = $(this).data('size');
+				var id = $(this).data('id');
+				var title = $(this).data('title');
+				var bg = $(this).data('bg');
+				var bgs = $(this).data('bgs');
+				var a = {};
+				a.size = {"w":size};
+				a.id   = id;
+				a.title= title;
+				a.bg   = bg;
+				a.bgSelected = bgs;
+				typeData_no.push(a);
+				 
+			});
+			return typeData_no;
+		}
+		// 获取添加分类id
+		function typeidsss(){
+			// 选中分类
+			var typeData_no = [];
+			$("#yes .aui-col-xs-3").each(function(){
+				var id = $(this).data('id');
+				typeData_no.push(id); 
+			});
+			return typeData_no;
+		}
+		// 获取移除分类
+		function no(){
+			var typeData_no = [];
+			$("#no .aui-col-xs-3").each(function(){
+				var size = $(this).data('size');
+				var id = $(this).data('id');
+				var title = $(this).data('title');
+				var bg = $(this).data('bg');
+				var bgs = $(this).data('bgs');
+				var a = {};
+				a.size = {"w":size};
+				a.id   = id;
+				a.title= title;
+				a.bg   = bg;
+				a.bgSelected = bgs;
+				typeData_no.push(a);
+				 
+			});
+			return typeData_no; 
+		}
+	 
+	</script>
+</html>
+

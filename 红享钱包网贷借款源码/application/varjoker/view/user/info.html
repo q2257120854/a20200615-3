@@ -1,0 +1,390 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>{$Think.config.config.title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="/static/skin/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <!-- Custom CSS -->
+    <link href="/static/skin/css/style.css" rel='stylesheet' type='text/css' />
+    <!-- Graph CSS -->
+    <link href="/static/skin/css/font-awesome.css" rel="stylesheet">
+    <!-- jQuery -->
+    <link href='/static/skin/css/font.css' rel='stylesheet' type='text/css'>
+    <!-- lined-icons -->
+    <link rel="stylesheet" href="/static/skin/css/icon-font.min.css" type='text/css' />
+    <!-- //lined-icons -->
+    <script src="/static/skin/js/jquery-1.10.2.min.js"></script>
+    <link href="/static/skin/css/fabochart.css" rel='stylesheet' type='text/css' />
+    <!--clock init-->
+    <script src="/static/skin/js/css3clock.js"></script>
+    <!--Easy Pie Chart-->
+    <!--skycons-icons-->
+    <script src="/static/skin/js/skycons.js"></script>
+
+
+    <!--//skycons-icons-->
+</head>
+<body>
+<div class="page-container">
+<div class="outter-wp">
+
+    <!--/sub-heard-part-->
+    <!--/tabs-->
+    <div class="tab-main">
+        <div class="tab-inner">
+            <div id="tabs" class="tabs">
+                <div class="graph">
+                    <nav>
+                        <ul>
+                            <li><a href="#section-1" class="icon-shop"><i class="lnr lnr-briefcase"></i> <span>实名认证</span></a></li>
+                            <li><a href="#section-2" class="icon-cup"><i class="lnr lnr-lighter"></i> <span>联系人列表</span></a></li>
+                            <li><a href="#section-3" class="icon-food"><i class="fa fa-cutlery"></i> <span>淘宝</span></a></li>
+                            <li><a href="#section-4" class="icon-lab"><i class="fa fa-flask"></i> <span>运营商</span></a></li>
+                            <li><a href="#section-5" class="icon-truck"><i class="fa fa-truck"></i> <span>银行卡</span></a></li>
+                            <li><a href="#section-6" class="icon-truck"><i class="fa fa-truck"></i> <span>身份证</span></a></li>
+                            <li><a href="#section-7" class="icon-truck"><i class="fa fa-truck"></i> <span>芝麻分</span></a></li>
+                        </ul>
+                    </nav>
+                    <div class="content tab">
+                        <section id="section-1">
+                            <p>姓名：{$data.name} 身份证：{$data.idcard}</p>
+                        </section>
+                        <section id="section-2">
+                            {php}$personal = json_decode($data['personal'],true);{/php}
+                            <p>学历：{$personal.xueli}</p>
+                            <p>地区：{$personal.diqu}</p>
+                            <p>详细地址：{$personal.xiangxidizhi}</p>
+                            <p>单位：{$personal.danwei}</p>
+                            <p>单位详细地址：{$personal.danweidz}</p>
+                            <p>联系人姓名：{$personal.lxrxm}</p>
+                            <p>联系人关系：{$personal.lxrgx}</p>
+                            <p>联系人电话：{$personal.lxrsj}</p>
+                            <p>联系人姓名：{$personal.lxrxm2}</p>
+                            <p>联系人关系：{$personal.lxrgx2}</p>
+                            <p>联系人电话：{$personal.lxrsj2}</p>
+
+                        </section>
+                        <section id="section-3">
+                            {php}$taobao = json_decode($data['taobaoAuth'],true);{/php}
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th style="text-align:left">用户及账户基本信息 </th>
+                                    <th style="text-align:left">描述</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.basic_info.user_and_account_basic_info.taobao_name}</td>
+                                    <td style="text-align:left">淘宝中该用户的真实姓名</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.basic_info.user_and_account_basic_info.taobao_email}</td>
+                                    <td style="text-align:left">淘宝中该用户绑定的邮箱</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.basic_info.user_and_account_basic_info.taobao_phone_number}</td>
+                                    <td style="text-align:left">淘宝中该用户绑定的手机号码</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.basic_info.user_and_account_basic_info.alipay_account}</td>
+                                    <td style="text-align:left">淘宝中该用户绑定的支付宝账户</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.basic_info.user_and_account_basic_info.taobao_vip_level}</td>
+                                    <td style="text-align:left">该用户的淘宝等级，vip等级分为：无等级(-1)和0～6级</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.basic_info.user_and_account_basic_info.taobao_vip_count}</td>
+                                    <td style="text-align:left">该用户的淘宝VIP值；vip值约等于购物金额</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.basic_info.user_and_account_basic_info.tmall_level}</td>
+                                    <td style="text-align:left">该用户的天猫等级</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.basic_info.user_and_account_basic_info.tmall_vip_count}</td>
+                                    <td style="text-align:left">该用户的天猫VIP值(注：淘宝已不提供)</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.basic_info.user_and_account_basic_info.tmall_apass}</td>
+                                    <td style="text-align:left">该用户的天猫信誉(注：淘宝已不提供)</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th style="text-align:left">总资产</th>
+                                    <th style="text-align:left">描述</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.wealth_info.totalssets.balance}</td>
+                                    <td style="text-align:left">该用户支付宝账户余额金额</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.wealth_info.totalssets.yue_e_bao_amt}</td>
+                                    <td style="text-align:left">该用户余额宝账户金额</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.wealth_info.totalssets.total_profit}</td>
+                                    <td style="text-align:left">该用户支付宝历史累计收益金额</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.wealth_info.totalssets.huai_bei_limit}</td>
+                                    <td style="text-align:left">当前该用户花呗的授信额度</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.wealth_info.totalssets.huai_bei_can_use_limit}</td>
+                                    <td style="text-align:left">当前该用户花呗的可用授信额度</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th style="text-align:left">收件详细信息</th>
+                                    <th style="text-align:left">描述</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.address_analysis.receipt_details.max_deliver_name_3}</td>
+                                    <td style="text-align:left">最近＊个月，该用户交易已完成的订单中，收货数量最多的收货人姓名；</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.address_analysis.receipt_details.max_deliver_name_6}</td>
+                                    <td style="text-align:left">最近＊个月，该用户交易已完成的订单中，收货数量最多的收货人的电话号码</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.address_analysis.receipt_details.max_deliver_phone_3}</td>
+                                    <td style="text-align:left">最近＊个月，该用户交易已完成的订单中，收货数量最多的收货人对应的收货地址</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.address_analysis.receipt_details.max_deliver_phone_6}</td>
+                                    <td style="text-align:left">最近＊个月，该用户交易已完成的订单中，收货数量最多的城市；</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.address_analysis.receipt_details.max_deliver_address_3}</td>
+                                    <td style="text-align:left">最近＊个月，该用户交易已完成的订单中，收货数量最多的收货人姓名，是否与淘宝默认地址中的收货人姓名匹配；</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.address_analysis.receipt_details.max_deliver_address_6}</td>
+                                    <td style="text-align:left">最近＊个月，该用户交易已完成的订单中，收货数量最多的收货人对应的收货订单数；</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.address_analysis.receipt_details.max_deliver_city_3}</td>
+                                    <td style="text-align:left">最近＊个月，该用户交易已完成的订单中，默认收件人的收货数量；</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left">{$taobao.address_analysis.receipt_details.max_deliver_city_6}</td>
+                                    <td style="text-align:left">最近＊个月，该用户交易已完成的订单中，收货数量最多的城市对应的收货数量；</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        <section id="section-4">
+                            {php}$mobile = json_decode($data['mobileAuth'],true);
+                          if(!$mobile){
+                          $edstatus = 1;
+                          }else{
+                          if(in_array("about:blank",$mobile)){
+
+                                    $edstatus = 1;
+
+                                  }else{
+
+                                   $edstatus = 2;
+
+                                  }
+                          }
+                 					
+                          {/php}
+						
+						{eq name="$edstatus" value="1"}
+                          暂无数据
+                          {else/}
+                            <table>
+                                <thead>
+                                <tr>
+
+                                    <th style="text-align:left">运营商基本信息描述</th>
+                                    <th style="text-align:left">示例值</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+
+                                    <td style="text-align:left">本机号码</td>
+                                    <td style="text-align:left">{$mobile.mobile}</td>
+                                </tr>
+                                <tr>
+
+                                    <td style="text-align:left">机主姓名</td>
+                                    <td style="text-align:left">{$mobile.name}</td>
+                                </tr>
+                                <tr>
+
+                                    <td style="text-align:left">机主身份证</td>
+                                    <td style="text-align:left">{$mobile.idcard}</td>
+                                </tr>
+                                <tr>
+
+                                    <td style="text-align:left">本机号码归属运营商标识，详见[数据字典，carrier(运营商标识)取值]</td>
+                                    <td style="text-align:left">{$mobile.carrier}</td>
+                                </tr>
+                                <tr>
+
+                                    <td style="text-align:left">本机号码归属省份</td>
+                                    <td style="text-align:left">{$mobile.province}</td>
+                                </tr>
+                                <tr>
+
+                                    <td style="text-align:left">本机号码归属城市</td>
+                                    <td style="text-align:left">{$mobile.city}</td>
+                                </tr>
+                                <tr>
+
+                                    <td style="text-align:left">入网时间，格式：yyyy-MM-dd</td>
+                                    <td style="text-align:left">{$mobile.open_time}</td>
+                                </tr>
+                                <tr>
+
+                                    <td style="text-align:left">用户星级</td>
+                                    <td style="text-align:left">{$mobile.level}</td>
+                                </tr>
+                                <tr>
+
+                                    <td style="text-align:left">本机号码当前套餐名称</td>
+                                    <td style="text-align:left">{$mobile.package_name}</td>
+                                </tr>
+                                <tr>
+
+                                    <td style="text-align:left">本机号码状态, 详见[数据字典，state(手机状态)取值说明]</td>
+                                    <td style="text-align:left">{$mobile.state}</td>
+                                </tr>
+                                <tr>
+
+                                    <td style="text-align:left">本机号码当前可用余额（单位: 分）</td>
+                                    <td style="text-align:left">{$mobile.available_balance}</td>
+                                </tr>
+                                <tr>
+
+                                    <td style="text-align:left">数据获取时间，格式: yyyy-MM-dd HH:mm:ss</td>
+                                    <td style="text-align:left">{$mobile.last_modify_time}</td>
+                                </tr>
+                                <tr>
+
+                                    <td style="text-align:left">状态码，详见[数据字典，code(状态码)取值]</td>
+                                    <td style="text-align:left">{$mobile.code}</td>
+                                </tr>
+                                <tr>
+
+                                    <td style="text-align:left">状态描述</td>
+                                    <td style="text-align:left">{$mobile.message}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th style="text-align:left">字段名</th>
+                                    <th style="text-align:left">类型</th>
+                                    <th style="text-align:left">是否允许为空</th>
+                                    <th style="text-align:left">最大长度</th>
+                                    <th style="text-align:left">描述</th>
+                                    <th style="text-align:left">示例值</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {volist name="$mobile.calls" id="vo"}
+                                {volist name="$vo.items" id="lis"}
+
+                                <tr>
+                                    <td style="text-align:left">通话时间，格式：yyyy-MM-dd HH:mm:ss</td>
+                                    <td style="text-align:left">{$lis.time}</td>
+                                </tr>
+                                <tr>
+
+                                    <td style="text-align:left">对方通话号码</td>
+                                    <td style="text-align:left">{$lis.peer_number}</td>
+                                </tr>
+                                <tr>
+
+                                    <td style="text-align:left">通话地(自己的)</td>
+                                    <td style="text-align:left">{$lis.location}</td>
+                                </tr>
+                                <tr>
+
+                                    <td style="text-align:left">通话地类型. e.g.省内漫游</td>
+                                    <td style="text-align:left">{$lis.location_type}</td>
+                                </tr>
+                                <tr>
+
+                                    <td style="text-align:left">通话时长(单位:秒)</td>
+                                    <td style="text-align:left">{$lis.duration}</td>
+                                </tr>
+                                <tr>
+
+                                    <td style="text-align:left">呼叫类型. DIAL-主叫; DIALED-被叫</td>
+                                    <td style="text-align:left">{$lis.dial_type}</td>
+                                </tr>
+                                <tr>
+
+                                    <td style="text-align:left">通话费(单位:分)</td>
+                                    <td style="text-align:left">{$lis.fee}</td>
+                                </tr>
+                                {/volist}
+                                {/volist}
+                                </tbody>
+                            </table>
+                   {/eq}
+                        </section>
+                        <section id="section-5">
+                           {php}$bank = json_decode($data['bankAuth'],true);{/php}
+                            <p>姓名：{$bank.name}</p>
+                            <p>卡号：{$bank.idcard}</p>
+                        </section>
+                        <section id="section-6">
+                            {php}$img = json_decode($data['photoAuth'],true);{/php}
+                            <img src="{$img.a}" width="300px" height="300px">
+                            <img src="{$img.b}" width="300px" height="300px">
+                            <img src="{$img.c}" width="300px" height="300px">
+                         
+                        </section>
+                        <section id="section-7">
+                            {php}$zhima = json_decode($data['zhimaAuth'],true);
+                          if(empty($zhima['status'])){
+                          echo "授权失败";
+                          }else{
+                          echo "当前芝麻分：".$zhima['data']['score'];
+                          }
+                          {/php}
+                      
+                        </section>
+                    </div><!-- /content -->
+                </div>
+                <!-- /tabs -->
+
+            </div>
+            <script src="/static/skin/js/cbpFWTabs.js"></script>
+            <script>
+                new CBPFWTabs( document.getElementById( 'tabs' ) );
+            </script>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+<div class="clearfix"></div>
+</div>
+</body>
+</html>

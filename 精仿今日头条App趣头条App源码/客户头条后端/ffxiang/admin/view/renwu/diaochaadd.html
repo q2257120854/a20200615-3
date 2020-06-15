@@ -1,0 +1,67 @@
+s {include file="public/header" /}
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content">
+    <div class="row">
+        <form class="form-horizontal" method="post">
+            <div class="col-md-12">
+                {include file="public/tophead"}
+                {include file="public/top" /}
+                <div class="ibox-content">
+                {include file="public/topsection"}
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">标题：</label>
+                        <div class="col-sm-9">
+                            <input name="title" type="text" class="form-control" value="{present name="name"}{$name.title}{/present}">
+                        </div>
+                    </div>
+                 
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">选择内容：</label>
+                        <div class="col-sm-9">
+                            <div class="btn btn-primary" id="data">添加选择器</div>
+                        </div>
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-4" id="dataList">
+                            {present name="name"}
+                            {volist name="name.data" id="v"}
+                            <input style="margin-top:15px" name="data[]" type="text" value="{$v}" class="form-control"">
+                            {/volist}
+                            {/present}
+                        </div>
+
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">排序：</label>
+                        <div class="col-sm-9">
+                            <input name="des" type="text" class="form-control" value="{present name="name"}{$name.des}{else /}50{/present}">
+                        </div>
+                    </div>
+                     
+                </div>
+            </div> 
+        </form>
+    </div>
+</div>
+{include file="public/footer" /}
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+<script type="text/javascript">
+function msg(){
+    layer.msg("上传成功")
+}
+$(function(){
+    $(".i-checks").iCheck({
+        checkboxClass: "icheckbox_square-green",
+        radioClass: "iradio_square-green",
+    })
+    $('#data').click(function(){
+        $('#dataList').append('<input style="margin-top:15px" name="data[]" type="text" class="form-control"">')
+    })
+})
+</script>
+{include file="public/bottom" /}
+ 
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

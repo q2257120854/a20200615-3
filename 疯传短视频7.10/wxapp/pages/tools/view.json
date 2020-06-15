@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "txv-video": "plugin://wxa75efa648b60994b/video"
+    },
+    "navigationBarTitleText": "加载中"
+}

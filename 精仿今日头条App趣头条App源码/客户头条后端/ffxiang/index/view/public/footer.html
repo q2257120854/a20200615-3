@@ -1,0 +1,55 @@
+<div class="clear"></div>
+<div class="footerfirst"> 
+  <div class="footerfirst_main">
+   <a href="{:_webfig('url')}">首页</a>
+   {fx:article typeid="23" field="id,url,title"}
+   | <a href="{$fx.url}" title="{$fx.title}" >{$fx.title}</a> 
+   {/fx:article}
+  </div>
+</div>
+<div class="footersecond">
+  <div class="footersecond_main">
+    <div class="footersecond_main_right">
+      {:_webfig('copyright')}
+    </div>
+  </div>
+</div>
+<div class="footernew">
+  <ul>
+    <li><a href="#" rel="nofollow" target="_blank"><img src="__IMG__footernew_pic.jpg"></a></li>
+    <li><a href="#" rel="nofollow" target="_blank"><img src="__IMG__footernew_pic2.jpg"></a></li>
+    <li><a href="#" rel="nofollow" target="_blank"><img src="__IMG__footernew_pic3.jpg"></a></li>
+    <li><a href="#" rel="nofollow" target="_blank"><img src="__IMG__footernew_pic4.jpg"></a></li>
+    <li><a href="#" rel="nofollow" target="_blank"><img src="__IMG__footernew_pic5.jpg"></a></li>
+    <li><a href="#" rel="nofollow" target="_blank"><img src="__IMG__footernew_pic6.jpg"></a></li>
+    <li><a href="#" rel="nofollow" target="_blank"><img src="__IMG__footernew_pic7.jpg"></a></li>
+  </ul>
+</div>
+{load href="__P__layer/layer.js"}
+{load href="__JS__ffxiang.js"}
+<script type="text/javascript">
+    //滚动新闻
+    var speed = 20;
+    var sTap = document.getElementById("scroll_cnt");
+    var sTap1 = document.getElementById("sn_list1");
+    var sTap2 = document.getElementById("sn_list2");
+    sTap2.innerHTML = sTap1.innerHTML;
+    var marqueen = function(){
+      if(sTap2.offsetWidth - sTap.scrollLeft <= 0){
+        sTap.scrollLeft -= sTap2.offsetWidth;
+      }else{
+        sTap.scrollLeft++;
+      }
+    };
+    var marTimer = setInterval(marqueen,speed);
+    sTap.onmouseover = function(){
+      clearInterval(marTimer);
+    }
+    sTap.onmouseout = function(){
+      marTimer = setInterval(marqueen,speed);
+    }
+</script>
+</body>
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

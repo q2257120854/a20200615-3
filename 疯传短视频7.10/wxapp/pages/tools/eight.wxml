@@ -1,0 +1,234 @@
+<form bindsubmit="formSubmit" class="eight-form" wx:if="{{detail==null}}">
+    <view class="grace-form-item grace-border-b">
+        <text class="grace-form-label">姓名</text>
+        <view class="grace-form-body">
+            <input class="grace-form-input" name="username" placeholder="请填写姓名" type="text" value="{{name}}"></input>
+        </view>
+    </view>
+    <view class="grace-form-item grace-border-b">
+        <text class="grace-form-label">性别</text>
+        <view class="grace-form-body" style="padding:20rpx 0;">
+            <radio-group name="gender">
+                <label class="grace-check-item">
+                    <radio checked="true" value="1"></radio>男
+				</label>
+                <label class="grace-check-item">
+                    <radio value="2"></radio>女
+				</label>
+            </radio-group>
+        </view>
+    </view>
+    <view class="grace-form-item grace-border-b">
+        <text class="grace-form-label">类型</text>
+        <view class="grace-form-body" style="padding:20rpx 0;">
+            <radio-group name="type">
+                <label class="grace-check-item">
+                    <radio checked="true" value="1"></radio>国历
+				</label>
+                <label class="grace-check-item">
+                    <radio value="2"></radio>农历
+				</label>
+            </radio-group>
+        </view>
+    </view>
+    <view class="grace-form-item grace-border-b">
+        <text class="grace-form-label">生日</text>
+        <view class="grace-form-body" style="padding:20rpx 0;">
+            <picker bindchange="bindDateChange" end="2021-01-01" mode="date" name="date" start="1900-01-01" value="{{date}}">
+                <text>{{date}}</text>
+            </picker>
+        </view>
+    </view>
+    <view class="grace-form-item grace-border-b">
+        <text class="grace-form-label">时辰</text>
+        <view class="grace-form-body" style="padding:20rpx 0;">
+            <picker bindchange="bindHourChange" name="hour" range="{{hours}}" value="{{hour}}">
+                <text>{{hours[hour]}}</text>
+            </picker>
+        </view>
+    </view>
+    <view style="padding:22rpx 0;margin-top:80rpx;">
+        <button class="grace-button eight-button" formType="submit" style="background:#B09589">算一算</button>
+    </view>
+</form>
+<view class="eight-result" wx:if="{{detail!=null}}">
+    <image class="eight-top" src="../../static/images/eight_top.png"></image>
+    <view class="eight-box">
+        <graceFlex :classes="['row', 'nowrap']">
+            <view class="grace-flex1 eight-text">
+          姓名：{{detail.return.user.xingming.xing}}
+        </view>
+            <view class="grace-flex1 eight-text">
+          年龄：{{detail.return.user.nianling.nl}}岁
+        </view>
+        </graceFlex>
+    </view>
+    <view class="eight-box">
+        <graceFlex :classes="['row', 'nowrap']">
+            <view class="grace-flex1 eight-text">
+          生肖：{{detail.return.user.sx}}
+        </view>
+        </graceFlex>
+    </view>
+    <view class="eight-box">
+        <view class="hd">生辰：</view>
+        <view class="bd">{{detail.return.user.lDate}} （国历{{detail.return.user.nianling.y}}年{{detail.return.user.nianling.m}}月{{detail.return.user.nianling.d}}日）</view>
+    </view>
+    <view class="eight-box">
+        <view class="hd">您的五行八字资料</view>
+        <view class="bd">
+            <view class="grace-table grace-margin-top" style="background:#F5F0EE;">
+                <view class="grace-theader grace-bg-gray">
+                    <text class="grace-td grace-bold">八字</text>
+                    <text class="grace-td grace-bold">年柱</text>
+                    <text class="grace-td grace-bold">月柱</text>
+                    <text class="grace-td grace-bold">日柱</text>
+                    <text class="grace-td grace-bold">时柱</text>
+                </view>
+                <view class="grace-tbody">
+                    <text class="grace-td">天干</text>
+                    <text class="grace-td">{{detail.return.user.bazi[0]}}</text>
+                    <text class="grace-td">{{detail.return.user.bazi[2]}}</text>
+                    <text class="grace-td">{{detail.return.user.bazi[4]}}</text>
+                    <text class="grace-td">{{detail.return.user.bazi[6]}}</text>
+                </view>
+                <view class="grace-tbody">
+                    <text class="grace-td">地支</text>
+                    <text class="grace-td">{{detail.return.user.bazi[1]}}</text>
+                    <text class="grace-td">{{detail.return.user.bazi[3]}}</text>
+                    <text class="grace-td">{{detail.return.user.bazi[5]}}</text>
+                    <text class="grace-td">{{detail.return.user.bazi[7]}}</text>
+                </view>
+            </view>
+            <view class="ft">
+        本命属{{detail.return.user.sx}}，{{detail.info.nayin[0].layin}}命；日主天干为{{detail.info.nayin[0].layin}}庚，生于{{detail.cookies.siji}}季。
+        </view>
+        </view>
+    </view>
+    <view class="eight-box">
+        <view class="hd">八字排盘</view>
+        <view class="bd">
+            <view class="grace-table grace-margin-top" style="background:#F5F0EE;">
+                <view class="grace-theader grace-bg-gray">
+                    <text class="grace-td grace-bold">八字</text>
+                    <text class="grace-td grace-bold">年柱</text>
+                    <text class="grace-td grace-bold">月柱</text>
+                    <text class="grace-td grace-bold">日柱</text>
+                    <text class="grace-td grace-bold">时柱</text>
+                </view>
+                <view class="grace-tbody">
+                    <view class="grace-td  grace-bg-gray">天干</view>
+                    <view class="grace-td">{{detail.return.user.bazi[0]}}  <rich-text nodes="{{detail.paipan.shishen3}}"></rich-text>
+                    </view>
+                    <view class="grace-td">{{detail.return.user.bazi[2]}}  <rich-text nodes="{{detail.paipan.shishen1}}"></rich-text>
+                    </view>
+                    <view class="grace-td">{{detail.return.user.bazi[4]}}  <rich-text nodes="{{detail.paipan.shishen4}}"></rich-text>
+                    </view>
+                    <view class="grace-td">{{detail.return.user.bazi[6]}}  <rich-text nodes="{{detail.paipan.shishen2}}"></rich-text>
+                    </view>
+                </view>
+                <view class="grace-tbody">
+                    <view class="grace-td  grace-bg-gray">地支</view>
+                    <view class="grace-td">{{detail.return.user.bazi[1]}}  <rich-text nodes="{{detail.paipan.shishen1}}"></rich-text>
+                    </view>
+                    <view class="grace-td">{{detail.return.user.bazi[3]}}  <rich-text nodes="{{detail.paipan.shishen2}}"></rich-text>
+                    </view>
+                    <view class="grace-td">{{detail.return.user.bazi[5]}}  <rich-text nodes="{{detail.paipan.shishen3}}"></rich-text>
+                    </view>
+                    <view class="grace-td">{{detail.return.user.bazi[7]}}  <rich-text nodes="{{detail.paipan.shishen4}}"></rich-text>
+                    </view>
+                </view>
+                <view class="grace-tbody">
+                    <view class="grace-td  grace-bg-gray">藏干</view>
+                    <view class="grace-td">{{detail.paipan.zanggan1}}</view>
+                    <view class="grace-td">{{detail.paipan.zanggan2}}</view>
+                    <view class="grace-td">{{detail.paipan.zanggan3}}</view>
+                    <view class="grace-td">{{detail.paipan.zanggan4}}</view>
+                </view>
+                <view class="grace-tbody">
+                    <view class="grace-td  grace-bg-gray">命宫</view>
+                    <view class="grace-td">{{detail.paipan.minggong}}</view>
+                </view>
+                <view class="grace-tbody">
+                    <view class="grace-td  grace-bg-gray">胎元</view>
+                    <view class="grace-td">{{detail.paipan.taiyuan}}</view>
+                </view>
+                <view class="grace-tbody">
+                    <view class="grace-td  grace-bg-gray">胎息</view>
+                    <view class="grace-td">{{detail.return.user.bazi[6]}}{{detail.return.user.bazi[7]}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="eight-box">
+        <view class="hd">五行综述</view>
+        <view class="bd">
+            <view class="grace-table grace-margin-top" style="background:#F5F0EE;">
+                <view class="grace-theader grace-bg-gray">
+                    <text class="grace-td grace-bold">八字</text>
+                    <text class="grace-td grace-bold">{{detail.return.user.bazi[0]}}{{detail.return.user.bazi[1]}}</text>
+                    <text class="grace-td grace-bold">{{detail.return.user.bazi[2]}}{{detail.return.user.bazi[3]}}</text>
+                    <text class="grace-td grace-bold">{{detail.return.user.bazi[4]}}{{detail.return.user.bazi[5]}}</text>
+                    <text class="grace-td grace-bold">{{detail.return.user.bazi[6]}}{{detail.return.user.bazi[7]}}</text>
+                </view>
+                <view class="grace-tbody">
+                    <text class="grace-td">五行</text>
+                    <text class="grace-td">{{detail.cookies.wh[0]}}{{detail.cookies.wh[1]}}</text>
+                    <text class="grace-td">{{detail.cookies.wh[2]}}{{detail.cookies.wh[3]}}</text>
+                    <text class="grace-td">{{detail.cookies.wh[4]}}{{detail.cookies.wh[5]}}</text>
+                    <text class="grace-td">{{detail.cookies.wh[6]}}{{detail.cookies.wh[7]}}</text>
+                </view>
+                <view class="grace-tbody">
+                    <text class="grace-td">纳音</text>
+                    <text class="grace-td">{{detail.info.nayin[0].layin}}</text>
+                    <text class="grace-td">{{detail.info.nayin[1].layin}}</text>
+                    <text class="grace-td">{{detail.info.nayin[2].layin}}</text>
+                    <text class="grace-td">{{detail.info.nayin[3].layin}}</text>
+                </view>
+            </view>
+            <view class="ft">
+                <rich-text nodes="您五行{{detail.info.wharr.wang}}{{detail.info.wharr.que}}"></rich-text>
+            </view>
+        </view>
+    </view>
+    <view class="eight-box">
+        <view class="hd">性格分析</view>
+        <view class="bd">
+            <rich-text nodes="{{detail.rglm.xgfx}}"></rich-text>
+        </view>
+    </view>
+    <view class="eight-box">
+        <view class="hd">爱情分析</view>
+        <view class="bd">
+      您命中有:红艳桃花<text wx:if="detail.return.data.zonghe.th">{{detail.return.data.zonghe.th}}</text>
+            <text wx:if="detail.return.data.zonghe.th == undefined">1</text> 
+       朵
+       <rich-text nodes="{{detail.rglm.aqfx}}"></rich-text>
+        </view>
+    </view>
+    <view class="eight-box">
+        <view class="hd">事业分析</view>
+        <view class="bd">
+            <rich-text nodes="{{detail.rglm.syfx}}"></rich-text>
+        </view>
+    </view>
+    <view class="eight-box">
+        <view class="hd">健康分析</view>
+        <view class="bd">
+            <rich-text nodes="{{detail.rglm.jkfx}}"></rich-text>
+        </view>
+    </view>
+    <view class="eight-box">
+        <view class="hd">三命通会</view>
+        <view class="bd">
+            <view class="eight-text">{{detail.sxth.tf1}}</view>
+            <view class="eight-text">{{detail.sxth.tf2}}</view>
+        </view>
+    </view>
+    <view class="eight-box">
+        <view class="hd">未来一年</view>
+        <view class="bd">
+            <rich-text nodes="{{detail.future}}"></rich-text>
+        </view>
+    </view>
+</view>

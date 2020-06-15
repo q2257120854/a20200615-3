@@ -1,0 +1,13 @@
+html, body, header, footer, .fx-view-header {
+	background: transparent !important;
+	background-color: transparent !important;
+	border: 0px !important;
+}
+.fx-view-header .aui-pull-left span, .aui-badge, .aui-bar-tab .aui-bar-tab-item .aui-iconfont {
+	color: #fff !important;
+}
+.aui-bar-nav {
+	background-color: rgba(0, 0, 0, 0) !important;
+	background-image: -webkit-linear-gradient(top,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%) !important;
+	color: #ffffff !important;
+}

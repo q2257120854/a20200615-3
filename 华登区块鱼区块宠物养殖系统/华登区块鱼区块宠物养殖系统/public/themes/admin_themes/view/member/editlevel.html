@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8" />
+        <title>vaeThink</title>
+        <meta name="renderer" content="webkit" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="__ADMIN__/lib/layui/css/layui.css" media="all" /></head>
+    <body class="vae-body">
+        <form class="layui-form vae-content">
+
+            <fieldset class="layui-elem-field layui-field-title" style="">
+                <legend>基本信息</legend>
+            </fieldset>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">等级名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="levelname" lay-verify="" autocomplete="off" placeholder="请输入等级名称" class="layui-input" value="{$detail.levelname}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">等级</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="level" lay-verify="required" autocomplete="off" placeholder="请输入等级" class="layui-input" value="{$detail.level}">
+                </div>
+            </div>
+
+            <fieldset class="layui-elem-field layui-field-title" style="">
+                <legend>升级条件</legend>
+            </fieldset>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">直推有效客户</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="down" lay-verify="required" autocomplete="off" placeholder="请输入直推客户数量" class="layui-input" value="{$detail.down}">
+                </div>
+                <div class="layui-form-mid">人</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">三代之内有效客户</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="threedown" lay-verify="required" autocomplete="off" placeholder="请输入三代之内有效客户" class="layui-input" value="{$detail.threedown}">
+                </div>
+                <div class="layui-form-mid">人</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">个人推广奖励达到</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="commission" lay-verify="required" autocomplete="off" placeholder="请输入达到金额" class="layui-input" value="{$detail.commission}">
+                </div>
+                <div class="layui-form-mid">元</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">团队人数</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="team_size" lay-verify="required" autocomplete="off" placeholder="请输入达到金额" class="layui-input" value="{$detail.team_size}">
+                </div>
+                <div class="layui-form-mid">人</div>
+            </div>
+
+            <fieldset class="layui-elem-field layui-field-title" style="">
+                <legend>鱼饵优惠</legend>
+            </fieldset>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">优惠多少折</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="discount" lay-verify="required" autocomplete="off" placeholder="请输入鱼饵优惠" class="layui-input" value="{$detail.discount}">
+                </div>
+                <div class="layui-form-mid">折</div>
+            </div>
+
+            <fieldset class="layui-elem-field layui-field-title" style="">
+                <legend>团队服务奖励</legend>
+            </fieldset>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">总收益</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="service_award" lay-verify="required" autocomplete="off" placeholder="请输入团队服务奖励" class="layui-input" value="{$detail.service_award}">
+                </div>
+                <div class="layui-form-mid">%</div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <input type="hidden" name="id" value="{$detail.id}" />
+                    <button class="layui-btn" lay-submit="" lay-filter="vaeform">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    <a href="javascript:history.back(-1)" class="layui-btn layui-btn-primary">返回</a>
+                </div>
+            </div>
+        </form>
+        <script src="__ADMIN__/lib/layui/layui.js" charset="utf-8"></script>
+        <script>layui.config({
+                base: '/themes/admin_themes/module/'
+            }).use(['upload', 'form', 'vaeyo'],
+            function() {
+                var form = layui.form,
+                layer = layui.layer,
+                $ = layui.$,
+                upload = layui.upload,
+                vae = layui.vaeyo;
+
+                //监听提交
+                form.on('submit(vaeform)',
+                function(data) {
+                    $.ajax({
+                        url: "/admin/member/editlevelSubmit",
+                        type: 'post',
+                        data: data.field,
+                        success: function(e) {
+                            if (e.code == 1) {
+                                layer.confirm('保存成功,返回列表吗?', {
+                                    icon: 3,
+                                    title: '提示'
+                                },
+                                function(index) {
+                                    vae.backThisTab();
+                                    layer.close(index);
+                                });
+                            } else {
+                                layer.msg(e.msg);
+                            }
+                        }
+                    }) 
+                    return false;
+                });
+
+            });</script>
+    </body>
+
+</html>

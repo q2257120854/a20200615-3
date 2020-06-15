@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<style>
+			.t_1{
+				margin: 1rem 0.75rem;
+				font-size: 0.75rem;
+				padding:0 2rem;
+				background: url('../../image/tixian/t_1.png') no-repeat 2.45rem 1rem;
+				background-size: 0.1rem 2rem;
+				border-bottom: 1px solid #e8e8e8;
+				padding-bottom: 1.5rem;
+			}
+			.t_1 div{
+				padding-left: 1.5rem;
+			}
+			.t_1_1{
+				background: url('../../image/tixian/t_1_1.png') no-repeat;
+				background-size: 1rem;
+				margin-bottom: 1.8rem;
+			}
+			.t_1_2{
+				background: url('../../image/tixian/t_1_2.png') no-repeat;
+				background-size: 1rem;
+			}
+			.t_1 p{
+				padding-left: 1.5rem;
+				padding-top: 0.8rem;
+				color: #757575;
+				font-size: 0.7rem;
+			}
+			.t_1 p:last-child{
+				padding-left: 1.5rem;
+				padding-top: 0.3rem;
+				color: #A2A2A2;
+				font-size: 0.6rem;
+			}
+			.t_2{
+				padding: 0.75rem;
+				padding-top: 0;
+				border-bottom: 1px solid #e8e8e8;
+			}
+			.t_2 div{
+				font-size: 0.7rem;
+				min-height:0.75rem;
+			}
+			.t_3{
+				padding: 0.75rem;
+				margin-top: 0.75rem;
+				 
+			}
+			.t_3 h5{
+				font-size: 0.7rem;
+				padding-bottom: 0.2rem;
+			}
+			.t_3 ul{
+				margin-left: 0.75rem;
+			}
+			.t_3 li{
+				font-size: 0.65rem;
+				padding-top: 0.2rem;
+				list-style-type:circle;
+				color: #9B9B9B
+			}
+			.t_4{
+				width: 78%;
+				margin: 0 auto;
+				text-align: center;
+				background: #F6B237;
+				border-radius: 2rem;
+				height: 2rem;
+				line-height: 2rem;
+				color: #fff;
+				font-size: 0.75rem;
+				margin-top: 2rem;
+			}
+		</style>
+	</head>
+	<body>
+		<section class="aui-content">
+			<div class="t_1">
+				<div class="t_1_1">提现申请已提交</div>
+				<div class="t_1_2">预计到账时间</div>
+				<p id="time"></p>
+				<p>客服小姐姐会加紧处理的，请耐心等待哟~</p>
+			</div>
+			<div class="t_2">
+				<div class="aui-card-list-footer">
+					<div>提现金额</div>
+					<div style="color:#f00" id="money"></div>
+				</div>
+				<div class="aui-card-list-footer">
+					<div>提现方式</div>
+					<div id="type"></div>
+				</div>
+				<div class="aui-card-list-footer">
+					<div>提现账号</div>
+					<div id="user"></div>
+				</div>
+			</div>
+			<div class="t_3">
+				<h5>到账查询</h5>
+				<ul>
+					<li>支付宝:我的-账单</li>
+					<li>微信：我-钱包-零钱-零钱明细</li>
+				</ul>
+			</div>
+			<div class="t_4" Tapmode onclick="c();">
+				<div>知道了</div>
+			</div>
+		</section>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+ 
+	<script type="text/javascript"> 
+ 
+		apiready = function() {
+			api.parseTapmode();
+			$('#money').text("￥"+api.pageParam['money']);
+			 $('#type').text(api.pageParam['type']==1 ? "微信" : '支付宝')
+			 $('#user').text(api.pageParam['user']);
+			$('#time').text(getCurrentDate(2));
+		}
+		function c(){
+			api.closeToWin({
+			    name: 'yaoqing/tixian'
+			});
+		}
+		function getCurrentDate(format) {
+		  var now = new Date();
+		  var year = now.getFullYear(); //得到年份
+		  var month = now.getMonth();//得到月份
+		  var date = now.getDate()+1;//得到日期
+		  var day = now.getDay();//得到周几
+		  var hour = now.getHours();//得到小时
+		  var minu = now.getMinutes();//得到分钟
+		  var sec = now.getSeconds();//得到秒
+		  month = month + 1;
+		  if (month < 10) month = "0" + month;
+		  if (date < 10) date = "0" + date;
+		  if (hour < 10) hour = "0" + hour;
+		  if (minu < 10) minu = "0" + minu;
+		  if (sec < 10) sec = "0" + sec;
+		  var time = "";
+		  //精确到天
+		  if(format==1){
+			time = month + "-" + date;
+		  }
+		  //精确到分
+		  else if(format==2){
+			time = month + "-" + date+ " " + hour + ":" + minu + ":" + sec;
+		  }
+		  return time;
+		}
+
+ 
+	</script>
+</html>

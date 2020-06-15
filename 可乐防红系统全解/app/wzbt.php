@@ -1,0 +1,1 @@
+<?php include '../includes/common.php'; echo $conf['sitename']?>

@@ -1,0 +1,118 @@
+ {include file="public/header" /}
+ <style type="text/css">
+     #title span{ float: right; }
+ </style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        {include file="public/tophead" /}
+        {include file="public/top" /}
+        <div class="ibox-content">
+        {include file="public/topsection"}
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <div class="example">
+                        <table data-toggle="table" data-striped="false">
+                            <thead>
+                                <tr>
+                                    <th>排序</th>
+                                    <th>id</th>
+                                    <th>贴吧名称</th>
+                                    <th>当前吧主</th>
+									<th>吧主申请</th>
+									<th>创建者</th>
+								    <th>浏览量</th>
+								    <th>关注数</th>
+									<th>推荐</th>
+                                    <th>状态</th>
+                                    <th>管理</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {php}$hide=array('0'=>'隐藏','1'=>'显示','2'=>'待审核');{/php}
+                                {php}$hides=array('1'=>'隐藏','0'=>'显示','2'=>'待审核');{/php}
+                                {php}$isdefault=array(''=>'错误','0'=>'错误','1'=>'封面','2'=>'列表','3'=>'单页');{/php}
+                                {volist name="data" id="v"}
+                                <tr id="id{$v.id}" class="class">
+                                    <td>{$v.des}</td>
+                                    <td>{$v.id}</td>
+                                    <td id="title"><a href="{:url('article/index',['weitoutiao'=>3,'typeid'=>$v['id']])}">{:str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $v['depth'])}{gt name="$v['depth']" value="0"}┠&nbsp;&nbsp;{/gt}{$v.title}</a>{notempty name="v.url"}{/notempty}{notempty name="v.url"} <span class="label label-danger">跳</span>{/notempty}</td>
+                                    <td>
+									<?php
+									  if($v['bazhu_id']){
+                                      $user=_user($v['bazhu_id']);
+                                      
+									  ?>
+									  <a onclick="add('/admin/member/add/id/{$v.bazhu_id}/url/-1.html')"><?php echo $user['username']; ?></a>
+									 <?php }else{
+									    echo '没';
+									  }
+                                    ?>
+									</td>
+									<td>
+									<a onclick="add('{:url('tieba_bazhu',['id'=>$v['id'],'url'=>-1])}')">
+									<?php
+									  $count=db('member_favorite')->where(['aid'=>$v['id'],'type'=>3])->count();
+                                       echo $count;
+                                    ?>
+									</a>
+									</td>
+									<td>
+									<a onclick="add('/admin/member/add/id/{$v.uid}/url/-1.html')">
+									<?php
+									  $user=_user($v['uid']);
+                                       echo $user['username'];
+                                    ?>
+									</a>
+									</td>
+									<td>{$v.click}</td>
+									<td><a onclick="add('{:url('tieba_faved',['id'=>$v['id'],'url'=>-1])}')">{$v.faved}</a></td>
+                                    <td>
+									<?php
+									  if($v['is_tuijian']){
+                                          echo '是';
+									  }else{
+									      echo '否';
+									  }
+                                    ?>
+									</td>
+									<td id="hide">{$hide[$v['hide']]}</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a onclick="add('{:url('add_tieba',['id'=>$v['id'],'url'=>-1])}')">修改</a>
+                                                </li>
+                                                <li id="hides"><a onclick="hide({$v.id},'{:url('hide',['id'=>$v['id']])}')">{$hides[$v['hide']]}</a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li><a onclick="del({$v.id})">删除</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+            </div>
+			<hr>
+            <div class="row row-lg">
+                <div class="col-sm-12 pages">{$page}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<script type="text/javascript">
+$(document).ready(function(){
+});
+function del(id){
+        swal_del(id,"{:url('typeDel')}")
+}
+</script>

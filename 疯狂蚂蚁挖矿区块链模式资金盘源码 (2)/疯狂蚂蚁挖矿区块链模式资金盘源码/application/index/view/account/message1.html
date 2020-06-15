@@ -1,0 +1,10 @@
+{extend name="common/world"}
+{block name="title"}{$Think.config.hello.title}{/block}
+{block name="header"}联系客服{/block}
+{block name="container"}
+<style type="text/css">body{ background: #FFF;}</style><div class="buttons-tab"></div>
+<div class="card-header" style="background:#FFF; text-align:center; font-size:16px;">{$message['title']} -{$message['create_at']}</div>
+<div class=" news-content" style="font-size:12px;">{$message['content']}</div>
+<div class=" news-content" style="font-size:14px;color: blue">客服回复:</div>
+<div class=" news-content" style="font-size:14px;color: blue" align="right">{$message['reply']}</div>
+{/block}

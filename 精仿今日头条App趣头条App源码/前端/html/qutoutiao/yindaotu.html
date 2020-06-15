@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+	</head>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			$api.setStorage('yindaotu', 1);
+			api.parseTapmode();
+			var frames = [];
+			for (var i = 0; i < 4; i++) {
+				var frame = {};
+				frame.name = i;
+				frame.url = html_win + 'yindaotu_frm.html';
+				frame.pageParam = {
+					id : i,
+				};
+				frame.bgColor = '#fff';
+				frame.useWKWebView=true,
+				frame.bounces=false,
+				frames.push(frame);
+			}
+			openFrameGroup(frames)
+		}
+		function openFrameGroup(frames) {
+			api.openFrameGroup({
+				name : 'yindaotu',
+				scrollEnabled : true,
+				bounces : true,
+				rect : {
+					x : 0,
+					y : 0,
+					w : 'auto',
+					h : 'auto',
+				},
+				index : 0,
+				frames : frames,
+				preload : 2, // 预加载的 frame 个数，默认加载当前页后面一个
+				bgColor : '#fff',
+			});
+		}
+	</script>
+</html>

@@ -1,0 +1,619 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<style>
+			body {
+				background: #F4F5F6 !important;
+			}
+			.aui-content-padded {
+				margin: 0px;
+				padding: 0.75 rem;
+			}
+			.aui-list, .aui-list-item, .aui-list .aui-list-item {
+				background: none;
+				border: 0px;
+			}
+			.aui-content-padded textarea{
+				height: 3.8rem;
+				line-height: 1rem;
+				font-size: 0.75rem;
+				padding: 0.75rem;
+			}
+			.aui-content-padded input{
+				font-size: 0.75rem;
+				padding: 0.75rem; 
+		
+			}
+			.video{
+			}
+			.aui-list li.aui-list-item:active {
+				background: none
+			}
+			.aui-list li.aui-list-item .aui-col-xs-3:active {
+				background: #ddd
+			}
+			.aui-list, .aui-content-padded {
+				background: #fff;
+			}
+			.aui-icon-location{
+				padding-right: 0.6rem;
+			}
+		</style>
+	</head>
+	<body>
+		<script id="fx-list" type="text/x-dot-template">
+		{{? api.pageParam['type']=="video"}}
+		<div class="aui-content-padded video">
+			<input type="text" id="title" placeholder="请输入标题（30字以内）"  />
+		</div>
+		{{??}}
+		<div class="aui-content-padded">
+			<textarea placeholder="分享微头条"></textarea>
+		</div>
+		{{?}}
+		<!--<div class="aui-list aui-media-list ">
+			<ul class="">
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner">
+						<div class="aui-row aui-row-padded" id="images">
+							<div id="images"></div>
+							<div class="aui-col-xs-3" tapmode onclick="addalert()">
+								<img src="../../image/weitoutiaoAdd.png" />
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>-->
+		<section class="aui-grid aui-margin-b-15">
+			<div class="aui-row">
+				<div id="images">
+				</div>
+				<div class="aui-col-xs-3" tapmode onclick="img()">
+					<img src="../../image/weitoutiaoAdd.png" />
+				</div>
+			</div>
+		</section>
+		</script>
+		<div id="fx-view"></div>
+		<!--<div class="aui-content aui-margin-t-15">
+			<ul class="aui-list aui-list-in">
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner aui-list-item-arrow">
+						 
+						<div class="aui-list-item-title">
+						<i class="aui-iconfont aui-icon-location"></i>
+							所在位置
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>-->
+<style>
+	#shengma{
+		line-height: 22px;
+		overflow: hidden;
+		margin: 15px;
+	}
+	#shengma h2{ 
+		text-align: center;
+		padding-bottom: 10px;
+	}
+	
+</style>
+	 
+		 
+	</body>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../../script/doT.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var videoPlayer,vodeOnbo=0,UIMediaScanner,playModule;
+		apiready = function() {
+			UIMediaScanner = api.require('UIMediaScanner');
+//			videoPlayer = api.require('videoPlayer'); 
+			playModule = api.require('playModule');
+			var evalData = doT.template($api.html($api.byId('fx-list')));
+			$api.html($api.byId('fx-view'), evalData());
+		 
+			if(api.pageParam['type']=='video'){
+				addalert()
+			}else if(api.pageParam['type']=='image'){
+				img()
+			}
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+		}
+		// 图片和相机
+		function addalert() {
+			if(api.pageParam['type']!='video'){
+				$("textarea").blur();
+				if($('#images .aui-col-xs-3').length>9){
+					_msg('你最多只能选择9张图')
+					return;
+				}
+			}
+			var buttons;
+			if(api.pageParam['type']=='video'){
+				buttons=['录视频','选择视频','打开视频库'];
+			}else{
+				buttons=['拍照', '选择相册', '打开图片库'];
+			}
+			api.actionSheet({
+				cancelTitle : '取消',
+				buttons : buttons
+			}, function(ret, err) {
+				var index = ret.buttonIndex;
+				var img = {
+					1 : 'camera',
+					2 : 'album',
+					3 : 'library'
+				}
+				if (index != 4) {
+					addImg(img[index])
+				}
+			});
+		}
+		var imagesI=0;
+		function addImg(sourceType) {
+//			if(vodeOnbo){
+//				videoPlayer.stop();
+//			}
+			var mediaValue;
+			if(api.pageParam['type']=='video'){
+				mediaValue='video';
+			}else{
+				mediaValue='pic';
+			}
+			api.getPicture({
+				sourceType : sourceType,
+				mediaValue : mediaValue,
+				destinationType : 'url',
+				encodingType:'jpg',
+				quality : 40,
+				targetWidth: 800,
+				targetHeight: 800,
+				videoQuality:'medium',
+			}, function(ret, err) {
+				if (ret) {
+					//alert(JSON.stringify(ret));
+//					if(ret.duration > 600){
+//						_alert('视频失败，视频时长不能超过1个小时')
+//						return;
+//					}
+					if(api.pageParam['type']=='video'){
+						video(ret.data)
+					}else{
+						$('#images').prepend('<div class="aui-col-xs-3" id="iMg'+imagesI+'"><img src="'+ret.data+'" /></div>')
+						imgAjax(ret.data)
+					}
+					//alert(JSON.stringify(ret));
+				} 
+			});
+		}
+		// 封装上传图片
+		function imgAjax(image){
+			if(!image){
+				_msg('图片地址出错')
+				return;
+			}
+			_loading()
+			api.ajax({
+			    url: fx_url+'api/member/imagesUpload',
+			    method: 'post',
+			    data: {
+			    	values:{
+			    		token:_token,
+			    	},
+			        files: {
+			            image: image
+			        }
+			    },
+			}, function(ret, err) {
+				_loadingCloes();
+			    if (ret) {
+			        if(ret.ret){
+			        	$('#iMg'+imagesI).data("img",ret.ret)
+			        }else{
+			        	$('#iMg'+imagesI).remove()
+			        	alert("上传失败"+ret.err)
+			        }
+			    } else {
+			        api.alert({ msg: JSON.stringify(err) });
+			    }
+			});
+		}
+		var videoUrl;
+		function video(video){
+			if(vodeOnbo==0){
+				playModule.play({
+				    rect:
+				    {    x: 0,
+				        y : 250,
+				       w:api.winWidth,
+						h:300,
+				    },
+				    fixedOn: api.frameName,
+				    url: video,
+				    isLoop:true,
+				    defaultBtn:false,
+				    isTopView:false,
+				    isFullBtn:false,
+				    scalingMode:1,
+				    fullscreenMode : 'PORTRAIT', //	设置全屏按钮控制全屏显示模式是横屏还是竖屏 竖屏:PORTRAIT ; 横屏:LANDSCAPE
+				    isShowProcessView:false,
+				    isShowTimeLable:false,
+				    isOpenGesture:false,
+				    isLoop:true,
+				}, function(ret, err) {
+					 
+				});
+			}else{
+				playModule.playUrl({
+					title : '',
+					defaultBtn : false,
+					isOpenGesture : false,
+					url : video,
+				});
+			}
+		
+//		
+//			return;
+//			if(vodeOnbo==0){
+//				videoPlayer.open({
+//				    path: video,
+//				    rect:{
+//				    	x: 0,   //（可选项）数字类型；模块左上角的 x 坐标（相对于所属的 Window 或 Frame）；默认：0
+//					    y: 250,   //（可选项）数字类型；模块左上角的 y 坐标（相对于所属的 Window 或 Frame）；默认：0
+//					    w: api.winWidth, //（可选项）数字类型；模块的宽度；默认：所属的 Window 或 Frame 的宽度
+//					    h: 300  //（可选项）数字类型；模块的高度；默认：w的3/4
+//				    },
+//				    fixedOn:api.frameName
+//				}, function(ret, err) {
+//				    if (ret.status) {
+//				    	vodeOnbo=1;
+//				        //alert(JSON.stringify(ret));
+//				        //console.log(JSON.stringify(ret))
+//				    } else {
+//				        //alert(JSON.stringify(err));
+//				        //console.log(JSON.stringify(err))
+//				    }
+//				});
+//			}else{
+//				// 设置新视频地址
+//				videoPlayer.setPath({
+//				    path: video,
+//				});
+//				// 开始播放视频
+//				videoPlayer.start();
+//			}
+			videoUrl=video
+		}
+		// 封装上传视频
+		function videoAjax(){
+			if(!videoUrl){
+				_msg('请上传视频')
+				return;
+			}
+			title=$('.video input').val();
+			if(!title){
+				_msg('请输入标题（30字以内）');
+				return;
+			}
+			if(title.length >= 30){
+				_msg('标题不超过30字以内');
+				return;
+			}
+			_loading('视频上传中...')
+			$("input").blur();
+			api.ajax({
+			    url: fx_url+'api/member/videoUpload',
+			    method: 'post',
+			    timeout:6000000000,
+			    data: {
+			    	values:{
+			    		token:_token,
+			    	},
+			        files: {
+			            video: videoUrl
+			        }
+			    },
+			}, function(ret, err) {
+				console.log('视频：'+JSON.stringify(ret)+JSON.stringify(err))
+			    if (ret) {
+ 					if(ret.err){
+ 						_loadingCloes();
+ 						_msg(ret.err)
+ 					}else{
+ 						var videojson=ret.ret.persistentId;
+ 						var videourl=ret.ret.key;
+						_ajax('api/member/articleAdd',function(ret,err){
+							_loadingCloes();
+							if(ret){
+								if(ret.ret){
+									$("textarea").blur();
+									var view = 'view();';
+									api.execScript({
+									    name: 'weitoutiao_win',
+						    			frameName: 'weitoutiao',
+									    script: view
+									});
+									_alert(ret.ret,function(ret,err){
+										_close(1)
+									})
+								}else{
+									_alert(ret.err)
+								}
+							}else{
+								alert(JSON.stringify(err));
+							}
+						},{title:title,mychannel:3,video:videojson,videourl:videourl})
+ 					}
+			    } else {
+			    	_loadingCloes();
+			        api.alert({ msg: JSON.stringify(err) });
+			    }
+			});
+		}
+		// 发布
+		var videoUrl='';
+		function fabu(){
+			var title='',content='',images='',mychannel=0;
+			if(api.pageParam['type']=='video'){
+				title=$('.video input').val();
+				if(!title){
+					_msg('请输入标题（30字以内）');
+					return;
+				}
+				if(title.length >= 30){
+					_msg('标题不超过30字以内');
+					return;
+				}
+				if(!videoUrl){
+					_msg('请上传视频')
+					return;
+				}
+				videoAjax();
+				return;
+			}else{
+				
+ 
+				
+				var dataImg=$('div img[data-img]');
+			 	if(dataImg.length){
+			 		// 如果是图片模式，则使用下面daima
+			 		$('#images').find('div img[data-img]').each(function(){
+						var img=$(this).data('img');
+						var id=$(this).data('id');
+						if(api.systemType == 'ios'){
+							UIMediaScanner.transPath({
+							    path: img
+							}, function(ret, err) {
+							    if (ret.status) {
+							     	imgAjax(ret.path,id)
+							    }
+							});
+						}else{
+							imgAjax(img,id)
+						}
+					})
+					return
+				}
+				
+				
+				content=$('textarea').val();
+				mychannel=1
+				if(!content){
+					_msg('请填写微头条');
+					return;
+				}
+			}
+			ajaxadd({content:content,mychannel:mychannel})
+		}
+		function ajaxadd(data){
+			if(!data.images){
+				_loading()
+			}
+			$("textarea").blur();
+			_ajax('api/member/articleAdd',function(ret,err){
+				_loadingCloes();
+				if(ret){
+					if(ret.ret){
+						// 更新微头条
+						var view = 'view();';
+						api.execScript({
+						    name: 'weitoutiao_win',
+			    			frameName: 'weitoutiao',
+						    script: view
+						});
+						// 窗口提示返回
+						_alert(ret.ret,function(ret,err){
+							_close()
+						})
+					}else{
+						_alert(ret.err)
+					}
+				}else{
+					alert(JSON.stringify(err));
+				}
+			},{description:data.content,images:data.images,mychannel:data.mychannel})
+		}
+		
+		// 2017年12月20日 10:45:09  二次修改，单选图片改成多选图片
+		// 打开图片
+		function img() {
+			if(api.pageParam['type']=='video'){
+				addalert()
+				return;
+			}
+			
+			_loading()
+			UIMediaScanner.open({
+				type : 'picture',
+				max : 9,
+				sort : {
+					key : 'time',
+					order : 'desc'
+				},
+				texts : {
+					stateText : '已选择*项',
+					cancelText : '取消',
+					finishText : '完成'
+				},
+				styles : {
+					bg : '#fff',
+					mark : {
+						icon : '',
+						position : 'bottom_left',
+						size : 20
+					},
+					nav : {
+						bg : '#eee',
+						stateColor : '#000',
+						stateSize : 18,
+						cancelBg : 'rgba(0,0,0,0)',
+						cancelColor : '#000',
+						cancelSize : 18,
+						finishBg : 'rgba(0,0,0,0)',
+						finishColor : '#000',
+						finishSize : 18
+					}
+				},
+				exchange : true,
+				rotation : true
+			}, function(ret) {
+				if (ret.eventType=='confirm') {
+					//console.log(JSON.stringify(ret))
+					var html ='';
+					for(var i=0;i<ret.list.length;i++){
+						var suijis=suiji();
+						html += '<div class="aui-col-xs-3 shaidanImg" id="id'+suijis+'">';
+						html += '	<img data-id="'+suijis+'" data-img="'+ret.list[i].path+'" src="'+ret.list[i].thumbPath+'" />';
+						html +=	'	<em data-id="'+suijis+'">删除</em>';
+						html +=	'</div>';
+					}
+					$('#images').prepend(html);
+					$('.aui-col-xs-3 em').click(function(){
+						var id=$(this).data('id')
+						$('#id'+id).remove()
+					})
+				}
+				_loadingCloes()
+			});
+		}
+		// 随机生成字母
+		function suiji(){
+			return Math.random().toString(36).substr(2)
+		}
+		// 开始上传
+		function imag(){
+			var content = $api.val($api.dom('#content'));
+			if (!content) {
+				_msg('请输入晒单内容');
+				return;
+			}
+			var shaidanImg=$('.shaidanImg')
+			if(!shaidanImg.length){
+				_msg('至少上传一张晒单图片')
+				console.log('a:'+shaidanImg.length)
+				return;
+			}
+		 	var dataImg=$('div img[data-img]');
+		 	if(dataImg.length){
+				$('#images').find('div img[data-img]').each(function(){
+					var img=$(this).data('img');
+					var id=$(this).data('id');
+					if(api.systemType == 'ios'){
+						UIMediaScanner.transPath({
+						    path: img
+						}, function(ret, err) {
+						    if (ret.status) {
+						     	imgAjax(ret.path,id)
+						    }
+						});
+					}else{
+						imgAjax(img,id)
+					}
+				})
+			}else{
+				_loading()
+				add()
+			}
+			 
+			 
+		}
+		// 封装上传图片
+		function imgAjax(image,id){
+			if(!image){
+				_msg('图片地址出错')
+				return;
+			}
+			console.log('正在上传：'+image)
+			_loading('正在上传图片...')
+			api.ajax({
+			    url: fx_url+'api/member/imagesUpload',
+			    method: 'post',
+			    data: {
+			    	values:{
+			    		token:_token,
+			    	},
+			        files: {
+			            image: image
+			        }
+			    },
+			}, function(ret, err) {
+			    if (ret) {
+			        if(ret.ret){
+			        	$('#id'+id).data('url',ret.ret)
+			        	$('#id'+id+' [data-img]').removeAttr('data-img');
+			        	//alert('#id'+id+'===='+ret.ret)
+			        }else{
+			        	alert("上传失败"+ret.err)
+			        }
+			    } else {
+			        api.alert({ msg: JSON.stringify(err) });
+			    }
+				loadingNo()
+			});
+		}
+		// 获取图片长度比较关闭提示
+		function loadingNo(){
+			var url=$('[data-url]')
+			var imgList=$('.shaidanImg')
+			//alert('url:'+url.length+'  ==   imgList:'+imgList.length)
+			//console.log('url:'+url.length+'  ==   imgList:'+imgList.length)
+			if(imgList.length == url.length){
+//				$('#images').find('[data-url]').each(function(){
+//					var imgurl=$(this).data('url');
+//					console.log('成功：'+imgurl);
+//				})
+//				
+				var images = [];
+				$('[data-url]').map(function() {
+					var adsasd = $(this).data('url');
+					if (adsasd) {
+						images.push(adsasd)
+						console.log('成功：'+adsasd);
+					}
+				})
+				if (JSON.stringify(images) != '[]') {
+					images = JSON.stringify(images);
+				}
+				ajaxadd({images:images,mychannel:2,content:$('textarea').val()})
+			}
+		}
+	
+	</script>
+</html>
+

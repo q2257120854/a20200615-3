@@ -1,0 +1,735 @@
+---------------------------------------------------------------
+[ 2019-08-18T20:45:36+08:00 ] 39.190.244.132 GET /
+[ info ] 47.100.102.83:4900/ [运行时间：0.028593s][吞吐率：34.97req/s] [内存消耗：1,601.78kb] [文件加载：63]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => '',
+  'route' => 'index/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '__guid=126109640.1605024510354103600.1565344962251.627; order=id%20desc; memSize=2047; force=0; sites_path=C%3A/wwwroot; serverType=apache; uploadSize=1073741824; rank=a; BatchSelected=null; backup_path=C%3A/backup; vcodesum=12; copyFileName=C%3A/wwwroot/8888.baidu.com/data.sql; cutFileName=null; POP800_VISIT_TIMES=2; POP800_VISITOR_ID_L=6CF42C1CCACAE2EF0A644F3CF527D1D3; PAGE_VIEW_TIMES=3; BT_PANEL_6=2aa5307b-a779-4c8e-beb9-92c4acba85f6.B2PzdOhIA_DgJYND9LwjTv9CNiQ; request_token=1d6b7f57ee32096bec692ad7ad1251cd; ZDEDebuggerPresent=php,phtml,php3; PHPSESSID=5gv70hqu7cs0pu515chg9ucse5; think_language=zh-CN; pnull=1; BatchPaste=2; Path=C%3A/wwwroot/gec.com/config; monitor_count=71',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-08-18T20:45:36+08:00 ] 39.190.244.132 GET /account.html
+[ info ] 47.100.102.83:4900/account.html [运行时间：0.024503s][吞吐率：40.81req/s] [内存消耗：1,846.17kb] [文件加载：60]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'account',
+  'route' => 'account/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '__guid=126109640.1605024510354103600.1565344962251.627; order=id%20desc; memSize=2047; force=0; sites_path=C%3A/wwwroot; serverType=apache; uploadSize=1073741824; rank=a; BatchSelected=null; backup_path=C%3A/backup; vcodesum=12; copyFileName=C%3A/wwwroot/8888.baidu.com/data.sql; cutFileName=null; POP800_VISIT_TIMES=2; POP800_VISITOR_ID_L=6CF42C1CCACAE2EF0A644F3CF527D1D3; PAGE_VIEW_TIMES=3; BT_PANEL_6=2aa5307b-a779-4c8e-beb9-92c4acba85f6.B2PzdOhIA_DgJYND9LwjTv9CNiQ; request_token=1d6b7f57ee32096bec692ad7ad1251cd; ZDEDebuggerPresent=php,phtml,php3; PHPSESSID=5gv70hqu7cs0pu515chg9ucse5; think_language=zh-CN; pnull=1; BatchPaste=2; Path=C%3A/wwwroot/gec.com/config; monitor_count=71',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-08-18T20:45:36+08:00 ] 39.190.244.132 GET /signin.html?from=http%3A%2F%2F47.100.102.83%3A4900%2Faccount.html
+[ info ] 47.100.102.83:4900/signin.html?from=http%3A%2F%2F47.100.102.83%3A4900%2Faccount.html [运行时间：0.032760s][吞吐率：30.52req/s] [内存消耗：2,116.79kb] [文件加载：65]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'signin',
+  'route' => 'account/signin',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'method' => 'get|post',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '__guid=126109640.1605024510354103600.1565344962251.627; order=id%20desc; memSize=2047; force=0; sites_path=C%3A/wwwroot; serverType=apache; uploadSize=1073741824; rank=a; BatchSelected=null; backup_path=C%3A/backup; vcodesum=12; copyFileName=C%3A/wwwroot/8888.baidu.com/data.sql; cutFileName=null; POP800_VISIT_TIMES=2; POP800_VISITOR_ID_L=6CF42C1CCACAE2EF0A644F3CF527D1D3; PAGE_VIEW_TIMES=3; BT_PANEL_6=2aa5307b-a779-4c8e-beb9-92c4acba85f6.B2PzdOhIA_DgJYND9LwjTv9CNiQ; request_token=1d6b7f57ee32096bec692ad7ad1251cd; ZDEDebuggerPresent=php,phtml,php3; PHPSESSID=5gv70hqu7cs0pu515chg9ucse5; think_language=zh-CN; pnull=1; BatchPaste=2; Path=C%3A/wwwroot/gec.com/config; monitor_count=71',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+)
+[ info ] [ PARAM ] array (
+  'from' => 'http://47.100.102.83:4900/account.html',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ VIEW ] C:\wwwroot\gec.com\application\index\view\account\signin.html [ array (
+  0 => 'platform',
+  1 => 'appurl',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-08-18T20:45:55+08:00 ] 39.190.244.132 POST /signin
+[ info ] 47.100.102.83:4900/signin [运行时间：0.077230s][吞吐率：12.95req/s] [内存消耗：3,147.50kb] [文件加载：70]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'signin',
+  'route' => 'account/signin',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'method' => 'get|post',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '__guid=126109640.1605024510354103600.1565344962251.627; order=id%20desc; memSize=2047; force=0; sites_path=C%3A/wwwroot; serverType=apache; uploadSize=1073741824; rank=a; BatchSelected=null; backup_path=C%3A/backup; vcodesum=12; copyFileName=C%3A/wwwroot/8888.baidu.com/data.sql; cutFileName=null; POP800_VISIT_TIMES=2; POP800_VISITOR_ID_L=6CF42C1CCACAE2EF0A644F3CF527D1D3; PAGE_VIEW_TIMES=3; BT_PANEL_6=2aa5307b-a779-4c8e-beb9-92c4acba85f6.B2PzdOhIA_DgJYND9LwjTv9CNiQ; request_token=1d6b7f57ee32096bec692ad7ad1251cd; ZDEDebuggerPresent=php,phtml,php3; PHPSESSID=5gv70hqu7cs0pu515chg9ucse5; think_language=zh-CN; pnull=1; BatchPaste=2; Path=C%3A/wwwroot/gec.com/config; monitor_count=72',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://47.100.102.83:4900/signin.html?from=http%3A%2F%2F47.100.102.83%3A4900%2Faccount.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://47.100.102.83:4900',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '41',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+)
+[ info ] [ PARAM ] array (
+  'username' => '18005151538',
+  'password' => 'sucaihuo520',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001285s ] mysql:host=127.0.0.1;dbname=gec_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.005505s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = ''  WHERE  `loginip` = '39.190.244.132' [ RunTime:0.000605s ]
+[ sql ] [ SQL ] UPDATE `account`  SET `loginip` = '39.190.244.132'  WHERE  `username` = '18005151538' [ RunTime:0.002946s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538'  AND `password` = 'cd7f7cacd4fc2f9074a68380bb7107b8' LIMIT 1 [ RunTime:0.000670s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.005841s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000599s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.005583s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000819s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.005196s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000667s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `log` [ RunTime:0.004689s ]
+[ sql ] [ SQL ] INSERT INTO `log` (`username` , `type` , `text` , `ip` , `ua` , `create_at`) VALUES ('18005151538' , 3 , NULL , '39.190.244.132' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36' , '2019-08-18 20:45:55') [ RunTime:0.000507s ]
+---------------------------------------------------------------
+[ 2019-08-18T20:45:56+08:00 ] 39.190.244.132 GET /account.html
+[ info ] 47.100.102.83:4900/account.html [运行时间：0.083933s][吞吐率：11.91req/s] [内存消耗：3,386.27kb] [文件加载：72]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'account',
+  'route' => 'account/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '__guid=126109640.1605024510354103600.1565344962251.627; order=id%20desc; memSize=2047; force=0; sites_path=C%3A/wwwroot; serverType=apache; uploadSize=1073741824; rank=a; BatchSelected=null; backup_path=C%3A/backup; vcodesum=12; copyFileName=C%3A/wwwroot/8888.baidu.com/data.sql; cutFileName=null; POP800_VISIT_TIMES=2; POP800_VISITOR_ID_L=6CF42C1CCACAE2EF0A644F3CF527D1D3; PAGE_VIEW_TIMES=3; BT_PANEL_6=2aa5307b-a779-4c8e-beb9-92c4acba85f6.B2PzdOhIA_DgJYND9LwjTv9CNiQ; request_token=1d6b7f57ee32096bec692ad7ad1251cd; ZDEDebuggerPresent=php,phtml,php3; PHPSESSID=5gv70hqu7cs0pu515chg9ucse5; think_language=zh-CN; pnull=1; BatchPaste=2; Path=C%3A/wwwroot/gec.com/config; monitor_count=72',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://47.100.102.83:4900/signin.html?from=http%3A%2F%2F47.100.102.83%3A4900%2Faccount.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] C:\wwwroot\gec.com\application\index\view\account\index.html [ array (
+  0 => 'platform',
+  1 => 'shop',
+  2 => 'gonggao',
+  3 => 'open',
+  4 => 'user',
+  5 => 'config',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001596s ] mysql:host=127.0.0.1;dbname=gec_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.006702s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000701s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.008134s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000667s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.005182s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000556s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.004988s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000430s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.004774s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000481s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `store` [ RunTime:0.004568s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`image`,`cycle`,`income`,`price` FROM `store` WHERE  `catalog` = 1  AND `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000609s ]
+---------------------------------------------------------------
+[ 2019-08-18T20:46:01+08:00 ] 39.190.244.132 GET /home.html
+[ info ] 47.100.102.83:4900/home.html [运行时间：0.088320s][吞吐率：11.32req/s] [内存消耗：3,343.72kb] [文件加载：72]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'home',
+  'route' => 'account/home',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'method' => 'get|post',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '__guid=126109640.1605024510354103600.1565344962251.627; order=id%20desc; memSize=2047; force=0; sites_path=C%3A/wwwroot; serverType=apache; uploadSize=1073741824; rank=a; BatchSelected=null; backup_path=C%3A/backup; vcodesum=12; copyFileName=C%3A/wwwroot/8888.baidu.com/data.sql; cutFileName=null; POP800_VISIT_TIMES=2; POP800_VISITOR_ID_L=6CF42C1CCACAE2EF0A644F3CF527D1D3; PAGE_VIEW_TIMES=3; BT_PANEL_6=2aa5307b-a779-4c8e-beb9-92c4acba85f6.B2PzdOhIA_DgJYND9LwjTv9CNiQ; request_token=1d6b7f57ee32096bec692ad7ad1251cd; ZDEDebuggerPresent=php,phtml,php3; PHPSESSID=5gv70hqu7cs0pu515chg9ucse5; think_language=zh-CN; pnull=1; BatchPaste=2; Path=C%3A/wwwroot/gec.com/config; monitor_count=73',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://47.100.102.83:4900/account.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] C:\wwwroot\gec.com\application\index\view\account\home.html [ array (
+  0 => 'platform',
+  1 => 'team_count',
+  2 => 'mnums',
+  3 => 'user',
+  4 => 'config',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001493s ] mysql:host=127.0.0.1;dbname=gec_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `config` [ RunTime:0.008054s ]
+[ sql ] [ SQL ] SELECT * FROM `config` [ RunTime:0.000488s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.005742s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000498s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.005567s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000669s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.004551s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000483s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.006769s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000605s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `machine` [ RunTime:0.004891s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `machine` WHERE  `username` = '18005151538'  AND `status` = 1 LIMIT 1 [ RunTime:0.000670s ]
+---------------------------------------------------------------
+[ 2019-08-18T20:46:02+08:00 ] 39.190.244.132 GET /market.html
+[ info ] 47.100.102.83:4900/market.html [运行时间：0.088982s][吞吐率：11.24req/s] [内存消耗：3,702.25kb] [文件加载：73]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market',
+  'route' => 'market/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '__guid=126109640.1605024510354103600.1565344962251.627; order=id%20desc; memSize=2047; force=0; sites_path=C%3A/wwwroot; serverType=apache; uploadSize=1073741824; rank=a; BatchSelected=null; backup_path=C%3A/backup; vcodesum=12; copyFileName=C%3A/wwwroot/8888.baidu.com/data.sql; cutFileName=null; POP800_VISIT_TIMES=2; POP800_VISITOR_ID_L=6CF42C1CCACAE2EF0A644F3CF527D1D3; PAGE_VIEW_TIMES=3; BT_PANEL_6=2aa5307b-a779-4c8e-beb9-92c4acba85f6.B2PzdOhIA_DgJYND9LwjTv9CNiQ; request_token=1d6b7f57ee32096bec692ad7ad1251cd; ZDEDebuggerPresent=php,phtml,php3; PHPSESSID=5gv70hqu7cs0pu515chg9ucse5; think_language=zh-CN; pnull=1; BatchPaste=2; Path=C%3A/wwwroot/gec.com/config; monitor_count=74',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://47.100.102.83:4900/home.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] C:\wwwroot\gec.com\application\index\view\market\index.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'page',
+  4 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001557s ] mysql:host=127.0.0.1;dbname=gec_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.006132s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000589s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.006557s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000563s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.005843s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000513s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.006248s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000979s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.005986s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-08-18' [ RunTime:0.000690s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-08-18' [ RunTime:0.000548s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-08-18'  AND `t`.`create_at` < '2019-08-18 20:41:02' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.001070s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-08-18'  AND `t`.`create_at` < '2019-08-18 20:41:02' LIMIT 1 [ RunTime:0.000580s ]
+---------------------------------------------------------------
+[ 2019-08-18T20:46:03+08:00 ] 39.190.244.132 GET /market.html
+[ info ] 47.100.102.83:4900/market.html [运行时间：0.075164s][吞吐率：13.30req/s] [内存消耗：3,495.82kb] [文件加载：71]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market',
+  'route' => 'market/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '__guid=126109640.1605024510354103600.1565344962251.627; order=id%20desc; memSize=2047; force=0; sites_path=C%3A/wwwroot; serverType=apache; uploadSize=1073741824; rank=a; BatchSelected=null; backup_path=C%3A/backup; vcodesum=12; copyFileName=C%3A/wwwroot/8888.baidu.com/data.sql; cutFileName=null; POP800_VISIT_TIMES=2; POP800_VISITOR_ID_L=6CF42C1CCACAE2EF0A644F3CF527D1D3; PAGE_VIEW_TIMES=3; BT_PANEL_6=2aa5307b-a779-4c8e-beb9-92c4acba85f6.B2PzdOhIA_DgJYND9LwjTv9CNiQ; request_token=1d6b7f57ee32096bec692ad7ad1251cd; ZDEDebuggerPresent=php,phtml,php3; PHPSESSID=5gv70hqu7cs0pu515chg9ucse5; think_language=zh-CN; pnull=1; BatchPaste=2; Path=C%3A/wwwroot/gec.com/config; monitor_count=75',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://47.100.102.83:4900/market.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] C:\wwwroot\gec.com\application\index\view\market\index.html [ array (
+  0 => 'platform',
+  1 => 'config',
+  2 => 'index',
+  3 => 'page',
+  4 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001191s ] mysql:host=127.0.0.1;dbname=gec_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.005467s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000516s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.006234s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000502s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.005352s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000431s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.006026s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000498s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.004776s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 2  AND `create_at` > '2019-08-18' [ RunTime:0.000429s ]
+[ sql ] [ SQL ] SELECT * FROM `trade` WHERE  `status` = 3  AND `create_at` > '2019-08-18' [ RunTime:0.000433s ]
+[ sql ] [ SQL ] SELECT t.id AS id,`t`.`tid`,`t`.`type`,`t`.`status`,p.nickname AS owner,`number`,`price`,t.update_at AS date FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-08-18'  AND `t`.`create_at` < '2019-08-18 20:41:03' ORDER BY `t`.`status` ASC,`t`.`id` DESC LIMIT 0,50 [ RunTime:0.000732s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `trade` `t` INNER JOIN `profile` `p` ON `p`.`username`=`t`.`owner` WHERE  `t`.`type` = '1'  AND `t`.`status` = '1'  AND `t`.`create_at` > '2019-08-18'  AND `t`.`create_at` < '2019-08-18 20:41:03' LIMIT 1 [ RunTime:0.000532s ]
+---------------------------------------------------------------
+[ 2019-08-18T20:46:04+08:00 ] 39.190.244.132 POST /market/overview
+[ info ] 47.100.102.83:4900/market/overview [运行时间：0.055756s][吞吐率：17.94req/s] [内存消耗：3,077.48kb] [文件加载：69]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market/overview',
+  'route' => 'market/overview',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '__guid=126109640.1605024510354103600.1565344962251.627; order=id%20desc; memSize=2047; force=0; sites_path=C%3A/wwwroot; serverType=apache; uploadSize=1073741824; rank=a; BatchSelected=null; backup_path=C%3A/backup; vcodesum=12; copyFileName=C%3A/wwwroot/8888.baidu.com/data.sql; cutFileName=null; POP800_VISIT_TIMES=2; POP800_VISITOR_ID_L=6CF42C1CCACAE2EF0A644F3CF527D1D3; PAGE_VIEW_TIMES=3; BT_PANEL_6=2aa5307b-a779-4c8e-beb9-92c4acba85f6.B2PzdOhIA_DgJYND9LwjTv9CNiQ; request_token=1d6b7f57ee32096bec692ad7ad1251cd; ZDEDebuggerPresent=php,phtml,php3; PHPSESSID=5gv70hqu7cs0pu515chg9ucse5; think_language=zh-CN; pnull=1; BatchPaste=2; Path=C%3A/wwwroot/gec.com/config; monitor_count=76',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://47.100.102.83:4900/market.html',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://47.100.102.83:4900',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004139s ] mysql:host=127.0.0.1;dbname=gec_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `market` [ RunTime:0.006593s ]
+[ sql ] [ SQL ] SELECT `date`,`price`,`high`,`low` FROM `market` WHERE  `date` <= '2019-08-18' ORDER BY `date` DESC LIMIT 7 [ RunTime:0.000754s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `trade` [ RunTime:0.005250s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` <> 0  AND `status` <> 8  AND `create_at` > '2019-08-18' LIMIT 1 [ RunTime:0.000640s ]
+[ sql ] [ SQL ] SELECT SUM(`number`) AS tp_sum FROM `trade` WHERE  `status` = 8  AND `create_at` > '2019-08-18' LIMIT 1 [ RunTime:0.000556s ]
+---------------------------------------------------------------
+[ 2019-08-18T20:46:04+08:00 ] 39.190.244.132 GET /team.html
+[ info ] 47.100.102.83:4900/team.html [运行时间：0.065371s][吞吐率：15.30req/s] [内存消耗：3,386.46kb] [文件加载：73]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'team',
+  'route' => 'team/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '__guid=126109640.1605024510354103600.1565344962251.627; order=id%20desc; memSize=2047; force=0; sites_path=C%3A/wwwroot; serverType=apache; uploadSize=1073741824; rank=a; BatchSelected=null; backup_path=C%3A/backup; vcodesum=12; copyFileName=C%3A/wwwroot/8888.baidu.com/data.sql; cutFileName=null; POP800_VISIT_TIMES=2; POP800_VISITOR_ID_L=6CF42C1CCACAE2EF0A644F3CF527D1D3; PAGE_VIEW_TIMES=3; BT_PANEL_6=2aa5307b-a779-4c8e-beb9-92c4acba85f6.B2PzdOhIA_DgJYND9LwjTv9CNiQ; request_token=1d6b7f57ee32096bec692ad7ad1251cd; ZDEDebuggerPresent=php,phtml,php3; PHPSESSID=5gv70hqu7cs0pu515chg9ucse5; think_language=zh-CN; pnull=1; BatchPaste=2; Path=C%3A/wwwroot/gec.com/config; monitor_count=76',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://47.100.102.83:4900/market.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] C:\wwwroot\gec.com\application\index\view\team\index.html [ array (
+  0 => 'platform',
+  1 => 'index',
+  2 => 'page',
+  3 => 'user',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001167s ] mysql:host=127.0.0.1;dbname=gec_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.004969s ]
+[ sql ] [ SQL ] SELECT `uid`,`type`,`status`,`username`,`authen`,`inviter`,`create_at`,`registerip`,`loginip`,`qiandao`,`jiefeng`,`qnum`,`buynums`,`buyaward`,`nolimit`,`buydate`,`qiandao1`,`qnum1` FROM `account` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000503s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `profile` [ RunTime:0.004598s ]
+[ sql ] [ SQL ] SELECT `username`,`nickname`,`avatar`,`wechat`,`qq`,`alipay`,`realname`,`idcard`,`certificate`,`authen_reason`,`bankname`,`bankcard`,`bankaddress`,`phone`,`province`,`city`,`county`,`alipay_image` FROM `profile` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000425s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wallet` [ RunTime:0.006317s ]
+[ sql ] [ SQL ] SELECT `username`,`money`,`deposit`,`score`,`score_deposit`,`spend`,`profit`,`team_profit`,`bonus`,`trade`,`sell`,`buy`,`ts_in`,`ts_out`,`macmoney`,`cansell`,`poll`,`mpocket` FROM `wallet` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000432s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dashboard` [ RunTime:0.004673s ]
+[ sql ] [ SQL ] SELECT `username`,`power`,`team_power`,`team_count`,`authen`,`machine_count`,`machine_power`,`machine_expire`,`one`,`two`,`three`,`four`,`five`,`six`,`seven`,`eight`,`lv0`,`lv1`,`lv2`,`lv3`,`lv4`,`lv5`,`lv6`,`lv7`,`lv8` FROM `dashboard` WHERE  `username` = '18005151538' LIMIT 1 [ RunTime:0.000473s ]
+[ sql ] [ SQL ] SELECT COUNT(1) AS tp_count FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` WHERE  `inviter` = '18005151538' LIMIT 1 [ RunTime:0.000552s ]
+---------------------------------------------------------------
+[ 2019-08-18T20:46:05+08:00 ] 39.190.244.132 POST /team/member
+[ info ] 47.100.102.83:4900/team/member [运行时间：0.039602s][吞吐率：25.25req/s] [内存消耗：2,766.30kb] [文件加载：69]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'team/member',
+  'route' => 'team/member',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '__guid=126109640.1605024510354103600.1565344962251.627; order=id%20desc; memSize=2047; force=0; sites_path=C%3A/wwwroot; serverType=apache; uploadSize=1073741824; rank=a; BatchSelected=null; backup_path=C%3A/backup; vcodesum=12; copyFileName=C%3A/wwwroot/8888.baidu.com/data.sql; cutFileName=null; POP800_VISIT_TIMES=2; POP800_VISITOR_ID_L=6CF42C1CCACAE2EF0A644F3CF527D1D3; PAGE_VIEW_TIMES=3; BT_PANEL_6=2aa5307b-a779-4c8e-beb9-92c4acba85f6.B2PzdOhIA_DgJYND9LwjTv9CNiQ; request_token=1d6b7f57ee32096bec692ad7ad1251cd; ZDEDebuggerPresent=php,phtml,php3; PHPSESSID=5gv70hqu7cs0pu515chg9ucse5; think_language=zh-CN; pnull=1; BatchPaste=2; Path=C%3A/wwwroot/gec.com/config; monitor_count=77',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://47.100.102.83:4900/team.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://47.100.102.83:4900',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '14',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'size' => '20',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001022s ] mysql:host=127.0.0.1;dbname=gec_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `account` [ RunTime:0.005156s ]
+[ sql ] [ SQL ] SELECT `a`.`uid`,`p`.`realname`,`p`.`avatar`,`a`.`type`,`a`.`username`,`p`.`nickname`,`p`.`idcard` FROM `account` `a` INNER JOIN `profile` `p` ON `p`.`username`=`a`.`username` WHERE  `inviter` = '18005151538' LIMIT 0,20 [ RunTime:0.000620s ]
+---------------------------------------------------------------
+[ 2019-08-18T20:46:41+08:00 ] 120.204.17.70 GET /account.html
+[ info ] 47.100.102.83:4900/account.html [运行时间：0.026402s][吞吐率：37.88req/s] [内存消耗：1,842.09kb] [文件加载：60]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'account',
+  'route' => 'account/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; InfoPath.3; rv:11.0) like Gecko',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-08-18T20:47:01+08:00 ] 183.192.164.85 GET /home.html
+[ info ] 47.100.102.83:4900/home.html [运行时间：0.033790s][吞吐率：29.59req/s] [内存消耗：1,841.38kb] [文件加载：60]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'home',
+  'route' => 'account/home',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'method' => 'get|post',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+  'referer' => 'http://47.100.102.83:4900/account.html',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-08-18T20:47:02+08:00 ] 183.192.164.85 GET /market.html
+[ info ] 47.100.102.83:4900/market.html [运行时间：0.048415s][吞吐率：20.65req/s] [内存消耗：1,838.68kb] [文件加载：60]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'market',
+  'route' => 'market/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+  'referer' => 'http://47.100.102.83:4900/home.html',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2141.400 QQBrowser/9.5.10219.400',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-08-18T20:47:04+08:00 ] 183.192.164.71 GET /team.html
+[ info ] 47.100.102.83:4900/team.html [运行时间：0.027728s][吞吐率：36.06req/s] [内存消耗：1,529.91kb] [文件加载：60]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'team',
+  'route' => 'team/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+  'referer' => 'http://47.100.102.83:4900/market.html',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-08-18T21:52:00+08:00 ] 39.190.244.132 GET /favicon.ico
+[ info ] 47.100.102.83:4900/favicon.ico [运行时间：0.023521s][吞吐率：42.52req/s] [内存消耗：1,231.70kb] [文件加载：56]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File

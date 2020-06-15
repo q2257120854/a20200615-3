@@ -1,0 +1,93 @@
+{include file="public/header" /}
+ <style type="text/css">
+     #title span{ float: right; }
+ </style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        {include file="public/tophead" /}
+        {include file="public/top" /}
+        <div class="ibox-content">
+        {include file="public/topsection"}
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <div class="example">
+                        <table data-toggle="table" data-striped="false">
+                            <thead>
+                                <tr>
+                                    
+                                    <th>申请id</th>
+									<th>申请贴吧</th>
+									<th>吧主</th>
+                                    <th>昵称</th>
+								    <th>手机</th>
+									<th>申请时间</th>
+									<th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               
+                                {volist name="data" id="v"}
+                                <tr id="id{$v.id}" class="class">
+                                    <td>{$v.id}</td>
+									<td>{$tieba.title}</td>
+									<td>
+									 <?php if($v['uid'] == $tieba['bazhu_id']){ ?>
+                                                是
+                                                <?php }else{ ?>
+												否
+												<?php } ?>
+									
+									</td>
+									
+									<?php
+									  $user=_user($v['uid']);
+                                       //echo $user['username'];
+                                    ?>
+                                    <td>{$user.nickname}</td>
+                                    <td>{$user.mobile}</td>
+									<td>{$v.time|date='Y-m-d H:i:s',###}</td>
+									<td>
+									  <div class="btn-group">
+                                            <button data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+											    <?php if($v['uid'] == $tieba['bazhu_id']){ ?>
+                                                <li><a onclick="hide({$v.aid},'{:url('un_bazhu',['uid'=>$v['uid'],'aid'=>$v['aid'],'url'=>-1])}')">取消吧主</a></li>
+                                                <?php }else{ ?>
+												<li><a onclick="hide({$v.aid},'{:url('be_bazhu',['uid'=>$v['uid'],'aid'=>$v['aid'],'url'=>-1])}')">设为吧主</a></li>
+												<?php } ?>
+                                            
+                                                <li class="divider"></li>
+                                                <li><a onclick="hide({$v.aid},'{:url('bazhusq_del',['id'=>$v['id']])}')">删除</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+									</td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+            </div>
+			
+			  <hr>
+            <div class="row row-lg">
+                <div class="col-sm-12 pages">{$page}</div>
+            </div>
+			
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<script type="text/javascript">
+$(document).ready(function(){
+});
+function del(id){
+        swal_del(id,"{:url('bazhusq_del')}")
+}
+
+</script>

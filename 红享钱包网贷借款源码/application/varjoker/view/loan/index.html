@@ -1,0 +1,217 @@
+{include file="public/header" /}
+<style>
+        .modal-dialog {
+            width: 1000px;
+            margin: 30px auto;
+        }
+        .modal-content{
+            height: 700px;
+        }
+</style>
+<div class="outter-wp">
+    <!--sub-heard-part-->
+    <div class="sub-heard-part">
+        <ol class="breadcrumb m-b-0">
+            <li><a>系统</a></li>
+            <li class="active">借款列表</li>
+        </ol>
+    </div>
+    <!--//sub-heard-part-->
+    <div class="graph-visual tables-main">
+
+
+        <div class="graph">
+            <form class="form-inline" method="post">
+                <div class="form-group">
+                   订单查找: <input type="text" class="form-control" name="name" placeholder="姓名"><input type="text" class="form-control" name="mobile" placeholder="手机号"><input type="text" class="form-control" name="number" placeholder="订单号"></div>
+                <button type="submit" class="btn btn-default">查询</button>{eq name="$status" value="1"}{eq name="$viptype" value="1"} <a class="btn green" onclick="allsms()">未支付审核费批量短信</a>{/eq}{/eq}</form><a class="btn green" href="{:url('loan/daochuxls')}">导出未支付信息</a>
+            <div class="tables">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>姓名</th>
+                        <th>手机号</th>
+                        <th>订单号</th>
+                        <th>查看资料</th>
+                        <th>借款额度</th>
+                        <th>借款利息</th>
+                        <th>借款类型</th>
+                        <th>应还总额</th>
+                        <th>借款状态</th>
+                        <th>还款时间</th>
+                        <th>是否支付审核费</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="list" id="vo"}
+                    <tr>
+                        <th scope="row">{$vo.id}</th>
+                        <td>{$vo.name}</td>
+                        <td>{$vo.mobile}</td>
+                        <td>{$vo.number}</td>
+                        <td><span class="label label-primary" onclick="seedata({$vo.uid})">查看资料</span></td>
+                        <td>{$vo.loanamount}</td>
+                        <td>{$vo.loanlixi}</td>
+                        <td>{$vo.loantype}</td>
+                        <td>{$vo.allmoney}</td>
+                        <td>{php}
+                            if($vo['status'] == 0){
+                            echo "未审核";
+                            }else if($vo['status'] == 1 && $vo['viptype'] == 0){
+                            echo "已审核未支付";
+                            }else if($vo['status'] == 1 && $vo['viptype'] == 1){
+                            echo "已审核待放款";
+                            }else if($vo['status'] == 2){
+                            echo "已复审放款";
+                            }else if($vo['status'] == 3){
+                            echo "已提款";
+                            }else if($vo['status'] == 5){
+                            echo "已还款";
+                            }else if($vo['status'] == 6){
+                            echo "已驳回,驳回理由:".$vo['errortext'];
+                            }
+                            {/php}</td>
+                        <td>{php}echo date("Y-m-d H:i:s",$vo['loanend']);{/php}</td>
+                        <td>{eq name="$vo.viptype" value="1"}未支付{else/}已支付{/eq}</td>
+                        <td>
+                            {php}
+                            if($vo['status'] == 0){
+                           echo '<span class="label label-default" onclick="gxfk('.$vo['id'].')">修改放款额度</span>|<span class="label label-default" onclick="chushen('.$vo['id'].')">通过初审</span>|<span class="label label-info" onclick="bohui('.$vo['id'].')">驳回订单</span>';
+                            }else if($vo['status'] == 1 && $vo['viptype'] == 1){
+                           echo '<span class="label label-success" onclick="queren('.$vo['id'].')">确认放款</span>';
+                            }else if($vo['status'] == 1 && $vo['viptype'] == 2){
+                           echo '<span class="label label-success" onclick="queren('.$vo['id'].')">确认放款</span>';
+                            }else if($vo['status'] == 2){
+                            echo "待提现中";
+                            }else if($vo['status'] == 3){
+                            echo '<span class="label label-success" onclick="huandangqi('.$vo['id'].')">还款当期</span>|<span class="label label-success" onclick="enddan('.$vo['id'].')">还款所有</span>';
+                            }else if($vo['status'] == 5){
+                            echo "已完成订单";
+                            }else if($vo['status'] == 6){
+                            echo '<span class="label label-success" onclick="rebohui('.$vo['id'].')">已驳回</span>';
+                            }
+                            {/php}
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+
+
+
+            </div>
+
+        </div>
+
+        <!--分页位置-->
+        {$list->render()}
+        <!--//graph-visual-->
+    </div>
+    <!--轮播修改-->
+    <div class="modal fade" id="seeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close second" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h2 class="modal-title">查看资料</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="form-body">
+                        <iframe id="reiframe" src="" style="width: 100%;height: 600px;"></iframe>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+
+    <script>
+      function rebohui(id){
+          $.get('{:url('loan/rebohui')}?id='+id,function(data){
+            	if(data.code == 1){
+                alert(data.msg);
+                  window.location.reload();
+                }
+            });
+      }
+      function huandangqi(id){
+      $.get('{:url('loan/huandangqi')}?id='+id,function(data){
+            	if(data.code == 1){
+                alert('当期还款成功');
+                  window.location.reload();
+                }
+            });
+      }
+      function enddan(id){
+      $.get('{:url('loan/enddan')}?id='+id,function(data){
+            	if(data.code == 1){
+                alert('所有还款成功');
+                  window.location.reload();
+                }
+            });
+      }
+      
+        function gxfk(id) {
+
+      var reason =  prompt('请输入需要修改的金额:', '', '请输入需要修改的金额');
+          if(reason){ 
+         	$.get('{:url('loan/editloand')}?id='+id+'&money='+reason,function(data){
+            	if(data.code == 1){
+                alert('修改成功');
+                  window.location.reload();
+                }
+            });
+          }else if(reason === ""){ 
+          alert('请不要输入空字符');
+          }else{ 
+          //点击的是“取消” 
+          }
+        }
+       function seedata(id) {
+
+            $('#seeModal').modal();
+            $('#reiframe').attr('src','{:url('user/info')}?id='+id);
+
+        }
+        function chushen(id) {
+        $.get('{:url('loan/chushen')}?id='+id,function (chushen) {
+                alert(chushen.msg);
+               location.reload();
+            });
+        }
+       function queren(id) {
+          $.get('{:url('loan/querenfk')}?id='+id,function (queren) {
+                alert(queren.msg);
+               location.reload();
+            });
+       }
+  
+        function bohui(id) {
+		var reason =  prompt('请输入驳回理由:', '', '请输入驳回理由');
+          if(reason){ 
+         	$.get('{:url('loan/bohuikex')}?id='+id+'&texst='+reason,function(data){
+            	if(data.code == 1){
+                alert('修改成功');
+                  window.location.reload();
+                }
+            });
+          }else if(reason === ""){ 
+          alert('请不要输入空字符');
+          }else{ 
+          //点击的是“取消” 
+          }
+        }
+        {eq name="$status" value="1"}{eq name="$viptype" value="1"}
+        function allsms() {
+            {volist name="list" id="vo"}
+            $.get('{:url('user/sendsms')}?id={$vo.mobile}&tid=1013');
+            {/volist}
+
+        //$.get();
+        }
+        {/eq}{/eq}
+    </script>
+
+    {include file="public/footer" /}

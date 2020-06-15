@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<style>
+			.ad, .ad img {
+				width: 100%;
+			}
+			#djs {
+				position: fixed;
+				top: 1.5rem;
+				right: 0.75rem;
+				background: #888;
+				color: #fff;
+				padding: 0.15rem 0.35rem;
+				font-size: 0.55rem;
+				border-radius: 0.25rem
+			}
+			#t{
+				position: fixed;
+				bottom:2rem;
+				right: 0.75rem;
+				background: #888;
+				color: #fff;
+				padding: 0.25rem 1rem;
+				font-size: 0.55rem;
+				border-radius: 0.25rem
+			}
+		</style>
+	</head>
+	<body>
+		<div class="ad" tapmode onclick="url()">
+		</div>
+		<em id="djs">倒计时：<b>0</b></em>
+		<em id="t" tapmode onclick="c()">跳过</em>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var s = 0,data,adjson
+		apiready = function() {
+			// 判断返回键
+			api.addEventListener({
+				name : 'keyback'
+			}, function(ret, err) {
+				
+			});
+			api.parseTapmode();
+			adjson=$api.getStorage('ad')
+			data=adjson.data
+			var image=$api.getStorage('adimage');
+			$api.html($api.dom('.ad'),'<img src="'+image+'"  />');
+			s=adjson.config.time;
+			$api.text($api.dom('#djs b'),s);
+			djs()
+			adAjax()
+		//	_msg(data.id)
+			//alert(JSON.stringify(adjson));
+			 
+		}
+		function djs() {
+			setTimeout(function(){
+				$api.text($api.dom('#djs b'),s);
+				if(s==0){
+					//console.log('结束')
+					c()
+					return;
+				}else{
+					djs()
+				}
+				s--
+			}, 1000) 
+		}
+		function c(){
+			api.closeWin();
+		}
+		function url(){
+			_url({url:data.url,title:data.title},'curl')
+			c()
+		}
+		// 更新广告地址
+		function adAjax(){
+			var id=$api.getStorage('ad').data.id;
+			_ajax('api/article/ad/id/'+id,function(ret,err){
+				if(ret){
+					if(ret.ret){
+					//	console.log(JSON.stringify(ret.ret));
+						$api.setStorage('ad', ret.ret);
+						s=ret.ret.config.time
+						$api.text($api.dom('#djs b'),s);
+					//	console.log(fx_cdn+ret.ret.data.image)
+						api.imageCache({
+							url : fx_cdn+ret.ret.data.image,
+							thumbnail:false,
+						}, function(ret, err) {
+							if (ret) {
+								if (ret.status) {
+					//				console.log(ret.url);
+									$api.setStorage('adimage', ret.url);
+								}
+							}
+						});
+						return;
+					}
+				}
+				$api.rmStorage('ad')
+				$api.rmStorage('adimage')
+			})
+		}
+	</script>
+</html>
+

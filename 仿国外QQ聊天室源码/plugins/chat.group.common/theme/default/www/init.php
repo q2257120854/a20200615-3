@@ -1,0 +1,146 @@
+<?php
+
+!defined('IN_ONEZ') && exit('Access Denied');
+$option=$G['this']->option();
+$G['title']=$G['this']->option('sitename');
+#公共区域
+global $baseurl,$master;
+
+$homepage=$G['this']->option('homepage');
+if($homepage){
+  $G['homepage']=$homepage;
+}
+$baseurl=onez('chat.group.common')->url.'/theme/default/www';
+$login=onez('login')->init('chat_group',0);
+if($login['id']){
+  $G['user']=$G['this']->data()->open('member')->one("id='$login[id]'");
+  if(!$G['user']){
+    onez('cache')->cookie('chat_group','del',-1);
+    exit('登录超时');
+  }
+  $G['userid']=$G['user']['id'];
+  $G['user']['avatar']=$G['chat']->avatar($G['userid']);
+}
+$groupid=(int)onez()->gp('groupid');
+if($groupid){
+  $group=$G['group']=$G['this']->data()->open('group')->one("id='$groupid'");
+  !$group && onez('chat.group.common')->error('群不存在');
+
+  $master=$group['master_list'];
+  if($group['master_list_time']<$group['updatetime']){
+    $master=array();
+    $T=$G['this']->data()->open('group_master')->record("upid='$groupid' order by index1 desc");
+    foreach($T as $r){
+      $master[$r['userid']]=1;
+    }
+    $T=$G['this']->data()->open('member')->record("`grade`='admin'");
+    foreach($T as $r){
+      $master[$r['id']]=999;
+    }
+    $G['this']->data()->open('group')->update(array(
+      'master_list'=>$master,
+      'master_list_time'=>time(),
+    ),"id='$groupid'");
+  }
+  if(!$G['userid']){
+    $udid=onez('cache')->cookie('udid');
+    if($udid){
+      $guest=$G['this']->data()->open('guest')->one("token='$udid'");
+      if(!$guest){
+        unset($udid);
+      }
+    }
+    if(!$udid){
+      $udid=md5(uniqid());
+      onez('cache')->cookie('udid',$udid);
+      $ip=onez()->ip();
+      $G['this']->data()->open('guest')->insert(array(
+        'token'=>$udid,
+        'ip'=>$ip,
+        'address'=>onez('ip')->init($ip)->address(),
+        'firstgroup'=>$groupid,
+      ));
+    }
+    $guest=$G['this']->data()->open('guest')->one("token='$udid'");
+    $guser=onez('chat.group.common')->adduser($groupid,$guest['id'],'guest');
+    $guser['tbname']='guest';
+    $userid='guest.'.$guest['id'];
+    $G['nickname']='游客'.$guest['id'];
+    $G['grade']='guest';
+  }else{
+    $userid=$G['userid'];
+    $G['nickname']=$G['user']['nickname'];
+    $G['grade']=$G['user']['grade'];
+    $guser=onez('chat.group.common')->adduser($groupid,$userid,'user');
+    $guser['tbname']='member';
+    $G['user']['avatar']=$G['chat']->avatar($G['userid']);
+  }
+  #踢出判断
+  if($guser['key1']=='tickout'){
+    $status='tickout';
+    if(time()>=$guser['tickout_exptime']){
+      $status='ok';
+    }
+    if($status=='ok'){
+      if(time()<$guser['lock_exptime']){
+        $status='lock';
+      }
+    }
+    if($status!=$guser['key1']){
+      $G['this']->data()->open('group_users')->update(array(
+        'key1'=>$status,
+      ),"id='$guser[id]'");
+      $guser['key1']=$status;
+    }
+  }
+  #禁言判断
+  if($guser['key1']=='lock'){
+    $status='lock';
+    if(time()>=$guser['lock_exptime']){
+      $status='ok';
+    }
+    if($status=='ok'){
+      if(time()<$guser['tickout_exptime']){
+        $status='tickout';
+      }
+    }
+    if($status!=$guser['key1']){
+      $G['this']->data()->open('group_users')->update(array(
+        'key1'=>$status,
+      ),"id='$guser[id]'");
+      $guser['key1']=$status;
+    }
+  }
+  $G['ismaster']=intval($master[$G['userid']]);
+  
+  #新用户禁言时间
+  $G['newuser_limit_time']=0;
+  if($option['newuser_limit_time']>0){
+    $G['newuser_limit_time']=$G['user']['addtime']+$option['newuser_limit_time']*60-time();
+    if($G['newuser_limit_time']<0){
+      $G['newuser_limit_time']=0;
+    }
+  }
+  if($group['newuser_limit_time']>0){
+    $G['newuser_limit_time']=$G['user']['addtime']+$group['newuser_limit_time']*60-time();
+    if($G['newuser_limit_time']<0){
+      $G['newuser_limit_time']=0;
+    }
+  }
+  
+  #发言间隔
+  $G['talk_busy_time']=0;
+  if($option['talk_busy_time']>0){
+    $G['talk_busy_time']=(int)$option['talk_busy_time'];
+    if($G['talk_busy_time']<0){
+      $G['talk_busy_time']=0;
+    }
+  }
+  if($group['talk_busy_time']>0){
+    $G['talk_busy_time']=(int)$group['talk_busy_time'];
+    if($G['talk_busy_time']<0){
+      $G['talk_busy_time']=0;
+    }
+  }
+}
+onez('admin')->boxed=false;

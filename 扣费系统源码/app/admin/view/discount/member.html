@@ -1,0 +1,35 @@
+<form action="{:url()}" method="post" class="form_single">
+    <div class="box">
+      <div class="box-body">
+        <div class="row">
+    		<div class="col-md-6">
+            <div class="form-group">
+              <label>选择级别 &#x66f4;&#x591a;&#x7cbe;&#x54c1;&#x6e90;&#x7801;&#x524d;&#x5f80;&#x8da3;&#x6a21;&#x677f;&#x6e90;&#x7801;&#x7f51;</label>
+              <span>（请选择会员级别）</span>
+              <select name="rank_id" class="form-control">
+              	<option value="1">普通会员</option>
+              	<option value="2">中级会员</option>
+              	<option value="3">高级会员</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>折扣</label>
+              <span>（比例,例如100%, 这个关键词平台给你10元 ,你设置给用户200%,用户就是20元,除去平台10元,剩下的就是你的利润）</span>
+              <input class="form-control" name="discount" placeholder="0.90" type="text">
+            </div>
+          </div>
+ 
+          
+ 
+         
+            
+        </div>
+      </div>
+      <div class="box-footer">
+        
+        {include file="layout/edit_btn_group"/}
+      </div>
+    </div>
+</form>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<style>
+			body{
+				background: rgba(255,255,255,0.7) !important;
+			}
+			img {
+				width: 40px;
+				height: 35px;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="../image/sou.png" tapmode onclick="sou()">
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var fan
+		apiready = function() {
+			 api.parseTapmode();
+		}
+		function sou(){
+			api.openWin({
+				name : 'search_win',
+				url : '../html/search_win.html',
+				slidBackEnabled : false,
+				animation : {
+					type : "fade", //动画类型（详见动画类型常量）
+					subType : "from_right", //动画子类型（详见动画子类型常量）
+					duration : 300
+				},
+				pageParam : {
+					qian : 1,
+					fan : 1
+				}
+			});
+		}
+	</script>
+</html>
+

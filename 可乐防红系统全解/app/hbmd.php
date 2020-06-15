@@ -1,0 +1,1 @@
+<?php include '../fhincludes/common.php'; $numrows=$DB->count("SELECT count(*) from quan_list WHERE 1"); echo $numrows?>

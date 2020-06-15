@@ -1,0 +1,298 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/ffxiang.css" />
+		<link rel="stylesheet" type="text/css" href="../css/view.css" />
+		<style>
+		#fx-header{
+			height:0;
+			min-height:0;
+		}
+		#video{
+			width: 100%;
+			height: 12rem;
+			background: #000;
+		}
+
+		</style>
+	</head>
+	<body>
+		<header class="aui-bar aui-bar-nav fx-view-header" id="fx-header">
+		</header>
+		<div id="video"></div>
+		<footer class="aui-bar aui-bar-tab fx-view-footer" id="fx-footer">
+			<div class="aui-bar-tab-item aui-padded-l-15 aui-padded-r-15" tapmode style="width: auto;">
+				<div class="search-input aui-font-size-14" tapmode onclick="pingAdd()">
+					请输入评论内容
+				</div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode style="width: 2.2rem;" tapmode  onclick="gundong()">
+				<div class="aui-badge" id="pingNum" data-num="0">
+					0
+				</div>
+				<i class="aui-iconfont aui-icon-comment"></i>
+			</div>
+			<div class="aui-bar-tab-item" id="shoucang" tapmode onclick="shoucang(this)" data-id='1' style="width: 2.2rem;">
+				<i class="aui-iconfont aui-icon-star"></i>
+			</div>
+			<div class="aui-bar-tab-item" tapmode onclick="fenxiang()" style="width: 2.2rem;margin-right: 0.5rem;">
+				<i class="aui-iconfont aui-icon-share"></i>
+			</div>
+		</footer>
+	</body>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var id, inputField,uid=0,fan,playModule,znashiti;videoOn=1;
+		
+		apiready = function() { 
+			playModule = api.require('playModule');
+			_heibai(1)
+			if(videoOn==1){  
+				videoOn=0
+			}
+			playModule.init({
+				background : _image+"load-video.png",
+				isMultiWindow:true,
+			});
+
+			id = api.pageParam['id'];
+			fan=api.pageParam['fan'];
+			if(!id){
+				_alert("文章不存在或已被删除！",function(ret){
+					_hone();
+				})
+			}
+			
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+
+			var header = $api.byId('fx-header');
+			$api.fixStatusBar(header);
+			var headerh = $api.offset(header).h;
+			headerh=headerh+$api.offset($api.dom('#video')).h
+
+			var body_h = api.winHeight;
+			$api.fixTabBar($api.byId('fx-footer'))
+			var footerh = $api.offset($api.byId('fx-footer')).h;
+
+			api.openFrame({
+				name : 'view',
+				url : html_win +  'view.html',
+				bounces : true,
+				reload : true,
+				rect : {
+					x : 0,
+					y : headerh,
+					w : 'auto',
+					h : body_h - headerh - footerh
+				},
+				pageParam : api.pageParam,
+			})
+
+			video()
+			//Window 离开屏幕的事件
+			api.addEventListener({
+			    name:'viewdisappear'
+			}, function(ret, err){   
+				playModule.pause(); 
+				// 关闭全屏
+				api.setFullScreen({
+				    fullScreen: false
+				});
+			});
+			// 进入屏幕时间
+			api.addEventListener({
+			    name:'viewappear'
+			}, function(ret, err){
+				_heibai(1)
+//				api.setFullScreen({
+//				    fullScreen: true
+//				});
+				if(znashiti==1){
+					playModule.start();
+				}
+				znashiti=1
+				// 每天阅读次数奖励
+				setTimeout(function(){
+					_daily({name:'money_news'})
+				},_config.yaoqing.money_news_time)
+			});
+			playModule.addEventListener({
+			    name: 'backBtn'
+			}, function(ret, err) {
+				if(ret.status){
+					_close()
+				}
+			});
+			// 监听返回键
+			api.addEventListener({
+				name : 'keyback'
+			}, function(ret, err) {
+				// 判断是否全屏
+				playModule.isFullScreen(function(ret, err) {
+					if(ret.status){
+						playModule.unfull();
+						return;
+					}
+					_close()
+				});
+			});
+			//应用进入后台事件
+			api.addEventListener({
+				name : 'pause'
+			}, function(ret, err) {
+				playModule.pause();
+				// 关闭全屏
+				api.setFullScreen({
+				    fullScreen: false
+				});
+			});
+			// 应用从后台回到前台事件
+			api.addEventListener({
+				name : 'resume'
+			}, function(ret, err) {
+				playModule.start();
+			});
+		}
+		function video(){
+			
+			videoOn=0;
+			var a = false;
+			var obj = api.require('playModule');
+			obj.start(function(ret, err) {
+				if(ret.status==true){
+					a = true;
+				} 
+			});
+			if(a == true){
+				return ;
+			}
+		//	console.log(api.pageParam['videoUrl'])
+			var h=$('#video').height();
+			var a=$('#fx-header').height();
+			playModule.play({
+			    rect:{
+			    	x: 0,
+				    y : a,
+				    w : api.winWidth,
+				    h: h
+				},
+			    url: api.pageParam['videoUrl'],
+			    defaultBtn: true,
+			    enableFull : false,
+			    title:api.pageParam['title'],
+			    isTopView:true,
+			    isBackBtn:true,
+			});
+			
+			return;
+			//$('#video').html('<video autoplay="autoplay" src="http://v6.365yg.com/video/m/220a3b4d980b3b94f3eb720da75fd7275151148de70000502f3965f4d5/?Expires=1498321249&AWSAccessKeyId=qh0h9TdcEMoS2oPj7aKX&Signature=p3noHP%2FWRrml6l2%2ByExFXeRgHSM%3D"  controls="true" type="video/mp4" webkit-playsinline="true" style="width: 100%;height: 12.5rem;" playsinline="true"></video>');
+			//$('#video').html('<video autoplay="autoplay" poster="'+img+'" src="'+url+'"  controls="true" type="video/mp4" webkit-playsinline="true" style="width: 100%;height: 12rem;" playsinline="true" />')
+		}
+		// 滚动
+		function gundong() {
+			var gundong = 'gundong();';
+			api.execScript({
+				frameName : 'view',
+				script : gundong
+			});
+		}
+		// 分享
+		function fenxiang(){
+			var fenxiang = 'fenxiang();';
+			api.execScript({
+				frameName : 'view',
+				script : fenxiang
+			});
+		}
+		// 收藏
+		function shoucang(ojb){
+			if(!_user){
+				_login();
+				return;
+			}
+			_loading()
+			var type=$(ojb).data('id');
+			if(type==1){
+				_ajax('api/member/favoriteAdd',function(ret,err){
+					_loadingCloes()
+					if(ret.ret){
+						$(ojb).data('id','2')
+						$(ojb).css("color","#FCACAC")
+						_msg(ret.ret)
+					}else{
+						_msg(ret.err)
+					}
+				},{aid:id})
+			}else{
+				_ajax('api/member/favoriteDel',function(ret,err){
+					_loadingCloes()
+					if(ret.ret){
+						$(ojb).data('id','1')
+						$(ojb).css("color","")
+						_msg(ret.ret)
+					}else{
+						_msg(ret.err)
+					}
+				},{aid:id})
+			}
+		}
+		// 判断是否收藏
+		function _views(shoucang,pingNum){
+			if(shoucang){
+				$('#shoucang').data('id','2')
+				$('#shoucang').css("color","#FCACAC")
+			}
+			if(pingNum){
+				$('#pingNum').data('num',pingNum)
+				$('#pingNum').text(pingNum)
+			}else{
+				$('#pingNum').hide();
+			}
+		}
+		// 更新评论数量
+		function pingNum(){
+			var num=$('#pingNum').data('num')
+			$('#pingNum').show();
+			$('#pingNum').text(num+1)
+			$('#pingNum').data('num',num+1)
+		}
+		// 评论
+		function pingAdd(){
+			var pingAdd='pingAdd();';
+			api.execScript({
+				frameName : 'view',
+				script : pingAdd
+			});
+		}
+		// 标题
+		function title(text,uids){
+			uid=uids;
+			if(uid || text){
+				$('.aui-title').text(text)
+			}else{
+				$('.aui-title').text('内容详细')
+			}
+		}
+		function userUrl(){
+			if(uid){
+				_url({id:uid},'u_win')
+			}
+		}
+
+	</script>
+</html>
+
+

@@ -1,0 +1,206 @@
+﻿{extend name="common/world"}
+{block name="title"}{$Think.config.hello.title}{/block}
+{block name="header"}交易平台{/block}
+{block name="container"}
+<div class="buttons-tab">
+    <a href="../market.html" class=" button">交易大厅</a>
+    <a href="buying.html" class="active button">买鱼</a>
+    <a href="selling.html" class="button">卖鱼</a>
+</div>
+<br/>
+<h4 style="color: #333333; font-size:18px;">申请买入</h4>
+<hr color="#333333" size="1">
+<form class="cmxform form-horizontal tasi-form" name="form1" id="form1" method="post" action="" onsubmit="return sub()">
+
+    <div class="list-block">
+        <ul>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">申请数量</div>
+                        <div class="item-input">
+                            <input id="num" name="num" type="text" value="" placeholder="5的倍数,数量在5-5000"
+                                   style="font-size:16px;"/>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">单价</div>
+                        <div class="item-input">
+                            <input id="price" type="text" class="form-control" placeholder="{$placeholder}" name="price" />
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="content-block">
+        <div class="row">
+
+            <input id="btnn" type="button" class="button button-big button-fill button-success js-submit"
+                   style="width: 100%;" value="提交"/>
+
+        </div>
+    </div>
+</form>
+<!--表单结束-->
+
+
+<!--表格开始-->
+<div class="tabs"><br>
+
+    <h4 style="color: #333333; font-size:18px;">我的买入列表</h4>
+    <hr color="#333333" size="1">
+    <div class="card">
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" id="table-5">
+            <thead>
+            <tr>
+                <th align="center">
+                    <div align="center">时间</div>
+                </th>
+                <th align="center">
+                    <div align="center">数量</div>
+                </th>
+
+                <th align="center">
+                    <div align="center">单价</div>
+                </th>
+                <th align="center">
+                    <div align="center">合计金额</div>
+                </th>
+                <th align="center">
+                    <div align="center">状态</div>
+                </th>
+                <th align="center">
+                    <div align="center">操作</div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        <div align="right" class="pages" style="background-color: #fff">
+            <br/>
+            {if $page>1}
+            <a class="previous" href="buying.html?page={$page-1}">上一页</a>
+            {/if}
+            <span class="current">{$page}</span>
+            {if ($page+1)<$index}
+            <a class="next" href="buying.html?page={$page+1}">下一页</a>
+            {/if}
+            <span class="rows"> 第<b>{$page}</b>页/共<b>{$index}</b>页</span>
+        </div>
+        <br>
+    </div>
+
+</div>
+<div id="list_bottom" class="list-bottom">
+    <div align="right" class="pages"></div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+    $(function () {
+        var statuses = ['已取消', '匹配中', '待付款', '待确认', '投诉中', '', '', '', '交易成功'];
+        ajax(api.market.list, {page:{$page},type:3}, function(res){
+            if (res.code == 200) {
+                var html = '';
+                for (var i = 0; i < res.data.length; i++) {
+                    var item = res.data[i];
+                    html += '<tr>';
+                    html += '<td>';
+                    html += '<div class="text-center">' + item.date.substr(0, 10) + '</div>';
+                    html += '</td>';
+                    html += '<td class="text-center">' + item.number + '</td>';
+                    html += '<td class="text-center">' + item.price + '</td>';
+                    html += '<td class="text-center">￥' + item.mprice + '</td>';
+                    html += '<td class="text-center"><strong>' + statuses[item.status] + '</strong></td>';
+                    var href = '/transaction.html?id=' + item.id, button = '查看';
+                    html += '<td class="text-center"><a class="btn btn-sm btn-secondary" href="' + href + '">';
+                    html += button;
+                    html += '</a></td>';
+                    html += '</tr>';
+                }
+                $('#table-5 tbody').append(html);
+            }
+        });
+    })
+    function quxiao(id) {
+        $("#sub01").attr("disabled", "disabled");
+        $(function () {
+            var params = {
+                id: id
+            };
+            $.ajax({
+                type: 'post',
+                url: "/ajax_tradebuy.html",
+                cache: false,
+                data: params,
+                dataType: 'json',
+                success: function (data) {
+                    alert(data.message);
+                    if (data.code == 200) {
+                        window.setTimeout("window.location='/market/buy.html'", 1000);
+                       // window.location.href="/buy.html";//需要跳转的地址
+                        return true;
+                    } else {
+                        $("#sub01").removeAttr('disabled');
+                    }
+
+                },
+            });
+        });
+        return false;
+    }
+    $(document).ready(function () {
+        $('#btnn').click(function () {
+            if (!$("#num").val()) {
+                alert("买入数量不能为空");
+                return false;
+            }
+            var num = $("#num").val();
+            var price = $("#price").val();
+            if (!price) {
+                alert("单价不能为空");
+                return false;
+            }
+
+            $('#btnn').attr("disabled", "true");
+            $(function () {
+                var params = {
+                    number: num,
+                    price: price,
+                };
+                $.ajax({
+                    type: 'post',
+                    url: api.trade.buy,
+                    cache: false,
+                    data: params,
+                    dataType: 'json',
+                    success: function (res) {
+                        if (res.code == 200) {
+                            alert('恭喜您、操作成功！');
+                            window.setTimeout("window.location='/market/buy.html'", 1000);
+                            return true;
+                        } else {
+                            alert(res.message);
+                            $("#btnn").removeAttr('disabled');
+                        }
+
+                    },
+                });
+            });
+            return false;
+        });
+    });
+</script>
+{/block}

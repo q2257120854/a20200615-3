@@ -1,0 +1,24 @@
+@keyframes gradientBG {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    80% {
+        opacity: 1;
+    }
+}
+
+.graceProgressButton {
+    position: relative;
+    border-radius: 0rpx;
+    text-align: center;
+    width: 100%;
+}
+
+.ganimate {
+    animation: gradientBG 1.5s linear infinite;
+}

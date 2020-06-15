@@ -1,0 +1,12 @@
+<view catchtap="closeDialog" catchtouchmove="stopFun" class="grace-dialog-shade" style="background:{{background}}" wx:if="{{show}}">
+    <view catchtap="stopFun" class="grace-dialog gdFadeIn" style="width:{{width}}; border-radius:{{borderRadius}};">
+        <view class="grace-dialog-title" style="font-size:{{titleSize}}; color:{{titleColor}}; font-weight:{{titleWeight?'bold':''}};" wx:if="{{isTitle}}">{{title}}</view>
+        <view catchtap="stopFun" class="grace-dialog-content">
+            <slot name="content"></slot>
+        </view>
+        <view catchtap="closeDialog" class="grace-dialog-close-btn" style="color:{{closeBtnColor}};" wx:if="{{isCloseBtn}}"></view>
+        <view vIf="isBtns">
+            <slot name="btns"></slot>
+        </view>
+    </view>
+</view>

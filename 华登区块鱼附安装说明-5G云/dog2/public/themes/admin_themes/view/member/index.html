@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>vaeThink</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="__ADMIN__/lib/layui/css/layui.css"  media="all">
+</head>
+<body class="vae-body">
+<style type="text/css">
+  .layui-form input{
+    height: 30px
+  }
+</style>
+<div class="vae-content">
+    <form class="layui-form" style="display: inline;">
+        <div class="layui-input-inline" style="width: 120px">
+        <select name="level" class="layui-input">
+            <option value="">选择等级</option>
+            {volist  name="levellist" id="vo"}
+            <option value="{$vo.level}">{$vo.levelname}</option>
+            {/volist}
+        </select>
+        </div>
+        <div class="layui-input-inline" style="width: 100px">
+        <select name="status" class="layui-input">
+            <option value="">选择状态</option>
+            <option value="1">正常</option>
+            <option value="0">禁止</option>
+        </select>
+        </div>
+        <div class="layui-input-inline" style="width: 100px">
+        <select name="is_idverifly" class="layui-input">
+            <option value="">是否实名</option>
+            <option value="0">未实名</option>
+            <option value="1">已实名</option>
+            <option value="2">审核中 </option>
+        </select>
+        </div>
+        <div class="layui-input-inline" style="width: 120px">
+        <select name="is_promoter" class="layui-input">
+            <option value="">是否推广员</option>
+            <option value="1">是</option>
+            <option value="0">否</option>
+        </select>
+        </div>
+        <div class="layui-input-inline" style="width: 120px">
+        <select name="is_activation" class="layui-input">
+            <option value="">是否激活</option>
+            <option value="1">是</option>
+            <option value="0">否</option>
+        </select>
+        </div>
+        <input type="text" name="add_time" id="add_time"  autocomplete="off" placeholder="注册时间" class="layui-input" style="max-width: 300px;display: inline;height: 30px;">
+        <input type="text" name="keywords" placeholder="ID/会员账号/真实姓名/身份证号码" class="layui-input" autocomplete="off" style="max-width: 400px;display: inline;margin: -10px 10px 0 0;height: 30px;" />
+        <button class="layui-btn layui-btn-sm layui-btn-danger" lay-submit="" lay-filter="vaeform">提交搜索</button>
+    </form> 
+    <table class="layui-hide" id="test" lay-filter="test"></table>
+</div>
+
+<script type="text/html" id="thumb">
+    <img src='{{d.thumb}}' height="25"/>
+</script>
+<script type="text/html" id="status">
+    <input type="checkbox" name="status" value="{{d.id}}" disabled="" lay-skin="switch" lay-text="正常|禁用"  {{ d.status == 1 ? 'checked' : '' }} >
+</script>
+<script type="text/html" id="online">
+    <input type="checkbox" name="online" value="{{d.id}}" disabled="" lay-skin="switch" lay-text="在线|下线"  {{ d.online == 1 ? 'checked' : '' }} >
+</script>
+
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <a class="layui-btn layui-btn-primary layui-btn-sm" href="/admin/member/add">添加会员</a>
+        <a style="font-size: 12px;margin-right: 5px;color: #FF5722">在线人数：{$count} </a>
+    </div>
+</script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs layui-btn-primary" href="/admin/member/edit/mid/{{d.mid}}">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+              
+<script src="__ADMIN__/lib/layui/layui.js" charset="utf-8"></script>
+ 
+<script>
+layui.config({
+    base: '/themes/admin_themes/module/'
+}).use(['table','vaeyo','form', 'laydate'], function(){
+    var table = layui.table
+    ,vae = layui.vaeyo
+    ,$ = layui.$
+    ,form = layui.form
+    ,laydate = layui.laydate;
+
+      laydate.render({
+        elem: '#add_time'
+        ,type: 'datetime'
+        ,range: ','
+      });
+      var tableIns = table.render({
+        elem: '#test'
+        ,toolbar: '#toolbarDemo'
+        ,url: '/admin/member/getContentList' //数据接口
+        ,page: true //开启分页
+        ,limit: 15
+        ,cols: [[ //表头
+          {field: 'mid', title: 'ID', sort: true, fixed: 'left', align:'center', width:80}
+          ,{field: 'account', title:'会员账号', align:'center'}
+          ,{field: 'nickname', title:'会员昵称', align:'center'}
+          ,{field: 'levelname', title:'等级', align:'center'}
+          ,{field: 'realname', title: '真实姓名', align:'center'}
+          ,{field: 'idnum', title: '身份证号码', align:'center'}
+          ,{field: 'integral', title: '鱼饵', sort: true, align:'center'}
+          ,{field: 'add_time', title: '注册时间', sort: true, align:'center'}
+          ,{field: 'online', title:'在线', toolbar: '#online', align:'center', width:100}
+          ,{field: 'status', title:'状态', toolbar: '#status', align:'center', width:100}
+          ,{field: 'right', title:'操作', toolbar: '#barDemo', width:150, align:'center'}
+        ]]
+      });
+  
+  //监听行工具事件
+  table.on('tool(test)', function(obj){
+    var data = obj.data;
+    //console.log(obj)
+    if(obj.event === 'del'){
+      layer.confirm('确定放入回收站吗?', {icon: 3, title:'提示'}, function(index){
+        $.ajax({
+          url:"/admin/member/delete",
+          data:{mid:data.mid},
+          success:function(res){
+            layer.msg(res.msg);
+            if(res.code==1){
+              obj.del();
+            }
+          }
+        })
+        layer.close(index);
+      });
+    }
+  });
+
+  //监听搜索提交
+  form.on('submit(vaeform)', function(data){
+    console.log(data.field.keywords)
+    tableIns.reload({where:{level:data.field.level,status:data.field.status,is_idverifly:data.field.is_idverifly,is_promoter:data.field.is_promoter,is_activation:data.field.is_activation,add_time:data.field.add_time,keywords:data.field.keywords}});
+    vae.bundledTab();
+    return false;
+  });
+});
+</script>
+
+</body>
+</html>

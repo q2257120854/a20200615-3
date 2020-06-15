@@ -1,0 +1,244 @@
+---------------------------------------------------------------
+[ 2019-08-29T19:47:35+08:00 ] 39.190.244.132 GET /
+[ info ] 47.100.102.83:4900/ [运行时间：0.047566s][吞吐率：21.02req/s] [内存消耗：1,603.00kb] [文件加载：63]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => '',
+  'route' => 'index/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '__guid=126109640.1605024510354103600.1565344962251.627; order=id%20desc; memSize=2047; force=0; sites_path=C%3A/wwwroot; serverType=apache; uploadSize=1073741824; rank=a; backup_path=C%3A/backup; vcodesum=12; cutFileName=null; POP800_VISIT_TIMES=2; POP800_VISITOR_ID_L=6CF42C1CCACAE2EF0A644F3CF527D1D3; PAGE_VIEW_TIMES=3; pnull=1; copyFileName=null; KHKe_2132_saltkey=fVWYoYR5; 5vtr_2132_saltkey=JR7Zf2F9; 5vtr_2132_lastvisit=1566365131; 5vtr_2132_ulastactivity=1181hygS3sDdPd2RYa7%2F%2BicmKC22LB7zVF%2BPp9Oed%2F0psT3IeWTz; 5vtr_2132_visitedfid=36; 5vtr_2132_smile=1D1; Hm_lvt_a59462e0b32e126714e74d9aaa9ecd0d=1566388054; BatchPaste=2; BatchSelected=null; security_session_verify=f80957a335b0764efb1316e0ff14ae9c; BT_PANEL_6=006c2b6a-dca2-4e92-9930-41fdd667cd26.AbdrZuXF54h37V6zTj0gBF5jkO0; request_token=1e6f4ed4a964b2fd499b1fa372e05260; PHPSESSID=4k0bcaac25bq9j2fp70kk1u6m1; think_language=zh-CN; Path=C%3A/wwwroot/gec.com; monitor_count=12',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://47.100.102.83:8888/site',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-08-29T19:47:35+08:00 ] 39.190.244.132 GET /account.html
+[ info ] 47.100.102.83:4900/account.html [运行时间：0.050683s][吞吐率：19.73req/s] [内存消耗：1,847.56kb] [文件加载：60]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'account',
+  'route' => 'account/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '__guid=126109640.1605024510354103600.1565344962251.627; order=id%20desc; memSize=2047; force=0; sites_path=C%3A/wwwroot; serverType=apache; uploadSize=1073741824; rank=a; backup_path=C%3A/backup; vcodesum=12; cutFileName=null; POP800_VISIT_TIMES=2; POP800_VISITOR_ID_L=6CF42C1CCACAE2EF0A644F3CF527D1D3; PAGE_VIEW_TIMES=3; pnull=1; copyFileName=null; KHKe_2132_saltkey=fVWYoYR5; 5vtr_2132_saltkey=JR7Zf2F9; 5vtr_2132_lastvisit=1566365131; 5vtr_2132_ulastactivity=1181hygS3sDdPd2RYa7%2F%2BicmKC22LB7zVF%2BPp9Oed%2F0psT3IeWTz; 5vtr_2132_visitedfid=36; 5vtr_2132_smile=1D1; Hm_lvt_a59462e0b32e126714e74d9aaa9ecd0d=1566388054; BatchPaste=2; BatchSelected=null; security_session_verify=f80957a335b0764efb1316e0ff14ae9c; BT_PANEL_6=006c2b6a-dca2-4e92-9930-41fdd667cd26.AbdrZuXF54h37V6zTj0gBF5jkO0; request_token=1e6f4ed4a964b2fd499b1fa372e05260; PHPSESSID=4k0bcaac25bq9j2fp70kk1u6m1; think_language=zh-CN; Path=C%3A/wwwroot/gec.com; monitor_count=12',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://47.100.102.83:8888/site',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-08-29T19:47:35+08:00 ] 39.190.244.132 GET /signin.html?from=http%3A%2F%2F47.100.102.83%3A4900%2Faccount.html
+[ info ] 47.100.102.83:4900/signin.html?from=http%3A%2F%2F47.100.102.83%3A4900%2Faccount.html [运行时间：0.033083s][吞吐率：30.23req/s] [内存消耗：1,911.13kb] [文件加载：63]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'signin',
+  'route' => 'account/signin',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'method' => 'get|post',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '__guid=126109640.1605024510354103600.1565344962251.627; order=id%20desc; memSize=2047; force=0; sites_path=C%3A/wwwroot; serverType=apache; uploadSize=1073741824; rank=a; backup_path=C%3A/backup; vcodesum=12; cutFileName=null; POP800_VISIT_TIMES=2; POP800_VISITOR_ID_L=6CF42C1CCACAE2EF0A644F3CF527D1D3; PAGE_VIEW_TIMES=3; pnull=1; copyFileName=null; KHKe_2132_saltkey=fVWYoYR5; 5vtr_2132_saltkey=JR7Zf2F9; 5vtr_2132_lastvisit=1566365131; 5vtr_2132_ulastactivity=1181hygS3sDdPd2RYa7%2F%2BicmKC22LB7zVF%2BPp9Oed%2F0psT3IeWTz; 5vtr_2132_visitedfid=36; 5vtr_2132_smile=1D1; Hm_lvt_a59462e0b32e126714e74d9aaa9ecd0d=1566388054; BatchPaste=2; BatchSelected=null; security_session_verify=f80957a335b0764efb1316e0ff14ae9c; BT_PANEL_6=006c2b6a-dca2-4e92-9930-41fdd667cd26.AbdrZuXF54h37V6zTj0gBF5jkO0; request_token=1e6f4ed4a964b2fd499b1fa372e05260; PHPSESSID=4k0bcaac25bq9j2fp70kk1u6m1; think_language=zh-CN; Path=C%3A/wwwroot/gec.com; monitor_count=12',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://47.100.102.83:8888/site',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+)
+[ info ] [ PARAM ] array (
+  'from' => 'http://47.100.102.83:4900/account.html',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ VIEW ] C:\wwwroot\gec.com\application\index\view\account\signin.html [ array (
+  0 => 'platform',
+  1 => 'appurl',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-08-29T19:47:36+08:00 ] 39.190.244.132 GET /favicon.ico
+[ info ] 47.100.102.83:4900/favicon.ico [运行时间：0.031440s][吞吐率：31.81req/s] [内存消耗：1,232.03kb] [文件加载：56]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-08-29T19:48:35+08:00 ] 183.192.164.85 GET /account.html
+[ info ] 47.100.102.83:4900/account.html [运行时间：0.027681s][吞吐率：36.13req/s] [内存消耗：1,842.03kb] [文件加载：60]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'account',
+  'route' => 'account/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'complete_match' => true,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+  'referer' => 'http://47.100.102.83:8888/site',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-08-29T19:48:38+08:00 ] 183.192.164.85 GET /signin.html?from=http://47.100.102.83:4900/account.html
+[ info ] 47.100.102.83:4900/signin.html?from=http://47.100.102.83:4900/account.html [运行时间：0.030261s][吞吐率：33.05req/s] [内存消耗：1,906.11kb] [文件加载：63]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'signin',
+  'route' => 'account/signin',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'method' => 'get|post',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+  'referer' => 'http://47.100.102.83:8888/site',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) 			Chrome/55.0.2883.95 Safari/537.36',
+)
+[ info ] [ PARAM ] array (
+  'from' => 'http://47.100.102.83:4900/account.html',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ VIEW ] C:\wwwroot\gec.com\application\index\view\account\signin.html [ array (
+  0 => 'platform',
+  1 => 'appurl',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-08-29T19:48:46+08:00 ] 120.204.17.70 GET /
+[ info ] 47.100.102.83:4900/ [运行时间：0.026841s][吞吐率：37.26req/s] [内存消耗：1,598.13kb] [文件加载：63]
+[ info ] [ LANG ] C:\wwwroot\gec.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => '',
+  'route' => 'index/index',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'host' => '47.100.102.83:4900',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+  'referer' => 'http://47.100.102.83:8888/site',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+  'expire' => 86400,
+)
+[ info ] [ LOG ] INIT File

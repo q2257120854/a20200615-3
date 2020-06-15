@@ -1,0 +1,59 @@
+@keyframes gdFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.gdFadeIn {
+    animation: gdFadeIn 200ms linear;
+}
+
+.grace-dialog-shade {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9991;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grace-dialog {
+    width: 580rpx;
+    background: #FFFFFF;
+    position: relative;
+}
+
+.grace-dialog-title {
+    line-height: 100rpx;
+    height: 100rpx;
+    font-size: 30rpx;
+    text-align: center;
+}
+
+.grace-dialog-content {
+}
+
+.grace-dialog-close-btn {
+    position: absolute;
+    z-index: 9993;
+    right: 0px;
+    top: 0px;
+    font-size: 30rpx;
+    width: 80rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-family: "grace-iconfont";
+}
+
+.grace-dialog-close-btn:before {
+    content: "\e632";
+}

@@ -1,0 +1,102 @@
+ {include file="public/header" /}
+ {load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<style type="text/css">
+#des,#des input{ width: 40px;text-align:center;}
+#id{ width: 78px; }
+.bs-checkbox{ width: 36px; height: 40px }
+.fixed-table-toolbar .columns,.fixed-table-toolbar .search{margin-left:0px; margin-top: 0px }
+#title span{ float: right; margin-left: 3.333px;}
+.search{ margin-bottom: 0px !important; }
+.asdlkjasd{ background: #1ab394; color: #fff}
+
+</style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        {include file="public/tophead"}
+        {include file="public/top" /}
+        <div class="ibox-content">
+        {include file="public/topsection"}
+            <div class="row row-lg">
+                <div class="col-sm-12">
+
+                    
+                     
+                    
+                    <div class="example">
+                        <form class="form-horizontal" method="post">
+                        <table data-toggle="table">
+                            <thead>
+                                <tr>
+                                    <th data-align="center">id</th>
+                                    <th data-align="center">aid</th>
+                                    <th>用户</th>
+                                    <th>评论内容</th>
+                                    <th>赞</th>
+                                    <th>评论时间</th>
+                                    <th>管理</th>
+                                </tr>
+                            </thead> 
+                            <tbody id="form">
+                                {volist name="data" id="v"}
+                                <tr id="id{$v.id}" class="class">
+                                    <td id="id">{$v.id}</td>
+                                     <td>
+{$v.aid}
+                                    </td>
+
+                                    <td><?php
+    $user=_user($v['uid']);
+    echo $user['username'];
+                                    ?></td>
+                                    
+                                    <td id="title">
+                                    {:_substr($v['content'])}
+                                    </td>
+                                    <td>{$v.zan}个</td>
+                                    <td> 
+                                        <span {php}if(date('Ymd')==date('Ymd',$v['time']))echo 'style="color: #ed5565"';{/php}>{$v.time|date='Y-m-d H:i:s',###}</span>
+                                    </td>
+                           
+                                    <td>
+                                        <div class="btn-group">
+                                            <div data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span>
+                                            </div>
+                                            <ul class="dropdown-menu">
+                                                <li><a onclick="add('{:url('pingAdd',['id'=>$v['id'],'url'=>-1])}')">详细</a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li><a onclick="del({$v.id})">删除</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                        </form>
+                    </div>
+                </div>  
+            </div>
+            <hr>
+            <div class="row row-lg">
+                <div class="col-sm-12 pages">{$page}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+$(document).ready(function(){
+     
+});
+function del(id){
+    swal_del(id,"{:url('pingDel')}")
+}
+ 
+</script>
+ <SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

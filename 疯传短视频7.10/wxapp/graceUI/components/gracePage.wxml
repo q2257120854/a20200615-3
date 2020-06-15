@@ -1,0 +1,25 @@
+<view class="grace-sbody">
+    <view wx:if="{{customHeader}}">
+        <view class="grace-page-header" style="z-index:{{headerIndex}}; background:{{headerBG}};">
+            <view class="grace-page-status-bar" style="height:{{statusBarHeight+'px'}}; background:{{statusBarBG}};"></view>
+            <view class="grace-page-header-nav" style="height:{{headerHeight+'px'}};">
+                <view class="grace-header-main">
+                    <slot name="gHeader"></slot>
+                </view>
+                <view style="width:{{BoundingWidth}}; height:10px"></view>
+            </view>
+        </view>
+        <view style="width:100%; height:{{statusBarHeight+headerHeight+'px'}};"></view>
+    </view>
+    <view class="grace-page-body">
+        <slot name="gBody"></slot>
+    </view>
+    <view style="width:100%; height:{{iphoneXButtomHeight+'px'}};" wx:if="{{!isSwitchPage}}"></view>
+    <view class="grace-page-footer" style="z-index:{{footerIndex}}; background:{{footerBg}};">
+        <slot name="gFooter"></slot>
+        <view style="width:100%; height:{{iphoneXButtomHeight+'px'}};" wx:if="{{!isSwitchPage}}"></view>
+    </view>
+    <view class="gui-page-rb-area" style="right:{{rbRight+'rpx'}}; bottom:{{rbBottom+'rpx'}}; width:{{rbWidth+'rpx'}};">
+        <slot name="gRTArea"></slot>
+    </view>
+</view>

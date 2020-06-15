@@ -1,0 +1,54 @@
+ {include file="public/header" /}
+ <style type="text/css">.gray-bg{ background: #fff; }.wrapper{ padding:0px;}.asdh5 h5{border-top: 1px dotted #ccc; padding-top: 20px;margin-top: 20px;}</style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content">
+    <div class="row">
+        <form class="form-horizontal" method="post">
+            <div class="col-sm-12">
+                <div class="ibox-content">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">分组名：</label>
+                        <div class="col-sm-9">
+                            <input name="title" type="text"  class="form-control" value="{present name="name"}{$name.title}{/present}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">经验值：</label>
+                        <div class="col-sm-9">
+                            <input name="jingyan" type="text"  class="form-control" value="{present name="name"}{$name.jingyan}{/present}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">图标：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input name="img" type="text"  id="image" class="form-control" value="{present name="name"}{$name.img}{/present}">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary" id="tubiao">上传图片</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             
+        </form>
+    </div>
+</div>
+{include file="public/footer" /}
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+<script type="text/javascript">
+$(document).ready(function(){
+     $(".i-checks").iCheck({
+        checkboxClass: "icheckbox_square-green",
+        radioClass: "iradio_square-green",
+    })
+
+});
+</script>
+{include file="public/bottom" /}
+ 
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

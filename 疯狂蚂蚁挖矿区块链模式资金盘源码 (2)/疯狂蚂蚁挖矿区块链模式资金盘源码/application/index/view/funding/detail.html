@@ -1,0 +1,221 @@
+{extend name="common/world"}
+{block name="title"}{$fund.title}{/block}
+{block name="style"}
+<style>
+.goods .card .image {
+	max-height: 12.5rem;
+	overflow: hidden;
+}
+.card-content .card-body p {
+	margin-bottom: .3rem;
+}
+.card-content .card-body p:last-child {
+	margin-bottom: 0px;
+}
+.w-65 {
+    width: 65% !important;
+}
+.project-status {
+	position: absolute;right: 1rem;bottom: 1rem;
+}
+.meixin {
+	margin-top: -.2rem;
+}
+</style>
+{/block}
+{block name="container"}
+<div class="row">
+	<div class="col-md-6">
+		<div class="card p-3">
+			<a href="javascript:;" class="mb-3 text-center image">
+				<img src="/upload/{$fund.image}" class="rounded" />
+			</a>
+			<div class="d-flex align-items-center px-2">
+				{notempty name="owner"}
+					<div class="avatar avatar-md mr-3" style="background-image: url({:avatar($owner.profile.avatar, $owner.profile.idcard)});"></div>
+				{else /}
+					<div class="avatar avatar-md mr-3" style="background-image: url(/static/image/icon.png);"></div>
+				{/notempty}
+				<div class="w-65">
+					<div>{$fund.title}</div>
+					{notempty name="owner"}
+						<small class="text-muted">{$owner.profile.nickname}</small>
+					{else /}
+						<small class="d-block text-muted">官方发布</small>
+					{/notempty}
+				</div>
+			</div>
+			<div class="text-muted text-right project-status">
+				{eq name="fund.status" value="3"}
+					<div class="text-green over-status">已结束</div>
+				{else /}
+					<div hidden class="text-green over-status">已结束</div>
+					<div hidden class="expire_at">
+						<small>剩余</small>
+						<div class="text-green countdown"></div>
+					</div>
+				{/eq}
+			</div>
+		</div>
+		<div class="card p-3">
+			<div class="row">
+				<div class="col text-muted text-center">
+					<div class="small">目标金额</div>
+					<div class="mt-1">{$fund.target|money}{$Think.config.hello.unit}</div>
+				</div>
+				<div class="col text-green text-center">
+					<div class="small">当前金额</div>
+					<div class="h4 mt-1 mb-0">{$fund.current|money}{$Think.config.hello.unit}</div>
+				</div>
+				<div class="col text-muted text-center">
+					<div class="small">支持人数</div>
+					<div class="mt-1">{$fund.people|money}</div>
+				</div>
+			</div>
+			<div class="progress progress-xs mt-2">
+				{if $fund.current >= $fund.target }
+					<div class="progress-bar bg-green" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+				{else /}
+                	<div class="progress-bar bg-green" role="progressbar" style="width: {:floor($fund.current/$fund.target*100)}%" aria-valuenow="{:floor($fund.current/$fund.target*100)}" aria-valuemin="0" aria-valuemax="100"></div>
+				{/if}
+            </div>
+		</div>
+		{if $fund.status != 3 }
+			{if $fund.expire_at < $now }
+				{eq name="Think.session.user.account.username" value="$fund.owner"}
+					<div class="row mb-3 gutters-xs">
+						<div class="col">
+							<a class="btn btn-secondary btn-block" href="/funding/edit/{$fund.id}.html">编辑项目</a>
+						</div>
+						<div class="col">
+							<button class="btn btn-danger btn-block btn-go-over">结束项目</button>
+						</div>
+					</div>
+				{/eq}
+			{else /}
+				<div class="row mb-3 gutters-xs">
+					<div class="col">
+						<button class="btn btn-green btn-block" data-toggle="modal" data-target="#modal-invest">立即支持</button>
+					</div>
+					{eq name="Think.session.user.account.username" value="$fund.owner"}
+						<div class="col">
+							<a class="btn btn-secondary btn-block" href="/funding/edit/{$fund.id}.html">编辑项目</a>
+						</div>
+						<div class="col">
+							<button class="btn btn-danger btn-block" data-toggle="modal" data-target="#modal-over">结束项目</button>
+						</div>
+					{/eq}
+				</div>
+			{/if}
+		{/if}
+		<div class="card">
+			<div class="card-title f1 pl-5 pt-5 mb-0 font-weight-bold">支持记录</div>
+			<div class="card-body">
+				<ul class="timeline mb-0"></ul>
+			</div>
+			<div hidden class="card-footer text-center more">点击加载更多</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="card card-content">
+			<div class="card-title f1 pl-5 pt-5 mb-0 font-weight-bold">项目介绍</div>
+			<div class="card-body">
+				{notempty name="owner"}
+				<div class="alert alert-info">
+					<div class="media">
+						<img class="align-self-start w-7 h-7 mr-3" src="{:avatar($owner.profile.avatar, $owner.profile.idcard)}" alt="Generic placeholder image" />
+						<div class="media-body">
+							<h5 class="mt-0 mb-0 clearfix">
+								<span class="float-left">{$owner.profile.nickname}</span>
+								<div class="meixin ml-1 float-left">
+									{volist name="Think.config.hello.funding.level" id="item"}
+										{if $myTotalMoney >= $item[0] }
+											<span class="text-blue">ღ</span>
+										{/if}
+									{/volist}
+								</div>
+							</h5>
+							{elt name="myInvestCount" value="0"}
+								<div class="text-muted mt-2">目前尚未参与任何项目</div>
+							{else /}
+								<div class="text-muted mt-2 small">共为 <b class="text-red">{$myInvestCount}</b> 个项目支持了 <b class="text-green">{$myTotalMoney}{$Think.config.hello.unit}</b></div>
+							{/elt}
+							<a href="tel:{$owner.account.username}" class="btn btn-secondary btn-sm mt-2"><i class="fe fe-phone"></i> 联系我</a>
+						</div>
+					</div>
+				</div>
+				{/notempty}
+				{$fund.content|raw}
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modal-invest" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">支持额度</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group mb-0">
+					<label class="text-muted small form-label font-weight-light text-center mb-2">请输入您想支持的额度</label>
+					<div class="row gutters-xs">
+						<span class="col-auto">
+							<button class="btn btn-secondary btn-jiajian" data-value="-1" type="button"><i class="fe fe-minus"></i></button>
+						</span>
+						<div class="col">
+							<div class="input-group">
+								<input type="text" class="form-control text-center" name="money" placeholder="0" />
+								<span class="input-group-append" id="basic-addon2">
+			                        <span class="input-group-text">{$Think.config.hello.unit}</span>
+			                    </span>
+							</div>
+						</div>
+						<span class="col-auto">
+							<button class="btn btn-secondary btn-jiajian" data-value="1" type="button"><i class="fe fe-plus"></i></button>
+						</span>
+					</div>
+					<div class="form-group mt-2">
+						<label class="text-muted small form-label font-weight-light text-center">请输入您的安全密码</label>
+						<input type="password" class="form-control" name="safeword" placeholder="安全密码" />
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary btn-invest">确认提交</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modal-over" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">项目结算</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group mb-0">
+					<div class="form-group mt-2">
+						<label class="text-muted small form-label font-weight-light text-center">请输入您的安全密码</label>
+						<input type="password" class="form-control" name="safeword" placeholder="安全密码" />
+					</div>
+					<div class="text-green font-weight-light text-center mt-2">您将获得 <strong>{:money($fund.current-$fund.current*$charge)}</strong> {$Think.config.hello.unit}</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary btn-over">确认提交</button>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}
+{block name="script"}
+<script>
+var frame = 'detail', id = '{$fund.id}', expire_at = '{$fund.expire_at}';
+</script>
+<script src="/static/js/funding.js?6"></script>
+{/block}

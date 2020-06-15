@@ -1,0 +1,242 @@
+{extend name="common/world"}
+{block name="title"}购物商城{/block}
+{block name="style"}
+<style>
+.btn-list > .btn, .btn-list > .dropdown {
+    width: calc(20% - .4rem) ;
+    margin-right: .5rem !important;
+}
+.btn-list .btn:nth-child(5) {
+    margin-right: 0rem !important;
+}
+.btn-list .btn:nth-child(10) {
+    margin-right: 0rem !important;
+}
+.btn-list .btn:nth-child(15) {
+    margin-right: 0rem !important;
+}
+.btn-list .btn:nth-child(20) {
+    margin-right: 0rem !important;
+}
+.products .card-subtitle img {
+    max-height: 2rem;
+}
+.line-text {
+    position: relative;
+    text-align: center;
+    font-weight: 400;
+    margin-top: .75rem;
+    color: #999;
+}
+.line-text::before {
+    content: '';
+    position: absolute;
+    left: 0px;top: 10px;
+    width: 40%;
+    height: 1px;
+    background-color: #eee;
+}
+.line-text::after {
+    content: '';
+    position: absolute;
+    right: 0px;top: 10px;
+    width: 40%;
+    height: 1px;
+    background-color: #eee;
+}
+.carousel {
+    margin-top: -0.75rem;
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+}
+.carousel-item {
+    max-height: 7rem;
+}
+@media (min-width: 576px) {
+    .carousel {
+        margin-top: 0rem;
+        margin-left: 0rem;
+        margin-right: 0rem;
+    }
+    .carousel-item {
+        max-height: 18rem;
+    }
+}
+.store-dashboard .card-body .item {
+    position: relative;
+}
+.store-dashboard .card-body .item .badge {
+    position: absolute;right: 0;top: 0;
+}
+.store-dashboard .card-body .item .image i {
+    font-size: 2rem;
+}
+.store-dashboard .card-body .item .text {
+    margin-top: .3rem;
+}
+</style>
+{/block}
+{block name="container"}
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      	{volist name="Think.config.hello.shop_banner" id="item"}
+      		{eq name="key" value="1"}
+            <div class="carousel-item active">
+              {if $item.url}
+              <a href="{$item.url}">
+              <img class="d-block w-100" src="{$item.img}" />
+              </a>
+              {else}
+              <img class="d-block w-100" src="{$item.img}" />
+              {/if}
+            </div>
+            {else /}
+            <div class="carousel-item">
+                {if $item.url}
+                <a href="{$item.url}">
+                <img class="d-block w-100" src="{$item.img}" />
+                </a>
+                {else}
+                <img class="d-block w-100" src="{$item.img}" />
+                {/if}
+            </div>                
+            {/eq}        
+      	{/volist}
+       
+    </div>
+</div>
+<div class="card mt-3 store-dashboard">
+    <div class="card-header">
+        <div class="card-title f1">我的订单</div>
+        <div class="card-options">
+            {notempty name="Think.config.hello.store.seller.enable"}
+            <a href="/store/seller.html" class="btn btn-success btn-sm mr-2">卖家中心</a>
+            {/notempty}
+        </div>
+    </div>
+    <div class="card-body p-3">
+        <div class="d-flex justify-content-around text-center">
+            <a class="item" href="/order.html?role=buyer&status=1">
+                <div class="text-azure image"><i class="fa fa-heartbeat"></i></div>
+                <div class="text-muted text small">已成交</div>
+            </a>
+            <a class="item" href="/order.html?role=buyer&status=2">
+                {notempty name="myOrders.2"}
+                    <span class="badge badge-pill badge-primary">{$myOrders.2}</span>
+                {/notempty}
+                <div class="text-yellow image"><i class="fa fa-heart-o"></i></div>
+                <div class="text-muted text small">待发货</div>
+            </a>
+            <a class="item" href="/order.html?role=buyer&status=3">
+                {notempty name="myOrders.3"}
+                    <span class="badge badge-pill badge-primary">{$myOrders.3}</span>
+                {/notempty}
+                <div class="text-danger image"><i class="fa fa-heart-o"></i></div>
+                <div class="text-muted text small">待确认</div>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="btn-list mt-3">
+    {volist name="Think.config.hello.store.catalog" id="item"}
+        {eq name="key" value="1"}
+            <button class="btn btn-primary" data-catalog="{$key}">{$item}</button>
+        {else /}
+            <button class="btn btn-secondary" data-catalog="{$key}">{$item}</button>
+        {/eq}
+    {/volist}
+</div>
+<div class="line-text small">商品列表</div>
+<div class="row row-cards products mt-3">
+</div>
+<div hidden class="more mb-3"><button class="btn btn-secondary btn-sm w-100">加载更多...</button></div>
+<div class="modal fade modal-shop" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="store-confirm">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">友情提示</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">您确认要<span class="currency"></span>兑换吗？</p>
+                    {notempty name="Think.config.hello.store.machine.activation"}
+                    <div hidden class="form-group">
+                        <input type="text" name="code" class="form-control" placeholder="请输入激活码" maxlength="32" />
+                    </div>
+                    {/notempty}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary btn-buy">确认兑换</button>
+                </div>
+            </div>
+            <div hidden class="store-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">商品详情</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary btn-go-address">确认兑换</button>
+                </div>
+            </div>
+            <div hidden class="store-address">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">请选择收货地址</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" placeholder="您的姓名" />
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" name="mobile" placeholder="手机号码" maxlength="11" />
+                    </div>
+                    <div class="form-group">
+                        <div class="row gutters-xs">
+                            <div class="col">
+                                <select name="province" class="form-control custom-select">
+                                    <option value="">省份</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <select name="city" class="form-control custom-select">
+                                    <option value="">城市</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <select name="county" class="form-control custom-select">
+                                    <option value="">区县</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="address" class="form-control" name="address" placeholder="详细地址" />
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="remark" cols="30" rows="3" placeholder="选填，可以具体描述您想要的型号、大小、颜色等信息"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary btn-buy">确认兑换</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script>
+var isScore = ('{$Think.config.hello.score.enable}' == 1 ? true : false);
+</script>
+<script type="text/javascript" src="/static/js/area.js"></script>
+<script type="text/javascript" src="/static/js/shop.js"></script>
+{/block}

@@ -1,0 +1,179 @@
+{include file="public/header" /}
+<link rel="stylesheet" href="/static/layui/css/layui.css">
+
+<div class="outter-wp">
+    <!--sub-heard-part-->
+    <div class="sub-heard-part">
+        <ol class="breadcrumb m-b-0">
+            <li><a>系统</a></li>
+            <li class="active">首页咨询</li>
+        </ol>
+    </div>
+    <!--//sub-heard-part-->
+    <div class="graph-visual tables-main">
+
+
+        <div class="graph">
+            <a class="btn green" data-toggle="modal" data-target="#myModal">添加咨询</a>
+            <div class="tables">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>标题</th>
+                        <th>作者</th>
+                        <th>简介</th>
+                        <th>添加时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="list" id="vo"}
+                    <tr>
+                        <th scope="row">{$vo.id}</th>
+                        <td>{$vo.title}</td>
+                        <td>{$vo.auth}</td>
+                        <td>{$vo.key}</td>
+                        <td>{$vo.addtime}</td>
+                        <td><span class="label label-success" onclick="editd({$vo.id})">编辑</span>|<span class="label label-danger" onclick="deld({$vo.id})">删除</span></td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+
+
+
+            </div>
+
+        </div>
+
+        <!--分页位置-->
+        {$list->render()}
+        <!--//graph-visual-->
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close second" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h2 class="modal-title">咨询添加</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="form-body">
+                        <form class="form-horizontal" action="{:url('consultation/addbroadcast')}" enctype="multipart/form-data" method="post">
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">标题</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="title" placeholder="标题" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">简介</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="key" placeholder="简介" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">图片上传</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" name="image"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">内容</label>
+                                <div class="col-sm-9">
+                                    <textarea id="demo" style="display: none;" name="content"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-offset-2">
+                                <button type="submit" class="btn btn-default">提 交</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!--轮播修改-->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close second" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h2 class="modal-title">咨询修改</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="form-body">
+                        <form class="form-horizontal" action="{:url('notice/editd')}" enctype="multipart/form-data" method="post">
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">标题</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="title" id="title" placeholder="标题" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">简介</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="key" id="key" placeholder="简介" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">图片上传</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="id" name="id" style="display: none;"/>
+                                    <input type="file" class="form-control" name="image" id="img"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">内容</label>
+                                <div class="col-sm-9">
+                                    <textarea id="demo1" style="display: none;" name="content"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-offset-2">
+                                <button type="submit" class="btn btn-default">提 交</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <script src="/static/layui/layui.js"></script>
+    <script>
+        layui.use('layedit', function(){
+            layedit = layui.layedit;
+            layedit.build('demo'); //建立编辑器
+            index = layedit.build('demo1'); //建立编辑器
+        });
+    </script>
+    <script>
+        function deld(id) {
+        $.get('{:url('consultation/deld')}?id='+id,function(rety){
+        if(rety.code == 1){
+            alert(rety.msg);
+            location.reload();
+        }else{
+            alert(rety.msg);
+        }
+
+            });
+        }
+        function editd(ids) {
+            $.get('{:url('consultation/editd')}?id='+ids,function(retys){
+                $('#editModal').modal();
+
+            $('#id').val(retys.id);
+            $('#title').val(retys.title);
+            $('#key').val(retys.key);
+                layedit.setContent(index,retys.content);
+
+            });
+        }
+    </script>
+
+    {include file="public/footer" /}

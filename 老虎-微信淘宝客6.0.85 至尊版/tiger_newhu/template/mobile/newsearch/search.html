@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>网购省钱宝</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/newsearch/css/style.css" />
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/newsearch/js/jquery.min.js"></script>
+</head>
+<body>
+<div class="viewport">
+    <div class="tabbar">
+        <div class="tabState">
+            <a href="" class="back"></a>
+            <div class="pageTit">网购省钱宝</div>
+        </div>
+    </div>
+    <div class="banner"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/newsearch/images/banner.jpg" alt=""></div>
+    <div class="so-area">
+            <div class="links">
+                <a href=""><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/newsearch/images/taobao.png" alt="">淘宝</a>
+                <a href=""><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/newsearch/images/tianmao.png" alt="">天猫</a>
+                <a href=""><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/newsearch/images/jingdong.png" alt="">京东</a>
+                <a href=""><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/newsearch/images/pinduoduo.png" alt="">拼多多</a>
+            </div>
+            <textarea class="area" id="content" placeholder="请将商品链接复制在这里，网购省钱宝将自动为您获取优惠信息和返现"></textarea>
+            <div class="bar">
+                <a href="javascript:;" class="tip">查看省钱教程</a>
+                <div class="btns">
+                    <button class="btn reset" type="reset" id="reset">清除</button>
+                    <button class="btn submit" type="submit" id="submit">查询优惠</button>
+                </div>
+            </div>
+    </div>
+    <div class="order-info">
+        <div class="title" id="title">标题</div>
+        <div class="info">
+            <div class="item"><div class="left">商品原价</div><div class="right" id="itemprice">0</div></div>
+            <div class="item"><div class="left">优惠券</div><div class="right" id="couponmoney">0</div></div>
+            <div class="item"><div class="left">实际支付</div><div class="right" id="itemendprice">0</div></div>
+            <div class="item"><div class="left strong">再返现金</div><div class="right" id="flyj">0</div></div>
+            <div class="tip">使用红包可能会造成没有返利</div>
+        </div>
+        <div class="ft">
+            <div class="total">省钱宝已为您节省：<strong id="sq">0元</strong></div>
+            <a href="" id="hre" class="btn">马上下单</a>
+        </div>
+    </div>
+    <div class="view-btn">
+        <a href="">查看订单及返现</a>
+    </div>
+   
+</div>
+    {template 'tbgoods/style88/public_bottom'}
+	<style>
+		.footer-idx{padding-top: 4px;}
+	</style>
+<script>
+    $(function(){
+        $('body').on('click', '.js_menu', function(){
+            $('.menu-items').addClass('open');
+            $('.viewport').css({
+                'overflow': 'hidden',
+                'height': '100vh'
+            });
+        }).on('click', '.menu-items .close', function(){
+            $('.menu-items').removeClass('open');
+            $('.viewport').removeAttr('style');
+        })
+		
+		
+		
+		$('#reset').click(function() {
+			$('#content').val('');
+		})
+
+		$('#submit').click(function() {
+			
+		    var content = $.trim($('#content').val());
+		    var tbpid="{$tbpid}";
+		    var qdid="{$qdid}";
+		    var pddpid="{$pddpid}";
+		    var jdpid="{$jdpid}";
+		    var uid="{$share['id']}";
+		    if(content.length == 0){
+		    	 alert("请输入查询商品信息");
+		    	 return false;
+		    } 
+		    $('#submit').html("查询中！");
+		    $.ajax({
+		        url:"{php echo $this->createMobileUrl('newsearchpost')}",
+		        type:'POST',
+				dataType:'json',
+		        data:{"content":content,"uid":uid,"tbpid":tbpid,"qdid":qdid,"pddpid":pddpid,"jdpid":jdpid}
+		    }).done(function(res) {
+             console.log(res);
+		       // pttype 1京东 2拼多多3淘宝 
+			   $('#title').html(res.data.itemtitle);
+			   $('#itemprice').html(res.data.itemprice);
+			   $('#couponmoney').html(res.data.couponmoney);
+			   $('#itemendprice').html(res.data.itemendprice);
+			   $('#flyj').html(res.data.flyj);
+               $('#hre').attr('href',res.data.url); 
+			   $('#sq').html(parseFloat(res.data.couponmoney)+parseFloat(res.data.flyj));
+			   $('#submit').html("查询优惠");
+			   //alert(res.data.url);
+		       
+				
+		    }).fail(function() {
+		    	$('#submit').html("查询优惠");
+		        alert("无优惠券！");
+		    });
+		});
+		
+    })
+</script>
+</body>
+</html>

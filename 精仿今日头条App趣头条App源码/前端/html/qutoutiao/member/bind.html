@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/zs.css" />
+	</head>
+	<body>
+		<div class="aui-content aui-margin-b-15">
+			<ul class="aui-list aui-list-in">
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner aui-list-item-arrow" tapmode onclick="_url({title:'手机绑定',url:'mobile',mobile:1,qian:1,fan:1})">
+						<div class="aui-list-item-title">
+							手机绑定
+						</div>
+						<div class="aui-list-item-right">
+							绑定手机号
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="aui-content aui-margin-b-15">
+			<ul class="aui-list aui-list-in">
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-title">
+							微信
+						</div>
+						<div class="aui-list-item-right">
+							<input type="checkbox" class="aui-switch" tapmode>
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-title">
+							微博
+						</div>
+						<div class="aui-list-item-right">
+							<input type="checkbox" class="aui-switch" checked="" tapmode>
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-title">
+							QQ
+						</div>
+						<div class="aui-list-item-right">
+							<input type="checkbox" class="aui-switch" >
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-title">
+							支付宝
+						</div>
+						<div class="aui-list-item-right">
+							<input type="checkbox" class="aui-switch" checked="">
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-title">
+							淘宝
+						</div>
+						<div class="aui-list-item-right">
+							<input type="checkbox" class="aui-switch" checked="">
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/fastclick.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			FastClick.attach(document.body);
+			api.parseTapmode();
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+			
+		}
+		function _asdasd(){
+			_msg('开发中')
+		}
+		
+	</script>
+</html>
+

@@ -1,0 +1,512 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>APP</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<style type="text/css">
+			body {
+				background-color: rgba(0, 0, 0, 0) !important;
+			}
+		</style>
+	</head>
+	<body></body>
+	<script type="text/javascript" src="../script/api.js" ></script>
+	<script type="text/javascript" src="../script/ffxiang.js" ></script>
+	<script type="text/javascript">
+		var photoBrowser, tool_show = true, images_list, images_text,photoBrowser,MNActionButton,inputField;
+		apiready = function() {
+			api.addEventListener({
+			    name:'viewappear'
+			}, function(ret, err){      
+				_heibai()  
+			   api.setFullScreen({
+					fullScreen : false
+				});
+				// 每天阅读次数奖励
+				setTimeout(function(){
+					_daily({name:'money_news'})
+				},_config.yaoqing.money_news_time)
+			});
+			// 图片模块
+			photoBrowser = api.require('photoBrowser');
+			// 分享模块
+			MNActionButton = api.require('MNActionButton');
+			// 输入框模块
+			inputField = api.require('inputField');
+			inputField.setInputFieldListener(function(ret, err) {
+				if (ret) {
+					//_msg(JSON.stringify(ret))
+					if (ret.eventType == 'move') {
+						if (ret.chatViewH == 0 || ret.chatViewH == -1) {
+							inputField.hide();
+							inputField.resignFirstResponder();
+						}
+					}
+				} else {
+					_msgz(JSON.stringify(err));
+				}
+			});
+			api.parseTapmode();
+			photo_browser(0)
+		}
+		// 图片
+		function photo_browser(index) {
+			_loading();
+			_ajax('api/article/view', function(ret, err) {
+				_loadingCloes()
+				if (ret) {
+					var view=ret
+					fx_data={title:ret.title,description:ret.description,url:fx_url+"m/a/"+ret.id+'.html',img:ret.image}
+					if(!fx_data.title){
+						fx_data.title=fx_data.description
+						if(!fx_data.title){
+							fx_data.title=fx_data.url
+						}
+					}
+					if(ret.video){
+						fx_data.img=ret.video+'?vframe/jpg/offset/2/w/100/h/100';
+					}
+					if(!fx_data.description){
+						fx_data.description=func(ret.content);
+						//console.log(fx_data.description)
+					}
+					fx_data.img=fx_data.img+"?imageView2/1/w/100/h/100"
+					api.imageCache({
+						url : fx_data.img,
+						thumbnail:false,
+					}, function(ret, err) {
+						if (ret) {
+							if (ret.status) {
+								fx_data.img=ret.url
+							}
+							//console.log(JSON.stringify(ret)+JSON.stringify(err))
+						}
+					});
+					images_list = ret.images_list
+					images_text = ret.images_text
+					var images = images_list;
+					// 文字数可以少于图片数
+					var texts = images_text;
+					var comment_num = ret.pingNum;
+					// 评论数量
+					photoBrowser.open({
+						images : images,
+						bgColor : '#000',
+						activeIndex : index,
+					}, function(ret, err) {
+						if (ret) {
+							//console.log(JSON.stringify(ret));
+							if (ret.eventType == 'show') {// 打开图片浏览器上的底部工具栏
+								api.openFrame({
+									name : 'photo_browser_foot',
+									url : html_win+'photo_browser_foot.html',
+									rect : {
+										x : 0,
+										y : api.winHeight, // 这里传win的高是为了打开后先不显示Frame，让Frame自己设置自己的高
+										w : 'auto',
+										h : 'auto'
+									},
+									bgColor : 'rgba(0,0,0,0.0)',
+									pageParam : {
+										winHeight : api.winHeight,
+										index : index, // 这里不用 ret.index 原因是 show 事件时，模块没有回调 ret.index
+										total : images.length,
+										texts : texts,
+										comment_num : comment_num,
+										view:view
+									}
+								});
+								api.openFrame({
+									name : 'photo_browser_header',
+									url : html_win+'photo_browser_header.html',
+									rect : {
+										x : 0,
+										y : 0, // 这里传win的高是为了打开后先不显示Frame，让Frame自己设置自己的高
+										w : 'auto',
+										h : 0
+									},
+									bgColor : 'rgba(0,0,0,0.0)',
+									pageParam : {
+										winHeight : api.winHeight,
+										view:view
+									}
+								});
+							}
+							if (ret.eventType == 'click') {// 点击时显示或隐藏
+								inputField.hide();
+								inputField.resignFirstResponder();
+								if (tool_show) {// 隐藏
+									api.setFrameAttr({
+										name : 'photo_browser_foot',
+										hidden : true
+									});
+									api.setFrameAttr({
+										name : 'photo_browser_header',
+										hidden : true
+									});
+									api.setFullScreen({
+										fullScreen : true
+									});
+									tool_show = false;
+								} else {// 显示
+									api.setFrameAttr({
+										name : 'photo_browser_foot',
+										hidden : false
+									});
+									api.setFrameAttr({
+										name : 'photo_browser_header',
+										hidden : false
+									});
+									api.setFullScreen({
+										fullScreen : false
+									});
+									tool_show = true;
+								}
+							}
+							if (ret.eventType == 'change') {// 首次加载或换图片时改变 photo_browser_foot 中的简介
+								api.execScript({
+									frameName : 'photo_browser_foot',
+									script : 'set_frame_attr(' + ret.index + ', ' + tool_show + ');'
+								});
+							}
+							if (ret.eventType == 'longPress') {// 长按保存图片
+								photoBrowser.getImage({
+									index : ret.index
+								}, function(ret_getImage, err_getImage) {
+									if (ret_getImage) {
+										api.actionSheet({
+											cancelTitle : '取消',
+											buttons : ['保存图片']
+										}, function(ret_actionSheet, err_actionSheet) {
+											if (ret_actionSheet.buttonIndex ==1) {// 保存图片
+												if(api.systemType == 'ios'){
+													api.saveMediaToAlbum({
+														path : ret_getImage.path
+													}, function(ret_saveImage, err_saveImage) {
+														if (ret_saveImage && ret_saveImage.status) {
+															api.toast({
+																msg : '图片保存成功',
+																duration : 2000,
+																location : 'middle'
+															});
+														} else {
+															console.log(JSON.stringify(err_saveImage));
+														}
+													});
+												}else{
+													baocun(images[ret.index])
+												}
+											}
+										});
+									} else {
+										console.log(JSON.stringify(err_getImage));
+									}
+								});
+							}
+						} else {
+							console.log(JSON.stringify(err));
+						}
+					});
+					// 安卓手机按返回键的时候关闭图片浏览器（由于）api.addEventListener 和 api.removeEventListener 需要在win上执行才有效，所以代码才写成这样
+//					api.execScript({
+//						script : 'api.addEventListener({name:"keyback"}, function(ret, err) {api.execScript({frameName: "photo_browser",script: "close_photo_browser();"});});'
+//					});
+				}
+			}, {
+				id : api.pageParam['id']
+			})
+		}
+
+		function close_photo_browser() {
+			photoBrowser.close();
+			api.closeFrame({
+				name : 'photo_browser_header'
+			});
+			api.closeFrame({
+				name : 'photo_browser_foot'
+			});
+			api.execScript({
+				script : 'api.removeEventListener({name: "keyback"});'
+			});
+			api.setFullScreen({// 这里要关闭全屏的目的是防止安卓在全屏浏览图片时按返回键
+				fullScreen : false
+			});
+		}
+		var pingAddPen = 1;
+		//用来判断打开输入框   1 使用open打开  2 使用显示
+		function pingAdd() {
+			if(!_user){
+				_login();
+				return;
+			}
+			if (pingAddPen == 1) {
+				pingAddPen = 2;
+				inputField.open({
+					bgColor : '#fff',
+					lineColor : '#D8D8D8',
+					fileBgColor : '#f5f5f5',
+					borderColor : '#F4F5F6',
+					//					sendImg : 'widget://res/img/sendImg.png',
+					autoFocus : true,
+					placeholder : '优质评论将会被优先展示',
+					placeholderStyles : {
+						color : '#bbb', //字符串类型；占位文字颜色，支持rgb、rgba、#；默认：#696969
+						size : 14, //数字类型；占位文字大小；默认：13
+						marginL : 5 //数字类型；占位文字距离左边的大小；默认：5
+					},
+					maxLines : 3,
+					sendBtn : {
+						bg : '#03a9f4', //字符串类型；发送按钮常态背景色
+						bgHighlight : '#0287BF', //字符串类型；发送按钮点击时的高亮背景色
+						title : '发送', //字符串类型；发送按钮的标题
+						titleSize : '14', //数字类型；发送按钮的标题字体大小
+						titleColor : '#fff', //字符串类型；发送按钮标题文字颜色
+						corner : 5 //数字类型；发送按钮圆角大小
+					},
+				}, function(ret, err) {
+					if (ret) {
+						if (ret.msg == '') {
+							_msg('请输入评价');
+						} else {
+							pingAddTent(ret.msg);
+							inputField.hide();
+							inputField.resignFirstResponder();
+						}
+					} else {
+						//_msg(JSON.stringify(err));
+					}
+				});
+			} else {
+				inputField.becomeFirstResponder(function(ret, err) {
+					if (ret.status) {
+						setTimeout(function() {
+							inputField.show();
+						}, 500)
+					} else {
+						//alert(JSON.stringify(err));
+					}
+				});
+			}
+		}
+		// 插入评论
+		function pingAddTent(text) {
+			if(!_user){
+				_login();
+				return;
+			}
+			if(text){
+				_ajax('api/member/ping',function(ret,err){	
+					if(ret){
+						if(ret.ret){
+							_msg('评价成功')
+						}else{
+							_msg('评价失败')
+						}
+					}
+				},{aid:api.pageParam['id'],content:text})
+			}
+		}
+		// 分享按钮
+		function fenxiang() {
+			 
+			// alert(1)
+		//	console.log(JSON.stringify(fx_data))
+			var items=[{icon: _image+'share/1.png',title: '朋友圈'},{icon: _image+'share/2.png',title: '好友'},{icon: _image+'share/3.png',title: 'QQ'},{icon: _image+'share/4.png',title: '空间'},{icon: _image+'share/5.png',title:'微博'},{icon: _image+'share/101.png',title: '系统'},{icon: _image+'share/102.png',title: '短信'},{icon: _image+'share/103.png',title:'邮件'},{icon: _image+'share/104.png',title: '复制'},{icon: _image+'share/105.png',title: '举报'}];
+			var MNActionButton = api.require('MNActionButton');
+			MNActionButton.open({
+			    layout: {
+			        row: 2,
+			        col: 5,
+			        offset: 0
+			    },
+			    animation: false,
+			    autoHide: true,
+			    styles: {
+			        maskBg: 'rgba(0,0,0,0.3)',
+			        bg: '#F8F8F8',
+			        indicator: {
+			            color: '#c4c4c4',
+			            highlight: '#9e9e9e'
+			        }, 
+			    },
+			    items:  items
+			}, function(ret) {
+				if(ret.eventType=="click"){
+					var index=ret.index;
+					if(index==0){
+						_weixin('timeline',fx_data)
+					}else if(index==1){
+						_weixin('session',fx_data)
+					}else if(index==2){
+						_qq('shareNews',fx_data)
+					}else if(index==3){
+						_qq('QFriend',fx_data)
+					}else if(index==4){
+						_weibo(fx_data)
+					}else if(index==5){	// 系统
+						var sharedModule = api.require('shareAction');
+						sharedModule.share({
+							text : fx_data.title + fx_data.content,
+							type : 'text'
+						});
+					}else if(index==6){	// 短信
+						api.sms({
+							numbers : [],
+							text : fx_data.title
+						}, function(ret, err) {
+							if (ret && ret.status) {
+								_msg('已发送')
+							} 
+						});
+					}else if(index==7){	// 邮件
+						api.mail({
+							recipients : [],
+							subject : fx_data.title,
+							body : fx_data.content,
+						}, function(ret, err) {
+							if (ret && ret.status) {
+								_msg('已发送')
+							}
+						});
+					}else if(index==8){	// 复制
+						var clipBoard = api.require('clipBoard');
+						clipBoard.set({
+							value : fx_data.url
+						}, function(ret, err) {
+							if (ret) {
+								_msg('复制成功，把链接分享给朋友吧！')
+							}
+						});
+					}else if(index==9){	//举报
+						if(!_user){
+							_alert('请先登陆',function(ret,err){
+								_login();
+							})
+							return;
+						}
+						buttons = ['广告', '重复、旧闻', '低俗', '标题夸张', '与事实不符', '内容质量差', '疑似抄袭', '其他问题，我要吐槽 > '];
+						api.actionSheet({
+							title : '举报内容问题',
+							cancelTitle : '取消举报',
+							buttons : buttons
+						}, function(ret, err) {
+							var index = ret.buttonIndex;
+							if(index==8){
+								_url({aid:id,url:'member/jubaoAdd',title:'举报内容'})
+								return;
+							}
+							if(index!=9){
+								_ajax('api/member/jubao',function(ret,err){
+									if(ret){
+										if(ret.ret){
+											_msg(ret.ret)
+										}else{
+											_msg(ret.err)
+										}
+									}else{
+										_alert(JSON.stringify(err));
+									}
+								},{content:buttons[index - 1],aid:id})
+							}
+						});
+					}else{
+						return;
+					}
+				}
+			});
+		}
+		// 微信分享
+		// type session（会话） timeline（朋友圈） favorite（收藏）
+		function _weixin(type,data) {
+			var wx = api.require('wx');
+			wx.shareWebpage({
+				scene : type,
+				title : data.title,
+				description : data.description,
+				thumb : data.img,
+				contentUrl : data.url
+			}, function(ret, err) {
+				if (ret.status) {
+					_msg('分享成功');
+					_daily({name:'money_fenxiang_2'});
+				}
+			});
+		}
+		// QQ分享
+		// type 分享内容到好友或空间，取值范围：QZone、QFriend
+		function _qq(type,data){
+			var obj = api.require('qq');
+			obj.shareNews({
+				url : data.url,
+				title : data.title,
+				description : data.description,
+				imgUrl : data.img,
+				type : type,
+			}, function(ret, err) {
+				if (ret.status) {
+					_msg('分享成功');
+					_daily({name:'money_fenxiang_2'});
+				} 
+			});
+		}
+		// 微博分享
+		function _weibo(data) {
+			var weibo = api.require('weibo');
+			weibo.shareWebPage({
+				text : data.title,
+				title : data.title,
+				description : data.description,
+				thumb : data.img,
+				contentUrl : data.url
+			}, function(ret, err) {
+				if (ret.status) {
+					_msg('分享成功');
+					_daily({name:'money_fenxiang_2'});
+				}
+			});
+		}
+		// 清除所有HTML
+		function html(s){
+			var dd=s.replace(/<\/?.+?>/g,"");
+			var dds=dd.replace(/ /g,"");
+			return dds;
+		}
+		function func(s, n) {
+			s=html(s)
+			n=100;
+	　　　	return s.slice(0, n).replace(/([^x00-xff])/g, "$1a").slice(0, n).replace(/([^x00-xff])a/g, "$1");
+	　　	}
+		function baocun(getImage) {
+ 				_loading('正在下载');
+				api.download({
+				    url: getImage,
+				    report: true,
+				    cache: true,
+				    allowResume: true
+				}, function(ret, err) {
+				    if (ret.state == 1) {
+				        //下载成功
+				        api.saveMediaToAlbum({
+							path : ret.savePath
+						}, function(ret_saveImage, err_saveImage) {
+							_loadingCloes();
+							if (ret_saveImage && ret_saveImage.status) {
+								_msg('图片保存成功')
+							}
+						});
+				    } else {
+						_loadingCloes();
+						_msg('下载失败')
+				    }
+				});
+ 			 
+ 
+			 
+		}
+		
+		 
+	</script>
+</html>
+

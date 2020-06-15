@@ -1,0 +1,83 @@
+{include file="member/left" /}
+                <div class="right-container col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                	<div class="account-wrapper">
+					    {include file="member/nav"}
+					    <div class="panel panel-default" id="fx_show">
+					    	<div class="mainsadasdasd">
+<style type="text/css">
+.mainsadasdasd{ padding-bottom: 10px }
+#list li{ border-bottom: 1px dashed #ddd; display:block;clear: both; overflow: hidden; height:53px;}
+#list span{ line-height: 32px; height: 32px; overflow: hidden;white-space:nowrap;text-overflow:ellipsis; padding-right: 10px;}
+#list li .aid{width:5%}
+#list li .atitle{width:69%}
+#list li .atime{width:15%}
+#list li .ahide{width:5%}
+#list li .aitde{width:6%}
+</style>
+					    		<ul id="list">
+					    			<li style="border-bottom: 1px solid #ddd;">
+					    				<span class="aid" style="font-weight: bold">id</span>
+					    				<span class="atitle" style="font-weight: bold">文章标题</span>
+					    				<span class="atime" style="font-weight: bold">发布时间</span>
+					    				<span class="ahide" style="font-weight: bold">状态</span>
+					    				<!-- <span class="aitde" style="font-weight:bold;">操作</span> -->
+					    			</li>
+					    			<script id="fx_list" type="text/html">
+			    				 	{{# for(var i = 0, len = d.data.length; i < len; i++){ }}
+									<li>
+										<span class="aid">{{ d.data[i].id }}</span>
+				    				 	<span class="atitle"><a href="{:url('index/article/view')}?id={{d.data[i].id}}" target="_blank">{{ d.data[i].title }}</a></span>
+				    				 	<span class="atime">{{ d.data[i].create_time }}</span>
+				    				 	<span class="ahide">{{ d.data[i].hides }}</span>
+				    				 	<!-- <span class="aitde"><a href="{:url('articleAdd')}?id={{d.data[i].id}}"  class="btn btn-primary">编辑</a></span> -->
+			    				 	</li>
+									{{# } }}
+									</script>
+									<div id="fx_view"></div>
+					    		</ul>
+					    	</div>	
+						    <div id="pagelist">
+						    </div>	
+					    </div>
+					    <div class="no-data" id="fx_hide">
+				    		<div class="div-middle"><p class="ng-binding">暂无数据</p></div>
+				    	</div>
+					</div>
+				</div>
+{include file="member/footer" /}
+{load href="__P__laypage/laypage.js"}
+{load href="__P__laytpl/laytpl.js"}
+<script type="text/javascript">
+data(1)
+function data(curr){
+	_ajax('{:url('api/member/articleList')}?page='+curr,'post',{pages:8},function(res){
+		if(res.total != 0){
+			// 模板赋值
+			var gettpl = document.getElementById('fx_list').innerHTML;
+			laytpl(gettpl).render(res, function(html){
+			  document.getElementById('fx_view').innerHTML = html;
+			});
+			// 赋值结束
+			laypage({
+		      cont: 'pagelist',
+		      pages: Math.ceil(res.total / res.per_page),
+		      curr: curr || 1,
+		      skip: true, //是否开启跳页
+		      skin: '#325dab',
+		      groups: 5, //连续显示分页数
+		      jump: function(obj, first){ 
+		        if(!first){
+		          data(obj.curr);
+		        }
+		      }
+		    });
+		}else{
+			$('#fx_show').remove()
+			$('#fx_hide').css('display','table')
+		}
+	})
+}
+function add(id){
+	
+}
+</script>

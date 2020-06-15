@@ -1,0 +1,51 @@
+{extend name="common/world"}
+{block name="title"}全球分红记录{/block}
+{block name="style"}{/block}
+{block name="container"}
+<div class="card">
+	<div class="table-responsive">
+	    <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+	        <thead>
+	            <tr>
+	                <th>日期</th>
+	                <th>手续费</th>
+	                <th>总人数</th>
+	                <th>总金额</th>
+	                <th>#</th>
+	                {for start="0" end="9"}
+	                	<th>Lv{$i}</th>
+	                {/for}
+	            </tr>
+	        </thead>
+	        <tbody>
+			{volist name="gbs" id="gb" key="a"}
+				<tr>
+					<td rowspan="3" colspan="1">{$gb.date}</td>
+					<td rowspan="3" colspan="1">{$gb.charge}</td>
+					<td rowspan="3" colspan="1">{$gb.people}</td>
+					<td rowspan="3" colspan="1">{$gb.money}</td>
+					<th class="text-left">人数</th>
+					{for start="0" end="9" name="b"}
+						<td>{$gb['lv'.$b]['count']}</td>
+					{/for}
+				</tr>
+				<tr>
+					<th class="text-left pl-3">金额</th>
+					{for start="0" end="9" name="c"}
+						<td>{$gb['lv' . $c]['money']}</td>
+					{/for}
+				</tr>
+				<tr>
+					<th class="text-left pl-3">比例</th>
+					{for start="0" end="9" name="d"}
+						<td>{$gb['lv' . $d]['rate']}</td>
+					{/for}
+				</tr>
+			{/volist}
+	        </tbody>
+	    </table>
+	</div>
+	<div class="card-footer">{$gbs|raw}</div>
+</div>
+{/block}
+{block name="script"} {/block}

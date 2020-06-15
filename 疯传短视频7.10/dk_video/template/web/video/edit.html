@@ -1,0 +1,159 @@
+{template 'common/header'}
+<ol class="breadcrumb">
+	<li>
+		<a href="{php echo $this->createWebUrl('index');}">管理首页</a>
+	</li>
+	<li>
+		<a href="{php echo $this->createWebUrl('video',array('op' => 'index'));}">视频管理</a>
+	</li>
+	<li class="active">编辑视频</li>
+</ol>
+<form action="{php echo $this->createWebUrl('video', array('op' => 'edit'))}" method="post" class="form-horizontal form">
+	<div class="panel panel-default we7-panel">
+		<div class="panel-heading">添加视频</div>
+        <div class="panel-body we7-padding">
+        	<input type="hidden" name="data[id]" value="{$detail['id']}">
+          	<div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">视频标题</label>
+                <div class="col-sm-9">
+                    <input type="text" name="data[title]" value="{$detail['title']}" class="form-control" placeholder="请填写视频标题"/>
+                </div>
+          	</div>
+
+          	 <div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">所属分类</label>
+                <div class="col-sm-9">
+                    <select class="form-control" name="data[cateid]">
+                    	{loop $cate  $row}
+					  	<option value="{$row['id']}" {if $detail['cateid'] == $row['id']}selected{/if}>{$row['title']}</option>
+						{/loop}
+					</select>
+                </div>
+            </div>
+
+          	<div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">所属作者</label>
+                <div class="col-sm-9">
+                    <select class="form-control" name="data[authorid]">
+                    	{loop $author $row}
+					  	<option value="{$row['id']}" {if $detail['authorid'] == $row['id']}selected{/if}>{$row['nickname']}</option>
+						{/loop}
+					</select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否采集</label>
+                <div class="col-sm-9">
+                    <select class="form-control" name="data[isout]">
+                    	<option value="0" {if $detail['isout'] == 0}selected{/if}>否</option>
+						<option value="1" {if $detail['isout'] == 1}selected{/if}>是</option>
+					</select>
+					<p class="help-block">该视频是否来源于数据中心，请勿随意调整，否则导致视频无法播放</p>
+                </div>
+          	</div>
+
+
+            <div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否满屏</label>
+                <div class="col-sm-9">
+                    <select class="form-control" name="data[ismob]">
+                    	<option value="0"  {if $detail['ismob'] == 0}selected{/if}>否</option>
+						<option value="1"  {if $detail['ismob'] == 1}selected{/if}>是</option>
+					</select>
+                </div>
+          	</div>
+
+
+            <div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">图片地址</label>
+                <div class="col-sm-9">
+               		{php echo tpl_form_field_image('data[thumb]',$detail['thumb'], '../addons/time_wmall/static/image/nopic.jpg', array('width' => 500, 'height' => 300))}
+                   <p class="help-block">视频列表使用的图片:长方形：500x300</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">分享图片</label>
+                <div class="col-sm-9">
+               		{php echo tpl_form_field_image('data[icon]',$detail['icon'], '../addons/dk_video/static/images/nopic.jpg', array('width' => 400, 'height' => 400))}
+                	<p class="help-block">分享给好友使用的图片，正方形：400x400</p>
+                </div>
+            </div>
+        	<div class="form-group">
+	            <label class="col-xs-12 col-sm-3 col-md-2 control-label">视频VID</label>
+	            <div class="col-sm-9">
+	                <input type="text" name="data[vid]" value="{$detail['vid']}"  class="form-control" placeholder="请填写视频VID" />
+	                 <p class="help-block">视频上传到腾讯视频的VID空</p>
+	            </div>
+            </div>
+			<div class="form-group">
+	            <label class="col-xs-12 col-sm-3 col-md-2 control-label">视频来源</label>
+	            <div class="col-sm-9">
+	                <input type="text" name="data[source]" value="{$detail['source']}" class="form-control" placeholder="请填写视频来源"/>
+	            </div>
+            </div>
+			<div class="form-group">
+	            <label class="col-xs-12 col-sm-3 col-md-2 control-label">播放次数</label>
+	            <div class="col-sm-9">
+	                <input type="text" name="data[click]" value="{$detail['click']}" class="form-control" placeholder="请填写视频播放次数"/>
+	            </div>
+            </div>
+
+        	<div class="form-group">
+	            <label class="col-xs-12 col-sm-3 col-md-2 control-label">小程序APPID</label>
+	            <div class="col-sm-9">
+	                <input type="text" name="data[appid]" value="{$detail['appid']}"  class="form-control" placeholder="请填写小程序APPID" />
+	                 <p class="help-block">如果不填写，则以网址打开所设置的链接</p>
+	            </div>
+            </div>
+        	<div class="form-group">
+	            <label class="col-xs-12 col-sm-3 col-md-2 control-label">路径/网址</label>
+	            <div class="col-sm-9">
+	                <input type="text" name="data[path]" value="{$detail['path']}"  class="form-control" placeholder="请填写小程序路径" />
+	                 <p class="help-block">填写后将不播放该视频，以网址/小程序打开该链接，打开形式取决于是否填写APPID</p>
+	            </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">横幅：广告图</label>
+                <div class="col-sm-9">
+               		{php echo tpl_form_field_image('data[ad_banner]',$detail['ad_banner'], '../addons/dk_video/static/images/nopic.jpg', array('width' => 750, 'height' => 200))}
+                	<p class="help-block">播放页面的横幅广告图，如果不填写则显示拼多多广告，推荐尺寸：750x200</p>
+                </div>
+            </div>
+        	<div class="form-group">
+	            <label class="col-xs-12 col-sm-3 col-md-2 control-label">横幅：APPID</label>
+	            <div class="col-sm-9">
+	                <input type="text" name="data[ad_appid]" value="{$detail['ad_appid']}"  class="form-control" placeholder="请填写小程序APPID" />
+	                 <p class="help-block">如果不填写，则以网址打开所设置的链接</p>
+	            </div>
+            </div>
+        	<div class="form-group">
+	            <label class="col-xs-12 col-sm-3 col-md-2 control-label">横幅：路径/网址</label>
+	            <div class="col-sm-9">
+	                <input type="text" name="data[ad_path]" value="{$detail['ad_path']}"  class="form-control" placeholder="请填写小程序路径" />
+	                 <p class="help-block">横幅的打开目标网址/路径，打开形式取决于是否填写横幅APPID</p>
+	            </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否推荐</label>
+                <div class="col-sm-9">
+                    <select class="form-control" name="data[ishot]">
+                    	<option value="0"  {if $detail['ishot'] == 0}selected{/if}>否</option>
+						<option value="1"  {if $detail['ishot'] == 1}selected{/if}>是</option>
+					</select>
+                </div>
+          	</div>
+
+            <div class="form-group">
+                <div class="col-md-6 col-sm-offset-3 col-md-offset-2">
+			       	<input name="submit" type="submit" value="提交保存" class="btn btn-primary" />
+		            <input type="hidden" name="token" value="{$_W['token']}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{template 'common/footer'}

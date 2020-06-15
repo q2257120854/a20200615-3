@@ -1,0 +1,67 @@
+ {include file="public/header" /}
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content">
+    <div class="row">
+        <form class="form-horizontal" method="post">
+            <div class="col-md-12">
+                <div class="ibox-content">
+                    <div class="form-group">
+                      
+                        <div class="col-sm-12">
+                            <select class="form-control" name="typeid" id="typeid">
+                                <option value="">选择栏目</option>
+                                {volist name='typeid' id='v'} 
+                                    <option value="{$v.id}">{:str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $v['depth'])}{gt name="$v['depth']" value="0"}┠&nbsp;&nbsp;{/gt}{$v.title}</option>
+                                {/volist}
+                            </select>
+                        </div>
+                    </div> 
+                </div>
+            </div> 
+        </form>
+    </div>
+</div>
+{include file="public/footer" /}
+<style type="text/css">
+.tbutton{ 
+  position: fixed;
+  bottom:0px;
+  width: 100%;
+  background: #fff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid #F5EFEF;
+  z-index: 99999999999
+}
+#button{ width:120px; margin: 0 auto;}
+.wrapper-content{ margin-bottom:75px;}
+</style>
+<div class="tbutton">
+  <div id="button"><button class="btn btn-w-m btn-primary" type="button"><i class="fa fa-check"></i> &nbsp;开始导入</button></div> 
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#button").click(function(){ 
+        var mychannel={php}if(input('?mychannel')){echo input('mychannel');}else{echo '';}echo "\r\n";{/php}
+        var typeid=$('#typeid').val();
+        if(!mychannel){
+            layer.msg('请选择模型频道');
+            return false;
+        }
+        if(!typeid){
+            layer.msg('请选择分类')
+            return false;
+        }
+        //parent.document.typeid=typeid;
+        parent.kaishi(typeid);
+        var index = parent.layer.getFrameIndex(window.name); 
+        parent.layer.close(index); 
+
+    });
+});
+</script>
+
+ 
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

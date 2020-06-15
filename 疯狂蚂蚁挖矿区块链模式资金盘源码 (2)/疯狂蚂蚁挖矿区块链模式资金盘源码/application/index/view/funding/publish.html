@@ -1,0 +1,80 @@
+{extend name="common/world"}
+{block name="title"}发起众筹项目{/block}
+{block name="style"}
+<style>
+</style>
+{/block}
+{block name="container"}
+<form class="card" method="post" enctype="multipart/form-data">
+	<div class="card-header">
+		<div class="card-title f1">发布项目</div>
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<div class="col-md-6 col-lg-6">
+			    <div class="form-group">
+			        <label class="form-label">项目名称</label>
+			        <div class="input-group">
+			        	<div class="input-group-prepend">
+					        <select class="custom-select input-group-text" name="catalog">
+					            {volist name="Think.config.hello.funding.catalog" id="item"}
+					                <option value="{$key}">{$item}</option>
+					            {/volist}
+					        </select>
+				        </div>
+				        <input type="text" class="form-control" placeholder="项目名称" name="title" maxlength="20" />
+			    	</div>
+			    </div>
+			</div>
+			<div class="col-md-6 col-lg-6">
+			    <div class="form-group">
+			        <label class="form-label">项目图片</label>
+			        <div class="custom-file">
+			            <input type="file" accept="image/*" class="custom-file-input" name="image" />
+			            <label class="custom-file-label">选择图片</label>
+			        </div>
+			    </div>
+			</div>
+			<div class="col-md-6 col-lg-6">
+			    <div class="form-group">
+			        <label class="form-label">目标金额</label>
+			        <div class="input-group">
+			        	{if $maxTarget == PHP_INT_MAX }
+			        		<input type="text" class="form-control" name="target" placeholder="最少10000" />
+			        	{else /}
+			        		<input type="text" class="form-control" name="target" placeholder="最少10000，最多{$maxTarget|money}" data-max="{$maxTarget|money}" />
+			        	{/if}
+			        	<span class="input-group-append">
+                            <span class="input-group-text">{$Think.config.hello.unit}</span>
+                        </span>
+			        </div>
+			    </div>
+			</div>
+			<div class="col-md-6 col-lg-6">
+			    <div class="form-group">
+			        <label class="form-label">安全密码</label>
+			        <input type="password" class="form-control" name="safeword" />
+			    </div>
+			</div>
+			<div class="col-lg-12">
+                <div class="form-group mb-0">
+                    <label class="form-label">项目详情</label>
+                    <script id="editor" name="content" type="text/plain" style="height: 20rem;"></script>
+                </div>
+            </div>
+		</div>
+	</div>
+	<div class="card-footer text-right">
+		<button class="btn btn-primary" type="submit">发布项目</button>
+	</div>
+</form>
+{/block}
+{block name="script"}
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script>
+var frame = 'publish';
+</script>
+<script src="/static/js/funding.js"></script>
+{/block}

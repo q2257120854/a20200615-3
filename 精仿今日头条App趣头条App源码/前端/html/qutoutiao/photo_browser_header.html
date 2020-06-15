@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<style>
+			body {
+				background-color: rgba(0, 0, 0, 0) !important;
+			}
+			.aui-bar-nav {
+				background-color: rgba(0, 0, 0, 0) !important;
+				background-image: -webkit-linear-gradient(top,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%) !important;
+				color: #ffffff !important;
+			}
+		</style>
+	</head>
+	<body id="body">
+		<script id="fx-list" type="text/x-dot-template">
+			<header id="aui-header" class="aui-bar aui-bar-nav">
+			<a class="aui-pull-left aui-btn" tapmode onclick="_close(3)">
+			<span class="aui-iconfont aui-icon-close"></span>　　
+			</a>
+			<div class="aui-title"></div>
+			<a class="aui-pull-right aui-btn" tapmode onclick="fenxiang()">
+			<span class="aui-iconfont aui-icon-more"></span>
+			</a>
+			{{? it.uid && it.userImg}}
+			<a class="aui-pull-right aui-btn"  Tapmode onclick="_url({id:{{=it.uid}}},'u_win');" >
+			<img id="ffxiangImgCache" ffxiang-src="{{=it.userImg}}" src="../image/touxiang.png"  style="width: 1.3rem; height: 1.3rem;" class="aui-img-round"  Tapmode onclick="_url({id:{{=it.uid}}},'u_win');" />
+			</a>
+			{{?}}
+			</header>
+		</script>
+		<div id="fx-view"></div>
+	</body>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/doT.js"></script>
+	<script type="text/javascript" src="../script/api.js" ></script>
+	<script type="text/javascript" src="../script/ffxiang.js" ></script>
+	<script type="text/javascript">
+		apiready = function() {
+			//console.log(JSON.stringify(api.pageParam));
+			// 初次打开关闭全屏模式
+			api.setFullScreen({
+				fullScreen : false
+			});
+			 
+			set_frame_attr();
+		}
+		function set_frame_attr() {
+			var evalData = doT.template($api.html($api.byId('fx-list')));
+			$api.html($api.byId('fx-view'), evalData(api.pageParam['view']));
+			api.parseTapmode();
+			_imageCache();
+			var header = $api.byId('aui-header');
+			$api.fixStatusBar(header);
+			var body = $api.byId('body');
+			var body_offset = $api.offset(body);
+			api.setFrameAttr({
+				name : 'photo_browser_header',
+				rect : {
+					x : 0, //左上角x坐标
+					y : 0, //左上角y坐标
+					w : 'auto', //宽度，若传'auto'，页面从x位置开始自动充满父页面宽度
+					h : body_offset.h //高度，若传'auto'，页面从y位置开始自动充满父页面高度
+				}
+			});
+		}
+
+		function close_photo_browser() {
+			api.execScript({
+				frameName : 'photo_browser',
+				script : 'close_photo_browser();'
+			});
+		}
+
+		function test(msg) {
+			api.toast({
+				msg : msg,
+				duration : 2000,
+				location : 'middle'
+			});
+		}
+		function fenxiang(){
+			api.execScript({
+				script : 'fenxiang();'
+			});
+		}
+	</script>
+</html>
+

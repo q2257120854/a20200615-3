@@ -1,0 +1,7 @@
+<swiper autoplay="{{autoplay}}" bindchange="swiperchange" circular="true" class="grace-swiper-card" duration="500" indicatorActiveColor="{{indicatorActiveColor}}" indicatorColor="{{indicatorColor}}" indicatorDots="true" interval="{{interval}}" nextMargin="{{spacing}}" previousMargin="{{spacing}}" style="width:{{width}}; height:{{height}};">
+    <swiper-item class="grace-swiper-card-item" wx:for="{{swiperItems}}" wx:key="index">
+        <navigator openType="{{item.opentype}}" style="padding:{{padding}};" url="{{item.url}}">
+            <image class="grace-swiper-card-image {{current!=index&&scale?'grace-swiper-card-img-small':''}}" mode="widthFix" src="{{item.img}}" style="border-radius:{{borderRadius}};"></image>
+        </navigator>
+    </swiper-item>
+</swiper>

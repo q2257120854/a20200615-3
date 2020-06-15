@@ -1,0 +1,51 @@
+{extend name="common/world"}
+{block name="title"}链上合约{/block}
+{block name="style"}
+<style>
+.goods .card .image {
+	max-height: 12.5rem;
+	overflow: hidden;
+}
+</style>
+{/block}
+{block name="container"}
+<div class="d-flex mb-3">
+	<div class="btn-list filter">
+		<button class="btn px-5 btn-primary" data-option="all">全部</button>
+		<button class="btn px-5 btn-secondary" data-option="my">我的</button>
+	</div>
+	<div class="ml-auto">
+		<select class="form-control custom-select catalog">
+			<option value="">分类</option>
+			{volist name="Think.config.hello.contract.catalog" id="item"}
+				<option value="{$key}">{$item}</option>
+			{/volist}
+		</select>
+	</div>
+</div>
+<div class="row row-cards goods">
+	<!-- <div class="col-md-6 col-lg-4">
+		<div class="card p-3">
+			<a href="javascript:void(0)" class="mb-3 image">
+				<img src="http://attach2.scimg.cn/month_1310/16/6e2c235194ab971da3235b01eb09c7d9_orig.jpg!orig" class="rounded" />
+			</a>
+			<div class="d-flex align-items-center px-2">
+				<div class="avatar avatar-md mr-3" style="background-image: url(http://192.168.1.102:8888/demo/photos/grant-ritchie-338179-500.jpg)"></div>
+				<div>
+					<div>木雕艺术品 - 鹿</div>
+					<small class="d-block text-muted">转手 13 次</small>
+				</div>
+				<div class="ml-auto text-muted">
+					<a href="javascript:void(0)" class="icon"><i class="fe fe-shopping-cart mr-1"></i> 112{$Think.config.hello.unit}</a>
+				</div>
+			</div>
+		</div>
+	</div> -->
+</div>
+{/block}
+{block name="script"}
+<script>
+var frame = 'store';
+</script>
+<script src="/static/js/contract.js"></script>
+{/block}

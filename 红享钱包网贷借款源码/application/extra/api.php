@@ -1,0 +1,1 @@
+<?php return ['smsmid'=>'1001','smsappid'=>'yongge','smskey'=>'d41d8cd98f00b204e333','smstmid'=>'1002','smstappid'=>'yongge','smstkey'=>'d41d8cd98f00b204e333','paymid'=>'77514246','payappid'=>'13113113111@qq.com','paykey'=>'a4f50020ce6e7077e1d7a34f89d5e30b','datamid'=>'10040','dataappid'=>'9569eb28221f32f5e8e47c4ed0cae24','datakey'=>'9ba82616ac74de9ce334ea7532cfddc',];

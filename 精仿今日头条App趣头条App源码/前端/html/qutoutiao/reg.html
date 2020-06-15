@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>注册</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/reg.css" />
+	</head>
+	<body>
+		<div class="aui-content aui-margin-b-15 fx-reg">
+			<ul class="aui-list aui-form-list">
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-label-icon">
+							<i class="aui-iconfont aui-icon-mobile"></i>
+						</div>
+						<div class="aui-list-item-input">
+							<input type="tel" id="username" value="" placeholder="请输入手机号码">
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-label-icon">
+							<i class="aui-iconfont aui-icon-lock"></i>
+						</div>
+						<div class="aui-list-item-input">
+							<input type="password" id="password" placeholder="请输入密码" value="">
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-label-icon">
+							<i class="aui-iconfont aui-icon-mobile"></i>
+						</div>
+						<div class="aui-list-item-input">
+							<input type="tel" id="code" placeholder="请输入手机收到验证码" value="">
+						</div>
+						<span class="aui-input-addon" style="margin-right: 1rem;">
+							<div class="aui-btn" id="sendVerify" status="1" style="margin-right: 2rem;" onclick="getVerify()">
+								获取验证码
+							</div>
+						</span>
+					</div>
+				</li>
+				<li class="aui-list-item" id="yqm">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-label-icon">
+							<i class="aui-iconfont aui-icon-like"></i>
+						</div>
+						<div class="aui-list-item-input">
+							<input type="tel" placeholder="邀请码（可选）"  value="">
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner">
+						<label style="margin:0 auto; font-size: 0.7rem;">
+							<input class="aui-checkbox" type="checkbox" id="checkbox"  checked />
+							我同意<a style=" font-size: 0.7rem;" href="javascript:;" tapmode onclick="_url({url:'about',id:'2',title:'用户协议和隐私条款'})">"用户协议和隐私条款"</a> </label>
+					</div>
+				</li>
+			</ul>
+			<div class="aui-btn-blocks aui-margin-15">
+				<div class="aui-btn aui-btn-block aui-btn-danger " id="tijiao">
+					提交注册
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../script/zepto.min.js"></script>
+		<script type="text/javascript" src="../script/fastclick.js"></script>
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../script/ffxiang.js"></script>
+		<script type="text/javascript">
+			apiready = function() {
+				// 监听夜间
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+				var openid = api.pageParam['openid'];
+				var type = api.pageParam['type'];
+				if (openid && type) {
+					$api.text($api.dom('#tijiao'), '绑  定');
+				} else {
+					openid = '';
+					type = '';
+				}
+				FastClick.attach(document.body)
+				$('#tijiao').click(function() {
+					var username = $('#username').val();
+					var password = $('#password').val();
+					var code = $('#code').val();
+					var yqm = $('#yqm input').val() ? $('#yqm input').val() : 0;
+					if (!username) {
+						_msg('手机号码不能空')
+						return;
+					}
+					if (!_isMobile(username)) {
+						_msg('请输入正确手机号码')
+						return;
+					}
+					if (!password) {
+						_msg('请设置新密码');
+						return
+					}
+					if (!code) {
+						_msg('手机验证码不能为空');
+						return
+					}
+					var checkbox = $('#checkbox').is(':checked');
+					if (checkbox == false) {
+						_msg('请先同意服务条款')
+						return false;
+					}
+					_loading();
+					if (openid && type) {
+						_ajax('api/user/reg', function(ret, err) {
+							//	_msg('tokens:' + JSON.stringify(ret) + "\r\nerr:" + JSON.stringify(err))
+							var tokens = ret.token;
+							if (tokens) {
+								_ajaxs('api/member/info', function(rets, errs) {
+									//_msg('rets:' + JSON.stringify(rets) + "\r\nerrs:" + JSON.stringify(errs))
+									if (rets.ret) {
+										_loadingCloes();
+										$api.setStorage('token', ret.ret);
+										$api.setStorage('user', rets.ret);
+										_msg('登录成功', function(retty) {
+											if (retty) {
+												_hone();
+											}
+										})
+									} else {
+										_loadingCloes();
+										_msg(rets.err)
+									}
+								}, {
+									token : tokens
+								})
+							} else {
+								_loadingCloes();
+								_msg(ret.err)
+							}
+						}, {
+							username : username,
+							password : password,
+							code : code,
+							type : type,
+							token : openid,
+							yaoqingma:yqm
+						})
+					} else {
+						_ajax('api/user/reg', function(ret, err) {
+							_loadingCloes();
+							if (ret.ret) {
+								_alert(ret.ret, function(ret) {
+									_close()
+								})
+							} else {
+								_msg(ret.err)
+							}
+						}, {
+							username : username,
+							password : password,
+							code : code,
+							yaoqingma:yqm
+						})
+					}
+				})
+			}
+			var smsVerify
+			function getVerify() {
+				var mobileVal = $('#username').val();
+				if (!mobileVal) {
+					_msg('请输入手机号码')
+					return false;
+				}
+				if (!_isMobile(mobileVal)) {
+					_msg('请输入正确手机号码')
+					return;
+				}
+				var status = $('#sendVerify').attr('status');
+				if (status != 1) {
+					return;
+				}
+				_loading();
+				_ajax('api/index/code', function(ret, err) {
+					_loadingCloes()
+					if (ret) {
+						if (ret.ret) {
+							$("#sendVerify").html('<span id="GetVerify">120</span>S');
+							times = 119;
+							isinerval = setInterval("CountDown()", 1000);
+							setTimeout(function() {
+								_msg(ret.ret)
+								$('#sendVerify').attr('status', '0');
+							}, 500)
+						} else {
+							_msg(ret.err)
+						}
+					} else {
+						_msg(ret)
+					}
+				}, {
+					username : mobileVal,
+					text : '注册'
+				})
+			}
+
+			function CountDown() {
+				if (times < 1) {
+					var sendVerify = $('#sendVerify');
+					$(sendVerify).attr('onclick', 'getVerify()');
+					$(sendVerify).attr('status', '1');
+					$(sendVerify).html('重新获取');
+					clearInterval(isinerval);
+					return;
+				}
+				var getVerify = $('#GetVerify');
+				$(getVerify).html('' + times + '');
+				times--;
+			}
+
+			// 验证手机号码
+			function _isMobile(mobile) {
+				if (mobile == "") {
+					return false;
+				} else {
+					if (! /^0{0,1}(13[0-9]|15[0-9]|17[0-9]|18[0-9]|14[0-9])[0-9]{8}$/.test(mobile)) {
+						return false;
+					}
+					return true;
+				}
+			}
+		</script>
+
+

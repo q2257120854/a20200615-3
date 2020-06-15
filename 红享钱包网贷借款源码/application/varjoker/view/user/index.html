@@ -1,0 +1,223 @@
+{include file="public/header" /}
+
+<div class="outter-wp">
+    <!--sub-heard-part-->
+    <div class="sub-heard-part">
+        <ol class="breadcrumb m-b-0">
+            <li><a>系统</a></li>
+            <li class="active">用户列表</li>
+        </ol>
+    </div>
+    <!--//sub-heard-part-->
+    <div class="graph-visual tables-main">
+
+
+        <div class="graph">
+            <form class="form-inline" method="post">
+                <div class="form-group">
+                   用户查找: <input type="text" class="form-control" name="mobile" placeholder="手机号"></div>
+                <button type="submit" class="btn btn-default">查询</button> <a class="btn green" data-toggle="modal" data-target="#myModal">添加会员</a>{eq name="$alluser" value="1"} <a class="btn green" onclick="allsms()">未实名批量短信</a>{/eq}</form><a class="btn green" href="{:url('user/daochuxls')}">导出未实名信息</a>
+            <div class="tables">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>用户id</th>
+                        <th>登录手机号</th>
+                        <th>姓名</th>
+                        <th>钱包余额</th>
+                        <th>待还金额</th>
+                        <th>成功借款次数</th>
+                        <th>用户资料</th>
+                        <th>渠道</th>
+                        <th>注册时间</th>
+                        <th>VIP到期时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="list" id="vo"}
+                    <tr>
+                        <th scope="row">{$vo.id}</th>
+                        <td>{$vo.mobile}</td>
+                        <td>{$vo.name|default="未完善"}</td>
+                        <td>{$vo.money}</td>
+                        <td>{$vo.banmoney}</td>
+                        <td>{$vo.loancount}</td>
+                        <td>{eq name="$vo.perfect" value="1"}未完善{else/}<span class="label label-primary" onclick="seedata({$vo.id})">查看资料</span>{/eq}</td>
+                        <td>{$vo.source}</td>
+                        <td>{$vo.addtime}</td>
+                        <td>{eq name="$vo.vipend" value="0"}未开通{else/}{php}echo date('Y-m-d H:i:s', $vo['vipend']);{/php}{/eq}</td>
+                        <td><span class="label label-success" onclick="xiugaibank({$vo.id})">修改银行卡</span>|<span class="label label-danger" onclick="chrag({$vo.id})">手动充值</span><span class="label label-success" onclick="editd({$vo.id})">编辑</span>|<span class="label label-danger" onclick="deld({$vo.id})">删除</span></td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+
+
+
+            </div>
+
+        </div>
+
+        <!--分页位置-->
+        {$list->render()}
+        <!--//graph-visual-->
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close second" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h2 class="modal-title">会员添加</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="form-body">
+                        <form class="form-horizontal" action="{:url('user/adduser')}" enctype="multipart/form-data" method="post">
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">手机号</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="mobile" placeholder="手机号" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="password" placeholder="密码" />
+                                </div>
+                            </div>
+                            <div class="col-sm-offset-2">
+                                <button type="submit" class="btn btn-default">提 交</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!--轮播修改-->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close second" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h2 class="modal-title">会员修改</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="form-body">
+                        <form class="form-horizontal" action="{:url('user/editd')}" enctype="multipart/form-data" method="post">
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">手机号</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="id" id="id" style="display: none;"/>
+                                    <input type="text" class="form-control" name="mobile" id="mobile" placeholder="手机号" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="password" id="password" placeholder="密码" />
+                                </div>
+                            </div>
+                            <div class="col-sm-offset-2">
+                                <button type="submit" class="btn btn-default">提 交</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!--轮播修改-->
+    <div class="modal fade" id="seeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;" width="80%">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 159%;">
+                <div class="modal-header">
+                    <button type="button" class="close second" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h2 class="modal-title">查看资料</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="form-body">
+                        <iframe id="reiframe" src="" style="width: 100%;height: 600px;"></iframe>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+
+    <script>
+        function chrag(id){
+              var reason =  prompt('请输入需要增加的余额:', '', '请输入需要增加的余额');
+          if(reason){ 
+         	$.get('{:url('user/romoney')}?id='+id+'&money='+reason,function(data){
+            	if(data.code == 1){
+                alert('修改成功');
+                  window.location.reload();
+                }
+            });
+          }else if(reason === ""){ 
+          alert('请不要输入空字符');
+          }else{ 
+          //点击的是“取消” 
+          }
+        }
+        function xiugaibank(id) {
+
+      var reason =  prompt('请输入需要修改的银行卡号:', '', '请输入需要修改的银行卡号');
+          if(reason){ 
+         	$.get('{:url('user/editbank')}?id='+id+'&bank='+reason,function(data){
+            	if(data.code == 1){
+                alert('修改成功');
+                  window.location.reload();
+                }
+            });
+          }else if(reason === ""){ 
+          alert('请不要输入空字符');
+          }else{ 
+          //点击的是“取消” 
+          }
+        }
+        function seedata(id) {
+
+            $('#seeModal').modal();
+            $('#reiframe').attr('src','{:url('user/info')}?id='+id);
+
+        }
+        function deld(id) {
+            $.get('{:url('user/deld')}?id='+id,function(rety){
+                if(rety.code == 1){
+                    alert(rety.msg);
+                    location.reload();
+                }else{
+                    alert(rety.msg);
+                }
+
+            });
+        }
+        function editd(ids) {
+            $.get('{:url('user/editd')}?id='+ids,function(retys){
+                $('#editModal').modal();
+
+                $('#id').val(retys.id);
+                $('#mobile').val(retys.mobile);
+                $('#password').val(retys.password);
+
+            });
+        }
+        {eq name="$alluser" value="1"}
+        function allsms() {
+            {volist name="list" id="vo"}
+            $.get('{:url('user/sendsms')}?id={$vo.mobile}&tid=1012');
+            {/volist}
+
+        //$.get();
+        }
+        {/eq}
+    </script>
+
+    {include file="public/footer" /}

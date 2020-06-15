@@ -1,0 +1,152 @@
+{extend name="common/world"}
+{block name="title"}审核列表{/block}
+{block name="style"}{/block}
+{block name="container"}
+<form method="get" class="">
+	<div class="row">
+		<div class="col-md-6 col-lg-3 mb-3">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">用户账号</span>
+				</div>
+				<input type="text" class="form-control" name="username" value="{$Think.get.username}" />
+			</div>
+		</div>
+		<div class="col-lg-2 mb-3">
+			<button class="btn btn-primary w-100" type="submit">立即查询</button>
+		</div>
+	</div>
+</form>
+<div class="card">
+	<div class="table-responsive">
+	    <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+	        <thead>
+	            <tr>
+	                <th class="text-center w-1"><i class="icon-people"></i></th>
+	                <th>用户</th>
+	                <th>账号</th>
+	                <th>状态</th>
+	                <th>姓名</th>
+	                <th>身份证</th>
+	                <th>支付宝首页</th>
+	                <th>资料</th>
+	                <th>上次拒绝理由</th>
+	                <th class="text-center">操作</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	        	{volist name="users" id="user"}
+	            <tr>
+	                <td class="text-center">
+	                    <div class="avatar d-block" style="background-image: url({:avatar($user.avatar, $user.idcard)})"></div>
+	                </td>
+	                <td>
+	                    <div>{$user.nickname}</div>
+	                    <div class="small text-muted">{$user.create_at}</div>
+	                </td>
+	                <td>{$user.username}</td>
+	                <td>
+	                	{switch $user.authen}
+	                		{case 1}<span class="status-icon bg-success"></span>已通过{/case}
+	                		{case 2}<span class="status-icon bg-warning"></span>待审核{/case}
+	                		{default /}
+	                			{empty name="user.authen_reason"}
+                                	<span class="status-icon bg-secondary"></span>未申请
+	                            {else /}
+	                                <span class="status-icon bg-red"></span>被拒绝
+	                            {/empty}
+	                    {/switch}
+	                </td>
+	                <td>{$user.realname}</td>
+	                <td>{$user.idcard}</td>
+	                <td>
+	                	{notempty name="user.certificate"}
+	                		{notempty name="user.certificate.front"}
+	                			<a href="/cert/{$user.certificate.front}" class="btn btn-secondary btn-sm" target="_blank" data-toggle="popover" data-trigger="hover" data-html="true" title="<img src='/cert/{$user.certificate.front}' />">正面</a>
+	                		{/notempty}
+	                		{notempty name="user.certificate.back"}
+	                			<a href="/cert/{$user.certificate.back}" class="btn btn-secondary btn-sm" target="_blank" data-toggle="popover" data-trigger="hover" data-html="true" title="<img src='/cert/{$user.certificate.back}' />">反面</a>
+	                		{/notempty}
+	                		{notempty name="user.certificate.hold"}
+	                			<a href="/cert/{$user.certificate.hold}" class="btn btn-secondary btn-sm" target="_blank" data-toggle="popover" data-trigger="hover" data-html="true" title="<img src='/cert/{$user.certificate.hold}' />">手持</a>
+	                		{/notempty}
+	                	{/notempty}
+	                </td>
+					<td>
+						{notempty name="user.certificate"}
+						{notempty name="user.certificate.alipay"}
+						<a href="/cert/{$user.certificate.alipay}" class="btn btn-secondary btn-sm" target="_blank" data-toggle="popover" data-trigger="hover" data-html="true" title="<img src='/cert/{$user.certificate.alipay}' />">支付宝首页</a>
+						{/notempty}
+						{/notempty}
+					</td>
+	                <td>{$user.authen_reason}</td>
+	                <td class="text-center">
+	                	<a href="javascript:;" data-username="{$user.username}" class="btn btn-primary btn-sm btn-ok">通过</a>
+	                	<a href="javascript:;" data-username="{$user.username}" class="btn btn-danger btn-sm btn-no">拒绝</a>
+	                </td>
+	            </tr>
+	            {/volist}
+	        </tbody>
+	    </table>
+	</div>
+	<div class="card-footer">{$users|raw}</div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">请输入拒绝理由</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+                    <textarea rows="3" class="form-control" name="authen_reason">很抱歉、姓名或身份证信息不正确！</textarea>
+                </div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary btn-confirm">确认调整</button>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+var username = null, $tr = null;
+require(['jquery', 'tap'], function($, tap){
+	$(function(){
+		$('.btn-ok').on('tap', function(){
+			if ($(this).hasClass('btn-loading')) {
+				return false;
+			}
+			$(this).addClass('btn-loading');
+			$tr = $(this).parents('tr');
+			var username = $(this).data('username');
+			$.post('/admin/account/quickAuthen', {username: username, authen: 1}, function(res){
+				alert(res.message);
+				if (res.code == 200) {
+					$tr.remove();
+				}
+			});
+		});
+		$('.btn-no').on('tap', function(){
+			$('.modal').modal('show');
+			username = $(this).data('username');
+			$tr = $(this).parents('tr');
+		});
+		$('.btn-confirm').on('tap', function(){
+			$('.modal').modal('hide');
+			var reason = $('textarea[name=authen_reason]').val();
+			$.post('/admin/account/quickAuthen', {username: username, authen: 0, authen_reason: reason}, function(res){
+				alert(res.message);
+				if (res.code == 200) {
+					$tr.remove();
+				}
+			});
+		});
+	});
+});
+</script>
+{/block}

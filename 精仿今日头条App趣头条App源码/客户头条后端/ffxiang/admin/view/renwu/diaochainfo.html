@@ -1,0 +1,49 @@
+ {include file="public/header" /}
+ {load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"} 
+<style>
+.asljasd .col-sm-5,.asljasd .col-sm-7{
+    font-size: 14px;
+    padding:5px 15px;
+}
+.form-group{
+    overflow: hidden;
+}
+.col-sm-6{
+    margin-bottom: 30px;
+}
+.ibox-content{
+    height: 500px;
+}
+</style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="col-sm-12">
+        <div class="ibox-content">
+            <div class="row asljasd">
+                 
+                    {volist name="data.data" id="v"}
+                    <div class="col-sm-12">
+                    <div class="col-sm-5">{$v.title}</div> 
+                    <div class="col-sm-7">{$v.name}</div>
+                    </div>
+                    {/volist}  
+                 
+                
+            </div>
+        </div>
+    </div>
+ 
+ 
+</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+$(document).ready(function(){
+    
+    
+});
+ 
+</script>
+ <SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

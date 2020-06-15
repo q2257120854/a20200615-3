@@ -1,0 +1,284 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/yaoqing.css" />
+	 	<style>
+	 		 .sx-yq-5{
+	 		 	 
+	 		 }
+	 		 .aui-col-xs-4 .aui-grid-label{
+	 		 	font-weight: bold;
+	 		 	color: #333;
+	 		 }
+	 	</style>
+	</head>
+	<body>
+		<div class="aui-content" tapmode onclick="_url({url:'yaoqing/phb',title:'收入排行榜'},'',true)"><img style="width: 100%;height: 100%;" src="../../image/yaoqing/income_banner.png" /></div>
+		<section class="aui-grid sx-wode aui-border-b">
+				<div class="aui-row row2">
+					<div class="aui-col-xs-4 aui-border-r">
+						<p>我的金币</p>
+						<div class="aui-grid-label">
+							0个
+						</div>
+					</div>
+					<div class="aui-col-xs-4 aui-border-r">
+						<p>我的零钱</p>
+						<div class="aui-grid-label">
+							￥0.00
+						</div>
+					</div> 
+					<div class="aui-col-xs-4" id="shouru">
+						<p>昨日金币收入</p>
+						<div class="aui-grid-label" style="color:#D43D3D">
+							￥0.00
+						</div>
+					</div> 
+				</div>
+				<div class="aui-row aui-border-t">
+					<div class="aui-col-xs-4 aui-border-r">
+						<div class="aui-grid-label" Tapmode onclick="_url({url:'yaoqing/mallList',id:0,title:'全部商品'},'',true)">
+							金币商城
+						</div>
+					</div>
+					<div class="aui-col-xs-4 aui-border-r" Tapmode onclick="_url({url:'yaoqing/mall',id:1,title:'我要提现'},'',true)">
+						<div class="aui-grid-label">
+							提现申请
+						</div>
+					</div>  
+					<div class="aui-col-xs-4" Tapmode onclick="_url({url:'yaoqing/mallOrder',title:'兑换记录'},'',true)">
+						<div class="aui-grid-label">
+							我的兑换
+						</div>
+					</div> 
+				</div>
+		</section>
+		<div class="aui-content sx-yq-5">
+			<div class="aui-tab">
+			    <div class="aui-tab-item" data-id='1' data-list='0'>金币</div>
+			    <div class="aui-tab-item" data-id='2' data-list='0'>零钱</div>
+			</div>
+			<div class="sx-tab-list sx-yq-list1" style=" display: none;">
+				<div class="aui-list aui-media-list sx-view"><div id="jiazai"><img src="../../image/loading_more.gif" /></div></div> 
+			</div>
+			<div class="sx-tab-list sx-yq-list2" style=" display: none;">
+				<div class="aui-list aui-media-list sx-view"><div id="jiazai"><img src="../../image/loading_more.gif" /></div></div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/fastclick.js"></script>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var name='mingxi/type/1',tabList1=tabList2=tabList3=1,heigutgao=0,Gao1=Gao2=Gao3=0,fx_data,yesterday1=yesterday2=0,type=1;
+		apiready = function() {
+			if(api.pageParam['index']){
+				type=2;
+				var auiTb=$('.aui-tab .aui-tab-item').eq(1);
+				auiTb.addClass('aui-active')
+				auiTb.data('list',1)
+			}else{
+				var auiTb=$('.aui-tab .aui-tab-item').eq(0);
+				auiTb.addClass('aui-active')
+				auiTb.data('list',1)
+				 
+			}
+			$('.sx-yq-list'+type).show();
+			yesterday()
+		 	var l=$('.sx-wode .row2 .aui-col-xs-4');
+			l.eq(0).children('.aui-grid-label').text(_user.yaoqing.jinbi+'个');
+			l.eq(1).children('.aui-grid-label').text('￥'+(_user.yaoqing.money/100).toFixed(2));
+			var text;
+			if(api.pageParam['index']){
+				l.eq(2).children('.aui-grid-label').text('￥'+(_user.yaoqing.money/100).toFixed(2));
+			}else{
+				l.eq(2).children('.aui-grid-label').text('￥'+(_user.yaoqing.money/100).toFixed(2));
+			}
+			l.eq(2).children('.aui-grid-label').text(text);
+	 		list()
+	 		_shangla(function(ret,err){
+	 			// 递增页面
+				switch(type)
+					{
+					case 2:
+						tabList2=1
+					  	break;
+					default:
+						tabList1=1
+				}
+				list()
+			},1)
+	 	 
+			FastClick.attach(document.body);
+			// tab点击
+			$(function(){
+				$('.aui-tab .aui-tab-item').click(function(){
+					heigutgao=0;
+					var _this=$(this);
+					$('.aui-active').removeClass('aui-active');
+					_this.addClass('aui-active');
+					type=_this.data('id');
+					$('.sx-tab-list').hide();
+					$('.sx-yq-list'+type).show();
+					if(type==1){
+						$('#shouru p').text('昨天金币收入');
+						$('#shouru div').text(yesterday2+'个');
+					}else{
+						$('#shouru p').text('昨天零钱收入');
+						$('#shouru div').text('￥'+yesterday1);
+					}
+					// data-list= 0 未打开 1已打开
+					var dada_list=_this.data('list');
+					if(!dada_list){
+						_this.data('list',1)
+						list();
+					}
+				})
+			})
+			
+			// 监听滚动
+			api.addEventListener({
+				name : 'scrolltobottom',
+				extra : {
+					threshold : threshold //设置距离底部多少距离时触发，默认值为0，数字类型
+				}
+			}, function(ret, err) {
+			 
+				if (Gao1 == 1 && type==1) {
+					Gao1 = 0
+					tabList1=tabList1+1
+					list(tabList1)
+				}else if(Gao2==1 && type==2){
+					Gao2 = 0
+					tabList2=tabList2+1
+					list(tabList2)
+				}
+				
+			});
+		}
+		 
+	
+		function list(pages){
+			pages=pages ? pages : 1;
+			_ajax('api/yaoqing/'+_name() + '?page=' + pages,function(ret,err){
+				if(ret){
+					_loadingCloes()
+					var _this=$('.sx-yq-list'+type+' .sx-view');
+					page_total = ret.total
+					if(!page_total){
+						_this.html('<div id="tishi">暂无数据</div>');
+						return;
+					}
+					// 获取得到数据线删除底部加载提示
+					if(pages != 1){
+						$('.sx-yq-list'+type+' .sx-view .fx-dibu_loading').remove();
+					}
+					
+					 
+					var html=''
+					for(var i=0;i<ret.data.length;i++){
+						html += '<li class="aui-list-item">';
+							html += '<div class="aui-media-list-item-inner">';
+							html += '<div class="aui-list-item-inner">';
+							html += '<div class="aui-list-item-text">';
+							html += '<div class="aui-list-item-title">'+ret.data[i].username+'</div>';
+							html += '<div class="aui-list-item-right">'+ret.data[i].time+'</div>'
+							html += '</div>';
+							html += '<div class="aui-list-item-text aui-ellipsis-1">'+ret.data[i].content+'</div>';
+							html += '</div>';
+							html += '</div>';
+							html += '</li>';
+					}
+					 
+					// 插入底部加载提示
+					page_per_page = Math.ceil(page_total / ret.per_page);
+					if (page_per_page <= pages) {
+						switch(type)
+						{
+						case 2:
+							Gao2=0
+						  	break;
+						default:
+							Gao1=0
+						}
+						html += '<div id="loadingNo">底部没有数据了...</div>';
+					}else {
+						// 递增页面
+						switch(type)
+						{
+						case 2:
+							Gao2=1
+						  	break;
+						default:
+							Gao1=1
+						}
+						html += '<div class="fx-dibu_loading load-container loadingdi"><div class="loader">loadingdi...</div></div>';
+					}
+				//	console.log(pages)
+					if(pages==1 || !pages){
+						_this.html(html);
+					}else{
+						_this.append(html);
+					}
+				 	
+				 	 
+				}else{
+					alert(JSON.stringify(err))
+				}
+			})
+		}
+		// 链接
+		function _name(){
+			switch(type)
+			{
+			case 2:
+			name='mingxi/type/2'
+			  break;
+			default:
+				name='mingxi/type/1'
+			}
+		//	console.log(name)
+			return name;
+		}
+	 
+		// 获取昨天数据
+		function yesterday(){
+			_ajax('api/yaoqing/yesterday',function(ret,err){
+				if(ret){
+					yesterday1=ret.a;
+					yesterday2=ret.b;
+					if(type==1){
+						$('#shouru p').text('昨天金币收入');
+						$('#shouru div').text(yesterday2+'个');
+					}else{
+						$('#shouru p').text('昨天零钱收入');
+						$('#shouru div').text('￥'+yesterday1);
+					}
+					 
+				}else{
+					alert(JSON.stringify(err))
+				}
+			})
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</script>
+</html>

@@ -1,0 +1,138 @@
+.sx-yq-1{
+	width: 100%;
+	height: 10rem;
+	background: url('../image/yaoqing/by.jpg');
+	position: relative;
+ 
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+.sx-yq-2 .sx-yq-btn{
+	display: flex;
+ 	width: 8rem;
+ 	justify-content:center;
+ 	align-items:center;
+ 	margin: 0 auto;
+ 	margin-top:5rem;
+ 	border-radius: 2rem;
+ 	background:#EB4F19;
+ 	font-weight: bold;
+ 	color: #fff;
+ 	padding:0.35rem 0rem; 
+ 	font-size: 0.8rem;
+ 	box-shadow:0px 0px 20px 2px #ffffff
+}
+.sx-yq-2 p{
+	padding-top: 1.4rem;
+	text-align: center;
+	font-size: 0.75rem;
+	text-decoration: underline;
+	color: #fff;
+	font-weight: 200;
+	width: 40%;
+	margin-left: 30%; 
+	display: inline-block;
+}
+
+.sx-yq-2 span{
+	font-size: 14px;
+	color: #fff;
+	display: inline-block;
+	padding: 0 5px;
+}
+
+.sx-yq-3,.sx-yq-4{
+	position:absolute;
+	top:2rem;
+	color: #fff;
+	text-align: center;
+	padding:0.3rem 1rem;
+	z-index: 99;
+	font-size: 0.65rem;
+	font-weight: 300;
+}
+.sx-yq-3{
+	left: 0rem;
+	background: #FBC210;
+	border-bottom-right-radius: 2rem;
+	border-top-right-radius: 2rem;
+}
+.sx-yq-4{
+	right: 0rem;
+	background: #FFD9D8;
+	border-bottom-left-radius: 2rem;
+	border-top-left-radius: 2rem;
+	color: #F13B39;
+}
+.sx-yq-list{
+	text-align: center;
+}
+.sx-yq-list-1,.sx-yq-list-2{
+	padding: 0 0.75rem;
+	text-align: center;
+}
+.sx-yq-list-1{
+	background: #f7f7f7;
+}
+.sx-yq-list-2{
+	border-bottom: 1px solid #e8e8e8;
+	padding: 0;
+	margin: 0 0.75rem;
+}
+.sx-yq-list-2 div,.sx-yq-list2-2 div{
+	 text-align: center;
+	 overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.sx-yq-list-1 div:nth-child(1),.sx-yq-list-2 div:nth-child(1){
+	width: 18%;
+}
+.sx-yq-list-1 div:nth-child(2),.sx-yq-list-2 div:nth-child(2){
+	width: 32%;
+	text-align: left;
+}
+.sx-yq-list-1 div:nth-child(3),.sx-yq-list-2 div:nth-child(3){
+	width: 25%;
+}
+.sx-yq-list-1 div:nth-child(4),.sx-yq-list-2 div:nth-child(4){
+	width: 25%;
+}
+
+/*我的徒弟*/
+.sx-yq-list2-1{
+	padding: 0 0.75rem;
+	background: #f7f7f7;
+}
+.sx-yq-list2-2{
+	padding: 0 0.75rem;
+}
+.sx-yq-list2-1 div:nth-child(1),.sx-yq-list2-2 div:nth-child(1){
+	width:70%;
+	text-align: left;
+}	
+.sx-yq-list2-1 div:nth-child(2),.sx-yq-list2-2 div:nth-child(2){
+	width: 30%;
+	text-align: center;
+}
+
+.sx-jia{
+	color: #D43D3D !important;
+}
+.sx-jian{
+	color: #CCCCCC !important;
+}
+
+/*奖励明细*/
+.aui-media-list b{
+	color: #5FB878
+}
+
+
+
+
+
+
+
+
+

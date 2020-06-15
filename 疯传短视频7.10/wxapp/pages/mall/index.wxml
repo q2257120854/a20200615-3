@@ -1,0 +1,46 @@
+<graceHeader background="{{mainColor}}" height="80">
+    <view class="grace-header-body">商城</view>
+    <view class="grace-nav-bar" slot="gHeader">
+        <graceNavBar activeColor="#ffffff" activeDirection="center" activeFontSize="36rpx" activeLineBg="#FFFFFF" activeLineWidth="80rpx" bindchange="navChange" color="#ffffff" currentIndex="{{currentIndex}}" fontSize="36rpx" items="{{cates}}" textAlign="center"></graceNavBar>
+    </view>
+</graceHeader>
+<gracePage customHeader="{{false}}">
+    <view slot="gHeader">
+        <graceNavBar activeColor="#ff0000" activeDirection="center" activeFontSize="36rpx" activeLineBg="linear-gradient(to right, #ff0000,#ff0055)" activeLineHeight="6rpx" activeLineWidth="80rpx" bindchange="navChange" currentIndex="{{currentIndex}}" fontSize="36rpx" isCenter="true" items="{{cates}}" lineHeight="70rpx" textAlign="center"></graceNavBar>
+    </view>
+    <view class="grace-flex-v1" id="gBody" slot="gBody">
+        <swiper bindchange="swiperChange" current="{{currentIndex}}" style="height:{{mainHeight}}px">
+            <swiper-item wx:for="{{itemAll}}" wx:for-index="itemIndex" wx:for-item="items" wx:key="itemIndex">
+                <scroll-view bindscroll="scroll" bindscrolltolower="scrollend" bindtouchend="touchend" bindtouchmove="touchmove" bindtouchstart="touchstart" scrollY="true" style="height:{{mainHeight}}px">
+                    <graceReload bindreload="reload" id="{{'graceReload'+itemIndex}}" ref="graceReload" width="750rpx"></graceReload>
+                    <graceEmpty wx:if="{{items=='empty'}}">
+                        <view class="empty-view" slot="img">
+                            <image class="empty-img" mode="widthFix" src="../../static/images/empty.png"></image>
+                        </view>
+                        <text class="grace-gray grace-load-text" slot="text">本栏目暂无商品</text>
+                    </graceEmpty>
+                    <view class="grace-news-list">
+                        <view bindtap="openGoods" class="grace-news-item" data-id="{{item.id}}" wx:if="{{items!='empty'}}" wx:for="{{items}}" wx:key="index">
+                            <image class="grace-news-img grace-news-img-l" src="{{item.thumb}}"></image>
+                            <view class="grace-news-body">
+                                <text class="grace-news-title">{{item.title}}</text>
+                                <view class="grace-capsule grace-border-radius">
+                                    <text class="grace-capsule-icon" style="background:#E76B61;">领券减</text>
+                                    <text class="grace-capsule-text" style="border-color:#E76B61; color:#E76B61;">￥{{item.discount}}元</text>
+                                </view>
+                                <view class="grace-news-price">
+                                    <view class="grace-news-price1">券后:<text class="small">￥</text>
+                                        <text class="em">{{item.order_price}}</text>
+                                    </view>
+                                    <view class="grace-news-price2 grace-line-through">
+                                        <text class="small">￥</text>{{item.price}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <graceLoading loadingType="{{loadingTypes[itemIndex]}}"></graceLoading>
+                </scroll-view>
+            </swiper-item>
+        </swiper>
+    </view>
+</gracePage>

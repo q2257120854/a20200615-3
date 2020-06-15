@@ -1,0 +1,172 @@
+{include file="article/top" /}
+<link href="__CSS__index.css" rel="stylesheet" type="text/css">
+</head>
+<body class="page-index">
+{include file="article/header" /}
+<div class="main index-main">
+  <div class="aside">
+    <div class="widget-box widget-hot-article-box">
+      <div class="widget widget-hot-article"> 
+        <h4>热文排行</h4>
+          <div class="content news-list" id="fx-view-hot">
+          <?php $where['hide']=1;
+        $where['uid']=['<>',0];
+        $where['pingNum']=['<>',0];
+        $where['click']=['<>',0];
+        $time=date('Y-m-d' , strtotime("-2 day"));
+        $where['weitoutiao']=0;
+        $where['update_time']=['>= time',$time]; $data=db('article')->field('id,title')->where($where)->limit(8)->order('rand()')->select();$k=1;?>
+            {volist name="data" id="v"}
+            <a class="doc item-{$k} " href="{:url('article/view',['id'=>$v['id']])}" target="_blank">
+              <div class="index iconfont icon-{$k}"></div>
+              <div class="doc-title">{$v.title}</div>
+            </a>
+            <?php $k++; ?>
+            {/volist}
+        </div>
+      </div>
+
+    </div>
+
+    
+  </div>
+  <style type="text/css">
+    .fx-search{
+      color: #f00;
+    }
+  </style>
+  <div class="channel-news" id="fx-view"></div>
+  <script id="fx-list" type="text/x-dot-template">
+    {{ for(var i=0,len=it.data.length; i < len; i++) { }}
+    {{? it.data[i].mychannel == 1}}
+    {{? it.data[i].image}}
+    <a class="item doc style-small-image style-content-middle" href="{{= it.data[i].url }}" target="_blank">
+      <div class="doc-image-small-wrapper">
+        <div class="doc-image-box">
+          <img class="doc-image doc-image-small" src="{{= it.data[i].image }}">
+        </div>
+      </div>
+      <div class="doc-content">
+        <div class="doc-content-inline">
+          <div class="doc-title">{{= it.data[i].title }}</div>
+          <div class="doc-info">
+            {{? it.data[i].uid }}
+            <img class="source-profile" src="{{= it.data[i].user.img }}">
+            {{?}}
+            {{? it.data[i].source }}
+            <span class="source">{{= it.data[i].source}}</span>
+            {{?? it.data[i].uid}}
+            <span class="source">{{= it.data[i].user.username}}</span>
+            {{?}}
+            <span class="comment-count">{{= it.data[i].pingNum}}评</span>
+            <span class="date">{{= it.data[i].create_time}}</span>
+          </div>
+        </div>
+      </div> 
+    </a>
+    {{??}}
+    <a class="item doc style-small-image style-content-middle" href="{{= it.data[i].url }}" target="_blank">
+      <div class="doc-content">
+        <div class="doc-content-inline">
+          <div class="doc-title">{{= it.data[i].title }}</div>
+          <div class="doc-info">
+            {{? it.data[i].uid }}
+            <img class="source-profile" src="{{= it.data[i].user.img }}">
+            {{?}}
+            {{? it.data[i].source }}
+            <span class="source">{{= it.data[i].source}}</span>
+            {{?? it.data[i].uid}}
+            <span class="source">{{= it.data[i].user.username}}</span>
+            {{?}}
+            <span class="comment-count">{{= it.data[i].pingNum}}评</span>
+            <span class="date">{{= it.data[i].create_time}}</span>
+          </div>
+        </div>
+      </div> 
+    </a>
+    {{?}}
+    {{?? it.data[i].mychannel == 2}}
+    <a class="item doc style-multi-image" href="{{= it.data[i].url }}" target="_blank">
+      <div class="doc-title">{{= it.data[i].title }}</div>
+      <div class="doc-image-multi-wrapper">
+        {{ for(var is=0,lens=4; is < lens; is++) { }}
+        <div class="doc-image-box box-{{= is}}"><img class="doc-image image-{{= is}}" src="{:_imgUrl()}{{= it.data[i].pcList[is].img}}?imageView2/1/w/161/h/108"></div>
+        {{ } }}
+      </div>
+      <div class="doc-info">
+          {{? it.data[i].uid }}
+          <img class="source-profile" src="{{= it.data[i].user.img }}">
+          {{?}}
+          {{? it.data[i].source }}
+          <span class="source">{{= it.data[i].source}}</span>
+          {{?? it.data[i].uid}}
+          <span class="source">{{= it.data[i].user.username}}</span>
+          {{?}}
+          <span class="comment-count">{{= it.data[i].pingNum}}评</span>
+          <span class="date">{{= it.data[i].create_time}}</span>
+      </div>
+    </a>
+    {{?? it.data[i].mychannel == 3}}
+    <a class="item doc style-small-image style-content-middle" href="{{= it.data[i].url }}" target="_blank">
+      <div class="doc-image-small-wrapper">
+        <div class="doc-image-box">
+          <img class="doc-image doc-image-small" src="{{= it.data[i].image }}">
+            <div class="video-time">{{? it.data[i].videodate}}{{=it.data[i].videodate}}{{??}}视频{{?}}</div>
+        </div>
+      </div>
+      <div class="doc-content">
+        <div class="doc-content-inline">
+          <div class="doc-title">{{= it.data[i].title }}</div>
+          <div class="doc-info">
+            {{? it.data[i].uid }}
+            <img class="source-profile" src="{{= it.data[i].user.img }}">
+            {{?}}
+            {{? it.data[i].source }}
+            <span class="source">{{= it.data[i].source}}</span>
+            {{?? it.data[i].uid}}
+            <span class="source">{{= it.data[i].user.username}}</span>
+            {{?}}
+            <span class="comment-count">{{= it.data[i].pingNum}}评</span>
+            <span class="date">{{= it.data[i].create_time}}</span>
+          </div>
+        </div>
+      </div>
+    </a>
+    {{?}}
+    {{ } }}
+  </script>
+</div>
+<div class="mask"></div>
+{include file="article/footer" /}
+{load href="__P__/swiper/swiper-3.4.2.min.css" /}
+{load href="__P__/swiper/swiper-3.4.2.jquery.min.js" /}
+<script type="text/javascript">
+$(function(){
+  $('.sx-search-text').val('{$search}')
+})
+</script>
+<script type="text/javascript">
+list('{:url('api/article/pcLists',['pages'=>15,'weitoutiao'=>0])}')
+function list(url,data){
+    layui.use('flow', function(){
+        layui.flow.load({
+            elem: '#fx-view',   // 选择器
+            done: function(page, next){
+                _ajax(url+'?page='+page,function(ret){
+                    if(ret){
+                        //渲染模版
+                        var evalData = doT.template($('#fx-list').html());
+                        next(evalData(ret), page < ret.total / ret.per_page );
+                    }else{
+                        next('',0);
+                    }
+                },{search:'{$search}'})     
+            }
+        });
+    });
+}
+</script>
+</body>
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

@@ -1,0 +1,108 @@
+<gracePage :customHeader="false">
+    <view slot="gBody">
+        <scroll-view scrollX class="grace-scroll-x" scrollIntoView="{{'scrollItem'+currentIndex}}">
+            <view bindtap="changeDay" class="grace-scroll-items {{currentIndex==index?'grace-scroll-day-active':''}}" data-index="{{index}}" id="{{'scrollItem'+index}}" wx:for="{{dateList}}" wx:key="index">
+                <view class="grace-scroll-items-date {{currentIndex==index?'grace-scroll-day-active':''}}">{{item.day}}</view>
+                <view class="grace-scroll-items-week {{currentIndex==index?'grace-scroll-day-active':''}}">{{item.week}}</view>
+            </view>
+        </scroll-view>
+        <view class="grace-margin-top grace-big-title" wx:if="{{dateData!=null}}">
+            <view class="grace-h5 grace-blod grace-text-center">
+                <text class="grace-icons icon-spliter"></text>
+                <text class="grace-black" style="margin:0 20rpx;font-size: 40rpx;font-weight: bold;">{{dateData.yinli}}</text>
+                <text class="grace-icons icon-spliter"></text>
+            </view>
+            <view class="grace-margin-top grace-gray grace-text-center">{{dateData.yangli}}阴历表</view>
+        </view>
+        <view class="grace-list" wx:if="{{dateData!=null}}">
+            <view class="grace-list-items">
+                <view class="grace-list-body grace-border-b">
+                    <view class="grace-list-title">
+                        <text class="grace-list-title-text">百忌</text>
+                    </view>
+                    <view class="grace-list-body-desc">{{dateData.baiji}}</view>
+                </view>
+            </view>
+            <view class="grace-list-items">
+                <view class="grace-list-body grace-border-b">
+                    <view class="grace-list-title">
+                        <text class="grace-list-title-text">冲煞</text>
+                    </view>
+                    <view class="grace-list-body-desc">{{dateData.chongsha}}</view>
+                </view>
+            </view>
+            <view class="grace-list-items">
+                <view class="grace-list-body grace-border-b">
+                    <view class="grace-list-title">
+                        <text class="grace-list-title-text">适宜</text>
+                    </view>
+                    <view class="grace-list-body-desc">{{dateData.yi}}</view>
+                </view>
+            </view>
+            <view class="grace-list-items">
+                <view class="grace-list-body grace-border-b">
+                    <view class="grace-list-title">
+                        <text class="grace-list-title-text">忌讳</text>
+                    </view>
+                    <view class="grace-list-body-desc">{{dateData.ji}}</view>
+                </view>
+            </view>
+            <view class="grace-list-items">
+                <view class="grace-list-body grace-border-b">
+                    <view class="grace-list-title">
+                        <text class="grace-list-title-text">忌神</text>
+                    </view>
+                    <view class="grace-list-body-desc">{{dateData.jishen}}</view>
+                </view>
+            </view>
+            <view class="grace-list-items">
+                <view class="grace-list-body grace-border-b">
+                    <view class="grace-list-title">
+                        <text class="grace-list-title-text">五星</text>
+                    </view>
+                    <view class="grace-list-body-desc">{{dateData.wuxing}}</view>
+                </view>
+            </view>
+            <view class="grace-list-items">
+                <view class="grace-list-body grace-border-b">
+                    <view class="grace-list-title">
+                        <text class="grace-list-title-text">凶神</text>
+                    </view>
+                    <view class="grace-list-body-desc">{{dateData.xiongshen}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="grace-margin-top grace-big-title" wx:if="{{dateData!=null}}">
+            <view class="grace-h5 grace-blod grace-text-center">
+                <text class="grace-icons icon-spliter"></text>
+                <text class="grace-black" style="margin:0 20rpx;font-size: 40rpx;font-weight: bold;">{{dateData.yinli}}</text>
+                <text class="grace-icons icon-spliter"></text>
+            </view>
+            <view class="grace-margin-top grace-gray grace-text-center">{{dateData.yangli}}时辰表</view>
+        </view>
+        <view class="grace-list" wx:if="{{dateData!=null}}">
+            <view class="grace-list-items" wx:for="{{hourData}}" wx:key="index">
+                <view class="grace-list-body grace-border-b">
+                    <view class="grace-list-title">
+                        <view class="grace-list-title-text">{{cnHours[index]}}时<text class="grace-gray grace-text-small">({{item.hours}})：</text>
+                        </view>
+                    </view>
+                    <view class="grace-list-body-desc">
+                        <text>{{item.des}}</text>
+                    </view>
+                    <view class="grace-list-body-desc grace-green">
+                        <text vIf="item.yi != '' && item.yi != '-'">宜：{{item.yi}}</text>
+                        <text vIf="item.yi == '' || item.yi == '-'">宜：诸事不宜</text>
+                    </view>
+                    <view class="grace-list-body-desc grace-red">
+                        <text>忌：{{item.ji}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="fixed-tool" slot="gRTArea">
+        <button class="grace-pop-item grace-icons icon-share grace-gtbg-green" openType="share"></button>
+        <text bindtap="backIndex" class="grace-pop-item grace-icons icon-home grace-gtbg-orange"></text>
+    </view>
+</gracePage>

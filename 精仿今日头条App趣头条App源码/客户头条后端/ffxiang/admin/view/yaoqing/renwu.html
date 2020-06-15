@@ -1,0 +1,114 @@
+ {include file="public/header" /}
+ {load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<style type="text/css">
+#des,#des input{ width: 40px;text-align:center;}
+#id{ width: 78px; }
+.bs-checkbox{ width: 36px; height: 40px }
+.fixed-table-toolbar .columns,.fixed-table-toolbar .search{margin-left:0px; margin-top: 0px }
+#title span{ float: right; margin-left: 3.333px;}
+</style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        {include file="public/tophead"}
+        {include file="public/top" /}
+        <div class="ibox-content">
+        {include file="public/topsection"}
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    
+                    <div class="fixed-table-toolbar">
+                        <form  method="get" action="">
+                            <div class="pull-left search">
+                            
+                                <div class="columns columns-right btn-group pull-left" >
+                                    
+                                </div>
+                                <div class="pull-right search">
+                                    <button style="border-radius:0px; border:1px solid #e5e6e7; border-left:0px" class="btn btn-default btn-outline" type="submit">搜索</button>
+                                </div>
+                                <div class="pull-right search">
+                                    <input class="form-control input-outline" type="text"
+{php}
+if(input('?param.uid')){
+            if(input('param.uid')){
+               echo "value='".input('uid')."'";
+            } 
+
+        }
+{/php}
+                                     name="uid" placeholder="输入用户ID">
+                                </div>
+                                
+
+                            </div>
+                        </form>
+                    </div>
+                    <div class="example">
+                        <form class="form-horizontal" method="post">
+                        <table data-toggle="table">
+                            <thead>
+
+                                <tr>
+                                 
+                                   
+                                    <th>用户Uid</th>
+                                    <th>价格</th>
+                                    <th>描述</th>
+                                    <th>ip</th>
+                                    <th>时间</th>
+                              
+                                </tr>
+                            </thead> 
+                            <tbody id="form">
+                                
+                               
+                                {volist name="data" id="v"}
+                                <tr class="class">
+                               
+                                  
+                                    <td>[{$v.uid}]<a onclick="add('{:url('member/add',['id'=>$v['uid'],'url'=>-1])}')">
+<?php
+$user=_user($v['uid']);
+echo $user['username'];
+?>
+</a></td>
+                                    <td>
+<?php
+$money=($v['data'] ? '-' : '+').$v['money'].($v['type'] ? '金币' : '元');
+echo $money;
+?>
+                                    </td>
+                                    <td>{$v.content}</td>
+                                    <td>{$v.ip}</td>
+                                    <td> 
+                                        <span {php}if(date('Ymd')==date('Ymd',$v['time']))echo 'style="color: #ed5565"';{/php}>{$v.time|date='Y-m-d H:i:s',###}</span>
+                                    </td>
+                                    
+                                     
+                                </tr>
+
+                                {/volist}
+                            </tbody>
+                        </table>
+                        </form>
+                    </div>
+                </div>  
+            </div>
+            <hr>
+            <div class="row row-lg">
+                
+                <div class="col-sm-6 pages">{$page}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+
+ 
+</script>
+ <SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

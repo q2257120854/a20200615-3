@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "graces-sup": "./graceSup",
+        "txv-video": "plugin://wxa75efa648b60994b/video"
+    }
+}

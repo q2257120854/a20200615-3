@@ -1,0 +1,326 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../css/qutoutiao.css" />
+		<style>
+		 .fx-view-header {
+				background-color: #fff !important;
+				color: #000;
+				margin-bottom: 0px !important;
+				border-bottom: 1px solid #E8E8E8;
+			}
+			#fx-header .aui-btn img{
+				width: 1rem;
+				height: 1rem;
+				text-align: center;
+				margin: 0 auto;
+			}
+			.aui-bar-nav .aui-pull-left{
+				padding-left: 0.75rem;
+			}
+			.aui-bar-nav .aui-pull-right{
+				padding-right: 0.75rem;
+			}
+			#fx-header .aui-pull-right img{
+				width: 1.3rem;
+				height: 1.3rem;
+			}
+			#fx-header a img.sx-user-img{
+				border: 1px solid #555;
+			}
+			.aui-bar-nav .aui-title{
+				left: 0rem;
+				font-size: 0.8rem;
+			}
+			.aui-bar-nav .aui-title span{
+				padding: 0 0.75rem;
+			}
+			.titles{
+				color: #D43D3D;
+				font-size: 0.85rem;
+			}
+			@-webkit-keyframes rotation{
+				from {-webkit-transform: rotate(0deg);}
+				to {-webkit-transform: rotate(360deg);}
+			}
+			.Rotation{
+				-webkit-transform: rotate(360deg);
+				animation: rotation 1s linear infinite;
+				-moz-animation: rotation 1s linear infinite;
+				-webkit-animation: rotation 1s linear infinite;
+				-o-animation: rotation 1s linear infinite;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="aui-bar aui-bar-nav fx-view-header " id="fx-header">
+			<!--<a class="aui-pull-left aui-btn" tapmode onclick="_url({},'member')">
+				<div class="user1" style="display: none"><img src="" class="sx-user-img" /></div>
+	            <div class="user2" style="display: block"><img src="../image/sx-index-left2.png" />
+	            <p>未登录</p></div>
+	        </a>-->
+			<div class="aui-title">
+				<span class="tab0" tapmode onclick="randomSwitchBtn(0)">我的视频</span>
+				<span class="tab1 titles" tapmode onclick="randomSwitchBtn(1)">小视频</span>
+			</div>
+			<a class="aui-pull-right aui-btn" tapmode onclick="right()">
+	            <img src="../image/sx-index-right2.png" />
+	            <p>发布</p>
+	        </a>
+		</header>
+		<footer class="aui-bar aui-bar-tab" id="fx-footer">
+			<div class="aui-bar-tab-item" tapmode onclick="_hone()">
+				<img class="aui-img-object" src="../image/w1.png" />
+				<div class="aui-bar-tab-label">
+					主页
+				</div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode onclick="_index_win('video_win')" >
+				<img class="aui-img-object" src="../image/w2.png" />
+				<div class="aui-bar-tab-label">
+					视频
+				</div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode onclick="_index_win('weitoutiao_win')">
+				<img class="aui-img-object" src="../image/w3.png" />
+				<div class="aui-bar-tab-label">
+					微头条
+				</div>
+			</div>
+			<div class="aui-bar-tab-item aui-active" tapmode onclick="shuaxin()">
+				<img class="aui-img-object Rotation" src="../image/shuaxin_2.png" />
+				<div class="aui-bar-tab-label">
+					刷新
+				</div>
+			</div>
+			<!--<div class="aui-bar-tab-item" tapmode onclick="_index_win('renwu_win')" >
+				<img class="aui-img-object" src="../image/qutoutiao/w6.png" />
+				<div class="aui-bar-tab-label">
+					任务
+				</div>
+			</div>-->
+			<div class="aui-bar-tab-item" tapmode onclick="_index_win('member_wins')">
+				<img class="aui-img-object" src="../image/w4.png" />
+				<div class="aui-bar-tab-label">
+					我的
+				</div>
+			</div>
+			 
+			<!--<div class="aui-bar-tab-item" tapmode onclick="_index_win('member_win')">
+				<img class="aui-img-object" src="../image/w4.png" />
+				<div class="aui-bar-tab-label">
+					会员
+				</div>
+			</div>-->
+		</footer>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var win_index=1;
+		apiready = function() {
+			mnPopups = api.require('MNPopups');
+			api.addEventListener({
+				name : 'viewappear'
+			}, function(ret, err) {
+				userImg()
+				_heibai(1)
+			});
+			_heibai(1)
+		//	_openFrame('xiaoshipin', '', '', '', true)
+		
+			// 读取frm文件
+			var frames = [];
+			for (var i = 0; i < 2; i++) {
+				var frame = {};
+				frame.name = 'xiaoshipin_' + i;
+				frame.url = html_win + 'xiaoshipin.html';
+				frame.pageParam = {
+					id : i,
+				};
+				//				frame.vScrollBarEnabled = false;
+				//				frame.hScrollBarEnabled = false;
+				frames.push(frame);
+				frames.useWKWebView = true;
+				frames.historyGestureEnabled = true;
+			}
+			openFrameGroup(frames);
+			// 上面全部加载完毕解析 属性 不然点击按钮会有延时300
+		
+					
+		 
+		 	
+			// 判断返回键
+			api.addEventListener({
+				name : 'keyback'
+			}, function(ret, err) {
+				api.execScript({
+					frameName : 'xiaoshipin_'+win_index,
+					script : 'winfrem()'
+				});
+			});
+			// 监听夜间
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+			 
+		}
+		// 显示登录头像
+		function userImg(){
+			return;
+			var user=$api.getStorage('user');
+			if(user){
+				$api.css($api.dom('.user1'),"display: block");
+				$api.css($api.dom('.user2'),"display: none");
+				$api.attr($api.dom('.sx-user-img'),"src",user.img);
+			}else{
+				$api.css($api.dom('.user1'),"display: none");
+				$api.css($api.dom('.user2'),"display: block");
+			}
+		}
+		// 打开菜单
+		function right(){
+			var y=$api.offset($api.byId('fx-header')).h;
+			mnPopups.open({
+			    rect: {
+			        w: 130,
+			        h: 135
+			    },
+			    position: {
+			        x: api.winWidth - 25,
+			        y: y
+			    },
+			    styles: {
+			        mask: 'rgba(0,0,0,0)',
+			        bg: '#565656',
+			        corner:5,
+			        cell: {
+			            bg: {
+			                normal: '#565656',
+			                highlight: '#404040'
+			            },
+			            h: 45,
+			            title: {
+			                marginL: 45,
+			                color: '#fff',
+			                size: 14,
+			            },
+			            icon: {
+			                marginL: 10,
+			                w: 20,
+			                h: 20,
+			                corner: 2
+			            },
+			            separateLine: {              //（可选项）JSON 类型；分割线的样式设置
+				            width: 1,                //（可选项）数字类型；分割线的粗细，默认为1
+				            marginLR: 10,              //（可选项）数字类型；分割线距离左右的间距，默认为0
+				            bg: '#838383',            //（可选项）字符类型；分割线的背景颜色，支持rgb、rgba、#；默认：#C0C0C0 
+				            hideLastSeparateLine: true //(可选项)布尔类型；是否隐藏最后一条分割线，默认false                    
+				        },
+			        },
+			        pointer: {
+			            size: 7,
+			            xPercent: 90,
+			            yPercent: 0,
+			            orientation: 'downward'
+			        }
+			    },
+			    datas: [{
+			        title: '发图文',
+			        icon: _image+'sx-index-right-1.png'
+			    }, {
+			        title: '拍小视频',
+			        icon: _image+'sx-index-right-2.png'
+			    }, {
+			        title: '上传视频',
+			        icon: _image+'sx-index-right-3.png'
+			    } ],
+//			    , {
+//			        title: '提问',
+//			        icon: '../image/sx-index-right-4.png'
+//			    }
+			    animation: true
+			}, function(ret) {
+			    if(ret.eventType=="click"){
+			    	var index=ret.index;
+			    	if(index==0){
+			    		_url({type:'text'},'member/weitoutiaoAdd_win',true)
+			    	}else if(index==1){
+			    		_svideo()
+			    	}else if(index==2){
+			    		_url({type:'video'},'member/weitoutiaoAdd_win',true)
+			    	}
+			    }
+			});
+		}
+		function openFrameGroup(frames) {
+			api.parseTapmode();
+			var header = $api.byId('fx-header');
+			$api.fixStatusBar(header);
+			var headerPos = $api.offset(header);
+			var body_h = api.winHeight;
+			$api.fixTabBar($api.byId('fx-footer'))
+			var footerh = $api.offset($api.byId('fx-footer')).h;
+		 
+			api.openFrameGroup({
+				name : 'xiaoshipin',
+				scrollEnabled : true,
+				rect : {
+					x : 0,
+					y : headerPos.h,
+					w : 'auto',
+					h : body_h - headerPos.h -  footerh,
+				},
+				index : 1,
+				frames : frames,
+				preload : 0,	// 预加载的 frame 个数，默认加载当前页后面一个
+			}, function(ret, err) {
+				win_index=ret.index
+				if(win_index==0){
+					wodeshipping()
+				}
+				active(win_index)
+			});
+		}
+		// 点击样式
+		function active(index) {
+			$api.removeCls($api.dom(".titles"), 'titles');
+			$api.addCls($api.dom('.tab' + index), 'titles');
+		}
+		
+		// 点击分类栏目时，设置 frame 组当前可见 frame
+		function randomSwitchBtn(index) {
+			api.setFrameGroupIndex({
+				name : 'xiaoshipin',
+				index : index,
+				scroll : true,	//是否平滑滚动至目标窗口，即是否带有动画
+				//reload:true,	// 刷新
+			});
+		}
+		function wodeshipping(){
+			api.execScript({
+				frameName : 'xiaoshipin_0',
+				script : 'wodeshipping()'
+			});
+		}
+		// 刷新
+		function shuaxin(){
+			$api.addCls($api.dom('.aui-active img'),'Rotation')
+			api.execScript({
+				frameName:'xiaoshipin_'+win_index,
+				script: 'shuaxin()'
+			});
+		}
+	 
+	</script>
+</html>

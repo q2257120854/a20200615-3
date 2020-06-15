@@ -1,0 +1,276 @@
+{extend name="common/world"}
+{block name="title"}{$obj.title}{/block}
+{block name="style"}
+<style>
+.goods .card .image {
+	max-height: 12.5rem;
+	overflow: hidden;
+}
+.card-content .card-body p {
+	margin-bottom: .3rem;
+}
+.card-content .card-body p:last-child {
+	margin-bottom: 0px;
+}
+</style>
+{/block}
+{block name="container"}
+<div class="row">
+	<div class="col-md-6">
+		<div class="card p-3">
+			<a href="javascript:;" class="mb-3 text-center image">
+				<img src="/upload/{$obj.image}" class="rounded" />
+			</a>
+			<div class="d-flex align-items-center px-2">
+				{notempty name="owner"}
+					<div class="avatar avatar-md mr-3" style="background-image: url({:avatar($owner.profile.avatar, $owner.profile.idcard)});"></div>
+				{else /}
+					<div class="avatar avatar-md mr-3" style="background-image: url(/static/image/icon.png);"></div>
+				{/notempty}
+				<div>
+					<div>{$obj.title}</div>
+					{elt name="obj.loop" value="1"}
+						<small class="d-block text-muted">新品上市</small>
+					{else /}
+						<small class="d-block text-muted">当前第 {$obj.loop} 轮</small>
+					{/elt}
+				</div>
+				<div class="ml-auto text-muted">
+					{notempty name="owner"}
+						<div class="mx-auto text-right">
+							<small>持有人</small>
+							<div class="text-green">{$owner.profile.nickname}</div>
+						</div>
+					{else /}
+						{notempty name="percent"}
+						<div class="d-flex" data-toggle="modal" data-target="#modal-holder">
+							<div class="ml-auto mt-2 mr-1 small">查看持有人</div>
+							<div class="mx-auto chart-circle chart-circle-xs" data-value="{$percent/100}" data-thickness="3" data-color="blue">
+		                        <div class="chart-circle-value">{$percent}%</div>
+		                    </div>
+	                    </div>
+	                    {/notempty}
+					{/notempty}
+				</div>
+			</div>
+		</div>
+		<!-- <div class="d-flex mb-3">
+			<button class="btn btn-green btn-block">立即购买</button>
+		</div> -->
+		<div class="card p-3">
+			<div class="row">
+				<div class="col text-muted text-center">
+					<div class="small">首发价</div>
+					<div class="mt-1">{$obj.base_price|money}{$Think.config.hello.unit}</div>
+				</div>
+				<div class="col text-green text-center">
+					<div class="small">当前价</div>
+					<div class="h4 mt-1 mb-0">{$obj.now_price|money}{$Think.config.hello.unit}</div>
+				</div>
+				<div class="col text-muted text-center">
+					<div class="small">下轮价</div>
+					<div class="mt-1">{:money($obj.now_price+$obj.now_price*$obj.inc)}{$Think.config.hello.unit}</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mb-3 gutters-xs">
+			<div class="col">
+				<button class="btn btn-green btn-block" data-toggle="modal" data-target="#modal-group">团购</button>
+			</div>
+			<div class="col">
+				<button class="btn btn-secondary btn-block btn-go-purchase">一口价</button>
+			</div>
+			{eq name="obj.owner" value="$Think.session.user.account.username"}
+				<div class="col">
+					<button class="btn btn-secondary btn-block btn-go-transfer">转让</button>
+				</div>
+			{/eq}
+		</div>
+		<div class="card">
+			<div class="card-title f1 pl-5 pt-5 mb-0 font-weight-bold">交易记录</div>
+			<div class="card-body">
+				<ul class="timeline mb-0">
+					{volist name="logs" id="log"}
+						<li class="timeline-item">
+							{switch log.action}
+								{case 1}
+									<div class="timeline-badge bg-red"></div>
+									<div class="d-block w-100">
+										<div class="d-flex">
+											<strong>{$log.nickname}</strong>
+											<div class="timeline-time text-muted small">{$log.date|substr=###, 0, 10}</div>
+										</div>
+										<small class="d-block text-muted-dark mt-1">一口价 ({$log.money|money|abs}{$Think.config.hello.unit}) 直接买断</small>
+									</div>
+								{/case}
+								{case 2}
+									<div class="timeline-badge bg-primary"></div>
+									<div class="d-block w-100">
+										<div class="d-flex">
+											<strong>{$log.nickname}</strong>
+											<div class="timeline-time text-muted small">{$log.date|substr=###, 0, 10}</div>
+										</div>
+										<small class="d-block text-muted-dark mt-1">团购{$log.ratio}% ({$log.money|money|abs}{$Think.config.hello.unit}) </small>
+									</div>
+								{/case}
+								{case 3}
+									<div class="timeline-badge"></div>
+									<div class="d-block w-100">
+										<div class="d-flex">
+											<strong>{$log.nickname}</strong>
+											<div class="timeline-time text-muted small">{$log.date|substr=###, 0, 10}</div>
+										</div>
+										<small class="d-block text-muted-dark mt-1">转让{$log.ratio}%给他人</small>
+									</div>
+								{/case}
+							{/switch}
+
+						</li>
+					{/volist}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="card card-content">
+			<div class="card-title f1 pl-5 pt-5 mb-0 font-weight-bold">描述介绍</div>
+			<div class="card-body">{$obj.content|raw}</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modal-group" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">团购比例</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group mb-0">
+					<label class="text-muted small form-label font-weight-light text-center mb-2">请输入您想购买的百分比</label>
+					<div class="row gutters-xs">
+						<span class="col-auto">
+							<button class="btn btn-secondary btn-jiajian" data-value="-1" type="button"><i class="fe fe-minus"></i></button>
+						</span>
+						<div class="col">
+							<div class="input-group">
+								<input type="tel" class="form-control text-center" name="percent" placeholder="最少1，最多100" value="0" />
+								<span class="input-group-append" id="basic-addon2">
+			                        <span class="input-group-text">%</span>
+			                    </span>
+							</div>
+						</div>
+						<span class="col-auto">
+							<button class="btn btn-secondary btn-jiajian" data-value="1" type="button"><i class="fe fe-plus"></i></button>
+						</span>
+					</div>
+					<div class="form-group mt-2">
+						<label class="text-muted small form-label font-weight-light text-center">请输入您的安全密码</label>
+						<input type="password" class="form-control" name="safeword" placeholder="安全密码" />
+					</div>
+					<div class="text-green text-center mt-2">您共需支付 <strong class="need_price">0</strong> {$Think.config.hello.unit}</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary btn-buy" data-percent="">确认提交</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modal-purchase" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">一口价买断</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="text-green text-center mt-2">您共需支付 <strong class="need_price">0</strong> {$Think.config.hello.unit}</div>
+				<div class="form-group mt-2">
+					<label class="text-muted small form-label font-weight-light text-center">请输入您的安全密码</label>
+					<input type="password" class="form-control" name="safeword" placeholder="安全密码" />
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary btn-buy" data-percent="100">确认提交</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modal-holder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">持有人列表</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="table-responsive">
+					<table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+						<thead>
+							<tr>
+								<th class="w-1"></th>
+								<th>昵称</th>
+								<th>轮次</th>
+								<th class="w-1">占比</th>
+							</tr>
+						</thead>
+						<tbody>
+							{volist name="holder" id="item"}
+								<tr>
+									<td><div class="avatar d-block" style="background-image: url({$item.avatar})"></div></td>
+									<td>{$item.nickname}</td>
+									<td>{$item.loop}</td>
+									<td>{$item.ratio}%</td>
+								</tr>
+							{/volist}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modal-transfer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">申请转让</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-6">
+						<div class="form-group">
+							<label class="text-muted small form-label font-weight-light">对方的手机号码</label>
+							<input type="tel" class="form-control" name="mobile" placeholder="手机号码" maxlength="11" />
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="form-group">
+							<label class="text-muted small form-label font-weight-light">您的安全密码</label>
+							<input type="password" class="form-control" name="safeword" placeholder="安全密码" />
+						</div>
+					</div>
+				</div>
+				<div class="text-green text-center">您共需支付 <strong class="need_charge">0</strong> {$Think.config.hello.unit}的手续费</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary btn-transfer">确认提交</button>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}
+{block name="script"}
+<script>
+var frame = 'goods', id = '{$obj.id}', loop = parseInt('{$obj.loop}', 10), charge = parseFloat('{$obj.charge}', 10), percent = parseInt('{$percent|default=0}', 10), now_price = parseFloat('{$obj.now_price}', 10), next_price = parseFloat('{:money($obj.now_price+$obj.now_price*$obj.inc)}', 10), holder = JSON.parse('{$holder|json_encode|raw}');
+</script>
+<script src="/static/js/contract.js"></script>
+{/block}

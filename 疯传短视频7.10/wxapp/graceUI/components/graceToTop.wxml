@@ -1,0 +1,3 @@
+<view bindtap="totop" class="grace-totop" style="bottom:{{bottom}}; background:{{background}};" wx:if="{{top>100}}">
+    <text class="totopfont icon-top" style="color:{{color}}"></text>
+</view>

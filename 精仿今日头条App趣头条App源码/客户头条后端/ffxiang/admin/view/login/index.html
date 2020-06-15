@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+ {include file="public/css" /}
+<style type="text/css">
+
+.background{
+    position:absolute;overflow: hidden;z-index: -10;
+    background-size: cover;pointer-events: none;;
+    width:100%;height: 100%;
+    right: 0px;top: 0px; bottom: 0px;left: 0px;
+}
+#yzm{ padding:0px; }
+#yzm img{ height: 30px; cursor:pointer;}
+.loginbox{
+    box-shadow: 0px 20px 60px rgba(0,0,0,0.4),0px 0px 150px rgba(0,0,0,0.4);
+    width:428px !important;
+    border-radius:4px;padding-bottom: 30px;
+    background: rgba(255,255,255,0.9);background: #fff \9;
+    position:absolute;top:46%;left:50%;margin-top:-209px;margin-left: -214px;
+ 
+    padding-top: 0px
+}
+.asdasd{
+    padding:20px;
+}
+.logo-name{ color:#1ab394; margin-top: 0px;  }
+.middle-box h1{font-size: 100px }
+</style>        
+    <script>if(window.top !== window.self){ window.top.location = window.location;}</script>
+</head>
+
+<body class="gray-bg">
+<img class="background" src="http://img.infinitynewtab.com/wallpaper/{:rand(1,3999);}.jpg" />
+    <div class="middle-box text-center loginscreen  animated fadeInDown loginbox">
+        <div class="asdasd">
+
+            <h3>欢迎使用后台系统</h3>
+
+            <form class="m-t" role="form" action="" onSubmit="return false;">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name" placeholder="请输入用户名" />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="请输入密码" />
+                </div>
+                <div class="form-group">
+                    <div class="input-group m-b"> 
+                        <input name="yzm" type="text" class="form-control" placeholder="请输入验证码">
+                     <span id="yzm" class="input-group-addon"><img id="Img" onClick="reImg()" src="{:captcha_src()}" /></span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b" id="button">登 录</button>
+            </form>
+        </div>
+        Copyright &copy; 2013-2018 <a href="http://bbs.52jscn.com/" target="_blank">xxx网络</a> 版权所有 <a href="http://bbs.52jscn.com/" target="_blank">技术支持</a>
+    </div>
+    {include file="public/js" /}
+    {load href="__PLUGINS__sweetalert/sweetalert.css"}
+    {load href="__PLUGINS__sweetalert/sweetalert.min.js"}
+    {load href="__PLUGINS__layer/layer.js"}
+    {load href="__JS__ffxiangIndex.js"}
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#button").click(function(){
+        loading("#button")
+        ajaxFun("POST","",$(".m-t").serialize(),"json",function(ret){
+            if(ret){
+                var msg='错误提示';
+                if(ret.ret){
+                    msg=ret.ret;
+                    setTimeout(jumurl,500);
+                    loading("#button",ret.ret)
+                    return false;
+                }else if(ret.err){
+                    msg=ret.err;
+                }else{
+                   swal_msg("错误",ret,"error");
+                }
+                reImg();// 错误刷新验证码
+                layer.msg(msg)
+            }else{
+                swal_msg("错误",ret,"error");
+            }
+            loadingClose("#button","登录")
+            
+        });
+    });
+});
+function jumurl(){
+    window.location.href = '{:url("index/index")}';
+}
+function reImg(){  
+    var img = document.getElementById("Img"); 
+    img.src = "{:captcha_src()}";  
+}  
+</script>

@@ -1,0 +1,191 @@
+ {include file="public/header" /}
+ <style>h2{ text-align: center; }hr{border-top: 20px solid #eee}</style>
+ <body class="gray-bg">
+    <div class="wrapper wrapper-content {:config('adminClass.main')}">
+        <div class="row">
+            <div class="col-sm-12">
+                {include file="public/tophead"}
+                {include file="public/top" /}
+                <div class="ibox-content">
+                {include file="public/topsection"}
+                    
+                    <form class="form-horizontal" method="post">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">宝箱时间：</label>
+                            <div class="col-sm-9">
+                                <input name="baoxiang" type="text" class="form-control" value="{$cfg.baoxiang}">
+                                <span class="help-block m-b-none">设置：240 表示每240分钟领取宝箱(240分钟=4小时)</span>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">随机奖励(无徒弟)：</label>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <input type="text" name="baoxiang_l" class="form-control" value="{$cfg.baoxiang_l}">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" name="baoxiang_r" class="form-control" value="{$cfg.baoxiang_r}">
+                                    </div>
+                                </div>
+                                <span class="help-block m-b-none">没有徒弟的奖励，宝箱随机奖励金币，一般新用户注册合适使用</span>
+                            </div>
+                        </div>
+                        <h2>(1-5有徒弟注意排序，从低到高，不可以打乱)</h2>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">随机奖励(1有徒弟)：</label>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <input type="text" name="baoxiang_tudi_1" class="form-control" value="{$cfg.baoxiang_tudi_1}">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" name="baoxiang_tudi_1_money" class="form-control" value="{$cfg.baoxiang_tudi_1_money}">
+                                    </div> 
+                                   
+                                </div> <span class="help-block m-b-none">左边输入1，右边输入10。结果是：有1个徒弟以上，奖励1-10金币</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">随机奖励(2有徒弟)：</label>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <input type="text" name="baoxiang_tudi_2" class="form-control" value="{$cfg.baoxiang_tudi_2}">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" name="baoxiang_tudi_2_money" class="form-control" value="{$cfg.baoxiang_tudi_2_money}">
+                                    </div> 
+                                    
+                                </div><span class="help-block m-b-none">左边输入10，右边输入30。结果是：有10个徒弟以上，奖励1-30金币</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">随机奖励(3有徒弟)：</label>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <input type="text" name="baoxiang_tudi_3" class="form-control" value="{$cfg.baoxiang_tudi_3}">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" name="baoxiang_tudi_3_money" class="form-control" value="{$cfg.baoxiang_tudi_3_money}">
+                                    </div> 
+                                    
+                                </div><span class="help-block m-b-none">左边输入20，右边输入50。结果是：有20个徒弟以上，奖励1-50金币</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">随机奖励(4有徒弟)：</label>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <input type="text" name="baoxiang_tudi_4" class="form-control" value="{$cfg.baoxiang_tudi_4}">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" name="baoxiang_tudi_4_money" class="form-control" value="{$cfg.baoxiang_tudi_4_money}">
+                                    </div> 
+                                    
+                                </div><span class="help-block m-b-none">左边输入50，右边输入200。结果是：有50个徒弟以上，奖励1-200金币</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">随机奖励(5有徒弟)：</label>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <input type="text" name="baoxiang_tudi_5" class="form-control" value="{$cfg.baoxiang_tudi_5}">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" name="baoxiang_tudi_5_money" class="form-control" value="{$cfg.baoxiang_tudi_5_money}">
+                                    </div> 
+                                     
+                                </div>
+                                <span class="help-block m-b-none">左边输入100，右边输入500。结果是：有100个徒弟以上，奖励1-500金币</span>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">宝箱内容：</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" name="baoxiang_fenxiang" rows="3">{$cfg.baoxiang_fenxiang}</textarea>
+                                <span class="help-block m-b-none">打开宝箱后弹出下面介绍内容</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">问卷调查奖励：</label>
+                            <div class="col-sm-9">
+                                <input name="diaocha" type="text" class="form-control" value="{$cfg.diaocha}">
+                                <span class="help-block m-b-none">每个用户奖励1次</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">签到第1天：</label>
+                            <div class="col-sm-9">
+                                <input name="qiandao_1" type="text" class="form-control" value="{$cfg.qiandao_1}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">签到第2天：</label>
+                            <div class="col-sm-9">
+                                <input name="qiandao_2" type="text" class="form-control" value="{$cfg.qiandao_2}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">签到第3天：</label>
+                            <div class="col-sm-9">
+                                <input name="qiandao_3" type="text" class="form-control" value="{$cfg.qiandao_3}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">签到第4天：</label>
+                            <div class="col-sm-9">
+                                <input name="qiandao_4" type="text" class="form-control" value="{$cfg.qiandao_4}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">签到第5天：</label>
+                            <div class="col-sm-9">
+                                <input name="qiandao_5" type="text" class="form-control" value="{$cfg.qiandao_5}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">签到第6天：</label>
+                            <div class="col-sm-9">
+                                <input name="qiandao_6" type="text" class="form-control" value="{$cfg.qiandao_6}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">签到第7天：</label>
+                            <div class="col-sm-9">
+                                <input name="qiandao_7" type="text" class="form-control" value="{$cfg.qiandao_7}">
+                                <span class="help-block m-b-none">签到中途断了从1天开始。第8天以上按照7天奖励</span>
+                            </div>
+                        </div>
+                        
+                         
+                    </form>
+                </div>
+            </div>
+        </div> 
+    </div>
+{include file="public/footer" /}
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+<script type="text/javascript">
+$(document).ready(function(){
+     $(".i-checks").iCheck({
+        checkboxClass: "icheckbox_square-green",
+        radioClass: "iradio_square-green",
+    })
+})
+function msg(){
+    layer.msg("上传成功")
+}
+
+</script>
+{include file="public/bottom" /}<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

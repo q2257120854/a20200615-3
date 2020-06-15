@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>APP</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<style type="text/css">
+		</style>
+	</head>
+	<body></body>
+	<script type="text/javascript" src="../script/api.js" ></script>
+	<script type="text/javascript" src="../script/ffxiang.js" ></script>
+	<script type="text/javascript">
+		var photoBrowser,index;
+		apiready = function() {
+			photoBrowser = api.require('photoBrowser');
+			img()
+			api.parseTapmode();
+		}
+		function img() {
+			var num = false;
+			photoBrowser.open({
+				images : api.pageParam['images'],
+				//				placeholderImg : _image+'load-img.png',
+				bgColor : '#000',
+				activeIndex : api.pageParam['index'],
+			}, function(ret, err) {
+				//_msg(JSON.stringify(ret))
+				index=ret.index
+				//console.log(JSON.stringify(ret))
+				if (ret.eventType == 'show') {
+					api.openFrame({
+						name : 'view_photo_foot',
+						url : html_win+'view_photo_foot.html',
+						rect : {
+							x : 0,
+							y : api.winHeight - 50,
+							w : 'auto',
+							h : 50
+						},
+						pageParam : {
+							num : (ret.index + 1) + "/" + api.pageParam['images'].length,
+						},
+						bgColor : 'rgba(0,0,0,0.0)',
+					});
+				}
+				// 滑动图片 更新统计图片数量
+				if (ret.eventType == 'change') {
+					var num = parseInt(ret.index + 1)
+					num=num+ "/" + api.pageParam['images'].length;
+					var ffxiang = 'ffxiang("' + num + '");';
+					api.execScript({
+						frameName : 'view_photo_foot',
+						script : ffxiang
+					});
+				}
+				// 点击图片关闭
+				if (ret.eventType == 'click') {
+					_close(3);
+				}
+				if (ret) {
+					//alert(JSON.stringify(ret));
+				} else {
+					//alert(JSON.stringify(err));
+				}
+			});
+		}
+
+		function baocun() {
+			photoBrowser.getImage({
+				index : index
+			}, function(ret_getImage, err_getImage) {
+				if (ret_getImage) {
+					api.saveMediaToAlbum({
+						path : ret_getImage.path
+					}, function(ret_saveImage, err_saveImage) {
+						if (ret_saveImage && ret_saveImage.status) {
+							_msg('图片保存成功')
+						}
+					});
+				}
+			});
+		}
+	</script>
+</html>
+

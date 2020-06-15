@@ -1,0 +1,80 @@
+{extend name="common/world"}
+{block name="title"}每日行情{/block}
+{block name="style"}{/block}
+{block name="container"}
+<div class="row">
+	<div class="col-sm-3">
+		<div class="card">
+			<div class="card-body">
+				<form action="/admin/market/set" method="post">
+					<div class="form-group">
+	                    <label class="form-label">具体日期</label>
+	                    <input type="date" class="form-control" name="date" />
+	                </div>
+	                <div class="form-group">
+	                    <label class="form-label">指导价格</label>
+	                    <input type="text" class="form-control" name="price" placeholder="限制用户买入卖出价格" />
+	                </div>
+	                <div class="form-group">
+	                    <label class="form-label">最高价格</label>
+	                    <input type="text" class="form-control" name="high" placeholder="选填，默认同指导价格" />
+	                </div>
+	                <div class="form-group">
+	                    <label class="form-label">最低价格</label>
+	                    <input type="text" class="form-control" name="low" placeholder="选填，默认同指导价格" />
+	                </div>
+	                <div class="text-right">
+	                	<button class="btn btn-primary" type="submit">立即设置</button>
+	                </div>
+                </form>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-9">
+		<div class="card">
+			<div class="table-responsive">
+			    <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+			        <thead>
+			            <tr>
+			                <th class="text-center w-1"><i class="icon-people"></i></th>
+			                <th>价格</th>
+			                <th>最高</th>
+			                <th>最低</th>
+			                <th>买入</th>
+			                <th>卖出</th>
+			                <th>成交</th>
+			                <th>手续费</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			        	{volist name="markets" id="market"}
+			            <tr>
+			                <td>{$market.date}</td>
+			                <td>{$market.price|money}</td>
+			                <td>{$market.high|money}</td>
+			                <td>{$market.low|money}</td>
+			                <td>
+			                    <div>{$market.buy_count}</div>
+			                    <div class="small text-muted">{$market.buy_money|money}</div>
+			                </td>
+			                <td>
+			                    <div>{$market.sell_count}</div>
+			                    <div class="small text-muted">{$market.sell_money|money}</div>
+			                </td>
+			                <td>
+			                    <div>{$market.success_count}</div>
+			                    <div class="small text-muted">{$market.success_money|money}</div>
+			                </td>
+			                <td>{$market.charge|money}</td>
+			            </tr>
+			            {/volist}
+			        </tbody>
+			    </table>
+			</div>
+			<div class="card-footer">{$markets|raw}</div>
+		</div>
+	</div>
+</div>
+
+{/block}
+{block name="script"} {/block}

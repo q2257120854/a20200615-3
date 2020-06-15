@@ -1,0 +1,198 @@
+ {include file="public/header" /}
+ <body class="gray-bg">
+    <div class="wrapper wrapper-content {:config('adminClass.main')}">
+        <div class="row">
+            <div class="col-sm-12">
+                {include file="public/tophead"}
+                {include file="public/top" /}
+                <div class="ibox-content">
+                {include file="public/topsection"}
+                    <form class="form-horizontal" method="post">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">网址：</label>
+                            <div class="col-sm-9">
+                                <input name="url" type="text" class="form-control" value="{$cfg.url}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">网站标题：</label>
+                            <div class="col-sm-9">
+                                <input name="title" type="text" class="form-control" value="{$cfg.title}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">短名称：</label>
+                            <div class="col-sm-9">
+                                <input name="dtitle" type="text" class="form-control" value="{$cfg.dtitle}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">LGOO图标：</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <input name="logo" type="text" id="image" class="form-control" value="{$cfg.logo}">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-primary" id="tubiao">上传图标</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">关键词：</label>
+                            <div class="col-sm-9">
+                                <input name="keywords" type="text" class="form-control" value="{$cfg.keywords}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">描述：</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" name="description" rows="4">{$cfg.description}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">电话：</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="phone" class="form-control" value="{$cfg.phone}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Q  Q：</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="qq" class="form-control" value="{$cfg.qq}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">底部信息：</label>
+                            <div class="col-sm-9">
+                                <script type="text/plain" id="content" name="copyright" style="width:100%;height:240px;">{$cfg.copyright}</script>
+                            </div>
+                        </div>
+						
+						
+						
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">网站开关：</label>
+                            <div class="col-sm-9">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="1" name="switch" {php}if($cfg['switch']==1){echo 'checked';}{/php}>开启
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="0" name="switch" {php}if($cfg['switch']==0){echo 'checked';}{/php}>关闭
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+						
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">贴吧自动审核：</label>
+                            <div class="col-sm-9">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="1" name="tieba_switch" {php}if($cfg['tieba_switch']==1){echo 'checked';}{/php}>开启
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="0" name="tieba_switch" {php}if($cfg['tieba_switch']==0){echo 'checked';}{/php}>关闭
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">置顶自动审核：</label>
+                            <div class="col-sm-9">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="1" name="tieba_zhiding_switch" {php}if($cfg['tieba_zhiding_switch']==1){echo 'checked';}{/php}>开启
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="2" name="tieba_zhiding_switch" {php}if($cfg['tieba_zhiding_switch']==0){echo 'checked';}{/php}>关闭
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+						
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">贴子自动审核：</label>
+                            <div class="col-sm-9">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="1" name="tiezi_switch" {php}if($cfg['tiezi_switch']==1){echo 'checked';}{/php}>开启
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="0" name="tiezi_switch" {php}if($cfg['tiezi_switch']==0){echo 'checked';}{/php}>关闭
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+						
+						 <div class="form-group">
+                            <label class="col-sm-2 control-label">用户可创建贴吧数：</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="tieba_limit" class="form-control" value="{$cfg.tieba_limit}">
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">微头条自动审核：</label>
+                            <div class="col-sm-9">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="1" name="weitoutiao_switch" {php}if($cfg['weitoutiao_switch']==1){echo 'checked';}{/php}>开启
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="0" name="weitoutiao_switch" {php}if($cfg['weitoutiao_switch']==0){echo 'checked';}{/php}>关闭
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+						
+						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">推荐贴吧数量：</label>
+                            <div class="col-sm-9">
+                                <input type="text"  name="tuijian_tieba_limit" class="form-control" value="{$cfg.tuijian_tieba_limit}">
+                            </div>
+                        </div>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">关注贴吧数量：</label>
+                            <div class="col-sm-9">
+                                <input type="text"  name="guanzhu_tieba_limit" class="form-control" value="{$cfg.guanzhu_tieba_limit}">
+                            </div>
+                        </div>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">最新贴吧数量：</label>
+                            <div class="col-sm-9">
+                                <input type="text"  name="zuixin_tieba_limit" class="form-control" value="{$cfg.zuixin_tieba_limit}">
+                            </div>
+                        </div>
+						
+						
+                    </form>
+                </div>
+            </div>
+        </div> 
+    </div>
+{include file="public/footer" /}
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+<script type="text/javascript">
+$(document).ready(function(){
+     $(".i-checks").iCheck({
+        checkboxClass: "icheckbox_square-green",
+        radioClass: "iradio_square-green",
+    })
+})
+function msg(){
+    layer.msg("上传成功")
+}
+
+</script>
+{include file="public/bottom" /}
+<!-- 加载编辑器的容器 -->
+{:ueditor()}<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

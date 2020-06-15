@@ -1,0 +1,183 @@
+{extend name="common/world"}
+{block name="title"}商城订单{/block}
+{block name="style"}{/block}
+{block name="container"}
+<form method="get" class="">
+	<div class="row">
+		<div class="col-md-6 col-lg-3 mb-3">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">状态</span>
+				</div>
+				<select class="custom-select input-group-text" name="status">
+					<option value="">全部</option>
+					{volist name="statuses" id="status"}
+						{if is_null($Think.get.status) || $Think.get.status == ''}
+							<option value="{$key}">{$status}</option>
+						{else /}
+							{eq name="Think.get.status" value="$key"}
+								<option selected="true" value="{$key}">{$status}</option>
+							{else /}
+								<option value="{$key}">{$status}</option>
+							{/eq}
+						{/if}
+					{/volist}
+			    </select>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-3 mb-3">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">商品类型</span>
+				</div>
+				<select class="custom-select input-group-text" name="catalog">
+					<option value="">全部</option>
+					{volist name="Think.config.hello.store.catalog" id="catalog"}
+						{if is_null($Think.get.catalog) || $Think.get.catalog == ''}
+							<option value="{$key}">{$catalog}</option>
+						{else /}
+							{eq name="Think.get.catalog" value="$key"}
+								<option selected="true" value="{$key}">{$catalog}</option>
+							{else /}
+								<option value="{$key}">{$catalog}</option>
+							{/eq}
+						{/if}
+					{/volist}
+			    </select>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-3 mb-3">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">具体商品</span>
+				</div>
+				<select class="custom-select input-group-text" name="product">
+					<option value="">全部</option>
+					{volist name="products" id="item"}
+						{if is_null($Think.get.product) || $Think.get.product == ''}
+							<option value="{$item.id}">{$item.title}</option>
+						{else /}
+							{eq name="Think.get.product" value="$item.id"}
+								<option selected="true" value="{$item.id}">{$item.title}</option>
+							{else /}
+								<option value="{$item.id}">{$item.title}</option>
+							{/eq}
+						{/if}
+					{/volist}
+			    </select>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-3 mb-3">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">用户账号</span>
+				</div>
+				<input type="text" class="form-control" name="username" value="{$Think.get.username}" />
+			</div>
+		</div>
+		<div class="col-lg-2 mb-3">
+			<button class="btn btn-primary w-100" type="submit">立即查询</button>
+		</div>
+	</div>
+</form>
+<div class="card">
+	<div class="table-responsive">
+	    <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+	        <thead>
+	            <tr>
+	                <th>用户</th>
+	                <th>状态</th>
+	                <th>类目</th>
+	                <th>商品</th>
+	                <th>收货信息</th>
+	                <th>发货信息</th>
+	                <th>时间</th>
+	                <th>操作</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+			{volist name="logs" id="log"}
+				<tr>
+					<td>
+						<div class="mb-1"><span class="tag tag-azure">买家</span> {$log.buyer}</div>
+						<div><span class="tag tag-blue">卖家</span> {$log.seller|default="官方"}</div>
+					</td>
+					<td>
+						{switch log.status}
+							{case 1}
+								<span class="status-icon bg-success"></span> <small>交易成功</small>
+							{/case}
+							{case 2}
+								<span class="status-icon bg-warning"></span> <small>待发货</small>
+							{/case}
+							{case 3}
+								<span class="status-icon bg-warning"></span> <small>待确认</small>
+							{/case}
+							{case 0}
+								<span class="status-icon bg-danger"></span> <small>失败</small>
+							{/case}
+						{/switch}
+					</td>
+					<td>{$Think.config.hello.store.catalog[$log.catalog]}</td>
+					<td>{$log.title}</td>
+					<td>
+						{notempty name="log.address"}
+							<div>{$log.address.name} {$log.address.mobile}</div>
+							<div>{$log.address.province}{$log.address.city}{$log.address.county}{$log.address.address}</div>
+							{notempty name="log.address.remark"}
+							<div>{$log.address.remark}</div>
+							{/notempty}
+						{/notempty}
+					</td>
+					<td>{$log.express}</td>
+					<td>{$log.date}</td>
+					<td>
+						{eq name="log.status" value="2"}
+							<button class="btn btn-secondary btn-sm btn-shipped" data-id="{$log.oid}">发货</button>
+						{/eq}
+						<a class="btn btn-secondary btn-sm" href="/admin/store/removeOrder?oid={$log.oid}" onclick="return confirm('确定要删除吗？');">删除</a>
+					</td>
+				</tr>
+			{/volist}
+	        </tbody>
+	    </table>
+	</div>
+	<div class="card-footer">{$logs|raw}</div>
+</div>
+<div class="modal modal-shipped" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content" style="margin-top: -100px;">
+			<form method="post" action="/admin/store/shipped">
+				<input type="hidden" name="oid" />
+				<div class="modal-header">
+					<h5 class="modal-title">发货信息</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<textarea name="send" class="form-control" cols="30" rows="5" placeholder="填写快递公司和单号或其他信息"></textarea>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+					<button type="submit" class="btn btn-primary btn-shipped-post">立即发货</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+require(['jquery'], function($){
+	$(function(){
+		$('.btn-shipped').on('click', function(){
+			window.oid = $(this).data('id');
+			$('.modal-shipped input[name=oid]').val(oid);
+			$('.modal-shipped').modal();
+		});
+	});
+});
+</script>
+{/block}

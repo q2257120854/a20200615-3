@@ -1,0 +1,241 @@
+ {include file="public/header" /}
+ <body class="gray-bg">
+    <div class="wrapper wrapper-content {:config('adminClass.main')}">
+        <div class="row">
+            <div class="col-sm-12">
+                {include file="public/tophead"}
+                {include file="public/top" /}
+                <div class="ibox-content">
+                {include file="public/topsection"}
+                    <form class="form-horizontal" method="post">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.switch.title}：</label>
+                            <div class="col-sm-9">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="1" name="{$cfg.switch.name}" {php}if($cfg['switch']['text']==1){echo 'checked';}{/php}>开启
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="0" name="{$cfg.switch.name}" {php}if($cfg['switch']['text']==0){echo 'checked';}{/php}>关闭
+                                    </label>
+                                    <span class="help-block m-b-none">{$cfg.switch.content}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.reguser.title}：</label>
+                            <div class="col-sm-9">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="1" name="{$cfg.reguser.name}" {php}if($cfg['reguser']['text']==1){echo 'checked';}{/php}>开启
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="0" name="{$cfg.reguser.name}" {php}if($cfg['reguser']['text']==0){echo 'checked';}{/php}>关闭
+                                    </label>
+                                    <span class="help-block m-b-none">{$cfg.reguser.content}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.regmobile.title}：</label>
+                            <div class="col-sm-9">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="1" name="{$cfg.regmobile.name}" {php}if($cfg['regmobile']['text']==1){echo 'checked';}{/php}>开启
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="0" name="{$cfg.regmobile.name}" {php}if($cfg['regmobile']['text']==0){echo 'checked';}{/php}>关闭
+                                    </label>
+                                    <span class="help-block m-b-none">{$cfg.regmobile.content}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.regemail.title}：</label>
+                            <div class="col-sm-9">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="1" name="{$cfg.regemail.name}" {php}if($cfg['regemail']['text']==1){echo 'checked';}{/php}>开启
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="0" name="{$cfg.regemail.name}" {php}if($cfg['regemail']['text']==0){echo 'checked';}{/php}>关闭
+                                    </label>
+                                    <span class="help-block m-b-none">{$cfg.regemail.content}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.audit.title}：</label>
+                            <div class="col-sm-9">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="1" name="{$cfg.audit.name}" {php}if($cfg['audit']['text']==1){echo 'checked';}{/php}>开启
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="0" name="{$cfg.audit.name}" {php}if($cfg['audit']['text']==0){echo 'checked';}{/php}>关闭
+                                    </label>
+                                    <span class="help-block m-b-none">{$cfg.audit.content}</span>
+                                </div>
+                            </div>
+                        </div><hr />
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.logincode.title}：</label>
+                            <div class="col-sm-9">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="1" name="{$cfg.logincode.name}" {php}if($cfg['logincode']['text']==1){echo 'checked';}{/php}>开启
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="0" name="{$cfg.logincode.name}" {php}if($cfg['logincode']['text']==0){echo 'checked';}{/php}>关闭
+                                    </label>
+                                    <span class="help-block m-b-none">{$cfg.logincode.content}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.regcode.title}：</label>
+                            <div class="col-sm-9">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="1" name="{$cfg.regcode.name}" {php}if($cfg['regcode']['text']==1){echo 'checked';}{/php}>开启
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="0" name="{$cfg.regcode.name}" {php}if($cfg['regcode']['text']==0){echo 'checked';}{/php}>关闭
+                                    </label>
+                                    <span class="help-block m-b-none">{$cfg.regcode.content}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.pwdcode.title}：</label>
+                            <div class="col-sm-9">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="1" name="{$cfg.pwdcode.name}" {php}if($cfg['pwdcode']['text']==1){echo 'checked';}{/php}>开启
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="0" name="{$cfg.pwdcode.name}" {php}if($cfg['pwdcode']['text']==0){echo 'checked';}{/php}>关闭
+                                    </label>
+                                    <span class="help-block m-b-none">{$cfg.pwdcode.content}</span>
+                                </div>
+                            </div>
+                        </div><hr />
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.ip.title}：</label>
+                            <div class="col-sm-5">
+                                <input name="{$cfg.ip.name}" onkeyup="value=value.replace(/\D/g,'')" type="text" class="form-control" value="{$cfg.ip.text}">
+                                <span class="help-block m-b-none">{$cfg.ip.content}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.ban.title}：</label>
+                            <div class="col-sm-5">
+                                <textarea class="form-control" name="{$cfg.ban.name}" rows="4">{$cfg.ban.text}</textarea>
+                                <span class="help-block m-b-none">{$cfg.ban.content}</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.money.title}：</label>
+                            <div class="col-sm-5">
+                                <input onkeyup="value=value.replace(/\D/g,'')" name="{$cfg.money.name}" type="text" class="form-control" value="{$cfg.money.text}">
+                                <span class="help-block m-b-none">{$cfg.money.content}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.score.title}：</label>
+                            <div class="col-sm-5">
+                                <input onkeyup="value=value.replace(/\D/g,'')" name="{$cfg.score.name}" type="text" class="form-control" value="{$cfg.score.text}">
+                                <span class="help-block m-b-none">{$cfg.score.content}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.jingyan.title}：</label>
+                            <div class="col-sm-5">
+                                <input onkeyup="value=value.replace(/\D/g,'')" name="{$cfg.jingyan.name}" type="text" class="form-control" value="{$cfg.jingyan.text}">
+                                <span class="help-block m-b-none">{$cfg.jingyan.content}</span>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.articleAdd.title}：</label>
+                            <div class="col-sm-5">
+                                <select class="form-control" name="{$cfg.articleAdd.name}">
+                                    <option value="1" {eq name='cfg.articleAdd.text' value='1'}selected{/eq}>开启投稿</option>
+                                    <option value="-1" {eq name='cfg.articleAdd.text' value='-1'}selected{/eq}>关闭投稿</option>
+                                </select>
+                                <span class="help-block m-b-none">{$cfg.articleAdd.content}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.articleHide.title}：</label>
+                            <div class="col-sm-5">
+                                <select class="form-control" name="{$cfg.articleHide.name}">
+                                    <option value="1" {eq name='cfg.articleHide.text' value='1'}selected{/eq}>开启审核</option>
+                                    <option value="-1" {eq name='cfg.articleHide.text' value='-1'}selected{/eq}>关闭审核</option>
+                                </select>
+                                <span class="help-block m-b-none">{$cfg.articleHide.content}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.articleMoney.title}：</label>
+                            <div class="col-sm-5">
+                                <input onkeyup="value=value.replace(/\D/g,'')" name="{$cfg.articleMoney.name}" type="text" class="form-control" value="{$cfg.articleMoney.text}">
+                                <span class="help-block m-b-none">{$cfg.articleMoney.content}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.articleScore.title}：</label>
+                            <div class="col-sm-5">
+                                <input onkeyup="value=value.replace(/\D/g,'')" name="{$cfg.articleScore.name}" type="text" class="form-control" value="{$cfg.articleScore.text}">
+                                <span class="help-block m-b-none">{$cfg.articleScore.content}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.articleJingyan.title}：</label>
+                            <div class="col-sm-5">
+                                <input onkeyup="value=value.replace(/\D/g,'')" name="{$cfg.articleJingyan.name}" type="text" class="form-control" value="{$cfg.articleJingyan.text}">
+                                <span class="help-block m-b-none">{$cfg.articleJingyan.content}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.articleNum.title}：</label>
+                            <div class="col-sm-5">
+                                <input onkeyup="value=value.replace(/\D/g,'')" name="{$cfg.articleNum.name}" type="text" class="form-control" value="{$cfg.articleNum.text}">
+                                <span class="help-block m-b-none">{$cfg.articleNum.content}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{$cfg.articleCode.title}：</label>
+                            <div class="col-sm-5">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="1" name="{$cfg.articleCode.name}" {php}if($cfg['articleCode']['text']==1){echo 'checked';}{/php}>开启
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="0" name="{$cfg.articleCode.name}" {php}if($cfg['articleCode']['text']==0){echo 'checked';}{/php}>关闭
+                                    </label>
+                                    <span class="help-block m-b-none">{$cfg.articleCode.content}</span>
+                                </div>
+                            </div>
+                        </div>
+                         
+                    </form>
+                </div>
+            </div>
+        </div> 
+    </div>
+{include file="public/footer" /}
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+<script type="text/javascript">
+$(document).ready(function(){
+     $(".i-checks").iCheck({
+        checkboxClass: "icheckbox_square-green",
+        radioClass: "iradio_square-green",
+    })
+})
+</script>
+{include file="public/bottom" /}<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

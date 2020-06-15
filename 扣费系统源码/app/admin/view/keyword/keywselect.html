@@ -1,0 +1,336 @@
+<form id="addkeyword">
+	<div class="box">
+
+		<div class="box-header">
+
+			<div class="row animated fadeInRight">
+
+				<div class="content">
+					<style>
+						.profile-avatar-container {
+							position: relative;
+							width: 100px;
+						}
+						
+						.profile-avatar-container .profile-user-img {
+							width: 100px;
+							height: 100px;
+						}
+						
+						.profile-avatar-container .profile-avatar-text {
+							display: none;
+						}
+						
+						.profile-avatar-container:hover .profile-avatar-text {
+							display: block;
+							position: absolute;
+							height: 100px;
+							width: 100px;
+							background: #444;
+							opacity: .6;
+							color: #fff;
+							top: 0;
+							left: 0;
+							line-height: 100px;
+							text-align: center;
+						}
+						
+						.profile-avatar-container button {
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100px;
+							height: 100px;
+							opacity: 0;
+						}
+						/*    .box-success{border-top-color:#ffffff!important}*/
+					</style>
+					<div class="row animated fadeInRight">
+						<div class="col-md-4">
+							<div class="box box-success">
+								<!-- <div class="panel-heading">
+                添加任务
+            </div> -->
+								<div class="panel-body">
+									
+										<div class="box-body box-profile">
+
+											<div class="form-group has-success">
+												<label class="control-label" style='color:#000000'>关键词:</label>
+												<textarea class="form-control" style="color:#000000!important" id="keyword" name="keyword" rows="16" placeholder="请输入你要优化的关键字,多个关键字请换行隔开"></textarea>
+												<span>单次查询不得超过10个</span>
+											</div>
+
+											<div class="form-group normal-footer text-center">
+												<button type="button" class="btn btn-info btn-checkprice" id="btn">价格查询</button>
+												<button type="reset" class="btn btn-default btn-embossed">重置</button>
+											</div>
+										</div>
+								
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-8" id="pricelist">
+							<div class="panel panel-default panel-intro panel-nav">
+								<div class="panel-heading">
+									<ul class="nav nav-tabs">
+										<li class="active">
+											<a href="#one" data-toggle="tab"><i class="fa fa-handshake-o"></i> 查询结果</a>
+										</li>
+									</ul>
+								</div>
+								<div class="panel-body" style="padding:0">
+									<div id="myTabContent" class="tab-content">
+
+										<table id="table" class="table table-striped table-bordered table-hover table-nowrap" width="100%" style="margin:0">
+											<thead>
+												<tr>
+													<th class="text-center" id="clown">				
+															<a id="ck" onclick="checkAll(this)" >全选</a>		
+															<a id="qx" onclick="checkAll2(this)">取消全选</a>
+													</th>
+													<th class="text-center">关键词<br />价格</th>
+													<th class="text-center">百度<br />第一页/第二页</th>
+													<th class="text-center">百度移动<br />第一页/第二页</th>
+													<th class="text-center">搜狗<br />第一页/第二页</th>
+													<th class="text-center">搜狗移动<br />第一页/第二页</th>
+													<th class="text-center">360<br />第一页/第二页</th>
+													<th class="text-center">360移动<br />第一页/第二页</th>
+													<th class="text-center">神马<br />第一页/第二页</th>
+												</tr>
+
+											</thead>
+											<tbody class="lists" id="tbod">
+													
+											
+											</tbody>
+											
+										</table>
+
+									</div>
+								</div>
+							</div>
+							<script>
+							
+						</script>
+							<div style="height: 15px;"></div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>请选择您要优化的搜索引擎</label>
+									<div class="engine_input">
+										<div>
+											<input type="checkbox" name="search_engine[]" value='baidupc' checked="" />
+											<span class='ziti'>百度PC&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										</div>
+										<div>
+											<input type="checkbox" name="search_engine[]" value='baidumobile' />
+											<span class='ziti'>百度移动&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										</div>
+										<div>
+											<input type="checkbox" name="search_engine[]" value='360pc' />
+											<span class='ziti'>360&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										</div>
+										<div>
+											<input type="checkbox" name="search_engine[]" value='360mobile' />
+											<span class='ziti'>360移动&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										</div>
+										<div>
+											<input type="checkbox" name="search_engine[]" value='sogoupc' />
+											<span class='ziti'>搜狗PC&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										</div>
+										<div>
+											<input type="checkbox" name="search_engine[]" value='sogoumobile' />
+											<span class='ziti'>搜狗移动&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										</div>
+										<div>
+											<input type="checkbox" name="search_engine[]" value='smmobile' />
+											<span class='ziti'>神马</span>
+										</div>
+				
+										
+										
+										
+										
+									</div>
+
+								</div>
+
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>请选择您要优化的网站</label>
+									<div>
+										{notempty name='weblist'}
+											<select name="web_name" class="form-control">
+												{volist name='weblist' id='vo'}
+													<option value="{$vo.id}">{$vo.url}</option>
+												{/volist}
+											</select>
+										{else/}
+											<select name="web_name" class="form-control">
+												<option value="">你还没有网站哦,请先添加网站</option>
+												
+											</select>
+										{/notempty}
+									</div>
+
+								</div>
+							</div>
+							<div class='col-md-12'>
+								<div class="col-md-4">
+									<button type="button" class="btn btn-info btn-checkprice" id="keybtn">添加关键词</button>
+									
+								</div>
+								<div class='col-md-8'>
+									<label class="tishi">(友情提示:该网站下已经添加的关键词是不会重复添加的哦!)</label>
+								</div>
+							</div>
+						</div>
+					</div>
+</form>
+
+<div style="clear: both;"></div>
+					<style>
+						.tishi{color:red;margin-top: 10px;}
+						.engine_input{height: 34px;}
+						.engine_input div{float: left;margin-top: 6px;}
+						.engine_input div>input{width:15px;height: 15px;float: left;}
+						.ziti{display: block;float: left;font-size: 14px;font-weight: 700;margin-top: 2px;font-size: 12px;}
+						#pricelist {
+							display: none;
+						}
+						
+						.form-layer {
+							height: 100%;
+							min-height: 150px;
+							min-width: 300px;
+						}
+						
+						.form-body {
+							width: 100%;
+							overflow: auto;
+							top: 0;
+							position: absolute;
+							z-index: 10;
+							bottom: 50px;
+							padding: 15px;
+						}
+						
+						.form-layer .form-footer {
+							height: 50px;
+							line-height: 50px;
+							background-color: #ecf0f1;
+							width: 100%;
+							position: absolute;
+							z-index: 200;
+							bottom: 0;
+							margin: 0;
+						}
+						
+						.form-footer .form-group {
+							margin-left: 0;
+							margin-right: 0;
+						}
+						
+						.box {
+							border-top: none!important
+						}
+					</style>
+				</div>
+
+			</div>
+
+			<script type="text/javascript">
+				//查询关键词价格
+				$("#btn").click(function() {
+					if($("#keyword").val() == '') {
+						toast.error('关键词为空,请输入关键词');
+						return false;
+					}
+					toast.success('请稍后~~~');
+					$.ajax({
+						type: "post",
+						url: "{:url('keysearch')}",
+						data: 'keyword=' + $("#keyword").val(),
+						dataType: 'json',
+						success: function(data) {
+							if(data == 'keyworderror') {
+								toast.error('查询关键词不能超过10个');
+							} else if(data == 'searcherror') {
+								toast.error('请刷新页面重试!');
+							} else {
+								toast.success('查询成功!');
+								$("#pricelist").css('display', 'block');
+								$("#tbod").html(data);
+							}
+
+						}
+					});
+				});
+				//添加关键词
+				$("#keybtn").click(function(){
+					var access = {$access};
+					if(access == 1){
+						var r = confirm("将按照你设置或代理设置的用户比例价格添加关键词!");
+						if(r == false){return false;}
+						
+					}else if(access == 18){
+						var r = confirm("将按照你设置的会员比例价格添加关键词!");
+						if(r == false){return false;}
+					}
+					if($("input[name='kwd[]']:checked").val() == undefined){
+						toast.error('请选择您要优化的关键词,至少选择一个!');
+						return false;
+					}
+					toast.success("正在添加,请稍后~~~");
+					$.ajax({
+						type:"post",
+						url:"{:url('addkeyword')}",
+						data:$("#addkeyword").serialize(),
+						dataType:'json',
+						success:function(data){
+							if(data == 1)
+							{
+								toast.success('添加成功!');
+							}else{
+								toast.warning('有关键词添加失败,请检查!');
+							}
+
+						}
+					});
+				});
+				//全选|全不选
+				function checkAll(ck){
+					var arr=document.getElementsByName('kwd[]');
+					var ck=document.getElementById('ck');
+					for(i in arr){
+							arr[i].checked =true; // 全选
+						//arr[i].checked=!arr[i].checked; 反向全选																						
+					}				
+				};
+					function checkAll2(qx) {
+							var arr = document.getElementsByName('kwd[]');
+							var ck = document.getElementById('ck');
+							for (i in arr) {
+								arr[i].checked =false; // 全选
+								//arr[i].checked=!arr[i].checked; 反向全选																						
+						
+
+							}
+						};
+			</script>
+
+		</div>
+
+		<style type="text/css">
+			.suibian>th {
+				text-align: center;
+			}
+			
+			.tb>tr>td {
+				font-size: 16px;
+				font-weight: 700;
+				color: red;
+			}
+		</style>

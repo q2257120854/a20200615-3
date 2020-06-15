@@ -1,0 +1,111 @@
+
+.panel-group{
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: inherit;
+}
+.panel-group .panel-heading{
+  
+}
+.group-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.group-list li {
+  margin: 0;
+  border: 1px solid #d9d9d9;
+  background-color: #fff;
+  width: 316px;
+  height: 163px;
+  margin-right: 13px;
+  margin-bottom: 13px;
+  float: left;
+  list-style: none;
+}
+.group-list li:hover{
+  background-color: #e7f4ff;
+}
+.group-list li a:hover{
+  text-decoration: none;
+}
+.group-list li .icons {
+  float: left;
+  margin: 50px 30px 0;
+}
+.group-list li .icons img {
+  width: 64px;
+  max-height: 64px;
+}
+.color-tit {
+  color: #222;
+}
+.group-list li a.new {
+  display: block;
+  width: 316px;
+  height: 163px;
+}
+.group-list li a.new {
+  background: url(new.png) top right no-repeat;
+}
+.group-list .icon-manage-verify {
+  height: 55px;
+  width: 66px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.group-list li dl {
+  float: left;
+  margin-top: 50px;
+  max-width: 190px;
+}
+.group-list li dl dt {
+  padding-bottom: 10px;
+  font-size: 18px;
+}
+.group-list li dl dd {
+  color: #737373;
+}
+button.close{
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-size: auto 40%;
+  background-position: center center;
+  text-indent: -999em;
+  position: relative;
+  top: -8px;
+  opacity:0.8!important;
+}
+button.close:hover{
+  background-color: #eee;
+}
+button.btn-close{
+  background-image: url(ico-close-black.png);
+  margin-right: -10px;
+}
+button.btn-close:hover{
+  background-image: url(ico-close-white.png);
+  background-color: #f00;
+}
+button.btn-max{
+  background-image: url(ico-max.png);
+}
+button.btn-small{
+  background-image: url(ico-small.png);
+}
+.chat-footer{
+  
+}
+.chat-footer .btn,.chat-footer .btn-info {
+  color: #000;
+  background-color: #c0c0c1;
+  border: 0;
+  border-radius: 3px;
+  padding: 4px 15px;
+}
+.chat-footer .btn:hover,.chat-footer .btn-info:hover {
+  background-color: #d2d2d3!important;
+  border: 0!important;
+}

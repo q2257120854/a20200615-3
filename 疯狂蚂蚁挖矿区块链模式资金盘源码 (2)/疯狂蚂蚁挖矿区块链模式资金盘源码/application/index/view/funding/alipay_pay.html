@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>内排中心</title>
+    <link rel="stylesheet" href="/static/jycss/bootstrap.min.css">
+    <script src="/static/jyjs/jquery-2.1.1.js"></script>
+    <script src="/static/jyjs/flexible.js"></script>
+    <script src="/static/jyjs/flexible_css.js"></script>
+    <script src="/static/jyjs/layer.js"></script>
+    <style>
+        html, body {background: #F5F5F5;}
+        blockquote, span, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, hr, input, legend, li, ol, p, pre, td, textarea, label, th, ul, ol, i {padding: 0px;margin: 0px;font-family: MicrosoftYaHei;}
+        li {list-style: none;}
+        label, i {margin: 0;font-style: normal;font-weight: normal;}
+        input::-webkit-input-placeholder {color: #999;}
+        textarea::-webkit-input-placeholder {color: #999;}
+        .header {position: fixed;top: 0px;left: 0px;display: flex;align-items: center;justify-content: center;width: 100%;height: 1.28rem;text-align: center;color: #333;background: #fff;z-index: 99999;}
+        .header span {font-size: .48rem;color: #333;font-weight: bold;}
+        .go-back {position: absolute;left: .266667rem;height: 1.28rem;display: flex;align-items: center;}
+        .go-back img {height: .586667rem;vertical-align: bottom;}
+        .main {padding-top: 1.28rem;}
+        .content {padding: .373333rem;}
+        #qrcode {display: flex;justify-content: center;padding: 1.84rem 0rem;width: 100%;border-radius: .266667rem;background: #fff;}
+        #qrcode img {width: 6.426667rem;height: 6.426667rem;}
+        .confirm {display: block;margin-top: 3.866667rem;width: 100%;height: 1.173333rem;line-height: 1.173333rem;font-size: .48rem;color: #fff;text-align: center;border-radius: .266667rem;background: #2E80C5;box-shadow: 0rem 0rem .666667rem 0rem rgba(46, 128, 197, 0.35);}
+    </style>
+<body>
+    <header class="header">
+        <a href="javascript:history.back(-1)" class="go-back">
+            <img src="/static/images/nav_arrow_icon@2x.png" alt="">
+        </a>
+        <span>内排中心</span>
+    </header>
+    <main class="main">
+        <div class="content">
+            <div id="qrcode">
+                <img src="/upload/20190215/5f6d0f5d3910477a8998fd2f4d68c1b0.png" alt="">
+            </div>
+            <a href="upload_credentials.html?num={$money}" class="confirm">支付宝支付</a>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,93 @@
+{include file="public/header" /}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<style type="text/css">
+#des,#des input{ width: 40px;text-align:center;}
+#id{ width: 78px; }
+.bs-checkbox{ width: 36px; height: 40px }
+.fixed-table-toolbar .columns,.fixed-table-toolbar .search{margin-left:0px; margin-top: 0px }
+#title span{ float: right; }
+</style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        {include file="public/tophead"}
+        {include file="public/top" /}
+        <div class="ibox-content">
+        {include file="public/topsection"}
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <div class="example">
+                        <form class="form-horizontal" method="post">
+                        <table data-toggle="table">
+                            <thead>
+                                <tr>
+                                    <th>排序</th>
+                                    <th>支付名称</th>
+                                    <th>图标</th>
+                                    <th>说明</th>
+                                    <th>使用场景</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead> 
+                            <tbody id="form">
+                                {php}
+                                $hide=array('0'=>'<font color="#f00">关闭</font>','1'=>'<font color="#1ab394">开启</font>');
+                                $type=array('pc'=>'电脑网页','wap'=>'手机网页','wx'=>'公众号','app'=>'安卓和苹果');
+                                {/php}
+                                {volist name="data" id="v"}
+                                <tr id="id{$v.id}" class="class">
+                                    <td>{$v.des}</td>
+                                    <td>{$v.title}</td>
+                                    <td><img src="{notempty name="v.img"}{$v.img}{else /}__IMGERROE__{/notempty}" height="50" width="50"></td>
+                                    <td>{$v.content}</td>
+                                    <td>{$type[$v['type']]}</td>
+                                    <td id="hide{$v.id}">{$hide[$v['hide']]}</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <div data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span>
+                                            </div>
+                                            <ul class="dropdown-menu">
+                                                <li><a onclick="hides({$v.id},1)">开启</a></li>
+                                                <li><a onclick="hides({$v.id},0)">关闭</a></li>
+                                                <li><a onClick="add('{:url('add',['id'=>$v['id'],'url'=>-1])}')">修改</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                        </form>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+function del(id){
+    swal_del(id,"{:url('del')}")
+}
+function hides(id,type){
+    $.ajax({
+        type: 'post',
+        url: '{:url("hide")}',
+        data: {id:id,type:type},
+        dataType: 'json',
+        success:function(ret){
+            layer.msg('设置成功')
+            $('#hide'+id).html(ret);
+        },
+        error:function(err){
+           alert(JSON.stringify(err))
+        }
+    });
+}
+</script>
+ <SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

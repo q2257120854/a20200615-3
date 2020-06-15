@@ -1,0 +1,72 @@
+/*
+// +----------------------------------------------------------------------
+// | 源码来自锦尚中国源码论坛，仅供学习研究
+// +----------------------------------------------------------------------
+// | 新闻资讯APP系统 V1.0版
+// +----------------------------------------------------------------------
+// | 锦尚中国
+// +----------------------------------------------------------------------
+// | 请务必尊重知识产权 严格保证不恶意传播产品源码、不得直接对产品本身
+// | 进行二次转售或倒卖、不得对产品进行简单包装后声称为自己的产品等。
+// | 否则我们有权利收回产品，并根据事态轻重追究相应法律责任。
+// +----------------------------------------------------------------------
+// | Copyright (c) 2018-2019 http://www.baidu.com/ All rights reserved.
+// +----------------------------------------------------------------------
+*/#fx-footer{
+	background: #F5F5F5;
+	border-top:1px solid #E2E2E2;
+	height: 44.555px;
+	min-height:44.555px;
+}
+#fx-footer .aui-img-object {
+	width: 1rem;
+	margin: 0 auto;
+	margin-top: 0.2rem;
+	margin-bottom: 0.1rem;
+}
+.aui-bar-tab .aui-active{
+	color: #D43D3D;
+}
+.aui-bar-tab .aui-bar-tab-item{
+	height: 44.555px;
+}
+.aui-bar-tab .aui-bar-tab-label{
+	font-size: 0.6rem;
+}
+ 
+			.aui-bar-nav .aui-btn{
+				display: block;
+				line-height:inherit;
+			 	padding-top: 0.4rem;
+			}
+			#fx-header .aui-btn img{
+				width: 0.88rem;
+				height: 0.88rem;
+				text-align: center;
+				margin: 0 auto;
+			}
+			#fx-header .aui-btn p{
+				color: #555;
+				font-size: 0.5rem;
+				display: block;
+				line-height: 0.8rem;
+				height: 0.8rem;
+				text-align: center;
+			}
+			#fx-header .aui-pull-right img{
+				width: 1.2rem;
+				height: 1.2rem;
+			}
+			#fx-header .aui-pull-right{
+				padding-top: 0.3rem;
+			}
+			#fx-header .aui-pull-right p{
+				line-height: 0.4rem;
+			}
+			#fx-header a img.sx-user-img{
+				width: 1.3rem;
+				height: 1.3rem;
+				border-radius: 50%;
+				border:1px solid #fff;
+				margin-top: 0.1rem;
+			}

@@ -1,0 +1,622 @@
+---------------------------------------------------------------
+[ 2019-11-13T00:37:40+08:00 ] 10.168.1.132 GET 10.168.1.253/static/skin/css/chart.css.map
+[运行时间：0.023661s] [吞吐率：42.26req/s] [内存消耗：1,885.73kb] [文件加载：41]
+[ info ] [ LANG ] /www/wwwroot/9nw.cc/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'static',
+    2 => 'skin',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '10.168.1.253',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3952.0 Safari/537.36 Edg/80.0.320.5',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'cookie' => 'order=id%20desc; memSize=2827; sites_path=/www/wwwroot; uploadSize=1073741824; rank=a; backup_path=/www/backup; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; street=0; street_area=0; session_id_ip=a887cd631260b7c1ae90a69ed2769d30; force=0; load_search=undefined; load_page=null; SetName=; fm_cache=1; BatchSelected=null; serverType=apache; p5=nullnot_load; BT_PANEL_6=c41d7691-3923-45c7-9c2e-e4a7fdb4c87c.PqpUxctI4_ua78SxTvSqZ0As9zk; request_token=CC9gazRCcRbMyYZB0VOPOJieBPjBo1zMMW4E6V6u9Q8Dg96o; filemanager=g90k01a584llsn1p5seu4bk543; copyFileName=null; PHPSESSID=i68vjsmahvnaob7p99m0heqpi1; BatchPaste=5; Path=/www/wwwroot/9nw.cc/public/static/new/bxslider/vendor; cutFileName=null; layers=10; softType=10; load_type=10; ChangePath=5',
+)
+[ info ] [ PARAM ] array (
+  '/static/skin/css/chart_css_map' => '',
+  'css' => 'chart.css.map',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-11-13T00:37:42+08:00 ] 10.168.1.132 GET 10.168.1.253/admin.php/setting/tuiguang.html
+[运行时间：0.050601s] [吞吐率：19.76req/s] [内存消耗：3,363.28kb] [文件加载：54]
+[ info ] [ LANG ] /www/wwwroot/9nw.cc/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'setting',
+    2 => 'tuiguang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '10.168.1.253',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3952.0 Safari/537.36 Edg/80.0.320.5',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://10.168.1.253/admin.php/setting/smsindex.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'cookie' => 'order=id%20desc; memSize=2827; sites_path=/www/wwwroot; uploadSize=1073741824; rank=a; backup_path=/www/backup; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; street=0; street_area=0; session_id_ip=a887cd631260b7c1ae90a69ed2769d30; force=0; load_search=undefined; load_page=null; SetName=; fm_cache=1; BatchSelected=null; serverType=apache; p5=nullnot_load; BT_PANEL_6=c41d7691-3923-45c7-9c2e-e4a7fdb4c87c.PqpUxctI4_ua78SxTvSqZ0As9zk; request_token=CC9gazRCcRbMyYZB0VOPOJieBPjBo1zMMW4E6V6u9Q8Dg96o; filemanager=g90k01a584llsn1p5seu4bk543; copyFileName=null; PHPSESSID=i68vjsmahvnaob7p99m0heqpi1; BatchPaste=5; Path=/www/wwwroot/9nw.cc/public/static/new/bxslider/vendor; cutFileName=null; layers=10; softType=10; load_type=10; ChangePath=5',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Setting->tuiguang[ /www/wwwroot/9nw.cc/application/varjoker/controller/Setting.php ]
+[ info ] [ VIEW ] /www/wwwroot/9nw.cc/public/../application/varjoker/view/setting/tuiguang.html [ array (
+  0 => 'admin',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001218s ] mysql:host=localhost;port=3306;dbname=www9nwcc;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.002088s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000619s ]
+---------------------------------------------------------------
+[ 2019-11-13T00:37:43+08:00 ] 10.168.1.132 GET 10.168.1.253/static/skin/css/chart.css.map
+[运行时间：0.035473s] [吞吐率：28.19req/s] [内存消耗：1,885.73kb] [文件加载：41]
+[ info ] [ LANG ] /www/wwwroot/9nw.cc/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'static',
+    2 => 'skin',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '10.168.1.253',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3952.0 Safari/537.36 Edg/80.0.320.5',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'cookie' => 'order=id%20desc; memSize=2827; sites_path=/www/wwwroot; uploadSize=1073741824; rank=a; backup_path=/www/backup; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; street=0; street_area=0; session_id_ip=a887cd631260b7c1ae90a69ed2769d30; force=0; load_search=undefined; load_page=null; SetName=; fm_cache=1; BatchSelected=null; serverType=apache; p5=nullnot_load; BT_PANEL_6=c41d7691-3923-45c7-9c2e-e4a7fdb4c87c.PqpUxctI4_ua78SxTvSqZ0As9zk; request_token=CC9gazRCcRbMyYZB0VOPOJieBPjBo1zMMW4E6V6u9Q8Dg96o; filemanager=g90k01a584llsn1p5seu4bk543; copyFileName=null; PHPSESSID=i68vjsmahvnaob7p99m0heqpi1; BatchPaste=5; Path=/www/wwwroot/9nw.cc/public/static/new/bxslider/vendor; cutFileName=null; layers=10; softType=10; load_type=10; ChangePath=5',
+)
+[ info ] [ PARAM ] array (
+  '/static/skin/css/chart_css_map' => '',
+  'css' => 'chart.css.map',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-11-13T00:39:52+08:00 ] 10.168.1.132 GET 10.168.1.253/admin.php/notice/index.html
+[运行时间：0.041496s] [吞吐率：24.10req/s] [内存消耗：3,731.65kb] [文件加载：60]
+[ info ] [ LANG ] /www/wwwroot/9nw.cc/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'notice',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '10.168.1.253',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3952.0 Safari/537.36 Edg/80.0.320.5',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://10.168.1.253/admin.php/setting/tuiguang.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'cookie' => 'order=id%20desc; memSize=2827; sites_path=/www/wwwroot; uploadSize=1073741824; rank=a; backup_path=/www/backup; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; street=0; street_area=0; session_id_ip=a887cd631260b7c1ae90a69ed2769d30; force=0; load_search=undefined; load_page=null; SetName=; fm_cache=1; BatchSelected=null; serverType=apache; p5=nullnot_load; BT_PANEL_6=c41d7691-3923-45c7-9c2e-e4a7fdb4c87c.PqpUxctI4_ua78SxTvSqZ0As9zk; request_token=CC9gazRCcRbMyYZB0VOPOJieBPjBo1zMMW4E6V6u9Q8Dg96o; filemanager=g90k01a584llsn1p5seu4bk543; copyFileName=null; PHPSESSID=i68vjsmahvnaob7p99m0heqpi1; BatchPaste=5; cutFileName=null; layers=10; softType=10; load_type=10; ChangePath=5; Path=/www/wwwroot/9nw.cc',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Notice->index[ /www/wwwroot/9nw.cc/application/varjoker/controller/Notice.php ]
+[ info ] [ VIEW ] /www/wwwroot/9nw.cc/public/../application/varjoker/view/notice/index.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000421s ] mysql:host=localhost;port=3306;dbname=www9nwcc;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.000888s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000320s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_notice` [ RunTime:0.000933s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_notice` LIMIT 1 [ RunTime:0.000290s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_notice` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000264s ]
+---------------------------------------------------------------
+[ 2019-11-13T00:39:54+08:00 ] 10.168.1.132 GET 10.168.1.253/admin.php/notice/editd.html?id=1
+[运行时间：0.027699s] [吞吐率：36.10req/s] [内存消耗：3,277.10kb] [文件加载：53]
+[ info ] [ LANG ] /www/wwwroot/9nw.cc/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'notice',
+    2 => 'editd',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '10.168.1.253',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3952.0 Safari/537.36 Edg/80.0.320.5',
+  'referer' => 'http://10.168.1.253/admin.php/notice/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'cookie' => 'order=id%20desc; memSize=2827; sites_path=/www/wwwroot; uploadSize=1073741824; rank=a; backup_path=/www/backup; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; street=0; street_area=0; session_id_ip=a887cd631260b7c1ae90a69ed2769d30; force=0; load_search=undefined; load_page=null; SetName=; fm_cache=1; BatchSelected=null; serverType=apache; p5=nullnot_load; BT_PANEL_6=c41d7691-3923-45c7-9c2e-e4a7fdb4c87c.PqpUxctI4_ua78SxTvSqZ0As9zk; request_token=CC9gazRCcRbMyYZB0VOPOJieBPjBo1zMMW4E6V6u9Q8Dg96o; filemanager=g90k01a584llsn1p5seu4bk543; copyFileName=null; PHPSESSID=i68vjsmahvnaob7p99m0heqpi1; BatchPaste=5; cutFileName=null; layers=10; softType=10; load_type=10; ChangePath=5; Path=/www/wwwroot/9nw.cc',
+)
+[ info ] [ PARAM ] array (
+  'id' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Notice->editd[ /www/wwwroot/9nw.cc/application/varjoker/controller/Notice.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000392s ] mysql:host=localhost;port=3306;dbname=www9nwcc;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.000888s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000308s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_notice` [ RunTime:0.000750s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_notice` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000405s ]
+---------------------------------------------------------------
+[ 2019-11-13T00:40:09+08:00 ] 10.168.1.132 POST 10.168.1.253/admin.php/notice/editd.html
+[运行时间：0.035603s] [吞吐率：28.09req/s] [内存消耗：3,399.54kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/9nw.cc/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'notice',
+    2 => 'editd',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '10.168.1.253',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'origin' => 'http://10.168.1.253',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3952.0 Safari/537.36 Edg/80.0.320.5',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://10.168.1.253/admin.php/notice/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'cookie' => 'order=id%20desc; memSize=2827; sites_path=/www/wwwroot; uploadSize=1073741824; rank=a; backup_path=/www/backup; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; street=0; street_area=0; session_id_ip=a887cd631260b7c1ae90a69ed2769d30; force=0; load_search=undefined; load_page=null; SetName=; fm_cache=1; BatchSelected=null; serverType=apache; p5=nullnot_load; BT_PANEL_6=c41d7691-3923-45c7-9c2e-e4a7fdb4c87c.PqpUxctI4_ua78SxTvSqZ0As9zk; request_token=CC9gazRCcRbMyYZB0VOPOJieBPjBo1zMMW4E6V6u9Q8Dg96o; filemanager=g90k01a584llsn1p5seu4bk543; copyFileName=null; PHPSESSID=i68vjsmahvnaob7p99m0heqpi1; BatchPaste=5; cutFileName=null; layers=10; softType=10; load_type=10; ChangePath=5; Path=/www/wwwroot/9nw.cc',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundaryXbA3jnkZEu7xFwL2',
+  'content-length' => '769',
+)
+[ info ] [ PARAM ] array (
+  'title' => '源码来自九牛网',
+  'key' => '源码来自九牛网',
+  'id' => '1',
+  'content' => '<p>源码来自九牛网</p>',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Notice->editd[ /www/wwwroot/9nw.cc/application/varjoker/controller/Notice.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ VIEW ] /www/wwwroot/9nw.cc/thinkphp/tpl/dispatch_jump.tpl [ array (
+  0 => 'admin',
+  1 => 'code',
+  2 => 'msg',
+  3 => 'data',
+  4 => 'url',
+  5 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000399s ] mysql:host=localhost;port=3306;dbname=www9nwcc;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.000912s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000314s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_notice` [ RunTime:0.000721s ]
+[ sql ] [ SQL ] UPDATE `dk_notice`  SET `title`='源码来自九牛网',`key`='源码来自九牛网',`content`='<p>源码来自九牛网</p>'  WHERE  `id` = 1 [ RunTime:0.001148s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_syslog` [ RunTime:0.001009s ]
+[ sql ] [ SQL ] INSERT INTO `dk_syslog` (`username` , `sysaction` , `addtime`) VALUES ('admin' , '修改首页公告' , '2019-11-13 00:40:09') [ RunTime:0.000930s ]
+---------------------------------------------------------------
+[ 2019-11-13T00:40:10+08:00 ] 10.168.1.132 GET 10.168.1.253/admin.php/notice/index.html
+[运行时间：0.042963s] [吞吐率：23.28req/s] [内存消耗：3,516.11kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/9nw.cc/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'notice',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '10.168.1.253',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3952.0 Safari/537.36 Edg/80.0.320.5',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://10.168.1.253/admin.php/notice/editd.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'cookie' => 'order=id%20desc; memSize=2827; sites_path=/www/wwwroot; uploadSize=1073741824; rank=a; backup_path=/www/backup; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; street=0; street_area=0; session_id_ip=a887cd631260b7c1ae90a69ed2769d30; force=0; load_search=undefined; load_page=null; SetName=; fm_cache=1; BatchSelected=null; serverType=apache; p5=nullnot_load; BT_PANEL_6=c41d7691-3923-45c7-9c2e-e4a7fdb4c87c.PqpUxctI4_ua78SxTvSqZ0As9zk; request_token=CC9gazRCcRbMyYZB0VOPOJieBPjBo1zMMW4E6V6u9Q8Dg96o; filemanager=g90k01a584llsn1p5seu4bk543; copyFileName=null; PHPSESSID=i68vjsmahvnaob7p99m0heqpi1; BatchPaste=5; cutFileName=null; layers=10; softType=10; load_type=10; ChangePath=5; Path=/www/wwwroot/9nw.cc',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Notice->index[ /www/wwwroot/9nw.cc/application/varjoker/controller/Notice.php ]
+[ info ] [ VIEW ] /www/wwwroot/9nw.cc/public/../application/varjoker/view/notice/index.html [ array (
+  0 => 'admin',
+  1 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000445s ] mysql:host=localhost;port=3306;dbname=www9nwcc;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.000921s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000336s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_notice` [ RunTime:0.000749s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dk_notice` LIMIT 1 [ RunTime:0.000361s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_notice` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000695s ]
+---------------------------------------------------------------
+[ 2019-11-13T00:40:12+08:00 ] 10.168.1.132 GET 10.168.1.253/admin.php/notice/editd.html?id=1
+[运行时间：0.029479s] [吞吐率：33.92req/s] [内存消耗：3,277.11kb] [文件加载：53]
+[ info ] [ LANG ] /www/wwwroot/9nw.cc/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'notice',
+    2 => 'editd',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '10.168.1.253',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3952.0 Safari/537.36 Edg/80.0.320.5',
+  'referer' => 'http://10.168.1.253/admin.php/notice/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'cookie' => 'order=id%20desc; memSize=2827; sites_path=/www/wwwroot; uploadSize=1073741824; rank=a; backup_path=/www/backup; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; street=0; street_area=0; session_id_ip=a887cd631260b7c1ae90a69ed2769d30; force=0; load_search=undefined; load_page=null; SetName=; fm_cache=1; BatchSelected=null; serverType=apache; p5=nullnot_load; BT_PANEL_6=c41d7691-3923-45c7-9c2e-e4a7fdb4c87c.PqpUxctI4_ua78SxTvSqZ0As9zk; request_token=CC9gazRCcRbMyYZB0VOPOJieBPjBo1zMMW4E6V6u9Q8Dg96o; filemanager=g90k01a584llsn1p5seu4bk543; copyFileName=null; PHPSESSID=i68vjsmahvnaob7p99m0heqpi1; BatchPaste=5; cutFileName=null; layers=10; softType=10; load_type=10; ChangePath=5; Path=/www/wwwroot/9nw.cc',
+)
+[ info ] [ PARAM ] array (
+  'id' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Notice->editd[ /www/wwwroot/9nw.cc/application/varjoker/controller/Notice.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000399s ] mysql:host=localhost;port=3306;dbname=www9nwcc;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.000836s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000472s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_notice` [ RunTime:0.000713s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_notice` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000280s ]
+---------------------------------------------------------------
+[ 2019-11-13T00:42:21+08:00 ] 10.168.1.132 GET 10.168.1.253/admin.php/setting/index.html
+[运行时间：0.033076s] [吞吐率：30.23req/s] [内存消耗：3,363.41kb] [文件加载：54]
+[ info ] [ LANG ] /www/wwwroot/9nw.cc/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'setting',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '10.168.1.253',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3952.0 Safari/537.36 Edg/80.0.320.5',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://10.168.1.253/admin.php/notice/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'cookie' => 'order=id%20desc; memSize=2827; sites_path=/www/wwwroot; uploadSize=1073741824; rank=a; backup_path=/www/backup; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; street=0; street_area=0; session_id_ip=a887cd631260b7c1ae90a69ed2769d30; force=0; load_search=undefined; load_page=null; SetName=; fm_cache=1; BatchSelected=null; serverType=apache; p5=nullnot_load; BT_PANEL_6=c41d7691-3923-45c7-9c2e-e4a7fdb4c87c.PqpUxctI4_ua78SxTvSqZ0As9zk; request_token=CC9gazRCcRbMyYZB0VOPOJieBPjBo1zMMW4E6V6u9Q8Dg96o; filemanager=g90k01a584llsn1p5seu4bk543; copyFileName=null; PHPSESSID=i68vjsmahvnaob7p99m0heqpi1; BatchPaste=5; cutFileName=null; layers=10; softType=10; load_type=10; ChangePath=5; Path=/www/wwwroot/9nw.cc/public/static/skin/js; files_sort=name; name_reverse=False',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Setting->index[ /www/wwwroot/9nw.cc/application/varjoker/controller/Setting.php ]
+[ info ] [ VIEW ] /www/wwwroot/9nw.cc/public/../application/varjoker/view/setting/index.html [ array (
+  0 => 'admin',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000481s ] mysql:host=localhost;port=3306;dbname=www9nwcc;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.000961s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000399s ]
+---------------------------------------------------------------
+[ 2019-11-13T00:44:57+08:00 ] 10.168.1.132 GET 10.168.1.253/static/skin/css/chart.css.map
+[运行时间：0.023087s] [吞吐率：43.31req/s] [内存消耗：1,885.92kb] [文件加载：41]
+[ info ] [ LANG ] /www/wwwroot/9nw.cc/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'static',
+    2 => 'skin',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '10.168.1.253',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3952.0 Safari/537.36 Edg/80.0.320.5',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'cookie' => 'order=id%20desc; memSize=2827; sites_path=/www/wwwroot; uploadSize=1073741824; rank=a; backup_path=/www/backup; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; street=0; street_area=0; session_id_ip=a887cd631260b7c1ae90a69ed2769d30; force=0; load_search=undefined; load_page=null; SetName=; fm_cache=1; BatchSelected=null; serverType=apache; p5=nullnot_load; BT_PANEL_6=c41d7691-3923-45c7-9c2e-e4a7fdb4c87c.PqpUxctI4_ua78SxTvSqZ0As9zk; request_token=CC9gazRCcRbMyYZB0VOPOJieBPjBo1zMMW4E6V6u9Q8Dg96o; filemanager=g90k01a584llsn1p5seu4bk543; copyFileName=null; PHPSESSID=i68vjsmahvnaob7p99m0heqpi1; BatchPaste=5; cutFileName=null; layers=10; softType=10; load_type=10; ChangePath=5; Path=/www/wwwroot/9nw.cc/public/static/skin/js; files_sort=name; name_reverse=False',
+)
+[ info ] [ PARAM ] array (
+  '/static/skin/css/chart_css_map' => '',
+  'css' => 'chart.css.map',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-11-13T00:44:58+08:00 ] 10.168.1.132 GET 10.168.1.253/admin.php/setting/index.html
+[运行时间：0.041235s] [吞吐率：24.25req/s] [内存消耗：3,578.23kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/9nw.cc/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'setting',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '10.168.1.253',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3952.0 Safari/537.36 Edg/80.0.320.5',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://10.168.1.253/admin.php/notice/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'cookie' => 'order=id%20desc; memSize=2827; sites_path=/www/wwwroot; uploadSize=1073741824; rank=a; backup_path=/www/backup; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; street=0; street_area=0; session_id_ip=a887cd631260b7c1ae90a69ed2769d30; force=0; load_search=undefined; load_page=null; SetName=; fm_cache=1; BatchSelected=null; serverType=apache; p5=nullnot_load; BT_PANEL_6=c41d7691-3923-45c7-9c2e-e4a7fdb4c87c.PqpUxctI4_ua78SxTvSqZ0As9zk; request_token=CC9gazRCcRbMyYZB0VOPOJieBPjBo1zMMW4E6V6u9Q8Dg96o; filemanager=g90k01a584llsn1p5seu4bk543; copyFileName=null; PHPSESSID=i68vjsmahvnaob7p99m0heqpi1; BatchPaste=5; cutFileName=null; layers=10; softType=10; load_type=10; ChangePath=5; Path=/www/wwwroot/9nw.cc/public/static/skin/js; files_sort=name; name_reverse=False',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Setting->index[ /www/wwwroot/9nw.cc/application/varjoker/controller/Setting.php ]
+[ info ] [ VIEW ] /www/wwwroot/9nw.cc/public/../application/varjoker/view/setting/index.html [ array (
+  0 => 'admin',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000646s ] mysql:host=localhost;port=3306;dbname=www9nwcc;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001094s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000704s ]
+---------------------------------------------------------------
+[ 2019-11-13T00:44:59+08:00 ] 10.168.1.132 GET 10.168.1.253/static/skin/css/chart.css.map
+[运行时间：0.036952s] [吞吐率：27.06req/s] [内存消耗：1,885.92kb] [文件加载：41]
+[ info ] [ LANG ] /www/wwwroot/9nw.cc/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'static',
+    2 => 'skin',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '10.168.1.253',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3952.0 Safari/537.36 Edg/80.0.320.5',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'cookie' => 'order=id%20desc; memSize=2827; sites_path=/www/wwwroot; uploadSize=1073741824; rank=a; backup_path=/www/backup; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; street=0; street_area=0; session_id_ip=a887cd631260b7c1ae90a69ed2769d30; force=0; load_search=undefined; load_page=null; SetName=; fm_cache=1; BatchSelected=null; serverType=apache; p5=nullnot_load; BT_PANEL_6=c41d7691-3923-45c7-9c2e-e4a7fdb4c87c.PqpUxctI4_ua78SxTvSqZ0As9zk; request_token=CC9gazRCcRbMyYZB0VOPOJieBPjBo1zMMW4E6V6u9Q8Dg96o; filemanager=g90k01a584llsn1p5seu4bk543; copyFileName=null; PHPSESSID=i68vjsmahvnaob7p99m0heqpi1; BatchPaste=5; cutFileName=null; layers=10; softType=10; load_type=10; ChangePath=5; Path=/www/wwwroot/9nw.cc/public/static/skin/js; files_sort=name; name_reverse=False',
+)
+[ info ] [ PARAM ] array (
+  '/static/skin/css/chart_css_map' => '',
+  'css' => 'chart.css.map',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-11-13T00:47:04+08:00 ] 10.168.1.132 GET 10.168.1.253/admin.php/setting/index.html
+[运行时间：0.037529s] [吞吐率：26.65req/s] [内存消耗：3,363.54kb] [文件加载：54]
+[ info ] [ LANG ] /www/wwwroot/9nw.cc/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'setting',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '10.168.1.253',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3952.0 Safari/537.36 Edg/80.0.320.5',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://10.168.1.253/admin.php/notice/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'cookie' => 'order=id%20desc; memSize=2827; sites_path=/www/wwwroot; uploadSize=1073741824; rank=a; backup_path=/www/backup; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; street=0; street_area=0; session_id_ip=a887cd631260b7c1ae90a69ed2769d30; force=0; load_search=undefined; load_page=null; SetName=; fm_cache=1; BatchSelected=null; serverType=apache; p5=nullnot_load; BT_PANEL_6=c41d7691-3923-45c7-9c2e-e4a7fdb4c87c.PqpUxctI4_ua78SxTvSqZ0As9zk; request_token=CC9gazRCcRbMyYZB0VOPOJieBPjBo1zMMW4E6V6u9Q8Dg96o; filemanager=g90k01a584llsn1p5seu4bk543; copyFileName=null; PHPSESSID=i68vjsmahvnaob7p99m0heqpi1; BatchPaste=5; cutFileName=null; layers=10; softType=10; load_type=10; ChangePath=5; Path=/www/wwwroot/9nw.cc/public/static/skin/js; files_sort=name; name_reverse=False',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Setting->index[ /www/wwwroot/9nw.cc/application/varjoker/controller/Setting.php ]
+[ info ] [ VIEW ] /www/wwwroot/9nw.cc/public/../application/varjoker/view/setting/index.html [ array (
+  0 => 'admin',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000850s ] mysql:host=localhost;port=3306;dbname=www9nwcc;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001103s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000381s ]
+---------------------------------------------------------------
+[ 2019-11-13T00:47:04+08:00 ] 10.168.1.132 GET 10.168.1.253/static/skin/css/chart.css.map
+[运行时间：0.019267s] [吞吐率：51.90req/s] [内存消耗：1,885.92kb] [文件加载：41]
+[ info ] [ LANG ] /www/wwwroot/9nw.cc/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'static',
+    2 => 'skin',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '10.168.1.253',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3952.0 Safari/537.36 Edg/80.0.320.5',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'cookie' => 'order=id%20desc; memSize=2827; sites_path=/www/wwwroot; uploadSize=1073741824; rank=a; backup_path=/www/backup; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; street=0; street_area=0; session_id_ip=a887cd631260b7c1ae90a69ed2769d30; force=0; load_search=undefined; load_page=null; SetName=; fm_cache=1; BatchSelected=null; serverType=apache; p5=nullnot_load; BT_PANEL_6=c41d7691-3923-45c7-9c2e-e4a7fdb4c87c.PqpUxctI4_ua78SxTvSqZ0As9zk; request_token=CC9gazRCcRbMyYZB0VOPOJieBPjBo1zMMW4E6V6u9Q8Dg96o; filemanager=g90k01a584llsn1p5seu4bk543; copyFileName=null; PHPSESSID=i68vjsmahvnaob7p99m0heqpi1; BatchPaste=5; cutFileName=null; layers=10; softType=10; load_type=10; ChangePath=5; Path=/www/wwwroot/9nw.cc/public/static/skin/js; files_sort=name; name_reverse=False',
+)
+[ info ] [ PARAM ] array (
+  '/static/skin/css/chart_css_map' => '',
+  'css' => 'chart.css.map',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-11-13T00:47:06+08:00 ] 10.168.1.132 GET 10.168.1.253/admin.php/setting/index.html
+[运行时间：0.033562s] [吞吐率：29.80req/s] [内存消耗：3,363.54kb] [文件加载：54]
+[ info ] [ LANG ] /www/wwwroot/9nw.cc/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'varjoker'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'varjoker',
+    1 => 'setting',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '10.168.1.253',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3952.0 Safari/537.36 Edg/80.0.320.5',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://10.168.1.253/admin.php/notice/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'cookie' => 'order=id%20desc; memSize=2827; sites_path=/www/wwwroot; uploadSize=1073741824; rank=a; backup_path=/www/backup; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; street=0; street_area=0; session_id_ip=a887cd631260b7c1ae90a69ed2769d30; force=0; load_search=undefined; load_page=null; SetName=; fm_cache=1; BatchSelected=null; serverType=apache; p5=nullnot_load; BT_PANEL_6=c41d7691-3923-45c7-9c2e-e4a7fdb4c87c.PqpUxctI4_ua78SxTvSqZ0As9zk; request_token=CC9gazRCcRbMyYZB0VOPOJieBPjBo1zMMW4E6V6u9Q8Dg96o; filemanager=g90k01a584llsn1p5seu4bk543; copyFileName=null; PHPSESSID=i68vjsmahvnaob7p99m0heqpi1; BatchPaste=5; cutFileName=null; layers=10; softType=10; load_type=10; ChangePath=5; Path=/www/wwwroot/9nw.cc/public/static/skin/js; files_sort=name; name_reverse=False',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\varjoker\controller\Setting->index[ /www/wwwroot/9nw.cc/application/varjoker/controller/Setting.php ]
+[ info ] [ VIEW ] /www/wwwroot/9nw.cc/public/../application/varjoker/view/setting/index.html [ array (
+  0 => 'admin',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000791s ] mysql:host=localhost;port=3306;dbname=www9nwcc;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dk_configure` [ RunTime:0.001085s ]
+[ sql ] [ SQL ] SELECT * FROM `dk_configure` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000600s ]
+---------------------------------------------------------------
+[ 2019-11-13T00:47:06+08:00 ] 10.168.1.132 GET 10.168.1.253/static/skin/css/chart.css.map
+[运行时间：0.033087s] [吞吐率：30.22req/s] [内存消耗：1,885.92kb] [文件加载：41]
+[ info ] [ LANG ] /www/wwwroot/9nw.cc/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'static',
+    2 => 'skin',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '10.168.1.253',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3952.0 Safari/537.36 Edg/80.0.320.5',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'cookie' => 'order=id%20desc; memSize=2827; sites_path=/www/wwwroot; uploadSize=1073741824; rank=a; backup_path=/www/backup; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; street=0; street_area=0; session_id_ip=a887cd631260b7c1ae90a69ed2769d30; force=0; load_search=undefined; load_page=null; SetName=; fm_cache=1; BatchSelected=null; serverType=apache; p5=nullnot_load; BT_PANEL_6=c41d7691-3923-45c7-9c2e-e4a7fdb4c87c.PqpUxctI4_ua78SxTvSqZ0As9zk; request_token=CC9gazRCcRbMyYZB0VOPOJieBPjBo1zMMW4E6V6u9Q8Dg96o; filemanager=g90k01a584llsn1p5seu4bk543; copyFileName=null; PHPSESSID=i68vjsmahvnaob7p99m0heqpi1; BatchPaste=5; cutFileName=null; layers=10; softType=10; load_type=10; ChangePath=5; Path=/www/wwwroot/9nw.cc/public/static/skin/js; files_sort=name; name_reverse=False',
+)
+[ info ] [ PARAM ] array (
+  '/static/skin/css/chart_css_map' => '',
+  'css' => 'chart.css.map',
+)
+[ info ] [ LOG ] INIT File

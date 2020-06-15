@@ -1,0 +1,48 @@
+{extend name="common/world"} {block name="title"}审核列表{/block} {block name="style"}
+<style type="text/css">
+</style>
+{/block} {block name="container"}
+<div class="card">
+    <table class="table card-table table-vcenter">
+    	<thead>
+    		<tr>
+    			<th>图片</th>
+                <th>名称</th>
+                <th>卖家</th>
+    			<th>类目</th>
+                <th>{$Think.config.hello.unit}价格</th>
+                <th>{$Think.config.hello.score.unit}价格</th>
+    			<th>销量</th>
+    			<th>库存</th>
+    			<th>操作</th>
+    		</tr>
+    	</thead>
+        <tbody>
+            {volist name="store" id="product"}
+                <tr>
+                    <td><img src="/store/{$product.image}" alt="" class="h-8"></td>
+                    <td>
+                        <span class="tag">#{$product.id}</span>
+                        {$product.title}
+                        {eq name="product.status" value="0"}
+                        <div class="badge badge-default badge-md">停售</div>
+                        {/eq}
+                    </td>
+                    <td>{$product.username|default='官方'}</td>
+                    <td>{$Think.config.hello.store.catalog[$product.catalog]}</td>
+                    <td>{$product.price|money}</td>
+                    <td>{$product.price_score|money}</td>
+                    <td>{$product.sales}</td>
+                    <td>{$product.stock}</td>
+                    <td>
+                        <a href="/admin/store/audit_ok.html?id={$product.id}" class="btn btn-success btn-sm">通过</a>
+                        <a href="/admin/store/remove.html?id={$product.id}" onclick="return confirm('确认要删除吗？');" class="btn btn-danger btn-sm">删除</a>
+                        <a href="/admin/store/edit.html?id={$product.id}" class="btn btn-secondary btn-sm">编辑</a>
+                    </td>
+                </tr>
+            {/volist}
+        </tbody>
+    </table>
+    <div class="card-footer">{$store|raw}</div>
+</div>
+{/block} {block name="script"} {/block}

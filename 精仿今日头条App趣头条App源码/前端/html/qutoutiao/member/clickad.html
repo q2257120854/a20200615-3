@@ -1,0 +1,366 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>理财</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+    <style type="text/css">
+        .aui-list-item.wechat-top {
+            background-color: #f3f3f7;
+        }
+        .aui-list .wechat-avatar {
+            width:3rem;
+        }
+        .wechat-avatar .aui-row-padded {
+            background-color: #dddee0;
+            padding: 0.1rem;
+            border-radius: 0.2rem;
+            margin-left: -0.05rem;
+            margin-right: -0.05rem;
+        }
+        .wechat-avatar .aui-row-padded [class*=aui-col-xs-] {
+            padding: 0.05rem;
+        }
+        .wechat-avatar,
+        .wechat-avatar > img {
+            border-radius:0.2rem;
+        }
+          button, .aui-btn{
+         font-size: 0.6rem;
+         padding: 0 0.6rem;
+
+     }
+        .aui-label{top:-3px;}
+     .aui-row{
+         text-align: center;
+    padding-bottom: 10px;
+     }
+     .aui-action{
+         text-align: right;
+         padding-right: 0.75rem !important;
+         overflow: inherit;
+     }
+
+        .titlebar { background-color: #f73d04;padding-top:25px;}
+        .aui-title{color:#fff;}
+        .aui-bar-nav{background-color: #f73d04;}
+        .aui-list .aui-list-item-right, .aui-list-item-title-row em{
+    width:4.5rem;
+    text-align: right;
+        margin-left: 0;
+}
+
+
+.aui-list .aui-jijin .aui-list-item-title{
+   width:100%;
+}
+
+     .truncate {
+    display: block !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.topprize{font-size: larger;color:#252525;}
+.getprize{font-size: 19px;color: #e51c23;}
+.aui-p2p{position: absolute;right: 15px;top: 1.5rem;font-size: 0.6rem;text-align:right;}
+.aui-jij{position: absolute;right: 15px;top: 1.5rem;font-size: 0.6rem;text-align:right;}
+.ptitle{
+  font-size: 0.75rem;
+  color: #000;
+}
+.pdesc{
+    font-size: 0.6rem !important;
+    margin-bottom: 5px;
+    display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+overflow: hidden;
+}
+@media (max-width: 420px){
+    .truncate {width:10rem;}
+}
+
+@media (max-width: 380px){
+    .truncate {width:9rem;}
+}
+@media (max-width: 330px){
+    .truncate {width:7rem;}
+}
+
+    </style>
+</head>
+<body>
+
+
+
+     <div class="aui-content">
+     <ul id="post_list" class="aui-list aui-media-list">
+
+<!--
+
+      <li class="aui-list-item aui-list-item-middle">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media wechat-avatar">
+                        <img src="../../image/demo1.png" />
+                    </div>
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title"><p class="ptitle">理财宝</p><p class="pdesc">30天</p></div>
+                            <div class="aui-list-item-right"><div class="aui-btn aui-btn-danger">立刻申请</div></div>
+                        </div>
+
+                    </div>
+                </div>
+          </li>
+
+          <li class="aui-list-item aui-list-item-middle">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media wechat-avatar">
+                        <img src="../../image/demo1.png" />
+                    </div>
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title">理财宝</div>
+                            <div class="aui-list-item-right">30天</div>
+                        </div>
+                        <div class="aui-list-item-text aui-font-size-12">
+                         <div class="aui-list-item-left">年华收益率12%</div>
+                           <div class="aui-list-item-right"><div class="aui-btn aui-btn-danger">立刻申请</div></div>
+                        </div>
+                    </div>
+                </div>
+          </li>
+
+
+             <li class="aui-list-item aui-list-item-middle">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media wechat-avatar">
+                        <img src="../../image/demo1.png" />
+                    </div>
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title">理财宝</div>
+                            <div class="aui-list-item-right">30天</div>
+                        </div>
+                        <div class="aui-list-item-text aui-font-size-12">
+                         <div class="aui-list-item-left">年华收益率12%</div>
+                           <div class="aui-list-item-right"><div class="aui-btn aui-btn-danger">立刻申请</div></div>
+                        </div>
+                    </div>
+                </div>
+          </li>
+
+            <li class="aui-list-item aui-list-item-middle">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media wechat-avatar">
+                        <img src="../../image/demo1.png" />
+                    </div>
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title">理财宝</div>
+                            <div class="aui-list-item-right">30天</div>
+                        </div>
+                        <div class="aui-list-item-text aui-font-size-12">
+                         <div class="aui-list-item-left">年华收益率12%</div>
+                           <div class="aui-list-item-right"><div class="aui-btn aui-btn-danger">立刻申请</div></div>
+                        </div>
+                    </div>
+                </div>
+          </li>
+
+          <li class="aui-list-item aui-list-item-middle">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media wechat-avatar">
+                        <img src="../../image/demo1.png" />
+                    </div>
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title">理财宝</div>
+                            <div class="aui-list-item-right">30天</div>
+                        </div>
+                        <div class="aui-list-item-text aui-font-size-12">
+                         <div class="aui-list-item-left">年华收益率12%</div>
+                           <div class="aui-list-item-right"><div class="aui-btn aui-btn-danger">立刻申请</div></div>
+                        </div>
+                    </div>
+                </div>
+          </li>
+
+
+             <li class="aui-list-item aui-list-item-middle">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media wechat-avatar">
+                        <img src="../../image/demo1.png" />
+                    </div>
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title">理财宝</div>
+                            <div class="aui-list-item-right">30天</div>
+                        </div>
+                        <div class="aui-list-item-text aui-font-size-12">
+                         <div class="aui-list-item-left">年华收益率12%</div>
+                           <div class="aui-list-item-right"><div class="aui-btn aui-btn-danger">立刻申请</div></div>
+                        </div>
+                    </div>
+                </div>
+          </li>
+-->
+             </ul>
+    </div>
+
+    <div id="more_loading" class="aui-content aui-hide" style="text-align: center;background: #fff;" >
+<p>加载更多...</p>
+</div>
+
+
+</body>
+<script id="list-template" type="text/html">
+{{ for(var i=0,len=it.length; i < len; i++) { }}
+<li class="aui-list-item aui-list-item-middle">
+          <div class="aui-media-list-item-inner">
+              <div class="aui-list-item-media wechat-avatar">
+                  <img id="ffxiangImgCache" ffxiang-src="{{= it[i].image }}" src="../image/loadingImage.png" />
+              </div>
+              <div class="aui-list-item-inner">
+                  <div class="aui-list-item-text">
+                      <div class="aui-list-item-title"><p class="ptitle">{{= it[i].title }}</p><p class="pdesc">{{= it[i].source }}</p></div>
+                      <div class="aui-list-item-right"><div  tapmode onclick="_url({url:'{{= it[i].url}}',title:'{{= it[i].source}}',type:'ad'},'curl')" data-id="{{= it[i].id }}" data-ad="{{= it[i].ad }}" data-url="{{= it[i].url }}" id="app{{= it[i].id }}" data-status="0" class="aui-btn   {{? it[i].is_view == 0}} aui-btn-danger {{?}}">
+                        {{? it[i].is_view}}已领取  {{??}} 领奖励  {{?}}
+                      </div></div>
+                  </div>
+
+              </div>
+          </div>
+    </li>
+	{{ } }}
+</script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/zepto.min.js"></script>
+<script type="text/javascript" src="../../script/doT.js"></script>
+<script type="text/javascript" src="../../script/ffxiang.js"></script>
+<script type="text/javascript" src="../../script/common.js" ></script>
+<script type="text/javascript">
+var connectionType;
+var uid = 0;
+var ajaxing = 0;
+var nopost = 0;
+var offset = 1;
+var type = 0;
+var cat = 0;
+var refresh = 0;
+var post_list = document.getElementById("post_list");
+var more_loading = document.getElementById("more_loading");
+    apiready = function(){
+        api.parseTapmode();
+        setRefreshHeader();
+        _user = $api.getStorage('user');
+        load_post();
+    }
+    function closeWin(){
+        api.closeWin({
+        });
+    }
+
+
+
+
+  function load_post(){
+
+
+   ajaxstart (offset,refresh);
+   if(nopost == 0 && ajaxing == 0){
+   ajaxing = 1;
+   api.ajax({
+         url: fx_url+'api/article/clickad_list',
+         method : 'post',
+         dataType : 'json',
+         returnAll : false,
+         data : {
+                   values: {
+                       token:_token,
+                   }
+        }
+    },function(ret, err){
+
+       ajaxstop (offset,refresh);
+       refresh = 0;
+       ajaxing = 0;
+       //api.alert({msg:JSON.stringify(ret)});
+       console.log(JSON.stringify(ret));
+       if(ret){
+        ajaxing = 0;
+        if (ret.status == 1) {
+          var post = ret.output;
+          var evalData = doT.template($api.html($api.byId('list-template')));
+           $api.html(post_list, evalData(post));
+           _imageCache();
+        }else{
+           //nopost = 1;
+           api.toast({msg : ret.error});
+        }
+
+      }else{
+        ajaxing = 0;
+        api.alert({msg:err.msg});
+      }
+
+
+
+    });
+
+    }
+
+}
+
+
+
+
+
+
+
+    function setRefreshHeader() {
+        	api.setCustomRefreshHeaderInfo({
+        bgColor: '#F5F5F5',
+        image: {
+            pull: [ 'widget://image/loading/1.fw.png' ],
+            load: [ 'widget://image/loading/4.fw.png' ],
+        }
+    }, function(){
+    	    offset = 1;
+            nopost = 0;
+            refresh = 1;
+            load_post();
+    });
+	//注释默认刷新功能，自己修改的刷新。
+	//api.setRefreshHeaderInfo({
+    //        visible: true,
+   //         bgColor: '#ccc',
+   //         textColor: '#fff',
+   //         textDown: '下拉刷新...',
+   //         textUp: '松开刷新...',
+   //         showTime: true
+   //     }, function (ret, err) {
+   //         offset = 1;
+   //         nopost = 0;
+   //         refresh = 1;
+   //         load_post();
+//
+   //     });
+    }
+
+function open_url(item){
+   var url = $(item).attr("data-url");
+   var title = $(item).attr("data-title");
+   var id = $(item).attr("data-id");
+   var html = $(item).html();
+   openWin ('finance_detial_header','../finance_detial_header.html',{title:title,pageurl:url,id:id,html:html});
+
+}
+
+</script>
+</html>
+
+

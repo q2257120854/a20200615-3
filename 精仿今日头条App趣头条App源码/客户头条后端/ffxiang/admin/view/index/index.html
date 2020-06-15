@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>后台系统</title>
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <link rel="shortcut icon" href="__IMG__favicon.ico">
+    {load href="__CSS__bootstrap.min.css"}
+    {load href="__CSS__font-awesome.min.css"}
+    {load href="__CSS__animate.min.css"}
+    {load href="__CSS__style.min.css"} 
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+    <div id="wrapper">
+        <!--左侧导航开始-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="nav-close"><i class="fa fa-times-circle"></i>
+            </div>
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                           <span class="block m-t-xs"><strong class="font-bold">锦尚中国 bbs.52jscn.com</strong></span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                               <span class="block m-t-xs"><strong class="font-bold">admin</strong></span>
+                             
+                                </span>
+                            </a>
+                            
+                        </div>
+                        <div class="logo-element"><i class="fa fa-home"></i>
+                        </div>
+                    </li>
+ 
+{php}
+$data=db('category')->where('tid',0)->order('des desc,id asc')->cache(_cache('db'))->select();
+foreach($data as $k=>$v){   
+{/php}
+<li>
+{php}
+$url='';
+if($v['controller'] && $v['function']){
+    $url='class="J_menuItem" href="'.url($v['controller'].'/'.$v['function']).'"';
+}else{
+    $url='href="#"';
+}
+{/php}
+    <a {$url}>
+        <i class="fa fa-{$v.icon}"></i>
+        <span class="nav-label">{$v.title}</span>
+        {php}
+        $data2=db('category')->where(['tid'=>$v['id'],'hideleft'=>1])->cache(_cache('db'))->order('des desc,id asc')->cache(_cache('db'))->select();
+        if($data2){echo '<span class="fa arrow"></span>';}
+        {/php}
+    </a>
+    {php}
+    if($data2){
+    {/php}
+    <ul class="nav nav-second-level">
+        {php}
+        foreach($data2 as $k2=>$v2){
+        {/php}
+        <li>
+{php}
+$url='';
+if($v2['controller'] && $v2['function']){
+    $url='class="J_menuItem" href="'.url($v2['controller'].'/'.$v2['function']).'"';
+}else{
+    $url='href="#"';
+}
+$data3=db('category')->where(['tid'=>$v2['id'],'hideleft'=>1])->order('des asc,id asc')->cache(_cache('db'))->select();
+{/php}
+            <a {$url}>{$v2.title}{php}if($data3){echo '<span class="fa arrow"></span>';}{/php}</a>
+            {php}if($data3){{/php}
+            <ul class="nav nav-third-level"> 
+                {php}
+                foreach($data3 as $k3=>$v3){
+                {/php}
+                <li>
+                    <a class="J_menuItem" href="{:url($v3['controller'].'/'.$v3['function'])}">{$v3.title}</a>
+                </li>
+                {php}}{/php}
+            </ul>
+            {php}}{/php}
+        </li>
+        {php}}{/php}
+    </ul>
+    {php}}{/php}
+</li>
+{php}}{/php}
+
+
+<li>
+    <a href="#">
+        <i class="fa fa-edit"></i>
+        <span class="nav-label">问题管理</span>
+        <span class="fa arrow"></span>    </a>
+        <ul class="nav nav-second-level collapse">
+           <li>
+             <a class="J_menuItem" href="{:url('Question/index')}" data-index="2">问题列表</a>
+          </li>
+           <li>
+            <a class="J_menuItem" href="{:url('Question/add')}" data-index="3">添加问题</a>
+           </li>
+        </ul>
+</li>
+                </ul>
+            </div>
+        </nav>
+        <!--左侧导航结束-->
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                      <!--   <form role="search" class="navbar-form-custom" method="post" action="http://www.zi-han.net/theme/hplus/search_results.html">
+                            <div class="form-group">
+                                <input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="top-search" id="top-search">
+                            </div>
+                        </form> -->
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        
+
+                        <li class="hidden-xs">
+                            <a href="{:request()->domain()}" target="_blank">访问网站</a>
+                        </li>
+                        <li class="hidden-xs">
+                            <a href="" class="J_menuItem cache">清空缓存</a>
+                        </li>
+                        <li class="hidden-xs">
+                            <a href="" class="J_menuItem zhuan">金币转零钱</a>
+                        </li>
+                         
+                    </ul>
+                </nav>
+            </div>
+            <div class="row content-tabs">
+                <button class="roll-nav roll-left J_tabLeft"><i class="fa fa-backward"></i>
+                </button>
+                <nav class="page-tabs J_menuTabs">
+                    <div class="page-tabs-content">
+                        <a href="javascript:;" class="active J_menuTab" data-id="{:url('main')}">首页</a>
+                    </div>
+                </nav>
+                <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i>
+                </button>
+                <div class="btn-group roll-nav roll-right">
+                    <button class="dropdown J_tabClose" data-toggle="dropdown">关闭操作<span class="caret"></span>
+
+                    </button>
+                    <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                        <li class="J_tabShowActive"><a>定位当前选项卡</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="J_tabCloseAll"><a>关闭全部选项卡</a>
+                        </li>
+                        <li class="J_tabCloseOther"><a>关闭其他选项卡</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="{:url('index/out')}" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+            </div>
+            <div class="row J_mainContent" id="content-main">
+                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="{:url('main')}" frameborder="0" data-id="{:url('main')}" seamless></iframe>
+            </div>
+            <div class="footer">
+                <div class="pull-right"> 
+                Copyright &copy; 2013-2018 <a href="http://bbs.52jscn.com/" target="_blank">XXX网络</a> 版权所有 <a href="http://bbs.52jscn.com/" target="_blank">技术支持</a>
+                </div>
+            </div>
+        </div>
+        <!--右侧部分结束-->
+        <div id="small-chat">
+            <span class="badge badge-warning pull-right">5</span>
+            <a class="open-small-chat">
+                <i class="fa fa-comments"></i>
+            </a>
+        </div>
+    </div>
+    {load href="__JS__jquery.min.js"}
+    {load href="__JS__bootstrap.min.js"}
+    {load href="__PLUGINS__metisMenu/jquery.metisMenu.js"}
+    {load href="__PLUGINS__slimscroll/jquery.slimscroll.min.js"}
+    {load href="__PLUGINS__layer/layer.js"}
+    {load href="__JS__hplus.min.js"}
+    {load href="__JS__contabs.min.js"}
+    {load href="__PLUGINS__pace/pace.min.js"}
+    {load href="__PLUGINS__sweetalert/sweetalert.css"}
+    {load href="__PLUGINS__sweetalert/sweetalert.min.js"}
+    <script type="text/javascript">
+    $('.cache').click(function(){
+     
+        var layerindex = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
+        $.getJSON("{:url('cache_del')}",function(result){
+            $.each(result, function(i, name){
+              swal(name);
+            });
+            layer.close(layerindex);
+        });
+    })
+     $('.zhuan').click(function(){
+     
+        var layerindex = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
+        $.getJSON("{:url('jinbi')}",function(result){
+            $.each(result, function(i, name){
+              swal(name);
+            });
+            layer.close(layerindex);
+        });
+    })
+    </script>
+</body>
+</html>
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

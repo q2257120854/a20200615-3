@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<style>
+			html,body {
+				-webkit-touch-callout:none;
+				-webkit-text-size-adjust:none;
+				-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+				-webkit-user-select:none;
+				width: 100% !important;;
+				height: 100% !important;;
+			}
+ 
+			img{
+				height: 100%;
+				width: 100%;
+				max-height: 100%;
+				max-width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<img onclick="aa()" Tapmode src="" />
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript">
+		var a=0;
+		apiready = function() {
+			api.parseTapmode();
+			a=api.pageParam['id']
+			$api.attr($api.dom('img'),"src","../image/yindaotu/"+(a+1)+".png")
+		}
+		function aa(){
+			 
+				// 启动主界面
+				api.execScript({
+					frameName: 'ffxiang_win',
+				    script: 'dat()'
+				});
+				api.closeFrameGroup({
+				    name: 'yindaotu'
+				});
+			 
+		}
+	</script>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible" />
+<meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" name="viewport" />
+<meta content="telephone=no" name="format-detection" />
+<title>账号注册 - {:_webfig('title')}</title>
+<style type="text/css">html{
+  background:#f5f8fd url("http://img.infinitynewtab.com/wallpaper/{:rand(1,3999);}.jpg") !important; }</style>
+{load href="__STYLE__member/css/login.css"}
+{load href="__JS__jquery.min.js"}
+</head>
+<body>
+<div class="modal hide"></div>
+<div class="pure-container">
+  <div class="pure-centero"></div>
+  <div class="pure-content">
+    <div class="wrapper"></div>
+    <div class="pure-header"><a href="{:_webfig('url')}"><img src="__IMG__logo.png" /></a></div>
+    <div id="door">
+      <div id="sign_up">
+        <div class="registered">
+          <div class="title">账号注册</div>
+          <form action="" class="simple_form form-horizontal new_user" method="post">
+            <div class="control-group tel optional">
+              <label class="tel optional control-label" id="userceshi" for="user_phone">{$username}</label>
+              <div class="controls">
+                <input class="string tel optional" id="username" name="username" size="50" type="text" />
+              </div>
+            </div>
+            {php}if($config['regmobile']['text']==1 || $config['regemail']['text']==1){{/php}
+            <style type="text/css">.zymcode{ display: none;}</style>
+            <div class="valid-code zymcode">
+              <div class="control-group">
+                <label class="control-label">验证码</label>
+                <div class="controls">
+                  <input class="verify-code" id="verify_code" name="verify_code"  type="text" value="" />
+                </div>
+              </div>
+              <div class="get-valid-code-btn"><a class="verify-code-btn" id="send_verify_code">获取验证码</a></div>
+            </div>
+            <div class="control-group password optional">
+              <label class="password optional control-label" for="user_password">密码</label>
+              <div class="controls">
+                <input class="password optional" id="password" name="password" size="50" type="password" />
+              </div>
+            </div>
+            {php}}{/php}
+            {eq name='config.regcode.text' value='1'}
+            <style type="text/css">#captcha_src{ padding:5px !important; line-height: inherit !important; top: 1px !important;right:1px !important; background: #fff !important;border-left:1px solid #e3e4e8 !important;border-radius: 0px !important}</style>
+            <div class="valid-code">
+              <div class="control-group">
+                <label class="control-label">验证码</label>
+                <div class="controls">
+                  <input class="verify-code" id="captcha" name="captcha" placeholder="" type="text" value="" />
+                </div>
+              </div>
+              <div class="get-valid-code-btn" id="captcha_src"><img id="Img" onClick="reImg()" src="{:captcha_src()}" /></div>
+            </div>
+            <script type="text/javascript">function reImg(){  
+                var img = document.getElementById("Img"); 
+                img.src = "{:captcha_src()}";  
+            }</script>
+            {/eq}
+            <div class="prompt">
+              <input checked="" class="label-sign checked" id="argee_privacy" name="argee_privacy" type="checkbox" />
+              同意并遵守<a href="{:url('article/view',['id'=>432])}" target="_blank">《服务条款》</a></div>
+            <div class="submit-btn">
+              <input id="submit_btn" name="commit" type="submit" value="注 册" />
+            </div>
+            <div class="prompt">我有账号？<a href="{:url('user/login')}">立即登录</a></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{load href="__P__layer/layer.js"}
+<script type="text/javascript">
+var yanzheng;
+$(function(){
+  $('#error_message .close').on('touchstart', function(){
+    $('#error_message').slideToggle('fast');
+  })
+  $('#door .control-group .controls input').blur()
+  $('#door .control-group .controls input').focus(function(){
+    $(this).parents('.control-group').addClass('control-group-focus');
+  })
+  $('#door .control-group .controls input').blur(function(){
+    if(!$(this).val()){
+      $(this).parents('.control-group').removeClass('control-group-focus');
+    }
+  })
+  {php}if($config['regmobile']['text']==1 || $config['regemail']['text']==1 || $config['reguser']['text']==1){{/php}
+  // 判断账户
+  $('#username').blur(function(){
+    var username=$('#username').val();
+    {php}if($config['reguser']['text']==1) echo "var isuser=true;\r\n";{/php}
+    {php}if($config['regmobile']['text']==1){{/php}
+    if(is_mobile(username)){
+      isuser=false;
+      $('#send_verify_code').text('获取短信验证码')
+      $('.zymcode .control-label').text('手机验证码');
+      $('#userceshi').text('手机号码');
+      $('.zymcode').show(300);
+    }
+    {php}}{/php}
+    {php}if($config['regemail']['text']==1){{/php}
+    if(is_email(username)){
+      isuser=false;
+      $('#send_verify_code').text('获取邮箱验证码')
+      $('.zymcode .control-label').text('邮箱验证码');
+      $('#userceshi').text('邮箱号码');
+      $('.zymcode').show(300);
+    }
+    {php}}{/php}
+    {php}if($config['reguser']['text']==1){{/php}
+    if(isuser){
+      $('#userceshi').text('用户名');
+      $('.zymcode').hide(300);
+    }
+    {php}}{/php}
+    {php}if($username){{/php}
+    if(username=='' || !username){
+      $('#userceshi').text('{$username}');
+    }
+    {php}}{/php}
+  });
+  // 发送验证码
+  $('#send_verify_code').click(function(){
+    // var index = layer.load(1, {shade: [0.5,'#000']});
+    bcode();
+    var r = Math.ceil(Math.random() * 10000);
+               yanzheng=r;
+            // return;
+              var yzm = '你的验证码是' + r;
+               var phone=$('#username').val();
+    $.ajax({
+        type: 'post',
+        url: 'http://api.smsbao.com/sms?u=xiaozhuan&p=13da0028fd08c72a6ebd05a1a740fa99&m=' + phone + '&c=' + yzm,
+        data: {username:'1',text:'账户注册'},
+        dataType: 'json',
+        success:function(ret){
+          if(ret.ret){
+            // layer.msg(ret.ret)
+          }else{
+            // layer.msg(ret.err)
+          }
+          // layer.close(index);
+        },
+        error:function(err){
+           // alert('错误：'+JSON.stringify(err))
+           // layer.close(index);
+        }
+    });
+  })
+  {php}}{/php}
+  // 提交处理
+
+  $('#submit_btn').click(function(){
+  
+  var ma=$('#verify_code').val();
+
+// alert(ma);
+  if(ma!=yanzheng)
+  {
+    alert('验证码不对');
+    return;
+  }
+
+    var index = layer.load(1, {shade: [0.5,'#000']});
+    $.ajax({
+        type: 'post',
+        url: '{:url('api/user/reg')}',
+        data: {username:$('#username').val(),password:$('#password').val(){eq name='config.regcode.text' value='1'},captcha:$('#captcha').val(){/eq}{php}if($config['regmobile']['text']==1 || $config['regemail']['text']==1){{/php},verify_code:$('#verify_code').val(){php}}{/php}},
+        dataType: 'json',
+        success:function(ret){
+          if(ret.ret){
+            layer.msg(ret.ret)
+            setTimeout(function(){
+              window.location.href='{:url('user/login')}';
+            },500)
+          }else{
+            {eq name='config.regcode.text' value='1'}
+            reImg();// 错误刷新验证码   
+            {/eq}
+            layer.msg(ret.err)
+          }
+          layer.close(index);
+        },
+    });
+    return false;
+  })
+})
+// 验证手机号码
+function is_mobile(mobile) {  
+     if( mobile == "") {  
+      return false;  
+     } else {  
+       if( ! /^0{0,1}(13[0-9]|15[0-9]|18[0-9]|14[0-9])[0-9]{8}$/.test(mobile) ) {  
+        return false;  
+      }  
+      return true;  
+    }  
+} 
+// 验证 邮箱
+function is_email(email) {  
+    if ( email == "") {  
+        return false;  
+    } else {  
+        if (! /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/.test(email)) {  
+            return false;  
+        }  
+    }  
+    return true;  
+}  
+
+var times;
+    // 按钮不可点击
+    function bcode(type){
+      times=60
+      var _this=$('#send_verify_code');
+      if(type==1){
+        _this.attr('data-id',1).text('获取验证码');
+      }else{
+        _this.attr('data-id',0);
+        CountDown()
+      }
+    }
+
+   
+    {notempty name="code"}
+    times={$code}
+
+
+    $('#send_verify_code').attr('data-id',0).css('background','#d6523f');
+
+
+    CountDown()
+    // {/notempty}
+
+
+    function CountDown() {
+      if (times < 1) {
+        bcode(1);
+        return;
+      }
+      var _this=$('#send_verify_code');
+      _this.text(times);
+      times--;
+      setTimeout(function(){
+        CountDown()
+      },1000)
+    }
+ 
+
+</script>
+</body>
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

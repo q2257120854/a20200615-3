@@ -1,0 +1,214 @@
+{template 'common/header'}
+<div class="panel-body">
+	<form action="" method="post" class="form-horizontal form">
+
+		<div class="panel panel-default we7-panel">
+			<div class="panel-heading">
+			 	平台设置
+		    </div>
+		    <div class="panel-body we7-padding">
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">程序名称</label>
+		            <div class="col-sm-9">
+		                <input type="text" name="data[appname]" class="form-control" value="{$system['appname']}" placeholder="请填写小程序名称" />
+		                <div class="help-block">请填写小程序名称，将展示在程序的标题栏</div>
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">页面标题</label>
+		            <div class="col-sm-9">
+		                <input type="text" name="data[share_title]" class="form-control" value="{$system['share_title']}" placeholder="页面标题" />
+		                <div class="help-block">页面标题作为页面顶部标题展示</div>
+		            </div>
+		        </div>
+	            <div class="form-group">
+	                <label class="col-xs-12 col-sm-3 col-md-2 control-label">分享图标</label>
+	                <div class="col-sm-9">
+	               		{php echo tpl_form_field_image('data[share_image]',$system['share_image'], '../addons/dk_video/static/images/nopic.jpg', array('width' => 100, 'height' => 100))}
+	                    <span class="help-block" style="color:#f00">请上传分享图标，建议尺寸100X100像素</span>
+	                </div>
+	            </div>
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">拼多多ID</label>
+		            <div class="col-sm-9">
+		                <input type="text" name="data[client_id]" class="form-control" value="{$system['client_id']}" placeholder="多多开放平台ID" />
+		                <div class="help-block">多多开放平台ID，开发平台获得client_id</div>
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">多多密钥</label>
+		            <div class="col-sm-9">
+		                <input type="text" name="data[client_secret]" class="form-control" value="{$system['client_secret']}" placeholder="多多开放平台密钥" />
+		                <div class="help-block">多多开放平台密钥，开发平台获得client_secret</div>
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">多多关键字</label>
+		            <div class="col-sm-9">
+		                <input type="text" name="data[duoduo_keywords]" class="form-control" value="{$system['duoduo_keywords']}" placeholder="多多开推广商品关键字" />
+		                <div class="help-block">多多开推广商品关键字，请填写多个，将随机查询插入广告位，用|隔开</div>
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">推广位ID</label>
+		            <div class="col-sm-9">
+		                <input type="text" name="data[duoduo_pid]" class="form-control" value="{$system['duoduo_pid']}" placeholder="拼多多开放平台推广位ID" />
+		                <div class="help-block">拼多多开放平台推广位ID</div>
+		            </div>
+		        </div>
+	            <div class="form-group">
+	                <label class="col-xs-12 col-sm-3 col-md-2 control-label">商城横幅</label>
+	                <div class="col-sm-9">
+	               		{php echo tpl_form_field_image('data[mall_banner]',$system['mall_banner'], '../addons/dk_video/static/images/nopic.jpg', array('width' => 100, 'height' => 100))}
+	                    <span class="help-block" style="color:#f00">视频详情页链接到商城页面的横幅图，建议尺寸720X200像素</span>
+	                </div>
+	            </div>
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">横幅广告</label>
+		            <div class="col-sm-9">
+		                <input type="text" name="data[ad_banner]" class="form-control" value="{$system['ad_banner']}" placeholder="BANNER横幅广告位ID" />
+		                <div class="help-block">微信小程序后台申请流量主，创建横幅广告后获得的广告位ID (列表随机出现)，不填写则禁用</div>
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">视频广告</label>
+		            <div class="col-sm-9">
+		                <input type="text" name="data[ad_video]" class="form-control" value="{$system['ad_video']}" placeholder="视频广告广告位ID" />
+		                <div class="help-block">微信小程序后台申请流量主，创建视频广告后获得的广告位ID (列表随机出现)，不填写则禁用</div>
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">插屏广告</label>
+		            <div class="col-sm-9">
+		                <input type="text" name="data[ad_modal]" class="form-control" value="{$system['ad_modal']}" placeholder="插屏广告位ID" />
+		                <div class="help-block">微信小程序后台申请流量主，创建插屏广告后获得的广告位ID，不填写则禁用</div>
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">插屏频率</label>
+		            <div class="col-sm-9">
+		                <input type="text" name="data[ad_modal_per]" class="form-control" value="{$system['ad_modal_per']}" placeholder="填写数字，插屏广告展现频率" />
+		                <div class="help-block">请定义用户每浏览多少个广告展现一个插屏广告，0则禁用</div>
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">打赏设置</label>
+		            <div class="col-sm-9">
+		                <textarea type="text" name="data[reward]" class="form-control" rows="4" placeholder="填写打赏价位表">{$system['reward']}</textarea>
+		                <div class="help-block">不填写则不开启打赏，填写格式：1|好运连连，前面价格后面祝福文章，一行一个</div>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">头部色调</label>
+		            <div class="col-sm-9">
+		                <input type="text" name="data[color_primary]" class="form-control" value="{$system['color_primary']}" placeholder="请填写颜色十六进制编号" />
+		                <div class="help-block">请填写颜色十六进制编号，如：#FF6666</div>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">视频矩阵</label>
+		            <div class="col-sm-9">
+		                <input type="text" name="data[matrix]" class="form-control" value="{$system['matrix']}" placeholder="请填写矩阵下程序微擎平台编号" />
+		                <div class="help-block">请填写矩阵下程序微擎平台编号，多个用|分割，不启用留空，当前平台编号为：{$_W['uniacid']} (提审时候留空)</div>
+		            </div>
+		        </div>
+
+
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">导航展示</label>
+		            <div class="col-sm-9">
+		                <select name="data[apps]" class="form-control">
+		                	<option value="0" {if $system['apps'] == 0}selected{/if}>关闭</option>
+		                	<option value="1" {if $system['apps'] == 1}selected{/if}>开启</option>
+		                </select>
+		                <div class="help-block">开启后将在主界面展示小程序引导图标，建议提审时候关闭，过审后打开</div>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">多多模式</label>
+		            <div class="col-sm-9">
+		                <select name="data[duoduo]" class="form-control">
+		                	<option value="0" {if $system['duoduo'] == 0}selected{/if}>关闭</option>
+		                	<option value="1" {if $system['duoduo'] == 1}selected{/if}>开启</option>
+		                </select>
+		                <div class="help-block">是否开启拼多多联盟，如果关闭则所有拼多多功能关闭</div>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">吸粉模式</label>
+		            <div class="col-sm-9">
+		                <select name="data[follow]" class="form-control">
+		                	<option value="0" {if $system['follow'] == 0}selected{/if}>关闭</option>
+		                	<option value="1" {if $system['follow'] == 1}selected{/if}>开启</option>
+		                </select>
+		                <div class="help-block">是否开启关注公众号组件，开启后在视频详情页展示公众号（进扫码和顶部入口有效）</div>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">播完提醒</label>
+		            <div class="col-sm-9">
+		                <select name="data[ended_box]" class="form-control">
+		                	<option value="0" {if $system['ended_box'] == 0}selected{/if}>关闭</option>
+		                	<option value="1" {if $system['ended_box'] == 1}selected{/if}>开启</option>
+		                </select>
+		                <div class="help-block">是否在视频播放结束后，弹出分享提示，建议提审时候关闭，过审后打开</div>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">随机排序</label>
+		            <div class="col-sm-9">
+		                <select name="data[rand]" class="form-control">
+		                	<option value="0" {if $system['rand'] == 0}selected{/if}>关闭</option>
+		                	<option value="1" {if $system['rand'] == 1}selected{/if}>开启</option>
+		                </select>
+		                <div class="help-block">开启后，前台的视频以随机排序显示，不开启以时间倒序</div>
+		            </div>
+		        </div>
+
+
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">风险屏蔽</label>
+		            <div class="col-sm-9">
+		                <select name="data[danger]" class="form-control">
+		                	<option value="0" {if $system['danger'] == 0}selected{/if}>关闭</option>
+		                	<option value="1" {if $system['danger'] == 1}selected{/if}>开启</option>
+		                </select>
+		                <div class="help-block">开启风险屏蔽后，将不会展示带风险的视频，建议在提审时候打开</div>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">地区授权</label>
+		            <div class="col-sm-9">
+		                <textarea type="text" name="data[lbskey]" class="form-control" rows="4" placeholder="请填写腾讯地图KEY">{$system['lbskey']}</textarea>
+		                <div class="help-block">请到腾讯地图开放平台申请带WebService服务的KEY，可多个每行一个</div>
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label class="col-xs-12 col-sm-3 col-md-2 control-label">多客授权</label>
+		            <div class="col-sm-9">
+		                <input type="text" name="data[token]" data-url="{$system['token']}" class="form-control js-clip" value="{$system['token']}" readonly="readonly" placeholder="拼多多开放平台推广位ID" />
+	           			{if $check['code'] < 0}<div class="help-block" style="color: #FF0000;">您的站点授权已被停用，请联系客服处理</div>{/if}
+	           			{if $check['code'] == 0}<div class="help-block" style="color: #FF0000;">您的站点尚未激活，请联系客服QQ&#50;&#51;&#56;&#52;&#53;&#56;&#57;&#49;&#53;&#55;进行激活</div>{/if}
+	           			{if $check['code'] > 0}<div class="help-block" style="color: #44b549;">恭喜您，您的站点已经激活，可以正常使用</div>{/if}
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <div class="col-md-6 col-sm-offset-3  col-md-offset-2">
+				        <input type="submit" name="submit" value="提交保存" class="btn btn-primary col-md-5" />
+				        <input type="hidden" name="token" value="{$_W['token']}" />
+		            </div>
+		        </div>
+		    </div>
+	    </div>
+	</form>
+</div>
+
+{template 'common/footer'}

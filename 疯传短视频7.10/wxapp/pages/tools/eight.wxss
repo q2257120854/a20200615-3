@@ -1,0 +1,69 @@
+.eight-box {
+    margin-top: 40rpx;
+    padding: 0 20rpx;
+}
+
+.eight-box .hd {
+    font-size: 34rpx;
+    font-weight: bold;
+}
+
+.eight-box .bd {
+    font-size: 34rpx;
+    line-height: 60rpx;
+    letter-spacing: 3rpx;
+    margin-top: 10rpx;
+}
+
+.eight-box .ft {
+    font-size: 34rpx;
+    line-height: 60rpx;
+    letter-spacing: 3rpx;
+    margin-top: 10rpx;
+}
+
+.grace-td {
+    font-size: 34rpx;
+}
+
+.eight-text {
+    font-size: 34rpx;
+    line-height: 60rpx;
+    letter-spacing: 3rpx;
+}
+
+.grace-bg-gray {
+    background-color: #EBC9BD!important;
+    color: #000!important;
+}
+
+.grace-td {
+    border-color: #B09589;
+}
+
+.grace-theader {
+    border-color: #B09589;
+}
+
+.grace-tbody {
+    border-color: #B09589;
+}
+
+.eight-top {
+    width: 100%;
+    height: 350rpx;
+}
+
+.eight-form {
+    padding: 30rpx;
+}
+
+.grace-form-label,.grace-check-item,.grace-form-input,.grace-form-body {
+    font-size: 34rpx;
+}
+
+.eight-button {
+    line-height: 80rpx;
+    font-size: 34rpx;
+    color: #ffffff;
+}

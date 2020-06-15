@@ -1,0 +1,125 @@
+<view slot="gBody" style="background: #F5F5F5;">
+    <view class="sec-main {{mainClass}} {{weather.current.name}}" wx:if="{{weather!=null}}">
+        <view class="sec-main-local">
+            <text wx:if="{{weather.location.city}}">{{weather.location.city}}</text>
+            <text wx:if="{{weather.location.district}}">{{weather.location.district}}</text>
+        </view>
+        <view class="sec-main-temperature">
+            <text wx:if="{{weather.observe.degree}}">{{weather.observe.degree}}</text>
+        </view>
+        <view class="sec-main-weather">
+            <text>{{weather.observe.weather}}</text>
+        </view>
+        <view class="sec-main-other">
+            <text style="margin-right: 10rpx;">湿度：{{weather.observe.humidity}}%</text>
+            <text wx:if="{{weather.current.name=='day'}}">{{weather.forecast_24h[1].day_wind_direction}}</text>
+            <text wx:if="{{weather.current.name=='night'}}">{{weather.forecast_24h[1].night_wind_direction}}</text>
+            <text>{{weather.observe.wind_power}}级</text>
+        </view>
+        <view class="sec-main-tips">
+            <text>{{weather.tips.observe[0]}}</text>
+        </view>
+        <view class="sec-main-land">
+            <view class="layer layer-1"></view>
+            <view class="layer layer-2"></view>
+            <view class="layer layer-3"></view>
+        </view>
+        <button class="sec-share grace-gtbg-orange" openType="share">分享给好友</button>
+        <text bindtap="goBack" class="sec-back grace-icons icon-arrow-left"></text>
+    </view>
+    <view class="sec-tomorrow" wx:if="{{weather!=null}}">
+        <view class="item">
+            <view class="item-top">
+                <view class="item-top-date">今天</view>
+                <view class="item-top-temperature">
+                    <text>{{weather.forecast_24h[1].min_degree}} / {{weather.forecast_24h[1].max_degree}} ℃</text>
+                </view>
+            </view>
+            <view class="item-bottom">
+                <view class="item-bottom-weather">
+                    <text>{{weather.forecast_24h[1].day_weather}}</text>
+                </view>
+                <image class="item-bottom-logo" src="https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/day/{{weather.forecast_24h[1].day_weather_code}}.svg"></image>
+            </view>
+        </view>
+        <view class="item">
+            <view class="item-top">
+                <view class="item-top-date">明天</view>
+                <view class="item-top-temperature">
+                    <text>{{weather.forecast_24h[2].min_degree}} / {{weather.forecast_24h[2].max_degree}} ℃</text>
+                </view>
+            </view>
+            <view class="item-bottom">
+                <view class="item-bottom-weather">
+                    <text>{{weather.forecast_24h[2].day_weather}}</text>
+                </view>
+                <image class="item-bottom-logo" src="https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/day/{{weather.forecast_24h[2].day_weather_code}}.svg"></image>
+            </view>
+        </view>
+    </view>
+    <view class="sec-hours" wx:if="{{weather!=null}}">
+        <view class="sec-hours-scroll">
+            <view class="sec-hours-weather">
+                <view class="item" wx:for="{{weather.forecast_1h}}" wx:key="index">
+                    <text class="item-time">{{item.time}}</text>
+                    <image class="item-icon" src="https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/day/{{item.weather_code}}.svg"></image>
+                    <text class="item-degree" wx:if="{{item.degree}}">{{item.degree}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="sec-days" wx:if="{{weather!=null}}">
+        <view class="sec-days-scroll">
+            <view class="sec-days-weather">
+                <view class="item" wx:for="{{weather.forecast_24h}}" wx:key="index">
+                    <view class="item-day">{{item.date}}</view>
+                    <view class="item-date">{{item.time}}</view>
+                    <view class="item-daytime">
+                        <text class="item-daytime-weather">{{item.day_weather}}</text>
+                        <image class="item-daytime-icon" src="https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/day/{{item.day_weather_code}}.svg"></image>
+                    </view>
+                    <view class="item-temperature">
+                        <text class="item-temperature-min">
+						{{item.min_degree}}
+						</text>
+                        <text class="item-temperature-pie">
+									/
+								</text>
+                        <text class="item-temperature-max">
+						{{item.max_degree}}
+						</text>
+                    </view>
+                    <view class="item-night">
+                        <text class="item-night-weather">{{item.night_weather}}</text>
+                        <image class="item-night-icon" src="https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/night/{{item.night_weather_code}}.svg"></image>
+                    </view>
+                    <view class="item-wind">{{item.day_wind_direction}}</view>
+                    <view class="item-wind">{{item.day_wind_power}}级</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="sec-living" wx:if="{{weather!=null}}">
+        <view class="item">
+            <view class="item-icon icon-xianhao"></view>
+            <view class="item-content">
+                <text wx:if="{{weather.limit.tail_number==''}}">不限行</text>
+                <text wx:if="{{weather.limit.tail_number!=''}}">{{weather.limit.tail_number}}</text>
+            </view>
+            <view class="item-title">限行</view>
+        </view>
+        <view bindtap="showModal" class="item" data-idx="{{index}}" wx:for="{{weather.index}}" wx:key="index">
+            <view class="item-icon icon-{{index}}"></view>
+            <view class="item-content">{{item.info}}</view>
+            <view class="item-title">{{item.name}}</view>
+        </view>
+    </view>
+    <graceDialog isCloseBtn="{{false}}" show="{{modalShow}}" title="{{modalTitle}}" titleSize="36rpx">
+        <view class="sec-modal" slot="content">
+            <text>{{modalText}}</text>
+        </view>
+        <view class="grace-space-between" slot="btns">
+            <text bindtap="modalHide" class="grace-dialog-buttons grace-blue sec-btn">确认</text>
+        </view>
+    </graceDialog>
+</view>

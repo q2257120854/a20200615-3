@@ -1,0 +1,18 @@
+﻿导入源码程序
+
+导入数据库ziyuan.sql
+
+修改数据库连接信息：\app\database.php
+
+设置运行目录public
+
+设置伪静态 thinkphp
+
+后台：/admin.php
+
+账号：admin
+密码：ziyuan
+
+
+
+

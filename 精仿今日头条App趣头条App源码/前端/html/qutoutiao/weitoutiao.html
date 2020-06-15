@@ -1,0 +1,290 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/fx-weitoutiao.css" />
+		<style>
+		i.fx-video-bofang{
+			position: absolute;
+			background:url("../image/video-bofang.png");
+			background-size:100%;
+			height: 40px;
+			width: 40px;
+			top:50%;
+		    left:50%;
+		    margin-left: -20px;
+		    margin-top: -20px;
+		}
+		em.fx-video-em{
+			position:absolute;
+			bottom:0.5rem;
+			right:0.5rem;
+			color: #fff;
+			background: rgba(0,0,0,.3);
+			pointer-events:auto;
+			border-radius: 1rem;
+			padding: 2px 7px;
+			font-size: 0.5rem;
+		}
+		.aui-card-list-header{
+			padding: 0.5rem 0.75rem;
+		}
+		.fx-weitoutiao-list .aui-card-list-footer{
+			padding: 0.35rem 2.5rem;
+		}
+		</style>
+	</head>
+	<body>
+		<script id="fx-list" type="text/x-dot-template">
+			{{ for(var i=0,len=it.data.length; i < len; i++) { }}
+			{{? it.data[i].mychannel != 99}}
+			<div class="aui-card-list" id="id{{= it.data[i].id }}" data-images="{{= it.data[i].imagesPro }}">
+				{{? it.data[i].user}}
+				<div class="aui-card-list-header aui-card-list-user">
+					<div class="aui-card-list-user-avatar">
+						<img id="ffxiangImgCache" ffxiang-src="{{= it.data[i].user.img }}" src="{{= _image}}touxiang.png" tapmode onclick="_url({uid:{{= it.data[i].uid }},qian:0,fan:1},'u_win')">
+					</div>
+					<div class="aui-card-list-user-name">
+						<div tapmode onclick="_url({uid:{{= it.data[i].uid }},qian:0,fan:1},'u_win')">
+							{{= it.data[i].user.username }}
+						</div>
+						{{? it.data[i].uid}}
+							{{? $api.getStorage('user') && it.data[i].uid != $api.getStorage('user').id}}
+								{{? it.data[i].guanzhu}}
+									<span class="fx-weitoutiao-guanzhu fx-weitoutiao-guanzhuHivdeo" data-id="2" id="guanzhu{{= it.data[i].uid}}" Tapmode onclick="guanzhu(this,{{= it.data[i].uid}});">已关注</span>
+								{{??}}
+									<span class="fx-weitoutiao-guanzhu" data-id="1" Tapmode id="guanzhu{{= it.data[i].uid}}" onclick="guanzhu(this,{{= it.data[i].uid}});">关注</span>
+								{{?}}
+							{{?? !$api.getStorage('user')}}
+								{{? it.data[i].guanzhu}}
+									<span class="fx-weitoutiao-guanzhu fx-weitoutiao-guanzhuHivdeo" data-id="2" id="guanzhu{{= it.data[i].uid}}" Tapmode onclick="guanzhu(this,{{= it.data[i].uid}});">已关注</span>
+								{{??}}
+									<span class="fx-weitoutiao-guanzhu" data-id="1" Tapmode id="guanzhu{{= it.data[i].uid}}" onclick="guanzhu(this,{{= it.data[i].uid}});">关注</span>
+								{{?}}
+							{{?}}
+						{{?}}
+					</div>
+					<div class="aui-card-list-user-info">
+						{{= it.data[i].create_time }}
+					</div>
+				</div>
+				{{?}}
+				<ul class="aui-list aui-media-list fx-weitoutiao-images">
+					<li class="aui-list-item">
+						{{? it.data[i].mychannel == 3}}
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-title fx-weitoutiao-content" tapmode onclick="_url({id:{{= it.data[i].id }},videoUrl:'{{= it.data[i].video }}',title:'{{= it.data[i].title }}'},'videoView_win')">
+								{{= it.data[i].title }}
+							</div>
+							<div class="aui-row aui-row-padded">
+								<div class="aui-col-xs-12" tapmode onclick="_url({id:{{= it.data[i].id }},videoUrl:'{{= it.data[i].video }}',title:'{{= it.data[i].title }}'},'videoView_win')">
+									<img id="ffxiangImgCache" ffxiang-src="{{= it.data[i].image }}" src="{{= _image}}loadingImage.png" class="fx-video-img">
+	 								<i class="fx-video-bofang"></i>
+									<!-- <em class="fx-video-em aui-margin-b-5">01:35</em> -->
+								</div>
+							</div>
+						</div>
+						{{??}}
+						<div class="aui-list-item-inners">
+							{{? it.data[i].description }}
+							<div class="aui-list-item-title fx-weitoutiao-content" tapmode onclick="_url({id:{{= it.data[i].id }},qian:1,fan:1},'view_win')">
+								{{= it.data[i].description }}
+							</div>
+							{{?}}
+							{{? it.data[i].images }}
+							<div class="aui-row aui-row-padded">
+								{{= it.data[i].images }}
+							</div>
+							{{?}}
+						</div>
+						{{?}}
+					</li>
+				</ul>
+				<div class="aui-card-list-footer aui-border-t aui-margin-t-10">
+					<div class="{{? it.data[i].zanUser}} pingZanColor{{?}}" {{? it.data[i].zanUser}} data-id='1'{{?}} Tapmode onclick="pingZan_xia(this,{{= it.data[i].id}} ,{{= it.data[i].zan}})">
+						<i class="aui-iconfont aui-icon-laud aui-margin-r-5"></i> {{= it.data[i].zan }}
+					</div>
+					<div tapmode onclick="_url({aid:{{= it.data[i].id }},pingNum:{{= it.data[i].pingNum }}},'view_ping_win')">
+						<i class="aui-iconfont aui-icon-comment aui-margin-r-5"></i> {{= it.data[i].pingNum }}
+					</div>
+					{{? it.data[i].mychannel == 3}}
+					<div tapmode onclick="_url({id:{{= it.data[i].id }},videoUrl:'{{= it.data[i].video }}',title:'{{= it.data[i].title }}'},'videoView_win')">
+						<i class="aui-iconfont aui-icon-display aui-margin-r-5"></i> {{= it.data[i].click }}
+					</div>
+					{{??}}
+					<div tapmode onclick="_url({id:{{= it.data[i].id }},qian:1,fan:1},'view_win')">
+						<i class="aui-iconfont aui-icon-display aui-margin-r-5"></i> {{= it.data[i].click }}
+					</div>
+					{{?}}
+				</div>
+			</div>
+			 {{??}}
+				<!--广告-->
+				{{? it.data[i].url}}
+				<li class="aui-list-item" tapmode onclick="_url({url:'{{= it.data[i].url}}',title:'{{= it.data[i].source}}'},'curl')">
+				{{??}}
+				<li class="aui-list-item">
+				{{?}}
+					<div class="aui-list-item-inner fx-item-inner">
+						<div class="aui-list-item-title fx-title aui-ellipsis-2">{{= it.data[i].title }}</div>
+					</div>
+					{{? it.data[i].image }}
+					<div class="aui-card-list-content fx-video-content aui-padded-b-10">
+						<img id="ffxiangImgCache" ffxiang-src="{{= it.data[i].image }}" src="{{= _image}}loadingImage.png">
+					</div>
+					{{?}}
+					<div class="aui-info  aui-padded-t-0 aui-padded-r-15  fx-item-inner">
+						<div class="aui-info-item aui-font-size-12">
+							<span class="fx-ad">{{= it.data[i].ad}}</span>
+							<span class="aui-margin-l-10">{{= it.data[i].source}}</span>
+						</div>
+					</div>
+				</li>
+				{{?}}
+			{{ } }}
+		</script>
+		<section class="aui-content fx-weitoutiao-list" id="fx-view"></section>
+	</body>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/doT.js"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			// 回到屏幕
+			api.addEventListener({
+			    name:'viewappear'
+			}, function(ret, err){
+			   _user=$api.getStorage('user')
+			});
+			// 下拉刷新
+			_shangla(function(ret, err) {
+				_lists('api/article/lists/weitoutiao/1/', 1, 1);
+			})
+			// 监听滚动
+			api.addEventListener({
+				name : 'scrolltobottom',
+				extra : {
+					threshold : threshold //设置距离底部多少距离时触发，默认值为0，数字类型
+				}
+			}, function(ret, err) {
+				if (heigutgao == 1) {// heigutgao=1开启执行 0停止执行   防止连续滚动，等加载数据之后在进行滚动。
+					pagenum += 1
+					_lists('api/article/lists/weitoutiao/1/', pagenum);
+					// 当数据写入成功  把 heigutgao 设置1
+				}
+			});
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+		};
+		function view(){
+			api.refreshHeaderLoading();
+		}
+
+		// 关注
+		function guanzhu(jgo, uid) {
+			if(!_user){
+				_login();
+				return;
+			}
+//			if(uid==_user.id){
+//				_msg('不可以关注自己')
+//				return;
+//			}
+			_loading()
+			var text=$(jgo).text();
+			// 1关注 2取消关注
+			var type = $(jgo).data('id')
+			var _this=$('span#guanzhu'+uid);
+			if (type == 1) {
+				_this.text('关注中');
+				_ajax('api/member/guanzhu/',function(ret,err){
+					_loadingCloes()
+					if(ret.ret){
+						_this.text('已关注')
+						_this.data('id', 2)
+						_this.addClass('fx-weitoutiao-guanzhuHivdeo')
+					}else{
+						_this.text(text);
+						_msg(ret.err)
+					}
+				},{gz_uid:uid})
+			} else if (type == 2) {
+				_this.text('取消中');
+				_ajax('api/member/guanzhuDel/',function(ret,err){
+					_loadingCloes()
+					if(ret.ret){
+						_this.text('关注')
+						_this.data('id', 1)
+						_this.removeClass('fx-weitoutiao-guanzhuHivdeo');
+					}else{
+						_this.text(text);
+						_msg(ret.err)
+					}
+				},{gz_uid:uid})
+			}
+		}
+		// 赞
+		function pingZan_xia(obj, aid,num) {
+			if(!_user){
+				_login();
+				return;
+			}
+			var type = $(obj).data('id');
+			if (!type) {
+				$(obj).addClass('pingZanColor');
+				$(obj).data('id', '1');
+				$(obj).html('<i class="aui-iconfont aui-icon-laud aui-margin-r-5"></i> ' + (num + 1))
+				_ajax('api/member/zancai/',function(ret,err){
+					if(ret){
+						if(ret.err){
+							_msg(ret.err)
+						}
+					}
+				},{aid:aid,type:1})
+			} else {
+				_msg('您已经赞过')
+			}
+		}
+		// 打开图片
+		function img(id,index){
+			if(id){
+				var image=$('#id'+id).data('images');
+				images = image.split(",");// 在每个逗号(,)处进行分解。
+
+				if(images){
+					api.openWin({
+					    name: 'view_photo',
+					    url: html_win+'view_photo.html',
+					    slidBackEnabled:false,
+					    pageParam: {
+					        images:images,
+					        index:index
+					    },
+					    animation:{
+					    	type:"fade",                //动画类型（详见动画类型常量）
+						    subType:"from_right",       //动画子类型（详见动画子类型常量）
+						    duration:300
+					    }
+					});
+				}
+
+			}
+
+		}
+		// 刷新
+		function shuaxin(){
+			api.refreshHeaderLoading();
+		}
+	</script>
+</html>
+

@@ -1,0 +1,311 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<style>
+		body{ background:#F8F8F8 !important;}
+		.aui-content{
+			border-radius: 1.5rem;
+			margin: 1rem;
+			box-shadow: 0px 0px 16px 4px #e8e8e8;
+			margin-bottom: 4.5rem;
+			background: #fff;
+		}
+		.aui-content div{
+			line-height: 1.2rem;
+			font-size: 0.75rem;
+			line-height: 1.3rem;
+			color: #212121;
+			padding: 1rem;
+		}
+		h1{
+			text-align: center;
+			font-size: 1.5rem;
+			color: #5D96D0;
+			font-weight: bold;
+			padding-bottom: 0.5rem;
+		}
+		p{
+			padding-top: 0.5rem;
+		}
+		img{
+			width: 100%;
+			height: auto;
+			padding: 0.5rem 0
+			 
+		}
+		.b{
+			background: #fff;
+			position: fixed;
+			bottom: 0px;
+			left: 0px;
+			width: 100%;
+			text-align: center;
+			padding: 0.75rem 0;
+		}
+		.b .btn{
+			width: 88%;
+			margin: 0 auto;
+			border-radius: 1.5rem;
+			text-align: center;
+			font-size: 0.75rem;
+			text-align: center;
+			height: 2.2rem;
+			line-height:2.2rem;
+			background: #FF8000;
+			color: #fff;
+			font-weight: bold;
+			
+		}
+		</style>
+	</head>
+	<body>
+		<section class="aui-content">
+			<div class="div">
+				<h1>邀请码怎么用？</h1>
+				<p>1.通过分享邀请链接非朋友在线注册，或面对面扫描注册时自动绑定您邀请码，不需师徒要再手动输入。</p>
+				<img src="../../image/yaoqing/about_1.png" />
+				<p>1.若您的好友是通过手机应用商店搜索APP安装注册的，需登录后输入您的邀请码后才能成为您的徒弟。</p>
+				<img src="../../image/yaoqing/about_2.png" />
+			</div>
+		</section>
+		<div class="b">
+			<div class="btn" tapmode onclick="fenxiang()">分享</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			 
+		}
+		function fenxiang() {
+			if(!$api.getStorage('user')){
+				_login();
+				return;
+			}
+			 
+			fx_data={
+				title:_config.yaoqing.title,
+				description:_config.yaoqing.content,
+				img:_image+'logo.png',
+				url:fx_url+'m/yaoqing/uid/'+$api.getStorage('user').id
+			}
+				
+			if($api.getStorage('app')){
+				// 上架显示
+				var sharedModule = api.require('shareAction');
+				sharedModule.share({
+					text : fx_data.title + fx_data.content,
+					type : 'text'
+				});
+				return;
+			}
+			var row=2;
+			var items=[{icon: _image+'share/1.png',title: '朋友圈'},{icon: _image+'share/2.png',title: '好友'},{icon: _image+'share/3.png',title: 'QQ'},{icon: _image+'share/4.png',title: '空间'},{icon: _image+'share/5.png',title:'微博'},{icon: _image+'share/101.png',title: '系统'},{icon: _image+'share/102.png',title: '短信'},{icon: _image+'share/103.png',title:'邮件'},{icon: _image+'share/104.png',title: '复制链接'}];
+			// alert(1)
+		//	console.log(JSON.stringify(fx_data))
+ 			var MNActionButton = api.require('MNActionButton');
+			MNActionButton.open({
+			    layout: {
+			        row: 3,
+			        col: 5,
+			        offset: 0
+			    },
+			    animation: false,
+			    autoHide: true,
+			    styles: {
+			        maskBg: 'rgba(0,0,0,0.3)',
+			        bg: '#F8F8F8',
+			        indicator: {
+			            color: '#c4c4c4',
+			            highlight: '#9e9e9e'
+			        }, 
+			    },
+			    items:  items
+			}, function(ret) {
+				if(ret.eventType=="click"){
+					var index=ret.index;
+					if(index==0){
+						_weixin('timeline',fx_data)
+					}else if(index==1){
+						_weixin('session',fx_data)
+					}else if(index==2){
+						_qq('shareNews',fx_data)
+					}else if(index==3){
+						_qq('QFriend',fx_data)
+					}else if(index==4){
+						_weibo(fx_data)
+					}else if(index==5){	// 系统
+						var sharedModule = api.require('shareAction');
+						sharedModule.share({
+							text : fx_data.title + fx_data.content,
+							type : 'text'
+						});
+					}else if(index==6){	// 短信
+						api.sms({
+							numbers : [],
+							text : fx_data.title+fx_data.url
+						}, function(ret, err) {
+							if (ret && ret.status) {
+								_msg('已发送')
+							} 
+						});
+					}else if(index==7){	// 邮件
+						api.mail({
+							recipients : [],
+							subject : fx_data.title,
+							body : fx_data.content+fx_data.url,
+						}, function(ret, err) {
+							if (ret && ret.status) {
+								_msg('已发送')
+							}
+						});
+					}else if(index==8){	// 复制
+						var clipBoard = api.require('clipBoard');
+						clipBoard.set({
+							value : fx_data.url
+						}, function(ret, err) {
+							if (ret) {
+								_msg('复制成功，把链接分享给朋友吧！')
+							}
+						});
+					}else if(index==9){	//举报
+						if(!_user){
+							_alert('请先登陆',function(ret,err){
+								_login();
+							})
+							return;
+						}
+						buttons = ['广告', '重复、旧闻', '低俗', '标题夸张', '与事实不符', '内容质量差', '疑似抄袭', '其他问题，我要吐槽 > '];
+						api.actionSheet({
+							title : '举报内容问题',
+							cancelTitle : '取消举报',
+							buttons : buttons
+						}, function(ret, err) {
+							var index = ret.buttonIndex;
+							if(index==8){
+								_url({aid:id,url:'member/jubaoAdd',title:'举报内容'})
+								return;
+							}
+							if(index!=9){
+								_ajax('api/member/jubao',function(ret,err){
+									if(ret){
+										if(ret.ret){
+											_msg(ret.ret)
+										}else{
+											_msg(ret.err)
+										}
+									}else{
+										_alert(JSON.stringify(err));
+									}
+								},{content:buttons[index - 1],aid:id})
+							}
+						});
+					}else if(index==10){
+						// 删除微头条
+						api.actionSheet({
+						    cancelTitle: '取消',
+						    destructiveTitle: '确认要删除吗？',
+						}, function(ret, err) {
+						    var index = ret.buttonIndex;
+						 	if(index==1){
+						 		_loading('正在删除')
+						 		_ajax('api/member/weitoutiaoDel/',function(ret,err){
+									if(ret){
+										_loadingCloes()
+										if(ret.ret){
+											// 更新微头条
+											var view = 'view();';
+											api.execScript({
+											    name: 'weitoutiao_win',
+								    			frameName: 'weitoutiao',
+											    script: view
+											});
+											// 窗口提示返回
+											_alert(ret.ret,function(ret,err){
+												_close(1)
+											})
+										}else{
+											_msg(ret.err)
+										}
+									}
+								},{aid:article.id})
+						 	}
+						});
+					}else{
+						_msg(index)
+						return;
+					}
+				}
+			});
+		}
+		// 微信分享
+		// type session（会话） timeline（朋友圈） favorite（收藏）
+		function _weixin(type) {
+			if(!$api.getStorage('user')){
+				_login();
+				return;
+			}
+			data=fx_data;
+			var wx = api.require('wx');
+			wx.shareWebpage({
+				scene : type,
+				title : data.title,
+				description : data.description,
+				thumb : data.img,
+				contentUrl : data.url
+			}, function(ret, err) {
+				if (ret.status) {
+					_msg('分享成功')
+				}
+			});
+		}
+		// QQ分享
+		// type 分享内容到好友或空间，取值范围：QZone、QFriend
+		function _qq(type){
+			if(!$api.getStorage('user')){
+				_login();
+				return;
+			}
+			data=fx_data;
+			var obj = api.require('qq');
+			obj.shareNews({
+				url : data.url,
+				title : data.title,
+				description : data.description,
+				imgUrl : data.img,
+				type : type,
+			}, function(ret, err) {
+				if (ret.status) {
+					_msg('分享成功')
+				} 
+			});
+		}
+		// 微博分享
+		function _weibo() {
+			if(!$api.getStorage('user')){
+				_login();
+				return;
+			}
+			data=fx_data;
+			var weibo = api.require('weibo');
+			weibo.shareWebPage({
+				text : data.title,
+				title : data.title,
+				description : data.description,
+				thumb : data.img,
+				contentUrl : data.url
+			}, function(ret, err) {
+				if (ret.status) {
+					_msg('分享成功')
+				}
+			});
+		}
+		
+	</script>
+</html>

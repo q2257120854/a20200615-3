@@ -1,0 +1,3 @@
+<view class="gui-flex {{classes}}">
+    <slot></slot>
+</view>

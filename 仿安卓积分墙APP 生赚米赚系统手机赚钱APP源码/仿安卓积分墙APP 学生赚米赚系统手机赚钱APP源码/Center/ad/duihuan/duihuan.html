@@ -1,0 +1,162 @@
+
+<html  xmlns="/www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+
+<style>
+#ul1 {background:white; margin:0px; padding:0px; width:320px; height:480px;overflow:hidden;}
+li {border-bottom:1px dashed #CCC; padding:10px 10px 0px 20px; margin:0px; list-style:none; font-size:12px; font-family:"宋体"; color:#666;}
+</style>
+<script  type="text/javascript">
+var arr=[
+<!---'ID:&nbsp;100002&nbsp;&nbsp;1分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;1分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;1分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;1分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;3分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;5分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;10分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;11分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;13分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;15分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;17分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;22分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;23分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;23分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;24分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;25分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;281分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;30分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;30分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;30分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;31分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;32分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;32分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+<!---'ID:&nbsp;100002&nbsp;&nbsp;35分钟前&nbsp;兑换了&nbsp;20个QQ币',  
+'ID:&nbsp;100015&nbsp;&nbsp;35分钟前&nbsp;兑换了&nbsp;1个QQ币',  
+'ID:&nbsp;100017&nbsp;&nbsp;37分钟前&nbsp;兑换了&nbsp;1个QQ币',  
+'ID:&nbsp;100007&nbsp;&nbsp;40分钟前&nbsp;兑换了&nbsp;1个QQ币',  
+'ID:&nbsp;100007&nbsp;&nbsp;41分钟前&nbsp;兑换了&nbsp;1个QQ币',  
+'ID:&nbsp;100007&nbsp;&nbsp;41分钟前&nbsp;兑换了&nbsp;1个QQ币',  
+'ID:&nbsp;100003&nbsp;&nbsp;49分钟前&nbsp;兑换了&nbsp;1个QQ币'];
+var t=setInterval(function(){
+ var sTxt=arr.shift();
+ createDom(sTxt);
+ arr.push(sTxt);
+},2000)
+var bPause=false;
+function startMove(obj,attr,iTarget,fnMoveEnd)
+{
+ if(obj.timer)
+ {
+  clearInterval(obj.timer);
+ }
+ obj.timer=setInterval(function(){
+  if(bPause)
+  {
+   return;
+  }
+  doMove(obj,attr,iTarget,fnMoveEnd);
+ },30)
+};
+function getAttr(obj,attr)
+{
+ if(obj.currentStyle)
+ {
+  return obj.currentStyle[attr];
+ }
+ else
+ {
+  return document.defaultView.getComputedStyle(obj,false)[attr];
+ }
+}
+function doMove(obj,attr,iTarget,fnMoveEnd)
+{
+ var iSpeed=0;
+ var weizhi=0;
+ if(attr=="opacity")
+ {
+  weizhi=parseFloat(getAttr(obj,"opacity"));
+ }
+ else
+ {
+  weizhi=parseFloat(getAttr(obj,attr))
+ }
+ if(Math.abs(iTarget-weizhi)<1/100)
+ {
+  clearInterval(obj.timer);
+  obj.timer=null;
+  if(fnMoveEnd)
+  {
+   fnMoveEnd();
+  }
+ }
+ else
+ {
+  iSpeed=(iTarget-weizhi)/8;
+  if(attr=="opacity")
+  {
+   obj.style.filter="alpha(opacity:"+(weizhi+iSpeed)*100+")";
+   obj.style.opacity=weizhi+iSpeed;
+  }
+  else
+  {
+   iSpeed=iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+   obj.style[attr]=weizhi+iSpeed+"px";
+  }
+ }
+};
+function leaveMessage()
+{
+ var oText=document.getElementById("txt1");
+ createDom(oText.value);
+ oText.value="";
+};
+function createDom(sTxt)
+{
+ var oUl=document.getElementById("ul1");
+ var aLi=oUl.getElementsByTagName("li");
+ var oLi=document.createElement("li");
+ 
+ var iHeight=0;
+ oLi.innerHTML=sTxt;
+ oLi.style.filter="alpha(opacity:0)";
+ oLi.style.opacity=0;
+ 
+ if(aLi.length)
+ {
+  oUl.insertBefore(oLi,aLi[0])
+ }
+ else
+ {
+  oUl.appendChild(oLi)
+ }
+ 
+ //开始运动
+ iHeight=oLi.offsetHeight;
+ oLi.style.height="0px";
+ oLi.style.overflow='hidden';
+ startMove(oLi,"height",iHeight,function(){
+  startMove(oLi,"opacity",1)
+ })
+ oUl.onmouseover=function()
+ {
+  bPause=true;
+ };
+ oUl.onmouseout=function()
+ {
+  bPause=false;
+ }
+};
+</script>
+</head>
+<body>
+<ul  id="ul1">
+<li  style="opacity: 0.9906613975763321; height: 25px; overflow: hidden;">ID:&nbsp;100019&nbsp;&nbsp;10分钟前&nbsp;兑换了&nbsp;1个QQ币</li>
+<li  style="opacity: 0.9906613975763321; height: 25px; overflow: hidden;">ID:&nbsp;100002&nbsp;&nbsp;5分钟前&nbsp;兑换了&nbsp;1个QQ币</li>
+<li  style="opacity: 0.9906613975763321; height: 25px; overflow: hidden;">ID:&nbsp;100017&nbsp;&nbsp;3分钟前&nbsp;兑换了&nbsp;1个QQ币</li>
+<li  style="opacity: 0.9906613975763321; height: 25px; overflow: hidden;">ID:&nbsp;100007&nbsp;&nbsp;14分钟前&nbsp;兑换了&nbsp;1个QQ币</li>
+<li  style="opacity: 0.9906613975763321; height: 25px; overflow: hidden;">ID:&nbsp;100002&nbsp;&nbsp;13分钟前&nbsp;兑换了&nbsp;1个QQ币</li>
+<li  style="opacity: 0.9906613975763321; height: 25px; overflow: hidden;">ID:&nbsp;100003&nbsp;&nbsp;12分钟前&nbsp;兑换了&nbsp;1个QQ币</li>
+<li  style="opacity: 0.9906613975763321; height: 25px; overflow: hidden;">ID:&nbsp;100003&nbsp;&nbsp;11分钟前&nbsp;兑换了&nbsp;1个QQ币</li>
+</ul>
+
+</body></html>

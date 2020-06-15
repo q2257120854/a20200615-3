@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<style>
+			.aui-list {
+				border: 0px;
+				background: none;
+			}
+			.aui-list .aui-list-item {
+				margin: 0 0.7rem;
+				padding: 0.4rem 0px;
+			}
+			.aui-img-round {
+			}
+			.aui-list .aui-list-item-inner {
+				padding-right: 0px;
+				margin-right: 5rem;
+			}
+			.aui-ellipsis-2 {
+				-webkit-line-clamp: 1
+			}
+			.guanzhu {
+				position: absolute;
+				right: 0px;
+				top: 1.3rem
+			}
+			.guanzhu i {
+				font-size: 0.6rem !important;
+				font-weight: bold;
+			}
+			.yiguanzhu{
+				background: #d2d2d2  !important;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="aui-content">
+			<script id="fx-list" type="text/x-dot-template">
+				{{ for(var i=0,len=it.data.length; i < len; i++) { }}
+				<li class="aui-list-item aui-list-item-middle">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media" style="width: 3rem;">
+							<img id="ffxiangImgCache" ffxiang-src="{{=it.data[i].img}}" src="../../image/touxiang.png" class="aui-img-round aui-list-img-sm" Tapmode onclick="_url({uid:{{= it.data[i].id}}},'u_win');">
+						</div>
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title aui-font-size-14" Tapmode onclick="_url({uid:{{= it.data[i].id}},qian:0,fan:1},'u_win');">
+									{{= it.data[i].username}}
+								</div>
+							</div>
+							<div class=" aui-ellipsis-2" style="font-size: 0.6rem;color:#999999" Tapmode onclick="_url({uid:{{= it.data[i].id}},qian:0,fan:1},'u_win');">
+								{{= it.data[i].qianming}}
+							</div>
+						</div>
+						{{? it.data[i].guanzhu}}
+						<em class="aui-btn aui-btn-info guanzhu yiguanzhu" data-id="2" Tapmode onclick="guanzhu(this,{{= it.data[i].id}});">已关注</em>
+						{{??}}
+						<em class="aui-btn aui-btn-info guanzhu" data-id="1" Tapmode onclick="guanzhu(this,{{= it.data[i].id}});">关注</em>
+						{{?}}
+					</div>
+				</li>
+				{{ } }}
+			</script>
+			<ul class="aui-list aui-media-list" id="fx-view"></ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../../script/doT.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			// 下拉刷新
+			_shangla(function(ret,err){
+				_lists('api/member/guanzhuList/type/2', 1, 1);
+			})
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+			// 监听滚动
+			api.addEventListener({
+				name : 'scrolltobottom',
+				extra : {
+					threshold : threshold //设置距离底部多少距离时触发，默认值为0，数字类型
+				}
+			}, function(ret, err) {
+				if (heigutgao == 1) {// heigutgao=1开启执行 0停止执行   防止连续滚动，等加载数据之后在进行滚动。
+					pagenum += 1
+					_lists('api/member/guanzhuList/type/2', pagenum);
+					// 当数据写入成功  把 heigutgao 设置1
+				}
+			});
+		}
+		// 关注
+		function guanzhu(jgo, uid) {
+			_loading()
+			var text=$(jgo).text();
+			// 1关注 2取消关注
+			var type = $(jgo).data('id')
+			if (type == 1) {
+				$(jgo).text('关注中');
+				_ajax('api/member/guanzhu/',function(ret,err){
+					_loadingCloes()
+					if(ret.ret){
+						$(jgo).text('已关注')
+						$(jgo).data('id', 2)
+						$(jgo).addClass('yiguanzhu')
+					}else{
+						$(jgo).text(text);
+						_msg(ret.err)
+					}
+				},{gz_uid:uid})
+			} else if (type == 2) {
+				$(jgo).text('取消中');
+				_ajax('api/member/guanzhuDel/',function(ret,err){
+					_loadingCloes()
+					if(ret.ret){
+						$(jgo).text('关注')
+						$(jgo).data('id', 1)
+						$(jgo).removeClass('yiguanzhu');
+					}else{
+						$(jgo).text(text);
+						_msg(ret.err)
+					}
+				},{gz_uid:uid})
+			} 
+		}
+	</script>
+</html>
+

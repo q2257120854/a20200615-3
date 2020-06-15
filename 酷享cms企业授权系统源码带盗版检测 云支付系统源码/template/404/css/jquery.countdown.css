@@ -1,0 +1,164 @@
+.countdownHolder {
+	FONT: 23px/0.8 'Open Sans', sans-serif; HEIGHT: 89px; PADDING-TOP: 0em
+}
+.position {
+	POSITION: relative; MARGIN-TOP: 25px; WIDTH: 32px; DISPLAY: inline-block; HEIGHT: 1em; FONT-SIZE: 0.85em; OVERFLOW: hidden; FONT-WEIGHT: 500
+}
+.digit {
+	POSITION: absolute; BOTTOM: 0px; LETTER-SPACING: -6px; COLOR: #fff; FONT-WEIGHT: bold; LEFT: 3px
+}
+.countDays {
+	
+}
+.countDiv0 {
+	
+}
+.countHours {
+	
+}
+.countDiv1 {
+	
+}
+.countMinutes {
+	
+}
+.countDiv2 {
+	
+}
+.countSeconds {
+	
+}
+.countDiv {
+	POSITION: relative; WIDTH: 16px; DISPLAY: inline-block; HEIGHT: 1.6em
+}
+.countDiv:after {
+	TOP: 0.9em
+}
+
+@media Unknown    
+{
+.position {
+	WIDTH: 30px; FONT-SIZE: 50px
+}
+.position {
+	MARGIN-TOP: 22px
+}
+.boxName {
+	
+}
+.countdownHolder {
+	PADDING-TOP: 0.5em
+}
+.position {
+	MARGIN-TOP: 19px
+}
+.position {
+	WIDTH: 25px; FONT-SIZE: 40px
+}
+.boxName {
+	PADDING-BOTTOM: 6px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 12px; PADDING-TOP: 6px
+}
+.countdownHolder {
+	PADDING-TOP: 0px
+}
+.position {
+	WIDTH: 27px
+}
+.countDays {
+	
+}
+.countDiv0 {
+	
+}
+.countHours {
+	
+}
+.countDiv1 {
+	
+}
+.countMinutes {
+	
+}
+.countDiv2 {
+	
+}
+.countSeconds {
+	
+}
+.countDiv {
+	WIDTH: 5px !important
+}
+.countdownHolder {
+	PADDING-TOP: 0.2em
+}
+.position {
+	WIDTH: 22px; FONT-SIZE: 35px
+}
+.timer_wrap {
+	WIDTH: 100%
+}
+.countDays {
+	WIDTH: 90px; HEIGHT: 90px; MARGIN-LEFT: 0px
+}
+.countHours {
+	WIDTH: 90px; HEIGHT: 90px; MARGIN-LEFT: 0px
+}
+.countMinutes {
+	WIDTH: 90px; HEIGHT: 90px; MARGIN-LEFT: 0px
+}
+.countSeconds {
+	WIDTH: 90px; HEIGHT: 90px; MARGIN-LEFT: 0px
+}
+.countDays {
+	WIDTH: 74px
+}
+.countHours {
+	WIDTH: 74px
+}
+.countMinutes {
+	WIDTH: 74px
+}
+.countSeconds {
+	WIDTH: 74px
+}
+.countDays {
+	WIDTH: 65px
+}
+.countHours {
+	WIDTH: 65px
+}
+.countMinutes {
+	WIDTH: 65px
+}
+.countSeconds {
+	WIDTH: 65px
+}
+.countDays {
+	WIDTH: 56px; HEIGHT: 67px
+}
+.countHours {
+	WIDTH: 56px; HEIGHT: 67px
+}
+.countMinutes {
+	WIDTH: 56px; HEIGHT: 67px
+}
+.countSeconds {
+	WIDTH: 56px; HEIGHT: 67px
+}
+.countDiv {
+	HEIGHT: 0px
+}
+#counter {
+	HEIGHT: 85px; PADDING-TOP: 0px
+}
+.digit {
+	LEFT: 0px
+}
+.position {
+	MARGIN-TOP: 0px; WIDTH: 15px; HEIGHT: 35px; FONT-SIZE: 25px
+}
+.boxName {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 11px; PADDING-TOP: 0px
+}
+
+}

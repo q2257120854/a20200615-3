@@ -1,0 +1,107 @@
+{include file="public/header" /}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<style type="text/css">
+#des,#des input{ width: 40px;text-align:center;}
+#id{ width: 78px; }
+.bs-checkbox{ width: 36px; height: 40px }
+.fixed-table-toolbar .columns,.fixed-table-toolbar .search{margin-left:0px; margin-top: 0px }
+#title span{ float: right; }
+</style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        {include file="public/tophead"}
+        {include file="public/top" /}
+        <div class="ibox-content">
+        {include file="public/topsection"}
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    
+                    <div class="example">
+                        <form class="form-horizontal" method="post">
+                        <table data-toggle="table">
+                            <thead>
+                                <tr>
+                                    <th data-align="center">uid</th>
+                                     
+                                    <th>账户</th>
+                                    <th>昵称</th>
+                                    <th>手机</th>
+                                    <th>邮箱</th>
+                                    <th>注册时间</th>
+                                    <th>注册IP</th>
+                                    <th>状态</th>
+                                    <th>管理</th>
+                                </tr>
+                            </thead> 
+                            <tbody id="form">
+                                {php}$hide=array('0'=>'<font color="#f00">禁止</font>','1'=>'<font color="#1ab394">通过</font>','2'=>'审核','3'=>'<font color="#f00">拒绝</font>');{/php}
+                                {volist name="data" id="v"}
+                                <tr id="id{$v.id}" class="class">
+                                    <td>{$v.id}</td>
+                                    <td>{$v.user}</td>
+                                    <td>{$v.nickname}</td>
+                                    <td>{$v.mobile}</td>
+                                    <td>{$v.email}</td>
+                                    <td>{$v.update_time|date='Y-m-d H:i:s',###}</td>
+                                    <td>{$v.update_ip}</td>
+                                    <td id="hide{$v.id}">{$hide[$v['hide']]}</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <div data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span>
+                                            </div>
+                                            <ul class="dropdown-menu">
+                                                {php}$vak=0;{/php}
+                                                {volist name='hide' id='va'}
+                                                <li><a onclick="hides({$v['id']},{$vak})">{$va}</a></li>
+                                                {php}$vak+=1;{/php}
+                                                {/volist}                                        
+                                                <li class="divider"></li>
+                                                <li><a onClick="add('{:url('add',['id'=>$v['id'],'url'=>-1])}')">修改</a>
+                                                </li>
+                                                 
+                                                <li><a onClick="del({$v.id})">删除</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                        </form>
+                    </div>
+                </div>  
+            </div>
+            <hr>
+            <div class="row row-lg">
+                <div class="col-sm-12 pages">{$page}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+function del(id){
+    swal_del(id,"{:url('del')}")
+}
+function hides(id,type){
+    $.ajax({
+        type: 'post',
+        url: '{:url("hide")}',
+        data: {id:id,type:type},
+        dataType: 'json',
+        success:function(ret){
+            layer.msg('设置成功')
+            $('#hide'+id).html(ret);
+        },
+        error:function(err){
+           alert(JSON.stringify(err))
+        }
+    });
+}
+</script>
+ <SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

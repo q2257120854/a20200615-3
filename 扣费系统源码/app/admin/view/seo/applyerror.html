@@ -1,0 +1,54 @@
+<form action="{:url()}" method="post" class="form_single">
+    <div class="box">
+      <div class="box-body">
+        <div class="row">
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>申请报错原因</label>
+              <span>（请填写关键词申请报错原因,<span style="color:red">如内有文字请删除文字填写你想输入的文字</span>）</span>
+              <input class="form-control" name="applyerrbeizhu"  value="{$info.applyerrbeizhu}" type="text">
+            </div>
+          </div>
+          {if condition="$member.leader_id elt 1"}
+	          <div class="col-md-6">
+	            <div class="form-group">
+	              <label>是否处理</label>
+	             <span></span>
+	              <select name="applyerrorchuli" class="form-control">
+	              	<option value="">请选择</option>
+	              	<option value="2" {eq name="$info.applyerror" value='2'} selected="selected" {/eq}>已经处理</option>
+	              	
+	              	<option value="0" {eq name="$info.applyerror" value='0'} selected="selected" {/eq}>未处理</option>
+	              </select>
+	            </div>
+	          </div>
+	          <!--<div class="col-md-6">
+	          	<div class="form-group">
+	          		<label>是否返款</label>
+	          		<span>(选择是,会将该关键词当日扣款返回给用户)</span>
+	          		<div>
+	          			<input type="radio" name="fankuan" id="fankuan" value="1" />是 &nbsp;&nbsp;
+	          			<input type="radio" name="fankuan" id="fankuan" value="0" checked="checked"/>否
+	          		</div>
+	          		
+	          	</div>
+	          </div>-->
+          {/if}
+ 	
+         
+
+        
+
+         <input type="hidden" name="id" id="id" value="{$info.id}" />
+     	 <input type="hidden" name="applyerror" id="applyerror" value="{$info.applyerror}" />
+        </div>
+      </div>
+      <div class="box-footer">
+        
+        {include file="layout/edit_btn_group"/}
+      </div>
+    </div>
+</form>
+
+

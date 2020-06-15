@@ -1,0 +1,32 @@
+{extend name="common/world"}
+{block name="title"}我的钱包{/block}
+{block name="style"}{/block}
+{block name="container"}
+<div class="d-flex">
+    <div class="form-group mb-3">
+        <select class="form-control custom-select w-auto" name="type">
+            <option value="">全部类型</option>
+        </select>
+    </div>
+    <div class="text-muted mt-2 ml-3 small">合计：<span class="total"></span><span class="unit"></span></div>
+</div>
+<div class="card">
+    <table class="table card-table table-vcenter text-nowrap">
+        <thead>
+            <tr>
+                <th>基本</th>
+                <th class="text-right">数额</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <div hidden class="card-footer card-more"><div class="text-center">点击加载更多</div></div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+var currency = '{$Think.get.c}';
+var business = '{$Think.get.t}';
+</script>
+<script type="text/javascript" src="/static/js/record.js"></script>
+{/block}

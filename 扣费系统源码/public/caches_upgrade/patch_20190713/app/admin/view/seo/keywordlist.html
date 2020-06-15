@@ -1,0 +1,289 @@
+<div class="box">
+    
+  <div class="box-header">
+
+    <div class="row">
+    		<div class="col-sm-3">
+    		
+    		{assign name="file_id" value="$info.file_id|default='0'" /}
+            {:widget('file/index', ['name' => 'file_id', 'value' => $file_id, 'type' => 'file'])}
+        <button href="#" onclick="imports();" class="btn btn-xs"><i class="fa fa-edit"></i> 批量导入</button>
+        <a href="/static/addon/keywordsexcel.xlsx" target="_blank" class="btn btn-xs"><i class="fa fa-download"></i> 下载模板</a>
+         <script>
+                function imports(){
+                    if ($(".upload-pre-file").children("a:first").text()){
+                        var path=$(".upload-pre-file").children("a:first").text();
+                        $.ajax({
+                            async : false,    //表示请求是否异步处理
+                            type : "post",    //请求类型
+                            url : "{:url('Seo/keyworddaoru')}",//请求的 URL地址
+                            data:{'path':path},
+                            dataType : "json",//返回的数据类型
+                            success: function (data) {
+                                obalert(data);
+                            },
+                            error:function (data) {
+                                alert(data.result);
+                            }
+                        });
+                    }else {
+                        alert("请选择上传的EXCEL表");
+                    }
+
+
+                }
+
+            </script>
+    	</div>
+        <div class="col-sm-3">
+            <ob_link> <button href="{:url('seo/kewords_update_all')}" class="btn batch_btn_update"><i class="fa fa-edit"></i> 批量 编辑</button></ob_link>
+            <ob_link><a class="btn export" url="{:url('excel')}"><i class="fa fa-download"></i> 导 出</a></ob_link>
+
+         
+        </div>
+        
+        <div class="col-sm-6">
+            <div class="box-tools search-form pull-right">
+                <div class="input-group input-group-sm">
+
+                    <select name="search_engine" class="form-control pull-right" style="width: 150px;" >
+                        <option value="">请选择搜索引擎</option>
+                        <option value="baidupc" {eq name=":input('search_engine')" value="baidupc" } selected = "selected" {/eq} >百度</option>
+                        <option value="baidumobile" {eq name=":input('search_engine')" value="baidumobile" } selected = "selected" {/eq} >百度移动端</option>
+                        <option value="360pc" {eq name=":input('search_engine')" value="360pc" } selected = "selected" {/eq} >360</option>
+                        <option value="360mobile" {eq name=":input('search_engine')" value="360mobile" } selected = "selected" {/eq} >360移动端</option>
+                        <option value="sougoupc" {eq name=":input('search_engine')" value="sogoupc" } selected = "selected" {/eq} >搜狗</option>
+                        <option value="sougoumobile" {eq name=":input('search_engine')" value="sogoumobile" } selected = "selected" {/eq} >搜狗移动端</option>
+                        <option value="smmobile" {eq name=":input('search_engine')" value="smmobile" } selected = "selected" {/eq} >神马搜索</option>
+
+                    </select>
+
+                    <input type="text" name="search_username" style="width: 200px;" class="form-control pull-right" value="{:input('search_username')}" placeholder="输入用户名">
+
+                    <input type="text" name="search_keyword" style="width: 200px;" class="form-control pull-right" value="{:input('search_keyword')}" placeholder="输入网站关键词搜索">
+
+                    <input type="text" name="search_data" style="width: 200px;" class="form-control pull-right" value="{:input('search_data')}" placeholder="输入网站域名搜索">
+
+                    <div class="input-group-btn">
+                      <button type="button" id="search"  url="{:url('keywordlist')}" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
+                    </div>
+
+                </div>
+           </div>
+        </div>
+    </div>
+    
+  </div>
+        <div class="row" id="up" style="display: none;">
+
+            <div class="col-sm-12">
+                <div class="box-tools pull-left">
+                    <div class="input-group input-group-sm" style="margin-left: 10px;">
+
+                        <input type="number" name="page_one" style="width: 150px;" class="form-control pull-left" value="" placeholder="输入第一頁價格">
+
+                        <input type="number" name="page_tow" style="width: 150px;" class="form-control pull-left" value="" placeholder="输入第二頁價格">
+
+                        <input type="number" name="page_one_cb" style="width: 150px;" class="form-control pull-left" value="" placeholder="输入第一頁成本價格">
+
+                        <input type="number" name="page_tow_cb" style="width: 150px;" class="form-control pull-left" value="" placeholder="输入第二頁成本價格">
+
+                        <select name="jk_status" id="jk_status" class="form-control pull-left" style="width: 120px;" >
+                            <option value="">不操作</option>
+                            <option value="1">启用</option>
+                            <option value="0"   >不启用</option>
+                        </select>
+                        <div class="input-group-btn pull-left">
+                            <button type="button" id="update_all"  url="{:url('seo/kewords_update_all')}" class="btn btn-flat" style=""><i class="fa fa-edit"></i>确定修改</button>
+                        </div>
+
+                        <script>
+                            //批量编辑
+                            $('.batch_btn_update').click(function(){
+
+                                var $checked = $('.table input[type="checkbox"]:checked');
+
+                                if($checked.length != 0){
+                                    if($("#up").css('display')=='none'){
+                                        $("#up").show();
+                                    }else {
+                                        $("#up").hide();
+                                    }
+
+                                } else {
+
+                                    toast.warning('请选择批量操作数据');
+                                }
+                                return false;
+                            });
+                            //-----------------------------开始批量编辑
+                            $("#update_all").click(function(){
+                                var test = window.location.pathname+window.location.search;
+                              //  alert(test);return false;
+                                var $checked = $('.table input[type="checkbox"]:checked');
+                                if($checked.length != 0){
+                                    if(confirm('您确认批量修改吗？')){
+                                        if($.trim($("input[name='page_one']").val())=='' && $.trim($("input[name='page_tow']").val())=='' && $.trim($("input[name='page_one_cb']").val())=='' && $.trim($("input[name='page_tow_cb']").val())=='' && $.trim($("#jk_status").val())==''){toast.error('请输入需要修改的数据');return false;}
+                                        $.post($(this).attr("url"),
+                  {ids:$checked.serializeArray(),url:test, page_one:$("input[name='page_one']").val(),page_tow:$("input[name='page_tow']").val(),page_one_cb:$("input[name='page_one_cb']").val(),page_tow_cb:$("input[name='page_tow_cb']").val(),jk_status:$("#jk_status").val()}
+                                                , function(data){
+
+                                            obalert(data);
+
+                                        },"json");
+                                    }
+                                }else {
+                                    toast.warning('请选择批量操作数据');
+                                }
+                            });
+                        </script>
+
+                    </div>
+                    </div>
+                </div>
+
+
+        </div>
+    
+  <div class="box-body table-responsive">
+    <table  class="table table-bordered table-hover">
+      <thead>
+      <tr>
+          <th class="checkbox-select-all">
+              <label>
+                  <input class="flat-grey js-checkbox-all" type="checkbox">
+              </label>
+          </th>
+          <th>关键词</th>
+          <th>所属域名</th>
+          <th>搜索引擎</th>
+          <th>所属用户</th>
+          <th>客户价格</th>
+          <th>更新时间</th>
+          <th>当前排名</th>
+          <th>排名截图</th>
+          <th>审核状态</th>
+          <th>操作</th>
+      </tr>
+      </thead>
+      
+      {notempty name='list["0"]["id"]'}
+        <tbody>
+            {volist name='list' id='vo'}
+                <tr>
+                    <td>
+                        <label>
+                            <input class="flat-grey" type="checkbox" name="ids" value="{$vo.id}">
+                        </label>
+                    </td>
+                  <td>
+
+                     {switch name="$vo.search_engine"}
+                         {case value="baidupc"}
+                      <a class="" href="https://www.baidu.com/s?ie=UTF-8&amp;wd={$vo.keywords}" target="_blank">{$vo.keywords}</a>
+                      {/case}
+                         {case value="sougoupc"}
+                      <a class="" href="http://www.sogou.com/web?query={$vo.keywords}" target="_blank">{$vo.keywords}</a>
+                      {/case}
+                      {case value="360pc"}
+                      <a class="" href="https://www.so.com/s?ie=utf-8&amp;fr=none&amp;src=360sou_newhome&amp;q={$vo.keywords}" target="_blank">{$vo.keywords}</a>
+                      {/case}
+                         {default /}
+                      {$vo.keywords}
+                      {/switch}
+
+                  </td>
+                  <td>{$vo.url}</td>
+
+
+                    <td>
+                        {eq name="$vo.search_engine" value="baidumobile" } <span class="label" style="background-color: #ef5350"> 百度移动端</span>  {/eq}
+                        {eq name="$vo.search_engine" value="baidupc" } <span class="label" style="background-color: #33ca35"> 百度</span> {/eq}
+                        {eq name="$vo.search_engine" value="360pc" }<span class="label" style="background-color: #4484ca"> 360</span> {/eq}
+                        {eq name="$vo.search_engine" value="360mobile" } <span class="label" style="background-color: #f72f8e"> 360手机端</span>{/eq}
+                        {eq name="$vo.search_engine" value="sogoupc" } <span class="label" style="background-color: #bf8fca"> 搜狗</span>{/eq}
+                        {eq name="$vo.search_engine" value="sogoumobile" } <span class="label" style="background-color: #66b5ca"> 搜狗移动端</span>{/eq}
+                        {eq name="$vo.search_engine" value="smmobile" } <span class="label" style="background-color: #f732bc"> 神马搜索</span>{/eq}
+
+                  </td>
+
+                    <td>{$vo.username}</td>
+                    <td>
+                        <div>
+                            <div class="je-red" style="color: red;">第1页：{$vo.page_one}</div>
+                            <div class="je-blue" style="color: #0074d9;;">第2页：{$vo.page_tow}</div>
+                        </div>
+                    </td>
+                    <td>
+                        {eq name="$vo.updatetime" value="" }
+                        查询中....
+                        {else/}
+                        {$vo.updatetime|format_time}
+                        {/eq}
+                    </td>
+
+                    <td>
+                        {eq name="$vo.updatetime" value="" }
+                         查询中....
+                        {else/}
+                        {eq name="$vo.rank" value="0" }排名: <span style="color: darkred;font-size: 18px;">20+</span>
+                        {else/}
+                        排名: <span style="color: red;font-size: 18px;">{$vo.rank}</span> {/eq}
+                        {/eq}
+                    </td>
+
+                    <td>
+                        {eq name="$vo.img_url" value="" }
+                        暂时没有截图
+                        {else/}
+                        <span class="label"><a href="{$vo.img_url}" target="_blank">查看截图</a></span>
+                        {/eq}
+                    </td>
+
+                  <td>
+                      {eq name="$vo.jk_status" value="1" }
+                      <span class="label label-success">审核成功</span>
+                      {/eq}
+                      {eq name="$vo.jk_status" value="0" }
+                      <span class="label label-warning">待审核</span>
+                      {/eq}
+                      {eq name="$vo.jk_status" value="-1" }
+                      <span class="label label-danger">审核失败</span>
+                      {/eq}
+                  </td>
+                  <td class="col-md-3 text-center">
+                      <a class="btn btn-xs" target="_blank" href="{:url('seo/xiaofeilist')}?search_engine={$vo.search_engine}&search_keyword={$vo.keywords}&search_data={$vo.url}"><i class="fa fa-fw fa-jpy"></i>消费记录</a>
+                      <ob_link><a class="btn btn-xs" target="_blank" href="{:url('seo/keywordlistlog')}?search_engine={$vo.search_engine}&search_keyword={$vo.keywords}&search_data={$vo.url}"><i class="fa fa-fw fa-file-text"></i>历史记录</a></ob_link>
+                      <ob_link><a href="{:url('seo/bulu', array('id' => tp_encrypt($vo['id'])))}" class="btn btn-xs bulu"><i class="fa fa-edit"></i> 补录排名</a></ob_link>
+                      &nbsp;
+                      <ob_link><a href="{:url('keywordEdit', array('id' => tp_encrypt($vo['id'])))}" class="btn btn-xs"><i class="fa fa-edit"></i> 编 辑</a></ob_link>
+                      &nbsp;
+                      <ob_link><a class="btn btn-xs confirm ajax-get"  href="{:url('keywordDel', array('id' => tp_encrypt($vo['id'])))}"><i class="fa fa-trash-o"></i> 删 除</a></ob_link>
+                  </td>
+                </tr>
+            {/volist}
+        </tbody>
+        {else/}
+        <tbody><tr class="odd"><td colspan="8" class="text-center" valign="top">{:config('empty_list_describe')}</td></tr></tbody>
+      {/notempty}
+    </table>
+  </div>
+
+  <div class="box-footer clearfix text-center">
+      {$list->render()}
+  </div>
+
+</div>
+
+<script>
+    //导出功能
+    $(".export").click(function(){
+        
+        window.location.href = searchFormUrl($(".export"));
+    });
+    $(function(){
+        $(".bulu").each(function(){
+            $(this).attr("href", $(this).attr("href")+'?url='+window.location.pathname+window.location.search)
+        });
+    });
+</script>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/yaoqing.css" />
+	 	<style>
+	 		 body{
+	 		 	background: rgb(53, 175, 93) !important;;
+	 		 }
+	 		 .sx-yq-5{
+	 		 	margin: 0 0.8rem;
+	 		 	margin-bottom: 0.8rem;
+	 		 }
+	 		 .sx-yq-5 .aui-tab div{
+	 		 	color: #9b9b9b;
+	 		 
+	 		 }
+	 		 .sx-yq-5 .aui-tab div.aui-active{
+	 		 	color: #F6B237;
+	 		 	border-bottom: 2px solid #F6B237;
+	 		 }
+	 		 .sx-view .sx-yq-list-2:nth-child(1) div:nth-child(1){
+	 		 	background: url('../../image/yaoqing/top_icon1_2.png') no-repeat center;
+	 		 	background-size: 28% 100%;
+	 		  	text-indent:-9999px;
+	 		 }
+	 		 .sx-view .sx-yq-list-2:nth-child(2) div:nth-child(1){
+	 		 	background: url('../../image/yaoqing/top_icon2_2.png') no-repeat center;
+	 		 	background-size: 28% 100%;
+	 		  	text-indent:-9999px;
+	 		 }
+	 		 .sx-view .sx-yq-list-2:nth-child(3) div:nth-child(1){
+	 		 	background: url('../../image/yaoqing/top_icon3_2.png') no-repeat center;
+	 		 	background-size: 28% 100%;
+	 		  	text-indent:-9999px;
+	 		 }
+	 	</style>
+	</head>
+	<body>
+		<div class="aui-content"><img style="width: 100%;height: 100%;" src="../../image/yaoqing/top_pic1_2.png" /></div>
+		<div class="aui-content sx-yq-5">
+			<div class="aui-tab">
+			    <div class="aui-tab-item aui-active" data-id='1'>周排行</div>
+			    <div class="aui-tab-item" data-id='2'>总排行</div>
+			</div>
+			<div class="sx-tab-list sx-yq-list1">
+				<div class="aui-card-list-footer sx-yq-list-1">
+					<div>排名</div>
+					<div>用户昵称</div>
+					<div>收徒数</div>
+					<div>总收入</div>
+				</div>
+				<div class="aui-list aui-media-list sx-view">
+					 <div id="jiazai"><img src="../../image/loading_more.gif" /></div>
+				</div> 
+			</div>
+			<div class="sx-tab-list sx-yq-list2" style=" display: none;">
+				<div class="aui-card-list-footer sx-yq-list-1">
+					<div>排名</div>
+					<div>用户昵称</div>
+					<div>收徒数</div>
+					<div>总收入</div>
+				</div>
+				<div class="aui-list aui-media-list sx-view"><div id="jiazai"><img src="../../image/loading_more.gif" /></div></div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/fastclick.js"></script>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var type=tabList1=tabList2=1;
+		apiready = function() {
+		 	FastClick.attach(document.body);
+	 		list()
+	 		_shangla(function(ret,err){
+				list()
+			},1)
+			// tab点击
+			$(function(){
+				$('.aui-tab .aui-tab-item').click(function(){
+					var _this=$(this);
+					$('.aui-active').removeClass('aui-active');
+					_this.addClass('aui-active');
+					
+					type=_this.data('id');
+					$('.sx-tab-list').hide();
+					$('.sx-yq-list'+type).show();
+		
+					if(type==2 && tabList2==1){
+						tabList2=0
+						list('paihang');
+					}
+				})
+			})
+		 
+		}
+
+		function list(name){
+			name=name ? name : 'paihang/type/1'
+			_ajax('api/yaoqing/'+name,function(ret,err){
+				api.refreshHeaderLoadDone();
+				if(ret){
+					var html=''
+					for(var i=0;i<ret.length;i++){
+						html += '<div class="aui-card-list-footer sx-yq-list-2">';
+						html +=	'<div>'+(i+1)+'</div>';
+						html += '<div>'+ret[i].nickname+'</div>';
+						html +=	'<div>'+ret[i].tudi_num+'</div>';
+						html += '<div>'+ret[i].money+'</div>';
+						html += '</div>';
+					}
+					var _this=$('.sx-yq-list'+type+' .sx-view');
+					_this.html(html); 
+				}else{
+					alert(JSON.stringify(err))
+				}
+			})
+		}
+		  
+	</script>
+</html>

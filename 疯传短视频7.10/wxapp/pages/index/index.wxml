@@ -1,0 +1,93 @@
+<graceHeader background="{{mainColor}}" height="80">
+    <view class="grace-header-body">{{init.appname}}</view>
+    <view class="grace-nav-bar" slot="gHeader">
+        <graceNavBar activeColor="#ffffff" activeDirection="center" activeFontSize="36rpx" activeLineBg="#FFFFFF" activeLineWidth="80rpx" bindchange="navChange" color="#ffffff" currentIndex="{{currentIndex}}" fontSize="36rpx" items="{{cates}}" textAlign="center"></graceNavBar>
+    </view>
+</graceHeader>
+<gracePage customHeader="{{false}}">
+    <view id="gBody" slot="gBody">
+        <swiper bindchange="swiperChange" current="{{currentIndex}}" style="height:{{mainHeight+'px'}}">
+            <swiper-item wx:for="{{itemAll}}" wx:for-index="vIndex" wx:for-item="videos" wx:key="vIndex">
+                <scroll-view bindscroll="scroll" bindscrolltolower="scrollend" bindtouchend="touchend" bindtouchmove="touchmove" bindtouchstart="touchstart" scrollAnchoring="{{true}}" scrollY="true" style="height:{{mainHeight+'px'}}; position:relative;">
+                    <view>
+                        <graceReload bind:reload="reload" id="{{'graceReload'+vIndex}}" reloadBgColor="{{reloadBgColor}}" reloadColor="{{reloadColor}}"></graceReload>
+                    </view>
+                    <graceEmpty wx:if="{{videos=='empty'}}">
+                        <view class="grace-empty-view" slot="img">
+                            <image class="grace-empty-image" mode="widthFix" src="../../static/images/empty.png"></image>
+                        </view>
+                        <text class="grace-gray" slot="text">本栏目暂无视频</text>
+                    </graceEmpty>
+                    <view class="grace-grids five grace-margin-top" wx:if="{{vIndex==0}}">
+                        <view bindtap="openNav" class="grace-grids-items" data-appid="{{nav.appid}}" data-path="{{nav.path}}" data-type="{{nav.type}}" wx:for="{{init.navs}}" wx:for-item="nav" wx:key="i">
+                            <image class="grace-grids-icon-img" mode="widthFix" src="{{nav.icon}}"></image>
+                            <text class="grace-grids-text">{{nav.title}}</text>
+                        </view>
+                    </view>
+                    <view>
+                        <block wx:if="{{videos!='empty'}}" wx:for="{{videos}}" wx:key="index">
+                            <view class="grace-media-item" wx:if="{{item.type==='video'||item.type==='link'||item.type==='wxapp'}}">
+                                <view class="grace-media-img">
+                                    <image src="{{item.thumb}}"></image>
+                                </view>
+                                <view class="grace-media-title">
+                                    <text>{{item.title}}</text>
+                                </view>
+                                <view bindtap="openMedia" class="grace-media-mask" data-appid="{{item.appid}}" data-path="{{item.path}}" data-type="{{item.type}}" data-uniacid="{{item.uniacid}}" data-vid="{{item.id}}">
+                                    <image class="grace-media-play" src="../../static/images/play.png"></image>
+                                </view>
+                                <view class="grace-media-info">
+                                    <view class="grace-col grace-media-author">
+                                        <image class="icon" src="{{item.avatar}}"></image>
+                                        <text class="text">{{item.nickname}}</text>
+                                    </view>
+                                    <view class="grace-col grace-media-click">
+                                        <image class="icon" src="../../static/images/icon_play.png"></image>
+                                        <text class="text">{{item.click}}</text>
+                                    </view>
+                                    <button class="grace-col grace-media-share" data-id="{{item.id}}" data-thumb="{{item.icon}}" data-title="{{item.title}}" data-type="{{item.type}}" openType="share">
+                                        <image class="icon" src="../../static/images/icon_wechat.png"></image>
+                                        <text class="text">分享</text>
+                                    </button>
+                                </view>
+                            </view>
+                            <view class="grace-media-item" wx:if="{{item.type==='goods'}}">
+                                <view class="grace-media-img">
+                                    <image mode="widthFix" src="{{item.thumb}}"></image>
+                                    <text class="grace-media-ad grace-tags grace-gtbg-blue grace-absolute-rb">推广</text>
+                                </view>
+                                <view class="grace-media-title">
+                                    <text>{{item.title}}仅￥{{item.price}}元</text>
+                                </view>
+                                <view bindtap="openGoods" class="grace-media-mask" data-appid="{{item.appid}}" data-path="{{item.path}}">
+                                    <image class="grace-media-play" src="../../static/images/play.png"></image>
+                                </view>
+                                <view class="grace-media-info">
+                                    <view class="grace-col grace-media-author">
+                                        <image class="icon" src="{{item.avatar}}"></image>
+                                        <text class="text">{{item.nickname}}</text>
+                                    </view>
+                                    <view class="grace-col grace-media-click">
+                                        <image class="icon" src="../../static/images/icon_play.png"></image>
+                                        <text class="text">{{item.click}}</text>
+                                    </view>
+                                    <button class="grace-col grace-media-share" data-id="{{item.id}}" data-thumb="{{item.thumb}}" data-title="{{item.title}}" data-type="{{item.type}}" openType="share">
+                                        <image class="icon" src="../../static/images/icon_wechat.png"></image>
+                                        <text class="text">分享</text>
+                                    </button>
+                                </view>
+                            </view>
+                            <view class="grace-media-adsense" wx:if="{{index%5==0&&init.ad_banner!=''&&index>0}}">
+                                <ad unitId="{{init.ad_banner}}"></ad>
+                            </view>
+                            <view class="grace-media-adsense" wx:if="{{index%7==0&&init.ad_video!=''&&index>0}}">
+                                <ad adTheme="white" adType="video" unitId="{{init.ad_video}}"></ad>
+                            </view>
+                        </block>
+                    </view>
+                    <graceLoading loadingType="{{loadingTypes[vIndex]}}"></graceLoading>
+                </scroll-view>
+            </swiper-item>
+        </swiper>
+    </view>
+</gracePage>

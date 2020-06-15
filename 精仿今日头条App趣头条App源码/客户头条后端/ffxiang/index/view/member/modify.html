@@ -1,0 +1,89 @@
+{include file="member/left" /}
+                <div class="right-container col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                	<div class="account-wrapper">
+					     {include file="member/nav"}
+					    <div class="panel panel-default">
+					    	<div class="panel-body">
+					    		<div class="account-basic-wrapper">
+								    <div class="section basic">
+								        <div class="info">
+								            <div class="avatar">
+								                <img src="{:_userimg($member['img'])}" alt="">
+								            </div>
+								            <div class="name">
+								                {$member['username']}
+								            </div>
+								        </div>
+								        <div class="action">
+								            <a class="btn btn-primary" href="#">
+								                修改
+								            </a>
+								        </div>
+								    </div>
+									{volist name='categorys' id='v'}
+									<div class="section">
+									{switch name="v.function"}
+								    	{case value="mobile"}
+								        <div class="prop-info">
+								            <i></i>
+								            <div class="desc">
+								            	 <h4>{$v.title}: <span>{present name='member.mobile'}{$member['mobile']}{else /}未绑定{/present}</span></h4>
+								            	 {$v.content}
+								            </div>
+								        </div>
+								        <div class="action">
+								            {present name='member.mobile'}
+								        	<a class="btn btn-default">
+								                已绑定
+								            </a>
+								        	{else /}
+								            <a class="btn btn-primary" href="{:url($v['controller'].'/'.$v['function'])}">
+								                绑定手机
+								            </a>
+								            {/present}
+								        </div>
+								        {/case}
+								        {case value="email"}
+								        <div class="prop-info">
+								            <i></i>
+								            <div class="desc">
+								            	 <h4>{$v.title}: <span>{present name='member.email'}{$member['email']}{else /}未绑定{/present}</span></h4>
+								            	 {$v.content}
+								            </div>
+								        </div>
+								        <div class="action">
+								        	{present name='member.email'}
+								        	<a class="btn btn-default">
+								                已绑定
+								            </a>
+								        	{else /}
+								            <a class="btn btn-primary" href="{:url($v['controller'].'/'.$v['function'])}">
+								                绑定邮箱
+								            </a>
+								            {/present}
+								        </div>
+								        {/case}
+								        {default /}
+								        <div class="prop-info">
+								            <i></i>
+								            <div class="desc">
+								            	 <h4>{$v.title}</h4>
+								            	 {$v.content}
+								            </div>
+								        </div>
+								        <div class="action">
+								            <a class="btn btn-primary" href="{:url($v['controller'].'/'.$v['function'])}">
+								                修改
+								            </a>
+								        </div>
+								    {/switch}
+								    </div>
+								    {/volist}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+{include file="member/footer" /}<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

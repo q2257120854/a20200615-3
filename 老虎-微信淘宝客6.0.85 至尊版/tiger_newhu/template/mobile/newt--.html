@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name = "format-detection" content = "telephone=no">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <link rel="stylesheet" type="text/css" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/newt/css/yzqcommon.css">
+    <title>迎新年,有心礼</title>
+    <style>
+        body,html{
+            /*padding:1rem;*/
+            margin:0;
+            padding: 0;
+            background:#f6f6f8;
+            font-size: 20px;
+        }
+        
+
+
+        .mask{
+            background: rgba(0,0,0,0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            display: none;
+        }
+        .mask img{
+            display: block;
+            width: 80%;
+            margin: 0 auto;
+        }
+        .mask.active{
+            display: block;
+        }
+		
+
+
+		.red{
+			position: relative;
+		}
+        .red img{
+        	display: block;
+        	width: 100%;
+        }
+        .red .token-box{
+        	width: 13.325rem;
+        	background: #ffffff;
+        	border-radius: 3px;
+        	position: absolute;
+        	top: 59.52%;
+        	font-size: 0.6rem;
+        	padding: 0.5rem 1.325rem;
+        	text-align: center;
+        	line-height: 1.5;
+        	left: 50%;
+        	margin-left: -7.9875rem;
+        	color: #666666;
+        }
+        .red .btn-group{
+        	position: absolute;
+        	top:72.03%;
+        	left: 0;
+        	width: 100%;
+        	text-align: center;
+        }
+        .red .btn-group .btn{
+        	width: 6.3rem;
+        	height: 2.425rem;
+        	display: inline-block;
+        }
+        .red .btn-group .btn img{
+        	display: block;
+        	width: 100%;
+        }
+        /*.red .btn-group .btn.quan{
+            display: none;
+        }
+        .red .btn-group .btn.copy{
+            margin:0 auto;
+        }*/
+    </style>
+</head>
+
+<body>
+<div class="red">
+	<img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/newt/images/newyears.png" alt="">
+	<div class="token-box">
+		复制框内整段文字,打开[手淘]即可拿到大礼包！<span class="word"></span>
+    </div>
+    <div class="btn-group">
+		<div class="btn copy" data-clipboard-text="">
+			<img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/newt/images/newyears-btn1.png" alt="">
+		</div>
+		<!--<div class="btn quan">
+			<img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/newt/images/newyears-btn2.png" alt="">
+		</div>-->
+    </div>
+</div>
+<div class="mask">
+    <img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/newt/images/android-notice.png" alt="">
+</div>
+<input type="hidden" id="ajaxurl" value="/mobile/index.php?m=home&c=invite&a=nredcmd">
+<input type="hidden" id="codeval" value="7bf7c9cb783a1b9dfb2f9893901c6894">
+</body>
+<script type="text/javascript" src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/newt/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/js/layer/layer.js"></script>
+<script type="text/javascript" src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/newt/js/mobileUtil.js"></script>
+<script type="text/javascript" src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/newt/js/clipboard.min.js"></script>
+<script>
+    $(function(){
+    	var url = "{$rhyurl}";
+        var cmd = "{$tkl}";
+    	(function response(){
+            var width = $(window).width();
+            var size = width/18.75;
+            $("html,body").css('font-size',size);
+            $(window).resize(function(){
+                var width = $(window).width();
+                var size = width/18.75;
+                $("html,body").css('font-size',size);
+            })
+        })();
+        
+        var word = document.querySelector('.word');
+        document.addEventListener("selectionchange", function(e) {
+            window.getSelection().selectAllChildren( word );
+        }, false);
+        var url = 
+        $(".copy").click(function(){
+            if(cmd!=""){
+                    var copy = document.querySelector('.copy');
+                    if (window.Clipboard && Clipboard.isSupported()) {
+                        var clipboard = new Clipboard( '.copy' ,{
+                            text:function(){
+                                return cmd
+                            }
+                        });
+                        clipboard.on('success', function (e) {
+                            layer.msg('复制成功');
+                        });
+                    }else{
+                        copy.style.display = 'none';
+
+                    }
+                $(".word").html(cmd);
+            }else{
+                layer.msg('稍等片刻');
+            }
+        })
+                    
+//      $.get($("#ajaxurl").val(),{code:$("#codeval").val()},function(ret){
+//          if(ret.iserr==false){
+//              cmd = ret.result.cmd;
+//              url = ret.result.url;
+//              if (!mobileUtil.isWeixin&&ret.result.url!="") {
+//                  location.href = ret.result.url;
+//              }
+//          }
+//      })
+        
+        $(".quan").click(function(){
+            // if(mobileUtil.isIOS){
+            //     jump_url = "https://t.asczwa.com/taobao?backurl="+encodeURIComponent(url);
+            //     location.href = jump_url;
+            // }else if (mobileUtil.isAndroid&&mobileUtil.isWeixin){
+            //     $(".mask").addClass('active');
+            // }else{
+            //     location.href = url;
+            // }
+            if(mobileUtil.isWeixin){
+                $(".mask").addClass('active');
+            }else{
+                location.href = url;
+            }
+        })
+        $(".mask").click(function(){
+            $(".mask").removeClass('active');
+        })
+
+        
+    })
+</script>
+
+
+</html>

@@ -1,0 +1,282 @@
+{include file="article/top" /} {load href="__CSS__article.css" /}
+<style type="text/css">
+  .wemedia-wrapper .wemedia-subscribe {
+    padding: 0 30px;
+  }
+  .content-bd img {
+    max-width: 650px !important;
+  }
+</style>
+</head>
+
+<body data-page="article" class="page-article">
+  <div class="header-channel-nav header-mini login">
+    <div class="content">
+      <a href="{:_webfig('url')}" class="logo float-left iconfont icon-logo"></a>
+      <div class="float-right header-links anim">
+        <div class="icon-search btn-search iconfont"></div>
+        <div class="suggestion-search-box">
+          <input placeholder="大家都在搜" class="input input-search">
+        </div>
+        <a href="" class="link link-ydhao">头条号</a>
+        <?php if(_session()){?>
+        <div class="user-info-box">
+          <a href="{:url('member/index')}" class="user-info">
+            <img src="{:_member('img')}?imageView2/1/w/40/h/40" class="profile">
+            <span class="nickname">{:_member('username')}</span>
+          </a>
+        </div>
+        <?php }else{?>
+        <button class="btn btn-login js-to-login" onclick="_url('{:url('user/login')}')">登录</button>
+        <?php }?>
+      </div>
+      <div class="channel-nav">
+        <div class="down iconfont icon-arrow-down" onclick="downchannel()"></div>
+        <div class="list">
+          <a data-index="0" href="{:_webfig('url')}" data-channelid="best" class="item ">首页</a>
+          {volist name="typeid" id="v"}
+        <a href="{:url('article/typeid',['id'=>$v['id']])}"  class="item {eq name='v["id"]' value='$name["typeid"]'}active{/eq}">{$v.title}</a>
+        {/volist}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main" style="display: block;overflow:hidden;">
+    <div class="left-wrapper">
+      <h2 class="">{$name.title}</h2>
+      <div class="meta">
+        <span href="/channel/m426479" class="doc-source">{:_userData($user)}</span>
+        <span>{:_time($name.update_time)}</span>
+        <div class="float-right share">我要分享
+          <span class="icon-down iconfont"></span>
+          <div class="share-wrapper">
+            <div class="share-list">
+              <a href="javascript:;" title="分享到新浪微博" data-share="weibo" share-type="doc" class="icon-weibo iconfont share-icon"></a>
+              <a href="javascript:;" title="分享到QQ空间" data-share="qzone" share-type="doc" class="icon-qzone iconfont share-icon"></a>
+              <a href="javascript:;" data-share="weixin" share-type="doc" class="icon-weixin iconfont share-icon"></a>
+            </div>
+          </div>
+          <div class="qrcode-wrapper">
+            <span class="iconfont icon-up"></span>
+            <span class="iconfont icon-arrow-up"></span>
+          </div>
+        </div>
+      <!-- </div> -->
+
+      <?php if($name['mychannel']==3){?>
+      <div class="video-wrapper">
+        <video src="{:_imgUrl()}{$name.video}" volume="0.5" poster="{:_imgUrl()}{$name.image}" controls preload="true" playsinline
+          webkit-playsinline="webkit-playsinline" x-webkit-airplay="allow">您的浏览器不支持播放本视频</video>
+      </div>
+      </div>
+      </div>
+      <?php }else{?>
+      <div class="content-bd">
+        <div id="imedia-article" class="imedia-article">{$name.content}</div>
+      </div>
+      {$name.fangshi=='1'?'</div></div>':''}
+      <?php }?>
+    <!-- </div> -->
+
+    <div class="right-wrapper">
+      {php}if(!empty($name['uid'])){{/php}
+      <div class="wemedia-wrapper">
+        <a href="{:url('user/index',['id'=>$name['uid']])}" class="wemedia-image-box">
+          <img src="{:_imgUrl()}{:_userData($user,'img')}?imageView2/1/w/80/h/80">
+        </a>
+        <a href="/channel/m426479" class="wemedia-name">{:_userData($user)}</a>
+        <p class="wemedia-summary hide-summary">{:_userData($user,'qianming')}</p>
+        <a href="javascript:;" class="wemedia-subscribe" data-uid="{$name.uid}" data-type="{$name['guanzhu'] ? '1' : '0'}" onclick="_guanzhu(this)">{$name['guanzhu'] ? '已关注' : '关注'}</a>
+      </div>
+      <?php }?>
+      <div class="related-docs-wrapper" style="display: block;">
+        <h5>猜您喜欢</h5>
+        <ul class="related-docs-list">
+          <?php  $where['hide']=1;
+        $where['uid']=['<>',0];
+        $where['pingNum']=['<>',0];
+        $where['click']=['<>',0];
+        $time=date('Y-m-d' , strtotime("-2 day"));
+         $where['weitoutiao']=0;
+        $where['update_time']=['>= time',$time]; $data=db('article')->field('id,title,create_time')->where($where)->limit(8)->order('rand()')->select();?> {volist name="data" id="v"}
+          <li>
+            <h3>
+              <a href="{:url('article/view',['id'=>$v['id']])}" target="_blank">{$v.title}</a>
+            </h3>
+            <p>{:_time($v['create_time'])}</p>
+          </li>
+
+          {/volist}
+        </ul>
+      </div>
+      {include file="article/typeRight"}
+      <div class="widget-box widget-hot-channel-box"></div>
+    </div>
+
+  </div>
+
+  <div class="interact" style="width: 50%;margin: 0 10%;height: 50px;">
+    <a href="javascript:;" class="article-like">{$name['shoucang'] ? '已收藏' : '收藏'}</a>
+    <span class="line"></span>
+    <a href="javascript:;" class="article-complain">投诉</a>
+  </div>
+  <div class="comments">
+    <div class="hd-comment" style="display: flex;width: 80%;margin:0 10%;">
+      <div style="align-items: center;margin:10px;display: flex;flex-direction: column;">
+        <img style="margin-right: 0;" src="<?php if(_session()){?>{:_member('img')}<?php }else{?>/Public/style/index/img/images.jpg<?php }?>">
+        <a href="javascript:;" class="add-comment-btn">发表</a>
+      </div>
+      
+      <textarea placeholder="发表你的精彩评论，还可以输入140字" maxlength="140" class="comment-input"></textarea>
+      
+      <?php if(_session() && !_member('mobile')){?>
+      <p class="bind-mobile-tip">
+        <span>绑定手机号后就能发表评论了！</span>
+        <a href="{:url('member/mobile')}">去绑定
+          <span class="iconfont icon-arrow-right"></span>
+        </a>
+      </p>
+      <?php }?>
+    </div>
+    <h5 style="margin: 30px 10%;width: 90%;">
+      <span>最新评论</span>
+      <p style="width: 73%;"></p>
+    </h5>
+    {notempty name="ping"}
+    <ul class="comments-list">
+      {volist name="ping" id="v"}
+      <li style="width: 66%;margin: 0 10%;">
+        <a href="{:url('user/index',['id'=>$v['uid']])}">
+          <img src="{$v.img}">
+        </a>
+        <div class="comment-box">
+          <a href="{:url('user/index',['id'=>$v['uid']])}">
+            <span class="comment-nickname">{$v.username}</span>
+          </a>
+          <span class="comment-date">{:_time($v['time'])}</span>
+          <a href="javascript:;" class="float-right comment-reply" onclick="return _msg('亲,回复在APP操作哦！')"> 回复</a>
+          <a href="javascript:;" class="float-right comment-like " onclick="return _msg('亲亲，赞赞搬移到APP功能操作哦！')">{$v.zan} 赞</a>
+        </div>
+        <p>{$v.content}</p>
+      </li>
+      {/volist}
+    </ul>
+    <div class="no-more-comments" style="display: block; color: #406599;cursor: pointer;" onclick="_url('{:url('index/app')}')">以上为最新评论，头条 App 还有更多评论</div>
+    {else /}
+    <div class="no-comment" style="display: block;height: auto">
+      <img src="__IMG__no_comment.png">
+      <p>暂无评论，快来抢沙发！</p>
+    </div>
+    {/notempty}
+  </div>
+  
+  {include file="article/page_footer" /} {load href="__JS__jquery-1.11.3.min.js" /} {load href="__P__layer/layer.js" /} {load
+  href="__JS__index.js" /}
+  <script type="text/javascript">
+    function downchannel() {
+      var sxw = $('.header-channel-nav').width();
+      var sxcontent = $('.content').width();
+      var sxnva = (sxw - sxcontent) / 2;
+      $('.channel-edit-panel').css('left', sxnva)
+      var a = $('.channel-edit-panel');
+      a.slideToggle(300)
+    }
+  </script>
+  <div class="channel-edit-panel active" style="position: fixed; top: 53px; left: 251.5px; width: 1080px;display: none;">{volist name="typeid" id="v"}<a class="item channel-item cant-edit {eq name='v["id"]' value='$name["typeid"]'}active{/eq}" href="{:url('article/typeid',['id'=>$v['id']])}"> <button>{$v.title}</button><span class="delete iconfont icon-delete"></span></a>{/volist}</div>
+  <script type="text/javascript">
+    $(function () {
+      var srTarget
+      $(".btn-search").click(function (e) {
+        srTarget = e.target;
+        $('.header-links').addClass('input-expanded');
+      })
+      $('.main').click(function (event) {
+        if (event.target != srTarget) {
+          $('.header-links').removeClass('input-expanded');
+        }
+      })
+      var shoucang = {
+        $name.shoucang
+      };
+      $('.article-like').click(function () {
+        <?php if(_session()){?>
+        _loading()
+        if (shoucang == 0) {
+          var url = '{:url('
+          api / member / favoriteAdd ')}';
+        } else {
+          var url = '{:url('
+          api / member / favoriteDel ')}';
+        }
+        _ajax(url, function (ret) {
+          _loadingCloes()
+          if (ret) {
+            if (ret.ret) {
+              if (shoucang == 1) {
+                $('.article-like').text('收藏')
+                shoucang = 0
+              } else {
+                $('.article-like').text('已收藏')
+                shoucang = 1;
+              }
+              _msg(ret.ret)
+            } else {
+              _msg(ret.err)
+            }
+          } else {
+            alert(ret)
+          }
+        }, {
+          aid: {
+            $name.id
+          }
+        })
+        <?php }else{?>
+        _url('{:url('
+          user / login ')}')
+        <?php }?>
+      })
+      $('.article-complain').click(function () {
+        <?php if(_session()){?>
+        <?php }else{?>
+        _url('{:url('
+          user / login ')}')
+        <?php }?>
+      })
+      $('.add-comment-btn').click(function () {
+        <?php if(_session()){?>
+        var text = $('.comment-input').val();
+        if (!text) {
+          _msg('评论不能为空');
+          return;
+        }
+
+        _ajax('{:url('
+          api / member / ping ')}',
+          function (ret, err) {
+            if (ret) {
+              _msg('发布成功')
+              setTimeout(function () {
+                location.reload()
+              }, 1500)
+            } else {
+              _msg('发布失败')
+            }
+          }, {
+            aid: {
+              $name.id
+            },
+            content: text
+          })
+        <?php }else{?>
+        _url('{:url('
+          user / login ')}')
+        <?php }?>
+      })
+    })
+  </script>
+</body>
+
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

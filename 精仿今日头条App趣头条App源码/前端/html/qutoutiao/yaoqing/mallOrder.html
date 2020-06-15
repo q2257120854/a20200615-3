@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<style>
+			.alkjasd{
+				color: #f00;
+				padding: 0.5rem 0;
+			}
+			img.aui-img-round{
+				border-radius: 0rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="aui-content">
+			 <script id="fx-list" type="text/x-dot-template">
+				{{ for(var i=0,len=it.data.length; i < len; i++) { }}
+				<li class="aui-list-item aui-list-item-middle" Tapmode onclick="_url({url:'yaoqing/mallView',id:{{= it.data[i].shopid }},title:'商品详细'},'',true)">
+					<div class="aui-media-list-item-inner" >
+						<div class="aui-list-item-media">
+							<img id="ffxiangImgCache" ffxiang-src="{{= it.data[i].image }}" src="../../image/loadingImage.png" class="aui-img-round ">
+						</div>
+						<div class="sx-tab-2-1 aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-ellipsis-1">
+									{{= it.data[i].title }}
+								</div>
+							</div>
+							<div class="aui-list-item-text">
+								<div class="aui-ellipsis-1">
+									{{?  it.data[i].type==1}}
+									兑换金币：{{= it.data[i].money}}个
+									{{??}}
+									兑换零钱：{{= it.data[i].money}}元
+									{{?}}
+								</div>
+							</div>
+							<div class="aui-list-item-text">
+								<div class="aui-ellipsis-1">
+									订单号：{{= it.data[i].code }}
+								</div>
+							</div>
+							<div class="aui-list-item-text">
+								<div class="aui-ellipsis-1">
+									兑换时间：{{= it.data[i].time }}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="alkjasd">
+						{{=  it.data[i].f}} {{= it.data[i].kuaidi }}{{= it.data[i].danhao }}
+					</div>
+				</li>
+				{{ } }}
+			</script>
+			<ul class="aui-list aui-media-list" id="fx-view">
+				<div id="jiazai"><img src="../../image/loading_more.gif" /></div>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../../script/doT.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			_shangla(function(){
+				_lists('api/yaoqing/mallOrder',1, 1);
+			})
+			// 监听滚动
+			api.addEventListener({
+				name : 'scrolltobottom',
+				extra : {
+					threshold : threshold //设置距离底部多少距离时触发，默认值为0，数字类型
+				}
+			}, function(ret, err) {
+				if (heigutgao == 1) {// heigutgao=1开启执行 0停止执行   防止连续滚动，等加载数据之后在进行滚动。
+					pagenum += 1
+					_lists('api/yaoqing/mallOrder',pagenum);
+				}
+			});
+		}
+	</script>
+</html>

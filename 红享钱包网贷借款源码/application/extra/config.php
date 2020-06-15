@@ -1,0 +1,1 @@
+<?php return ['title'=>'锦尚中国','description'=>'锦尚中国','domain'=>'bbs.52jscn.com','kfurl'=>'锦尚中国','txjifen'=>'6','txmoney'=>'100','icp'=>'京 ICP备案 123456号','copyright'=>' 版权所有 © 锦尚中国','switchcontent'=>'锦尚中国源码论坛','switch'=>'1',];

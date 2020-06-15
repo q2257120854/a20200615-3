@@ -1,0 +1,1 @@
+<?php return ['color'=>'#ffffff','centcolor'=>'#808080','bgimg'=>'/static/uploads/20181226/b4e430984d0676cc9722ec62f91de780.png','buttomc'=>'#ec3b4b','appbuttomc'=>'#ec3b4b','and'=>'',];

@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<style>
+			body{
+				background:  #EEEEEE !important;
+			}
+	 		.footer{
+	 			background: #fff;
+	 			position:fixed;
+	 			bottom: 0;
+	 			left: 0;
+	 			width: 100%;
+	 			box-shadow:0px -5px 30px -10px #ddd;
+	 			padding-bottom: 0.5rem;
+	 		}
+	 		.footer div{
+	 			width: 78%;
+	 			height: 2rem;
+	 			text-align: center;
+	 			background: #FF8000;
+	 			border-radius: 3rem;
+	 			margin: 0 auto;
+	 			margin-top: 0.5rem;
+	 			color: #fff;
+	 			line-height:2rem;
+	 			font-size: 0.75rem;
+	 		}
+	 		.footer div:active{
+	 			background: #F6B237
+	 		}
+	 		.aui-list,.aui-list li{
+	 			border: 0 !important;
+	 			background: #fff !important
+	 		}
+	 		.aui-list li{
+	 			 
+	 			margin-bottom: 0.3rem !important;
+	 			font-size: 0.75rem;
+	 		}
+	 		input::-webkit-input-placeholder{
+	           font-size: 0.7rem;
+	        }
+	        input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+	            font-size: 0.7rem;
+	        }
+	        input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+	            font-size: 0.7rem;
+	        }
+	        input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+	           font-size: 0.7rem;
+	        }
+	        .aui-list .aui-list-item-label{
+	        	color:#333 !important;
+	        	font-weight: bold;
+	        }
+	        .aui-list .aui-list-item-input input{
+	        	color: #222;
+	        }
+	        #money{
+	        	font-weight: bold;
+	        }
+	        .text{
+	        	padding: 0 0.75rem
+	        }
+	        .text h5{
+	        	font-size: 0.8rem;
+	        	padding-top: 0.55rem;
+	        	color: #333;
+	        	padding-bottom: 0.3rem;
+	        }
+	        .text li{
+	        	font-size: 0.65rem;
+	        }
+	        .text ul{
+				margin-left: 0.75rem; 
+			}
+			.text li{
+				font-size: 0.75rem;
+				padding-top: 0.35rem;
+				list-style-type:disc;
+				color: #222
+			}
+			.text ul li span{
+				color:#FF8000
+			}
+		</style>
+	</head>
+	<body>
+		<section class="aui-content" style="padding-bottom: 1rem;margin-bottom:1rem;">
+			<ul class="aui-list aui-form-list" style="padding: 0.75rem 0;">
+		        <li class="aui-list-item">
+		            <div class="aui-list-item-inner">
+		                <div class="aui-list-item-label">
+		                	提现金额
+		                </div>
+		                <div class="aui-list-item-input">
+		                    <input readonly  style="color:#f00" placeholder="" value="" id="money" value="">
+		                </div>
+		            </div>
+		        </li>
+		        <li class="aui-list-item">
+		            <div class="aui-list-item-inner">
+		                <div class="aui-list-item-label">
+		                	支付宝姓名
+		                </div>
+		                <div class="aui-list-item-input">
+		                    <input type="text" placeholder="请确认输入支付宝姓名" name="xingming" value="">
+		                </div>
+		            </div>
+		        </li>
+		        <li class="aui-list-item">
+		            <div class="aui-list-item-inner">
+		                <div class="aui-list-item-label">
+		                	支付宝账户
+		                </div>
+		                <div class="aui-list-item-input">
+		                    <input type="text" placeholder="请确认输入支付宝账户" name="user" value="">
+		                </div>
+		            </div>
+		        </li>
+		        <li class="aui-list-item">
+		            <div class="aui-list-item-inner">
+		                <div class="aui-list-item-label">
+		                	确认账户
+		                </div>
+		                <div class="aui-list-item-input">
+		                    <input type="text" placeholder="请再次确认输入支付宝账户" name="user2" value="">
+		                </div>
+		            </div>
+		        </li>
+			</ul>
+			<div class="text">
+				<h5>兑换说明</h5>
+				<ul>
+					<li>支付宝红包提现，即直接转账到支付宝账号。</li>
+					<li>提现时<span>请务必正确填写支付宝账号</span>(手机号或邮箱账号)，如因个人原因，支付宝账号填写错误，损失将由个人承担。</li>
+					<li>提现申请将在<span>1-3小时</span>内审批到账；如遇高峰期，可能延迟到账，烦请耐心等待，请及时关注“我的一>兑换提现->兑换记录”查看兑换记录状态。</li>
+					<li>如已忘记支付宝账号，可通过“<span>支付宝->我的->个人头像昵称- >支付宝账号</span>”查看。或通过“<span>淘宝->我的淘宝->我的支付宝</span>”，在头像右侧即为支付宝账号。</li>
+				</ul>
+			</div>
+		</section>
+		<div class="footer" Tapmode onclick="ajax()">
+			<div>立即提现</div>
+		</div>
+	</body>
+<!--	<script type="text/javascript" src="../../script/fastclick.js"></script>-->
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+//		FastClick.attach(document.body);
+		apiready = function() {
+			api.parseTapmode();
+			$('#money').val(api.pageParam['money']+"元");
+			$api.fixTabBar($api.dom('.footer'))
+			
+		}
+		function ajax(){
+			var money = api.pageParam['money']
+					var user = $('input[name="user"]').val();
+					var user2 = $('input[name="user2"]').val();
+					var xingming = $('input[name="xingming"]').val();
+					if(!xingming){
+						return _msg('请输入支付宝姓名');
+					}
+					if(!user){
+						return _msg('请输入支付宝账户');
+					}
+					if(!user2){
+						return _msg('请再次确认输入支付宝账户');
+					}
+					if(user != user2){
+						return _msg('账户和确认账户不一致');
+					}
+					_loading();
+					_ajax('api/yaoqing/tixian_Ajax',function(ret,err){
+						_loadingCloes();
+						if(ret.ret){
+							_url({url:'yaoqing/tixian_shenhe',title:'提现审核',user:user,money:money,type:2})
+						}else{
+							_msg(ret.err)
+						}
+					},{type:'2',money:money,user:user,wxData:xingming})
+		}
+	</script>
+</html>

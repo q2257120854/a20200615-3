@@ -1,0 +1,185 @@
+{extend name="common/world"} {block name="title"}链上合约{/block} {block name="style"}
+<style type="text/css">
+</style>
+{/block} {block name="container"}
+<div class="d-flex">
+    <div class="btn-list">
+        <a href="/admin/event/contract.html" class="btn btn-primary">代理商列表</a>
+        <a href="/admin/event/contract_store.html" class="btn btn-secondary">商品列表</a>
+        <a href="/admin/event/contract_log.html" class="btn btn-secondary">操作记录</a>
+    </div>
+    <div class="btn-list ml-auto">
+        <button class="btn btn-secondary btn-setting" data-toggle="modal" data-target=".modal-agent">设置代理商</button>
+    </div>
+</div>
+<div class="card mt-3">
+    <div class="card-body p-0">
+        <table class="table table-hover table-outline table-vcenter card-table">
+            <thead>
+                <tr>
+                    <th>账号</th>
+                    <th>地区</th>
+                    <th>比例</th>
+                    <th>收益</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {volist name="agent" id="item"}
+                <tr>
+                    <td>{$item.username}</td>
+                    <td>{$item.address}</td>
+                    <td>{$item.ratio}</td>
+                    <td>{$item.income}{$Think.config.hello.unit}</td>
+                    <td><a href="?remove={$item.username}" onclick="return confirm('确认要删除吗？');"><i class="fe fe-trash"></i></a></td>
+                </tr>
+                {/volist}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal modal-agent" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title">代理商设置</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">用户账号</label>
+                                <input type="tel" class="form-control" placeholder="手机号码" name="username" maxlength="11" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">收益比例</label>
+                                <input type="text" class="form-control" placeholder="例如0.001代表千分之一" name="ratio" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="form-label">代理地区</label>
+                                <div class="row gutters-xs">
+                                    <div class="col-4">
+                                        <select name="province" class="form-control custom-select"></select>
+                                    </div>
+                                    <div class="col-4">
+                                        <select name="city" class="form-control custom-select">
+                                            <option value="0">所有市</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-4">
+                                        <select name="county" class="form-control custom-select">
+                                            <option value="0">所有区</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary btn-setting-post">保存设置</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script>
+// 查询市
+var getCity = function(code){
+    if (!code) {
+        $('select[name=city] option:gt(0)').remove();
+        $('select[name=county] option:gt(0)').remove();
+        return true;
+    }
+    ajax(api.service.region, {type: 2, code: code}, function(res){
+        if (res.code == 200) {
+            var html = ''
+            for (var i = 0; i < res.data.length; i++) {
+                var item = res.data[i];
+                html += '<option value="' + item.code + '">' + item.name + '</option>';
+            }
+            $('select[name=city] option:gt(0)').remove();
+            $('select[name=county] option:gt(0)').remove();
+            $('select[name=city]').append(html);
+            if (!res.data.length) {
+                getCounty(code);
+            }
+        } else {
+            toast(res.message);
+        }
+    });
+}
+// 查询区
+var getCounty = function(code){
+    if (!code) {
+        $('select[name=county] option:gt(0)').remove();
+        return true;
+    }
+    var area = $('select[name=city] option').length <= 1;
+    ajax(api.service.region, {type: 3, code: code, area: area}, function(res){
+        if (res.code == 200) {
+            var html = ''
+            for (var i = 0; i < res.data.length; i++) {
+                var item = res.data[i];
+                html += '<option value="' + item.code + '">' + item.name + '</option>';
+            }
+            $('select[name=county] option:gt(0)').remove();
+            $('select[name=county]').append(html);
+        } else {
+            toast(res.message);
+        }
+    });
+}
+require(['jquery'], function($){
+    $(function(){
+        // 查询省
+        ajax(api.service.region, {type: 1}, function(res){
+            if (res.code == 200) {
+                var html = ''
+                for (var i = 0; i < res.data.length; i++) {
+                    var item = res.data[i];
+                    html += '<option value="' + item.code + '">' + item.name + '</option>';
+                }
+                $('select[name=province]').html(html);
+                getCounty(110000);
+            } else {
+                toast(res.message);
+            }
+        });
+        // 选择省
+        $('select[name=province]').on('change', function(){
+            getCity(parseInt($(this).val(), 10));
+        });
+        // 选择市
+        $('select[name=city]').on('change', function(){
+            getCounty(parseInt($(this).val(), 10));
+        });
+        // 保存设置
+        $('.modal-agent form').on('submit', function(){
+            // 获取手机
+            var username = $('.modal-agent input[name=username]').val();
+            if (!username) {
+                $('.modal-agent input[name=username]').focus();
+                return false;
+            }
+            // 获取比例
+            var ratio = $('.modal-agent input[name=ratio]').val();
+            if (!ratio) {
+                $('.modal-agent input[name=ratio]').focus();
+                return false;
+            }
+            return true;
+        });
+    });
+});
+</script>
+{/block}

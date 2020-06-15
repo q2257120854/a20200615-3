@@ -1,0 +1,170 @@
+{extend name="common/world"}
+{block name="title"}{$Think.config.hello.title}{/block}
+{block name="header"}实名认证{/block}
+{block name="container"}
+<style type="text/css">
+    body{ background: #FFF;}
+    .li_touxiang img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
+</style>
+<div class="list-block">
+    <ul>
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label">用户名</div>
+                    <div class="item-input"> {$user.account.username}</div>
+                </div>
+            </div>
+        </li>
+
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label">真实姓名</div>
+                    <div class="item-input">
+                      
+                      <input type="text" class="form-control" id="realname" placeholder="真实姓名" value="{$user.profile.realname}" />
+                     
+                  </div>
+                </div>
+            </div>
+        </li>
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-form-name"></i></div>
+            <div class="item-inner">
+              <div class="item-title label">支付宝</div>
+              <div class="item-input">
+                <input type="text" class="form-control" id="alipay" placeholder="支付宝" value="{$user.profile.alipay}" />             
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label">身份证号码</div>
+                    <div class="item-input">
+                        {notempty name="user.profile.idcard"}
+                        {$user.profile.idcard|subsubsubsub}
+                        {else /}
+                        <input type="text" class="form-control" id="sfz" placeholder="身份证号码" value="" />
+                        {/notempty}
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label">银行卡号</div>
+                    <div class="item-input">
+                        {notempty name="user.profile.bankcard"}
+                        {$user.profile.bankcard}
+                        {else /}
+                        <input type="text" class="form-control" id="yhkh" placeholder="银行卡号" value="{$user.profile.bankcard}" />
+                        {/notempty}
+                    </div>
+                </div>
+            </div>
+        </li>
+        {notempty name="user.profile.idcard"}
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label">认证状态</div>
+                    <div class="item-input">
+                        {eq name="user.account.authen" value="1"}
+                        认证成功
+                        {/eq}
+                        {eq name="user.account.authen" value="2"}
+                        审核中
+                        {/eq}
+                        {notempty name="audit"}
+                        尚未通过审核！
+                        {/notempty}
+                    </div>
+                </div>
+            </div>
+        </li>
+        {else /}
+        <li>
+            <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                    <div class="item-title label">交易密码</div>
+                    <div class="item-input">
+                        <input type="password" class="form-control" name="password" id="secpwd" placeholder="******"/>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-100">
+                        <input id="btnn" type="button" class="button button-big button-fill button-success js-submit"
+                               style="width: 100%;" value="提交"/>
+                    </div>
+                </div>
+            </div>
+        </li>
+        {/notempty}
+    </ul>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#btnn').click(function(){
+            var regIdNo = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  
+            if(!regIdNo.test($("#sfz").val())){  
+              alert('身份证号填写有误');  
+              return false;  
+            }  
+            if (!$("#yhkh").val()) {
+                alert("银行卡号不能为空");
+                return false;
+            }
+            if (!$("#secpwd").val()) {
+                alert("二级密码不能为空");
+                return false;
+            }
+            var params = {
+                idcard : $("#sfz").val(),
+                bankcard : $("#yhkh").val(),
+              	realname : $("#realname").val(),
+              	alipay : $("#alipay").val(),
+                paypassword : $("#secpwd").val()
+            };
+            $.ajax({
+                type: 'post',
+                url: api.account.authen,
+                cache: false,
+                data: params,
+                dataType: 'json',
+                success: function(data){
+                    alert(data.message);
+                    if (data.code == 200) {
+                        window.setTimeout("window.location='/account/authen.html'",1000);
+                        //window.location.href="/shiming.html";//需要跳转的地址
+                        return true;
+                    }else{
+                        $("#sub01").removeAttr('disabled');
+                    }
+                },
+            });
+            return false;
+        });
+    });
+</script>
+{/block}

@@ -1,0 +1,21 @@
+body {
+	background: #F4F5F6 !important;
+}
+.aui-list{
+	border: 0px;
+}
+.aui-list li,.aui-list li .aui-list-item-inner .aui-list-item-title{
+	font-size: 0.75rem;
+}
+#fx-img img{
+	width: 1.5rem;
+	height: 1.5rem;
+	border-radius: 50%;
+}
+.fx-out{
+	background: #fff;
+	padding: 0.5rem 0;
+	color: #D43D3D;
+	font-size:0.75rem;
+	margin-top:2.5rem;
+}

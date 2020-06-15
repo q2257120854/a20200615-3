@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/ffxiang.css" />
+		<link rel="stylesheet" type="text/css" href="../css/video.css" />
+		<style>
+			#as{
+				position: fixed;
+				top: 50%;
+				left:0px;
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+				background: #000000;
+				color: #fff;
+				font-size: 1rem;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="aui-content">
+			<ul class="aui-list aui-media-list" id="fx-article-list">
+				<script id="fx-list" type="text/x-dot-template">
+				{{ for(var i=0,len=it.data.length; i < len; i++) { }}
+				{{? it.data[i].mychannel != 99}}
+				<div class="aui-card-list aui-border-t fx-video-list-li" id="id{{= it.data[i].id }}" data-title="{{= it.data[i].title }}">
+					<div class="aui-card-list-content fx-video-content" tapmode onclick="fx_video({{= it.data[i].id }},'{{= it.data[i].video }}')">
+						<img id="ffxiangImgCache" ffxiang-src="{{= it.data[i].image }}" src="../image/load-video.png" class="fx-video-img">
+						<div class="fx-video-title">
+							<h2>{{= it.data[i].title }}</h2>
+							<span>{{= it.data[i].click }}次播放</span>
+						</div>
+						<div class="load-container loadingdi fx-video-loading" style="display: none"><div class="loader">loadingdi...</div></div>
+						<i class="fx-video-bofang"></i>
+						<em class="fx-video-em">{{? it.data[i].videodate}}{{= it.data[i].videodate }}{{?}}</em>
+						<div class="fx-video-url" style="width: 100%; display: none">
+
+						</div>
+					</div>
+					<div class="aui-info aui-padded-l-15 aui-padded-r-15 fx-info">
+						{{? it.data[i].uid}}
+						<div class="aui-info-item aui-font-size-12" tapmode onclick="_url({id:{{= it.data[i].uid }},qian:0,fan:1},'u_win')">
+							<img src="../image/touxiang.png" id="ffxiangImgCache" ffxiang-src="{{= it.data[i].user.img }}"  class="aui-img-round" />
+							<span class="aui-margin-l-5">{{= it.data[i].user.username }}</span>
+						</div>
+						{{?}}
+						<div class="aui-info-item fx-info-pingZan" tapmode onclick="asd({{= it.data[i].id }},'{{= it.data[i].video }}','{{= it.data[i].title }}')">
+							<span class="fx-info-ping"><i class="aui-iconfont aui-icon-comment"></i>{{= it.data[i].pingNum }}</span>
+							<span class="fx-info-ping"><i class="aui-iconfont aui-icon-laud"></i>{{= it.data[i].zan }}</span>
+						</div>
+					</div>
+				</div>
+				{{??}}
+				<!--广告-->
+				{{? it.data[i].url}}
+				<li class="aui-list-item fx-ad2" tapmode onclick="_url({url:'{{= it.data[i].url}}',title:'{{= it.data[i].source}}'},'curl')">
+				{{??}}
+				<li class="aui-list-item">
+				{{?}}
+					<div class="aui-list-item-inner fx-item-inner aui-padded-l-15">
+						<div class="aui-list-item-title fx-title aui-ellipsis-2">{{= it.data[i].title }}</div>
+					</div>
+					{{? it.data[i].image }}
+					<div class="aui-card-list-content fx-video-content aui-padded-10 aui-padded-t-0">
+						<img id="ffxiangImgCache" ffxiang-src="{{= it.data[i].image }}" src="../image/loadingImage.png">
+					</div>
+					{{?}}
+					<div class="aui-info  aui-padded-t-0 aui-padded-r-15  aui-padded-l-15 fx-item-inner">
+						<div class="aui-info-item aui-font-size-12">
+							<span class="fx-ad">{{= it.data[i].ad}}</span>
+							<span class="aui-margin-l-10">{{= it.data[i].source}}</span>
+						</div>
+					</div>
+				</li>
+				{{?}}
+				{{ } }}
+				</script>
+				<div id="fx-view"></div>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/doT.js"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		var typeid,heigutgao = 1,playModule;
+		apiready = function() {
+
+			playModule = api.require('playModule');
+			playModule.init({
+				background : _image+"load-video.png",
+			});
+			api.parseTapmode();
+			typeid=api.pageParam['id'];
+	    	// 下拉刷新
+			_shangla(function(ret,err){
+				_lists('api/article/lists/mychannel/3/typeid/'+typeid+'/',1,1);
+			})
+	    	// 监听滚动
+	    	api.addEventListener({
+				name : 'scrolltobottom',
+				extra : {
+					threshold : threshold //设置距离底部多少距离时触发，默认值为0，数字类型
+				}
+			}, function(ret, err) {
+				if(heigutgao==1){	// heigutgao=1开启执行 0停止执行   防止连续滚动，等加载数据之后在进行滚动。
+					pagenum+=1
+					_lists('api/article/lists/mychannel/3/typeid/'+typeid+'/',pagenum);	// 当数据写入成功  把 heigutgao 设置1
+				}
+			});
+			// 监听夜间
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+			api.addEventListener({
+			    name: 'video_frm'
+			}, function(ret, err) {
+				var v=ret.value.k;
+				if(v=='hidePlayer'){
+					hidePlayer()
+				}else if(v=='keyback'){
+					//alert(2)
+					// 监听返回键
+					// 判断是否全屏
+					playModule.isFullScreen(function(ret, err) {
+						if(ret.status){
+							playModule.unfull();
+							return;
+						}else{
+							api.closeWidget();
+						}
+					});
+
+				}
+			});
+
+
+		};
+		var onsgaodu=0;
+		window.onscroll = function(){
+		    var t = document.documentElement.scrollTop || document.body.scrollTop;
+		    if(onsgaodu){
+		    	if(t>onsgaodu){
+			    	hidePlayer();
+			    	onsgaodu=0
+			    }
+		    }
+		}
+		function hidePlayer(){
+			playModule.stop();
+		}
+
+		//视频直接播放
+		function fx_video(id,url){
+			_ajax('api/article/clickAjax/id/'+id);
+			var y=$('#id'+id+' .fx-video-content').offset().top;
+			var h=$('#id'+id+' .fx-video-content').height();
+			var title=$('#id'+id).data('title')
+			onsgaodu=y+300
+			playModule.play({
+			    rect:
+			    {    x: 0,
+			        y : y,
+			        w : api.winWidth,
+			        h: h
+			    },
+			    fixedOn: api.frameName,
+			    url: url,
+			    defaultBtn: true,
+			    enableFull : false,
+			    fixed:false,
+			    title:title,
+			    isTopView:true,
+			}, function(ret, err) {
+
+			});
+		}
+		// 返回键监听
+		function k(){
+
+		}
+		// 刷新
+		function shuaxin(){
+			api.refreshHeaderLoading();
+		}
+		function asd(id,video,title){
+			playModule.stop();
+			_url({id:id,videoUrl:video,title:title},'videoView_win')
+		}
+	</script>
+</html>
+
+

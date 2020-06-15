@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>商学院</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!-- <link rel="stylesheet" href="css/slick.min.css" /> -->
+    <link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/css/style.css" />
+    <link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/css/hsy.css" />
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/jquery.min.js"></script>
+    <!-- <script src="js/slick.min.js"></script> -->
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/clipboard.min.js"></script>
+    <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/lib.js"></script>
+</head>
+
+<body>
+    <div class="bodyW"  id="table">
+        <div class="school">
+            <div class="header2">
+                <div class="back" onclick="window.history.back();"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/back3.png" alt=""></div>
+                <div class="name">
+                    <span>商学院</span>
+                </div>
+                <div class="ref"></div>
+            </div>
+            <div class="top">
+                <div class="ban-sch" id="tjbox1">
+                    
+                </div>               
+            </div>
+			<div class="slick-sch">
+			    <div class="item">
+			        <div class="con" id="typebox">
+			            
+			        </div>
+			    </div>
+				<div style="clear: both;"></div>
+			</div>
+            <div class="mid" id="tjbox">
+                
+            </div>
+            <div class="bot">
+                <div class="tit">新手入门</div>
+                <ul class="list" id="goods_box">
+
+                </ul>
+            </div>
+            <div class="videoPop">
+                <video controls="controls" src=""></video>
+                <div class="close js-close"></div>
+            </div>
+        </div>
+		<script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/js/vue.min.js"></script>
+		<link href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/js/layui/css/layui.css" rel="stylesheet">
+		<script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/js/layui/layui.js" charset="utf-8"></script>
+		
+        <script>
+			var vm=new Vue({
+				el: '#app',
+				data:{
+					'page':0
+				}
+			});
+			
+			tjlist()
+			function tjlist(){
+				$.get("{php echo $this->createMobileUrl('article')}&lx=1", function(res){
+					res=JSON.parse(res);
+					var tjlist1=res.articletj1;
+					var tjlist2=res.articletj2;
+					var contenttype='';
+					$.each(res.articletype,function(index,value){
+					    contenttype +='<div class="s">';
+					    contenttype +='<a href="{php echo $this->createMobileUrl("articlelist")}&type='+value.id+'">';
+					    contenttype +='<img src="'+value.picurl+'" alt="">';
+					    contenttype +='<span>'+value.title+'</span>';
+					    contenttype +='</a>';
+					    contenttype +='</div>';
+					});						
+					$("#typebox").append(contenttype);
+					
+					if(tjlist2){
+						var tjcontent="";
+						    tjcontent +='<a href="{php echo $this->createMobileUrl("articleview")}&id='+tjlist2.id+'">';
+							tjcontent +='<div class="con">';
+							tjcontent +='<div class="tit">'+tjlist2.title+'</div>';
+							tjcontent +='<div class="video">';
+							tjcontent +='<img src="'+tjlist2.picurl+'" class="poster" alt="">';
+							tjcontent +='</div>';
+							tjcontent +='<div class="info">';
+							tjcontent +=' <div class="date">'+tjlist2.createtime+'</div>';
+							tjcontent +=' <div class="view"><i></i>'+tjlist2.click+'</div>';
+							tjcontent +=' </div>';
+							tjcontent +='</div>';
+							tjcontent +='</a>';
+							$("#tjbox").append(tjcontent);
+					}
+					if(tjlist1){
+					var tjcontent1="";
+						tjcontent1 +='<a href="{php echo $this->createMobileUrl("articleview")}&id='+tjlist1.id+'">';
+						tjcontent1 +='<img src="'+tjlist1.picurl+'" alt="">';
+						tjcontent1 +='</a>';
+							$("#tjbox1").append(tjcontent1);
+					}
+					
+			
+				});
+			}
+			
+			
+			
+			
+			getlist();
+			function getlist(){
+				;!function(){
+						layui.use('flow', function(){
+							var $ = layui.jquery;
+							var flow = layui.flow;
+								            
+				            flow.load({
+				                elem: '#table'
+				                ,end: '本场次内容已经加载完毕啦 ￣O￣)ノ！'
+				                ,done: function(page, next){
+				                    var lis =[];
+				                    // vm.page=limit;
+									vm.page++;
+				                    var content='';
+				                    $.get("{php echo $this->createMobileUrl('article')}&lx=2&page="+vm.page, function(res){
+				                    	res=JSON.parse(res);
+				                    	//alert(res);
+				                    	console.log(res);
+				                        layui.each(res.data, function(index, item){											
+											content +='<li >';
+											if(item.picurl){
+												content +='<div class="pic"><a href="{php echo $this->createMobileUrl("articleview")}&id='+item.id+'"><img src="'+item.picurl+'" alt="sxy.jpg"></a></div>';
+											}else{
+												content +='<div class="pic"><a href="{php echo $this->createMobileUrl("articleview")}&id='+item.id+'"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/public/images/sxy.jpg" alt="sxy.jpg"></a></div>';
+											}
+											
+											content +='<div class="txt">';
+											content +='<h3><a href="{php echo $this->createMobileUrl("articleview")}&id='+item.id+'">'+item.title+'</a></h3>';
+											content +='<div class="info">';
+											content +='<span>'+item.click+'人已看</span>';
+											content +='<span>'+item.createtime+'</span>';
+											content +='</div>';
+											content +=' </div>';
+											content +='</li>';
+				                        });
+				                         $("#goods_box").append(content);
+						
+				                        //console.log(content);
+				                        next(lis.join(''), vm.page < res.pages);
+				                    });
+				                }
+				            });
+				        });
+				    }();
+			}
+
+        </script>
+</body>
+
+</html>

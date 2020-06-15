@@ -1,0 +1,81 @@
+{extend name="common/world"}
+{block name="title"}我的订单{/block}
+{block name="style"}
+<style>
+.orders .date {
+    line-height: 1.6rem;
+}
+.orders .charge {
+    font-size: 40%;
+    color: #cd201f;
+    margin-left: .5rem;
+}
+</style>
+{/block}
+{block name="container"}
+<div class="d-flex">
+    <div class="form-group mb-3">
+        <select class="form-control custom-select w-auto" name="catalog">
+            <option value="">全部订单</option>
+            {volist name="Think.config.hello.store.catalog" id="item"}
+                <option value="{$key}">{$item}</option>
+            {/volist}
+        </select>
+    </div>
+    <div class="text-muted ml-auto small">
+        <a href="/store.html" class="btn btn-secondary">返回商城</a>
+    </div>
+</div>
+<div class="orders"></div>
+<div hidden class="more mb-3"><button class="btn btn-secondary btn-sm w-100">加载更多...</button></div>
+<div class="modal modal-shipped" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" style="margin-top: -100px;">
+            <form method="post" action="/store/shipped">
+                <input type="hidden" name="oid" />
+                <div class="modal-header">
+                    <h5 class="modal-title">发货信息</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group mb-0">
+                        <textarea name="send" class="form-control" cols="30" rows="5" placeholder="填写快递公司和单号或其他信息，例如 顺丰快递12345678"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary">立即发货</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal-confirm" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document" style="margin-top: -100px;">
+        <div class="modal-content">
+            <form method="post" action="/store/confirm">
+                <input type="hidden" name="oid" />
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">安全验证</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-danger text-center mb-2">确认后卖家将收到您的款项</div>
+                    <div class="input-group">
+                        <input type="password" name="safeword" class="form-control" placeholder="请输入安全密码" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary">确认收货</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript" src="/static/js/order.js"></script>
+{/block}

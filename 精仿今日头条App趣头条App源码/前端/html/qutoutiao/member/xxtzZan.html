@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/xxtzPing.css" />
+	</head>
+	<body>
+		<div class="aui-content pingList">
+			<script id="fx-list" type="text/x-dot-template">
+				{{ for(var i=0,len=it.data.length; i < len; i++) { }}
+				<li class="aui-list-item ">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media">
+							<img id="ffxiangImgCache" ffxiang-src="{{=it.data[i].img}}" src="../../image/touxiang.png" class="aui-img-round aui-list-img-sm" Tapmode onclick="_url({id:{{= it.data[i].uid}},qian:0,fan:1},'u_win');">
+						</div>
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title" Tapmode onclick="_url({id:{{= it.data[i].uid}}},'u_win');">
+									{{= it.data[i].username}}
+								</div>
+							</div>
+							<div class="aui-list-item-text fx-contentuser" style="color:#333;" onclick="_url({aid:{{= it.data[i].aid}},pingId:{{= it.data[i].pingId}},qian:1,fan:1},'view_ping_win')">
+								<img src="../../image/xxtzZan.png" />
+							</div>
+							<div class="aui-info aui-font-size-12 aui-padded-t-5 aui-padded-b-5">
+								<div class="aui-info-item">
+									{{= it.data[i].time}}
+								</div>
+							</div>
+						</div>
+						<div class="fx-ping-content aui-ellipsis-2" Tapmode onclick="_url({aid:{{= it.data[i].aid}},pingId:{{= it.data[i].pingId}},qian:1,fan:1},'view_ping_win')">
+							{{= it.data[i].content}}
+						</div>
+					</div>
+				</li>
+				{{ } }}
+			</script>
+			<ul class="aui-list aui-media-list" id="fx-view"></ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../../script/doT.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			api.addEventListener({
+			    name:'viewappear'
+			}, function(ret, err){      
+				_heibai(1)  
+			});
+			// 下拉刷新
+			_shangla(function(ret,err){
+				_lists('api/member/zanList', 1, 1);
+			})
+			// 监听滚动
+			api.addEventListener({
+				name : 'scrolltobottom',
+				extra : {
+					threshold : threshold //设置距离底部多少距离时触发，默认值为0，数字类型
+				}
+			}, function(ret, err) {
+				if (heigutgao == 1) {// heigutgao=1开启执行 0停止执行   防止连续滚动，等加载数据之后在进行滚动。
+					pagenum += 1
+					_lists('api/member/zanList', pagenum);
+					// 当数据写入成功  把 heigutgao 设置1
+				}
+			});
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+		}
+	</script>
+</html>
+

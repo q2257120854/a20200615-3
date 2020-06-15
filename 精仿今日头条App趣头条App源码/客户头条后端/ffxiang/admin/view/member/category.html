@@ -1,0 +1,66 @@
+ {include file="public/header" /}
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        {include file="public/tophead"}
+        {include file="public/top" /}
+        <div class="ibox-content">
+        {include file="public/topsection"}
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <div class="example">
+                        <table data-toggle="table" data-striped="false">
+                            <thead>
+                                <tr>
+                                    <th>排序</th>
+                                    <th>标题</th>
+                                    <th>图标</th>
+                                    <th>说明</th>
+                                    <th>控制器</th>
+                                    <th>函数</th>
+                                    <th>状态</th>
+                                    <th>管理</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {php}$hide=array('0'=>'隐藏','1'=>'显示');$hides=array('1'=>'隐藏','0'=>'显示');{/php}
+                                {volist name="data" id="v"}
+                                <tr id="id{$v.id}" class="gradeA footable-even category1">
+                                    <td class="categoryTitle">{$v.des}</td>
+                                    <td class="categoryTitle">{:str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $v['depth'])}{gt name="$v['depth']" value="0"}┠&nbsp;&nbsp;{/gt}{$v.title}</td>
+                                    <td>{notempty name="v.img"}<img src="{$v.img}" height="10" width="30">{/notempty}</td>
+                                    <td>{$v.content}</td>
+                                    <td>{$v.controller}</td>
+                                    <td>{$v.function}</td>
+                                    <td>{$hide[$v['hide']]}</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span></button>
+                                            <ul class="dropdown-menu">
+                                                {eq name='v.tid' value='0'}
+                                                <li><a onclick="add('{:url('categoryAdd',['typeid'=>$v['id'],'url'=>-1])}')" href="javascript:void(0);">添加二级分类</a></li>
+                                                {/eq}
+                                                <li><a onclick="add('{:url('categoryAdd',['typeid'=>$v['tid'],'id'=>$v['id'],'url'=>-1])}')" href="javascript:void(0);">修改分类</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="javascript:;" onclick="del({$v.id})">删除分类</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<script type="text/javascript">
+function del(id){
+    swal_del(id,"{:url('categoryDel')}")
+}
+</script>

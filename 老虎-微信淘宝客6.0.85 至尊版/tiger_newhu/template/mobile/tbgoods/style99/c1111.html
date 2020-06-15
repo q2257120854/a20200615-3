@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<!--<meta name="viewport" content="width=640" />-->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="">
+		<meta name="format-detection" content="telephone=no">
+		<title>2019双11全球狂欢节</title>
+		<link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/css/style.css">
+		<link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/css/slicy.css">
+		<link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/css/glide.css">
+		<link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/css/swiper.min.css" />
+		<link rel="stylesheet" href="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/css/zys_style.css">
+		<script type="text/javascript">
+		    var phoneWidth =  parseInt(window.screen.width);
+		    var phoneScale = phoneWidth/640;
+		    var ua = navigator.userAgent;
+		    if (/Android (\d+\.\d+)/.test(ua)){
+		        var version = parseFloat(RegExp.$1);
+		        if(version>2.3){
+		            document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+		        }else{
+		            document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+		        }
+		    } else {
+		        document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+		    }
+		</script>
+
+        <style>
+        a{color:#777777}
+        </style>
+        <script src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style9/js/jweixin-1.0.0.js"></script>
+        <script>
+            var fxtitle="2019双11全球狂欢节";
+            var desc="2019双11全球狂欢节";
+            var imgUrl="https://img.alicdn.com/tfs/TB1vONZjeT2gK0jSZFvXXXnFXXa-440-180.jpg";
+            var fxlink=window.location.href;
+            var fxdata={"title":fxtitle,"imgUrl":imgUrl,"desc":desc,"link":fxlink};
+                var appid = "{$_W['account']['jssdkconfig']['appId']}";
+                var timestamp = "{$_W['account']['jssdkconfig']['timestamp']}";
+                var nonceStr = "{$_W['account']['jssdkconfig']['nonceStr']}";
+                var signature = "{$_W['account']['jssdkconfig']['signature']}";
+                wx.config({
+                    debug: false,
+                    appId: appid,
+                    timestamp: timestamp,
+                    nonceStr: nonceStr,
+                    signature: signature,
+                    jsApiList: [
+                        "onMenuShareAppMessage",
+                        "onMenuShareTimeline",
+                        "chooseImage",
+                        "uploadImage",
+                        "downloadImage"
+                    ]
+                });
+
+            wx.ready(function(){
+                wx.onMenuShareAppMessage({
+                    title: fxdata['title'],
+                    desc: fxdata['desc'],
+                    link: fxdata['fxlink'],
+                    imgUrl: fxdata['imgUrl']
+                }); 
+                wx.onMenuShareTimeline({
+                    title: fxdata['title'],
+                    desc: fxdata['desc'],
+                    link: fxdata['fxlink'],
+                    imgUrl: fxdata['imgUrl']
+                });
+            });
+
+            </script>	
+
+	</head>
+
+	<body>
+		<div class="layout layout_prod_xq" style="padding-bottom: 100px;">
+			<div class="header" style="background:{$cfg['topcolor']};height:60px;">
+				<div class="left" style="height:60px;">
+					<a href="javascript:void(0);" onclick="history.go(-1);" class="back" style="height:60px;"></a>
+				</div>
+				<div class="txt" style="line-height: 60px;">					
+					2019双11全球狂欢节
+				</div>
+				<div class="right">
+					<a href="#" class="more"></a>
+				</div>
+			</div>
+			 <!--<div class="qiang_img">
+				<a href="{php echo $this->createMobileUrl('c11view',array('type'=>99,'pid'=>$pid))}"></a><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/imgs/c1111/00.jpg" style="width:640px" /></a>
+			</div> -->
+			<!-- <div class="qiang_nav swiper-container"> -->
+				<!--<div class="qiang_nav_cen">
+
+				</div>-->
+				<!--<div>-->
+				<!-- <ul class="swiper-wrapper">
+					<li class="swiper-slide" >
+						<a href="{php echo $this->createMobileUrl('ddq',array('type'=>$type,'class'=>'zonghe','pid'=>$pid))}" >
+							<h4 {if $class=='zonghe'}class='now'{/if}>叮咚抢</h4>
+						</a>
+					</li>
+					<li class="swiper-slide">
+						<a href="{php echo $this->createMobileUrl('haoquan',array('type'=>$type,'class'=>'neiyi','pid'=>$pid))}">
+							<h4 {if $class=='neiyi'}class='now'{/if}>内衣</h4>
+						</a>
+					</li>
+					<li class="swiper-slide">
+						<a href="{php echo $this->createMobileUrl('haoquan',array('type'=>$type,'class'=>'nvzhuang','pid'=>$pid))}">
+							<h4 {if $class=='nvzhuang'}class='now'{/if}>女装</h4>
+						</a>
+					</li>
+					<li class="swiper-slide">
+						<a href="{php echo $this->createMobileUrl('haoquan',array('type'=>$type,'class'=>'muying','pid'=>$pid))}">
+							<h4 {if $class=='muying'}class='now'{/if}>母婴</h4>
+						</a>
+					</li>
+					<li class="swiper-slide">
+						<a href="{php echo $this->createMobileUrl('haoquan',array('type'=>$type,'class'=>'nanzhuang','pid'=>$pid))}">
+							<h4 {if $class=='nanzhuang'}class='now'{/if}>男装 </h4>
+						</a>
+					</li>
+					<li class="swiper-slide">
+						<a href="{php echo $this->createMobileUrl('haoquan',array('type'=>$type,'class'=>'shipin','pid'=>$pid))}">
+							<h4 {if $class=='shipin'}class='now'{/if}>食品</h4>
+						</a>
+					</li>
+					<li class="swiper-slide">
+						<a href="{php echo $this->createMobileUrl('haoquan',array('type'=>$type,'class'=>'jiajujiazhuang','pid'=>$pid))}">
+							<h4 {if $class=='jiajujiazhuang'}class='now'{/if}>家居家装</h4>
+						</a>
+					</li>
+					<li class="swiper-slide">
+						<a href="{php echo $this->createMobileUrl('haoquan',array('type'=>$type,'class'=>'shumajiadian','pid'=>$pid))}">
+							<h4 {if $class=='shumajiadian'}class='now'{/if}>数码家电</h4>
+						</a>
+					</li>
+					<li class="swiper-slide">
+						<a href="{php echo $this->createMobileUrl('haoquan',array('type'=>$type,'class'=>'meizhuanggehu','pid'=>$pid))}">
+							<h4 {if $class=='meizhuanggehu'}class='now'{/if}>美妆个护</h4>
+						</a>
+					</li>
+					<li class="swiper-slide">
+						<a href="{php echo $this->createMobileUrl('haoquan',array('type'=>$type,'class'=>'yundonghuwai','pid'=>$pid))}">
+							<h4 {if $class=='yundonghuwai'}class='now'{/if}>运动户外</h4>
+						</a>
+					</li>
+					<li class="swiper-slide">
+						<a href="{php echo $this->createMobileUrl('haoquan',array('type'=>$type,'class'=>'xiebaopeishi','pid'=>$pid))}">
+							<h4 {if $class=='xiebaopeishi'}class='now'{/if}>鞋包配饰</h4>
+						</a>
+					</li>
+				</ul> -->
+				<!--</div>-->
+			<!-- </div> -->
+			<style>
+				.qiang_nav ul {
+					    height: 60px;
+					}
+					.qiang_nav h4 {
+					    margin-top: 0px;
+					    line-height: 60px;
+					}
+                .qiang_list1111{width:640px;margin-top: 10px;}
+                .qiang_list1111 li{width:50%;float:left}
+                .qiang_list1111 li img{width:96%;}
+                .qiang_list1111 .left11111{text-align:left;}
+                .qiang_list1111 .right1111{text-align:right;float:right;display:block;}
+                .qiang_list1111 .cctitle{font-size:18px;text-align:center;display:block;line-height: 25px;padding-bottom: 10px;}
+
+                .qiang_list1111 .left11111 img{margin-left: 5px;}
+                .qiang_list1111 .right1111 img{margin-right: 5px;}
+                .qiang_img1111{width:100%;position: relative;}
+                .qiang_img1111 .c11hb{
+        position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100px;
+    display: block;
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+    width: 100%;
+    color: #ffffff;
+    font-size:28px;
+    }
+    .qiang_nav li{background-color: #fe6f00;}
+
+
+			</style>
+            <div class="qiang_img1111">
+            	<div style="font-size: 22px;line-height: 50px;padding-left: 10px;">超级红包</div>
+				<a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1539329391766','hdpic'=>'https://img.alicdn.com/tfs/TB1vONZjeT2gK0jSZFvXXXnFXXa-440-180.jpg','hdtitle'=>'2019天猫双11全球狂欢节-主会场'))}"><img src="https://img.alicdn.com/tfs/TB1vONZjeT2gK0jSZFvXXXnFXXa-440-180.jpg" style="width:640px;display:block" />
+                <span class="c11hb">2019天猫双11全球狂欢节-主会场</span></a>
+			</div>
+			<!-- <div class="qiang_img1111">
+            	<div style="font-size: 22px;line-height: 50px;padding-left: 10px;">2018淘宝1212主会场</div>
+				<a href="{php echo $this->createMobileUrl('c11view',array('type'=>1,'pid'=>$pid))}"><img src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/imgs/c1111/000.jpg" style="width:640px;display:block" />
+                <span class="c11hb">2018淘宝1212主会场</span></a>
+			</div> -->
+			<div class="qiang_list1111">
+               <ul>
+				   
+                  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088821','hdpic'=>'https://img.alicdn.com/tfs/TB1D8UziRv0gK0jSZKbXXbK2FXa-440-180.jpg','hdtitle'=>'聚划算主会场'))}"><img src="https://img.alicdn.com/tfs/TB1D8UziRv0gK0jSZKbXXbK2FXa-440-180.jpg" /><span class="cctitle">聚划算主会场</span></a></li>
+				  
+                  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088817','hdpic'=>'https://img.alicdn.com/tfs/TB1eTBfjoY1gK0jSZFCXXcwqXXa-440-180.jpg','hdtitle'=>'天猫国际主会场'))}"><img src="https://img.alicdn.com/tfs/TB1eTBfjoY1gK0jSZFCXXcwqXXa-440-180.jpg"  /><span class="cctitle">天猫国际主会场</span></a></li>
+				  
+				    
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571120794520','hdpic'=>'https://img.alicdn.com/tfs/TB10iuki5_1gK0jSZFqXXcpaXXa-440-180.jpg','hdtitle'=>'天猫超市主会场'))}"><img src="https://img.alicdn.com/tfs/TB10iuki5_1gK0jSZFqXXcpaXXa-440-180.jpg" /><span class="cctitle">天猫超市主会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088909','hdpic'=>'https://img.alicdn.com/tfs/TB1sqpOjeT2gK0jSZFvXXXnFXXa-440-180.jpg','hdtitle'=>'全球时尚会场'))}"><img src="https://img.alicdn.com/tfs/TB1sqpOjeT2gK0jSZFvXXXnFXXa-440-180.jpg"  /><span class="cctitle">全球时尚会场</span></a></li>
+				  
+				    
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1563282628203','hdpic'=>'https://img.alicdn.com/tfs/TB1eAFbjoD1gK0jSZFGXXbd3FXa-440-180.jpg','hdtitle'=>'直营主会场'))}"><img src="https://img.alicdn.com/tfs/TB1eAFbjoD1gK0jSZFGXXbd3FXa-440-180.jpg" /><span class="cctitle">直营主会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088903','hdpic'=>'https://img.alicdn.com/tfs/TB1nnHliUT1gK0jSZFrXXcNCXXa-440-180.jpg','hdtitle'=>'数码家电会场'))}"><img src="https://img.alicdn.com/tfs/TB1nnHliUT1gK0jSZFrXXcNCXXa-440-180.jpg"  /><span class="cctitle">数码家电会场</span></a></li>
+				  
+				    
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088861','hdpic'=>'https://img.alicdn.com/tfs/TB1TufKiQT2gK0jSZPcXXcKkpXa-440-180.jpg','hdtitle'=>'1111鞋靴会场'))}"><img src="https://img.alicdn.com/tfs/TB1TufKiQT2gK0jSZPcXXcKkpXa-440-180.jpg" /><span class="cctitle">鞋靴会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1572010379400','hdpic'=>'https://img.alicdn.com/tfs/TB1Bw6GiQL0gK0jSZFtXXXQCXXa-440-180.png','hdtitle'=>'1111男装会场'))}"><img src="https://img.alicdn.com/tfs/TB1Bw6GiQL0gK0jSZFtXXXQCXXa-440-180.png"  /><span class="cctitle">男装会场</span></a></li>
+				    
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088871','hdpic'=>'https://img.alicdn.com/tfs/TB1IHvViNv1gK0jSZFFXXb0sXXa-440-180.jpg','hdtitle'=>'母婴好货会场'))}"><img src="https://img.alicdn.com/tfs/TB1IHvViNv1gK0jSZFFXXb0sXXa-440-180.jpg" /><span class="cctitle">母婴好货会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1572010379402','hdpic'=>'https://img.alicdn.com/tfs/TB1erYLiND1gK0jSZFKXXcJrVXa-440-180.jpg','hdtitle'=>'1111内衣会场'))}"><img src="https://img.alicdn.com/tfs/TB1erYLiND1gK0jSZFKXXcJrVXa-440-180.jpg"  /><span class="cctitle">内衣会场</span></a></li>
+				    
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088843','hdpic'=>'https://img.alicdn.com/tfs/TB1OJkAiHr1gK0jSZFDXXb9yVXa-440-180.jpg','hdtitle'=>'聚划算3C数码会场'))}"><img src="https://img.alicdn.com/tfs/TB1OJkAiHr1gK0jSZFDXXb9yVXa-440-180.jpg" /><span class="cctitle">聚划算3C数码会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088841','hdpic'=>'https://img.alicdn.com/tfs/TB1nKTjiYY1gK0jSZTEXXXDQVXa-440-180.jpg','hdtitle'=>'大牌美妆会场'))}"><img src="https://img.alicdn.com/tfs/TB1nKTjiYY1gK0jSZTEXXXDQVXa-440-180.jpg"  /><span class="cctitle">大牌美妆会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088915','hdpic'=>'https://img.alicdn.com/tfs/TB1P7TliUD1gK0jSZFGXXbd3FXa-440-180.jpg','hdtitle'=>'1111电脑会场'))}"><img src="https://img.alicdn.com/tfs/TB1P7TliUD1gK0jSZFGXXbd3FXa-440-180.jpg"  /><span class="cctitle">电脑会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088845','hdpic'=>'https://img.alicdn.com/tfs/TB1bqswiGL7gK0jSZFBXXXZZpXa-440-180.jpg','hdtitle'=>'聚划算大牌女装会场'))}"><img src="https://img.alicdn.com/tfs/TB1bqswiGL7gK0jSZFBXXXZZpXa-440-180.jpg"  /><span class="cctitle">聚划算大牌女装会场</span></a></li>
+				  
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088847','hdpic'=>'https://img.alicdn.com/tfs/TB1Twqgjoz1gK0jSZLeXXb9kVXa-440-180.jpg','hdtitle'=>'聚划算运动户外会场'))}"><img src="https://img.alicdn.com/tfs/TB1Twqgjoz1gK0jSZLeXXb9kVXa-440-180.jpg"  /><span class="cctitle">聚划算运动户外会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088867','hdpic'=>'https://img.alicdn.com/tfs/TB1ToZziUT1gK0jSZFhXXaAtVXa-440-180.jpg','hdtitle'=>'聚划算母婴童装会场'))}"><img src="https://img.alicdn.com/tfs/TB1ToZziUT1gK0jSZFhXXaAtVXa-440-180.jpg"  /><span class="cctitle">聚划算母婴童装会场</span></a></li>
+				  
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088845','hdpic'=>'https://img.alicdn.com/tfs/TB1t0vMiKH2gK0jSZJnXXaT1FXa-440-180.png','hdtitle'=>'1111女装会场'))}"><img src="https://img.alicdn.com/tfs/TB1t0vMiKH2gK0jSZJnXXaT1FXa-440-180.png"  /><span class="cctitle">女装会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088815','hdpic'=>'https://img.alicdn.com/tfs/TB1nTYKiKH2gK0jSZJnXXaT1FXa-440-180.jpg','hdtitle'=>'1111服饰会场'))}"><img src="https://img.alicdn.com/tfs/TB1nTYKiKH2gK0jSZJnXXaT1FXa-440-180.jpg"  /><span class="cctitle">服饰会场</span></a></li>
+				  
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088891','hdpic'=>'https://img.alicdn.com/tfs/TB1zK6ei1L2gK0jSZPhXXahvXXa-440-180.jpg','hdtitle'=>'潮流个护会场'))}"><img src="https://img.alicdn.com/tfs/TB1zK6ei1L2gK0jSZPhXXahvXXa-440-180.jpg"  /><span class="cctitle">潮流个护会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088885','hdpic'=>'https://img.alicdn.com/tfs/TB1Hw_GiQL0gK0jSZFtXXXQCXXa-440-180.jpg','hdtitle'=>'运动大牌会场'))}"><img src="https://img.alicdn.com/tfs/TB1Hw_GiQL0gK0jSZFtXXXQCXXa-440-180.jpg"  /><span class="cctitle">运动大牌会场</span></a></li>
+				  
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088863','hdpic'=>'https://img.alicdn.com/tfs/TB1clTKiQY2gK0jSZFgXXc5OFXa-440-180.jpg','hdtitle'=>'家纺家居会场'))}"><img src="https://img.alicdn.com/tfs/TB1clTKiQY2gK0jSZFgXXc5OFXa-440-180.jpg"  /><span class="cctitle">家纺家居会场</span></a></li>
+				  
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088903','hdpic'=>'https://img.alicdn.com/tfs/TB1o50fjhD1gK0jSZFKXXcJrVXa-440-180.jpg','hdtitle'=>'进口数码家电会场'))}"><img src="https://img.alicdn.com/tfs/TB1o50fjhD1gK0jSZFKXXcJrVXa-440-180.jpg"  /><span class="cctitle">进口数码家电会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1572010379400','hdpic'=>'https://img.alicdn.com/tfs/TB1f9noiNv1gK0jSZFFXXb0sXXa-440-180.jpg','hdtitle'=>'潮流大家电会场'))}"><img src="https://img.alicdn.com/tfs/TB1f9noiNv1gK0jSZFFXXb0sXXa-440-180.jpg"  /><span class="cctitle">潮流大家电会场</span></a></li>
+				  
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088869','hdpic'=>'https://img.alicdn.com/tfs/TB1O5SljhD1gK0jSZFyXXciOVXa-440-180.jpg','hdtitle'=>'聚划算品质男装会场'))}"><img src="https://img.alicdn.com/tfs/TB1O5SljhD1gK0jSZFyXXciOVXa-440-180.jpg"  /><span class="cctitle">聚划算品质男装会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088865','hdpic'=>'https://img.alicdn.com/tfs/TB18wQDiHj1gK0jSZFuXXcrHpXa-440-180.jpg','hdtitle'=>'聚划算个护家清会场'))}"><img src="https://img.alicdn.com/tfs/TB18wQDiHj1gK0jSZFuXXcrHpXa-440-180.jpg"  /><span class="cctitle">聚划算个护家清会场</span></a></li>
+				  
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571120794556','hdpic'=>'https://img.alicdn.com/tfs/TB1ZFnliQL0gK0jSZFtXXXQCXXa-440-180.jpg','hdtitle'=>'1111电视会场'))}"><img src="https://img.alicdn.com/tfs/TB1ZFnliQL0gK0jSZFtXXXQCXXa-440-180.jpg"  /><span class="cctitle">电视会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088831','hdpic'=>'https://img.alicdn.com/tfs/TB1Fvnji.D1gK0jSZFGXXbd3FXa-440-180.jpg','hdtitle'=>'食品生鲜会场'))}"><img src="https://img.alicdn.com/tfs/TB1Fvnji.D1gK0jSZFGXXbd3FXa-440-180.jpg"  /><span class="cctitle">食品生鲜会场</span></a></li>
+				  
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088851','hdpic'=>'https://img.alicdn.com/tfs/TB1ll0ejhv1gK0jSZFFXXb0sXXa-440-180.jpg','hdtitle'=>'进口保健会场'))}"><img src="https://img.alicdn.com/tfs/TB1ll0ejhv1gK0jSZFFXXb0sXXa-440-180.jpg"  /><span class="cctitle">进口保健会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1572010379416','hdpic'=>'https://img.alicdn.com/tfs/TB1QajJiO_1gK0jSZFqXXcpaXXa-440-180.jpg','hdtitle'=>'珠宝饰品会场'))}"><img src="https://img.alicdn.com/tfs/TB1QajJiO_1gK0jSZFqXXcpaXXa-440-180.jpg"  /><span class="cctitle">珠宝饰品会场</span></a></li>
+				  
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571120794590','hdpic'=>'https://img.alicdn.com/tfs/TB1bJ2piRr0gK0jSZFnXXbRRXXa-440-180.jpg','hdtitle'=>'1111冰洗会场'))}"><img src="https://img.alicdn.com/tfs/TB1bJ2piRr0gK0jSZFnXXbRRXXa-440-180.jpg"  /><span class="cctitle">冰洗会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571120794572','hdpic'=>'https://img.alicdn.com/tfs/TB1nlThiVT7gK0jSZFpXXaTkpXa-440-180.jpg','hdtitle'=>'茶乳冲饮会场'))}"><img src="https://img.alicdn.com/tfs/TB1nlThiVT7gK0jSZFpXXaTkpXa-440-180.jpg"  /><span class="cctitle">茶乳冲饮会场</span></a></li>
+				  
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088883','hdpic'=>'https://gw.alicdn.com/tfs/TB1pC5SiND1gK0jSZFsXXbldVXa-440-180.jpg','hdtitle'=>'医药健康会场'))}"><img src="https://gw.alicdn.com/tfs/TB1pC5SiND1gK0jSZFsXXbldVXa-440-180.jpg"  /><span class="cctitle">医药健康会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088827','hdpic'=>'https://img.alicdn.com/tfs/TB1l9npiUY1gK0jSZFCXXcwqXXa-440-180.jpg','hdtitle'=>'1111手机会场'))}"><img src="https://img.alicdn.com/tfs/TB1l9npiUY1gK0jSZFCXXcwqXXa-440-180.jpg"  /><span class="cctitle">手机会场</span></a></li>
+				  
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088901','hdpic'=>'https://img.alicdn.com/tfs/TB1nVA.iWL7gK0jSZFBXXXZZpXa-440-180.jpg','hdtitle'=>'进口食品会场'))}"><img src="https://img.alicdn.com/tfs/TB1nVA.iWL7gK0jSZFBXXXZZpXa-440-180.jpg"  /><span class="cctitle">进口食品会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088913','hdpic'=>'https://img.alicdn.com/tfs/TB1SrLni4D1gK0jSZFKXXcJrVXa-440-180.jpg','hdtitle'=>'休闲零食会场'))}"><img src="https://img.alicdn.com/tfs/TB1SrLni4D1gK0jSZFKXXcJrVXa-440-180.jpg"  /><span class="cctitle">休闲零食会场</span></a></li>
+				  
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088897','hdpic'=>'https://img.alicdn.com/tfs/TB1VFVgjhD1gK0jSZFyXXciOVXa-440-180.jpg','hdtitle'=>'进口个护会场'))}"><img src="https://img.alicdn.com/tfs/TB1VFVgjhD1gK0jSZFyXXciOVXa-440-180.jpg"  /><span class="cctitle">进口个护会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088887','hdpic'=>'https://img.alicdn.com/tfs/TB1qwjfi4z1gK0jSZSgXXavwpXa-440-180.jpg','hdtitle'=>'纸品家清会场'))}"><img src="https://img.alicdn.com/tfs/TB1qwjfi4z1gK0jSZSgXXavwpXa-440-180.jpg"  /><span class="cctitle">纸品家清会场</span></a></li>
+				  
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571120794566','hdpic'=>'https://img.alicdn.com/tfs/TB1.3KFiQL0gK0jSZFAXXcA9pXa-440-180.jpg','hdtitle'=>'宝宝用品会场'))}"><img src="https://img.alicdn.com/tfs/TB1.3KFiQL0gK0jSZFAXXcA9pXa-440-180.jpg"  /><span class="cctitle">宝宝用品会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088867','hdpic'=>'https://img.alicdn.com/tfs/TB1V8HViG61gK0jSZFlXXXDKFXa-440-180.jpg','hdtitle'=>'婴童尿裤会场'))}"><img src="https://img.alicdn.com/tfs/TB1V8HViG61gK0jSZFlXXXDKFXa-440-180.jpg"  /><span class="cctitle">婴童尿裤会场</span></a></li>
+				  
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088899','hdpic'=>'https://img.alicdn.com/tfs/TB1WVpbjfb2gK0jSZK9XXaEgFXa-440-180.jpg','hdtitle'=>'进口家居会场'))}"><img src="https://img.alicdn.com/tfs/TB1WVpbjfb2gK0jSZK9XXaEgFXa-440-180.jpg"  /><span class="cctitle">进口家居会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088879','hdpic'=>'https://img.alicdn.com/tfs/TB1700aiebviK0jSZFNXXaApXXa-440-180.jpg','hdtitle'=>'箱包服配会场'))}"><img src="https://img.alicdn.com/tfs/TB1700aiebviK0jSZFNXXaApXXa-440-180.jpg"  /><span class="cctitle">箱包服配会场</span></a></li>
+				  
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088895','hdpic'=>'https://img.alicdn.com/tfs/TB1fHDliLb2gK0jSZK9XXaEgFXa-440-180.jpg','hdtitle'=>'1111家装会场'))}"><img src="https://img.alicdn.com/tfs/TB1fHDliLb2gK0jSZK9XXaEgFXa-440-180.jpg"  /><span class="cctitle">家装会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088905','hdpic'=>'https://img.alicdn.com/tfs/TB10kjjiFY7gK0jSZKzXXaikpXa-440-180.jpg','hdtitle'=>'精品家具会场'))}"><img src="https://img.alicdn.com/tfs/TB10kjjiFY7gK0jSZKzXXaikpXa-440-180.jpg"  /><span class="cctitle">精品家具会场</span></a></li>
+				  
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088853','hdpic'=>'https://img.alicdn.com/tfs/TB18BiGiubviK0jSZFNXXaApXXa-440-180.jpg','hdtitle'=>'进口美妆会场'))}"><img src="https://img.alicdn.com/tfs/TB18BiGiubviK0jSZFNXXaApXXa-440-180.jpg"  /><span class="cctitle">进口美妆会场</span></a></li>
+				  
+				  <li class="right1111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088881','hdpic'=>'https://img.alicdn.com/tfs/TB1ecLniQY2gK0jSZFgXXc5OFXa-440-180.jpg','hdtitle'=>'小家电会场'))}"><img src="https://img.alicdn.com/tfs/TB1ecLniQY2gK0jSZFgXXc5OFXa-440-180.jpg"  /><span class="cctitle">小家电会场</span></a></li>
+				  
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088855','hdpic'=>'https://img.alicdn.com/tfs/TB16ORfjhD1gK0jSZFKXXcJrVXa-440-180.jpg','hdtitle'=>'进口母婴会场'))}"><img src="https://img.alicdn.com/tfs/TB16ORfjhD1gK0jSZFKXXcJrVXa-440-180.jpg"  /><span class="cctitle">进口母婴会场</span></a></li>
+				  
+				  <li class="left11111"><a href="{php echo $this->createMobileUrl('huodongview',array('hdid'=>'1571984088927','hdpic'=>'https://img.alicdn.com/tfs/TB1xBRIi9f2gK0jSZFPXXXsopXa-440-180.jpg','hdtitle'=>'汽车用品会场'))}"><img src="https://img.alicdn.com/tfs/TB1xBRIi9f2gK0jSZFPXXXsopXa-440-180.jpg"  /><span class="cctitle">汽车用品会场</span></a></li>
+				
+               
+              </ul>
+				
+			</div>
+			<style>
+				.v_btn_img:after{
+					display: none;
+				}
+			</style>
+			{template 'tbgoods/style99/bottom'}
+
+		</div>
+		<script type="text/javascript">
+		  var limit = 1;
+		</script>	
+
+		<script type="text/javascript" src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/js/jquery.mobile-1.0.1.min.js"></script>
+		<script type="text/javascript" src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/js/jquery.glide.js"></script>
+		<script type="text/javascript" src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/js/swiper.min.js"></script>
+		<script type="text/javascript" src="{$_W['siteroot']}addons/tiger_newhu/template/mobile/tbgoods/style99/js/script.js"></script>
+		<script>
+			$(function() {
+				var mySwiper = new Swiper('.swiper-container', {
+
+					slidesPerView: 5,
+					/*设置slider容器能够同时显示的slides数量(carousel模式)。可以设置为number或者 'auto'则自动根据slides的宽度来设定数量。*/
+//					freeMode: false,
+					/*自动贴合*/
+//					freeModeSticky: false,
+					/*自动贴合。*/
+
+//					centeredSlides: false,
+					/*设定为true时，活动块会居中，而不是默认状态下的居左。*/
+
+					slideToClickedSlide: true,
+					/*设置为true则swiping时点击slide会过渡到这个slide。*/
+
+//					loop : true,
+//					slidesPerView : 'auto',
+//					loopedSlides :7,
+					onInit: function(swiper) { /*回调函数，初始化后执行。*/
+						$(".swiper-slide-active").css({
+							"color": '#fff',
+//							"font-weight": 'bold',
+//							"background-color":"#ff9c0a"
+						});
+					},
+	
+					onTransitionEnd: function() {
+						/* alert(     $(".swiper-slide-active").attr("data-num"));  ajax传参数*/
+						$(".swiper-slide-active").css({
+							"color": '#fff',
+//							"font-weight": 'bold',
+//							"background-color":"#ff9c0a"
+						});
+					},
+					onTouchMove: function() {
+						$(".swiper-slide").not('.swiper-slide-active').css({
+							"color": '#000',
+//							"font-weight": 'normal',
+//							"background-color":"#310912"
+						});
+					}
+				});
+				
+				//点击时间项后的颜色
+				$(".swiper-slide").click(function(){
+					$(this).addClass("now").siblings().removeClass("now");
+
+				});
+			});
+		</script>
+	
+
+		
+	</body>
+</html>

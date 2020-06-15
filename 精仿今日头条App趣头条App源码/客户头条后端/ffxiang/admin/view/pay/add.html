@@ -1,0 +1,74 @@
+ {include file="public/header" /}
+ <body class="gray-bg">
+    <div class="wrapper wrapper-content {:config('adminClass.main')}">
+        <div class="row">
+            <div class="col-sm-12">
+                {include file="public/tophead"}
+                {include file="public/top" /}
+                <div class="ibox-content">
+                {include file="public/topsection"}
+                    <form class="form-horizontal" method="post">
+                        <input type="hidden" name="id" value="{:input('id/d')}" />
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">支付名称：</label>
+                            <div class="col-sm-5">
+                                <input name="title" type="text" class="form-control" value="{present name="name"}{$name.title}{/present}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">支付图标：</label>
+                            <div class="col-sm-5">
+                                <div class="input-group">
+                                    <input name="img" type="text"  id="image" class="form-control" value="{present name="name"}{$name.img}{/present}">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-primary" id="tubiao">上传图片</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">排序：</label>
+                            <div class="col-sm-3">
+                                <input name="des" type="text" class="form-control" value="{present name="name"}{$name.des}{else/}50{/present}">
+                                <span class="help-block m-b-none">数字大越靠前</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">描述说明：</label>
+                            <div class="col-sm-5">
+                                <textarea name="content" class="form-control">{present name="name"}{$name.content}{/present}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">状态：</label>
+                            <div class="col-sm-5">
+                                <div class="radio i-checks">
+                                    <label>
+                                        <input type="radio" value="1" name="hide" {present name="name"}{eq name="name.hide" value="1"}checked{/eq}{else /}checked{/present}>开启
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="0" name="hide" {present name="name"}{eq name="name.hide" value="0"}checked{/eq}{/present}>关闭
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> 
+    </div>
+{include file="public/footer" /}
+{load href="__PLUGINS__iCheck/icheck.min.js"}
+{load href="__PLUGINS__iCheck/custom.css"}
+<script type="text/javascript">
+$(document).ready(function(){
+     $(".i-checks").iCheck({
+        checkboxClass: "icheckbox_square-green",
+        radioClass: "iradio_square-green",
+    })
+})
+</script>
+{include file="public/bottom" /}
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

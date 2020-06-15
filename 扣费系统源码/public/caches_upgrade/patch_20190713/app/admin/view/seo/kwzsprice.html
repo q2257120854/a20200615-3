@@ -1,0 +1,155 @@
+<div class="box">
+    
+  <div class="box-header">
+
+    <div class="row">
+    	<div class="col-sm-3">
+    		
+    		{assign name="file_id" value="$info.file_id|default='0'" /}
+            {:widget('file/index', ['name' => 'file_id', 'value' => $file_id, 'type' => 'file'])}
+        <button href="#" onclick="imports();" class="btn btn-xs"><i class="fa fa-edit"></i> 批量导入</button>
+        <a href="/static/addon/excel.xlsx" target="_blank" class="btn btn-xs"><i class="fa fa-download"></i> 下载模板</a>
+         <script>
+                function imports(){
+                    if ($(".upload-pre-file").children("a:first").text()){
+                        var path=$(".upload-pre-file").children("a:first").text();
+                        $.ajax({
+                            async : false,    //表示请求是否异步处理
+                            type : "post",    //请求类型
+                            url : "{:url('Seo/keyzsdaoru')}",//请求的 URL地址
+                            data:{'path':path},
+                            dataType : "json",//返回的数据类型
+                            success: function (data) {
+                                obalert(data);
+                            },
+                            error:function (data) {
+                                alert(data.result);
+                            }
+                        });
+                    }else {
+                        alert("请选择上传的EXCEL表");
+                    }
+
+
+                }
+
+            </script>
+    	</div>
+    	<div class="col-sm-2">
+            
+            <ob_link> <a href="{:url('seo/kwzspriceadd')}" class="btn"><i class="fa fa-plus"></i> 新增</a></ob_link>
+        </div>
+        
+        <div class="col-sm-7">
+            <ob_link> <a href="{:url('seo/kwzsprice',array('search_engin' => '百度'))}" class="btn"><i class="fa fa-baidu"></i>百  度</a></ob_link>
+            <ob_link> <a href="{:url('seo/kwzsprice',array('search_engin' => '百度移动'))}" class="btn"><i class="fa fa-baidu"></i>百度 移动</a></ob_link>
+            <ob_link> <a href="{:url('seo/kwzsprice',array('search_engin' => '360'))}" class="btn"><i class="fa fa-baidu"></i>360</a></ob_link>
+            <ob_link> <a href="{:url('seo/kwzsprice',array('search_engin' => '360移动'))}" class="btn"><i class="fa fa-baidu"></i>360移动</a></ob_link>
+            <ob_link> <a href="{:url('seo/kwzsprice',array('search_engin' => '搜狗'))}" class="btn"><i class="fa fa-baidu"></i>搜狗</a></ob_link>
+            <ob_link> <a href="{:url('seo/kwzsprice',array('search_engin' => '搜狗移动'))}" class="btn"><i class="fa fa-baidu"></i>搜狗移动</a></ob_link>
+            <ob_link> <a href="{:url('seo/kwzsprice',array('search_engin' => '神马'))}" class="btn"><i class="fa fa-baidu"></i>神马</a></ob_link>
+        </div>
+        
+    </div>
+    
+  </div>
+    
+  <div class="box-body table-responsive">
+    <table  class="table table-bordered table-hover">
+      <thead>
+      <tr style="text-align: center;">
+          
+          <th>ID</th>
+          <th>第一页/第二页价格</th>
+     
+          <th>指数范围</th>
+       
+          <th>搜索引擎</th>
+          <th>第一页/第二页成本价格</th>
+         
+          <th>操作</th>
+      </tr>
+      </thead>
+      
+      {notempty name='list'}
+        <tbody>
+            {volist name='list' id='vo'}
+                <tr style="text-align: center;">
+                  <td>{$vo.id}</td>
+              	  <td>
+                        <div>
+                            <div class="je-red" style="color: red;">第1页：{$vo.page_one}元</div>
+                            <div class="je-blue" style="color: #0074d9;;">第2页：{$vo.page_two}元</div>
+                        </div>
+                  </td>
+               	  <td><span>< </span>{$vo.zhisu_range}</td>
+				 
+                  <td>
+                  	{if condition="$vo.search_engin eq '百度'"}
+                  	   <span class="label" style="background-color: #33ca35"> 百度</span>
+                  	{elseif condition="$vo.search_engin eq '百度移动'"}
+                  	   <span class="label" style="background-color: #ef5350"> 百度移动端</span>
+                  	{elseif condition="$vo.search_engin eq '360'"}
+                  	   <span class="label" style="background-color: #4484ca"> 360</span>
+                  	{elseif condition="$vo.search_engin eq '360移动'"}
+                  	   <span class="label" style="background-color: skyblue"> 360移动</span>
+                  	{elseif condition="$vo.search_engin eq '搜狗'"}
+                  		<span class="label" style="background-color: #bf8fca"> 搜狗</span>
+                    {elseif condition="$vo.search_engin eq '搜狗移动'"}
+                        <span class="label" style="background-color: #66b5ca"> 搜狗移动端</span>
+                    {else/}
+                        <span class="label" style="background-color: green"> 神马</span>
+                  	{/if}
+                  </td> 
+                  <td>
+                        <div>
+                            <div class="je-red" style="color: red;">第1页：{$vo.chenben_one}元</div>
+                            <div class="je-blue" style="color: #0074d9;;">第2页：{$vo.chenben_two}元</div>
+                        </div>
+                  </td>
+                  <td class="col-md-3 text-center">
+                  	 <ob_link><a class="btn"  href="{:url('zhishuedit', array('id' => $vo['id']))}"><i class="fa fa-edit"></i> 编 辑</a></ob_link>
+                     <ob_link><a class="btn confirm ajax-get"  href="{:url('zhishudel', array('id' => $vo['id']))}"><i class="fa fa-trash-o"></i> 删 除</a></ob_link>
+                  </td>
+                </tr>
+            {/volist}
+        </tbody>
+        {else/}
+        <tbody><tr class="odd"><td colspan="8" class="text-center" valign="top">{:config('empty_list_describe')}</td></tr></tbody>
+      {/notempty}
+    </table>
+  </div>
+
+    <div class="box-footer clearfix text-center">
+      {$list->render()}
+  </div>
+
+
+</div>
+<style type="text/css">
+	thead>tr>th{text-align: center;}
+</style>
+<!--
+<form action="{:url()}" method="post" class="form_single" enctype="multipart/form-data" style="display: none;">
+    <div class="box">
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>选择导入文件</label>
+              <input class="form-control" name="excel" placeholder="" value="" type="file">
+            </div>
+          </div>
+          
+    
+        </div>
+      </div>
+      <div class="box-footer">
+        
+        
+          
+        {include file="layout/edit_btn_group"/}
+        
+      </div>
+    </div>
+</form>-->

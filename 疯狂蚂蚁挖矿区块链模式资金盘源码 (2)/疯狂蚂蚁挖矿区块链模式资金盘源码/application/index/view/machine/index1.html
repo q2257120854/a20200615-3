@@ -1,0 +1,57 @@
+{extend name="common/world"}
+{block name="title"}{$Think.config.hello.title}{/block}
+{block name="header"}我的蚁后{/block}
+{block name="style"}
+<style>
+#speed {
+    position: absolute;right: 0rem;top: .45rem;
+}
+@media (max-width: 640px) {
+    .o-auto {
+        max-height: 20rem;
+    }
+}
+</style>
+{/block}
+{block name="container"}
+
+<div class="buttons-tab">
+    <a href="machine.html" class=" button">正常蚁后</a>
+    <a href="machine.html?type=2" class="active button">到期蚁后</a>
+</div>
+
+<div class="tabs">
+
+    <div class="card">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" id="table-5">
+            <thead>
+            <tr><th  align="center"><div align="center">蚁后照片</div></th>
+                <th  align="center"><div align="center">蚁后类型</div></th>
+                <th align="center"><div align="center">运行时间</div></th>
+                <th align="center"><div align="center">已领取</div></th>
+                <th align="center"><div align="center">状态</div></th>
+            </tr>
+            </thead>
+            <tbody>
+            {volist name="expire" id="machine"}
+                <tr>
+                    <td align="center" valign="middle">
+                        <img src="upload/1.png" width="60">
+
+                    </td>
+                    <td align="center" valign="middle">{$machine.name}<br>
+                        预计{$machine.yuji|money}/小时</td>
+                    <td align="center" valign="middle">{$machine.already|money}/{$machine.cycle}</td>
+                    <td align="center" valign="middle">{$machine.profit|money}</td>
+                    <td align="center" valign="middle">已到期</td>
+                </tr>
+            {/volist}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{/block}
+{block name="script"}
+
+{/block}

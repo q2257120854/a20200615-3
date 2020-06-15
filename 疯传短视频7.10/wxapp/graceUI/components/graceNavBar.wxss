@@ -1,0 +1,33 @@
+.grace-nav-bar {
+    width: 100%;
+    display: flex;
+    white-space: nowrap;
+}
+
+.nav-item {
+    width: 100rpx;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.nav-item-title {
+    width: 100%;
+    color: #333333;
+}
+
+.nav-active {
+    font-weight: bold;
+}
+
+.nav-active-line-wrap {
+    display: flex;
+}
+
+.nav-active-line {
+    margin-top: 5rpx;
+}
+
+.grace-nav-center {
+    justify-content: center;
+    text-align: center;
+}

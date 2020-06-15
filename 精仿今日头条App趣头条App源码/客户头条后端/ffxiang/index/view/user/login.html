@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible" />
+<meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" name="viewport" />
+<meta content="telephone=no" name="format-detection" />
+<title>用户登录 - {:_webfig('title')}</title>
+<style type="text/css">html{
+  background:#f5f8fd url("http://img.infinitynewtab.com/wallpaper/{:rand(1,3999);}.jpg") !important; }</style>
+{load href="__STYLE__member/css/login.css"}
+{load href="__JS__jquery.min.js"}
+</head>
+<body>
+<div class="modal hide"></div>
+<div class="pure-container">
+  <div class="pure-centero"></div>
+  <style type="text/css">
+#error_message { display: inline-block; }
+#error_message .alert { color: red; border: 1px solid red; width: 120px; margin: 0; margin-left: 20px; padding: 2px 8px; }
+</style>
+  <div class="pure-content">
+    <div class="wrapper"></div>
+<div class="pure-header"><a href="{:_webfig('url')}"><img src="__IMG__logo.png" /></a></div>
+    <div id="door">
+      <div id="sign_in">
+        <div class="normal-login">
+          <div class="title">用户登录
+            <div id="error_message" style="display: inline-block;"></div>
+          </div>
+          <form  action=""  class="simple_form" form-horizontal new_user" >
+            <div class="control-group string optional">
+              <label class="string optional control-label"   id="userceshi" for="user_login">{$username}</label>
+              <div class="controls">
+                <input autofocus class="string optional" id="username" name="login" size="50" type="text" />
+              </div>
+            </div>
+            <div class="control-group password optional">
+              <label class="password optional control-label" for="user_password">密码:</label>
+              <div class="controls">
+                <input autofocus class="password optional" id="user_password" name="password"  size="50" type="password" />
+              </div>
+            </div>
+            {eq name='config.logincode.text' value='1'}
+            <style type="text/css">#captcha_src{ padding:5px !important; line-height: inherit !important; top: 1px !important;right:1px !important; background: #fff !important;border-left:1px solid #e3e4e8 !important;border-radius: 0px !important}</style>
+            <div class="valid-code">
+              <div class="control-group">
+                <label class="control-label">验证码</label>
+                <div class="controls">
+                  <input class="verify-code" id="captcha" name="captcha"  type="text" value="" />
+                </div>
+              </div>
+              <div class="get-valid-code-btn" id="captcha_src"><img id="Img" onClick="reImg()" src="{:captcha_src()}" /></div>
+            </div>
+            <script type="text/javascript">function reImg(){  
+                var img = document.getElementById("Img"); 
+                img.src = "{:captcha_src()}";  
+            }</script>
+            {/eq}
+            <div class="pure-right"><a href="{:url('user/password')}" class="forget-password">忘记密码？</a></div>
+            <div class="pure-clear"></div>
+            <div class="submit-btn">
+              <input class="submit-btn" id="submit_btn" name="commit" type="submit" value="登 录" />
+            </div>
+            <div class="prompt">还没有账号？<a href="{:url('user/reg')}">立即注册</a></div>
+          </form>
+        </div>
+        <div class="third-login">
+          <div class="or">or</div>
+          
+          
+          <div class="download-code"><img alt="Download-code" src="__STYLE__member/img/weixin.png" />
+            <div class="text">扫描关注微信公众号</div>
+          </div>
+        </div>
+        <div class="pure-clear"></div>
+      </div>
+    </div>
+</div>
+</div>
+{load href="__P__layer/layer.js"}
+<script type="text/javascript">$(function(){
+  $('#error_message .close').on('touchstart', function(){
+    $('#error_message').slideToggle('fast');
+  })
+  $('#door .control-group .controls input').blur()
+  $('#door .control-group .controls input').focus(function(){
+    $(this).parents('.control-group').addClass('control-group-focus');
+  })
+  $('#door .control-group .controls input').blur(function(){
+    if(!$(this).val()){
+      $(this).parents('.control-group').removeClass('control-group-focus');
+    }
+  })
+  {php}if($config['regmobile']['text']==1 || $config['regemail']['text']==1 || $config['reguser']['text']==1){{/php}
+  // 判断账户
+  $('#username').blur(function(){
+    var username=$('#username').val();
+    {php}if($config['reguser']['text']==1) echo "var isuser=true;\r\n";{/php}
+    {php}if($config['regmobile']['text']==1){{/php}
+    if(is_mobile(username)){
+      isuser=false;
+      $('#send_verify_code').text('获取短信验证码')
+      $('.zymcode .control-label').text('手机验证码');
+      $('#userceshi').text('手机号码');
+      $('.zymcode').show(300);
+    }
+    {php}}{/php}
+    {php}if($config['regemail']['text']==1){{/php}
+    if(is_email(username)){
+      isuser=false;
+      $('#send_verify_code').text('获取邮箱验证码')
+      $('.zymcode .control-label').text('邮箱验证码');
+      $('#userceshi').text('邮箱号码');
+      $('.zymcode').show(300);
+    }
+    {php}}{/php}
+    {php}if($config['reguser']['text']==1){{/php}
+    if(isuser){
+      $('#userceshi').text('用户名');
+      $('.zymcode').hide(300);
+    }
+    {php}}{/php}
+    {php}if($username){{/php}
+    if(username=='' || !username){
+      $('#userceshi').text('{$username}');
+    }
+    {php}}{/php}
+  });
+  {php}}{/php}
+  // 提交处理
+  $('#submit_btn').click(function(){
+    var user_login=$('#username').val();
+    var user_password=$('#user_password').val();
+    {eq name='config.logincode.text' value='1'}
+    var captcha=$('#captcha').val();
+    {/eq}
+    if(!user_login || !user_password{eq name='config.logincode.text' value='1'} || !captcha{/eq}){
+      layer.msg('请输入完整信息');
+      return false;
+    }
+    var index = layer.load(1, {shade: [0.5,'#000']});
+    $.ajax({
+        type: 'post',
+        url: '{:url('api/user/login')}',
+        data: {username:user_login,password:user_password{eq name='config.logincode.text' value='1'},captcha:$('#captcha').val(){/eq}},
+        dataType: 'json',
+        success:function(ret){
+          if(ret.ret){
+            if(ret.ret){
+                $.ajax({
+                  type: 'post',
+                  url: '',
+                  data: {token:ret.ret},
+                  dataType: 'json',
+                  success:function(ret){
+                    if(ret.ret){
+                      window.location.href="{:url('index/member/index')}";
+                    }else{
+                      layer.msg(ret.err)
+                    }
+                  },
+              });
+            }
+           // history.go(-1)
+          }else if(ret.err){
+            {eq name='config.logincode.text' value='1'}
+            reImg();// 错误刷新验证码
+            {/eq}
+            layer.msg(ret.err)
+          }
+          layer.close(index);
+        },
+    });
+    return false;
+  })
+})
+// 验证手机号码
+function is_mobile(mobile) {  
+     if( mobile == "") {  
+      return false;  
+     } else {  
+       if( ! /^0{0,1}(13[0-9]|15[0-9]|18[0-9]|14[0-9])[0-9]{8}$/.test(mobile) ) {  
+        return false;  
+      }  
+      return true;  
+    }  
+} 
+// 验证 邮箱
+function is_email(email) {  
+    if ( email == "") {  
+        return false;  
+    } else {  
+        if (! /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/.test(email)) {  
+            return false;  
+        }  
+    }  
+    return true;  
+}  
+</script>
+</body>
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

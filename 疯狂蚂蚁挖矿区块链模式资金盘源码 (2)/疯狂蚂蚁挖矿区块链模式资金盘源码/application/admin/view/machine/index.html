@@ -1,0 +1,146 @@
+{extend name="common/world"} {block name="title"}用户蚁后{/block} {block name="style"}
+<style type="text/css">
+</style>
+{/block} {block name="container"}
+<form method="get" class="">
+    <div class="row">
+        <div class="col-md-6 col-lg-3 mb-3">
+            <select class="form-control custom-select" name="product">
+                <option value="-1">全部蚁后</option>
+                {volist name="store" id="item"}
+                    {eq name="Think.get.product" value="$item.id"}
+                        <option value="{$item.id}" selected="true">{$item.title}</option>
+                    {else /}
+                        <option value="{$item.id}">{$item.title}</option>
+                    {/eq}
+                {/volist}
+            </select>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">用户账号</span>
+                </div>
+                <input type="text" class="form-control" name="username" value="{$Think.get.username}" />
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6 mb-3">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <select class="custom-select input-group-text" name="numberField">
+                        {volist name="fields" id="field"}
+                            {eq name="Think.get.numberField" value="$key"}
+                                <option selected="true" value="{$key}">{$field}</option>
+                            {else /}
+                                <option value="{$key}">{$field}</option>
+                            {/eq}
+                        {/volist}
+                    </select>
+                </div>
+                <select class="custom-select input-group-text" name="numberOperator">
+                    {switch name="Think.get.numberOperator"}
+                        {case 2}
+                            <option value="1">大于</option>
+                            <option value="2" selected="true">等于</option>
+                            <option value="3">小于</option>
+                        {/case}
+                        {case 3}
+                            <option value="1">大于</option>
+                            <option value="2">等于</option>
+                            <option value="3" selected="true">小于</option>
+                        {/case}
+                        {default /}
+                            <option value="1">大于</option>
+                            <option value="2">等于</option>
+                            <option value="3">小于</option>
+                    {/switch}
+                </select>
+                <input type="text" class="form-control" aria-label="Text input with dropdown button" name="numberValue" value="{$Think.get.numberValue}" />
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-6">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">排列顺序</span>
+                </div>
+                <select class="custom-select input-group-text" name="sortField">
+                    {volist name="fields" id="field"}
+                        {eq name="Think.get.sortField" value="$key"}
+                            <option selected="true" value="{$key}">按{$field}</option>
+                        {else /}
+                            <option value="{$key}">按{$field}</option>
+                        {/eq}
+                    {/volist}
+                </select>
+                <select class="custom-select input-group-text" name="sortType">
+                    {eq name="Think.get.sortType" value="asc"}
+                        <option value="desc">降序</option>
+                        <option value="asc" selected="true">升序</option>
+                    {else /}
+                        <option value="desc">降序</option>
+                        <option value="asc">升序</option>
+                    {/eq}
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-2 mb-3">
+            <button class="btn btn-primary w-100" type="submit">查询</button>
+        </div>
+    </div>
+</form>
+<div class="card">
+    <div class="table-responsive">
+        <table class="table card-table table-vcenter">
+        	<thead>
+        		<tr>
+                    <th>用户</th>
+        			<th>名称</th>
+        			<th>时产量</th>
+        			<th>周期收益</th>
+        			<th>价格</th>
+        			<th>累计收益</th>
+        			<th>收矿次数</th>
+                    <th>时间</th>
+        			<th>操作</th>
+        		</tr>
+        	</thead>
+            <tbody>
+                {volist name="machines" id="machine"}
+                <tr>
+                    <td>
+                        <div>{$machine.nickname}</div>
+                        <div class="small text-muted">{$machine.username}</div>
+                    </td>
+                    <td>
+                        <div>{$machine.mid}</div>
+                        <div class="small text-muted">{$machine.name}</div>
+                    </td>
+                    <td>
+                        <div>{$machine.income/$machine.cycle|number_format=###,8,'.',''}</div>
+                        <!-- <div class="progress progress-xs">
+                            <div class="progress-bar bg-yellow" role="progressbar" style="width: 42%" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div> -->
+                    </td>
+                    <td>
+                        <div>{$machine.cycle}小时</div>
+                        <div class="small text-muted">{$machine.income|money}{$Think.config.hello.unit}</div>
+                    </td>
+                    <td>{$machine.price|money}{$Think.config.hello.unit}</td>
+                    <td>{$machine.profit|money}{$Think.config.hello.unit}</td>
+                    <td>
+                        <div>{$machine.count}</div>
+                        <div class="small text-muted">{$machine.profit_at}</div>
+                    </td>
+                    <td>
+                        <div>{$machine.create_at}</div>
+                        <div>{$machine.end_at}</div>
+                    </td>
+                    <td><a href="/admin/machine/edit.html?id={$machine.mid}" class="icon"><i class="fe fe-edit"></i></a></td>
+                </tr>
+                {/volist}
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">{$machines|raw}</div>
+</div>
+{/block} {block name="script"} {/block}

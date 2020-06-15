@@ -1,0 +1,30 @@
+.grace-box-banner {
+    padding: 26rpx 0;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    background: #FFF;
+}
+
+.grace-box-items {
+    width: 100%;
+    justify-content: center;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+.grace-box-banner .line1 {
+    line-height: 50rpx;
+    overflow: hidden;
+    text-align: center;
+}
+
+.grace-box-banner .line1 text {
+    line-height: 50rpx;
+    margin-left: 2px;
+}
+
+.grace-box-banner .line2 {
+    line-height: 32rpx;
+    text-align: center;
+}

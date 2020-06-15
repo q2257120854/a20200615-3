@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8" />
+        <title>vaeThink</title>
+        <meta name="renderer" content="webkit" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="__ADMIN__/lib/layui/css/layui.css" media="all" /></head>
+    <body class="vae-body">
+        <form class="layui-form vae-content">
+
+            <fieldset class="layui-elem-field layui-field-title" style="">
+                <legend>基本设置</legend>
+            </fieldset>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">订单显示昵称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="nickname" lay-verify="required" autocomplete="off" placeholder="请输入昵称" class="layui-input" value="{$payConfig.nickname}">
+                </div>
+                <div class="layui-form-mid"></div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">订单显示手机</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="mobile" lay-verify="required" autocomplete="off" placeholder="请输入手机" class="layui-input" value="{$payConfig.mobile}">
+                </div>
+                <div class="layui-form-mid"></div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">充值鱼饵激活账户</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="activation_integral" lay-verify="" autocomplete="off" placeholder="请输入充值鱼饵" class="layui-input" value="{$payConfig.activation_integral}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">捕捞鱼咪激活推广权限</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="purchase_quantity" lay-verify="required" autocomplete="off" placeholder="请输入捕捞鱼咪的数量" class="layui-input" value="{$payConfig.purchase_quantity}">
+                </div>
+                <div class="layui-form-mid">只</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">收益转存界限</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="income_transferred" lay-verify="required" autocomplete="off" placeholder="请输入收益转存界限" class="layui-input" value="{$payConfig.income_transferred}">
+                </div>
+                <div class="layui-form-mid"></div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">捕捞之后加载动画</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="loadingtime" lay-verify="required" autocomplete="off" placeholder="请输入加载时间" class="layui-input" value="{$payConfig.loadingtime}">
+                </div>
+                <div class="layui-form-mid">秒之后</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">付款时间限制</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="payment_limit_time" lay-verify="required" autocomplete="off" placeholder="请输入付款时间限制" class="layui-input" value="{$payConfig.payment_limit_time}">
+                </div>
+                <div class="layui-form-mid">小时之内</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">卖家自动确认</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="auto_blockwrite" lay-verify="required" autocomplete="off" placeholder="请输入付款自动确认" class="layui-input" value="{$payConfig.auto_blockwrite}">
+                </div>
+                <div class="layui-form-mid">小时之后</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">充值数量</label>
+                <div class="layui-input-inline" style="width:400px">
+                    <textarea name="recharge_amount"  placeholder="请输入充值数量" class="layui-textarea">{$payConfig.recharge_amount}</textarea>
+                </div>
+                <div class="layui-form-mid">英文逗号隔开</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">充值审核</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="recharge_audit" value="1" title="自动审核" {eq name="$payConfig.recharge_audit" value="1"}checked{/eq}>
+                    <input type="radio" name="recharge_audit" value="0" title="人工审核" {eq name="$payConfig.recharge_audit" value="0"}checked{/eq}>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">充值时间</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="recharge_time" id="recharge_time" lay-verify="required" autocomplete="off" placeholder="请选择充值时间" class="layui-input" value="{$payConfig.recharge_time}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">鱼叫音频</label>
+                <div class="layui-input-inline">
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn" id="test1">上传音频</button>
+                        <div class="layui-upload-list" id="audioDiv">
+                            <div class="audioText">{$payConfig.cataudio}</div>
+                            <input type="hidden" name="cataudio" value="{$payConfig.cataudio}">
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+            <fieldset class="layui-elem-field layui-field-title" style="">
+                <legend>推广收益</legend>
+            </fieldset>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">客户是否需要实名</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="is_idverifly" value="0" title="否" {eq name="$payConfig.is_idverifly" value="0"}checked{/eq}>
+                    <input type="radio" name="is_idverifly" value="1" title="是" {eq name="$payConfig.is_idverifly" value="1"}checked{/eq}>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">客户是否为推广员</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="is_promoter" value="0" title="否" {eq name="$payConfig.is_promoter" value="0"}checked{/eq}>
+                    <input type="radio" name="is_promoter" value="1" title="是" {eq name="$payConfig.is_promoter" value="1"}checked{/eq}>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">客户是否需要激活</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="is_activation" value="0" title="否" {eq name="$payConfig.is_activation" value="0"}checked{/eq}>
+                    <input type="radio" name="is_activation" value="1" title="是" {eq name="$payConfig.is_activation" value="1"}checked{/eq}>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">一级客户</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="commission1" lay-verify="required" autocomplete="off" placeholder="请输入一级客户推广收益" class="layui-input" value="{$payConfig.commission1}">
+                </div>
+                <div class="layui-form-mid">%</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">二级客户</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="commission2" lay-verify="required" autocomplete="off" placeholder="请输入二级客户推广收益" class="layui-input" value="{$payConfig.commission2}">
+                </div>
+                <div class="layui-form-mid">%</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">三级客户</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="commission3" lay-verify="required" autocomplete="off" placeholder="请输入三级客户推广收益" class="layui-input" value="{$payConfig.commission3}">
+                </div>
+                <div class="layui-form-mid">%</div>
+            </div>
+
+            <fieldset class="layui-elem-field layui-field-title" style="">
+                <legend>团队服务奖励</legend>
+            </fieldset>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">有效代数</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="effective_level" lay-verify="required" autocomplete="off" placeholder="请输入有效代数" class="layui-input" value="{$payConfig.effective_level}">
+                </div>
+                <div class="layui-form-mid">0代表不限代数</div>
+            </div>
+
+            <fieldset class="layui-elem-field layui-field-title" style="">
+                <legend>鱼饵设置</legend>
+            </fieldset>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">注册赠送</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="reg_give" lay-verify="required" autocomplete="off" placeholder="请输入注册赠送" class="layui-input" value="{$payConfig.reg_give}">
+                </div>
+                <div class="layui-form-mid">鱼饵</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">最低充值鱼饵</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="min_recharge" lay-verify="required" autocomplete="off" placeholder="请输入充值鱼饵" class="layui-input" value="{$payConfig.min_recharge}">
+                </div>
+                <div class="layui-form-mid">账户充值鱼饵达到多少有之后有折扣</div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">最高转增</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="max_give" lay-verify="required" autocomplete="off" placeholder="请输入最高转增" class="layui-input" value="{$payConfig.max_give}">
+                </div>
+                <div class="layui-form-mid">鱼饵</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">最低保留</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="min_reservation" lay-verify="required" autocomplete="off" placeholder="请输入最低保留" class="layui-input" value="{$payConfig.min_reservation}">
+                </div>
+                <div class="layui-form-mid">鱼饵</div>
+            </div>
+
+            <fieldset class="layui-elem-field layui-field-title" style="">
+                <legend>出售设置</legend>
+            </fieldset>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">推荐收益日限出售</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="recommendIncome_limit" lay-verify="required" autocomplete="off" placeholder="请输入推荐收益日限出售次数" class="layui-input" value="{$payConfig.recommendIncome_limit}">
+                </div>
+                <div class="layui-form-mid">次</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">出售推荐收益区间</label>
+                <div class="layui-input-inline" style="width: 100px;">
+                    <input type="text" name="minrecommendIncome" lay-verify="required" placeholder="￥" autocomplete="off" class="layui-input" value="{$payConfig.minrecommendIncome}">
+                </div>
+                <div class="layui-form-mid">~</div>
+                <div class="layui-input-inline" style="width: 100px;">
+                    <input type="text" name="maxrecommendIncome" lay-verify="required" placeholder="￥" autocomplete="off" class="layui-input" value="{$payConfig.maxrecommendIncome}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">团队收益日限出售</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="teamIncome_limit" lay-verify="required" autocomplete="off" placeholder="请输入团队收益日限出售次数" class="layui-input" value="{$payConfig.teamIncome_limit}">
+                </div>
+                <div class="layui-form-mid">次</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">出售团队收益区间</label>
+                <div class="layui-input-inline" style="width: 100px;">
+                    <input type="text" name="minteamIncome" lay-verify="required" placeholder="￥" autocomplete="off" class="layui-input" value="{$payConfig.minteamIncome}">
+                </div>
+                <div class="layui-form-mid">~</div>
+                <div class="layui-input-inline" style="width: 100px;">
+                    <input type="text" name="maxteamIncome" lay-verify="required" placeholder="￥" autocomplete="off" class="layui-input" value="{$payConfig.maxteamIncome}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">收益转存日限出售</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="incomeTransferred_limit" lay-verify="required" autocomplete="off" placeholder="请输入收益转存日限出售次数" class="layui-input" value="{$payConfig.incomeTransferred_limit}">
+                </div>
+                <div class="layui-form-mid">次</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:150px">出售收益转存区间</label>
+                <div class="layui-input-inline" style="width: 100px;">
+                    <input type="text" name="minincomeTransferred" lay-verify="required" placeholder="￥" autocomplete="off" class="layui-input" value="{$payConfig.minincomeTransferred}">
+                </div>
+                <div class="layui-form-mid">~</div>
+                <div class="layui-input-inline" style="width: 100px;">
+                    <input type="text" name="maxincomeTransferred" lay-verify="required" placeholder="￥" autocomplete="off" class="layui-input" value="{$payConfig.maxincomeTransferred}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" lay-filter="vaeform">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+        <script src="__ADMIN__/lib/layui/layui.js" charset="utf-8"></script>
+        <script>layui.config({
+                base: '/themes/admin_themes/module/'
+            }).use(['upload', 'form', 'vaeyo', 'laydate'],
+            function() {
+                var form = layui.form,
+                layer = layui.layer,
+                $ = layui.$,
+                upload = layui.upload,
+                vae = layui.vaeyo,
+                laydate = layui.laydate;
+
+                laydate.render({
+                    elem: '#recharge_time'
+                    ,type: 'time'
+                    ,range: '-'
+                    ,format: 'HH:ss'
+                  });
+
+                //音频上传
+                var uploadInst = upload.render({
+                    elem: '#test1'
+                    ,url: '/admin/api/upload'
+                    ,accept: 'audio' //音频
+                    ,done: function(res){
+                    //如果上传失败
+                    if(res.code == 0){
+                    return layer.msg('上传失败');
+                    }
+                    //上传成功
+                    $('#audioDiv div').text(res.data);
+                    $('#audioDiv input').attr('value',res.data);
+                    }
+                });
+
+                //监听提交
+                form.on('submit(vaeform)',
+                function(data) {
+                    $.ajax({
+                        url: "/admin/pay/tradeConfSubmit",
+                        type: 'post',
+                        data: data.field,
+                        success: function(e) {
+                            if (e.code == 1) {
+                                layer.confirm('保存成功,关闭本页面吗?', {
+                                    icon: 3,
+                                    title: '提示'
+                                },
+                                function(index) {
+                                    vae.closeThisTab();
+                                    layer.close(layer.index);
+                                });
+                            } else {
+                                layer.msg(e.msg);
+                            }
+                        }
+                    }) 
+                    return false;
+                });
+
+            });</script>
+    </body>
+
+</html>

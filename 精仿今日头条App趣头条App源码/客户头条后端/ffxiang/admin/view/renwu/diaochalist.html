@@ -1,0 +1,62 @@
+ {include file="public/header" /}
+ <style type="text/css">
+     #title span{ float: right; }
+ </style>
+ <body class="gray-bg">
+ <div class="wrapper wrapper-content {:config('adminClass.main')}">
+    <div class="ibox float-e-margins">
+        {include file="public/tophead" /}
+        {include file="public/top" /}
+        <div class="ibox-content">
+        {include file="public/topsection"}
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <div class="example">
+                        <table data-toggle="table" data-striped="false">
+                            <thead>
+                                <tr>
+                                    <th data-align="center">排序</th>
+                                    <th>标题</th>
+                                    <th>类似</th>
+                                     <th>管理</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                 {volist name="data" id="v"}
+                                <tr id="id{$v.id}" class="class">
+                                    <td>{$v.des}</td>
+                                    <td>{$v.title}</td>
+                                     <td>{$v.num}个</td>  
+                                    <td>
+                                        <div class="btn-group">
+                                            <button data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a onclick="add('{:url('diaochaadd',['id'=>$v['id'],'url'=>-1])}')">修改</a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li><a onclick="del({$v.id})">删除</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.css"}
+{load href="__PLUGINS__bootstrap/bootstrap-table.min.js"}
+<script type="text/javascript">
+$(document).ready(function(){
+});
+function del(id){
+        swal_del(id,"{:url('diaochadel')}")
+}
+</script>

@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>锦尚中国</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/ffxiang.css" />
+		<link rel="stylesheet" type="text/css" href="../css/search.css" />
+	</head>
+	<body>
+ 
+		<section class="aui-grid aui-margin-b-15" id="lishi">
+			<h5 class="fx-h5">历史记录<em class="aui-iconfont aui-icon-trash" tapmode onclick="del()"></em></h5>
+			<div class="aui-row" id="textHtml"></div>
+		</section>
+		<section class="aui-grid" id="tuijian">
+			<div class="fx-chakan" style="display:none" tapmode onclick="show()">
+				<i class="aui-iconfont aui-icon-display"></i>查看全部推荐词
+			</div>
+			<h5 class="fx-h5 remen">热门推荐词<em class="aui-iconfont aui-icon-hide" tapmode onclick="hide()"></em></h5>
+			<div class="aui-row" id="html">
+				<img src="../image/loading.gif" id="loading" />
+			</div>
+		</section>
+		<!--<section class="aui-grid" id="searchList" >
+		<script id="fx-list" type="text/x-dot-template">
+		{{? it.length}}
+		<ul class="aui-list aui-list-in">
+		{{ for(var i=0,len=it.length; i < len; i++) { }}
+		<li class="aui-list-item">
+		<div class="aui-list-item-label-icon">
+		<i class="aui-iconfont aui-icon-search"></i>
+		</div>
+		<div class="aui-ellipsis-1 aui-list-item-inner">
+		{{= it[i].title}}
+		</div>
+		</li>
+		{{ } }}
+		</ul>
+		{{?}}
+		<img src="../image/loading.gif" id="loading" />
+		{{?}}
+		</script>
+		<div id="fx-view"></div>
+		</section>-->
+		<section class="fx-list" id="searchList" style="display: none">
+			<div class="aui-grid aui-border-b">
+				<div class="aui-row fx-tab">
+					<div class="aui-col-xs-3 hover" id="tab0" tapmode onclick="randomSwitchBtn(0)">
+						<div class="aui-grid-label">
+							综合
+						</div>
+					</div>
+					<div class="aui-col-xs-3" id="tab1" tapmode onclick="randomSwitchBtn(1)">
+						<div class="aui-grid-label">
+							文章
+						</div>
+					</div>
+					<div class="aui-col-xs-3" id="tab2" tapmode onclick="randomSwitchBtn(2)">
+						<div class="aui-grid-label">
+							图片
+						</div>
+					</div>
+					<div class="aui-col-xs-3" id="tab3" tapmode onclick="randomSwitchBtn(3)">
+						<div class="aui-grid-label">
+							视频
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/doT.js"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/ffxiang.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			if(api.pageParam['textsearch']){
+				var text=api.pageParam['textsearch'];
+				api.execScript({
+					name : 'search_win',
+					script : 'key("' + text + '")'
+				});
+			}else{
+				view()
+			}
+			 
+			// 监听夜间
+			api.addEventListener({
+			    name: 'yejian'
+			}, function(ret, err) {
+				if(ret){
+					_yejians();
+				}
+			});
+		}
+		function view() {
+			if(api.pageParam['text']){
+				lists(api.pageParam['text'])
+				api.execScript({
+					script : 'title("'+api.pageParam['text']+'")'
+				});
+			}else{
+				// 搜索记录
+				var searchText = $api.getStorage('searchText');
+				if (searchText) {
+					var textHtml = "";
+					if (searchText.indexOf(",") > 0) {
+						var strs = new Array();
+						strs = searchText.split(",");
+						for (var i = 0; i < strs.length; i++) {
+							textHtml += '<div class="aui-col-xs-6 aui-border-r" tapmode onclick=\'key("'+strs[i]+'")\'>';
+							textHtml += '<div class="aui-grid-label aui-ellipsis-1 asdasd123">' + strs[i] + '</div>';
+							textHtml += '</div>';
+						}
+					} else {
+						textHtml += '<div class="aui-col-xs-6 aui-border-r" tapmode onclick=\'key("'+searchText+'")\'>';
+						textHtml += '<div class="aui-grid-label aui-ellipsis-1">' + searchText+ '</div>';
+						textHtml += '</div>';
+					}
+					$('#textHtml').html(textHtml);
+				}
+				// 推荐词
+				_ajax('api/article/hot_words', function(ret, err) {
+					var html = "";
+					if (ret) {
+						for (var i = 0; i < ret.length; i++) {
+							html += '<div class="aui-col-xs-6 aui-border-r" tapmode onclick="key(\''+ret[i].title+'\')">';
+							html += '<div class="aui-grid-label aui-ellipsis-1">' + ret[i].title + '</div>';
+							html += '</div>';
+						}
+					} else {
+						html += '<h6 class="aui-text-center aui-padded-15 aui-font-size-14">暂无推荐词</h6>'
+					}
+					$('#html').html(html);
+				})
+			}
+		}
+		function hide() {
+			$('.fx-chakan').show();
+			$('.remen').hide();
+			$('#html').hide();
+		}
+
+		function show() {
+			$('.fx-chakan').hide();
+			$('.remen').show();
+			$('#html').show();
+		}
+
+		function del() {
+			$('#textHtml').html();
+			$('#lishi').hide();
+			api.execScript({
+				script : 'del()'
+			});
+		}
+
+		function searchList(data) {
+			$('#lishi').hide();
+			$('#tuijian').hide();
+//			var evalData = doT.template($('#fx-list').html());
+			//$('#fx-view').html(evalData(data))
+			$('#searchList').show();
+		}
+
+		function lishi() {
+			$('#lishi').show();
+			$('#tuijian').show();
+			$('#searchList').hide();
+		}
+		// 搜索结果列表
+		var shifdakai=0;
+		function lists(text){
+			searchList()
+			var frames = [];
+			for (var i = 0; i < 4; i++) {
+				var frame = {};
+				frame.name = i;
+				frame.url =  html_win+'search_frame.html';
+				frame.pageParam = {
+					mychannel : i,
+					text:text,
+				};
+				frame.bgColor = '#fff';
+				frames.push(frame);
+			}
+			openFrameGroup(frames)
+		}
+		function openFrameGroup(frames) {
+			var header = $api.byId('searchList');
+			var header = $api.offset(header);
+			api.openFrameGroup({
+				name : 'search',
+				scrollEnabled : true,
+			 
+				rect : {
+					x : 0,
+					y : header.h+api.pageParam['w'],
+					w : 'auto',
+					h : api.winHeight-header.h-api.pageParam['w']
+				},
+				index : 0,
+				frames : frames,
+				preload : 0, // 预加载的 frame 个数，默认加载当前页后面一个
+				bgColor : '#fff'
+			}, function(ret, err) {
+				var index = ret.index;
+				active(index)
+			});
+			shifdakai=1;
+		}
+		// 点击分类栏目时，设置 frame 组当前可见 frame
+		function randomSwitchBtn(index) {
+			active(index)
+			api.setFrameGroupIndex({
+				name : 'search',
+				index : index,
+				scroll : true, //是否平滑滚动至目标窗口，即是否带有动画
+			});
+		}
+
+		// 点击样式
+		function active(index) {
+			$api.removeCls($api.dom(".fx-tab .hover"), 'hover');
+			$api.addCls($api.byId('tab' + index), 'hover');
+		}
+		// 关键关键词搜索
+		function key(text){
+			if(!text){
+				_msg("请输入关键词搜索")
+				return;
+			}
+			var key='key("'+text+'")';
+			api.execScript({
+				script : key
+			});
+		}
+	</script>
+</html>
+

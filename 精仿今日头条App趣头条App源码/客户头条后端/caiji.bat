@@ -1,0 +1,1 @@
+D:\xampp\php\php.exe -q D:\website\caiji.php

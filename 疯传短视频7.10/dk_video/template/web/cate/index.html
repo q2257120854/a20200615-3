@@ -1,0 +1,50 @@
+{template 'common/header'}
+<ol class="breadcrumb">
+	<li><a href="{php echo $this->createWebUrl('index');}">管理首页</a></li>
+	<li><a href="{php echo $this->createWebUrl('cate',array('op' => 'index'));}">分类管理</a></li>
+	<li class="active">分类列表</li>
+</ol>
+<div class="panel-body">
+	<div class="row">
+		<div class="col-sm-12 col-md-8">
+			<form action="{php echo $this->createWebUrl('cate')}" method="post" class="form-inline" role="form">
+				<div class="form-group">
+					<label>分类搜索</label>
+					<input class="form-control" name="keyword" placeholder="请输入分类名称" type="text"  />
+				</div>
+				<button class="btn btn-default"><i class="fa fa-search"></i> 搜索</button>
+			</form>
+		</div>
+		<div class="col-sm-12 col-md-4">
+			<a class="btn btn-primary pull-right" href="{php echo $this->createWebUrl('cate',array('op' => 'create'));}">添加分类</a>
+		</div>
+	</div>
+	<div class="we7-margin-top-sm">
+		<table class="table  table-bordered we7-table table-hover vertical-middle">
+			<tbody>
+				<tr>
+					<th class="text-center" style="width:20%;">分类标题</th>
+	                <th class="text-center" style="width:15%;">分类顺序</th>
+	                <th class="text-center" style="width:20%;">分类操作</th>
+				</tr>
+			</tbody>
+			{loop $catelist $row}
+			<tr>
+				<td class="text-center">{$row['title']}</td>
+				<td class="text-center">{$row['sort']}</td>
+	            <td class="text-center">
+	                <a class="btn btn-default btn-sm" href="{php echo $this->createWebUrl('cate', array('op' => 'edit', 'id' => $row['id']))}" title="编辑"><i class="fa fa-pencil"></i></a>
+	                <a class="btn btn-default btn-sm" onclick="return confirm('是否要删除？');return false;" href="{php echo $this->createWebUrl('cate', array('op' => 'delete', 'id' => $row['id']))}" title="删除"><i class="fa fa-times"></i></a>
+	            </td>
+			</tr>
+			{/loop}
+		</table>
+		{if empty($catelist)}
+			<span style="margin-left: 45%;">暂无相关数据</span><br />
+		{/if}
+		<tr>
+			<div class="pull-right">{$pager}</div>
+       </tr>
+	</div>
+</div>
+{template 'common/footer'}
